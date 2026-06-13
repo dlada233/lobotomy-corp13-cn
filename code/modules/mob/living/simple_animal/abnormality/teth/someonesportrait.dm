@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/someones_portrait
-	name = "Someone's Portrait"
-	desc = "A simple portrait, with a head, with red eyes, staring to somewhere or someone."
+	name = "某人的肖像"
+	desc = "一个简单的肖像，有一个头，红色的眼睛，盯着某处或某人."
 	pixel_y = 64
 	base_pixel_y = 64
 	density = FALSE
@@ -29,12 +29,12 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
 //TODO: Resprite + redo of this
-	observation_prompt = "The portrait has been in our family's possession for a long time. <br>\
-		They say it was of a very important relative of ours, but we do not recognize anyone present. <br>I've always hated the picture, why couldn't anyone else see it was just biding its time, waiting to strike?"
+	observation_prompt = "这幅肖像画在我们家族中留存已久. <br>\
+		据说画中是我们一位非常重要的亲戚，但没人认得画中人. <br>我一直憎恶这幅画，为什么其他人就看不出来它只是在等待时机、伺机攻击?"
 	observation_choices = list(
-		"Destroy the picture" = list(TRUE, "One night, when everyone else was asleep, I snuck out of my room and found myself before that horrible thing. <br>\
-			Retrieving a lighter from my pocket I flicked it on and held it to the painting... <br>\
-			It turned out I was right, it was waiting to attack and I got into its striking range when no one else was around..."),
+		"摧毁画像" = list(TRUE, "某夜，趁众人熟睡时，我溜出房间来到那可怕之物面前. <br>\
+			我从口袋掏出打火机点燃，将它凑向画布... <br>\
+			事实证明我是对的——它一直伺机攻击，而我在无人时进入了它的攻击范围..."),
 	)
 
 //Initialize
@@ -64,7 +64,7 @@
 		L.break_light_tube()
 
 /mob/living/simple_animal/hostile/abnormality/someones_portrait/proc/PanicUser(mob/living/carbon/human/user, workfailure) //its over bros...
-	to_chat(user, span_userdanger("He's going to get you! You've got to run!"))
+	to_chat(user, span_userdanger("他来找你了! 快跑!"))
 	playsound(get_turf(user), 'sound/abnormalities/someonesportrait/panic.ogg', 40, FALSE, -5)
 	user.adjustSanityLoss(user.maxSanity)
 	if(!workfailure)

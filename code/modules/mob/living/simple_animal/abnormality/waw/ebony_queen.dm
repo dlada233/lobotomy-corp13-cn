@@ -1,15 +1,15 @@
 //Coded by Coxswain sprites by mel and Sky_
 /mob/living/simple_animal/hostile/abnormality/ebony_queen
-	name = "Ebony Queen’s Apple"
-	desc = "An Abnormality taking the form of a tall humanoid with a rotted apple for a head, wearing a regal robe."
+	name = "黑檀女王的苹果"
+	desc = "一个畸形人，身材高大，头戴腐烂的苹果，身穿帝王长袍."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "ebonyqueen"
 	icon_living = "ebonyqueen"
 	icon_dead = "ebonyqueen_dead"
 	core_icon = "ebonyqueen_dead"
 	portrait = "ebony_queen"
-	maxHealth = 700
-	health = 700
+	maxHealth = 900
+	health = 900
 	pixel_x = -16
 	base_pixel_x = -16
 	blood_volume = 0
@@ -46,21 +46,21 @@
 	work_damage_type = BLACK_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/gluttony
 
-	observation_prompt = "(I hear something) <br>\
-		The wicked queen is speaking with the magic mirror again and frowns when its answer remains unchanged. <br>\
-		(I see something) <br>\
-		I see her take an apple from next to me and imbue it with a poison that can kill with but a drop. <br>\
-		She takes on the guise of a wizened old hag and places the poisoned apple back next to me and heads out, a small amount of its poison leaves an impression upon me. <br>\
-		(I feel something) <br>\
-		I feel her cast me aside, taking a bite of my white flesh to prove her genuinity as Snow White bit the poisoned apple's red flesh. <br>\
-		Her plan was a success - her behated Snow White has fallen into a death-like state. <br>\
-		Is that all I was for? <br>To bring pain to others whilst never experiencing it myself? <br>\
-		I'm beginning to rot and feel pests and other lowly creatures make a meal out of me..."
+	observation_prompt = "（我听见声音）<br>\
+		恶毒王后再次询问魔镜，听到相同答案后皱起眉头。<br>\
+		（我看见景象）<br>\
+		我看见她拿起我身旁的苹果，注入一滴即可致命的毒药。<br>\
+		她伪装成老妇，将毒苹果放回我身边离开，微量毒液渗入我体内。<br>\
+		（我感受到）<br>\
+		她抛弃了我，当白雪公主咬下毒苹果时，她也咬下我的果肉证明真伪。<br>\
+		计划成功了——她憎恨的白雪公主陷入假死。<br>\
+		难道我存在的意义仅此而已？<br>给他人带来痛苦，自己却永不体会？<br>\
+		我开始腐烂，感觉害虫啃噬我的身体..."
 	observation_choices = list(
-		"Don't accept the end" = list(TRUE, "The impression of poison brings pause to the pests and even they no longer wish to remain with me. <br>\
-			Petrified roots grow from within me and I gain some sense of being ambulatory. <br>I know now how long I had laid but I refuse to remain still. <br>\
-			I shall find vengeance. <br>Bring me snow white..."),
-		"Rot into nothing" = list(FALSE, "An apple culminates when it shrivels up and attracts lesser creatures. <br>I'm just an apple, I can't change a thing."),
+		"拒绝终结" = list(TRUE, "渗入的毒液让害虫退却，连它们都不愿停留。<br>\
+			石化根须从我体内生长，我获得了行动能力。<br>终于知晓自己沉寂了多久，但我拒绝继续静止。<br>\
+			我要复仇。<br>把白雪公主带来..."),
+		"彻底腐烂" = list(FALSE, "苹果终将干瘪萎缩，吸引低等生物啃噬。<br>我不过是个苹果，无力改变任何事。"),
 	)
 
 	var/barrier_cooldown
@@ -189,7 +189,7 @@
 	new /obj/effect/temp_visual/guardian/phase/out(teleport_target)
 	animate(src, alpha = 0, time = 5, easing = EASE_OUT)
 	SLEEP_CHECK_DEATH(1)
-	visible_message(span_boldwarning("[src] fades out!"))
+	visible_message(span_boldwarning("[src]逐渐消失!"))
 	density = FALSE
 	SLEEP_CHECK_DEATH(4)
 	forceMove(teleport_target)
@@ -197,7 +197,7 @@
 	animate(src, alpha = 255, time = 5, easing = EASE_IN)
 	SLEEP_CHECK_DEATH(1)
 	density = TRUE
-	visible_message(span_boldwarning("[src] fades in!"))
+	visible_message(span_boldwarning("[src]逐渐浮现!"))
 	SLEEP_CHECK_DEATH(4)
 	can_act = TRUE
 
@@ -268,7 +268,7 @@
 	icon_state = "vines"
 	duration = 6
 	layer = RIPPLE_LAYER	//We want this HIGH. SUPER HIGH. We want it so that you can absolutely, guaranteed, see exactly what is about to hit you.
-	var/root_damage = 15 //Black Damage
+	var/root_damage = 20 //Black Damage
 	var/mob/living/caster //who made this, anyway
 
 /obj/effect/temp_visual/root/Initialize(mapload, new_caster)
@@ -289,13 +289,13 @@
 	for(var/mob/living/L in hit)
 		if(L.stat == DEAD || L.throwing)
 			continue
-		L.visible_message(span_userdanger("[src] knocks [L] away!"), span_userdanger("[src] knocks you away!"))
+		L.visible_message(span_userdanger("[src]击倒[L]!"), span_userdanger("[src]将你击倒!"))
 		var/turf/thrownat = get_ranged_target_turf(src, pick(GLOB.alldirs), 2)
 		L.throw_at(thrownat, 1, 1, spin = TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 	for(var/obj/vehicle/sealed/mecha/M in hit) //also damage mechs.
 		for(var/O in M.occupants)
 			var/mob/living/occupant = O
-			to_chat(occupant, span_userdanger("Your [M.name] is struck by [src]!"))
+			to_chat(occupant, span_userdanger("你的[M.name]被[src]击中了!"))
 	qdel(src)
 
 	//Special attacks; there are four of them

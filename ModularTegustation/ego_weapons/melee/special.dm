@@ -3,7 +3,7 @@
 
 //Less lame now - Crabby
 /obj/item/ego_weapon/feather
-	name = "feather of honor"
+	name = "荣耀之羽"
 	desc = "A flaming, but very sharp, feather."
 	icon_state = "featherofhonor"
 	worn_icon_state = "featherofhonor"
@@ -11,7 +11,7 @@
 	force = 16
 	attack_speed = 0.7
 	swingstyle = WEAPONSWING_LARGESWEEP
-	special = "This E.G.O. functions as both a ranged and a melee weapon."
+	special = "这件E.G.O远近兼用。"
 	damtype = WHITE_DAMAGE
 	attack_verb_continuous = list("slices", "slashes", "stabs")
 	attack_verb_simple = list("slice", "slash", "stab")
@@ -66,10 +66,10 @@
 
 //White Night
 /obj/item/ego_weapon/paradise
-	name = "paradise lost"
+	name = "失乐园"
 	desc = "\"Behold: you stood at the door and knocked, and it was opened to you. \
 	I come from the end, and I am here to stay for but a moment.\""
-	special = "This weapon has a ranged attack that also happens on hit that heals you."
+	special = "这把武器具有远程攻击能力，且在命中时会为你恢复生命值."
 	icon_state = "paradise"
 	worn_icon_state = "paradise"
 	force = 40
@@ -158,11 +158,11 @@
 
 //Apocalypse Bird
 /obj/item/ego_weapon/twilight
-	name = "twilight"
+	name = "薄暝"
 	desc = "Just like how the ever-watching eyes, the scale that could measure any and all sin, \
 	and the beak that could swallow everything protected the peace of the Black Forest... \
 	The wielder of this armament may also bring peace as they did."
-	special = "This weapon can attack from a distance on a cooldown and perform a large area attack when used in hand."
+	special = "你把武器能进行远程攻击，手中使用还能进行AOE攻击."
 	icon_state = "twilight"
 	worn_icon_state = "twilight"
 	force = 20
@@ -224,8 +224,8 @@
 
 /obj/item/ego_weapon/twilight/EgoAttackInfo(mob/user)
 	if(force_multiplier != 1)
-		return span_notice("It deals [round((force * 4) * force_multiplier)] red, white, black and pale damage combined. (+ [(force_multiplier - 1) * 100]%)")
-	return span_notice("It deals [force * 4] red, white, black and pale damage combined.")
+		return span_notice("它造成[round((force * 4) * force_multiplier)] 红色, 白色, 黑色还有青色的综合伤害. (+ [(force_multiplier - 1) * 100]%)")
+	return span_notice("它造成 [force * 4] 红色, 白色, 黑色还有青色的综合伤害.")
 
 /obj/item/ego_weapon/twilight/attack_self(mob/user) //spin attack with knockback
 	if(!CanUseEgo(user))
@@ -291,9 +291,9 @@
 
 //Distorted Form
 /obj/item/ego_weapon/shield/distortion
-	name = "distortion"
+	name = "千变"
 	desc = "The fragile human mind is fated to twist and distort."
-	special = "This weapon requires two hands to use and always blocks ranged attacks."
+	special = "该武器需要双手持握，总能够阻挡远程攻击."
 	icon_state = "distortion"
 	force = 20 //Twilight but lower in terms of damage
 	attack_speed = 1.8
@@ -321,7 +321,7 @@
 	aggro_on_block *= 4
 
 /obj/item/ego_weapon/shield/distortion/EgoAttackInfo(mob/user)
-	return span_notice("It deals [force * 4] red, white, black and pale damage combined.")
+	return span_notice("它造成[force * 4] 红色、白色、黑色和青色的综合伤害.")
 
 /obj/item/ego_weapon/shield/distortion/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -335,7 +335,7 @@
 /obj/item/ego_weapon/shield/distortion/CanUseEgo(mob/living/user)
 	. = ..()
 	if(user.get_inactive_held_item())
-		to_chat(user, span_notice("You cannot use [src] with only one hand!"))
+		to_chat(user, span_notice("单手无法使用[src]！"))
 		return FALSE
 
 /obj/item/ego_weapon/shield/distortion/AnnounceBlock(mob/living/carbon/human/source, damage, damagetype, def_zone)
@@ -362,9 +362,9 @@
 
 //Oberon
 /obj/item/ego_weapon/oberon
-	name = "fairy king"
+	name = "精灵之王"
 	desc = "Then yes, I am the Oberon you seek."
-	special = "Use this weapon in hand to swap between forms. This form has higher reach, hits 3 times, and builds up attack speed before unleasheing a powerful burst of damage."
+	special = "在手中使用此武器可以切换不同形态，这个形态拥有更远的攻击范围，可连击三次，并在释放出强大的爆发伤害之前提升攻击速度."
 	icon_state = "oberon_whip"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -594,9 +594,9 @@
  * Why is she still using Eyeball Scooper from a Zayin? Maybe it scales with fortitude?
  */
 /obj/item/ego_weapon/eyeball
-	name = "eyeball scooper"
+	name = "眼球勺子"
 	desc = "Mind if I take them?"
-	special = "This weapon grows more powerful as you do, but its potential is limited if you possess any other EGO weapons."
+	special = "这个武器会随着你的行动变得越来越强大, 但如果你生产其他E.G.O.武器，它的潜力将会被限制."
 	icon_state = "eyeball1"
 	force = 12
 	damtype = BLACK_DAMAGE
@@ -643,7 +643,7 @@
 
 //Pile of Mail
 /obj/item/ego_weapon/mail_satchel
-	name = "envelope"
+	name = "信封"
 	desc = "Heavy satchel filled to the brim with letters."
 	icon_state = "mailsatchel"
 	force = 6
@@ -666,7 +666,7 @@
 
 //Puss in Boots
 /obj/item/ego_weapon/lance/famiglia
-	name = "famiglia"
+	name = "家庭"
 	desc = "Do not be cast down, for I will provide for your well-being as well as mine."
 	icon_state = "famiglia"
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
@@ -687,7 +687,7 @@
 	. = ..()
 	var/datum/status_effect/chosen/C = user.has_status_effect(/datum/status_effect/chosen)
 	if(!C)
-		to_chat(user, span_notice("You cannot use [src], only the abnormality's chosen can!"))
+		to_chat(user, span_notice("你不能使用[src]，只有异想体的选中者可以!"))
 		return FALSE
 
 /obj/item/ego_weapon/lance/famiglia/attack(mob/living/target, mob/living/user)
@@ -708,9 +708,9 @@
 
 //We Can Change Anything
 /obj/item/ego_weapon/iron_maiden
-	name = "iron maiden"
+	name = "铁处女"
 	desc = "Just open up the machine, step inside, and press the button to make it shut. Now everything will be just fine.."
-	special = "This weapon builds up the amount of times it hits as you attack, at maximum speed it will damage you per hit, increasing more and more, use it in hands."
+	special = "当你攻击时，这种武器会增加攻击的次数，但在最大速度下，每次攻击都会对你造成伤害，并且会越来越多."
 	icon_state = "iron_maiden"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -781,9 +781,9 @@
 
 /obj/item/ego_weapon/iron_maiden/attack_self(mob/user)
 	if(ramping_speed == 0)
-		to_chat(user,span_notice("It is already revved down!"))
+		to_chat(user,span_notice("它已经在降低功率了!"))
 		return
-	to_chat(user,span_notice("You being to cool down [src]."))
+	to_chat(user,span_notice("你冷却[src]."))
 	playsound(src, 'sound/abnormalities/we_can_change_anything/change_gas.ogg', 50, TRUE)
 	if(do_after(user, 2 SECONDS, src))
 		icon_state = "iron_maiden"
@@ -792,14 +792,14 @@
 		ramping_speed = 0
 		ramping_damage = 0
 		force = initial(force)
-		to_chat(user,span_notice("The mechanism on [src] dies down!"))
+		to_chat(user,span_notice("[src]的运转停下来了!"))
 
 //Nihil Event rewards
 /obj/item/ego_weapon/goldrush/nihil
-	name = "worthless greed"
+	name = "一文不值的贪婪"
 	desc = "The magical girl, who was no longer a magical girl, ate many things. \
 	Authority, money, fame, and many other forms of pleasure. She ended up eating away anything in her sight."
-	special = "This weapon has a combo system and can charge up a powerful charge attack."
+	special = "该武器短暂蓄力后造成伤害，除非开启了连击."
 	hitsound = 'sound/weapons/fixer/generic/fist2.ogg'
 	icon_state = "greed"
 	force = 35
@@ -813,13 +813,13 @@
 	if(!CanUseEgo(user) || charging)
 		return
 	if(!can_charge)
-		to_chat(user,span_warning("You attacked too recently."))
+		to_chat(user,span_warning("你攻击的太频繁了."))
 		return
 	prepair_charge = !prepair_charge
 	if(!prepair_charge)
-		to_chat(user,span_notice("You prepair to preform a dash."))
+		to_chat(user,span_notice("你准备好了突袭."))
 	else
-		to_chat(user,span_notice("You decide to not preform a dash."))
+		to_chat(user,span_notice("你决定不突袭了."))
 	. = ..()
 
 /obj/item/ego_weapon/goldrush/nihil/afterattack(atom/A, mob/living/user, proximity_flag, params)
@@ -829,7 +829,7 @@
 	if(!istype(target_turf))
 		return
 	..()
-	to_chat(user,span_notice("You start charging up a dash."))
+	to_chat(user,span_notice("你开始蓄力突袭."))
 	prepair_charge = FALSE
 	charging = TRUE
 	user.Immobilize(stuntime)
@@ -906,10 +906,10 @@
 	charging = FALSE
 
 /obj/item/ego_weapon/shield/despair_nihil
-	name = "meaningless despair"
+	name = "毫无意义的绝望"
 	desc = "When Justice turns its back once more, several dozen blades will rove without a purpose. \
 	The swords will eventually point at those she could not protect."
-	special = "This weapon has a combo system."
+	special = "这个武器有一个连击系统."
 	icon_state = "despair_nihil"
 	force = 20
 	attack_speed = 1
@@ -948,7 +948,7 @@
 		user.changeNext_move(CLICK_CD_MELEE * 2)
 		force *= 5	// Should actually keep up with normal damage.
 		playsound(src, 'sound/weapons/fixer/generic/sword5.ogg', 50, FALSE, 9)
-		to_chat(user,span_warning("You are offbalance, you take a moment to reset your stance."))
+		to_chat(user,span_warning("你失去了平衡，你需要一点时间来重新调整你的姿态"))
 	else
 		user.changeNext_move(CLICK_CD_MELEE * 0.4)
 	..()
@@ -956,7 +956,7 @@
 	force = initial(force)
 
 /obj/item/ego_weapon/blind_rage/nihil
-	name = "senseless wrath"
+	name = "不知羞耻的愤怒"
 	desc = "The Servant of Wrath valued justice and balance more than anyone, but she began sharing knowledge with the \
 	Hermit - an enemy of her realm, becoming friends with her in secret."
 	icon_state = "wrath"
@@ -978,7 +978,7 @@
 
 //Tutorial
 /obj/item/ego_weapon/tutorial
-	name = "rookie dagger"
+	name = "新秀匕首"
 	desc = "E.G.O intended for Agent Education"
 	icon_state = "rookie"
 	force = 3
@@ -987,24 +987,24 @@
 	attack_verb_simple = list("cuts", "stabs", "slashes")
 
 /obj/item/ego_weapon/tutorial/white
-	name = "fledgling dagger"
+	name = "新人匕首"
 	icon_state = "fledgling"
 	damtype = WHITE_DAMAGE
 
 /obj/item/ego_weapon/tutorial/black
-	name = "apprentice dagger"
+	name = "学徒匕首"
 	icon_state = "apprentice"
 	damtype = BLACK_DAMAGE
 
 /obj/item/ego_weapon/tutorial/pale
-	name = "freshman dagger"
+	name = "萌新匕首"
 	icon_state = "freshman"
 	damtype = PALE_DAMAGE
 
 /obj/item/ego_weapon/home //From my sweet home.
-	name = "my home"
+	name = "我的家"
 	desc = "Because I'm a home, a happy little home."
-	special = "This weapon has a ranged attack."
+	special = "这把武器可以远程攻击."
 	icon_state = "home"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'

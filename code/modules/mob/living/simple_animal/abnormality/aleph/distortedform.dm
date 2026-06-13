@@ -4,8 +4,8 @@
 	roughly as dangerous as white night and as rewarding.
 */
 /mob/living/simple_animal/hostile/abnormality/distortedform
-	name = "Distorted Form"
-	desc = "A manmade horror beyond description."
+	name = "扭曲形体"
+	desc = "一种无法形容的人为恐怖."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	maxHealth = 10000
 	health = 10000
@@ -28,7 +28,7 @@
 	pixel_x = -48
 	base_pixel_x = -48
 	del_on_death = FALSE
-	death_message = "reverts into a tiny, disgusting fetus-like creature."
+	death_message = "变成一个微小的，恶心的胎儿般的生物."
 	can_breach = TRUE
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 25,
@@ -50,25 +50,25 @@
 	gift_type = /datum/ego_gifts/distortion
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "I find myself in a void, filled to the brim with monsters. <br>\
-		All sorts of indescribably horrible creatures surround me, passing by as if I were not there. <br>\
-		But the largest creature of all surrounds me entirely. <br>Every direction is covered in a undulating mass of flesh, blood, fur, and feathers. <br>\
-		I am always butchering monsters like these. <br>I tear them limb from limb.<br>\
-		Bringing death in brutal fashion. <br>Am I not a fitting piece of the scenery before me?"
+	observation_prompt = "我发现自己身处一片虚无之中, 周围满是怪物. <br>\
+		各种难以形容的可怕生物包围着我，从我身边经过，好像我不存在似的. <br>\
+		但其中最大的生物完全地包住了我. <br>每一方向都覆盖着一团起伏的肉、血、毛发和羽翼. <br>\
+		我一直在屠杀这样的怪物. <br>我从一处肢体撕裂到下一个肢体.<br>\
+		以残忍的方式带来死亡. <br>我是否也是这众多怪物中的一只?"
 	observation_choices = list(
-		"I am not a monster" = list(TRUE, "It is hard to live in the city. <br>\
-			To pretend to be a civilized human when living in this manner. <br>\
-			It is easy to give into the temptation of giving up all pretenses of humanity. <br>\
-			But I do it because it is hard. <br>\
+		"我不是怪物" = list(TRUE, "在都市的生活很艰难. <br>\
+			这样的生活方式让我可以假装自己是一个文明人类. <br>\
+			诱惑无处不在，催促着我放弃所有人性的伪装. <br>\
+			但我还是要继续下去，不是因为它简单，恰恰是因为它足够困难. <br>\
 			... <br>\
-			I am not a monster. <br>\
-			I will never become a monster."),
-		"I am a monster" = list(FALSE, "\"Do you wish to be so?\" <br>\
-			\"Then it can be as you wish.\" <br>\
+			我不会是一只怪物. <br>\
+			我也永远不会变成一只怪物."),
+		"我是怪物" = list(FALSE, "\"这就是你所希望的吗?\" <br>\
+			\"那一切也会如你所愿.\" <br>\
 			... <br>\
-			Her voice is like sunshine. <br>\
+			她的声音像阳光一样. <br>\
 			... <br>\
-			I am a monster. <br>"),
+			我成为了一只怪物. <br>"),
 	)
 
 //Work vars
@@ -110,19 +110,19 @@
 	var/transform_cooldown_time = 6 SECONDS
 	var/transform_cooldown_time_long = 12 SECONDS
 	var/list/transform_list = list(
-		"Nothing There",
-		"Apocalypse bird",
-		"Puss in Boots",
-		"Crumbling Armor",
-		"Hammer of Light",
+		"一无所有",
+		"天启鸟",
+		"靴子里的猫",
+		"破裂铠甲",
+		"光之锤",
 		"Halberd Apostle",
-		"Red Queen",
-		"Blubbering Toad",
-		"Bloodbath",
-		"Price of Silence",
+		"红皇后",
+		"悲泣蟾蜍",
+		"血浴缸",
+		"沉默的代价",
 		"You're Bald...",
 	)
-	var/list/transform_list_longrange = list("Doomsday Calendar", "Blue Star", "Der Freischutz", "Apocalypse bird", "Siren")
+	var/list/transform_list_longrange = list("终末日历", "碧蓝新星", "魔弹射手", "天启鸟", "塞壬")
 	var/list/transform_list_jump = list("Light", "Medium", "Heavy")
 	var/transform_count = 0
 	var/jump_ready = FALSE
@@ -145,11 +145,11 @@
 /mob/living/simple_animal/hostile/abnormality/distortedform/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, 1, 5))
 	var/list/result_text_list = list(
-		"1" = list("There's no room for error here.", "My legs are trembling...", "Damn, it's scary."),
-		"2" = list("GODDAMN IT!!!!", "H-Help...", "I don't want to die!"),
-		"3" = list("What am I seeing...?", "I-I can't take it...", "I can't understand..."),
-		"4" = list("I'm so dead...", "That thing's just a monster!", "I need to get out of here!"),
-		"5" = list("Is that what it really looks like?", "It's over...", "I can’t even move my legs..."),
+		"1" = list("现在没有犯错的余地.", "我的腿在颤抖...", "该死, 好吓人."),
+		"2" = list("该死该死真该死!!!!", "救-救命...", "我还不想死!"),
+		"3" = list("什么啊这是...?", "我-我受不了了...", "我不懂..."),
+		"4" = list("我死定了...", "这就是一个怪物!", "	!"),
+		"5" = list("这真的是它的真面目吗?", "结束了...", "我挪不动我的腿..."),
 	)
 	return pick(result_text_list[level])
 
@@ -274,7 +274,7 @@
 		datum_reference.qliphoth_change(-1)
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/CauseMelts(datum/source, datum/abnormality/abno_datum, worked)
-	var/meltdown_text = "Horrible screeches have caused a disturbance in the containment zones of the following abnormalities:"
+	var/meltdown_text = "可怕的尖叫声已扰乱了以下异想体的收容单元:"
 	var/meltdown_sound = pick(
 		"sound/abnormalities/distortedform/screech3.ogg",
 		"sound/abnormalities/distortedform/screech4.ogg",
@@ -323,7 +323,7 @@
 		if(isatom(M.loc))
 			check_z = M.loc.z // So it plays even when you are in a locker/sleeper
 		if((check_z == z) && M.client)
-			to_chat(M, span_userdanger("Horrifying screams come from out of the darkness!"))
+			to_chat(M, span_userdanger("黑暗中传来可怕的尖叫声!"))
 			flash_color(M, flash_color = COLOR_ALMOST_BLACK, flash_time = 80)
 		if(M.stat != DEAD && ishuman(M) && M.ckey)
 			survivors += M
@@ -344,7 +344,7 @@
 	can_act = FALSE
 	icon_state = icon_dead
 	icon = 'ModularTegustation/Teguicons/abno_cores/aleph.dmi'
-	desc = "A gross, pathetic looking thing that was once a terrible monster."
+	desc = "一个丑陋可悲的东西，曾经是一个可怕的怪物."
 	pixel_x = -16
 	base_pixel_x = -16
 	pixel_y = 0
@@ -360,7 +360,7 @@
 			return ..()
 		survivor.Apply_Gift(new /datum/ego_gifts/fervor)
 		survivor.playsound_local(get_turf(survivor), 'sound/weapons/black_silence/snap.ogg', 50)
-		to_chat(survivor, span_userdanger("The screams subside - you recieve a gift!"))
+		to_chat(survivor, span_userdanger("尖叫声渐渐平息 - 你收到一份礼物!"))
 	animate(src, alpha = 0, time = 10 SECONDS)
 	QDEL_IN(src, 10 SECONDS)
 	new /obj/item/ego_weapon/shield/distortion(get_turf(src))
@@ -458,33 +458,33 @@
 		changed = FALSE
 		return
 	switch(form)
-		if("Nothing There")
+		if("一无所有")
 			ChangeNT()
-		if("Puss in Boots")
+		if("靴子里的猫")
 			ChangeCat()
-		if("Crumbling Armor")
+		if("破裂铠甲")
 			ChangeArmor()
-		if("Hammer of Light")
+		if("光之锤")
 			ChangeHammer()
 		if("Halberd Apostle")
 			ChangeApostle()
-		if("Red Queen")
+		if("红皇后")
 			ChangeQueen()
-		if("Blubbering Toad")
+		if("悲泣蟾蜍")
 			ChangeToad()
-		if("Bloodbath")
+		if("血浴缸")
 			ChangeBloodBath()
-		if("Price of Silence")
+		if("沉默的代价")
 			ChangePrice()
-		if("Doomsday Calendar")
+		if("终末日历")
 			ChangeCalander()
-		if("Blue Star")
+		if("碧蓝新星")
 			ChangeStar()
-		if("Der Freischutz")
+		if("魔弹射手")
 			ChangeDer()
-		if("Siren")
+		if("塞壬")
 			ChangeSiren()
-		if("Apocalypse bird")
+		if("天启鸟")
 			ChangeApoc()
 		if("You're Bald...")
 			ChangeBald()
@@ -519,8 +519,8 @@
 	update_icon()
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/TurnNormal(newicon) //We'll use the variable to see if this is just an icon update or an actual transformation
-	name = "Distorted Form"
-	desc = "A manmade horror beyond description."
+	name = "扭曲形体"
+	desc = "一种无法形容的人为恐怖."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	icon_state = null // We can change this into a between-frame for transformation when I have one
 	pixel_x = initial(pixel_x)
@@ -794,8 +794,8 @@
 //Nothing There
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeNT()
 	transform_cooldown = transform_cooldown_time_long + world.time
-	name = "Nothing There"
-	desc = "A wicked creature that consists of various human body parts and organs."
+	name = "一无所有"
+	desc = "由各种人体部位和器官组成的邪恶生物."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "nothing"
 	pixel_x = -16
@@ -867,8 +867,8 @@
 //Puss in Boots
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeCat()
 	transform_cooldown = transform_cooldown_time_long + world.time
-	name = "Puss in Boots"
-	desc = "A scraggly looking black cat, it seems like the boots are missing."
+	name = "靴子里的猫"
+	desc = "一只看起来蓬头垢面的黑猫，靴子好像不见了."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "cat_breached"
 	pixel_x = 0
@@ -962,8 +962,8 @@
 //Crumbling Armor
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeArmor()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Crumbling Armor"
-	desc = "A thoroughly aged suit of samurai style armor with a V shaped crest on the helmet. It appears desuetude."
+	name = "破裂铠甲"
+	desc = "一套完全老化的武士式盔甲，头盔上有一个V形的纹章，它看起来很破旧."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "crumbling"
 	ChangeResistances(list(RED_DAMAGE = 0.2, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.2))
@@ -995,8 +995,8 @@
 //Hammer of Light
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeHammer()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Hammer of Light"
-	desc = "A white specter carrying a white hammer engraved with yellow runic writing."
+	name = "光之锤"
+	desc = "一个白色的幽灵拿着一把白色的锤子，上面刻着黄色的符文."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "hammer_distorted"
 	ChangeResistances(list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0))
@@ -1163,8 +1163,8 @@
 
 //Red Queen
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeQueen()
-	name = "Red Queen"
-	desc = "A noble red abnormality sitting in her chair."
+	name = "红皇后"
+	desc = "椅子上坐着一个高贵的红色怪人."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "redqueen"
 	pixel_x = -8
@@ -1221,8 +1221,8 @@
 //Blubbering Toad
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeToad()
 	transform_cooldown = transform_cooldown_time_long + world.time
-	name = "Blubbering Toad"
-	desc = "A giant toad, wailing with tears in its eyes. The tears are thick, like a blue resin. This one seems to be missing an eye."
+	name = "悲泣蟾蜍"
+	desc = "一只巨大的蟾蜍，眼里含着泪水在哭泣。眼泪很浓，像蓝色的树脂。这只好像少了一只眼睛."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "blubbering_red"
 	ChangeResistances(list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 0.3, BLACK_DAMAGE = 0.3, PALE_DAMAGE = 0.8))
@@ -1304,8 +1304,8 @@
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeBloodBath()
 	transform_cooldown = transform_cooldown_time_long + world.time
-	name = "Bloodbath"
-	desc = "A large humanoid made of blood"
+	name = "血浴缸"
+	desc = "由血液制成的大型人形动物"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "bloodbath_DF"
 	ChangeResistances(list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 0.3, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.8))
@@ -1418,8 +1418,8 @@
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangePrice()
 	transform_cooldown = transform_cooldown_time + world.time
-	name = "The Price of Silence"
-	desc = "A scythe with a clock attached, quietly ticking."
+	name = "沉默的代价"
+	desc = "一把挂着时钟的镰刀，静静地滴答作响."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "silence"
 	ChangeResistances(list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 0.7, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 0))
@@ -1538,8 +1538,8 @@
 //Doomsday Calander
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeCalander()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Doomsday Calendar"
-	desc = "Likely a tool for predicting a date of some kind, judging from the many letters carved on the bricks."
+	name = "终末日历"
+	desc = "从刻在砖上的许多字母来看，很可能是预测某种日期的工具."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "doomsday_charging"
 	base_pixel_x = -16
@@ -1579,8 +1579,8 @@
 //Blue Star
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeStar()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Blue Star"
-	desc = "Floating heart-shaped object. It's alive, and soon you will become one with it."
+	name = "碧蓝新星"
+	desc = "漂浮的心形物体。它是活的，很快你就会和它融为一体."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "blue_star"
 	pixel_x = -32
@@ -1616,8 +1616,8 @@
 //Der Freischutz
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeDer()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Der Freischutz"
-	desc = "A tall man adorned in grey, gold, and regal blue. His aim is impeccable."
+	name = "魔弹射手"
+	desc = "一个穿着灰色、金色和帝王蓝的高个子男人。他的准头无可挑剔。"
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "derfreischutz"
 	addtimer(CALLBACK(src, PROC_REF(DerAttack)), 5)
@@ -1689,8 +1689,8 @@
 //Siren
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeSiren()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Siren"
-	desc = "The siren that sings the past."
+	name = "塞壬"
+	desc = "唱着过去的海妖."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
@@ -1711,9 +1711,9 @@
 //Apocalypse Bird
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeApoc()
 	transform_cooldown = transform_cooldown_time + world.time
-	name = "Apocalypse bird"
-	desc = "A terrifying giant beast that lives in the black forest. It's constantly looking for a monster \
-	that terrorizes the forest, without realizing that it is looking for itself."
+	name = "天启鸟"
+	desc = "一只生活在黑森林里的可怕的巨兽. 它一直在寻找一个恐吓森林的怪物， \
+	却没有意识到它在寻找的就是自己."
 	icon = 'ModularTegustation/Teguicons/224x128.dmi'
 	icon_state = "apocalypse"
 	pixel_x = -96
@@ -1743,7 +1743,7 @@
 	flick("apocalypse_slam", src)
 	SLEEP_CHECK_DEATH(4)
 	playsound(src, 'sound/abnormalities/apocalypse/slam.ogg', 100, FALSE, 12)
-	visible_message(span_danger("[src] slams at the floor with its talons!"))
+	visible_message(span_danger("[src]用爪子猛击地板!"))
 	// Shake effect
 	for(var/mob/living/M in livinginrange(20, get_turf(src)))
 		shake_camera(M, 2, 3)
@@ -1817,13 +1817,13 @@
 			MediumJump(target_turf)
 		if("Heavy")
 			HeavyJump(target_turf)
-	visible_message(span_danger("[src] drops down from the ceiling!"))
+	visible_message(span_danger("[src]从天花板上掉下来!"))
 	density = TRUE
 	SLEEP_CHECK_DEATH(5)
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/LightJump(turf/target_turf)
-	name = "Fridge?"
+	name = "冰箱?"
 	desc = "It refridgerates."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "freezer_fake"
@@ -1843,7 +1843,7 @@
 				H.gib()
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/MediumJump(turf/target_turf)
-	name = "grant us love"
+	name = "请给我们爱"
 	desc = "A dark monolith structure with incomprehensible writing on it."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "violet_noon"
@@ -1863,7 +1863,7 @@
 				H.gib()
 
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/HeavyJump(turf/target_turf)
-	name = "Baba Yaga"
+	name = "芭芭雅嘎"
 	desc = "A giant house stomping around on an equally large chicken leg."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "babayaga_breach"
@@ -1898,7 +1898,7 @@
 //Miscellaneous random sprites - does nothing. Very low chance. This where you put the silly meme stuff.
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/Pause()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "Distorted Form"
+	name = "扭曲形体"
 	desc = "That doesn't look right."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	pixel_x = 0

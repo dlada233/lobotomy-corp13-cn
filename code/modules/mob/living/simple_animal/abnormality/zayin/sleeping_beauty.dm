@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_RESTED /datum/status_effect/rested
 /mob/living/simple_animal/hostile/abnormality/sleeping
-	name = "Sleeping Beauty"
-	desc = "A cushion with a tag that says \"F-04-36\"."
+	name = "睡美人"
+	desc = "一个垫子，上面有个标签写着 \"F-04-36\"."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	density = FALSE
 	icon_state = "sleeping_idle"
@@ -37,13 +37,13 @@
 	move_to_delay = 2.5
 	max_buckled_mobs = 10
 	chem_type = /datum/reagent/abnormality/sleeping
-	harvest_phrase = span_notice("You give %ABNO a small jostle, releasing some dreamy-looking clouds. You capture them in %VESSEL.")
-	harvest_phrase_third = "%PERSON jostles %ABNO, then captures the resulting clouds with %VESSEL."
+	harvest_phrase = span_notice("轻轻推了推 %ABNO，释放出一些梦幻般的云气，你将它们收集进了 %VESSEL.")
+	harvest_phrase_third = "%PERSON 推了推 %ABNO，然后用 %VESSEL 收集了产生的云气."
 
-	observation_prompt = "The couch looks inviting, softer and plusher than anything you've ever known. <br>You've been working for so long, it couldn't hurt to take a break?"
+	observation_prompt = "那张沙发看起来极具诱惑力，比你见过的任何东西都要柔软蓬松. <br>你已工作了如此之久，休息一下也无妨?"
 	observation_choices = list(
-		"Get back to work" = list(TRUE, "You shake your head. You'll have time to rest when you're dead."),
-		"Lie down" = list(FALSE, "You lay your head down into your soft and comfy pillow. You can always try again tomorrow."),
+		"回去工作" = list(TRUE, "你摇了摇头. 等死了有的是时间休息."),
+		"躺下" = list(FALSE, "把头埋进柔软舒适的枕头里. 明天再试也不迟嘛."),
 	)
 
 	var/grab_cooldown
@@ -58,7 +58,7 @@
 /mob/living/simple_animal/hostile/abnormality/sleeping/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	user.apply_status_effect(STATUS_EFFECT_RESTED)
-	to_chat(user, span_notice("You feel refreshed!."))
+	to_chat(user, span_notice("你感到焕然一新!."))
 	..()
 
 /mob/living/simple_animal/hostile/abnormality/sleeping/FailureEffect(mob/living/carbon/human/user, work_type, pe)
@@ -76,7 +76,7 @@
 	sleep(0.5 SECONDS)
 	if(QDELETED(user))
 		return
-	to_chat(user, span_userdanger("That was tough work, time for a break."))
+	to_chat(user, span_userdanger("工作很辛苦，该休息一下了."))
 	buckle_mob(user)
 	update_icon()
 	return
@@ -102,25 +102,25 @@
 	if(buckled_mob)
 		var/mob/living/M = buckled_mob
 		if(M != user)
-			M.visible_message(span_notice("[user] tries to pull [M] free of [src]!"),\
-				span_notice("[user] is trying to pull you off [src]!"),\
-				span_hear("You hear tossing and turning..."))
+			M.visible_message(span_notice("[user]试图将[M]从[src]上拉开！"),\
+				span_notice("[user]正试图将你从[src]上拉开！"),\
+				span_hear("你听到翻来覆去的声音..."))
 			if(!do_after(user, 30, target = src))
 				if(M?.buckled)
-					M.visible_message(span_notice("[user] fails to free [M]!"),\
-					span_notice("[user] fails to pull you off of [src]."))
+					M.visible_message(span_notice("[user]没能解放[M]！"),\
+					span_notice("[user]没能把你从[src]上拉开。"))
 				return
 
 		else
-			M.visible_message(span_warning("[M] looks like they might get up from [src]!"),\
-			span_notice("You try to get up from [src]!"),\
-			span_notice("You hear tossing and turning..."))
+			M.visible_message(span_warning("[M]看起来像是要从[src]上起来了！"),\
+			span_notice("你尝试从[src]上起来！"),\
+			span_notice("你听到翻来覆去的声音..."))
 			if(!do_after(M, 10, target = src))
-				to_chat(M, span_warning("There's no rush."))
+				to_chat(M, span_warning("不用着急。"))
 				return
 			if(prob(95))
 				if(M?.buckled)
-					to_chat(M, span_warning("Maybe just a few more minutes."))
+					to_chat(M, span_warning("也许再多躺几分钟吧."))
 					return
 		if(!M.buckled)
 			return
@@ -140,8 +140,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/rested
 
 /atom/movable/screen/alert/status_effect/rested
-	name = "Well Rested"
-	desc = "You are slowly recovering HP and SP. More effective when resting or sleeping."
+	name = "充分休息"
+	desc = "你正在慢慢恢复HP和SP，休息或睡觉时更有效."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "rest"
 
@@ -178,17 +178,17 @@
 #undef STATUS_EFFECT_RESTED
 
 /datum/reagent/abnormality/sleeping
-	name = "Puffy clouds"
-	description = "Looks like condensed clouds."
+	name = "白云"
+	description = "看起来像凝结的云."
 	color = "#759ad1"
-	special_properties = list("substance may cause drowsiness")
+	special_properties = list("本品可能引起嗜睡")
 	sanity_restore = 4 // Literally the only context in which this is safe to use is if you're perfectly safe or under attack from a solely white damage abnormality.
 
 /datum/reagent/abnormality/sleeping/on_mob_metabolize(mob/living/L)
 	if(!iscarbon(L))
 		return
 	var/mob/living/carbon/C = L
-	to_chat(C, span_warning("You feel tired..."))
+	to_chat(C, span_warning("你感到困倦..."))
 	C.blur_eyes(5)
 	addtimer(CALLBACK (C, TYPE_PROC_REF(/mob/living, AdjustSleeping), 20), 2 SECONDS)
 	return ..()

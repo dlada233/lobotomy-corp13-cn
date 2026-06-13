@@ -2,11 +2,13 @@
 
 //Remind me to give it contract features later.....
 /mob/living/simple_animal/hostile/abnormality/contract
-	name = "A Contract, Signed"
-	desc = "A man with a flaming head sitting behind a desk."
+	name = "一份合同，已签署"
+	desc = "一个脑袋火红的男人坐在桌子后面."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "firstfold"
 	portrait = "contract"
+	maxHealth = 1000
+	health = 1000
 	threat_level = WAW_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(0, 0, 35, 45, 55),
@@ -29,23 +31,24 @@
 	)
 	gift_type = /datum/ego_gifts/infinity
 
-	observation_prompt = "Before you, sitting on a desk is a man with a flaming head. <br>\
-		On the table sits a rather conspicuous piece of paper. <br>\
-		\"As per our agreement, the signatory will recieve one E.G.O. gift.\" <br>\
-		\"All you need to do is sign here.\" <br>\
-		The paper is a jumbled mess of words, you can't make out anything on it. <br>\
-		A pen appears in your hand. <br>\
-		The seems to be running out of patience. <br>Will you sign?"
+	observation_prompt = "你面前坐着一位头部燃烧的男子。<br>\
+		桌面上摆着份异常显眼的文件。<br>\
+		\"根据协议，签署方可获得一份E.G.O.礼物。\"<br>\
+		\"只需在此处签名。\"<br>\
+		文件上字迹混乱难以辨认。<br>\
+		一支钢笔凭空出现在你手中。<br>\
+		对方似乎正失去耐心。<br>你要签名吗？"
 	observation_choices = list(
-		"Do not sign" = list(TRUE, "You take a closer look at the contract <br>\
-			There is a tiny clause in fine print <br>\
-			\"Your soul becomes the property of a contract signed.\" <br>\
-			At your refusal, the man sighs and hands you a new contract. <br>\
-			This contract seems legitimate, so you sign."),
-		"Sign the contract" = list(FALSE, "You sign the contract in haste. <br>\
-			In a few moments, you feel as if a piece of you is missing. <br>\
-			You walk out in a daze, unable to remember what the contract was about. <br>\
-			Perhaps you should have read the fine print."),
+		"不签字" = list(TRUE, "你仔细查看合同<br>\
+			发现一行小字条款<br>\
+			\"签署后灵魂归合同所有方\"<br>\
+		拒绝后男子叹息着递上新合同。<br>\
+		这份合同看似合法，你最终签了名。"),
+		"签署合同" = list(FALSE, "你匆忙签下合同。<br>\
+			片刻后感到灵魂缺失了一块。<br>\
+			<br>\
+			你恍惚离开，全然忘记合同内容。<br>\
+			或许本该看清那些小字。"),
 	)
 
 	var/list/total_havers = list()
@@ -101,7 +104,7 @@
 	if(user in total_havers)
 		work_damage_upper *= 0.8
 		work_damage_lower *= 0.8
-		say("Yes, yes... I remember the contract.")
+		say("对的，对的，我记得这份合同.")
 
 	. = ..()
 	return
@@ -161,7 +164,7 @@
 				return
 
 	total_havers |= user
-	say("Just sign here on the dotted line... and I'll take care of the rest.")
+	say("就在虚线处签名...其余的就交给我处理.")
 	return
 
 
@@ -182,7 +185,7 @@
 	spawned.BreachEffect()
 	spawned.color = "#000000"	//Make it black to look cool
 	spawned.name = "???"
-	spawned.desc = "What is that thing?"
+	spawned.desc = "这是什么东西?"
 	spawned.faction = list("hostile")
 	spawned.core_enabled = FALSE
 	summon_count += 1

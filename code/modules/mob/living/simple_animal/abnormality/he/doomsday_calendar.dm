@@ -1,8 +1,8 @@
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar
-	name = "Doomsday Calendar"
-	desc = "Likely a tool for predicting a date of some kind, judging from the many letters carved on the bricks."
-	health = 400
-	maxHealth = 400
+	name = "终末日历"
+	desc = "从刻在砖上的许多字母来看，很可能是预测某种日期的工具."
+	health = 1212
+	maxHealth = 1212
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "doomsday_inert"
 	icon_living = "doomsday_inert"
@@ -43,16 +43,16 @@
 		/datum/ego_datum/armor/impending_day,
 	)
 	gift_type =  /datum/ego_gifts/impending_day
-	gift_message = "Let the blood flow, the fire ignite, and the star fall."
+	gift_message = "让血液流动，让火焰燃烧，让星星坠落."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "I'm standing before an altar on top of an impossibly long flight of stairs, the sky is crimson red and the heat from the air licks at my skin painfully. <br>The world is ending. <br>\
-		On the altar is a tied and bound man with a clay mask on his head, he squirms and is clearly crying but I cannot hear his words. <br>\
-		In my hand is a dagger. <br>I know what I have to do."
+	observation_prompt = "我立于无尽长阶顶端的祭坛前，天空猩红，灼热气流舔舐着疼痛的皮肤。<br>世界正在终结。<br>\
+		祭坛上绑着戴粘土面具的男子，他扭动啜泣，我却听不见言语。<br>\
+		手中握着匕首。<br>我明白自己必须做什么。"
 	observation_choices = list(
-		"Plunge the dagger into his chest" = list(TRUE, "I'm laying on an altar, a heavy clay mask is on my head, my arms and legs are tied with thick rope and the air is hot enough to scald my skin. <br>\
-			I see the priest through the pinholes of the mask and plead for him to spare me, before I feel cold metal plunge into my chest."),
-		"Cut his bindings" = list(FALSE, "I cut the man free and he thanks me profusely before he speeds down the stairs. <br>He won't make it. <br>I close my eyes and accept the end."),
+		"将匕首刺入其胸膛" = list(TRUE, "此刻我躺在祭坛上，沉重粘土面具压着头颅，粗绳捆缚四肢，滚烫空气灼烧皮肤。<br>\
+		透过面具孔洞看见祭司，我乞求宽恕，却感到冰冷金属刺入胸腔。"),
+		"割断绳索" = list(FALSE, "我割断绳索释放男子，他连声道谢后冲下长阶。<br>他逃不掉的。<br>我闭目接受终局。"),
 	)
 
 	var/player_count
@@ -118,12 +118,12 @@
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar/funpet(mob/living/carbon/human/user)
 	if(IsContained() && datum_reference.qliphoth_meter != datum_reference.qliphoth_meter_max)
 		if(do_after(user, gibtime, target = src))
-			to_chat(user, span_warning("[src] bites you! It seems to have been appeased."))
-			user.adjustBruteLoss(18 - (datum_reference.qliphoth_meter * 4))
+			to_chat(user, span_warning("[src]咬你！似乎已经平息了."))
+			user.adjustBruteLoss(9 - (datum_reference.qliphoth_meter * 2))
 			datum_reference.qliphoth_change(1)
 			return
 		else
-			to_chat(user, span_notice("Maybe it's better to leave this thing alone."))
+			to_chat(user, span_notice("也许还是别管这事吧."))
 
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar/proc/OnAbnoWork(datum/source, datum/abnormality/abno_datum, mob/user, work_type)//from punishing bird
 	SIGNAL_HANDLER
@@ -163,7 +163,7 @@
 		return..()
 	bonusRed = (2.5 - (datum_reference.qliphoth_meter))//It samples your blood if it's below the maximum counter, damage is RED instead of typeless
 	if(bonusRed)
-		to_chat(user, span_warning("A clay doll arrives with a bowl, demanding blood."))
+		to_chat(user, span_warning("一个黏土人偶端着碗来了，要求给他血."))
 		playsound(src, 'sound/abnormalities/doomsdaycalendar/Lor_Slash_Generic.ogg', 40, 0, 1)
 	return ..()
 
@@ -198,12 +198,12 @@
 	SpawnAdds()
 
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar/proc/AnnounceBreach()
-	send_to_playing_players(span_narsiesmall("The day of the Apocalypse has arrived."))
+	send_to_playing_players(span_narsiesmall("天启的日子到了."))
 	sound_to_playing_players('sound/creatures/narsie_rises.ogg')
 	for(var/mob/living/carbon/human/H in livinginrange(20, src))//same range as universe aflame when fully charged
 		if(H.z != z)
 			return
-		to_chat(H, span_boldwarning("You hear rumbling..."))
+		to_chat(H, span_boldwarning("你听到隆隆声..."))
 
 
 /obj/effect/temp_visual/doomsday
@@ -224,20 +224,20 @@
 			if(1)
 				next_phase_time_cooldown = 30 SECONDS
 				for(var/mob/living/carbon/human/H in livinginview(10, src))
-					to_chat(H, span_boldwarning("[src] appears upset as its bricks begin to rattle."))
+					to_chat(H, span_boldwarning("[src]似乎心烦意乱，因为它的砖块开始发出嘎嘎声."))
 				CheckFed()
 				SpawnAdds()
 				icon_state = "doomsday_angry"
 			if(2)
 				for(var/mob/living/carbon/human/H in livinginview(10, src))
-					to_chat(H, span_boldwarning("The heat emitting from [src] is unbearable."))
+					to_chat(H, span_boldwarning("[src]发出的热量令人难以忍受."))
 				CheckFed()
 				SpawnAdds()
 				icon_state = "doomsday_firey"
 				EnableFire()
 			if(3)
 				for(var/mob/living/carbon/human/H in livinginview(10, src))
-					to_chat(H, span_boldwarning("[src] takes on an ominous appearance and starts glowing."))
+					to_chat(H, span_boldwarning("[src]呈现出不祥的外观并开始发光."))
 				CheckFed()
 				SpawnAdds()
 				icon_state = "doomsday_charging"
@@ -251,7 +251,7 @@
 		if(current_phase_num >= 4)//UNIVERSE AFLAME!
 			for(var/turf/T in range(aflame_range, src))
 				for(var/mob/living/carbon/human/H in T)
-					to_chat(H, span_narsiesmall("The stars are twinkling. When they shine, they'll rob us all of our sight."))
+					to_chat(H, span_narsiesmall("星星在闪烁，当它们闪耀时，它们会夺走我们所有人的视线."))
 			playsound(src, 'sound/abnormalities/doomsdaycalendar/Impending_Charge.ogg', 50, TRUE)
 			SLEEP_CHECK_DEATH(15 SECONDS)
 			playsound(src, 'sound/abnormalities/doomsdaycalendar/Doomsday_Universe.ogg', 50, TRUE)
@@ -270,7 +270,7 @@
 					if(H.stat >= SOFT_CRIT || H.health < 0)
 						H.fire_stacks += 1
 						H.IgniteMob()//unforunately this fire isn' blue.
-			adjustBruteLoss(1000)
+			adjustBruteLoss(500)
 
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar/proc/AoeBurn()
 	pulse_cooldown = world.time + pulse_cooldown_time
@@ -310,14 +310,14 @@
 		return FALSE
 	if(do_after(user, 20, target = M))
 		if(!ishuman(M) && !istype(M, /mob/living/simple_animal/hostile/aminion/doomsday_doll))
-			to_chat(user, span_warning("[src] rejects your offering!"))
+			to_chat(user, span_warning("[src]拒绝你的提议!"))
 			return
 		if(istype(M ,/mob/living/simple_animal/hostile/aminion/doomsday_doll))
 			spawned_dolls -= M
-		to_chat(user, span_nicegreen("[src] is sated by your offering!"))
+		to_chat(user, span_nicegreen("[src]满足于你的供品!"))
 		M.gib()
 		is_fed = TRUE
-		adjustBruteLoss(50)
+		adjustBruteLoss(150)
 		pulse_damage -= 1
 		playsound(get_turf(src),'sound/effects/limbus_death.ogg', 50, 1)
 		AddModifier(/datum/dc_change/sacrificed)
@@ -325,8 +325,8 @@
 //***Simple Mobs***//
 //clay dolls
 /mob/living/simple_animal/hostile/aminion/doomsday_doll
-	name = "doomsday clay doll"
-	desc = "A vaguely humanoid figure bearing a heavy clay helmet."
+	name = "末日人偶"
+	desc = "模模糊糊的人形人物，戴着沉重的粘土头盔."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "doomsday_doll"
 	icon_living = "doomsday_doll"
@@ -336,8 +336,8 @@
 	attack_verb_simple = "claw"
 	attack_sound = 'sound/abnormalities/doomsdaycalendar/Doomsday_Slash.ogg'
 	/*Stats*/
-	health = 50
-	maxHealth = 50
+	health = 150
+	maxHealth = 150
 	obj_damage = 50
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1.5)
 	melee_damage_type = RED_DAMAGE

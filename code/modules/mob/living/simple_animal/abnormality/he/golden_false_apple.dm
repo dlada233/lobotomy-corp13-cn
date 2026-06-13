@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_GOLDENSHEEN /datum/status_effect/stacking/golden_sheen
 #define STATUS_EFFECT_MAGGOTS /datum/status_effect/stacking/maggots
 /mob/living/simple_animal/hostile/abnormality/golden_apple
-	name = "Golden Apple"
-	desc = "A huge, grotesque apple with limbs."
+	name = "金苹果"
+	desc = "长着四肢的巨大的奇形怪状的苹果."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "gold_inert"
 	icon_living = "gold_inert"
@@ -10,20 +10,20 @@
 	core_icon = "false_egg"
 	portrait = "golden_apple"
 	var/list/golden_apple_lines = list(
-		"I didn't want to die.",
-		"None of us wanted to die.",
+		"我不想死.",
+		"我们谁也不想死.",
 		"......",
-		"What else am I supposed to do? Is it wrong that I survived?",
+		"我还能怎么做? 想要活下来有错吗?",
 		"Nhh... Aah.",
 	)
 	pixel_x = -8
 	base_pixel_x = -8
 	pixel_y = 0
 	del_on_death = FALSE
-	death_message = "falls over."
+	death_message = "倒下了."
 	death_sound = 'sound/abnormalities/goldenapple/Gold_Attack2.ogg'
-	maxHealth = 300
-	health = 300
+	maxHealth = 360
+	health = 360
 	light_color = "D4FAF37"
 	light_range = 5
 	light_power = 7
@@ -58,7 +58,7 @@
 		/datum/ego_datum/armor/legerdemain,
 	)
 	gift_type = /datum/ego_gifts/legerdemain
-	gift_message = "You feel a sense of kinship with the apple. Because you're both pests."
+	gift_message = "你对苹果有一种亲切感，因为你们都是害虫."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
 	grouped_abnos = list(
@@ -72,16 +72,18 @@
 
 	guaranteed_butcher_results = list(/obj/item/food/grown/apple/gold/abnormality = 1)
 	chem_type = /datum/reagent/abnormality/ambrosia
-	harvest_phrase = span_notice("You score %ABNO and it bleeds a golden syrup into %VESSEL.")
-	harvest_phrase_third = "%PERSON scores %ABNO, dripping a golden syrup into %VESSEL."
+	harvest_phrase = span_notice("你划伤%ABNO，金色糖浆流入%VESSEL。")
+	harvest_phrase_third = "%PERSON划伤%ABNO，金色糖浆滴入%VESSEL。"
 
-	observation_prompt = "A giant, glistening golden apple stands before you. <br>\
-		Radiant, shining, and pure. <br>There is a tempting crack in it, what could possibly be inside?"
+	observation_prompt = "巨大的鎏金苹果就在眼前。<br>\
+		光芒四射，璀璨纯净。<br>表面有道诱人裂痕，里面藏着什么？"
 	observation_choices = list(
-		"Destroy it" = list(TRUE, "You put the golden apple to the torch. <br>You hear a sickening pops and sizzling as the swarm of maggots inside begins to burn and scatter. <br>\
-			The mass of maggots falls apart in a hail of silent screams."),
-		"Slice it open" = list(FALSE, "You slice open the apple, and a tidal wave of disgusting maggots bursts out. <br>\
-			You are swept in the tide. <br>Your flesh is riddled with wounds as they slowly devour you."),
+		"摧毁苹果" = list(TRUE, "你将金苹果投入火中。<br>\
+			内部蛆群燃烧四散，发出令人作呕的爆裂嘶响。<br>\
+			蛆群被彻底烧毁。"),
+		"切开苹果" = list(FALSE, "你切开苹果，恶心的蛆虫浪潮般喷涌而出。<br>\
+			你被卷入虫潮。<br>\
+			蛆群缓慢啃噬，你的躯体遍布创口。"),
 	)
 
 	var/is_maggot = FALSE
@@ -97,7 +99,7 @@
 	var/pulse_maximum = 5
 
 /datum/action/cooldown/gapple_pulse
-	name = "Golden sheen"
+	name = "金色的光泽"
 	icon_icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	button_icon_state = "golden_sheen_noBG"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -105,14 +107,14 @@
 	cooldown_time = 15 SECONDS
 
 /datum/action/innate/abnormality_attack/maggot_spread
-	name = "Slam"
+	name = "猛推"
 	icon_icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	button_icon_state = "maggots_noBG"
 	chosen_message = span_colossus("You will now spread maggots within a wide vicinity.")
 	chosen_attack_num = 1
 
 /datum/action/innate/abnormality_attack/maggot_spread2
-	name = "Lunge"
+	name = "猛冲"
 	icon_icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	button_icon_state = "maggots_noBG"
 	chosen_message = span_colossus("You will now spread maggots within a narrow vicinity.")
@@ -164,7 +166,7 @@
 		return ..()
 	name = victim_name
 	..()
-	name = "False Apple"
+	name = "假苹果"
 
 /mob/living/simple_animal/hostile/abnormality/golden_apple/proc/HealPulse(manual = FALSE)
 	if(manual == FALSE)//Only triggers the cooldown if it's called from life() ticks
@@ -191,16 +193,16 @@
 				DigestPerson()//becomes its "berserk" form; without an argument it defaults to "Yuri"
 				qdel(I)
 				return
-			to_chat(user, span_notice("You feel relieved, as if something weird and terrible was about to happen."))
+			to_chat(user, span_notice("你感到如释重负，仿佛有什么奇怪而可怕的事情即将发生."))
 
 /mob/living/simple_animal/hostile/abnormality/golden_apple/proc/Apply_Sheen(mob/living/carbon/human/user)
 	var/datum/status_effect/stacking/golden_sheen/G = user.has_status_effect(/datum/status_effect/stacking/golden_sheen)
 	playsound(src, 'sound/abnormalities/goldenapple/Gold_Sparkle.ogg', 100, 1)
 	if(!G)//applying the buff for the first time (it lasts for one minute)
 		user.apply_status_effect(STATUS_EFFECT_GOLDENSHEEN)
-		to_chat(user, span_nicegreen("Your body is engulfed with a warm glow, numbing your injuries."))
+		to_chat(user, span_nicegreen("你的身体被温暖的光芒吞没，麻木了你的伤口."))
 	else//if the employee already has the buff
-		to_chat(user, span_nicegreen("The glow surrounding your body brightens."))
+		to_chat(user, span_nicegreen("你身体周围的光芒更亮了."))
 		G.add_stacks(1)
 		G.refresh()
 	return
@@ -275,16 +277,16 @@
 	icon_state = "false_apple"
 	icon_living = "false_apple"
 	icon_dead = "false_dead"
-	death_message = "is reduced to a primordial egg."
-	name = "False Apple"
-	desc = "The apple ruptured and a swarm of maggots crawled inside, metamorphosing into a hideous face."
+	death_message = "变成了一个原始的卵."
+	name = "假苹果"
+	desc = "苹果破裂了，一群蛆爬了进去，变成了一张丑陋的脸."
 	pixel_x = -32
 	pixel_y = 0
 	light_range = 0
 	light_power = 0
 	attack_sound = "sound/abnormalities/goldenapple/False_Attack3.ogg"
-	melee_damage_lower = 30
-	melee_damage_upper = 45
+	melee_damage_lower = 5
+	melee_damage_upper = 10
 	melee_reach = 2
 	attack_verb_continuous = "pummels"
 	attack_verb_simple = "pummel"
@@ -335,7 +337,7 @@
 	playsound(get_turf(src), 'sound/abnormalities/goldenapple/False_Attack2.ogg', 100, 0, 5)
 	for(var/turf/T in view(1, src))
 		new /obj/effect/temp_visual/smash_effect(T)
-		for(var/mob/living/carbon/L in HurtInTurf(T, list(), 200, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE))
+		for(var/mob/living/carbon/L in HurtInTurf(T, list(), 100, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE))
 			if(L.stat >= SOFT_CRIT)
 				if(!last_target)//only the last person killed counts
 					L.forceMove(src)
@@ -350,7 +352,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/golden_apple/proc/DigestPerson(mob/living/carbon/human/H)//berserk mode
 	victim_name = "Yuri"
-	maxHealth = 1500
+	maxHealth = 520
 	BecomeRotten()
 	ChangeMoveToDelayBy(-0.5)
 	ChangeResistances(list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 0.3))
@@ -365,7 +367,7 @@
 			myhead.dismember()
 			NestedItems(src, myhead)
 		QDEL_IN(H, 1)
-	desc = "The apple ruptured and a swarm of maggots crawled inside.. wait a minute, that's [victim_name]'s face."
+	desc = "苹果破裂了，一群蛆爬了进去，等一下，那是[victim_name]的脸."
 	med_hud_set_health()//took a page from smock to update medhuds
 	med_hud_set_status()
 	update_health_hud()
@@ -449,8 +451,8 @@
 	var/obj/item/glow_object/glowstuff
 
 /atom/movable/screen/alert/status_effect/golden_sheen
-	name = "Golden Sheen"
-	desc = "Your body radiates the very same glow as the Golden Apple."
+	name = "金色的光泽"
+	desc = "你的身体发出的光和金苹果一样."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "golden_sheen"
 
@@ -495,8 +497,8 @@
 	consumed_on_threshold = FALSE
 
 /atom/movable/screen/alert/status_effect/maggots
-	name = "Maggots"
-	desc = "Eugh! Get them off!"
+	name = "蛆虫"
+	desc = "呃! 快把它们弄走!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "maggots"
 
@@ -506,7 +508,7 @@
 
 /datum/status_effect/stacking/maggots/tick()//change this to golden apple's life tick for less lag
 	var/mob/living/carbon/human/status_holder = owner
-	status_holder.deal_damage(stacks, BLACK_DAMAGE)
+	status_holder.deal_damage(stacks/2, BLACK_DAMAGE)
 	if(status_holder.stat < HARD_CRIT)
 		return
 	var/obj/structure/spider/cocoon/casing = new(status_holder.loc)
@@ -524,11 +526,11 @@
 
 /obj/item/food/grown/apple/gold/abnormality
 	food_reagents = list(/datum/reagent/abnormality/ambrosia = 10)
-	desc = "There's something moving underneath the skin, but it still looks delicious."
+	desc = "皮下面有东西在动，但看起来还是很好吃."
 
 /datum/reagent/abnormality/ambrosia
-	name = "Ambrosia"
-	description = "A powerful serum extracted from an abnormality."
+	name = "神赐佳肴"
+	description = "从异常中提取的强力血清."
 	color = "#03FCD3"
 	taste_description = "apple juice"
 	glass_name = "glass of ambrosia"
@@ -540,12 +542,12 @@
 	if(L.has_status_effect(/datum/status_effect/stacking/golden_sheen))//this fixes a runtime
 		return
 	L.apply_status_effect(STATUS_EFFECT_GOLDENSHEEN)
-	to_chat(L, span_nicegreen("Your body glows warmly."))
+	to_chat(L, span_nicegreen("你的身体温暖地发光."))
 
 /datum/reagent/abnormality/ambrosia/on_mob_life(mob/living/L)
 	var/datum/status_effect/stacking/golden_sheen/G = L.has_status_effect(/datum/status_effect/stacking/golden_sheen)
 	if(prob(10))
-		to_chat(L, span_nicegreen("Your glow shimmers!"))
+		to_chat(L, span_nicegreen("你光芒闪烁!"))
 		G.add_stacks(1)
 		G.refresh()
 	return ..()

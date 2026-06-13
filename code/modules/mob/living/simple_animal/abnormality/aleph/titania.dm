@@ -2,8 +2,8 @@
 //Reworked by Crabby!!!!
 #define STATUS_EFFECT_FAIRY_LIGHTS /datum/status_effect/fairy_lights
 /mob/living/simple_animal/hostile/abnormality/titania
-	name = "Titania"
-	desc = "A gargantuan fairy."
+	name = "提泰妮娅"
+	desc = "巨大的精灵."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "titania"
 	icon_living = "titania"
@@ -40,11 +40,11 @@
 	gift_type = /datum/ego_gifts/soulmate
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "Is that you Oberon? <br>My nemesis, my beloved devil. <br>Is it you, who applied the concotion of baneful herb to my eyes?"
+	observation_prompt = "是你吗，奥伯龙？<br>我的宿敌，我深爱的魔鬼. <br>是你把毒草混合剂涂在我眼睛上的吗？"
 	observation_choices = list(
-		"I am the Oberon you seek" = list(TRUE, "The abhorrent name of the one who stole my child. <br>By your death, I shall finally have my revenge."),
-		"I am not him" = list(FALSE, "Ah... <br>A mere human, human, human. <br>Cease your fear, I shall rid you of your pains. <br>Be reborn as a flower."),
-		"Stay silent" = list(FALSE, "Ah... <br>A mere human, human, human. <br>Cease your fear, I shall rid you of your pains. <br>Be reborn as a flower."),
+		"我就是你要找的奥伯龙" = list(TRUE, "那个偷走我孩子的可憎之名. <br>通过你的死亡，我将最终复仇. "),
+		"我不是他" = list(FALSE, "啊...<br>区区人类，人类，人类. <br>停止恐惧，我将解除你的痛苦. <br>作为花朵重生吧. "),
+		"保持沉默" = list(FALSE, "啊...<br>区区人类，人类，人类. <br>停止恐惧，我将解除你的痛苦. <br>作为花朵重生吧. "),
 	)
 	patrol_cooldown_time = 5 SECONDS
 	var/fairy_spawn_number = 3
@@ -92,14 +92,14 @@
 	. = ..()
 	//Kills the weak immediately.
 	if(ishuman(H) && (H.health < 0 || H.sanity_lost))
-		say("I rid you of your pain, mere human.")
+		say("我会让你摆脱痛苦，凡人.")
 		//Double Check
 		SpawnFairies(fairy_spawn_number * 2, H, ignore_cap = TRUE)
 		Convert(H)
 		return
 
 /mob/living/simple_animal/hostile/abnormality/titania/proc/Convert(mob/living/carbon/human/H)
-	H.visible_message(span_userdanger("[H] is morphing into a flower!"))
+	H.visible_message(span_userdanger("[H]正变形成一朵花!"))
 	var/mob/living/simple_animal/hostile/titania_flower/F = new(get_turf(H))
 	F.alpha = 0
 	animate(F, alpha = 255,time = 15)
@@ -187,15 +187,15 @@
 
 	switch(nextlaw)
 		if("melee")
-			lawmessage = "Thou shalt not hit thy queen with melee attacks."
+			lawmessage = "汝不得以近战攻击伤害女王."
 		if("ranged")
-			lawmessage = "Thou shalt not hit thy queen with ranged attacks."
+			lawmessage = "汝不得以远程攻击伤害女王."
 		if("fairy")
-			lawmessage = "Mine fairies are now heartier."
+			lawmessage = "余之精灵今更坚韧."
 		if("armor")
-			lawmessage = "Thy queen shalt not be hurt by red damage."
+			lawmessage = "汝等女王不受红色伤害所伤."
 		if("ranged fairy")
-			lawmessage = "Mine fairies will come to my aid if you strike me with ranged attacks."
+			lawmessage = "若以远程攻击袭余，余之精灵必前来相助."
 
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		to_chat(H, span_colossus("[lawmessage]"))
@@ -205,7 +205,7 @@
 /mob/living/simple_animal/hostile/abnormality/titania/proc/ActivateLaw()
 	addtimer(CALLBACK(src, PROC_REF(SetLaw)), law_timer)	//Set Laws in 30 Seconds
 	currentlaw = nextlaw
-	to_chat(GLOB.clients, span_danger("The new law is now in effect."))
+	to_chat(GLOB.clients, span_danger("新法律现已生效."))
 
 	if(currentlaw == "fairies")
 		for(var/mob/living/simple_animal/L in spawned_mobs)
@@ -216,7 +216,7 @@
 
 
 /mob/living/simple_animal/hostile/abnormality/titania/proc/Punishment(mob/living/sinner)
-	to_chat(sinner, span_userdanger("You are hurt due to breaking Fairy Law."))
+	to_chat(sinner, span_userdanger("你因违反精灵法则而受伤."))
 	sinner.deal_damage(law_damage, PALE_DAMAGE)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(sinner), pick(GLOB.alldirs))
 
@@ -292,7 +292,7 @@
 
 //The flower
 /mob/living/simple_animal/hostile/titania_flower
-	name = "fairy flower"
+	name = "精灵花"
 	desc = "A pretty purple flower."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "titania_flower"
@@ -318,8 +318,8 @@
 
 //The Mini fairies
 /mob/living/simple_animal/hostile/aminion/fairyswarm
-	name = "fairy"
-	desc = "A tiny, extremely hungry fairy."
+	name = "精灵"
+	desc = "渺小，但非常饥饿的精灵."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fairyswarm"
 	icon_living = "fairyswarm"
@@ -379,11 +379,11 @@
 				if(F.fairies.len < F.limit)
 					F.duration = world.time + 30 SECONDS
 					F.AddToPlayer(src)
-					to_chat(victim, span_userdanger("Another fairy is orbiting you!"))
+					to_chat(victim, span_userdanger("另一只精灵正环绕你!"))
 			else
 				var/datum/status_effect/fairy_lights/F = victim.apply_status_effect(STATUS_EFFECT_FAIRY_LIGHTS)
 				F.AddToPlayer(src)
-				to_chat(victim, span_userdanger("A fairy is orbiting you!"))
+				to_chat(victim, span_userdanger("一只精灵正环绕你!"))
 		else
 			hitOnce = target
 	. = ..()
@@ -398,8 +398,8 @@
 	var/current_overlay = ""
 
 /atom/movable/screen/alert/status_effect/fairy_lights
-	name = "Fairy Lights"
-	desc = "Fairies orbiting around you is causing you to take WHITE damage!"
+	name = "精灵光辉"
+	desc = "围绕你飞舞的精灵正在对你造成白色伤害！"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "fairy_lights"
 
@@ -435,9 +435,9 @@
 	if(fairies.len < 1)//to prevent overlays from sticking
 		return
 	if(fairies.len > 1)
-		linked_alert.desc = "[fairies.len] fairies are orbiting around your head, causing you to take WHITE damage!."
+		linked_alert.desc = "[fairies.len]个小精灵环绕在你的头顶，使你受到白色伤害!."
 	else
-		linked_alert.desc = "A fairy is orbiting around your head, causing you to take WHITE damage!."
+		linked_alert.desc = "一个小精灵环绕在你的头顶，使你受到白色伤害!."
 	if(ishuman(owner))
 		var/old_overlay = current_overlay
 		current_overlay = "fairy_lights_[fairies.len]"
@@ -455,9 +455,9 @@
 	if(!damage || damage < 15)
 		return
 	if(fairies.len > 1)
-		to_chat(owner, span_nicegreen("The hit killed all of the fairies orbiting you."))
+		to_chat(owner, span_nicegreen("这道致命的攻击消灭了所有环绕你的精灵."))
 	else
-		to_chat(owner, span_nicegreen("The hit killed the fairy orbiting you."))
+		to_chat(owner, span_nicegreen("这道攻击消灭了环绕你的精灵."))
 	for(var/mob/living/simple_animal/hostile/aminion/fairyswarm/F in fairies)
 		qdel(F)
 	qdel(src)
@@ -467,14 +467,14 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	if(fairies.len > 1)
-		owner.visible_message(span_danger("The fairies orbiting [owner] are spilling nectar on their head!"), span_danger("The fairies are spilling nectar on you!"))
+		owner.visible_message(span_danger("围绕[owner]飞舞的精灵正在将花蜜洒在他们的头上!"), span_danger("飞舞的精灵正在将花蜜洒在你身上!"))
 	else
-		owner.visible_message(span_danger("The fairy orbiting [owner] is spilling nectar on their head!"), span_danger("The fairy is spilling nectar on you!"))
+		owner.visible_message(span_danger("环绕[owner]的精灵正在将花蜜洒在他们的头上!"), span_danger("环绕你的精灵正在将花蜜洒在你身上!"))
 	playsound(owner, 'sound/effects/magic.ogg', 25, TRUE)
 	H.deal_damage(3 * fairies.len, WHITE_DAMAGE)
 	if(H.sanity_lost && H.stat != DEAD)
 		H.death()
-		H.visible_message(span_userdanger("[H] collapses onto the floor as flowers start to bloom from their body!"))
+		H.visible_message(span_userdanger("[H]倒在地上，花朵从他的身体中开始绽放!"))
 		var/obj/flower_overlay = new
 		flower_overlay.icon = 'ModularTegustation/Teguicons/32x32.dmi'
 		flower_overlay.icon_state = "fairy_kill"

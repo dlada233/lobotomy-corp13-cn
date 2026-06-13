@@ -7,7 +7,7 @@
 	worn_icon = 'icons/mob/clothing/ego_gear/abnormality/he.dmi'
 
 /obj/item/clothing/suit/armor/ego_gear/he/grinder
-	name = "grinder MK4"
+	name = "研磨机 MK4"
 	desc = "A sleek coat covered with bloodstains of an unknown origin."
 	icon_state = "grinder"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = -10, BLACK_DAMAGE = 20, PALE_DAMAGE = 20) // 70
@@ -16,7 +16,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/harvest
-	name = "harvest"
+	name = "丰收"
 	desc = "The last legacy of the man who sought wisdom. The rake tilled the human brain instead of farmland."
 	icon_state = "harvest"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 20, BLACK_DAMAGE = -20, PALE_DAMAGE = 20) // 70
@@ -25,7 +25,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/paw
-	name = "bear paw"
+	name = "熊熊抱"
 	desc = "The equipment is made of a material that may have been fluffy once, but now it just looks shabby."
 	icon_state = "bear_paw"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 0, PALE_DAMAGE = 20) // 70
@@ -34,7 +34,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/wings
-	name = "torn off wings"
+	name = "折翼"
 	desc = "If she hadn’t thrown her slipper at the right time, if she hadn’t outfitted me with the pensioned colonel’s sword, \
 	I’d be lying in my grave."
 	icon_state = "wings"
@@ -45,7 +45,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/remorse
-	name = "remorse"
+	name = "自责"
 	desc = "While the armor serves to protect the users mind from the influence of others, they can never seem to quiet their own thoughts."
 	icon_state = "remorse"
 	//Resistant to White and Pale but weaker to the physical aspects.
@@ -55,7 +55,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/magicbullet
-	name = "magic bullet"
+	name = "魔弹"
 	desc = "The Devil ultimately wished for despair. For despair wears down the mind and drains one's will to go forward. When one feels there's nothing left to go for, their soul falls down to Hell, the Devil's domain."
 	icon_state = "magic_bullet"
 	// Magic Bullet has WAW-tier requirements and goes with a WAW-tier gun, but is not quite WAW-tier itself. Still, valuable if you're a well-rounded agent doing well-rounded work. - NB
@@ -66,7 +66,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/christmas
-	name = "christmas"
+	name = "悲惨圣诞"
 	desc = "When the rusty sleigh bells are ajingle, Christmas begins."
 	icon_state = "christmas"
 	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 40, BLACK_DAMAGE = 20, PALE_DAMAGE = 20, FIRE = -20) // 70
@@ -75,7 +75,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/logging
-	name = "logging"
+	name = "伐木者"
 	desc = "Despite it's sturdy construction, the wearer always feel hollow inside."
 	icon_state = "logging"
 	flags_inv = HIDESHOES
@@ -85,7 +85,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/prank
-	name = "funny prank"
+	name = "蕾蒂希娅"
 	desc = "The little kid who couldn't leave her friends behind came up with a brilliant idea."
 	icon_state = "prank"
 	flags_inv = HIDESHOES
@@ -95,7 +95,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/harmony
-	name = "harmony"
+	name = "和谐"
 	desc = "Oh, the sound is so beautiful."
 	icon_state = "harmony"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 30, BLACK_DAMAGE = 0, PALE_DAMAGE = 10)
@@ -104,7 +104,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/syrinx
-	name = "syrinx"
+	name = "泣婴"
 	desc = "The mouth is for intimidation, and should not move"
 	icon_state = "syrinx"
 	flags_inv = HIDESHOES
@@ -114,7 +114,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/frostsplinter
-	name = "frost splinter"
+	name = "森林分裂者"
 	desc = "Surprisingly cold to the touch."
 	icon_state = "frost_splinter"
 	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 30, BLACK_DAMAGE = 0, PALE_DAMAGE = 50, FIRE = -20)
@@ -123,7 +123,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/sanguine
-	name = "sanguine desire"
+	name = "血欲"
 	desc = "Smells funny, and is surprisingly heavy."
 	icon_state = "sanguine"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = -10, BLACK_DAMAGE = 30, PALE_DAMAGE = 0)
@@ -132,7 +132,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/solemnlament
-	name = "solemn lament"
+	name = "圣哀"
 	desc = "The undertaker's outfit belongs to those who pay tribute to the dead.\
 	Only a solemn mind is required to express condolences; there is no need for showy accessories."
 	icon_state ="solemnlament"
@@ -143,7 +143,7 @@
 	)
 
 /obj/item/clothing/suit/armor/ego_gear/he/courage
-	name = "courage"
+	name = "勇气"
 	desc = "Their weapons did not hurt me, but when I looked back and you were not there; It felt as if I was on the verge of death."
 	icon_state = "courage"
 	//because SC is essentially physically immortal but a coward, he has good physical resistances and god awful "sanity" resistances
@@ -153,7 +153,7 @@
 								)
 
 /obj/item/clothing/suit/armor/ego_gear/he/brick
-	name = "yellow brick"
+	name = "金色砖块"
 	desc = "The heavy dress weighs you down, smacking against your knees."
 	icon_state = "brick"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 50, BLACK_DAMAGE = -20, PALE_DAMAGE = 10)
@@ -163,7 +163,7 @@
 
 
 /obj/item/clothing/suit/armor/ego_gear/he/pleasure
-	name = "pleasure"
+	name = "因乐癫狂"
 	desc = "Dying happy was my only wish, and you granted it. What more could I ask for?"
 	icon_state = "pleasure"
 	armor = list(RED_DAMAGE = -30, WHITE_DAMAGE = 40, BLACK_DAMAGE = 40, PALE_DAMAGE = 20) //70
@@ -171,7 +171,7 @@
 							PRUDENCE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/galaxy
-	name = "galaxy"
+	name = "银河"
 	desc = "The pebble dropped into your hand sparkles, sways, tickles, and eventually becomes the universe. "
 	icon_state = "galaxy"
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 20, BLACK_DAMAGE = 40, PALE_DAMAGE = 10)
@@ -179,7 +179,7 @@
 							PRUDENCE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/unrequited
-	name = "unrequited love"
+	name = "暗恋"
 	desc = "You said that you loved them. It made no sense, why not me? I'm the one who was here for you all this time.\
 	I earned this, loving me back is the least you could've done."
 	icon_state = "unrequited"
@@ -188,35 +188,35 @@
 							PRUDENCE_ATTRIBUTE = 40)	//Fuck
 
 /obj/item/clothing/suit/armor/ego_gear/he/alley
-	name = "alleyway"
+	name = "小巷"
 	desc = "Sometimes in the dead of night, you catch a glimpse of someone watching."
 	icon_state = "alleyway"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = -10, BLACK_DAMAGE = 40, PALE_DAMAGE = 20)
 	attribute_requirements = list(PRUDENCE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/gaze
-	name = "gaze"
+	name = "凝视"
 	desc = "As long as this is equipped, ambush won't be a concern."
 	icon_state = "gaze"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 30, BLACK_DAMAGE = 20, PALE_DAMAGE = 0)
 	attribute_requirements = list(FORTITUDE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/transmission
-	name = "broken transmission"
+	name = "噪点传输"
 	desc = "A snazzy military officer uniform, tattered with age"
 	icon_state = "transmission"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 20, PALE_DAMAGE = 0)
 	attribute_requirements = list(PRUDENCE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/metal
-	name = "bare metal"
+	name = "裸机"
 	desc = "the coat itself is made from metal sheets"
 	icon_state = "metal"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 10, BLACK_DAMAGE = 10, PALE_DAMAGE = 0)
 	attribute_requirements = list(FORTITUDE_ATTRIBUTE = 40)
 
 /obj/item/clothing/suit/armor/ego_gear/he/homing_instinct
-	name = "homing instinct"
+	name = "归巢本能"
 	desc = "A suit that reminds you of home."
 	icon_state = "homing_instinct"
 	armor = list(RED_DAMAGE = -20, WHITE_DAMAGE = 30, BLACK_DAMAGE = 50, PALE_DAMAGE = 10)
@@ -225,7 +225,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/maneater
-	name = "man eater"
+	name = "吃干抹净"
 	desc = "Here comes our beloved mascot!"
 	icon_state = "maneater"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 30, PALE_DAMAGE = -10) // 70
@@ -234,7 +234,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/inheritance
-	name = "inheritance"
+	name = "继承"
 	desc = "Have I told you the story of a humble farmer's son who I made a king?"
 	icon_state = "inheritance"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 30, BLACK_DAMAGE = 10, PALE_DAMAGE = -10) // 70
@@ -243,7 +243,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/song
-	name = "song of the past"
+	name = "老歌"
 	desc = "You feel a sense of déjà vu when looking at this suit jacket."
 	icon_state = "song"
 	armor = list(RED_DAMAGE = -30, WHITE_DAMAGE = 40, BLACK_DAMAGE = 30, PALE_DAMAGE = 30) // 70
@@ -252,7 +252,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/legerdemain
-	name = "legerdemain"
+	name = "障眼把戏"
 	desc = "The fruit's cracked shell would rattle as if it could jump at any moment."
 	icon_state = "legerdemain"
 	flags_inv = NONE
@@ -263,7 +263,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/get_strong
-	name = "Get Strong"
+	name = "变的强壮"
 	desc = "It crunches your insides as you move... Do you love the City you live in?"
 	icon_state = "become_strong"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = -20, BLACK_DAMAGE = 10, PALE_DAMAGE = 30) // 70
@@ -276,7 +276,7 @@
 	name = pick("BECOME STRONG", "GROWN POWERFUL", "YOU WANT TO GET BEAT")+pick("? GENUINELY?", "! FOR REALSIES?", "? HURTILY?")
 
 /obj/item/clothing/suit/armor/ego_gear/he/impending_day
-	name = "impending day"
+	name = "迫近之日"
 	desc = "Even still, I witnessed man and sky and earth tear into thousands of pieces."
 	icon_state = "impending_day"
 	flags_inv = NONE
@@ -286,7 +286,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/fluid_sac
-	name = "fluid sac"
+	name = "液囊"
 	desc = "Its contents are an enigma; it bears resemblance to a flower, or the central nervous system of a human."
 	icon_state = "fluid_sac"
 	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 30, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
@@ -295,7 +295,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/window
-	name = "window to the world"
+	name = "世界之窗"
 	desc = "What you see is but a fragment of what there is."
 	icon_state = "window"
 	armor = list(RED_DAMAGE = -10, WHITE_DAMAGE = 30, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
@@ -304,7 +304,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/jackrabbit
-	name = "jackrabbit"
+	name = "长耳大野兔"
 	desc = "A lone rabbit hops down a snowy path in a forest it's black antlers matching the dead trees around it."
 	icon_state = "jackrabbit"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 0, BLACK_DAMAGE = 50, PALE_DAMAGE = 0) // 70
@@ -313,7 +313,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/regs
-	name = "move-in reg"
+	name = "入住登记"
 	desc = "This coat is covered in glowing sensors. It appears to be incomplete, with exposed sinews underneath the plating."
 	icon_state = "regs"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = 20, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 70
@@ -322,7 +322,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/warp
-	name = "dimension shredder"
+	name = "维度粉碎机"
 	desc = "I thought WARP trains were supposed to arrive in just ten seconds?"
 	icon_state = "warp"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 0, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 70
@@ -331,7 +331,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/grasp
-	name = "grasp"
+	name = "掌握"
 	desc = "I'm sorry to ask this but... Can you take me to that room again, please?"
 	icon_state = "grasp"
 	flags_inv = NONE
@@ -341,7 +341,7 @@
 								)
 
 /obj/item/clothing/suit/armor/ego_gear/he/marionette
-	name = "marionette"
+	name = "长鼻子木偶"
 	desc = "There was no choice, I had to lie to become a human..."
 	icon_state = "marionette"
 	armor = list (RED_DAMAGE = -20, WHITE_DAMAGE = 50, BLACK_DAMAGE = 30, PALE_DAMAGE = 10) //70
@@ -350,7 +350,7 @@
 								)
 
 /obj/item/clothing/suit/armor/ego_gear/he/roseate
-	name = "roseate desire"
+	name = "玫瑰与欲望"
 	desc = "I'll carry you wherever you wish to go."
 	icon_state = "roseate_desire"
 	flags_inv = NONE
@@ -370,7 +370,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/split
-	name = "split"
+	name = "分歧"
 	desc = "It took the form of an adorable mascot that looked like a cute fox. In fact, it's actually a cat, not a fox... Anyways, that thing is a monster."
 	icon_state = "split"
 	flags_inv = NONE//it's just a coat
@@ -380,7 +380,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/lifestew
-	name = "lifetime stew"
+	name = "一辈子炖汤"
 	desc = "A soup fit for a king - and all from a few stones. It seemed like magic!"
 	icon_state = "lifestew"
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = -20, BLACK_DAMAGE = 60, PALE_DAMAGE = -20, FIRE = 40) // 40
@@ -389,7 +389,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/coiling
-	name = "coiling"
+	name = "卷绕"
 	desc = "It's beautiful snake leather."
 	icon_state = "coiling"
 	armor = list(RED_DAMAGE = 10, WHITE_DAMAGE = -10, BLACK_DAMAGE = 50, PALE_DAMAGE = 20) // 70
@@ -407,7 +407,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/scissors
-	name = "scissors"
+	name = "巫毒娃娃"
 	desc = "You look like a little doll."
 	icon_state = "voodoo"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 30, BLACK_DAMAGE = -10, PALE_DAMAGE = 20) // 70
@@ -420,7 +420,7 @@
 	..()
 
 /obj/item/clothing/suit/armor/ego_gear/he/uturn
-	name = "u-turn"
+	name = "U形弯"
 	desc = "It's simple black, just like all the roads out there."
 	icon_state = "uturn"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 10, BLACK_DAMAGE = 0, PALE_DAMAGE = 20) // 70
@@ -429,7 +429,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/crushbound
-	name = "crushbound past"
+	name = "破碎时光"
 	desc = "A purposeless machine is bound to lose the meaning of its existence, even if it is functional."
 	icon_state = "crushbound"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 20, BLACK_DAMAGE = -20, PALE_DAMAGE = 30) // 70
@@ -438,7 +438,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/sunshower
-	name = "sunshower"
+	name = "狐雨"
 	desc = "Luck follows the truly kind, may it protect those who are worthy."
 	icon_state = "sunshower"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 20, BLACK_DAMAGE = 40, PALE_DAMAGE = -20) // 70
@@ -447,7 +447,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/telepole
-	name = "telepole"
+	name = "电线杆"
 	desc = "Alright, I'll sear you down to your guts!"
 	icon_state = "telepole"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = -10, BLACK_DAMAGE = 40, PALE_DAMAGE = 10) // 70
@@ -456,7 +456,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/hexnail
-	name = "hex nail"
+	name = "诅咒之钉"
 	desc = "A fluffy armored coat, which would probably be pretty comfortable if not for the nails poking into it..."
 	icon_state = "hex_nail"
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 20, BLACK_DAMAGE = 30, PALE_DAMAGE = 20) // 70
@@ -465,7 +465,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/he/fellbullet
-	name = "fell bullet"
+	name = "凶弹"
 	desc = "During a gory war, the devil approached a man with a deal. A shotgun that would blast anyone into fireworks, as if fired at point blank. However, the last shell would land on his beloved."
 	icon_state = "fell_bullet"
 	//no special ability here.

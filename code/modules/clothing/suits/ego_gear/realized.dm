@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor/ego_gear/realization // 260 without ability. You have to be an EX level agent to get these.
-	name = "unknown realized ego"
+	name = "未实现的自我"
 	desc = "Notify coders immediately!"
 	icon = 'icons/obj/clothing/ego_gear/realization.dmi'
 	worn_icon = 'icons/mob/clothing/ego_gear/realized.dmi'
@@ -27,14 +27,14 @@ No Ability	260
 /* ZAYIN Realizations */
 
 /obj/item/clothing/suit/armor/ego_gear/realization/confessional
-	name = "confessional"
+	name = "忏悔"
 	desc = "Come my child. Tell me your sins."
 	icon_state = "confessional"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 80, BLACK_DAMAGE = 50, PALE_DAMAGE = 60)	//Ranged
 	realized_ability = /obj/effect/proc_holder/ability/aimed/cross_spawn
 
 /obj/item/clothing/suit/armor/ego_gear/realization/prophet
-	name = "prophet"
+	name = "先知"
 	desc = "And they have conquered him by the blood of the Lamb and by the word of their testimony, for they loved not their lives even unto death."
 	icon_state = "prophet"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 80, BLACK_DAMAGE = 80, PALE_DAMAGE = 60)	//No ability
@@ -42,18 +42,18 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/prophet_hat
 
 /obj/item/clothing/head/ego_hat/prophet_hat
-	name = "prophet"
+	name = "先知"
 	desc = "For this reason, rejoice, you heavens and you who dwell in them. Woe to the earth and the sea, because the devil has come down to you with great wrath, knowing that he has only a short time."
 	icon_state = "prophet"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/maiden
-	name = "blood maiden"
+	name = "血处女"
 	desc = "Soaked in blood, and yet pure in heart."
 	icon_state = "maiden"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 50, BLACK_DAMAGE = 80, PALE_DAMAGE = 60)	//No ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/wellcheers
-	name = "wellcheers"
+	name = "韦尔奇乐"
 	desc = " I’ve found true happiness in cracking open a cold one after a hard day’s work, covered in sea water and sweat. \
 	I’m at the port now but we gotta take off soon to catch some more shrimp. Never know what your future holds, bros."
 	icon_state = "wellcheers"
@@ -62,19 +62,19 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/wellcheers_hat
 
 /obj/item/clothing/head/ego_hat/wellcheers_hat
-	name = "wellcheers"
+	name = "韦尔奇乐帽"
 	desc = "You’re really missing out on life if you’ve never tried shrimp."
 	icon_state = "wellcheers"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/comatose
-	name = "comatose"
+	name = "昏睡不醒"
 	desc = "...ZZZ..."
 	icon_state = "comatose"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 80, BLACK_DAMAGE = 50, PALE_DAMAGE = 40)	//Defensive
 	realized_ability = /obj/effect/proc_holder/ability/comatose
 
 /obj/item/clothing/suit/armor/ego_gear/realization/brokencrown
-	name = "broken crown"
+	name = "破碎皇冠"
 	desc = "Shall we get to work? All we need to do is what we’ve always done."
 	icon_state = "brokencrown"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 50, PALE_DAMAGE = 50)	//Broken Crown
@@ -97,21 +97,21 @@ No Ability	260
 	return ..()
 
 /obj/item/clothing/head/ego_hat/brokencrown
-	name = "broken crown"
+	name = "破损皇冠"
 	desc = "One fell down and the rest came tumbling after."
 	icon_state = "brokencrown"
 
 /* TETH Realizations */
 
 /obj/item/clothing/suit/armor/ego_gear/realization/mouth
-	name = "mouth of god"
+	name = "神之嘴"
 	desc = "And the mouth of god spoke: You will be punished."
 	icon_state = "mouth"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 40, PALE_DAMAGE = 60)		//Defensive
 	realized_ability = /obj/effect/proc_holder/ability/punishment
 
 /obj/item/clothing/suit/armor/ego_gear/realization/universe
-	name = "one with the universe"
+	name = "天人合一"
 	desc = "One with all, it all comes back to yourself."
 	icon_state = "universe"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 40, BLACK_DAMAGE = 80, PALE_DAMAGE = 60)		//Support
@@ -119,20 +119,20 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/universe_hat
 
 /obj/item/clothing/head/ego_hat/universe_hat
-	name = "one with the universe"
+	name = "天人合一"
 	desc = "See. All. Together. Know. Us."
 	icon_state = "universe"
 	flags_inv = HIDEMASK | HIDEHAIR
 
 /obj/item/clothing/suit/armor/ego_gear/realization/death
-	name = "death stare"
+	name = "死亡凝视"
 	desc = "Last words are for fools who haven’t said enough."
 	icon_state = "death"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 40, BLACK_DAMAGE = 70, PALE_DAMAGE = 50)		//Melee with slow
 	realized_ability = /obj/effect/proc_holder/ability/aimed/gleaming_eyes
 
 /obj/item/clothing/suit/armor/ego_gear/realization/fear
-	name = "passion of the fearless one"
+	name = "有死之荣"
 	desc = "Man fears the darkness, and so he scrapes away at the edges of it with fire.\
 	Grants various buffs to life of a daredevil when equipped."
 	icon_state = "fear"
@@ -140,20 +140,20 @@ No Ability	260
 	flags_inv = null
 
 /obj/item/clothing/suit/armor/ego_gear/realization/exsanguination
-	name = "exsaungination"
+	name = "一尘不染"
 	desc = "It keeps your suit relatively clean."
 	icon_state = "exsanguination"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 80, BLACK_DAMAGE = 50, PALE_DAMAGE = 70)			//No ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/ember_matchlight
-	name = "ember matchlight"
+	name = "余烬火柴"
 	desc = "If I must perish, then I'll make you meet the same fate."
 	icon_state = "ember_matchlight"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 40, PALE_DAMAGE = 60)		//Melee
 	realized_ability = /obj/effect/proc_holder/ability/fire_explosion
 
 /obj/item/clothing/suit/armor/ego_gear/realization/sakura_bloom
-	name = "sakura bloom"
+	name = "落樱"
 	desc = "The forest will never return to its original state once it dies. Cherish the rain."
 	icon_state = "sakura_bloom"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 70, BLACK_DAMAGE = 60, PALE_DAMAGE = 60)		//Healing
@@ -161,65 +161,65 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/sakura_hat
 
 /obj/item/clothing/head/ego_hat/sakura_hat
-	name = "sakura bloom"
+	name = "落樱"
 	desc = "Spring is coming."
 	worn_icon = 'icons/mob/clothing/big_hat.dmi'
 	icon_state = "sakura"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/stupor
-	name = "stupor"
+	name = "麻麻木木"
 	desc = "Drink! Drink yourselves into a stupor! Foul tasting louts like you won't satisfy me until you're all as pickled as me, hah!" //Descriptions made by Anonmare
 	icon_state = "stupor" //Art by TemperanceTempy
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 30, BLACK_DAMAGE = 60, PALE_DAMAGE = 70)		//Defensive
 	hat = /obj/item/clothing/head/ego_hat/stupor
 
 /obj/item/clothing/head/ego_hat/stupor
-	name = "stupor"
+	name = "麻麻木木"
 	desc = "Many people look for oblivion at the bottom of the glass, I can't be blamed if I give it to 'em now, can I?"
 	icon_state = "stupor"
 
 /* HE Realizations */
 
 /obj/item/clothing/suit/armor/ego_gear/realization/grinder
-	name = "grinder MK52"
+	name = "研磨机 MK52"
 	desc = "The blades are not just decorative."
 	icon_state = "grinder"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 40, BLACK_DAMAGE = 60, PALE_DAMAGE = 60)		//Melee
 	realized_ability = /obj/effect/proc_holder/ability/aimed/helper_dash
 
 /obj/item/clothing/suit/armor/ego_gear/realization/bigiron
-	name = "big iron"
+	name = "大铁家伙"
 	desc = "A hefty silk coat with a blue smock."
 	icon_state = "big_iron"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 70, BLACK_DAMAGE = 70, PALE_DAMAGE = 30)		//Ranged
 
 /obj/item/clothing/suit/armor/ego_gear/realization/eulogy
-	name = "solemn eulogy"
+	name = "圣哀"
 	desc = "Death is not extinguishing the light, it is putting out the lamp as dawn has come."
 	icon_state = "eulogy"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 80, BLACK_DAMAGE = 80, PALE_DAMAGE = 50)
 
 /obj/item/clothing/suit/armor/ego_gear/realization/ourgalaxy
-	name = "our galaxy"
+	name = "我们的银河"
 	desc = "Walk this night sky with me. The galaxy dotted with numerous hopes. We'll count the stars and never be alone."
 	icon_state = "ourgalaxy"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 60, BLACK_DAMAGE = 80, PALE_DAMAGE = 50)		//Healing
 	realized_ability = /obj/effect/proc_holder/ability/galaxy_gift
 
 /obj/item/clothing/suit/armor/ego_gear/realization/forever
-	name = "together forever"
+	name = "永远在一起"
 	desc = "I would move Heaven and Earth to be together forever with you."
 	icon_state = "forever"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 80, BLACK_DAMAGE = 70, PALE_DAMAGE = 60)		//No ability
 	hat = /obj/item/clothing/head/ego_hat/forever_hat
 
 /obj/item/clothing/head/ego_hat/forever_hat
-	name = "together forever"
+	name = "永远在一起"
 	desc = "I've gotten used to bowing and scraping to you, so I cut off my own limbs."
 	icon_state = "forever"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/wisdom
-	name = "endless wisdom"
+	name = "无尽智慧"
 	desc = "Poor stuffing of straw. I'll give you the wisdom to ponder over anything."
 	icon_state = "wisdom"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 80, BLACK_DAMAGE = 50, PALE_DAMAGE = 60)		//No ability
@@ -227,25 +227,25 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/wisdom_hat
 
 /obj/item/clothing/head/ego_hat/wisdom_hat
-	name = "endless wisdom"
+	name = "无尽智慧"
 	desc = "I was left with nothing, nothing but empty brains and rotting bodies."
 	icon_state = "wisdom"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/empathy
-	name = "boundless empathy"
+	name = "无限同情"
 	desc = "Tin-cold woodsman. I'll give you the heart to forgive and love anyone."
 	icon_state = "empathy"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 70, PALE_DAMAGE = 50)		//No ABility
 	flags_inv = HIDEGLOVES|HIDESHOES
 
 /obj/item/clothing/suit/armor/ego_gear/realization/valor
-	name = "unbroken valor"
+	name = "无暇勇气"
 	desc = "Cowardly kitten, I'll give you the courage to stand up to anything and everything."
 	icon_state = "valor"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 50, BLACK_DAMAGE = 60, PALE_DAMAGE = 80)		//No ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/home //This name would SO much easier if we didnt aleady USE HOMING INSTINCT AHHHHHHHHHHHHHHHHHHH
-	name = "forever home"
+	name = "永远的家"
 	desc = "Last of all, road that is lost. I will send you home."
 	icon_state = "home"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 50, BLACK_DAMAGE = 80, PALE_DAMAGE = 70)		//Support
@@ -253,7 +253,7 @@ No Ability	260
 	realized_ability = /obj/effect/proc_holder/ability/aimed/house_spawn
 
 /obj/item/clothing/suit/armor/ego_gear/realization/dimension_ripper
-	name = "dimension ripper"
+	name = "维度开膛手"
 	desc = "Lost and abandoned, tossed out like trash, having no place left in the City."
 	icon_state = "dimension_ripper"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 50, BLACK_DAMAGE = 60, PALE_DAMAGE = 50)		//Melee
@@ -262,14 +262,14 @@ No Ability	260
 /* WAW Realizations */
 
 /obj/item/clothing/suit/armor/ego_gear/realization/goldexperience
-	name = "gold experience"
+	name = "黄金体验"
 	desc = "A jacket made of gold is hardly light. But it shines like the sun."
 	icon_state = "gold_experience"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 70, BLACK_DAMAGE = 60, PALE_DAMAGE = 30)			//Melee
 	realized_ability = /obj/effect/proc_holder/ability/road_of_gold
 
 /obj/item/clothing/suit/armor/ego_gear/realization/quenchedblood
-	name = "quenched with blood"
+	name = "被血浇灭"
 	desc = "A suit of armor, forged with tears and quenched in blood. Justice will prevail."
 	icon_state = "quenchedblood"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 60, BLACK_DAMAGE = 50, PALE_DAMAGE = 80)		//Ranged
@@ -277,7 +277,7 @@ No Ability	260
 	realized_ability = /obj/effect/proc_holder/ability/aimed/despair_swords
 
 /obj/item/clothing/suit/armor/ego_gear/realization/lovejustice
-	name = "love and justice"
+	name = "爱与正义"
 	desc = "If my duty is to defeat and reform evil, can I reform my evil self as well?"
 	icon_state = "lovejustice"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 40, BLACK_DAMAGE = 80, PALE_DAMAGE = 60)		//Healing
@@ -285,7 +285,7 @@ No Ability	260
 	realized_ability = /obj/effect/proc_holder/ability/aimed/arcana_slave
 
 /obj/item/clothing/suit/armor/ego_gear/realization/woundedcourage
-	name = "wounded courage"
+	name = "受挫勇气"
 	desc = "'Tis better to have loved and lost than never to have loved at all.\
 	Grants you the ability to use a Blind Rage in both hands and attack with both at the same time."
 	icon_state = "woundedcourage"
@@ -295,19 +295,19 @@ No Ability	260
 	hat = /obj/item/clothing/head/ego_hat/woundedcourage_hat
 
 /obj/item/clothing/head/ego_hat/woundedcourage_hat
-	name = "wounded courage"
+	name = "受挫勇气"
 	desc = "An excuse to overlook your own misdeeds."
 	icon_state = "woundedcourage"
 	flags_inv = HIDEMASK | HIDEEYES
 
 /obj/item/clothing/suit/armor/ego_gear/realization/crimson
-	name = "crimson lust"
+	name = "深红欲望"
 	desc = "They are always watching you."
 	icon_state = "crimson"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 60, PALE_DAMAGE = 60)		//No Ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/eyes
-	name = "eyes of god"
+	name = "神之眼"
 	desc = "And the eyes of god spoke: You will be saved."
 	icon_state = "eyes"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 40, BLACK_DAMAGE = 80, PALE_DAMAGE = 60)		//Support
@@ -315,7 +315,7 @@ No Ability	260
 
 /obj/item/clothing/suit/armor/ego_gear/realization/eyes/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The wearer can sense it whenever an abnormality breaches.</span>"
+	. += "<span class='notice'>佩戴者可以在异想体突破收容时感知到它.</span>"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/eyes/equipped(mob/user, slot, initial = FALSE)
 	. = ..()
@@ -337,7 +337,7 @@ No Ability	260
 /obj/item/clothing/suit/armor/ego_gear/realization/eyes/proc/NotifyEscape(mob/living/carbon/human/user, mob/living/simple_animal/hostile/abnormality/abno)
 	if(QDELETED(abno) || abno.stat == DEAD || loc != user)
 		return
-	to_chat(user, "<span class='warning'>You can sense the escape of [abno]...</span>")
+	to_chat(user, "<span class='warning'>你可以感觉到[abno]的突破收容...</span>")
 	playsound(get_turf(user), 'sound/abnormalities/bigbird/hypnosis.ogg', 25, 1, -4)
 	var/turf/start_turf = get_turf(user)
 	var/turf/last_turf = get_ranged_target_turf_direct(start_turf, abno, 5)
@@ -346,48 +346,48 @@ No Ability	260
 		new /obj/effect/temp_visual/cult/turf/floor(T)
 
 /obj/item/clothing/suit/armor/ego_gear/realization/cruelty
-	name = "wit of cruelty"
+	name = "残忍机智"
 	desc = "In the face of pain there are no heroes."
 	icon_state = "cruelty"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 50, BLACK_DAMAGE = 70, PALE_DAMAGE = 60)		//No Ability
 	flags_inv = HIDEJUMPSUIT|HIDEGLOVES|HIDESHOES
 
 /obj/item/clothing/suit/armor/ego_gear/realization/bell_tolls
-	name = "for whom the bell tolls"
+	name = "丧钟为谁而鸣"
 	desc = "I suppose if a man has something once, always something of it remains."
 	icon_state = "thirteen"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 60, BLACK_DAMAGE = 70, PALE_DAMAGE = 80)		//No Ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/capitalism
-	name = "capitalism"
+	name = "资本主义"
 	desc = "While the miser is merely a capitalist gone mad, the capitalist is a rational miser."
 	icon_state = "capitalism"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 70, BLACK_DAMAGE = 70, PALE_DAMAGE = 30)		//Support
 	realized_ability = /obj/effect/proc_holder/ability/shrimp
 
 /obj/item/clothing/suit/armor/ego_gear/realization/duality_yang
-	name = "duality of harmony"
+	name = "二重和声"
 	desc = "When good and evil meet discord and assonance will be quelled."
 	icon_state = "duality_yang"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 80, BLACK_DAMAGE = 40, PALE_DAMAGE = 80)		//Healing
 	realized_ability = /obj/effect/proc_holder/ability/tranquility
 
 /obj/item/clothing/suit/armor/ego_gear/realization/duality_yin
-	name = "harmony of duality"
+	name = "二元和谐"
 	desc = "All that isn't shall become all that is."
 	icon_state = "duality_yin"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 40, BLACK_DAMAGE = 80, PALE_DAMAGE = 40)		//Support
 	realized_ability = /obj/effect/proc_holder/ability/aimed/yin_laser
 
 /obj/item/clothing/suit/armor/ego_gear/realization/repentance
-	name = "repentance"
+	name = "悔改"
 	desc = "If you pray hard enough, perhaps god will answer it?"
 	icon_state = "repentance"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 40, BLACK_DAMAGE = 40, PALE_DAMAGE = 80)		//Healing
 	realized_ability = /obj/effect/proc_holder/ability/prayer
 
 /obj/item/clothing/suit/armor/ego_gear/realization/nest
-	name = "living nest"
+	name = "住巢"
 	desc = "Grow eternally, let our nest reach the horizon!"
 	icon_state = "nest"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 60, BLACK_DAMAGE = 60, PALE_DAMAGE = 40)		//Support
@@ -426,21 +426,21 @@ No Ability	260
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 80, BLACK_DAMAGE = 70, PALE_DAMAGE = 40)		//No Ability
 
 /obj/item/clothing/suit/armor/ego_gear/realization/head
-	name = "head of god"
+	name = "神之首"
 	desc = "And the head of god spoke: You will be judged."
 	icon_state = "head"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 50, BLACK_DAMAGE = 50, PALE_DAMAGE = 80)		//Support
 	realized_ability = /obj/effect/proc_holder/ability/judgement
 
 /obj/item/clothing/suit/armor/ego_gear/realization/shell
-	name = "shell"
+	name = "躯壳"
 	desc = "Armor of humans, for humans, by humans. Is it as 'human' as you?"
 	icon_state = "shell"
 	realized_ability = /obj/effect/proc_holder/ability/goodbye
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 50, BLACK_DAMAGE = 50, PALE_DAMAGE = 60)			//Melee
 
 /obj/item/clothing/suit/armor/ego_gear/realization/laughter
-	name = "laughter"
+	name = "欢声大笑"
 	desc = "I do not recognize them, I must not, lest I end up like them. \
 			Through the silence, I hear them, I see them. The faces of all my friends are with me laughing too."
 	icon_state = "laughter"
@@ -449,7 +449,7 @@ No Ability	260
 	realized_ability = /obj/effect/proc_holder/ability/screach
 
 /obj/item/clothing/suit/armor/ego_gear/realization/fallencolors
-	name = "fallen color"
+	name = "彩之流离"
 	desc = "Where does one go after falling into a black hole?"
 	icon_state = "fallencolors"
 	realized_ability = /obj/effect/proc_holder/ability/aimed/blackhole
@@ -490,7 +490,7 @@ No Ability	260
 
 /* Effloresced (Personal) E.G.O */
 /obj/item/clothing/suit/armor/ego_gear/realization/farmwatch
-	name = "farmwatch"
+	name = "司田"
 	desc = "Haha. You're right, the calf doesn't recognize me."
 	icon_state = "farmwatch"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 70, BLACK_DAMAGE = 40, PALE_DAMAGE = 60)
@@ -498,26 +498,26 @@ No Ability	260
 	realized_ability = /obj/effect/proc_holder/ability/ego_assimilation/farmwatch
 
 /obj/item/clothing/head/ego_hat/farmwatch_hat
-	name = "farmwatch"
+	name = "司田"
 	desc = "I'll gather a team again... hire another secretary... There'll be a lot to do."
 	icon_state = "farmwatch"
 
 /obj/item/clothing/suit/armor/ego_gear/realization/spicebush
-	name = "spicebush"
+	name = "山胡椒"
 	desc = "I've always wished to be a bud. Soon to bloom, bearing a scent within."
 	icon_state = "spicebush"
 	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 80, BLACK_DAMAGE = 70, PALE_DAMAGE = 60)
 	realized_ability = /obj/effect/proc_holder/ability/ego_assimilation/spicebush
 
 /obj/item/clothing/suit/armor/ego_gear/realization/desperation
-	name = "Scorching Desperation"
+	name = "灼热绝望"
 	desc = "Those feelings only become more dull over time."
 	icon_state = "desperation"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 50, BLACK_DAMAGE = 60, PALE_DAMAGE = 60)
 	realized_ability = /obj/effect/proc_holder/ability/overheat
 
 /obj/item/clothing/suit/armor/ego_gear/realization/gasharpoon
-	name = "gasharpoon"
+	name = "气体鱼叉"
 	desc = "We must find the Pallid Whale! Look alive, men! Spring! Roar!"
 	icon_state = "gasharpoon"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 70, BLACK_DAMAGE = 30, PALE_DAMAGE = 80)//230, required for the corresponding weapon abilities

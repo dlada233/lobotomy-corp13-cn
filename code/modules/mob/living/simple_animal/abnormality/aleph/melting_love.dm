@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_MELTYLOVE /datum/status_effect/display/melting_love_blessing
 #define STATUS_EFFECT_SLIMED  /datum/status_effect/melty_slimed
 /mob/living/simple_animal/hostile/abnormality/melting_love
-	name = "Melting Love"
-	desc = "A pink slime creature, resembling a female humanoid."
+	name = "溶解之爱"
+	desc = "粉色的黏液生物，维持着人类女性的形态."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "melting_love"
 	icon_living = "melting_love"
@@ -14,8 +14,8 @@
 	attack_verb_simple = "glomp"
 	/* Stats */
 	threat_level = ALEPH_LEVEL
-	health = 1500
-	maxHealth = 1500
+	health = 2000 //Lacks self healing
+	maxHealth = 2000
 	obj_damage = 60
 	damage_coeff = list(RED_DAMAGE = -1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 0.8)
 	melee_damage_type = BLACK_DAMAGE
@@ -52,35 +52,35 @@
 	gift_type =  /datum/ego_gifts/adoration
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "The slime craves affection, it covers the cell's floor, walls and celing. <br>\
-		It clings to your clothes, your mask and your skin as you enter. <br>At the centre of the cell, where the deluge conglomerates most, is the facismile of a girl. <br>\
-		She waves at you shyly. <br>You..."
+	observation_prompt = "黏液渴望着关爱, 它覆盖了牢房的地板、墙壁和天花板. <br>\
+		当你进入时，它们附着在你了你的衣服、口罩还有皮肤上. <br>在单元的中心, 黏液汇集的地方, 有一个女孩的身影. <br>\
+		她害羞地朝你挥手. <br>你..."
 	observation_choices = list(
-		"Retreat from the slime" = list(TRUE, "You retreat from the cell in a hurry, the slime clinging to you turns acidic. If she won't find affection from you, she'll find it another way..."),
-		"Reach out to her" = list(FALSE, "You reach out your hand and she does the same, your fingers entwine with the slimy appendage and she giggles. <br>\"Let's be together forever.\" <br>\
-			You pull your hand away, but it comes out with the slime. <br>You try to retreat, but you are already caught in her trap. <br>\"Don't betray me, okay?\" <br>Those are the last words you ever hear..."),
+		"从黏液处撤退" = list(TRUE, "你赶紧离开了收容单元, 粘在你身上的黏液转变为酸性黏液. 如果她得不到你的爱, 她将另寻它法..."),
+		"靠近她" = list(FALSE, "你伸出手，她也向你伸出, 你的手指缠绕着黏糊糊的物质，而她咯咯地笑. <br>\"让我们永远在一起吧.\" <br>\
+			你把手抽离, 但出来的只有黏液. <br>你尝试逃离, 但你的脚早已埋入了她的陷阱. <br>\"不要背叛我, 好吗?\" <br>这就是你最后所听到的话..."),
 	)
 
 	var/mob/living/carbon/human/gifted_human = null
 	/// Amount of BLACK damage done to all enemies around main target on melee attack. Also includes original target
-	var/radius_damage = 30
+	var/radius_damage = 14
 
 /mob/living/simple_animal/hostile/abnormality/melting_love/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Melting Love, A Tank Role Abnormality.</h1><br>\
-		<b>|Absorbing Slime|: RED damage heals you instead of damaging you, The same thing applies to your slime pawns.<br>\
+	to_chat(src, "<h1>你是溶解之爱, 坦克型异想体.</h1><br>\
+		<b>|吸收黏液|: 红色伤害会治愈你而不是造成伤害, 同样的效果也适用于你生产的小黏液们.<br>\
 		<br>\
-		|Sticky Slime|: Some of your abilities will inflict 'SLIMED' on the target.\
-		Targets with 'SLIMED' will take BLACK damage over time and will become slowed down for it's duration.<br>\
+		|粘稠黏液|: 你的一些技能会对目标造成'黏液覆盖'效果.\
+		遭到'黏液覆盖'效果的人将会持续承受黑色伤害并减慢移动速度.<br>\
 		<br>\
-		|Melting Slime|: As you move around, you will leave behind 'Melting Slime' on the turfs you cross. If any non-slime crosses this 'Melting Slime', They will be inflicted with 'SLIMED'.<br>\
+		|溶解黏液|: 当你移动时，你会留下'溶解黏液'在地板上. 如果非黏液生物踩到'溶解黏液', 他们将被'黏液覆盖'.<br>\
 		<br>\
-		|Spreading Love...|: When you attack a dead body, you will convert it into a 'Slime Pawn.' Slime pawns exist for a short amount of time and detonate upon their death.\
-		When they detonate, they will deal BLACK damage to nearby humans and spread 'Melting Slime' around them.\
-		Also, If you attack your own 'Slime Pawn', You will devour them and heal 20% of your HP.<br>\
+		|传播爱...|: 当你攻击尸体, 你会把它转化成'小黏液', 小黏液存在的时间很短，死亡后会爆炸.\
+		当它们死亡, 它们会对附近人类造成黑色伤害并在周围留下'溶解黏液'.\
+		并且，如果你攻击你的'小黏液', 你将吞噬它并回复20%的HP.<br>\
 		<br>\
-		|Stay Together...|: When you click on a tile outside your melee range, You will fire a slime projectile towards that tile. The projectile will inflict the target with 'SLIMED' and deal BLACK damage.\
-		If the projectile hits a dead body, it will convert it into a slime pawn.</b>")
+		|永远在一起...|: 当你点击近战范围外的地块, 你将发射黏液弹. 让目标被'黏液覆盖'并且造成黑色伤害.\
+		如果黏液弹击中尸体, 会转化尸体成为小黏液.</b>")
 
 /mob/living/simple_animal/hostile/abnormality/melting_love/death(gibbed)
 	density = FALSE
@@ -113,7 +113,7 @@
 	// Consume a slime. Cannot work on the big one, so the check is not istype()
 	if(attacked_target.type == /mob/living/simple_animal/hostile/aminion/slime)
 		var/mob/living/simple_animal/hostile/aminion/slime/S = attacked_target
-		visible_message(span_warning("[src] consumes \the [S], restoring its own health."))
+		visible_message(span_warning("[src]吞噬[S], 恢复自身生命值."))
 		. = ..() // We do a normal attack without AOE and then consume the slime to restore HP
 		adjustBruteLoss(-maxHealth * 0.2)
 		S.adjustBruteLoss(S.maxHealth) // To make sure it dies
@@ -154,7 +154,7 @@
 	if(H.has_status_effect(STATUS_EFFECT_MELTYLOVE))
 		//The status effect should explode them eventually. If not we have a bigger problem.
 		return FALSE
-	visible_message(span_danger("[src] glomps on \the [H] as another slime pawn appears!"))
+	visible_message(span_danger("[src]温柔拥抱[H]，一只小黏液随之出现!"))
 	new /mob/living/simple_animal/hostile/aminion/slime(get_turf(H))
 	H.gib(FALSE, TRUE, TRUE)
 	return TRUE
@@ -187,7 +187,7 @@
 	base_pixel_x = -32
 	offsets_pixel_x = list("south" = -32, "north" = -32, "west" = -32, "east" = -32)
 	SetOccupiedTiles(up = 1)
-	desc = "A pink hunched creature with long arms, there are also visible bones coming from insides of the slime."
+	desc = "粉色的驼背生物，有着长长的胳膊，还能看到从黏液内部伸出的骨头."
 	if(istype(gifted_human))
 		DissolveGifted(gifted_human)
 	else
@@ -201,11 +201,11 @@
 		gifted_human = user
 		RegisterSignal(gifted_human, COMSIG_WORK_COMPLETED, PROC_REF(GiftedAnger))
 		user.apply_status_effect(STATUS_EFFECT_MELTYLOVE)
-		to_chat(user, span_nicegreen("You feel like you received a gift..."))
+		to_chat(user, span_nicegreen("你感到自己被赠送了礼物..."))
 		playsound(get_turf(user), 'sound/abnormalities/meltinglove/gift.ogg', 50, 0, 2)
 		return
 	if(istype(user) && user.has_status_effect(STATUS_EFFECT_MELTYLOVE))
-		to_chat(gifted_human, span_nicegreen("Melting Love was happy to see you!"))
+		to_chat(gifted_human, span_nicegreen("溶解之爱因为看见你而感到很高兴!"))
 		gifted_human.adjustSanityLoss(rand(-25,-35))
 		return
 
@@ -216,7 +216,7 @@
 
 //Status effect will turn them into a slime if they died.
 /mob/living/simple_animal/hostile/abnormality/melting_love/proc/DissolveGifted(mob/living/carbon/C)
-	to_chat(C, span_userdanger("You feel like you are about to burst!"))
+	to_chat(C, span_userdanger("我感觉自己要撑破了!"))
 	C.emote("scream")
 	C.deal_damage(270, BLACK_DAMAGE)
 	C.remove_status_effect(STATUS_EFFECT_MELTYLOVE)
@@ -229,7 +229,7 @@
 /mob/living/simple_animal/hostile/abnormality/melting_love/proc/GiftedAnger(datum/source, datum/abnormality/datum_sent, mob/living/carbon/human/user, work_type)
 	SIGNAL_HANDLER
 	if(work_type == ABNORMALITY_WORK_REPRESSION)
-		to_chat(gifted_human, span_userdanger("[src] didn't like that!"))
+		to_chat(gifted_human, span_userdanger("[src]不喜欢这样!"))
 		datum_reference.qliphoth_change(-1)
 
 /* Checking if bigslime is dead or not and apply a damage buff if yes */
@@ -238,18 +238,19 @@
 	Empower()
 	for(var/mob/M in GLOB.player_list)
 		if(M.z == z && M.client)
-			to_chat(M, span_userdanger("You can hear a gooey cry!"))
+			to_chat(M, span_userdanger("你可以听到一声黏糊糊的哭声!"))
 			SEND_SOUND(M, 'sound/abnormalities/meltinglove/empower.ogg')
 			flash_color(M, flash_color = "#FF0081", flash_time = 50)
 	return TRUE
 
 /mob/living/simple_animal/hostile/abnormality/melting_love/proc/Empower()
 	ChangeMoveToDelayBy(-0.5)
-	melee_damage_lower = 27
-	melee_damage_upper = 32
+	melee_damage_lower += 8
+	melee_damage_upper += 8
+	radius_damage += 8
 	projectiletype = /obj/projectile/melting_blob/enraged
 	adjustBruteLoss(-maxHealth, forced = TRUE)
-	desc += " It looks angry."
+	desc += " 它看起来很生气."
 
 /mob/living/simple_animal/hostile/abnormality/melting_love/proc/SpawnBigSlime(mob/living/simple_animal/hostile/aminion/slime/big/S)
 	gifted_human = null
@@ -259,8 +260,8 @@
 
 /* Slimes (HE) */
 /mob/living/simple_animal/hostile/aminion/slime
-	name = "slime pawn"
-	desc = "The skeletal remains of a former employee is floating in it..."
+	name = "小黏液"
+	desc = "一名前员工的遗骸漂浮在其中..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "little_slime"
 	icon_living = "little_slime"
@@ -268,8 +269,8 @@
 	attack_verb_continuous = "glomps"
 	attack_verb_simple = "glomp"
 	/* Stats */
-	health = 200
-	maxHealth = 200
+	health = 400
+	maxHealth = 400
 	obj_damage = 60
 	damage_coeff = list(RED_DAMAGE = -1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 2, PALE_DAMAGE = 1)
 	melee_damage_type = BLACK_DAMAGE
@@ -296,11 +297,11 @@
 
 /mob/living/simple_animal/hostile/aminion/slime/Login()
 	. = ..()
-	to_chat(src, "<h1>You are a Slime Pawn, A Melting Love minion.</h1><br>\
-		<b>|Combust...|: You take 20 BLACK damage every 4 Seconds, Which means you have 40 seconds to live, unless someone attacks you with RED damage. \
-		Once you die, you will explode and place down 'Slime' in a 3x3 area around you, and deal 20 BLACK damage to all foes near you.<br>\
+	to_chat(src, "<h1>你小黏液, 溶解之爱的小部下.</h1><br>\
+		<b>|消耗...|: 你每4秒承受20点黑色伤害, 这意味着你只有40秒的寿命, 除非有人对你造成红色伤害. \
+		一旦你死亡，你会在3x3的范围内爆出'黏液', 这将对附近的所有人造成20点黑色伤害.<br>\
 		<br>\
-		|Mother?|: Melting Love is able to attack you to devour you and heal 20% of her HP.</b>")
+		|妈妈?|: 溶解之爱能通过攻击你来吞噬掉你，以此恢复她20%的HP.</b>")
 
 /mob/living/simple_animal/hostile/aminion/slime/Initialize()
 	. = ..()
@@ -313,7 +314,7 @@
 		addtimer(CALLBACK(src, PROC_REF(decay)), decay_timer SECONDS, TIMER_STOPPABLE)
 
 /mob/living/simple_animal/hostile/aminion/slime/proc/decay()
-	to_chat(src, span_userdanger("You feel yourself falling apart..."))
+	to_chat(src, span_userdanger("你感觉自己正在崩解..."))
 	src.deal_damage(decay_damage, BLACK_DAMAGE)
 	if (stat != DEAD)
 		addtimer(CALLBACK(src, PROC_REF(decay)), decay_timer SECONDS, TIMER_STOPPABLE)
@@ -349,7 +350,7 @@
 /mob/living/simple_animal/hostile/aminion/slime/proc/SlimeConvert(mob/living/carbon/human/H)
 	if(!istype(H))
 		return FALSE
-	visible_message(span_danger("[src] glomps on \the [H] as another slime pawn appears!"))
+	visible_message(span_danger("[src]温柔拥抱[H]，一只小黏液随即出现!"))
 	new /mob/living/simple_animal/hostile/aminion/slime(get_turf(H))
 	H.gib(FALSE, TRUE, TRUE)
 	return TRUE
@@ -361,8 +362,8 @@
 
 /* Big Slimes (WAW) */
 /mob/living/simple_animal/hostile/aminion/slime/big
-	name = "big slime"
-	desc = "The skeletal remains of the former gifted employee is floating in it..."
+	name = "大黏液"
+	desc = "某位被给予礼物的前员工的遗骸飘荡在其中..."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "big_slime"
 	icon_living = "big_slime"
@@ -440,7 +441,7 @@
 
 //Slime trails
 /obj/effect/decal/cleanable/melty_slime
-	name = "Slime"
+	name = "黏液"
 	desc = "It looks corrosive."
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "melty_slime3"
@@ -533,8 +534,8 @@
 	tick_interval = 2 SECONDS
 
 /atom/movable/screen/alert/status_effect/melty_slimed
-	name = "Acidic Goo"
-	desc = "Slime is stuck to your skin, slowing you down and dealing BLACK damage!"
+	name = "黏液覆盖"
+	desc = "黏液粘在了你的皮肤上，减慢速度并承受黑色伤害!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "slimed"
 

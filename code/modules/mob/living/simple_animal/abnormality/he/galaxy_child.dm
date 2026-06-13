@@ -1,12 +1,12 @@
 #define STATUS_EFFECT_FRIENDSHIP /datum/status_effect/display/friendship
 /mob/living/simple_animal/hostile/abnormality/galaxy_child
-	name = "Child of the Galaxy"
-	desc = "A young, lost child."
+	name = "银河之子"
+	desc = "年轻的，迷路的孩子."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "galaxy"
 	portrait = "galaxy_child"
-	maxHealth = 150
-	health = 150
+	maxHealth = 350
+	health = 350
 	threat_level = HE_LEVEL
 	start_qliphoth = 5
 	work_chances = list(
@@ -26,17 +26,17 @@
 		/datum/ego_datum/armor/galaxy,
 	)
 	gift_type = /datum/ego_gifts/galaxy
-	gift_message = "A teardrop fell from the child’s dewy eyes, as stars showered from the sky."
+	gift_message = "孩童湿润的眼中坠下泪滴，犹如星雨洒落天际。"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "You entered the containment chamber. <br>\
-		A child is standing there. <br>\"I know who you are.\" <br>\
-		\"Of course. <br>We were born from each other.\" <br>You decided to......."
+	observation_prompt = "你踏入收容单元。<br>\
+		小孩就站在那里。<br>\"我知道你是谁。\"<br>\
+		\"当然。<br>我们彼此孕育而生。\"<br>你决定..."
 	observation_choices = list(
-		"Exit the chamber" = list(TRUE, "You turned your back to the child and walked out. <br>\
-			The pebble in your hands sparkles sways, and tickles. <br>It becomes the universe. <br>\
-			\"Goodbye. <br>I hope you never come back.\" <br>As the child bid the cold farewell, he was smiling."),
-		"Stay" = list(FALSE, "\"Will you stay here with me?\" <br>\"If you won't, I don't need you.\""),
+		"离开单元" = list(TRUE, "你背向孩童离去。<br>\
+			掌中卵石闪烁摇曳，轻触掌心。<br>它化为了宇宙。<br>\
+			\"永别了。<br>愿你永不归来。\"<br>孩子道出冰冷告别，脸上却挂着微笑。"),
+		"留下" = list(FALSE, "\"你会在此陪伴我吗？\"<br>\"若你不愿，我也不再需要你。\""),
 	)
 
 	/// List of people who are our friends
@@ -62,7 +62,7 @@
 /mob/living/simple_animal/hostile/abnormality/galaxy_child/examine(mob/user)
 	. = ..()
 	if(depressed)
-		. += span_info("He is sobbing inconsolably and has a forlorn demeanor.")
+		. += span_info("他泣不成声，一副孤苦伶仃的样子.")
 
 /mob/living/simple_animal/hostile/abnormality/galaxy_child/PostSpawn()
 	. = ..()
@@ -95,7 +95,7 @@
 		return
 
 	give_pebble(user)
-	say("I really, really like you! This pebble is super important to me! Please keep it with you forever.")
+	say("我真的，真的很喜欢你！这块鹅卵石对我来说超级重要！请永远带着它.")
 
 /mob/living/simple_animal/hostile/abnormality/galaxy_child/GiftUser(mob/living/carbon/human/user, pe, chance)
 	if(pe <= 0) // Work fail
@@ -138,7 +138,7 @@
 		UnregisterSignal(friend, COMSIG_PARENT_QDELETING)
 		new /obj/effect/temp_visual/pebblecrack(get_turf(friend))
 		playsound(get_turf(friend), "shatter", 50, TRUE)
-		to_chat(friend, span_userdanger("Your pebble violently shatters as Child of the Galaxy begins to weep!"))
+		to_chat(friend, span_userdanger("你的鹅卵石猛烈地破碎，开始哭泣!"))
 
 	healing_per_second = 0 // We reset our current bonuses
 	damage_amount = 0
@@ -161,7 +161,7 @@
 	UnregisterSignal(dead_friend, COMSIG_PARENT_QDELETING)
 	new /obj/effect/temp_visual/pebblecrack(get_turf(dead_friend))
 	playsound(dead_friend, "shatter", 50, TRUE)
-	to_chat(src, span_userdanger("You sense that one of your friends has perished and feel your heart ache."))
+	to_chat(src, span_userdanger("你感觉到你的一个朋友死了，感到心痛."))
 
 /mob/living/simple_animal/hostile/abnormality/galaxy_child/proc/on_friend_deletion(mob/deleted_friend)
 	SIGNAL_HANDLER
@@ -170,7 +170,7 @@
 	galaxy_friends -= deleted_friend
 
 /datum/action/cooldown/friend_gift
-	name = "Gift Pebble"
+	name = "礼物卵石"
 	icon_icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	button_icon_state = "friendship"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -200,25 +200,25 @@
 		possible_friend_list += possible_friend
 
 	if(!length(possible_friend_list))
-		to_chat(galaxy_owner, span_notice("There's nobody you can gift your pebble to."))
+		to_chat(galaxy_owner, span_notice("你不能把你的鹅卵石送给任何人."))
 		return
 
 	// pick someone to be your new best friend
-	var/mob/living/carbon/human/new_friend = input(galaxy_owner, "Choose who you want to gift a pebble to", "Select your new friend") as null|anything in possible_friend_list
+	var/mob/living/carbon/human/new_friend = input(galaxy_owner, "选择你想送给谁一颗鹅卵石", "选择你的新朋友") as null|anything in possible_friend_list
 	if(!new_friend)
 		return
 
 	if(get_dist(galaxy_owner, new_friend) > 7) // User inputs can last a long time, make sure everything is still valid
-		to_chat(galaxy_owner, span_warning("You can't reach [new_friend] from here!"))
+		to_chat(galaxy_owner, span_warning("你无法从这里联系到[new_friend]!"))
 		return
 
 	if(new_friend.stat == DEAD)
-		to_chat(galaxy_owner, span_warning("It's too late to save them..."))
+		to_chat(galaxy_owner, span_warning("现在救他们已经太晚了..."))
 		return
 
-	var/giftask = alert(new_friend, "Do you wish to receive the child's gift?", "Recieve Gift", "Yes", "No")
+	var/giftask = alert(new_friend, "你希望收到孩子的礼物吗?", "收到礼物", "Yes", "No")
 	if(get_dist(galaxy_owner, new_friend) > 7) // I HATE USER INPUTS, JUST PRESS THE DAMN BUTTON IMMEDIATELLY
-		to_chat(galaxy_owner, span_warning("You can't reach [galaxy_owner] from here!"))
+		to_chat(galaxy_owner, span_warning("你无法从这里联系到[galaxy_owner]!"))
 		return
 
 	if(giftask == "Yes")
@@ -244,14 +244,14 @@
 	if(!istype(galaxy_owner))
 		return FALSE
 
-	if(alert(galaxy_owner, "Are you sure you want to break all pebbles?", "Pebble toss", "Yes", "No") != "Yes")
+	if(alert(galaxy_owner, "你确定要把所有的鹅卵石都打碎吗?", "卵石", "Yes", "No") != "Yes")
 		return FALSE
 
 	var/friend_names = ""
 	for(var/mob/past_friend as anything in galaxy_owner.galaxy_friends)
 		friend_names = "[past_friend], [friend_names]"
 
-	to_chat(galaxy_owner, span_userdanger("[friend_names].. They were never true friends..."))
+	to_chat(galaxy_owner, span_userdanger("[friend_names].. 他们从来就不是真正的朋友..."))
 	galaxy_owner.break_gifts()
 	StartCooldown()
 	return TRUE
@@ -266,8 +266,8 @@
 	display_name = "galaxy"
 
 /atom/movable/screen/alert/status_effect/friendship
-	name = "Token of Friendship"
-	desc = "With a sparking pebble in your possession, you recover HP and SP over time."
+	name = "友谊的信物"
+	desc = "如果你拥有一颗闪闪发光的鹅卵石，你便能够在一段时间内恢复HP和SP."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "friendship"
 

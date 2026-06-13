@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/bluestar
-	name = "Blue Star"
-	desc = "Floating heart-shaped object. It's alive, and soon you will become one with it."
+	name = "碧蓝新星"
+	desc = "漂浮的心形物体. 它是活的, 而你很快就会和它融为一体."
 	health = 2200
 	maxHealth = 2200
 	pixel_x = -32
@@ -48,15 +48,15 @@
 	gift_type =  /datum/ego_gifts/star
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "A group of employees worship this abnormality, despite the fact nothing can be sacred in this place. <br>\
-		You recall how you pulled away one employee away from it in the past, even as she screamed and wailed that you were keeping her chained to this world. <br>You thought you were saving her. <br>\
-		You can hear a distant howl emanating from the centre of the blue-coloured heart. <br>It's the sound of stars. <br>They're welcoming you, asking you to join them as a star."
+	observation_prompt = "一群员工崇拜着这个异想体，尽管此地不可能存在神圣之物。<br>\
+		你回忆起过去曾将一名员工从它身边拖走，即使她尖叫哭喊说你将她束缚在了这个世界。<br>你以为自己是在救她。<br>\
+		你能听到碧蓝之心中心传来遥远的嚎叫声。<br>那是星星的声音。<br>它们正在欢迎你，邀请你成为一颗星星加入它们。"
 	observation_choices = list(
-		"Be pulled in" = list(TRUE, "You don't hesitate as you approach the centre of the void. <br>Sensation in your hands and legs are the first things to go, creeping up your body until you couldn't feel anything physical at all. <br>\
-			Despite how scary it should have been, you feel at peace, <br>this isn't an end it's a new beginning - You're a martyr. <br>\
-			Let's meet everyone again, as stars."),
-		"Hold yourself tight" = list(FALSE, "You wrapped your arms around yourself and shut your eyes, turning your senses inward until the temptation passes and the sounds become distant howls again. <br>\
-			You opened your eyes and looked again at the heart. <br>It remains in the air, floating towards a new beginning."),
+		"被吸入" = list(TRUE, "你毫不犹豫地接近虚空中心。<br>手脚的感觉最先消失，逐渐蔓延全身直到完全失去所有身体感知。<br>\
+			尽管本应感到恐惧，你却觉得平静，<br>这不是结束而是新的开始——你是一名殉道者。<br>\
+			让我们以星星的形式再次相见。"),
+		"抱紧自己" = list(FALSE, "你双臂紧抱自己并闭上眼睛，将感官向内收敛直到诱惑过去，声音重新变成遥远的嚎叫。<br>\
+			你睁开眼睛再次看向心脏。<br>它仍然悬在空中，向着新的开始漂浮。"),
 	)
 
 	var/pulse_cooldown

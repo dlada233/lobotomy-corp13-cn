@@ -1,13 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/express_train
-	name = "Express Train to Hell"
-	desc = "A creature with glowing eyes inside of an odd-looking ticket booth."
+	name = "黄泉列车"
+	desc = "一个长着发光眼睛的生物在一个奇怪的售票亭里."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "express_booth0"
 	icon_living = "express_booth0"
 	portrait = "express_train"
 	faction = list("hostile")
 	speak_emote = list("drones")
-
+	maxHealth = 1500
+	health = 1500
 	threat_level = WAW_LEVEL
 	start_qliphoth = 4
 	work_chances = list(
@@ -29,15 +30,15 @@
 		/datum/ego_datum/weapon/laststop,
 	)
 	gift_type =  /datum/ego_gifts/good_intentions
-	gift_message = "When the time comes, the train will chug down the tracks and sound its mighty horn."
+	gift_message = "当时机来临，列车将沿着轨道轰鸣前行，鸣响雄壮的汽笛。"
 	abnormality_origin = ABNORMALITY_ORIGIN_ALTERED
 
-	observation_prompt = "The booking clerk who remains dauntingly quiet sells tickets for a train with no final destination. <br>\
-		There are no clocks to alert the arrival times, instead, there are some blinking lights. <br>\
-		\"Sir! Your ticket?\" The clerk behind the counter smothered in shadow, save for two pinpricks of amber light for eyes, holds out an unmarked ticket with its gangly appendage."
+	observation_prompt = "沉默得令人不安的售票员正在出售没有终点的列车票。<br>\
+		没有时钟提示到站时间，只有闪烁的指示灯。<br>\
+		\"先生！您的票呢？\"阴影笼罩的柜台后，售票员伸出细长附肢递来无标记的车票，唯见两点琥珀色的眸光。"
 	observation_choices = list(
-		"Take the ticket" = list(TRUE, "I took the ticket from his hand, it felt like a lead weight, and asked him when the train would arrive. <br>\
-			\"Sooner than you'd like, later than you prepare for. <br>It comes for everyone Sir.\" <br>I hear the sound of a distant horn."),
+		"接过车票" = list(TRUE, "我从他手中接过车票，沉重如铅，询问列车何时抵达。<br>\
+			\"比您期望的更早，比您准备的更迟。<br>这趟列车会来接所有人，先生。\"<br>远处传来汽笛声。"),
 	)
 
 	var/meltdown_tick = 60 SECONDS
@@ -89,7 +90,7 @@
 			user.adjustBruteLoss(-40)
 			tickets |= user
 		if(4)
-			say("No tickets available. Thank you for your interest.")
+			say("没有票了，谢谢你的关心.")
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/express_train/WorkChance(mob/living/carbon/human/user, chance)
@@ -141,7 +142,7 @@
 			if(i % 2)
 				persX -= xIncrement/4
 			if(i == 0)
-				notify_ghosts("[seg] is preparing to depart!", source = seg, action = NOTIFY_ORBIT, header="Something Interesting!") // bless this mess
+				notify_ghosts("[seg]准备发车!", source = seg, action = NOTIFY_ORBIT, header="有趣的事情!") // bless this mess
 		else
 			seg.icon_state = "expresscar_[i % 2 + 1]"
 			if(round(i / 2) % 2) // True when the current car is odd-numbered

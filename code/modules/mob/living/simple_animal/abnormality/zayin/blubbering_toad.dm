@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_BLUERESIN /datum/status_effect/blue_resin
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/blubbering_toad
-	name = "Blubbering Toad"
-	desc = "A giant toad, wailing with tears in its eyes. The tears are thick, like a blue resin."
+	name = "悲泣蟾蜍"
+	desc = "一只巨大的蟾蜍，眼里含着泪水在哭泣。眼泪很浓，像蓝色的树脂."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "blubbering"
 	icon_living = "blubbering"
@@ -51,28 +51,28 @@
 		/datum/ego_datum/armor/cavernous_wailing,
 	)
 	gift_type =  /datum/ego_gifts/melty_eyeball
-	gift_message = "The toad gave you an eyeball, maybe it was for lending an ear?"
+	gift_message = "蟾蜍赠予你一颗眼球，或许是为感谢你的倾听？"
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "\"Croohoo, croohoo, croohoo.\" <br>\
-		A giant toad cries inside a cave. <br>\
-		Patches of dark blue resin cover the cave. <br>\
-		This resin is like gloom. <br>\
-		A sap of gloom, not quite like tears or sadness. <br>\
-		The toad holds this resin."
+	observation_prompt = "\"咕噜呜——咕噜呜——咕噜呜——\" <br>\
+		巨蟾在洞窟中悲鸣。 <br>\
+		深蓝树脂如苔藓般覆满岩壁。 <br>\
+		这树脂仿若凝结的阴郁。 <br>\
+		非泪非哀，乃是幽暗精髓。 <br>\
+		蟾蜍怀抱着这团树脂。"
 	observation_choices = list(
-		"Sit and wait" = list(TRUE, "An indeterminate amount of time passes. <br>\
-			As you waited for the toad to finish its cries, <br>\
-			it gazed into you, closing and opening its eyelids slowly. <br>\
-			With a quick, slick sound, a long blue tongue popped out towards you. <br>\
-			An eyeball belonging to the toad was on its tongue. <br>\
-			When you picked it up, it blinked its other eye at us before going on its way. <br>\
-			Was that its thanks for lending an ear?"),
-		"Mimic the cry" = list(FALSE, "\"Croohic, croohoo.\" <br>\
-			The toad’s cry is dull and heavy. <br>\
-			It doesn’t seem to have understood what it heard. <br>\
-			After crying like that a few more times, it hopped away from its spot. <br>\
-			All that’s left is the sticky blue resin."),
+		"静坐等待" = list(TRUE, "时间在静默中流逝。 <br>\
+			当你等待蟾蜍止息悲鸣，<br>\
+			它凝望着你，眼睑缓启缓阖。 <br>\
+			伴着滑腻声响，蓝色长舌倏然递至面前。 <br>\
+			舌尖托着属于它的眼球。 <br>\
+			当你拾起时，它用另一只眼向你眨动，随即离去。 <br>\
+			这莫非是对倾听者的谢礼？"),
+		"模仿悲鸣" = list(FALSE, "\"咕噜呃——咕噜呜——\" <br>\
+			蟾蜍的鸣叫沉闷而沉重。 <br>\
+			它似乎未能理解这拙劣的模仿。 <br>\
+			如此悲鸣数次后，它跃离了栖身之地。 <br>\
+			唯余黏腻的蓝色眼泪。"),
 	)
 
 	//work
@@ -314,8 +314,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/blue_resin
 
 /atom/movable/screen/alert/status_effect/blue_resin
-	name = "Blue Resin"
-	desc = "The gushing gloom has made you more resilient to BLACK damage."
+	name = "蓝色树脂"
+	desc = "喷涌而出的黑暗使你对黑色伤害更有抵抗力."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "blueresin"
 

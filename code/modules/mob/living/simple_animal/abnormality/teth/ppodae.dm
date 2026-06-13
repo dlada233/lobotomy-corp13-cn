@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/ppodae
-	name = "Ppodae"
-	desc = "The Goodest Boy in the World"
+	name = "波迪"
+	desc = "世界上最好的狗狗"
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "ppodae"
 	icon_living = "ppodae"
 	portrait = "ppodae"
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 120 //fast but low hp abno
-	health = 120
+	maxHealth = 230 //fast but low hp abno
+	health = 230
 	threat_level = TETH_LEVEL
 	move_to_delay = 1
 	faction = list("hostile")
@@ -40,10 +40,10 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	attack_action_types = list(/datum/action/cooldown/ppodae_transform)
 
-	observation_prompt = "Before me stands a creature, eagerly awaiting its next meal. The creature is..."
+	observation_prompt = "我面前站着一个生物，急切地等待下一餐。这个生物是..."
 	observation_choices = list(
-		"A monster" = list(TRUE, "I don't know how I didn't see it before, I rushed out to warn the others. I was fired the next day."),
-		"A puppy" = list(FALSE, "It's the cutest puppy I've ever seen."),
+		"怪物" = list(TRUE, "我不知道之前怎么没看出来，我冲出去警告其他人。第二天就被解雇了。"),
+		"小狗" = list(FALSE, "这是我见过最可爱的小狗。"),
 	)
 
 	var/smash_damage_low = 4
@@ -73,15 +73,15 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<h1>You are Ppodae, A Support/Combat Role Abnormality.</h1><br>\
-		<b>|How adorable!|: You are able to switch between a 'Cute' and 'Buff' form. \
-		Switching between forms has a 10 second cooldown and each time you switch forms you create smoke which lasts for 9 seconds.<br>\
+	to_chat(src, "<h1>你是波迪，支援/战斗型异想体。</h1><br>\
+		<b>|真可爱！|：你能在'可爱'和'强壮'形态间切换。\
+		切换形态有10秒冷却时间，每次切换会产生持续9秒的烟雾。<br>\
 		<br>\
-		|Cute!|: While you are in your 'Cute' form, you have a MASSIVE speed boost and if you try to melee attack mechs or living mobs, you will crawl under them.<br>\
+		|好可爱！|：在'可爱'形态下，你获得巨大速度加成。近战攻击机甲或生物时，你会爬到它们下方。<br>\
 		<br>\
-		|Strong!|: While you are in your 'Buff' form, you take 50% less damage from all attacks and you prefrom a 3x3 AoE attack when you try to melee attack, (Really good at breaking down Structures)<br>\
+		|真强壮！|：在'强壮'形态下，你受到的所有伤害减少50%，近战攻击会造成3x3范围伤害（对建筑特别有效）<br>\
 		<br>\
-		|He's just Playing|: When you melee attack a unconscious or dead human body, you are able to tear off a limb, which heals you 2% of your max HP. (You can do this 4 time per body)</b>")
+		|他只是在玩耍|：当近战攻击昏迷或死亡的人类时，你能扯下肢体，恢复自身2%最大生命值（每具尸体最多4次）</b>")
 
 /datum/action/cooldown/ppodae_transform
 	name = "Transform!"
@@ -152,12 +152,12 @@
 			var/obj/vehicle/V = attacked_target
 			var/turf/target_turf = get_turf(V)
 			forceMove(target_turf)
-			manual_emote("crawls under [V]!")
+			manual_emote("爬到[V]下面!")
 		else if (istype(attacked_target, /mob/living))
 			if (attacked_target != src)
 				var/turf/target_turf = get_turf(attacked_target)
 				forceMove(target_turf)
-				manual_emote("crawls under [attacked_target]!")
+				manual_emote("爬到[attacked_target]下面!")
 	else
 		return Smash(attacked_target)
 

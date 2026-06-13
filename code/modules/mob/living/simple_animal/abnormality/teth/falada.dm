@@ -1,7 +1,7 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/falada
-	name = "Spirit of Falada"
-	desc = "A horse's severed head."
+	name = "法拉达之魂"
+	desc = "被砍下的马首."
 	pixel_y = 64
 	base_pixel_y = 64
 	density = FALSE
@@ -33,14 +33,14 @@
 	)
 	gift_type =  /datum/ego_gifts/zauberhorn
 
-	observation_prompt = "A severed horse-like creature's head hangs high on the wall, sobbing. <br>\
-		You can't help but feel some pity for the thing."
+	observation_prompt = "一个被斩下的马头高悬于墙上，啜泣着。<br>\
+		你不禁对这生物心生怜悯。"
 	observation_choices = list(
-		"What happened to you?" = list(TRUE, "The horse head begins speaking. <br>\
-			\"Oh, woe is me. If only it could be - the powers that be, would see fit to have me die in her stead.\" <br>\
-			It speaks in rhymes, but it clearly lost someone important to it. <br>\
-			Even if there is nothing you can do, at least you are there to listen."),
-		"Why the long face?" = list(FALSE, "The horse head continues sobbing, despite your cheesy joke. <br>Maybe that wasn't the best approach."),
+		"你怎么了?" = list(TRUE, "马头开始说话。<br>\
+			\"呜呼哀哉，但愿如此——当权者本应让我替她一死。\"<br>\
+			它的话语带着韵律，显然失去了重要之人。<br>\
+			即便你无能为力，至少你在此倾听。"),
+		"为什么拉长着脸?" = list(FALSE, "尽管你开了个蹩脚玩笑，马头仍在啜泣。<br>也许这不是最好的方式。"),
 	)
 
 	var/liked
@@ -48,15 +48,15 @@
 	pet_bonus = "neighs" //saves a few lines of code by allowing funpet() to be called by attack_hand()
 	var/hint_cooldown
 	var/hint_cooldown_time = 30 SECONDS
-	var/list/cooldown = list("It is not the time now, not yet.")
+	var/list/cooldown = list("现在还不是时候。")
 
-	var/list/instinct = list("I should have trusted my instincts, I should have stopped that vile maidservant before it was too late. Look at what happened to me!")
+	var/list/instinct = list("我本该相信直觉，我本该在那邪恶女仆得逞前阻止她！看看我现在的样子！")
 
-	var/list/insight = list("The late princess was a woman of incredible insight, it may do you well to do the same.")
+	var/list/insight = list("已故的公主极具洞察力，你若能如此，定有裨益。")
 
-	var/list/attachment = list("Poor Anidori, her attachment to that woman was too great. She could not see the jealousy harbored within her.")
+	var/list/attachment = list("可怜的阿妮朵丽，她对那女人的依恋太深，未能察觉其心中妒火。")
 
-	var/list/repression = list("The things that they did to me, the things they did to her, all for the want of justice in the world.")
+	var/list/repression = list("他们对我所做的一切，对她所做的一切，都不过是为了世间正义。")
 
 // Work Mechanics
 /mob/living/simple_animal/hostile/abnormality/falada/FailureEffect(mob/living/carbon/human/user, work_type, pe)
@@ -67,7 +67,7 @@
 /mob/living/simple_animal/hostile/abnormality/falada/ZeroQliphoth(mob/living/carbon/human/user)
 	pissed()
 	if(user)
-		say("O, Anidori, if only your mother knew the fate to befall you, how her heart would break in two.")
+		say("啊，阿妮朵丽，若你母亲知晓你的命运，她的心将会碎成两半.")
 	datum_reference.qliphoth_change(1)
 	return
 
@@ -133,8 +133,8 @@
 
 // Spawned Mob
 /mob/living/simple_animal/hostile/retaliate/goose/falada
-	maxHealth = 35
-	health = 35
+	maxHealth = 40
+	health = 40
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
 	faction = list("goose") //geese are demons
 	attack_same = FALSE

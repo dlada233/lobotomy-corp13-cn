@@ -1,11 +1,11 @@
 /mob/living/simple_animal/hostile/abnormality/book
-	name = "Book Without Pictures or Dialogue"
-	desc = "An old, dusty tome. There is a pen within the folded pages."
+	name = "空白旧书"
+	desc = "一本满是灰尘的旧书，折叠的书页里有一支笔."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "book_0"
 	portrait = "book"
-	maxHealth = 120
-	health = 120
+	maxHealth = 230
+	health = 230
 	blood_volume = 0
 	start_qliphoth = 2
 	threat_level = TETH_LEVEL
@@ -27,12 +27,12 @@
 	gift_type = /datum/ego_gifts/page
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "It's just a stupid rumour. <br>\"If you fill it in whatever way, then the book will grant one wish!\" <br>\
-		All the newbies crow, waiting for their chance to fill the pages with their wishes. <br>\
-		You open the book and read through every wish, splotched with ink and tears, every employee had, living and dead, wrote..."
+	observation_prompt = "这不过是个愚蠢的谣言。<br>\"只要填满它，书就会实现一个愿望！\"<br>\
+		菜鸟们总这样起哄，巴望着用愿望填满书页的机会。<br>\
+		你翻开书页，墨迹与泪痕交织着每个员工——无论生死——写下的祈愿..."
 	observation_choices = list(
-		"Write your own wish" = list(TRUE, "You take out the pen from your pocket and write down your wish. It'll never come true but that's why it will always remain a wish."),
-		"Tear out the wishes" = list(FALSE, "You tear out their wishes one by one. The book's page count remains the same. Did your wish come true?"),
+		"写下你的愿望" = list(TRUE, "你掏出笔写下心愿。正因永无实现之日，它才配被称为愿望。"),
+		"撕掉那些愿望" = list(FALSE, "你将愿望一页页撕碎。书页却未见减少。你的愿望实现了吗？"),
 	)
 
 	var/wordcount = 0
@@ -53,7 +53,7 @@
 	if(work_type == ABNORMALITY_WORK_REPRESSION)
 		if(wordcount)
 			if(Approach(user))
-				visible_message(span_warning("[user] starts ripping pages out of [src]!"))
+				visible_message(span_warning("[user]开始从[src]上撕下书页!"))
 				playsound(get_turf(src), 'sound/items/poster_ripped.ogg', 50, 1, FALSE)
 				RipPages()
 				wordcount = 0
@@ -61,7 +61,7 @@
 	else
 		if(wordcount < 3)
 			if(Approach(user))
-				visible_message(span_warning("[user] begins writing in [src]!"))
+				visible_message(span_warning("[user]开始在[src]中写下内容!"))
 				playsound(get_turf(src), 'sound/abnormalities/book/scribble.ogg', 90, 1, FALSE)
 				SLEEP_CHECK_DEATH(3 SECONDS)
 				if(wordcount < 3)
@@ -152,15 +152,15 @@
 	papericon.MapColors(0.8,0.8,0.8, 0.2,0.2,0.2, 0.8,0.8,0.8, 0,0,0)
 	inverted_icon = papericon
 	spawnedmob.icon = inverted_icon
-	spawnedmob.desc = "It looks like a [spawnedmob.name] but made of paper."
-	spawnedmob.name = "Paper [initial(spawnedmob.name)]"
+	spawnedmob.desc = "它看起来像是[spawnedmob.name]，但是是纸做的."
+	spawnedmob.name = "纸制[initial(spawnedmob.name)]"
 	spawnedmob.faction = list("hostile")
 	spawnedmob.maxHealth = (spawnedmob.maxHealth / 10)
 	spawnedmob.health = spawnedmob.maxHealth
-	spawnedmob.death_message = "collapses into a bunch of writing material."
+	spawnedmob.death_message = "变成了一堆写作材料."
 	spawnedmob.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=0, color=rgb(0, 0, 0))
 	spawnedmob.blood_volume = 0
-	src.visible_message(span_warning("Pages of [src] fold into [spawnedmob]!"))
+	src.visible_message(span_warning("[src]纸页折叠成了[spawnedmob]!"))
 	playsound(get_turf(src), 'sound/items/handling/paper_pickup.ogg', 90, 1, FALSE)
 
 /mob/living/simple_animal/hostile/abnormality/book/ZeroQliphoth(mob/living/carbon/human/user)

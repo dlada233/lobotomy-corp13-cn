@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/scaredy_cat
-	name = "Scaredy Cat"
-	desc = "An abnormality ressembling a small defenseless kitten."
+	name = "胆小的猫"
+	desc = "一种不正常的东西，像一只没有防备的小猫."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "scaredy_cat"
 	icon_living = "scaredy_cat"
 	icon_dead = "scaredy_dead"
 	portrait = "scaredy_cat"
 	del_on_death = FALSE
-	maxHealth = 150 //Lower health because he can revive indefinitely
-	health = 150
+	maxHealth = 250 //Lower health because he can revive indefinitely
+	health = 250
 	rapid_melee = 1
 	move_to_delay = 1.7
 	damage_coeff = list(RED_DAMAGE = 4, WHITE_DAMAGE = 4, BLACK_DAMAGE = 4, PALE_DAMAGE = 4)
@@ -52,10 +52,10 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "Cowardly kitten. <br>I’ll give you the courage to stand up to anything and everything. <br>The wizard grants you..."
+	observation_prompt = "怯懦的小猫。<br>我将赐你直面万物的勇气。<br>巫师授予你..."
 	observation_choices = list(
-		"A vial of \"liquid courage\"" = list(TRUE, "What are you even going to do when you lack the bravery to face anything head-on?"),
-		"Courage" = list(FALSE, "Drink this potion, it’ll give you courage. <br>You’ll be braver than anyone."),
+		"一小瓶\"液体勇气\"" = list(TRUE, "当你连直面事物的勇气都没有时，你还能做什么呢？"),
+		"勇气" = list(FALSE, "饮下这瓶药水，它会赋予你勇气。<br>你将比任何人都勇敢。"),
 	)
 
 	/// The list of abnormality scaredy cat will automatically join when they breach, add any "Oz" abno to this list if possible
@@ -201,7 +201,7 @@
 /mob/living/simple_animal/hostile/abnormality/scaredy_cat/proc/Courage(courage)
 	if(courage)
 		melee_damage_lower = 3
-		melee_damage_upper = 4
+		melee_damage_upper = 5
 		ChangeResistances(list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 2, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 0.5))
 		icon = 'ModularTegustation/Teguicons/48x48.dmi'
 		icon_living = "cat_courage"

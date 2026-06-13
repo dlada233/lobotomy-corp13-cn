@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/der_fluschutze
-	name = "Der Fluschutze"
-	desc = "A tall man wearing ragged military fatigues. You can see the glint of a locket chained to his neck."
+	name = "魔弹猎手"
+	desc = "一个穿着灰色、金色和帝王蓝配色衣服的高个子男人，他的目标无可挑剔."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "DrFluShots"
 	icon_living = "DrFluShots"
 	icon_dead = "DrFluShots"
 	portrait = "der_fluschutze"
-	maxHealth = 300
-	health = 300
+	maxHealth = 420
+	health = 420
 	ranged = TRUE
 	can_breach = TRUE
 	casingtype = /obj/item/ammo_casing/caseless/ego_fellscatter
@@ -39,14 +39,13 @@
 	gift_type =  /datum/ego_gifts/fellbullet
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "In this gory war, the devil approached me one day to suggest a deal. <br>\
-		\"Thanks to that, I'm free to point the barrel at anyone I want. No matter where I fire it, this shotgun can blast anyone into fireworks like it hit them point blank, how wonderful is that? <br>\
-		By the way, whose side are you on?\""
+	observation_prompt = "眼前伫立着手持华美步枪的男人。<br>\
+		\"我的子弹从不落空，凡被瞄准之物头颅必被贯穿。<br>\
+		若有目标，支付代价即可。\""
 	observation_choices = list(
-		"Tell him to look at the pendant on his neck" = list(TRUE, "Filled with rage, the shooter pointed its gun at me and pulled the trigger. <br>\
-			However, the projectiles vanished in the air, and the shooter fell to the floor and started to cry."),
-		"Say you're on his side" = list(FALSE, "The man scowls. <br>\"Let me do you a favor. \
-		The people you love will remember you as yet another victim that lost their head."),
+		"购买服务" = list(TRUE, "枪手依言上膛，瞄准目标扣动扳机，弹头贯穿目标头颅后继续飞行。<br>\
+			它将永无止境地贯穿更多头颅。"),
+		"拒绝支付" = list(FALSE, "男人面露愠色。<br>\"信念如此摇摆就别浪费我时间。\""),
 	)
 
 	var/can_act = TRUE

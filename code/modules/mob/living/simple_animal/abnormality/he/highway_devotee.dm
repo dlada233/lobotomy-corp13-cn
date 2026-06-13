@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/highway_devotee
-	name = "Highway Devotee"
-	desc = "A giant form holding a 'road closed' sign."
+	name = "公路里程表"
+	desc = "一个巨大的牌子上写着“道路封闭”."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "highway_devotee"
 	icon_living = "highway_devotee"
@@ -36,21 +36,21 @@
 	gift_type =  /datum/ego_gifts/uturn
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "There's a long, wide road ahead. <br>\
-		You see someone with a sign at the entrance. <br>\
-		\"This is a one-way road. No U-turns.\" <br>\
-		\"If you take this road, it'll take ages to come back here.\" <br>\
-		As the person claims, the road seems to be stretched almost endlessly into the distance."
+	observation_prompt = "前方是条漫长宽阔的道路。<br>\
+		入口处有人举着告示牌：<br>\
+		\"此路单向通行，禁止掉头。\"<br>\
+		\"若选择此路，返程将耗时漫长。\"<br>\
+		正如其所言，道路似乎无限延伸至远方。"
 	observation_choices = list(
-		"Go back the way you came instead of taking the main road" = list(TRUE, "\"The road might seem vacant right now, but take it for a bit and you'll see. <br>That the road is jam-packed with cars, and you'd be slowed to a crawl.\" <br>\
-			\"Turning around is not an option, either. There would be a car right behind you by the time you decide to go back.\" <br>\
-			\"You made the right choice.\" <br>\
-			It lightly smiled. <br>\
-			The sign was still held high for whoever might enter this highway in the future."),
-		"Take the byway instead of taking the main road" = list(FALSE, "\"Not a good choice.\" <br>\
-			\"Everyone is following the same rules to traverse this road. In any case, this highway is for everyone.\" <br>\
-			\"I assure you, the god of traffic won't forgive cheap shortcuts like that.\" <br>\
-			As you take the byway, you endured the piercing glare on your back for a good while."),
+		"放弃主路原路返回" = list(TRUE, "\"此刻道路看似空旷，但稍行片刻便会发现：<br>整条路堵满了车，行进速度将慢如爬行。\"<br>\
+			\"掉头也不可行——当你决定返回时，后方早已堵满车辆。\"<br>\
+			\"你做了正确选择。\"<br>\
+			它露出浅笑。<br>\
+			\"告示牌仍高举着，等待未来的公路使用者。"),
+		"放弃主路改走小道" = list(FALSE, "\"不明智的选择。\"<br>\
+			\"所有人遵循相同规则通行，这公路属于每位使用者。\"<br>\
+			\"交通之神不会宽恕这种投机取巧的行为。\"<br>\
+			你走上小道，背后刺人的目光伴随了你许久。"),
 	)
 
 	var/talk = FALSE
@@ -65,7 +65,7 @@
 	if(talk)
 		return
 	for(var/mob/living/carbon/human/H in view(5, src))
-		say("If you take this road, it'll take ages to come back here.")
+		say("如果你走这条路，要花很长时间才能回到这里.")
 		talk = TRUE
 		break
 
@@ -102,7 +102,7 @@
 		structures += P
 
 /obj/structure/blockedpath
-	name = "highway devotee"
+	name = "公路里程表"
 	icon_state = "blank"
 	max_integrity = 3000000
 	density = 1

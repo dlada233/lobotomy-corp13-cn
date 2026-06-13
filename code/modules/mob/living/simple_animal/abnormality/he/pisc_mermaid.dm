@@ -3,8 +3,8 @@
 //They are somehow more high maintenance than both melting love and rose, but is way easier to work with, assuming you remember to work on them.
 //You wouldn't forget about them would you Anon? - Caluan
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid
-	name = "Piscine Mermaid"
-	desc = "A limbless abnormality ressembling a mermaid. Their heart shaped eyes look at you with both love and jealousy."
+	name = "池中人鱼"
+	desc = "像美人鱼的无肢畸形物他们心形的眼睛带着爱和嫉妒看着你."
 	icon = 'ModularTegustation/Teguicons/48x32.dmi'
 	icon_state = "pmermaid_standing"
 	icon_living = "pmermaid_standing"
@@ -13,8 +13,8 @@
 	death_sound = 'sound/abnormalities/piscinemermaid/waterjump.ogg'
 	attack_sound = 'sound/abnormalities/piscinemermaid/splashattack.ogg'
 	del_on_death = FALSE
-	maxHealth = 300
-	health = 300
+	maxHealth = 420
+	health = 420
 	pixel_x = -12
 	base_pixel_x = -12
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 2) //not that bad without a lover
@@ -49,17 +49,16 @@
 		/mob/living/simple_animal/hostile/abnormality/siltcurrent = 1.5//check siltcurrent.dm for my reasoning
 	)
 
-	observation_prompt = "\"You said you loved me, did you really mean that? <br>I cut off my arms and legs for you, <br>\
-		if you said I did not need to see then I'd scoop out my eyes as well.\" <br>She splashes her aquamarine tail, foam, water and something else was flicked towards you. <br>\
-		\"I made you a gift, just wear it and say that you love me too.\" <br>\
-		The water carries the comb to your feet, you pick it up as she watches you expectantly."
+	observation_prompt = "\"你说过爱我，那是真心的吗？<br>我为你斩断四肢，<br>若你说不必看见，我连双眼也能挖出。\"<br>她拍打海蓝色鱼尾，泡沫、海水和别的东西溅向你。<br>\
+		\"我为你做了礼物，戴上它并说你爱我吧。\"<br>\
+		海水将梳子带到你脚边，你拾起它，而她期待地望着你。"
 	observation_choices = list(
-		"Cast it into the sea" = list(TRUE, "\"I don't understand, don't you love me? <br>Can't you hear, see or understand my love? <br>\
-			If I give you my eyes, my ears and my brain, could you percieve and learn to love me too? <br>Just please trade me your heart to fill this void in my chest...\" <br>\
-			You left the mermaid to her babble, love could never be something so transactional."),
-		"Accept the comb" = list(FALSE, "You place the comb in your hair and the mermaid smiles, her pupils like tiny hearts, and you find yourself walking into the depths as she embraces you. <br>\
-			\"I'm so happy you gave me your heart...\" <br>She whispers as she draws you into a kiss, pulling you further and further into the waves, the water passing your chest and then your head but still she wouldn't release her embrace. <br>\
-			Salt water fills your lungs as you lose consciousness."),
+		"将梳子抛入海中" = list(TRUE, "\"我不明白，难道你不爱我？<br>你难道听不见、看不见、也不理解我的爱？<br>\
+			若我将双眼、双耳和大脑都给你，你能否感知并学会爱我？<br>求求你把心给我来填补我胸口的空洞...\"<br>\
+			你任由人鱼胡言乱语，爱从不是如此交易之物。"),
+		"接受梳子" = list(FALSE, "你将梳子别在发间，人鱼笑了，她的瞳孔如小心脏般跳动，你发现自己随着她的拥抱走向深海。<br>\
+			\"真高兴你把心给了我...\"<br>她低语着吻住你，将你越拉越深，海水漫过胸膛又没过头顶，她却不肯松开怀抱。<br>\
+			盐水灌入你的肺，你失去了意识。"),
 	)
 
 	response_help_continuous = "pets" //You sick fuck
@@ -133,14 +132,14 @@
 			forceMove(T)
 			GiveTarget(love_target) //ANON YOU HAVEN'T REPLIED TO MY TEXTS IN THE PAST 15 MINUTES DON'T YOU LOVE ME ANYMORE?
 			playsound(get_turf(src), 'sound/abnormalities/piscinemermaid/waterjump.ogg', 50, 1)
-		to_chat(love_target, span_userdanger("You can't breath!"))
+		to_chat(love_target, span_userdanger("你不能呼吸!"))
 	if(crown)
 		qdel(crown)
 
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid/death(gibbed)
 	if(love_target)
 		love_target.remove_movespeed_modifier(/datum/movespeed_modifier/unrequited_slowdown)
-		say("[love_target.name]... You promised we'd be...")
+		say("[love_target.name]... 你曾答应我们的...")
 		love_target = null
 	if(crown)
 		qdel(crown) //this shouldn't be possible for a crown to exist after her breach but we might as well
@@ -166,7 +165,7 @@
 		return
 
 	if(love_target.stat == DEAD)
-		say("[love_target.name]? Are you okay? I'm sorry, is it my fault? Will you come back if I love you enough? Will you love me back in death at least?")
+		say("[love_target.name]? 你没事吧？对不起，是我错了吗？如果我足够爱你，你会回来吗？至少在死后，你会爱我吗?")
 		ChangeResistances(list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 2)) //back to being a pushover
 		love_target = null
 		return
@@ -207,8 +206,8 @@
 
 //Gives a crown thing when you get good work on her. Anyone can wear the crown, even those that didn't work on her and there can only be one gift at a time.
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid/proc/GiveGift(mob/living/carbon/human/user)
-	FluffSpeak("Do you like it? You do right? I worked so hard on it...")
-	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "If you don't like it then can you find someone who does? Bring them to me please."), 3 SECONDS)
+	FluffSpeak("喜欢吗？你肯定喜欢吧？我费了好大功夫做的...")
+	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "如果不喜欢的话...能帮我找个喜欢的人来吗？"), 3 SECONDS)
 	var/obj/item/clothing/head/unrequited_crown/UC = new(get_turf(src))
 	crown = UC
 	crown.throw_at(user, 4, 1, src, spin = FALSE, gentle = TRUE, quickstart = FALSE)
@@ -221,10 +220,10 @@
 		pet_count = 0
 		return
 	// here, we talk to them whilst they are dying, just a tiny bit
-	to_chat(petter, span_userdanger("Something is pulling you into the water!"))
-	FluffSpeak("I'm really sorry, but it's fine, right? Isn't it wonderful to be loved?")
-	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "I am merely in love, I am merely wanting salvation."), 5 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "You can breath underwater right?"), 30 SECONDS)
+	to_chat(petter, span_userdanger("有什么东西正把你拖入水中！"))
+	FluffSpeak("真的很抱歉，但没关系对吗？被爱着不是很美好吗？")
+	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "我不过是陷入爱河，不过是渴求救赎。"), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(FluffSpeak), "你在水下也能呼吸对吧？"), 30 SECONDS)
 	// here, we murder them whilst we are talking
 	petter.Stun(2 MINUTES)
 	petter.move_resist = MOVE_FORCE_VERY_STRONG
@@ -257,17 +256,17 @@
 	petter = current_petter
 	switch(pet_count)
 		if(5)
-			FluffSpeak("You won't leave right? You love me right?")
+			FluffSpeak("你不会离开的对吧？你爱我对吧?")
 		if(10)
-			response_help_continuous = "hugs"
-			response_help_simple = "hug"
+			response_help_continuous = "拥抱"
+			response_help_simple = "拥抱"
 		if(12)
-			FluffSpeak("I swear I'll be nice, you can just stay with me, even if I'm a monster...")
+			FluffSpeak("我发誓会变得温柔，你可以永远陪着我...即使我是怪物...")
 		if(15)
-			response_help_continuous = "hold hands with"
-			response_help_simple = "hold hands with"
+			response_help_continuous = "十指相扣"
+			response_help_simple = "十指相扣"
 		if(17)
-			FluffSpeak("Are you sure you want to stay? I love you so much, I can't- I don't want to see you go.")
+			FluffSpeak("你确定要留下吗？我如此爱你，我不能——我不想看你离开。")
 		if(20)
 			ExcessiveLove()
 
@@ -280,8 +279,8 @@
 //The work chance is also affected by mermaid's counter, so +10% chance at 2 counter, +5% at 1.
 //The crown destroys itself whenever it's taken off the headslot and automatically triggers mermaid's breach
 /obj/item/clothing/head/unrequited_crown
-	name = "Unrequited Gift"
-	desc = "Love me, please love me. I'll take off my arms, I'll cut down my legs. Just love me back."
+	name = "无果之礼"
+	desc = "爱我，请爱我。我愿卸下双臂，斩断双足。只求你回以同等的爱。"
 	icon_state = "unrequited_gift"
 	icon = 'icons/obj/clothing/ego_gear/head.dmi'
 	worn_icon = 'icons/mob/clothing/ego_gear/head.dmi'
@@ -311,7 +310,7 @@
 	if((love_cooldown < world.time) && loved && mermaid.workingflag != TRUE)
 		mermaid.datum_reference.qliphoth_change(-1)
 		new /obj/effect/temp_visual/heart(get_turf(loved))
-		to_chat(loved, span_warning("You feel as though you're forgetting someone..."))
+		to_chat(loved, span_warning("你似乎遗忘了某个重要的人..."))
 		love_cooldown = world.time + love_cooldown_time
 
 /obj/item/clothing/head/unrequited_crown/Destroy()
@@ -321,8 +320,8 @@
 
 //Mermaid bath water
 /obj/effect/mermaid_water
-	name = "Lovely water"
-	desc = "This water is as desperate for love as the one that resides in it"
+	name = "爱恋之水"
+	desc = "这水体承载着与居住者同等的、对爱的绝望渴求"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "mermaid_water"
 	layer = BELOW_OBJ_LAYER

@@ -1,7 +1,7 @@
 //Code by Coxswain, sprites by Kojka Kill and "Multiwonder"
 /mob/living/simple_animal/hostile/abnormality/norinori //Not li'l helper
 	name = "Norinori"
-	desc = "It has the appearance of a cartoon fox, but upon closer inspection, it is actually a cat."
+	desc = "它长得像一只卡通狐狸，但仔细一看，它实际上是一只猫."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "norinori"
 	icon_living = "norinori"
@@ -9,12 +9,12 @@
 	portrait = "norinori"
 	speak_emote = list("meows")
 	ranged = TRUE
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	attack_sound = 'sound/weapons/slashmiss.ogg'
 	melee_damage_type = RED_DAMAGE
 	melee_damage_lower = 4
-	melee_damage_upper = 5
+	melee_damage_upper = 7
 	rapid_melee = 1 //we change this later
 	melee_reach = 1
 	ranged = TRUE
@@ -43,26 +43,26 @@
 	gift_type =  /datum/ego_gifts/split
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "The split fox stands before you. <br>\
-		Despite it's unassuming appearance, this thing can kill you in seconds. <br>\
-		You have been tasked to work on this creature. <br>\
-		What type of work will you attempt? <br>\
-		Choose carefully."
+	observation_prompt = "分裂的狐狸站在你面前。<br>\
+		尽管外表平凡，这东西能在数秒内杀死你。<br>\
+		你被指派对该生物进行工作。<br>\
+		你将尝试何种工作？<br>\
+		请谨慎选择。"
 	observation_choices = list(
-		"Inject Cogito" = list(TRUE, "You prepare to start instinct work .<br>\
-			... <br>\
-			Checking Vitals <br>\
-			... <br>\
-			Adjusting Fluid Intake <br>\
-			... <br>\
-			Allocating 37% Cogito <br>\
-			... <br>\
-			The work is complete, <br>you report the good result to the work log."),
-		"Try to make friends with it" = list(FALSE, "Surely such a cute thing must be friendly, right? <br>\
-			It seems you have not learned your lesson <br>\
-			The split fox senses your intent. <br>\
-			It opens up, revealing a core connected to several sharp cutting tools <br>\
-			You are too close to get away."),
+		"注入脑啡肽" = list(TRUE, "你准备开始本能工作。<br>\
+			...<br>\
+			检查生命体征<br>\
+			...<br>\
+			调整液体摄入<br>\
+			...<br>\
+			分配37%脑啡肽<br>\
+			...<br>\
+			工作完成，<br>你将良好结果记录到工作日志。"),
+		"尝试与它交朋友" = list(FALSE, "这么可爱的东西肯定很友好，对吧？<br>\
+			看来你没有吸取教训。<br>\
+			分裂狐狸察觉到你的意图。<br>\
+			它张开身体，露出连接着数把锋利切割工具的核心。<br>\
+			你离得太近，无法逃脱。"),
 	)
 
 //breach related
@@ -132,7 +132,7 @@
 /mob/living/simple_animal/hostile/abnormality/norinori/funpet(mob/petter)
 	if(!IsContained())
 		return
-	if(get_attribute_level(petter, TEMPERANCE_ATTRIBUTE) <= 60)
+	if(get_attribute_level(petter, TEMPERANCE_ATTRIBUTE) < 60)
 		KillCheck(petter)
 	else
 		datum_reference.qliphoth_change(-1)

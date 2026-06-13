@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/schadenfreude
-	name = "Schadenfreude"
-	desc = "A box with a keyhole. You don't want to know what's inside."
+	name = "幸灾乐祸"
+	desc = "有锁眼的盒子，你不会想知道里面是什么."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "schadenfreude"
 	icon_living = "schadenfreude"
@@ -8,12 +8,12 @@
 	pixel_x = -16
 	base_pixel_x = -16
 	del_on_death = TRUE
-	maxHealth = 350 //It's fucking slow as hell, and you can beat it to death if you're alone for free
-	health = 350
+	maxHealth = 800 //It's fucking slow as hell, and you can beat it to death if you're alone for free
+	health = 800
 	move_to_delay = 5
-	damage_coeff = list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 0.2, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.7)
+	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1.0, PALE_DAMAGE = 1.5)
 	melee_damage_lower = 8		//Yeah it's super slow, and you're not gonna get hit by it too often
-	melee_damage_upper = 9
+	melee_damage_upper = 12
 	melee_damage_type = RED_DAMAGE
 	stat_attack = HARD_CRIT
 	attack_sound = 'sound/abnormalities/scarecrow/attack.ogg'
@@ -41,12 +41,12 @@
 	gift_type =  /datum/ego_gifts/gaze
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "You put on the blindfold and entered the containment unit. <br>You can feel the metal box's gaze through the thick fabric."
+	observation_prompt = "你戴上眼罩步入收容单元。<br>隔着厚重织物仍能感受到金属盒的凝视。"
 	observation_choices = list(
-		"Feel for the wall" = list(TRUE, "You turn to the wall and feel for it until you find your way back to the door. <br>\
-			The box can't ever be more than a box, it can only exist as something real in the gaze of others. <br>Perhaps you're more alike than you think."),
-		"Take off the blindfold" = list(FALSE, "You remove the blindfold and wait a moment for your eyes to adjust to the light, your gaze meets the eye in the keyhole's. <br>\
-			The box comes to life with saws and blades, but all it is for - is to catch your attention."),
+		"摸索墙壁" = list(TRUE, "你转身沿墙摸索，最终寻路返回门口。<br>\
+			金属盒终究只是容器，唯有他人注视才能赋予其真实存在。<br>或许你们比想象中更为相似。"),
+		"摘下眼罩" = list(FALSE, "你扯下眼罩待视线适应光线，与锁孔中的瞳孔四目相对。<br>\
+			盒子骤然化作旋转的锯刃刀丛，而这一切——只为攫取你的注视。"),
 	)
 
 	var/seen //Are you being looked at right now?
@@ -84,10 +84,8 @@
 		datum_reference.qliphoth_change(-1)
 	if(people_watching == 1)
 		seen = FALSE
-		ChangeResistances(list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 0.2, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.7))
 	else	//any amount of people that's not 1.
 		seen = TRUE
-		ChangeResistances(list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1.0, PALE_DAMAGE = 1.5))
 
 //Stuff that needs sight check
 /mob/living/simple_animal/hostile/abnormality/schadenfreude/Move()
@@ -108,7 +106,7 @@
 //Too many people looking? Reduce final work success rate to 0.
 /mob/living/simple_animal/hostile/abnormality/schadenfreude/ChanceWorktickOverride(mob/living/carbon/human/user, work_chance, init_work_chance, work_type)
 	if(seen && !solo_punish && total_players > 1) //If you're only considered "seen" because the other living player(s) are all on another Z level, or there are no other players online at the time, disregard it during work specifically.
-		to_chat(user, span_warning("You are injured by [src]!")) // Keeping it clear that the bad work is from being seen and not just luck.
+		to_chat(user, span_warning("你被[src]伤害了!")) // Keeping it clear that the bad work is from being seen and not just luck.
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(user), pick(GLOB.alldirs))
 		return 0
 	return init_work_chance
@@ -117,7 +115,7 @@
 /mob/living/simple_animal/hostile/abnormality/schadenfreude/Worktick(mob/living/carbon/human/user)
 	. = ..()
 	if(total_players == 1)
-		user.apply_damage(5, RED_DAMAGE, null, user.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
+		user.apply_damage(1, RED_DAMAGE, null, user.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
 
 /mob/living/simple_animal/hostile/abnormality/schadenfreude/BreachEffect(mob/living/carbon/human/user, breach_type)
 	. = ..()

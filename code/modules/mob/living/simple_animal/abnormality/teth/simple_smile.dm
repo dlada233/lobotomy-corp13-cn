@@ -1,7 +1,7 @@
 //Very simple, funny little guy.
 /mob/living/simple_animal/hostile/abnormality/smile
-	name = "Gone with a Simple Smile"
-	desc = "An abnormality seeming to make up a floating cat face."
+	name = "一个简单的微笑"
+	desc = "一种似乎构成漂浮猫脸的畸形物."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "smile"
 	icon_living = "smile"
@@ -46,14 +46,14 @@
 	gift_type =  /datum/ego_gifts/trick
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "The abnormality appears to you from out of thin air, and swipes away your weapon."
+	observation_prompt = "异常存在凭空出现在你面前，并夺走了你的武器."
 	observation_choices = list(
-		"Chase after it" = list(TRUE, "You chase gone with a simple smile across the facility <br>\
-			You trip and scrape your leg on the facility's floor. <br>\
-			\"Well that wasn't very nice! You should apologize for so rudely disarming me, and having me run around like that!\" <br>\
-			The words come out of your mouth before you even realize what is happening. <br>\
-			And as if to answer, Gone with a Simple Smile hands your weapon back. <br>\
-			Then, it disappears with a smile."),
+		"追赶它" = list(TRUE, "你带着简单的微笑在设施内追逐目标 <br>\
+			你被设施地板绊倒并擦伤了腿 <br>\
+			\"这可不太礼貌！你该为粗鲁地解除我的武装、还让我这样跑来跑去的行径道歉！\" <br>\
+			话语未经思考便脱口而出 <br>\
+			仿佛回应般，一个简单的微笑将武器递还给你 <br>\
+			随后它带着笑容消失了。"),
 	)
 
 	var/list/stats = list(

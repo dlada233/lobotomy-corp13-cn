@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/cleaner
-	name = "All-Around Cleaner"
-	desc = "A tiny robot with helpful intentions."
+	name = "全自动扫地机"
+	desc = "一个有帮助意图的小机器人."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "cleaner"
 	icon_living = "cleaner"
 	portrait = "cleaner"
-	maxHealth = 150
-	health = 150
+	maxHealth = 220
+	health = 220
 	ranged = TRUE
 	attack_verb_continuous = "cleans"
 	attack_verb_simple = "cleans"
@@ -40,7 +40,7 @@
 		/datum/ego_datum/armor/sanitizer,
 	)
 	gift_type =  /datum/ego_gifts/sanitizer
-	gift_message = "Contamination scan complete. Initiating cleaning protocol."
+	gift_message = "污染扫描完成，启动清洗程序."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
 	grouped_abnos = list(
@@ -49,23 +49,23 @@
 	)
 
 	can_spawn = FALSE // Normally doesn't appear
-	observation_prompt = "I wipe everything. <br>\
-		Cleaning is enjoyable. <br>\
-		I like to be the same as others. <br>\
-		... <br>\
-		I am frankly troubled. <br>\
-		The model next to mine boasted that it has multiple parts that others don't. <br>\
-		Is that what makes one special? <br>\
-		Am I special the way I am?"
+	observation_prompt = "我擦拭一切。<br>\
+		清洁令人愉悦。<br>\
+		我渴望与他人相同。<br>\
+		...<br>\
+		我深感困扰。<br>\
+		邻座型号炫耀着它独有的部件。<br>\
+		这就是特殊的定义吗？<br>\
+		此刻的我是否足够特别？"
 	observation_choices = list(
-		"You are not special" = list(TRUE, "\"Am I not special, not special, not special?\" <br>\
-			After giving a lagged reply, it suddenly began tearing off all the cleaning gadgets from its body and crashing into walls. <br>\
-			It rubbed its body on other objects while sparks flew off as if it was trying to attach things to it. <br>\
-			It only stopped after a while. <br>\
-			\"Maybe I wanted to be special.\""),
-		"You are special" = list(FALSE, "\"No. I am not special.\" <br>\
-			Disregarding the answer, it gives a stern reply. <br>\
-			\"I will keep living an ordinary life, the same as now, just as assigned to me.\""),
+		"你并不特别" = list(TRUE, "\"我不特别吗，不特别吗，不特别吗？\"<br>\
+			延迟应答后，它突然撕扯全身清洁部件，疯狂撞击墙壁。<br>\
+			火花飞溅中摩擦其他物体，仿佛要将它们嵌入躯体。<br>\
+			许久才停止动作。<br>\
+			\"或许我曾渴望成为特别的存在。\""),
+		"你很特别" = list(FALSE, "\"不，我并不特别.\" <br>\
+			无视回答，它给出冰冷回应. <br>\
+			\"我将继续平凡存在，如当下般，如程序所愿.\""),
 	)
 
 	var/bumpdamage = 4
@@ -102,7 +102,7 @@
 				if(cleaned_human.body_position == LYING_DOWN)
 					cleaned_human.wash(CLEAN_SCRUB)
 					cleaned_human.regenerate_icons()
-					to_chat(cleaned_human, span_danger("[src] flawlessly cleans you of your features!"))
+					to_chat(cleaned_human, span_danger("[src]完美地清除了你的特征!"))
 					ADD_TRAIT(cleaned_human, TRAIT_DISFIGURED, TRAIT_GENERIC) //cleans your face of uneeded features
 
 /mob/living/simple_animal/hostile/abnormality/cleaner/update_icon_state()

@@ -4,8 +4,8 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 */
 #define STATUS_EFFECT_MUSIC /datum/status_effect/display/singing_machine
 /mob/living/simple_animal/hostile/abnormality/singing_machine
-	name = "Singing Machine"
-	desc = "A shiny metallic device with a large hinge. You feel a sense of dread about what might be inside..."
+	name = "歌唱机"
+	desc = "有大铰链的闪亮的金属装置，你会对里面的东西感到恐惧..."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "singingmachine_closed_clean"
 	icon_living = "singingmachine_closed_clean"
@@ -42,11 +42,11 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 	buckled_mobs = list()
 	buckle_lying = TRUE
 
-	observation_prompt = "You know that people die every time this machine sings. <br>\
-		Or perhaps this machine sings when people die. <br>Though it has spilled blood of countless people, the song put you in a rapturous mood."
+	observation_prompt = "你知道这台机器每次歌唱都会有人死去。<br>\
+		也可能是有人死去时这台机器才会歌唱。<br>尽管它已沾满无数人的鲜血，歌声却让你心情愉悦。"
 	observation_choices = list(
-		"Turn off the machine" = list(TRUE, "You turned the machine off. Silence fills the air."),
-		"Listen to the music" = list(FALSE, "Aah. The music gives you sense of warm coziness and relaxation."),
+		"关闭机器" = list(TRUE, "你关闭了机器。四周陷入寂静。"),
+		"聆听音乐" = list(FALSE, "啊。这音乐带给你温暖舒适和放松的感觉。"),
 	)
 
 	var/cleanliness = "clean"
@@ -73,9 +73,9 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 			H.deal_damage(rand(playStatus * noiseFactor, playStatus * noiseFactor * 2), WHITE_DAMAGE)
 			if(H in musicalAddicts)
 				H.deal_damage(rand(playStatus * noiseFactor, playStatus * noiseFactor * 2), WHITE_DAMAGE)
-				to_chat(H, span_warning("You can hear it again... it needs more..."))
+				to_chat(H, span_warning("你又一次听见它了... 它需要更多..."))
 			else
-				to_chat(H, span_warning("That terrible grinding noise..."))
+				to_chat(H, span_warning("那可怕的磨擦声..."))
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/singing_machine/Move()
@@ -94,11 +94,11 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 	if(work_type == ABNORMALITY_WORK_INSTINCT)
 		if(datum_reference.qliphoth_meter > 0) // Sets bonus damage on instinct work.
 			bonusRed = grindRed // Should be weaker, for less lethal grinding.
-			manual_emote("makes an odd grinding noise...")
+			manual_emote("发出奇怪的研磨声...")
 			playsound(src, 'sound/abnormalities/singingmachine/grind.ogg', 40, 0, 1)
 		else
 			bonusRed = minceRed // Should be stronger, for when working it is EXTRA dangerous.
-			manual_emote("makes a horrible grinding noise!") // Oh boy, it's mad.
+			manual_emote("发出可怕的研磨声!") // Oh boy, it's mad.
 			playsound(src, 'sound/abnormalities/singingmachine/chew.ogg', 60, 0, 3)
 	else if(get_attribute_level(user, FORTITUDE_ATTRIBUTE) >= 80 || get_attribute_level(user, TEMPERANCE_ATTRIBUTE) < 60)
 		statChecked = 1 // I see you've failed one of the stat checks, but have also chosen not to feed yourself to the machine.
@@ -126,7 +126,7 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 	if(user.sanity_lost || user.health < 0) // Did they die? Time to force a bad result.
 		pe = 0
 	if(work_type == ABNORMALITY_WORK_INSTINCT && datum_reference.qliphoth_meter > 0) // At the end of an instinct work that wasn't trying to raise its counter...
-		to_chat(user, span_nicegreen("There's something about that sound..."))
+		to_chat(user, span_nicegreen("那声音很特别..."))
 		musicalAddicts |= user
 		user.apply_status_effect(STATUS_EFFECT_MUSIC) // Time to addict them.
 		SEND_SOUND(user, 'sound/abnormalities/singingmachine/addiction.ogg')
@@ -136,7 +136,7 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 /mob/living/simple_animal/hostile/abnormality/singing_machine/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	if(datum_reference.qliphoth_meter == 0) // You did it! You survived a work at 0 qliphoth!
-		manual_emote("rests silent once more...") // The machine is now dormant.
+		manual_emote("再次安静地休息...") // The machine is now dormant.
 		playsound(src, 'sound/abnormalities/singingmachine/creak.ogg', 50, 0, 1)
 		datum_reference.qliphoth_change(2)
 		icon_state = "singingmachine_closed_[cleanliness]"
@@ -219,11 +219,11 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 
 /datum/ai_behavior/say_line/insanity_singing_machine
 	lines = list(
-		"A corpse, I need a corpse...",
-		"I'll listen to that song at any cost.",
-		"Don't struggle, you'll love its melodies too.",
-		"I'm sorry, but I have to hear that song again.",
-		"Now, I am reborn.",
+		"尸体, 我需要一具尸体...",
+		"我要不惜任何代价听那首歌.",
+		"不要纠结，你也会爱上它的旋律.",
+		"对不起，我必须再听一遍那首歌.",
+		"现在，我重生了.",
 	)
 
 /datum/status_effect/display/singing_machine
@@ -238,8 +238,8 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 	var/addictionSanityMax = 6
 
 /atom/movable/screen/alert/status_effect/singing_machine
-	name = "Musical Addiction"
-	desc = "Your experience with that machine has etched its music into your body and your mind..."
+	name = "音乐成瘾"
+	desc = "那台机器的音乐已经刻在了你的身体和大脑里..."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "musical_addiction"
 

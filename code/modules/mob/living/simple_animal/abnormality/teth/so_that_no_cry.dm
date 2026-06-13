@@ -1,15 +1,15 @@
 #define STATUS_EFFECT_TALISMAN /datum/status_effect/stacking/talisman
 #define STATUS_EFFECT_CURSETALISMAN /datum/status_effect/stacking/curse_talisman
 /mob/living/simple_animal/hostile/abnormality/so_that_no_cry
-	name = "So That No One Will Cry"
-	desc = "An abnormality taking the form of a wooden doll, various strange paper talismans are attached to it's body."
+	name = "因而无人哭泣"
+	desc = "一个畸形的木娃娃，各种奇怪的纸护身符附着在它的身体."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "so_that_no_cry"
 	icon_living = "so_that_no_cry"
 	portrait = "so_that_no_cry"
 	core_icon = "cry_egg"
-	maxHealth = 300 //High health, can be stunned.
-	health = 300
+	maxHealth = 370 //High health, can be stunned.
+	health = 370
 	rapid_melee = 2
 	move_to_delay = 3
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
@@ -43,18 +43,18 @@
 	gift_type = /datum/ego_gifts/red_sheet
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "You hear the quiet creaking of wood. <br>\
-		In this cramped cell, the wooden doll stands. <br>\
-		Are the talismans here to fulfill a wish? <br>\
-		Does this wooden doll wish for anything?"
+	observation_prompt = "你听见木头轻微的吱呀声。<br>\
+		在这个狭小的收容单元内，木偶静静伫立。<br>\
+		这些符咒是为了实现愿望吗？<br>\
+		这个木偶是否也在祈求着什么？"
 	observation_choices = list(
-		"Remove the doll's talismans" = list(TRUE, "After you removed them, the doll knelt. <br>\
-			Is it begging you not to take it,<br>\
-			or is it a gesture of gratitude?<br>\
-			You won’t know for now."),
-		"Do nothing" = list(FALSE, "Nothing happened. <br>\
-			The doll would simply stand there, producing small noises. <br>\
-			It now ignores you, as if disappointed."),
+		"移除玩偶的符咒" = list(TRUE, "当你移除符咒后，木偶跪了下来。<br>\
+			它是在乞求你不要拿走符咒，<br>\
+			还是在表达感激？<br>\
+			你暂时无从得知。"),
+		"什么也不做" = list(FALSE, "无事发生。<br>\
+			木偶只是站在那里，发出细微的声响。<br>\
+			它现在无视了你，仿佛很失望。"),
 	)
 
 	var/can_act = TRUE
@@ -72,9 +72,9 @@
 		if(!G)//applying the buff for the first time (it lasts for four minutes)
 			new /obj/effect/temp_visual/talisman(get_turf(user))
 			user.apply_status_effect(STATUS_EFFECT_TALISMAN)
-			to_chat(user, span_nicegreen("A talisman quietly dettaches from the abnormality and sticks to you."))
+			to_chat(user, span_nicegreen("一张符咒悄悄地从异想体身上分离，贴到了你身上."))
 		else//if the employee already has the buff, add a stack and refresh
-			to_chat(user, span_nicegreen("Another talisman sticks to you."))
+			to_chat(user, span_nicegreen("另一张符咒贴到了你身上."))
 			if (G.stacks == 5)
 				playsound(src, 'sound/abnormalities/so_that_no_cry/curse_talisman.ogg', 100, 1)
 			else
@@ -88,13 +88,13 @@
 	if(G)//remove the buff
 		G.safe_removal = TRUE
 		user.remove_status_effect(STATUS_EFFECT_TALISMAN)
-		to_chat(user, span_nicegreen("You place all of your talismans back onto the abnormality."))
+		to_chat(user, span_nicegreen("你把你所有的符咒都放回异想体身上."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/so_that_no_cry/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	var/datum/status_effect/stacking/curse_talisman/G = user.has_status_effect(/datum/status_effect/stacking/curse_talisman)
 	if(G)
-		to_chat(user, span_userdanger("The abnormality gets up and starts moving - and you can't move a muscle!"))
+		to_chat(user, span_userdanger("异想体站起来并开始运动——而你连一块肌肉都动不了!"))
 		user.Stun(50)
 		datum_reference.qliphoth_change(-1)
 		return
@@ -116,7 +116,7 @@
 		jump_turf = get_turf(attacker)
 	forceMove(jump_turf)
 	playsound(src, 'sound/abnormalities/so_that_no_cry/counter.ogg', min(15 + damage, 100), TRUE, 4)
-	attacker.visible_message(span_danger("[src] hits [attacker] with a barrage of punches!"), span_userdanger("[src] counters your attack!"))
+	attacker.visible_message(span_danger("[src]用一连串的拳打[attacker]!"), span_userdanger("[src]承受你的攻击!"))
 	do_attack_animation(attacker)
 	attacker.deal_damage(damage, attack_type)
 	new /obj/effect/temp_visual/revenant(get_turf(attacker))
@@ -186,7 +186,7 @@
 	damage_reflection = TRUE
 	damage_taken = 0
 	playsound(src, 'sound/abnormalities/so_that_no_cry/prepare.ogg', 50, TRUE, 7)
-	visible_message(span_warning("[src] assumes a stance!"))
+	visible_message(span_warning("[src]假设一个立场!"))
 	icon_state = "so_that_no_cry_guard"
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	SLEEP_CHECK_DEATH(10 SECONDS)
@@ -217,7 +217,7 @@
 	AttachTalisman()
 
 /mob/living/simple_animal/hostile/abnormality/so_that_no_cry/proc/AttachTalisman(mob/living/attacker)
-	visible_message(span_notice("A talisman is attached to [src]!"))
+	visible_message(span_notice("一张符咒被贴到了[src]身上!"))
 	talismans += 1
 	if(talismans > 10)
 		TalismanStun()
@@ -233,7 +233,7 @@
 	new /obj/effect/temp_visual/talisman/curse(get_turf(src))
 	var/stun_duration = talismans * 5
 	icon_state = "so_that_no_cry_stunned"
-	visible_message(span_notice("[src] freezes entirely as a talisman is attached to its body!"))
+	visible_message(span_notice("[src]被附身的符咒完全冻结!"))
 	SLEEP_CHECK_DEATH(stun_duration)
 	icon_state = "so_that_no_cry"
 	can_act = TRUE
@@ -292,8 +292,8 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/talisman
-	name = "Talisman"
-	desc = "These feel oddly soothing, as if they gave you strength."
+	name = "符咒"
+	desc = "这些感觉出奇地舒缓，仿佛它们给了你力量."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "talisman"
 
@@ -330,8 +330,8 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/curse_talisman
-	name = "Curse Talisman"
-	desc = "You feel your strength being sapped away..."
+	name = "诅咒符咒"
+	desc = "你感到自己的力量正在被消耗殆尽..."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "curse_talisman"
 

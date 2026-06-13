@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_TEARS /datum/status_effect/stacking/tears
 #define STATUS_EFFECT_TEARS_LESS /datum/status_effect/stacking/tears/less
 /mob/living/simple_animal/hostile/abnormality/bottle
-	name = "Bottle of Tears"
+	name = "瓶中泪"
 	desc = "A bottle filled with water with a cake on top"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "bottle1"
@@ -16,8 +16,8 @@
 		ABNORMALITY_WORK_INSIGHT = list(60, 50, 40, 30, 30),
 		ABNORMALITY_WORK_ATTACHMENT = list(60, 50, 40, 30, 30),
 		ABNORMALITY_WORK_REPRESSION = list(60, 50, 40, 30, 30), //How the fuck do you beat up a cake?
-		"Dining" = 100, //You can instead decide to eat the cake.
-		"Drink" = 100, //Or Drink the water
+		"用餐" = 100, //You can instead decide to eat the cake.
+		"喝水" = 100, //Or Drink the water
 	)
 	work_damage_upper = 2
 	work_damage_lower = 1
@@ -51,39 +51,39 @@
 	COOLDOWN_DECLARE(speak_damage_aura)
 
 	chem_type = /datum/reagent/abnormality/bottle
-	harvest_phrase = span_notice("You sweep up some crumbs from around %ABNO into %VESSEL.")
-	harvest_phrase_third = "%PERSON sweeps up crumbs from around %ABNO into %VESSEL."
+	harvest_phrase = span_notice("你从 %ABNO 周围扫起碎屑装入 %VESSEL .")
+	harvest_phrase_third = "%PERSON将 %ABNO 周围的碎屑扫入 %VESSEL ."
 
-	observation_prompt = "It was all very well to say \"Drink me\" but wisdom told you not to do that in a hurry. <br>\
-		The bottle had no markings to denote whether it was poisonous but you could not be sure, it was almost certain to disagree with you, sooner or later..."
+	observation_prompt = "虽然\"喝掉我\"的标签极具诱惑，但理智告诫你切莫匆忙行事. <br>\
+		瓶身没有任何毒性标识，但你无法确定，它迟早会与你产生致命冲突..."
 	observation_choices = list(
-		"Leave" = list(TRUE, "Suspicious things are suspicious, common sense hasn't failed you yet."),
-		"Eat the cake" = list(TRUE, "Abandon reason, that's how you survive in Wonderland. <br>\
-			You devour the cake by the handful, frosting and crumbs smear your hands, your face and the floor. <br>\
-			It's sweet and tart, with only the slightest hint of salt. <br>\
-			As you breach the final layer of cake, the top of the bottle cracks and a deluge of brine spills forth, filling the room faster than you could draw a breath. <br>\
-			In spite of that, you're at peace and smiling. <br>\
-			Through your fading eyesight, you spy yourself through the other side of the containment door's window - frowning."),
-		"Drink the bottle" = list(FALSE, "However this bottle was not marked as poisonous and you ventured a taste, \
-			and found it horrid, the brine clung to your tongue. <br>Who'd mark such a horrible thing for drinking?"),
+		"离开" = list(TRUE, "可疑之物终归可疑，常识至今未曾辜负于你."),
+		"吃掉蛋糕" = list(TRUE, "抛弃理性方能于仙境求生. <br>\
+			你狼吞虎咽地塞满蛋糕，糖霜与碎屑沾满双手、脸颊及地板. <br>\
+			甜中带酸，唯余淡淡咸涩. <br>\
+			当触及蛋糕底层时，瓶口猛然迸裂，咸涩洪流喷涌而出，顷刻淹没房间. <br>\
+			濒死之际你却面露安详微笑. <br>\
+			朦胧视野中，你瞥见收容门外皱眉凝视的——另一个自己."),
+		"喝掉液体" = list(FALSE, "纵使瓶身未标剧毒，浅尝仍令你作呕, \
+			咸涩液体黏着舌根久久不散. <br>怎会有人将这种标为饮品?"),
 	)
 
 // Work Mechanics
 /mob/living/simple_animal/hostile/abnormality/bottle/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(!cake)
-		if(work_type == "Dining")
+		if(work_type == "用餐")
 			return FALSE
-	if(work_type != "Dining" && work_type != "Drink")
+	if(work_type != "用餐" && work_type != "喝水")
 		if(datum_reference.console.meltdown)
 			cake_regen = TRUE
 		return TRUE
-	if(work_type == "Drink")
+	if(work_type == "喝水")
 		//it's just work speed
 		var/consume_speed = 2 SECONDS / (1 + ((get_attribute_level(user, TEMPERANCE_ATTRIBUTE) + datum_reference.understanding) / 100))
-		to_chat(user, span_warning("You begin to drink the water..."))
+		to_chat(user, span_warning("你开始喝这些水..."))
 		datum_reference.working = TRUE
 		if(!do_after(user, consume_speed * max_boxes, target = user))
-			to_chat(user, span_warning("You decide to not drink the water."))
+			to_chat(user, span_warning("你决定不喝这些水。"))
 			datum_reference.working = FALSE
 			return null
 		playsound(get_turf(user), 'sound/machines/synth_yes.ogg', 25, FALSE, -4)
@@ -108,7 +108,7 @@
 	if(canceled)
 		cake_regen = FALSE
 		return
-	if(work_type != "Dining")
+	if(work_type != "用餐")
 		if(cake_regen)
 			cake = 3
 			update_icon_state() // Cake is back because we  melted
@@ -117,7 +117,7 @@
 	cake -= 1 //Eat some cake
 	if(cake > 0)
 		user.adjustBruteLoss(-500) // It heals you to full if you eat it
-		to_chat(user, span_nicegreen("You consume the cake. Delicious!"))
+		to_chat(user, span_nicegreen("你吃掉了蛋糕。美味！"))
 		update_icon_state() //cake looks eaten
 		return
 
@@ -147,7 +147,7 @@
 
 	if(temperance >= (fortitude + prudence + justice) / 1.5) // If your temperance is at least twice your average stat, you aren't hurt, but lose temperance.
 		var/raw_temperance = get_raw_level(user, TEMPERANCE_ATTRIBUTE)
-		to_chat(user, span_userdanger("The room is filling with water... but you feel oddly unconcerned."))
+		to_chat(user, span_userdanger("房间正在被水填满...但你感到奇怪的无动于衷。"))
 		user.adjust_attribute_level(TEMPERANCE_ATTRIBUTE, 20 - floor(raw_temperance))
 		// This is a PERMANENT stat change, VERY significant. But it can happen only once per round. You're The Protagonist, after all.
 		var/stat_change = floor(raw_temperance - 20)
@@ -155,7 +155,7 @@
 		addtimer(CALLBACK(src, PROC_REF(DecayProtagonistBuff), user, stat_change), 20 SECONDS) // Short grace period. 10s of this happens while you're asleep.
 
 	else
-		to_chat(user, span_userdanger("The room is filling with water! Are you going to drown?!"))
+		to_chat(user, span_userdanger("房间正在被水填满! 你打算被淹死吗?!"))
 		user.adjustBruteLoss(user.maxHealth - (fortitude / 2)) // Hurt bad, but never lethally.
 		if(fortitude < (prudence + justice)) // Like the temperance calculation, but high temperance doesn't actively hurt your odds.
 			user.adjustBruteLoss(999) // okay, now you've done it
@@ -228,7 +228,7 @@
 	if(isliving(attacked_target))
 		var/mob/living/L = attacked_target
 		if(faction_check_mob(L))
-			L.visible_message(span_danger("[src] feeds [L]... [L] seems heartier!"), span_nicegreen("[src] feeds you, you feel heartier!"))
+			L.visible_message(span_danger("[src]喂食[L]... [L] 看起来精神更饱满了!"), span_nicegreen("[src]喂食了你，你感到精神更饱满了!"))
 			L.adjustBruteLoss(-speak_damage/2)
 			return
 	return ..()
@@ -240,7 +240,7 @@
 	if(COOLDOWN_FINISHED(src, speak_damage_aura) && !eating)
 		COOLDOWN_START(src, speak_damage_aura, speak_cooldown_time)
 		if(!client)
-			say("Drink Me.")
+			say("喝掉我.")
 		for(var/mob/living/L in view(vision_range, src))
 			if(L == src)
 				continue
@@ -266,8 +266,8 @@
 	var/scaling = 20
 
 /atom/movable/screen/alert/status_effect/tears
-	name = "Tearful"
-	desc = "Your attributes are weakened for a short period of time."
+	name = "含泪"
+	desc = "你的属性将短暂受到削弱."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "tearful"
 
@@ -284,7 +284,7 @@
 
 	var/mob/living/carbon/human/status_holder = owner
 
-	to_chat(owner, span_danger("Something once important to you is gone now. You feel like crying."))
+	to_chat(owner, span_danger("曾经对你重要的东西现在不见了，你感觉想哭."))
 	status_holder.adjust_attribute_buff(FORTITUDE_ATTRIBUTE, -scaling)
 	status_holder.adjust_attribute_buff(PRUDENCE_ATTRIBUTE, -scaling)
 	status_holder.adjust_attribute_buff(TEMPERANCE_ATTRIBUTE, -scaling)
@@ -296,7 +296,7 @@
 
 	var/mob/living/carbon/human/status_holder = owner
 
-	to_chat(owner, span_nicegreen("You feel your strength return to you."))
+	to_chat(owner, span_nicegreen("你感觉自己的力量重新回来了."))
 	status_holder.adjust_attribute_buff(FORTITUDE_ATTRIBUTE, scaling)
 	status_holder.adjust_attribute_buff(PRUDENCE_ATTRIBUTE, scaling)
 	status_holder.adjust_attribute_buff(TEMPERANCE_ATTRIBUTE, scaling)

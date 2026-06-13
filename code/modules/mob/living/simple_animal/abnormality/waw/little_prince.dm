@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/abnormality/little_prince
-	name = "\proper The Little Prince"
-	desc = "An abnormality taking the form of a tall mushroom-like entity of dark blue and purple colors. \
-	Dark blue hands hangs by its branches on a string"
+	name = "\proper 小王子"
+	desc = "一种反常现象，呈高大的蘑菇状实体，呈深蓝色和紫色. \
+	深蓝色的手挂在树枝上的绳子上"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "little_prince"
 	portrait = "little_prince"
@@ -29,15 +29,15 @@
 	gift_type = /datum/ego_gifts/spore
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "We can see things that others cannot. <br>\
-		I have come across 15 billion light years to meet you. <br>\
-		However, a butterfly can only fly as high in the sky as the sun warms. <br>\
-		It does not know that it will crumble before it can reach the stars. <br>It fell from the sky and crushed into the ground."
+	observation_prompt = "我们能看见他人不可见之物。<br>\
+		穿越150亿光年只为与你相遇。<br>\
+		然而蝴蝶仅能飞至阳光所及的高度。<br>\
+		它不知晓自己将在触及星辰前崩解。<br>最终坠向大地，粉身碎骨。"
 	observation_choices = list(
-		"Become its friend" = list(TRUE, "My voice can reach you unlike others. <br>\
-			Come to me, step by step. <br>You will reach the stars if those steps continue."),
-		"Do nothing" = list(FALSE, "Many who tried to reach me got lost. <br>\
-			Perhaps, we are standing on parallel lines. <br>Perhaps, we were looking at something that can never be reached."),
+		"成为它的朋友" = list(TRUE, "唯我的声音能抵达你身边。<br>\
+			一步步走向我吧。<br>只要脚步不停，终将触及星辰。"),
+		"什么也不做" = list(FALSE, "无数试图接近我者皆已迷失。<br>\
+			或许我们立于平行线上。<br>或许我们凝望的注定遥不可及。"),
 	)
 
 	var/insight_count = 0
@@ -77,9 +77,9 @@
 		if (!(user.sanity_lost))
 			//Check Sanity twice to make sure you're actually insane
 			twice -= user
-			to_chat(user, span_userdanger("You see mushrooms growing all over your body, and you tear them off!"))
+			to_chat(user, span_userdanger("你看到蘑菇在你身上生长，你决定把它们撕下来!"))
 			return
-	to_chat(user, span_userdanger("You see mushrooms growing all over your body!"))
+	to_chat(user, span_userdanger("你看到你全身长满了蘑菇!"))
 	user.add_overlay(mutable_appearance('ModularTegustation/Teguicons/tegu_effects32x48.dmi', "spore_hypno", -HALO_LAYER))
 	QDEL_NULL(user.ai_controller)
 	user.ai_controller = /datum/ai_controller/insane/hypno
@@ -102,7 +102,7 @@
 	hypnotized -= user
 	user.cut_overlay(mutable_appearance('ModularTegustation/Teguicons/tegu_effects32x48.dmi', "spore_hypno", -HALO_LAYER))
 	var/turf/T = get_turf(user)
-	user.visible_message(span_danger("Mushrooms rapidly grow all over [user]'s body, forming a giant mass!"))
+	user.visible_message(span_danger("蘑菇迅速生长在[user]的身体上, 形成一个巨大的团块!"))
 	user.emote("scream")
 	user.gib()
 	var /mob/living/simple_animal/hostile/aminion/little_prince_1/S = new(T)
@@ -194,8 +194,8 @@
 
 /* Prince-01 */
 /mob/living/simple_animal/hostile/aminion/little_prince_1
-	name = "Little Prince-1"
-	desc = "A shambling giant mushroom chunk."
+	name = "小王子-1"
+	desc = "一个摇摇晃晃的巨大蘑菇块."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "little_princeminion"
 	icon_living = "little_princeminion"
@@ -312,7 +312,7 @@
 //The Damage Proc
 /obj/effect/prince_mushrooms/proc/DoDamage(mob/living/carbon/human/H)
 	H.deal_damage(rand(1, 3), WHITE_DAMAGE)
-	to_chat(H, span_warning("You feel something weird touching your skin..."))
+	to_chat(H, span_warning("你感觉有什么东西奇怪地触碰着你的皮肤..."))
 	if (H.sanity_lost && connected_abno)
 		connected_abno.Hypno(H)
 
@@ -341,10 +341,10 @@
 
 /datum/ai_behavior/say_line/insanity_hypno
 	lines = list(
-		"I'm coming...",
-		"I have to go...",
-		"It's calling for me...",
-		"We'll finally be together...",
+		"我来了...",
+		"我必须得走了...",
+		"它在呼唤我...",
+		"我们终于可以在一起了...",
 	)
 
 /datum/ai_controller/insane/hypno/SelectBehaviors(delta_time)

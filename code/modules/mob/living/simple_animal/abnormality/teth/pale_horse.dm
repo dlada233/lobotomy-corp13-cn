@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_MORTIS /datum/status_effect/mortis
 // Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/pale_horse
-	name = "Pale Horse"
-	desc = "The riderless pale horse of the apocalypse."
+	name = "青马"
+	desc = "天启中没有骑手的苍白的马."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "palehorse"
 	icon_living = "palehorse"
@@ -10,8 +10,8 @@
 	portrait = "pale_horse"
 	speak_emote = list("neighs")
 	threat_level = TETH_LEVEL
-	maxHealth = 150
-	health = 150
+	maxHealth = 270
+	health = 270
 	pixel_x = -16
 	base_pixel_x = -16
 	stat_attack = DEAD
@@ -35,19 +35,19 @@
 		/datum/ego_datum/armor/revelation,
 	)
 	gift_type =  /datum/ego_gifts/revelation
-	gift_message = "He will wipe away every tear from their eyes, and death shall be evermore."
+	gift_message = "他会擦去他们眼中每一滴泪水，死亡将不复存在."
 
 	secret_chance = TRUE // peter, the horse is here
 	secret_icon_state = "palehorse_hungry"
 
-	observation_prompt = "Joseph came to you once, his face flush with excitement after the horse wept before him. He's \"Nothing There\"'s shell now. <br>\
-		Did the horse merely prognosticate his death or did it doom him? You're outside the containment unit now and your legs tremble, you've been ordered to work it today. <br>\
-		You..."
+	observation_prompt = "约瑟夫曾来找过你，当时马在他面前流泪后，他激动得满脸通红。他现在是\"一无所有\"的躯壳了。<br>\
+		这匹马仅仅是预言了他的死亡，还是注定了他的死亡？你现在站在收容单元外，双腿颤抖，今天你被命令对它进行工作。<br>\
+		你..."
 	observation_choices = list(
-		"Enter the containment unit" = list(TRUE, "You enter the containment unit and kneel before the horse. <br>\
-			It kneels next to you and a single tear drips from its eye onto your shoulder. You hold onto its head as you both weep. <br>\
-			Death is terrifying but at least you know something weeps for you."),
-		"Pretend you didn't get the order" = list(FALSE, "You pretend you didn't get the order and make to leave, your PDA flashes again, you've been assigned to \"Nothing There\" and this time, you're being escorted."),
+		"进入收容单元" = list(TRUE, "你进入收容单元，跪在马面前。<br>\
+			它在你身旁跪下，一滴泪水从它的眼中滴落到你的肩上。你抱住它的头，你们一起哭泣。<br>\
+			死亡是可怕的，但至少你知道有东西会为你哭泣。"),
+		"假装没收到命令" = list(FALSE, "你假装没收到命令并准备离开，你的PDA又闪了一下，你被分配给了\"一无所有\"，而且这次有人押送。"),
 	)
 
 	//teleport
@@ -266,8 +266,8 @@
 
 //objects
 /obj/effect/temp_visual/palefog
-	name = "fog"
-	desc = "A vapor that faintly smells of formaldehyde."
+	name = "雾气"
+	desc = "一种有轻微甲醛气味的蒸汽."
 	icon_state = "smoke"
 	move_force = INFINITY
 	pull_force = INFINITY
@@ -287,8 +287,8 @@
 	var/damage = 2
 
 /atom/movable/screen/alert/status_effect/mortis
-	name = "Fated to die"
-	desc = "The pale horse saw your end and wept."
+	name = "死亡命运"
+	desc = "青马因看到你的结局而哭泣."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "mortis"
 
@@ -301,7 +301,7 @@
 	. = ..()
 	if(!ishuman(owner))
 		return
-	to_chat(owner, span_warning("You feel weak..."))
+	to_chat(owner, span_warning("你感到虚弱..."))
 	var/mob/living/carbon/human/status_holder = owner
 	status_holder.physiology.pale_mod *= 2
 
@@ -309,7 +309,7 @@
 	. = ..()
 	if(!ishuman(owner))
 		return
-	to_chat(owner, span_warning("You regain your vigor."))
+	to_chat(owner, span_warning("你重获活力."))
 	var/mob/living/carbon/human/status_holder = owner
 	status_holder.physiology.pale_mod /= 2
 

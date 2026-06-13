@@ -1,9 +1,9 @@
 #define STATUS_EFFECT_REDPOSSESS /datum/status_effect/red_possess
 /mob/living/simple_animal/hostile/abnormality/red_shoes
-	name = "Red Shoes"
-	desc = "A pair of elegant red women's shoes. The design is antique, but there is no telling where and how they were made."
-	health = 150
-	maxHealth = 150
+	name = "红舞鞋"
+	desc = "一双雅致的红色女鞋，像是古董款式，但没有说明它是在哪里和如何制造的."
+	health = 220
+	maxHealth = 220
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "redshoes"
 	icon_living = "redshoes"
@@ -40,30 +40,30 @@
 	gift_type =  /datum/ego_gifts/desire
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "There is a pair of red shoes. <br>\
-		It could be sitting in front of me, or in my feet. I am......"
+	observation_prompt = "眼前有一双红舞鞋。<br>\
+		它可能正摆在我面前，或已穿在我脚上。我是......"
 	observation_choices = list( //TODO: Second line of dialogue, must be coded
-		"Wearing them." = list(TRUE, "I am wearing the shoes. <br>\
-			They are perfect fit, it feels good. <br>I have a weird feeling as if I am in another world. <br>\
-			There is a sharp axe in front of me. Maybe it was there all along, or maybe I just haven't realized it until now. <br>\
-			A weapon will change a lot of things."),
-		"Not wearing them." = list(FALSE, "I was not wearing the shoes. <br>\
-			The shoes' crimson color is getting deeper."),
+		"正穿着" = list(TRUE, "我穿上了这双鞋。<br>\
+			无比合脚，感觉美妙。<br>恍若置身异界的错觉袭来。<br>\
+			面前出现锋利的斧头。它或许始终在此，抑或我此刻才察觉。<br>\
+			武器将改变一切。"),
+		"未穿着" = list(FALSE, "我并未穿上舞鞋。<br>\
+			鞋的猩红色正逐渐加深。"),
 	)
 
 	var/mutable_appearance/breach_icon
 	var/mob/living/possessee
 	var/list/death_lines = list(
-		"Give them back to me!",
-		"Don't take them away from me...",
-		"No no no! Don't take them, no!",
-		"I'm sorry...",
+		"把它们还给我！",
+		"别从我身边夺走...",
+		"不不不！别拿走，不要！",
+		"对不起...",
 	)
 	var/list/possessee_lines = list(
-		"Where is everyone?",
-		"Guys, look at me! I've got such nice shoes on!",
-		"You all need to see how lovely my shoes are!",
-		"They're much prettier with blood on them.",
+		"人都去哪了？",
+		"快看我！这双舞鞋多漂亮！",
+		"你们都得看看我的舞鞋多可爱！",
+		"沾上血迹后更美了。",
 	)
 	var/datum/looping_sound/redshoes_ambience/soundloop
 	var/numbermarked = 0//default amount of people that get possessed
@@ -139,7 +139,7 @@
 	if(get_attribute_level(user, TEMPERANCE_ATTRIBUTE) < 60)
 		Apply_Desire(user)
 		user.adjustSanityLoss(500)
-		user.visible_message(span_userdanger("[user] ignores [p_their()] orders and continually glances at The Red Shoes. Now [p_theyre()] reaching out their hand to take the shoes."), span_userdanger("What lovely shoes..."))
+		user.visible_message(span_userdanger("[user]无视指令，目光无法从红舞鞋上移开. [user]正伸手去拿舞鞋."), span_userdanger("多美的舞鞋啊..."))
 
 //***Breach Mechanics***//
 /mob/living/simple_animal/hostile/abnormality/red_shoes/ZeroQliphoth(mob/living/carbon/human/user)//silent girl with extra steps
@@ -188,7 +188,7 @@
 		name = user.name
 		appearance = user.appearance
 		gender = user.gender
-		desc = "[user.name] appears to be grinning from ear to ear. Does [p_they()] normally wear shoes like those?"
+		desc = "[user.name]笑得合不拢嘴，脚下的鞋是平常穿的那双吗?"
 		maxHealth += (user.maxHealth * 4.5)
 		revive(full_heal = TRUE, admin_revive = FALSE)
 		add_overlay(mutable_appearance('icons/mob/clothing/feet.dmi', "red_shoes", -ABOVE_MOB_LAYER))
@@ -210,8 +210,8 @@
 	score_divider = 2 //Weird case due to it being 2 entities.
 	. = ..()
 	if(!possessee)
-		name = "Red Shoe"
-		desc = "The Red Shoes’s bloody enameled leather glistens in the light."
+		name = "红舞鞋"
+		desc = "血色的光滑皮革在灯光下闪闪发光."
 		icon_state = "redshoes_breach"
 		icon_living = "redshoes_breach"
 		ChangeResistances(list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 1.5))
@@ -253,8 +253,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/red_possess
 
 /atom/movable/screen/alert/status_effect/red_possess
-	name = "Allure"
-	desc = "Red Shoes is trying to possess you!"
+	name = "魅力"
+	desc = "红舞鞋正尝试占有你!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "allure"
 
@@ -297,10 +297,10 @@
 
 /datum/ai_behavior/say_line/insanity_red_possess
 	lines = list(
-		"Where is everyone?",
-		"Guys, look at me! I've got such nice shoes on!",
-		"You all need to see how lovely my shoes are!",
-		"They're much prettier with blood on them.",
+		"其他人都在哪?",
+		"伙计们，看看我！我穿了这么漂亮的鞋子！",
+		"你全都得来看看我心爱的鞋子!",
+		"上面沾了血会更漂亮.",
 	)
 
 /datum/ai_controller/insane/red_possess/SelectBehaviors(delta_time)//Selects red shoes as the target
@@ -374,10 +374,10 @@
 
 //Simple mob
 /mob/living/simple_animal/hostile/aminion/red_shoe
-	name = "Red Shoe"
-	desc = "Teeth and leg bones jut out of this ragged shoe, as if the wearer's will was made manifest."
-	health = 150
-	maxHealth = 150
+	name = "红舞鞋"
+	desc = "牙齿和腿骨从这只破旧的鞋子里伸出来，仿佛穿鞋者的意志得到了体现."
+	health = 220
+	maxHealth = 220
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "redshoes_breach2"
 	icon_living = "redshoes_breach2"
@@ -418,8 +418,8 @@
 
 //*** Pedestal ***//
 /obj/structure/redshoes_cushion
-	name = "red pedestal"
-	desc = "The shoes must be in high regard.."
+	name = "红色的底座"
+	desc = "这双鞋有一定很讲究.."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "redshoes_cushion"
 	anchored = TRUE

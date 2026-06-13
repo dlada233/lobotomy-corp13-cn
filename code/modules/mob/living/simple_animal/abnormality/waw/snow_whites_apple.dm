@@ -1,15 +1,15 @@
 #define FLORAL_BARRIER_COOLDOWN 10 SECONDS
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple
-	name = "Snow White’s Apple"
-	desc = "An abnormality taking the form of a tall humanoid with an apple for a head."
+	name = "白雪公主的苹果"
+	desc = "一种反常现象，以一个个头像苹果的高个子人形生物的形式出现."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "snowwhitesapple_inert"
 	icon_living = "snowwhitesapple_inert"
 	icon_dead = "snowwhitesapple_dead"
 	portrait = "snow_whites_apple"
-	maxHealth = 600
-	health = 600
+	maxHealth = 800
+	health = 800
 	blood_volume = 0
 	obj_damage = 0
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1.0, BLACK_DAMAGE = 0, PALE_DAMAGE = 1.5)
@@ -26,7 +26,7 @@
 	start_qliphoth = 1
 	del_on_death = FALSE
 	can_patrol = FALSE
-	death_message = "collapses into a pile of plantmatter."
+	death_message = "退化成一个原始的卵."
 	vision_range = 15
 	death_sound = 'sound/creatures/venus_trap_death.ogg'
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
@@ -55,21 +55,21 @@
 		/mob/living/simple_animal/hostile/abnormality/ebony_queen = 1.5,
 	)
 
-	observation_prompt = "(You see and feel something.) <br>\
-		The soil is solid. <br>A little bird is sitting beside me. <br>\
-		No, it is not a bird. <br>It is a rotting, decaying carcass of a bird. <br>\
-		Nothing is around me. <br>The prince came to wake sleeping Snow White up with a kiss. <br>\
-		The deadly poison that can melt a bone with a drop proved to be useless. <br>\
-		Why does no one visit me? <br>Why does no one share my pain? <br>\
-		Why does no one like me? <br>I hope I had legs, no, it doesn't have to be legs. <br>\
-		All I want is to be able to move. <br>Oh, redemption......"
+	observation_prompt = "（你看见并感知到某物。）<br>\
+		土壤坚实。<br>一只小鸟停在我身旁。<br>\
+		不，那不是鸟。<br>是具腐烂的鸟尸。<br>\
+		四周空无一物。<br>王子曾用吻唤醒沉睡的白雪公主。<br>\
+		那滴可蚀骨的致命毒药终是无用之物。<br>\
+		为何无人探访我？<br>为何无人分担我的痛苦？<br>\
+		为何无人喜爱我？<br>但愿我有双腿，不，未必是腿。<br>\
+		我只求能够移动。<br>啊，救赎......"
 	observation_choices = list(
-		"It does not exist" = list(TRUE, "This is unfair. <br>I want to be happy. <br>It's too painful to wait. <br>\
-			It is my bane that no one is around me. <br>I want this misery to crush me to nonexistence. <br>\
-			Some kind of legs sprouted out of me but I have no place to go. <br>However, I do not rot. <br>I cannot stop existing. <br>\
-			I have to go, although I have no place to go. <br>I have to go. <br>I go."),
-		"I shall go find it" = list(FALSE, "From some moment, I realized I can walk. <br>\
-			I see light. <br>I hear people. <br>I will be free from this torment. <br>For I will meet my redemption"),
+		"那不存在" = list(TRUE, "这不公平。<br>我渴望幸福。<br>等待太痛苦。<br>\
+			身边空无一人是我的劫难。<br>愿这痛苦将我碾至虚无。<br>\
+			某种腿肢自我体内生发，却无路可去。<br>然而我永不腐烂。<br>我无法停止存在。<br>\
+			必须离开，纵无归处。<br>必须离开。<br>我启程。"),
+		"我会找到的" = list(FALSE, "自某刻起，我发觉自己能行走。<br>\
+			我望见光。<br>我听见人声。<br>我将挣脱此般折磨。<br>因我将遇见我的救赎"),
 	)
 
 	initial_language_holder = /datum/language_holder/plant //essentially flavor
@@ -145,9 +145,9 @@
 	if(!. || !client)
 		return FALSE
 	togglemovement = TRUE
-	to_chat(src, "<b>Snow White's Apple can only harm creatures that are ontop of her vines. \
-		Your ranged attack will harm all standing on vines. \
-		Your barrier spell can only be used on thick vines.</b>")
+	to_chat(src, "<b>白雪公主的苹果只能伤害藤蔓上的生物. \
+		你的远程攻击将伤害所有站在藤蔓上的人. \
+		你的屏障法术只能在浓密的藤蔓上使用.</b>")
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/Life()
 	. = ..()
@@ -168,7 +168,7 @@
 		if(W.last_expand <= world.time)
 			W.expand()
 		else if(nightmare_mode && ranged_cooldown <= world.time)
-			var/list/did_we_hit = HurtInTurf(get_turf(W), list(), 30, BLACK_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE)
+			var/list/did_we_hit = HurtInTurf(get_turf(W), list(), 26, BLACK_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE)
 			if(did_we_hit.len)
 				W.VineAttack(pick(did_we_hit))
 	if(teleport_cooldown <= world.time && !togglemovement && !client && !IsCombatMap())
@@ -303,8 +303,8 @@
 //VINEHEDGE STRUCTURE
 /obj/structure/apple_barrier
 	gender = PLURAL
-	name = "branch barrier"
-	desc = "A twisted assortment of branches and roots."
+	name = "树枝障碍"
+	desc = "一堆扭曲的树枝和树根."
 	icon = 'ModularTegustation/Teguicons/teguobjects.dmi'
 	icon_state = "vinehedge"
 	anchored = TRUE
@@ -333,7 +333,7 @@
 /obj/structure/apple_barrier/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(ismecha(mover))
-		mover.visible_message(span_danger("[mover] stomps on the [src]!"))
+		mover.visible_message(span_danger("[mover]踩在[src]上!"))
 		if(obj_integrity <= 50)
 			qdel(src)
 		else
@@ -347,7 +347,7 @@
 		var/mob/living/carbon/human/L = mover
 		var/brooch = L.ego_gift_list[BROOCH]
 		if(istype(brooch, /datum/ego_gifts/stem))
-			to_chat(L, span_nicegreen("The branches relax."))
+			to_chat(L, span_nicegreen("树枝松绑了."))
 			qdel(src)
 			return TRUE
 
@@ -358,8 +358,8 @@
 //VINE CODE: stolen alien weed code
 /obj/structure/spreading/apple_vine
 	gender = PLURAL
-	name = "bitter flora"
-	desc = "Branches that grow from wilting stems."
+	name = "苦涩植被"
+	desc = "从枯萎的茎长出来的枝条."
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Med1"
 	base_icon_state = "Med1"
@@ -470,9 +470,9 @@
 			var/weeding = trimming.get_sharpness()
 			if(weeding == SHARP_EDGED && trimming.force >= 5)
 				if(prob(10))
-					to_chat(lonely, span_warning("You cut back [name] as it reaches for you."))
+					to_chat(lonely, span_warning("当[name]伸向你时，你把它剪掉了."))
 				else if(prob(10) || (prob(30) && old_growth))
-					to_chat(lonely, span_warning("[name] stab your legs spitefully."))
+					to_chat(lonely, span_warning("[name]恶毒地刺你的腿."))
 					lonely.adjustBlackLoss(5)
 				take_damage(15, BRUTE, "melee", 1)
 				return TRUE
@@ -484,23 +484,23 @@
 
 	tangle--
 	if(prob(10))
-		to_chat(L, span_danger("[src] block your path!"))
+		to_chat(L, span_danger("[src]堵住了你的路!"))
 
 //Reaction to humans who have snow_whites_apple's gift.
 /obj/structure/spreading/apple_vine/proc/suiterReaction(mob/living/carbon/human/lonely)
 	var/lonelyhealth = (lonely.health / lonely.maxHealth) * 100
 	if(prob(10))
 		//it would be uncouth for the vines to hinder one gifted by the princess.
-		to_chat(lonely, span_nicegreen("The branches open a path."))
+		to_chat(lonely, span_nicegreen("这些树枝开辟了一条小路."))
 	if(lonelyhealth <= 30 && lonely.stat != DEAD)
 		lonely.adjustBruteLoss(-1)
 		if(prob(2))
 			lonely.whisper(pick(
-				"First they had feasted upon my poisoned flesh, then I feasted upon them.",
-				"Even after they left, my form would not decay.",
-				"She cast me aside and left with her prince.",
-				"After many days I wondered why I continued to exist.",
-				"Those that trampled me would speak of a witch who casted a spell that had taken her life.",
+				"他们先吃掉了我的毒果肉，然后我又吃掉了他们.",
+				"即使他们走了，我的形体也不会腐烂.",
+				"她抛弃了我，和她的王子走了.",
+				"许多天以后，我不知道我为什么继续存在.",
+				"那些践踏我的人会说我是一个施咒夺去她生命的女巫.",
 			))
 
 //Called by snow white when she attacks
@@ -523,7 +523,7 @@
 
 //Makes the vines stronger and able to support protective barriers.
 /obj/structure/spreading/apple_vine/proc/OverGrowth()
-	name = "bitter growth"
+	name = "痛苦成长"
 	icon_state = "Hvy1"
 	max_integrity = 45
 	obj_integrity = 45
@@ -572,8 +572,8 @@
 
 //Special "Spell" for Player
 /obj/effect/proc_holder/spell/pointed/apple_barrier
-	name = "Branch Barrier"
-	desc = "Twist older branches into a temporary defensive barrier."
+	name = "树枝障碍"
+	desc = "把老树枝扭成一个临时的防御屏障."
 	charge_max = FLORAL_BARRIER_COOLDOWN
 	range = 9
 	stat_allowed = FALSE
@@ -585,9 +585,9 @@
 	action_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	action_background_icon_state = "bg_abnormality"
 	action_icon_state = "apple_barrier"
-	still_recharging_msg = "You need time to regain energy."
-	active_msg = "You twist your branches..."
-	deactive_msg = "You relax your branches..."
+	still_recharging_msg = "你需要时间来恢复精力."
+	active_msg = "你扭动你的树枝..."
+	deactive_msg = "你放开你的树枝..."
 
 /obj/effect/proc_holder/spell/pointed/apple_barrier/can_target(atom/target, mob/user, silent = FALSE)
 	if(istype(target, /obj/structure/spreading/apple_vine))
@@ -597,7 +597,7 @@
 
 /obj/effect/proc_holder/spell/pointed/apple_barrier/cast(list/targets, mob/user)
 	if(!LAZYLEN(targets))
-		to_chat(user, span_warning("No old growth in range!"))
+		to_chat(user, span_warning("范围内没有旧的增长!"))
 		return FALSE
 	if(!can_target(targets[1], user))
 		return FALSE

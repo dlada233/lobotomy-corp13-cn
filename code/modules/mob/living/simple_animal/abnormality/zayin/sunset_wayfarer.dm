@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/sunset_wayfarer
-	name = "Sunset Wayfarer"
-	desc = "A yellow creature with orange butterflies floating around it."
+	name = "日落旅者"
+	desc = "一个黄色的生物，周围漂浮着橙色的蝴蝶."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "sunset"
 	portrait = "sunset_wayfarer"
@@ -31,23 +31,23 @@
 
 	gift_type =  /datum/ego_gifts/eclipse
 	var/list/saylines = list(
-		"Wasn't it tiring coming all the way here?",
-		"Really, check out those butterflies.",
-		"Just watching them will warm your heart.",
+		"大老远跑来这里很累吧？",
+		"真的，看看那些蝴蝶	",
+		"光是看着它们就会让心里暖洋洋的. ",
 	)
 
-	observation_prompt = "\"Look at those butterflies! Aren’t they just beautiful? <br>And gander at that sunset, too! Really makes you want to go for a stroll.\" <br>\
-		\"Why don’t you stop for a moment and take a breather here?\" <br>\
-		Something yellow gestures warmly at you."
+	observation_prompt = "\"看看那些蝴蝶！它们多美啊？<br>再看看那日落！真让人想散散步. \"<br>\
+		\"何不停下来喘口气？\"<br>\
+		某个黄色的存在朝你热情地招手. "
 	observation_choices = list(
-		"Take a break" = list(TRUE, "\"Wasn’t it tiring coming all the way here? Really, check out those butterflies. <br>\
-			Just watching them will warm your heart.\" <br>\
-			You looked at the butterflies as the voice suggested. They indeed fill the heart with a certain warmth. <br>\
-			\"Looks like some of them want to tag along!\" <br>\
-			A kaleidoscope of butterflies started following you, even after you left that scenic spot."),
-		"Ignore it and leave" = list(FALSE, "\"You must be very busy then!\" <br> It made the same gesture as when it first greeted you. <br>\
-			Perhaps it was waving goodbye all along. <br>\
-			\"Another time, I suppose!\""),
+		"稍作休息" = list(TRUE, "\"大老远跑来这里很累吧？真的，看看那些蝴蝶. <br>\
+			光是看着它们就会让心里暖洋洋的. \"<br>\
+			你按声音的建议看向蝴蝶，心中确实涌起暖意. <br>\
+			\"看来有几只想跟着你呢！\"<br>\
+			一群斑斓的蝴蝶开始追随你，即使你离开那片美景后仍在跟随. "),
+		"无视并离开" = list(FALSE, "\"你一定很忙吧！\"<br>它重复了初见时的招手动作. <br>\
+			或许这动作自始至终都是告别. <br>\
+			\"下次再说吧！\""),
 	)
 
 	light_color = COLOR_ORANGE
@@ -72,11 +72,11 @@
 /mob/living/simple_animal/hostile/abnormality/sunset_wayfarer/proc/Heal(mob/living/carbon/human/user)
 	set waitfor = FALSE
 	healing = TRUE
-	say("Look at those butterflies! Aren't they just beautiful?")
+	say("看看这些蝴蝶！它们真漂亮不是吗?")
 	SLEEP_CHECK_DEATH(15)
-	say("And gander at that sunset, too! Really makes you want to go for a stroll.")
+	say("再看看那夕阳！真的让你想去散步.")
 	SLEEP_CHECK_DEATH(15)
-	say("Why don't you stop for a moment and take a breather here?")
+	say("你为什么不停下来歇一会呢?")
 	while(PlayerCheck(user))
 		for(var/mob/living/carbon/human/H in view(3, src))
 			//Heal 5% for every 1.5 seconds you're here
@@ -92,7 +92,7 @@
 	if(user in view(5, src))
 		return TRUE
 	else
-		say("You must be very busy then, another time, I suppose!")
+		say("我想你一定很忙，改天吧!")
 		return FALSE
 
 // Pink Midnight
@@ -134,8 +134,8 @@
 
 //The moths that heal you
 /mob/living/simple_animal/hostile/scarlet_moths
-	name = "Scarlet Moths"
-	desc = "A set of floating moths."
+	name = "红焰蛾"
+	desc = "一群漂浮的飞蛾."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "fireflies"
 	icon_living = "fireflies"

@@ -1,12 +1,12 @@
 #define STATUS_EFFECT_COWARDICE /datum/status_effect/cowardice
 /mob/living/simple_animal/hostile/abnormality/crumbling_armor
-	name = "Crumbling Armor"
-	desc = "A thoroughly aged suit of samurai style armor with a V shaped crest on the helmet. It appears desuetude."
+	name = "破裂铠甲"
+	desc = "一套完全老化的武士式盔甲，头盔上有一个V形的纹章，它看起来很破旧."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "crumbling"
 	portrait = "crumbling_armor"
-	maxHealth = 120
-	health = 120
+	maxHealth = 230
+	health = 230
 	start_qliphoth = 3
 	threat_level = TETH_LEVEL
 	work_chances = list(
@@ -32,10 +32,10 @@
 	secret_chance = TRUE
 	secret_icon_state = "megalovania"
 
-	observation_prompt = "The armor that took away many people's lives is sitting in front of you. <br>You can put it on, if you wish."
+	observation_prompt = "夺走许多人生命的盔甲就在你面前. <br>如果你愿意，你可以穿上它."
 	observation_choices = list(
-		"Put it on" = list(TRUE, "It seems like you were not pacifist. <br>You feel the armor's warm welcome."),
-		"Dont't put it on" = list(FALSE, "The armor waits for another reckless one."),
+		"穿上" = list(TRUE, "看起来你不是和平主义者. <br>你感受到盔甲的温暖欢迎."),
+		"不要穿" = list(FALSE, "盔甲在等待另一个无畏的人."),
 	)
 
 	var/buff_icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
@@ -101,21 +101,21 @@
 				var/datum/ego_gifts/phase2/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("How much more will it take?"))
+				to_chat(user, span_userdanger("还需要多少?"))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/phase2)) // From Recklessness to Foolishness
 				playsound(get_turf(user), 'sound/abnormalities/crumbling/megalovania.ogg', 50, 0, 2)
 				var/datum/ego_gifts/phase3/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("You need more strength!"))
+				to_chat(user, span_userdanger("你需要更多力量!"))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/phase3)) // From Foolishness to Suicidal
 				playsound(get_turf(user), 'sound/abnormalities/crumbling/megalovania.ogg', 50, 0, 2)
 				var/datum/ego_gifts/phase4/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("DETERMINATION."))
+				to_chat(user, span_userdanger("决心."))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/phase4)) // You can progress no further down this fool-hardy path
 				return
@@ -124,28 +124,28 @@
 			CAEG.datum_reference = datum_reference
 			user.Apply_Gift(CAEG)
 			RegisterSignal(user, COMSIG_WORK_STARTED, PROC_REF(Cut_Head))
-			to_chat(user, span_userdanger("Just a drop of blood is what it takes..."))
+			to_chat(user, span_userdanger("只要一滴血就够了..."))
 		else
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/courage)) // From Courage to Recklessness
 				playsound(get_turf(user), 'sound/machines/clockcult/stargazer_activate.ogg', 50, 0, 2)
 				var/datum/ego_gifts/recklessCourage/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("Your muscles flex with strength!"))
+				to_chat(user, span_userdanger("你的肌肉随着力量而紧绷!"))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/recklessCourage)) // From Recklessness to Foolishness
 				playsound(get_turf(user), 'sound/machines/clockcult/stargazer_activate.ogg', 50, 0, 2)
 				var/datum/ego_gifts/recklessFoolish/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("You feel like you could take on the world!"))
+				to_chat(user, span_userdanger("你觉得自己可以征服整个世界!"))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/recklessFoolish)) // From Foolishness to Suicidal
 				playsound(get_turf(user), 'sound/machines/clockcult/stargazer_activate.ogg', 50, 0, 2)
 				var/datum/ego_gifts/foolish/CAEG = new
 				CAEG.datum_reference = datum_reference
 				user.Apply_Gift(CAEG)
-				to_chat(user, span_userdanger("You are a God among men!"))
+				to_chat(user, span_userdanger("你是行走在人间的神!"))
 				return
 			if(istype(user.ego_gift_list[HAT], /datum/ego_gifts/foolish)) // You can progress no further down this fool-hardy path
 				return
@@ -154,7 +154,7 @@
 			CAEG.datum_reference = datum_reference
 			user.Apply_Gift(CAEG)
 			RegisterSignal(user, COMSIG_WORK_STARTED, PROC_REF(Cut_Head))
-			to_chat(user, span_userdanger("A strange power flows through you!"))
+			to_chat(user, span_userdanger("一种奇怪的力量在你身上流动!"))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/crumbling_armor/ZeroQliphoth(mob/living/carbon/human/user)
@@ -173,7 +173,7 @@
 		if(faction_check_mob(L, FALSE) || L.stat >= HARD_CRIT || L.sanity_lost || z != L.z) // Dead or in hard crit, insane, or on a different Z level.
 			continue
 		potentialmarked += L
-		to_chat(L, span_userdanger("You feel an overwhelming sense of dread."))
+		to_chat(L, span_userdanger("你感到一种强烈的恐惧感."))
 
 	numbermarked = 1 + round(LAZYLEN(potentialmarked) / 5, 1) //1 + 1 in 5 potential players, to the nearest whole number
 	SLEEP_CHECK_DEATH(10 SECONDS)
@@ -191,7 +191,7 @@
 
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	for(Y in marked)
-		to_chat(Y, span_userdanger("Show me that you can stand your ground!"))
+		to_chat(Y, span_userdanger("让我看看你能否坚持自己的立场!"))
 		new /obj/effect/temp_visual/markedfordeath(get_turf(Y))
 		Y.apply_status_effect(STATUS_EFFECT_COWARDICE)
 
@@ -204,8 +204,8 @@
 	var/punishment_damage = 4
 
 /atom/movable/screen/alert/status_effect/cowardice
-	name = "Cowardice"
-	desc = "Show me that you can stand your ground!"
+	name = "怯懦"
+	desc = "让我看看你能否坚持自己的立场!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "crumbling"
 
@@ -235,24 +235,24 @@
 
 //gifts
 /datum/ego_gifts/courage
-	name = "Inspired Courage"
+	name = "激励勇气"
 	icon_state = "courage"
 	justice_bonus = 10
 	slot = HAT
 /datum/ego_gifts/recklessCourage
-	name = "Reckless Courage"
+	name = "鲁莽勇气"
 	icon_state = "recklessFirst"
 	fortitude_bonus = -5
 	justice_bonus = 10
 	slot = HAT
 /datum/ego_gifts/recklessFoolish
-	name = "Reckless Foolishness"
+	name = "鲁莽愚行"
 	icon_state = "recklessSecond"
 	fortitude_bonus = -10
 	justice_bonus = 15
 	slot = HAT
 /datum/ego_gifts/foolish
-	name = "Reckless Foolishness"
+	name = "鲁莽愚行"
 	icon_state = "foolish"
 	fortitude_bonus = -20
 	justice_bonus = 20

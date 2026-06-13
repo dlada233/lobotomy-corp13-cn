@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/apex_predator
-	name = "Apex Predator"
-	desc = "An abnormality resembling a beaten up crash dummy."
+	name = "顶级掠食者"
+	desc = "类似于被打烂的假人的畸形物."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "apex"
 	icon_living = "apex"
@@ -10,8 +10,8 @@
 	base_pixel_x = -16
 
 
-	maxHealth = 600
-	health = 600
+	maxHealth = 800
+	health = 800
 	density = FALSE
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 0.2, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
 	ranged = TRUE
@@ -41,8 +41,8 @@
 	work_damage_lower = 4
 	work_damage_type = RED_DAMAGE
 	chem_type = /datum/reagent/abnormality/apex_predator
-	harvest_phrase = span_notice("A cloudy liquid leaks from %ABNO, stinking of burnt plastic. You collect it using %VESSEL.")
-	harvest_phrase_third = "%PERSON fills %VESSEL with a cloudy, foul smelling liquid that's leaking out of %ABNO."
+	harvest_phrase = span_notice("浑浊液体从%ABNO渗出，散发烧焦塑料的恶臭。你用%VESSEL收集了它。")
+	harvest_phrase_third = "%PERSON用%VESSEL盛满从%ABNO渗出的浑浊恶臭液体。"
 
 	ego_list = list(
 		/datum/ego_datum/weapon/animalism,
@@ -50,17 +50,17 @@
 	)
 	gift_type =  /datum/ego_gifts/animalism
 
-	observation_prompt = "The crash test dummy stands at the corner of the room. <br>It swings its arms around with twitching, swaying motions. <br>\
-		You're not sure if it's even able to understand you. <br>Despite being shaped like a human, there's no face to relate to. <br>No eyes to look at. <br>\
-		Just the rough outline of a human. <br>\
-		Is there even anything you can say to it?"
+	observation_prompt = "碰撞测试假人站在房间角落。<br>它以抽搐摇晃的动作摆动手臂。<br>\
+		你不确定它是否能理解你。<br>虽有人形却无面部特征，<br>没有可注视的眼睛，<br>\
+		仅是粗略的人形轮廓。<br>\
+		有什么话能对它说吗？"
 	observation_choices = list(
-		"Why?" = list(TRUE, "The abnormality suddenly stops moving. <br>It doesn't quite know how to respond either. <br>\
-			It stares down at the floor as if to contemplate the question. <br>\
-			All it can offer is a shrug. <br>Perhaps there isn't an answer."),
-		"Beat it up" = list(FALSE, "There's nothing to say. <br>A crash test dummy's only purpose is to enable violence. <br>\
-			Violence for the sake of violence. <br>\
-			You smile as you pull out your baton."),
+		"为什么？" = list(TRUE, "异想体突然停止动作。<br>它也不知如何回应，<br>\
+			低头凝视地板仿佛在思考问题。<br>\
+			最终只是耸耸肩。<br>或许本就没有答案。"),
+		"揍它" = list(FALSE, "无需多言。<br>碰撞测试假人的存在意义就是承受暴力，<br>\
+			为暴力而生的暴力。<br>\
+			你冷笑着抽出警棍。"),
 	)
 
 	var/revealed = TRUE
@@ -126,7 +126,7 @@
 		return
 	if(!revealed)
 		//Will want this to be crazy
-		say("Behind you.")
+		say("在你身后.")
 
 		SLEEP_CHECK_DEATH(7)
 		Decloak()
@@ -135,7 +135,7 @@
 		if(attacked_target in range(1, src))
 			if(isliving(attacked_target))
 				var/mob/living/V = attacked_target
-				visible_message(span_danger("The [src] rips out [attacked_target]'s guts!"))
+				visible_message(span_danger("[src]撕开了[attacked_target]的内脏!"))
 				new /obj/effect/gibspawner/generic(get_turf(V))
 				V.deal_damage(backstab_damage, RED_DAMAGE)
 			//Backstab succeeds from any one of 3 tiles behind a mecha, backstab from directly behind gets boosted by mecha directional armor weakness
@@ -143,12 +143,12 @@
 				var/relative_angle = abs(dir2angle(attacked_target.dir) - dir2angle(get_dir(attacked_target, src)))
 				relative_angle = relative_angle > 180 ? 360 - relative_angle : relative_angle
 				if(relative_angle >= 135)
-					visible_message(span_danger("The [src] shreds [attacked_target]'s armor!"))
+					visible_message(span_danger("[src]撕碎[attacked_target]的护甲!"))
 					var/obj/vehicle/sealed/mecha/M = attacked_target
 					M.take_damage(backstab_damage, RED_DAMAGE, attack_dir = get_dir(M, src))
 					new /obj/effect/temp_visual/kinetic_blast(get_turf(M))
 				else
-					visible_message(span_danger("The [src]'s attack misses [attacked_target]'s weakspots!"))
+					visible_message(span_danger("[src]的攻击错过了[attacked_target]的弱点!"))
 					..()
 			else
 				..()
@@ -228,8 +228,8 @@
 	jump_cooldown = world.time + jump_cooldown_time
 
 /datum/reagent/abnormality/apex_predator
-	name = "Plasticine Anesthesia"
-	description = "A cloudy liquid that reeks of plastic. It weakens the mind while surturing physical wounds."
+	name = "橡皮泥麻醉"
+	description = "一种有塑料臭味的混浊液体，它在缝合身体创伤的同时削弱了心智."
 	color = "#e4ebf5"
 	health_restore = 4
 	stat_changes = list(0, -15, 0, 0)

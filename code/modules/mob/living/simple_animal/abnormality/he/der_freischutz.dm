@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/der_freischutz
-	name = "Der Freischutz"
-	desc = "A tall man adorned in grey, gold, and regal blue. His aim is impeccable."
+	name = "魔弹射手"
+	desc = "一个穿着灰色、金色和帝王蓝配色衣服的高个子男人，他的目标无可挑剔."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "derfreischutz"
 	icon_living = "derfreischutz"
 	icon_dead = "derfreischutz"
 	portrait = "der_freischutz"
-	maxHealth = 150
-	health = 150
+	maxHealth = 520
+	health = 520
 	ranged = TRUE
 	minimum_distance = 10
 	retreat_distance = 2
@@ -38,13 +38,13 @@
 	gift_type =  /datum/ego_gifts/magicbullet
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "Before you stands a man with an ornate rifle. <br>\
-		\"My bullets never miss, whatever I take aim at will have its head pierced true by the inevitability of my bullets. <br>\
-		If you have a target, you only need to make the payment.\""
+	observation_prompt = "眼前伫立着手持华美步枪的男人。<br>\
+		\"我的子弹从不落空，凡被瞄准之物头颅必被贯穿。<br>\
+		若有目标，支付代价即可。\""
 	observation_choices = list(
-		"Pay for his services" = list(TRUE, "True to his word, the marksman racks a bullet into his rifle, takes aim and fires at your target, piercing their head, but it travels on. <br>\
-			Piercing the heads of others, forever."),
-		"Don't pay" = list(FALSE, "The man scowls. <br>\"Don't waste my time with such shaky conviction.\""),
+		"购买服务" = list(TRUE, "枪手依言上膛，瞄准目标扣动扳机，弹头贯穿目标头颅后继续飞行。<br>\
+			它将永无止境地贯穿更多头颅。"),
+		"拒绝支付" = list(FALSE, "男人面露愠色。<br>\"信念如此摇摆就别浪费我时间。\""),
 	)
 
 	var/can_act = TRUE
@@ -67,18 +67,17 @@
 
 /mob/living/simple_animal/hostile/abnormality/der_freischutz/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Der Freischutz, A Combat Role Abnormality.</h1><br>\
-		<b>|Magic Bullet|: When you attack while not scoped in, there will be a 1.5 second delay before you fire a Magic Bullet. \
-		The Magic Bullet deals BLACK damage and pieces through mobs. After firing a Magic Bullet, there is a 7 second cooldown between you can fire another one.<br>\
+	to_chat(src, "<h1>你扮演魔弹射手，战斗型异想体</h1><br>\
+		<b>|魔弹|：未开镜时攻击将触发1.5秒延迟，随后发射魔弹。\
+		魔弹造成黑色伤害并穿透目标，发射后有7秒冷却期。<br>\
 		<br>\
-		|Devil's Contract|: Using the Sniper Sights ability on the top left of your screen you are able to increase your view range, see through walls and gain the ability to place down 'Magic Portals' \
-		There is a 10 second cooldown between placing down portals, you can have a max of 7 portals and you can't place them in R-Corp's base or on dense terrain. \
-		If you can't place down a portal, you will fire your Magic Bullet instead.<br>\
+		|恶魔契约|：通过屏幕左上角狙击镜技能扩大视野（可穿墙），并获得布置'魔法传送门'能力。\
+		传送门布置有10秒冷却期，上限7个，不可置于R公司基地或障碍物。\
+		若无法布置传送门，则改为发射魔弹。<br>\
 		<br>\
-		|Devil's Sights|: You are able view through your portals using your 'Portal View' button on the top left of your screen, \
-		Or you can use a hotkey. (Which is Space by default). When you use that ability, You will be able to toggle your view between the portals you have created. \
-		While viewing through a portal, you will be able to cause them to fire towards any target you click on. They deal 25% less damage then your normal bullet, but each portal has their own cooldown between firing. \
-		Also, you are able to destroy your own portals while viewing though them using your 'Removing Portal' ability, Or you can use a hotkey. (Which is E by default).\
+		|恶魔视界|：通过屏幕左上角传送门视野按钮或快捷键（默认空格键）切换门户视角。\
+		在传送门视角下点击目标可令其开火（伤害为普通子弹75%），每个传送门有独立冷却。\
+		可通过移除传送门按钮或快捷键（默认E键）销毁当前视角的传送门。\
 		</b>")
 
 /datum/action/cooldown/switch_portals
@@ -419,8 +418,8 @@
 
 
 /mob/living/simple_animal/hostile/der_freis_portal
-	name = "magic portal"
-	desc = "A strange blue portal... You feel like you are being watched though it."
+	name = "魔法传送门"
+	desc = "一个奇怪的蓝色传送门... 你觉得你在被监视着."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "freicircle3"
 	icon_living = "freicircle3"

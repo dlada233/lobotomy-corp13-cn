@@ -2,8 +2,8 @@
 #define SEASONS_SLAM_COOLDOWN (20 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/seasons
-	name = "God of the Seasons"
-	desc = "By jove, what is that?!?"
+	name = "四季之神"
+	desc = "天哪，这是什么?!?"
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "" //probably better to start off invisible than the wrong state for a decisecond or i'll get a stream of "bug reports"
 	icon_living = ""
@@ -53,16 +53,16 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
 //Should be unique for each season, for now let's use Spring
-	observation_prompt = "I'm standing outside a forest I both have never seen before, yet know well. <br>There is no City, no civilization on the horizon, I am utterly alone. <br>\
-		Dauntlessly, I press into the forest, seeing no other path forward, and encounter a cute-looking, pink forest spirit. <br>\
-		The spirits of the forest are playful, but it's best not to offend them by forgetting to make an offering"
+	observation_prompt = "我正站在从未见过的森林外，但不知怎的又很熟悉. <br>地平线上没有城市，没有文明，我完全的孤独着. <br>\
+		我勇敢地进入森林，没有岔路需要选择, 直到我遇到了一个可爱的粉色的森林精灵. <br>\
+		森林里的精灵很顽皮, 但最好不要因为忘记献祭而冒犯到它们."
 	observation_choices = list(
-		"Make an offering" = list(TRUE, "I ask the spirit to lead me to an altar to make my offering and it leads me off a beaten path... <br>\
-			It felt as though I had walked for miles and days, my clothes torn and skin pricked by brambles and thorns but finally we arrived. <br>\
-			Before me is a skull-headed pagan God hanging ominously over its altar, fear grips my heart as the pink spirit leads me to lay down on the altar..."),
-		"Continue on" = list(FALSE, "I pass by the spirit and hear it giggle ominously... <br>\
+		"进行献祭" = list(TRUE, "我请求精灵带我去祭坛献祭，它带我走上一条人迹罕至的小路... <br>\
+			感觉像是走了数英里数天，衣服被撕破，皮肤被荆棘刺伤，但我们终于到达了. <br>\
+			面前是个骷髅头的异教神，不祥地悬在祭坛上方，当粉色精灵引导我躺上祭坛时，恐惧攫住了我的心..."),
+		"继续走" = list(FALSE, "我经过精灵时听到它不祥地咯咯笑... <br>\
 			... <br>\
-			In the end, I am never able to find a way out of the forest."),
+			最终，我永远没能找到离开森林的路."),
 	)
 
 	//Var Lists
@@ -150,7 +150,7 @@
 	)
 
 /datum/action/cooldown/seasons_slam
-	name = "Slam"
+	name = "猛击"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "generic_slam"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -207,7 +207,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/seasons/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(CheckWeather())
-		to_chat(user, span_warning("The abnormality seems to be ignoring you!"))
+		to_chat(user, span_warning("异想体看起来忽略了你!"))
 		return FALSE
 	return ..()
 
@@ -221,17 +221,17 @@
 /mob/living/simple_animal/hostile/abnormality/seasons/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	if(!safe)
-		to_chat(user, span_nicegreen("The abnormality seems to be satisfied, at least for now..."))
+		to_chat(user, span_nicegreen("异想体看起来很满意, 至少现在是的..."))
 		safe = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/seasons/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	if(!safe)
 		if(prob(25))
-			to_chat(user, span_nicegreen("The abnormality seems to be satisfied, at least for now..."))
+			to_chat(user, span_nicegreen("异想体看起来很满意, 至少现在是的..."))
 			safe = TRUE
 			return
-		to_chat(user, span_warning("The abnormality seems to be indifferent to this attempt at work, perhaps you should try again?"))
+		to_chat(user, span_warning("异想体对这次工作漠不关心, 也许你应该再试一次?"))
 
 /mob/living/simple_animal/hostile/abnormality/seasons/WorkChance(mob/living/carbon/human/user, chance) //suspect this does not work
 	if(downgraded)
@@ -492,7 +492,7 @@
 			C.name = "[H.real_name]"//applies the target's name and adds the name to its description
 			C.icon_state = "flora_zombie"
 			C.icon_living = "flora_zombie"
-			C.desc = "What appears to be [H.real_name], only mangled by vines and decayed..."
+			C.desc = "看似是[H.real_name]，却只被藤蔓和腐朽所扭曲."
 			C.gender = H.gender
 			C.faction = src.faction
 			zombies += C
@@ -1003,17 +1003,17 @@
 /datum/weather/thunderstorm //Spring weather, thunder strikes.
 	name = "thunderstorm"
 	immunity_type = "rain"
-	desc = "Extreme thunderstorms "
-	telegraph_message = span_warning("It has begun to rain.")
+	desc = "极端雷暴 "
+	telegraph_message = span_warning("开始下雨了.")
 	telegraph_duration = 300
 	telegraph_overlay = "light_rain"
-	weather_message = span_userdanger("<i>The rain starts coming down hard!</i>")
+	weather_message = span_userdanger("<i>雨开始下得很大!</i>")
 	weather_overlay = "rain_storm"
 	weather_duration_lower = 1500
 	weather_duration_upper = 3000
 	perpetual = TRUE //should make it last forever
 	end_duration = 100
-	end_message = span_boldannounce("The rain starts to let up.")
+	end_message = span_boldannounce("雨开始变小了.")
 	end_overlay = "light_rain"
 	area_type = /area
 	target_trait = ZTRAIT_STATION
@@ -1031,17 +1031,17 @@
 /datum/weather/heatwave //Summer weather, sets you on fire rarely.
 	name = "heatwaves"
 	immunity_type = "heatwave"
-	desc = "Extreme heatwaves caused by an abnormality."
-	telegraph_message = span_warning("The temperature suddenly skyrockets!")
+	desc = "异想体所制造的极端热浪."
+	telegraph_message = span_warning("气温突然飙升!")
 	telegraph_duration = 300
 	telegraph_overlay = "light_ash"
-	weather_message = span_userdanger("<i>It's too hot!</i>")
+	weather_message = span_userdanger("<i>太热了!</i>")
 	weather_overlay = "heavy_ash"
 	weather_duration_lower = 1500
 	weather_duration_upper = 3000
 	perpetual = TRUE //should make it last forever
 	end_duration = 100
-	end_message = span_boldannounce("The temperature starts to return to normal.")
+	end_message = span_boldannounce("气温开始回归正常.")
 	end_overlay = "light_ash"
 	area_type = /area
 	target_trait = ZTRAIT_STATION
@@ -1052,7 +1052,7 @@
 	if(prob(3))
 		L.adjust_fire_stacks(rand(0.1, 1))
 		L.IgniteMob()
-		to_chat(L, span_warning("You are burning alive!"))
+		to_chat(L, span_warning("你在被活烤!"))
 	if(prob(1))
 		SpawnFire(L)
 
@@ -1067,17 +1067,17 @@
 /datum/weather/fog //Fall weather, causes swamp decay, destroying food and dealing minor damage.
 	name = "fog"
 	immunity_type = "fog"
-	desc = "An extreme surplus of humidity caused by an abnormality."
-	telegraph_message = span_warning("The air is becoming damp.")
+	desc = "极端大雾."
+	telegraph_message = span_warning("空气变得潮湿.")
 	telegraph_duration = 300
 	telegraph_overlay = "light_fog"
-	weather_message = span_userdanger("<i>You can't see anything with all this fog in the way!</i>")
+	weather_message = span_userdanger("<i>雾太大，你什么都看不见!</i>")
 	weather_overlay = "heavy_fog"
 	weather_duration_lower = 1500
 	weather_duration_upper = 3000
 	perpetual = TRUE //should make it last forever
 	end_duration = 100
-	end_message = span_boldannounce("The fog seems to be going away.")
+	end_message = span_boldannounce("雾开始散了.")
 	end_overlay = "light_pollen"
 	area_type = /area
 	target_trait = ZTRAIT_STATION
@@ -1089,14 +1089,14 @@
 		var/rotted
 		for(var/obj/item/food/thefood in L.get_all_gear())
 			if(TryRotFoodItem(thefood))
-				to_chat(L, span_warning("A mysterious force decays your food!"))
+				to_chat(L, span_warning("一股神秘力量正侵蚀你的食物!"))
 				rotted = TRUE
 				break
 		if(!rotted)
 			L.deal_damage(1, TOX)
 		var/obj/effect/temp_visual/alriune_attack/vfx = new(get_turf(L))
 		vfx.color = COLOR_VERY_DARK_LIME_GREEN
-		to_chat(L, span_warning("A mysterious force rapidly decays you!"))
+		to_chat(L, span_warning("一股神秘力量正侵蚀着你!"))
 		playsound(L, 'sound/abnormalities/goldenapple/False_Attack.ogg', 75, TRUE, 10)
 
 /datum/weather/fog/proc/TryRotFoodItem(obj/item/food)
@@ -1108,17 +1108,17 @@
 /datum/weather/freezing_wind //Winter weather, causes slowdown.
 	name = "freezing wind"
 	immunity_type = "freezing"
-	desc = "An extreme snowstorm caused by an abnormality."
-	telegraph_message = span_warning("The temperature suddenly drops!")
+	desc = "极端寒潮."
+	telegraph_message = span_warning("气温突然骤降!")
 	telegraph_duration = 300
 	telegraph_overlay = "snowfall_calm"
-	weather_message = span_userdanger("<i>It's so cold!</i>")
+	weather_message = span_userdanger("<i>太冷了!</i>")
 	weather_overlay = "snowfall_blizzard"
 	weather_duration_lower = 1500
 	weather_duration_upper = 3000
 	perpetual = TRUE //should make it last forever
 	end_duration = 100
-	end_message = span_boldannounce("The snow starts to let up.")
+	end_message = span_boldannounce("气温开始回升.")
 	end_overlay = "snowfall_calm"
 	area_type = /area
 	target_trait = ZTRAIT_STATION
@@ -1131,7 +1131,7 @@
 	var/randomslowdown = rand(0.5,1)
 	L.apply_status_effect(STATUS_EFFECT_FREEZING)
 	L.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/freezing, multiplicative_slowdown = randomslowdown)
-	to_chat(L, span_warning("The freezing wind chills your bones!"))
+	to_chat(L, span_warning("寒冷刺入你的骨髓!"))
 
 /datum/weather/freezing_wind/end()
 	..()
@@ -1147,8 +1147,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/freezing
 
 /atom/movable/screen/alert/status_effect/freezing
-	name = "Freezing"
-	desc = "It's so cold!"
+	name = "冰封"
+	desc = "太冷了!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "freezing"
 
@@ -1159,7 +1159,7 @@
 //Misc. Objects
 /obj/effect/season_turf //Modular turf that spawnes under the abnormality with Upgrade().
 	name = "grass"
-	desc = "A thick layer of foilage that never seems to die down."
+	desc = "落叶."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	layer = TURF_LAYER
@@ -1238,15 +1238,15 @@
 		return
 	switch(current_season)
 		if("spring")
-			to_chat(H, span_warning("You are stung by porccubus flowers as you pass through!"))
+			to_chat(H, span_warning("你的腿被草丛中的荆棘割伤了!"))
 			playsound(H, 'sound/abnormalities/porccubus/porccu_attack.ogg', 35, TRUE, 10)
 			DoDamage()
 		if("summer")
-			to_chat(H, span_warning("You stumbled into a pool of lava!"))
+			to_chat(H, span_warning("你不小心掉进了岩浆池!"))
 			playsound(H, 'sound/effects/footstep/lava3.ogg', 100, FALSE, 10)
 			DoDamage()
 		if("fall")
-			to_chat(H, span_warning("You get stuck in the sticky tar!"))
+			to_chat(H, span_warning("你陷进了沼泽!"))
 			playsound(H, 'sound/effects/footstep/slime1.ogg', 75, FALSE, 10)
 			H.Immobilize(0.5 SECONDS)
 		if("winter")
@@ -1255,11 +1255,11 @@
 					step(H, H.dir)
 				return
 			if(prob(25))
-				to_chat(H, span_warning("You lose your footing on the ice!"))
+				to_chat(H, span_warning("你在冰上滑倒了!"))
 				H.apply_lc_tremor(1, 3)
 				step(H, H.dir)
 				return
-			to_chat(H, span_notice("You manage to keep your balance on the slippery ice."))
+			to_chat(H, span_notice("你在冰上稳住了."))
 
 /obj/effect/season_turf/proc/DoDamage()
 	var/dealt_damage = FALSE
@@ -1409,7 +1409,7 @@
 
 //Summons
 /mob/living/simple_animal/hostile/aminion/willowisp
-	name = "corpse light"
+	name = "鬼火"
 	desc = "Will-o the wisp."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "seasons_wisp"
@@ -1471,7 +1471,7 @@
 		QDEL_IN(src, 13)
 
 /mob/living/simple_animal/hostile/aminion/flytrap
-	name = "Spring Triffid"
+	name = "春生三尖树"
 	desc = "A massive fly trap..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "flytrap"
@@ -1506,7 +1506,7 @@
 		death()
 
 /mob/living/simple_animal/hostile/aminion/flora_zombie
-	name = "Flora Zombie"
+	name = "花蚀僵尸"
 	desc = "What appears to be human, only mangled by vines and decayed..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "flora_zombie"
@@ -1597,14 +1597,14 @@
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
 		C.icon_state = "flora_zombie"
 		C.icon_living = "flora_zombie"
-		C.desc = "What appears to be [H.real_name], only mangled by vines and decayed..."
+		C.desc = "看起来像[H.real_name], only mangled by vines and decayed..."
 		C.gender = H.gender
 		C.faction = src.faction
 		H.gib()
 	can_act = TRUE
 
 /obj/structure/thorn_bomb
-	name = "Thorn Plant"
+	name = "荆棘植物"
 	desc = "Something flippant grows here..."
 	icon = 'icons/obj/hydroponics/growing.dmi'
 	icon_state = "fairygrass-grow2"
@@ -1689,7 +1689,7 @@
 
 // On-kill visual effect
 /obj/structure/seasons_ice
-	name = "ice cube"
+	name = "冰块"
 	desc = "Sure glad they're in there and we're out here!"
 	icon = 'icons/effects/freeze.dmi'
 	icon_state = "ice_cube"
@@ -1724,7 +1724,7 @@
 /obj/structure/seasons_ice/proc/release_mob(mob/living/M)
 	M.pixel_x = M.base_pixel_x
 	unbuckle_mob(M,force=1)
-	src.visible_message(text("<span class='danger'>[M] falls free of the [src]!</span>"))
+	src.visible_message(text("<span class='danger'>[M]从[src]中脱离!</span>"))
 	qdel(src)
 
 /obj/structure/seasons_ice/Destroy()

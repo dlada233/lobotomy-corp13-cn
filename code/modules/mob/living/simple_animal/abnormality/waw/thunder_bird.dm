@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/thunder_bird
-	name = "Thunderbird Altar"
-	desc = "An ominous totem built from the corpses of unusual creatures, crowned with the visage of its namesake in wood."
+	name = "雷鸟"
+	desc = "一个不祥的图腾，由不寻常的生物的尸体建造而成，用木头拼成与它同名的形象的图腾. "
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "thunderbird"
 	icon_living = "thunderbird"
@@ -11,11 +11,11 @@
 	speak_emote = list("intones")
 	gender = NEUTER
 	var/list/thunder_bird_lines = list(
-		"Prostrate yourself! Harder!",
-		"Do you think I am happy, feather? Think again!",
-		"You folk, nothing but sacrifices. Sacrifices for me and everyone else here!",
-		"Your kind can never be forgiven!",
-		"Look around, you monsters! You've destroyed my people and nature!",
+		"跪伏！再用力些！",
+		"你以为我很快乐吗，羽毛？再想想！",
+		"你们这些家伙，不过是祭品，为我和此地众生献祭的祭品！",
+		"尔等罪无可赦！",
+		"看看四周，你们这些怪物！毁灭了我的族裔与自然！",
 	)
 	//Ideally it should only glow in its breached state
 	light_color = LIGHT_COLOR_BLUE
@@ -26,8 +26,8 @@
 	base_pixel_x = -16
 
 	//suppression info
-	maxHealth = 700
-	health = 700
+	maxHealth = 850
+	health = 850
 	move_to_delay = 4
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 0.7)
 
@@ -53,17 +53,17 @@
 		/datum/ego_datum/armor/warring,
 	)
 	gift_type =  /datum/ego_gifts/warring
-	gift_message = "The totem somehow dons a seemingly ridiculous hat on your head."
+	gift_message = "图腾莫名为你戴上顶看似滑稽的帽子."
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
-	observation_prompt = "The totem sits atop a pile of gore and viscera. <br>\
-		Human scalps dangle motionlessly, strung to its wings. <br>\
-		Though the totem lies still, you feel compelled to answer it."
+	observation_prompt = "图腾端坐于血肉残骸堆上。<br>\
+		人头皮串悬挂于其双翼，纹丝不动。<br>\
+		虽图腾静滞，你仍感被迫回应。"
 	observation_choices = list(
-		"Remain silent" = list(TRUE, "The disgusting totem answered with silence. <br>\
-			The Thunderbird had been defeated long ago, its existence being its only privilege."),
-		"Speak" = list(FALSE, "Before you can utter a word, thunder booms within the cell. <br>\
-			The Thunderbird can be spoken to, but never reasoned with."),
+		"保持沉默" = list(TRUE, "污秽图腾以沉默回应。<br>\
+			雷鸟早被击败，存在即其唯一特权。"),
+		"说话" = list(FALSE, "未及吐字，收容单元内惊雷炸响。<br>\
+			雷鸟可被交谈，却永无理性可言。"),
 	)
 
 /*---Combat---*/
@@ -209,8 +209,8 @@
 		if(!faction_check_mob(L))
 			if(L in been_hit)
 				continue
-			visible_message(span_boldwarning("[src] runs through [L]!"))
-			to_chat(L, span_userdanger("[src] rushes past you, arcing electricity throughout the way!"))
+			visible_message(span_boldwarning("[src]掠过[L]!"))
+			to_chat(L, span_userdanger("[src]带着电弧从你身边飞驰而过!"))
 			playsound(L, attack_sound, 75, 1)
 			var/turf/LT = get_turf(L)
 			new /obj/effect/temp_visual/kinetic_blast(LT)
@@ -223,8 +223,8 @@
 	for(var/obj/vehicle/sealed/mecha/V in turfs_to_hit)
 		if(V in been_hit)
 			continue
-		visible_message(span_boldwarning("[src] runs through [V]!"))
-		to_chat(V.occupants, span_userdanger("[src] rushes past you, arcing electricity throughout the way!"))
+		visible_message(span_boldwarning("[src]掠过[V]!"))
+		to_chat(V.occupants, span_userdanger("[src]带着电弧从你身边飞驰而过!"))
 		playsound(V, attack_sound, 75, 1)
 		V.take_damage(30, BLACK_DAMAGE, attack_dir = get_dir(V, src))
 		been_hit += V
@@ -244,7 +244,7 @@
 	else
 		if(prob(50))
 			datum_reference.qliphoth_change(-1)
-			say("Begone, fool!")
+			say("滚吧, 蠢货!")
 	return
 
 /mob/living/simple_animal/hostile/abnormality/thunder_bird/FailureEffect(mob/living/carbon/human/user, work_type, pe)
@@ -261,10 +261,10 @@
 /*---Breach effects---*/
 /mob/living/simple_animal/hostile/abnormality/thunder_bird/BreachEffect(mob/living/carbon/human/user, breach_type)
 	. = ..()
-	name = "Thunderbird"
+	name = "雷鸟"
 	icon_living = "thunderbird_breach"
 	icon_state = icon_living
-	desc = "A hulking avian wreathed in electricity. It looks angry."
+	desc = "一只巨大的鸟被雷电包裹着，它看起来已经陷入狂怒."
 	light_range = 5
 	light_power = 7
 	set_light_on(TRUE)
@@ -317,7 +317,7 @@
 	C.master = master
 	if(!QDELETED(H))
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
-		C.desc = "What appears to be [H.real_name], only charred and screaming incoherently..."
+		C.desc = "看起来像[H.real_name], 只剩下了焦糊和语无伦次的尖叫..."
 		C.gender = H.gender
 		C.faction = master.faction
 		H.gib()
@@ -344,8 +344,8 @@
 /*--Zombies!--*/
 //zombie mob
 /mob/living/simple_animal/hostile/aminion/thunder_zombie
-	name = "Thunderbird Worshipper"
-	desc = "An pitiable remnant of what was once human. Scalped, charred, and screaming incoherently..."
+	name = "雷鸟崇拜者"
+	desc = "曾经完整的可怜人类残余物，被剥去了头皮然后烧成焦黑，还语无伦次地尖叫着..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "thunder_zombie"
 	icon_living = "thunder_zombie"
@@ -357,8 +357,8 @@
 	attack_sound = 'sound/abnormalities/thunderbird/tbird_zombieattack.ogg'
 
 	/*Zombie Stats */
-	health = 50//subject to change; they all die when thunderbird is suppressed
-	maxHealth = 50
+	health = 100//subject to change; they all die when thunderbird is suppressed
+	maxHealth = 100
 	obj_damage = 60
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.5)
 	melee_damage_type = BLACK_DAMAGE
@@ -413,7 +413,7 @@
 	if(QDELETED(src))
 		return
 	revive(full_heal = TRUE, admin_revive = FALSE)
-	visible_message(span_boldwarning("[src] staggers back on their feet!"))
+	visible_message(span_boldwarning("[src]摇摇晃晃地站起来!"))
 	playsound(get_turf(src), 'sound/abnormalities/thunderbird/tbird_bolt.ogg', 50, 0, 8)
 
 //Zombie conversion from other zombies
@@ -437,7 +437,7 @@
 			master.spawned_mobs += C
 			C.master = master
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
-		C.desc = "What appears to be [H.real_name], only charred and screaming incoherently..."
+		C.desc = "似乎是[H.real_name], 只剩下了焦糊和语无伦次的尖叫..."
 		C.gender = H.gender
 		C.faction = src.faction
 		H.gib()
@@ -445,8 +445,8 @@
 
 //The perch
 /obj/structure/tbird_perch
-	name = "thunderbird altar"
-	desc = "An idol bloodied by the creature who stood upon it.."
+	name = "雷鸟像"
+	desc = "一尊被站在自己上面的怪物的血所浸染的神像.."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "thunderbird_altar"
 	pixel_x = -16

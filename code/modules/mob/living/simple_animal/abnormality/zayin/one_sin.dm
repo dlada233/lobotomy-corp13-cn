@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/onesin
-	name = "One Sin and Hundreds of Good Deeds"
-	desc = "A giant skull that is attached to a cross, it wears a crown of thorns."
+	name = "一罪与百善"
+	desc = "它是一个巨大的头骨，挂在十字架上，戴着荆棘王冠."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "onesin_halo_normal"
 	icon_living = "onesin_halo_normal"
 	portrait = "one_sin"
-	maxHealth = 75
-	health = 75
+	maxHealth = 77
+	health = 77
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
 	melee_damage_lower = 2
 	melee_damage_upper = 4
@@ -21,7 +21,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(70, 70, 50, 50, 50),
 		ABNORMALITY_WORK_ATTACHMENT = 70,
 		ABNORMALITY_WORK_REPRESSION = list(50, 40, 30, 30, 30),
-		"Confess" = 50,
+		"忏悔" = 50,
 	)
 	work_damage_upper = 2
 	work_damage_lower = 1
@@ -32,7 +32,7 @@
 		/datum/ego_datum/armor/penitence
 	)
 	gift_type = /datum/ego_gifts/penitence
-	gift_message = "From this day forth, you shall never forget his words."
+	gift_message = "从今天起，你将永远不会忘记它的话."
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
 	grouped_abnos = list(
@@ -40,16 +40,16 @@
 	)
 
 	chem_type = /datum/reagent/abnormality/onesin
-	harvest_phrase = span_notice("As you hold it up before %ABNO, holy light fills %VESSEL.")
-	harvest_phrase_third = "%PERSON holds up %VESSEL, letting it be filled with holy light."
+	harvest_phrase = span_notice("当你将其高举于 %ABNO 面前, 圣光充盈 %VESSEL.")
+	harvest_phrase_third = "%PERSON 高举 %VESSEL, 任其浸沐圣光."
 
-	observation_prompt = "It has great power. It is savior that will judge you, and executioner that will put you in your demise. <br>\
-		In its eyes, you find... <br>(Technically, it has no eyes, so in its pitch-black holes you find...)"
+	observation_prompt = "它执掌伟力。既是审判众生的救主，亦是降下终末的行刑者. <br>\
+		在双眼眼中，你窥见... <br>(确切而言，它并无双目，一切都在漆黑空洞中映现...)"
 	observation_choices = list(
-		"Nothing" = list(TRUE, "Darkness. <br>\
-			Nothing is there. Have you found the answers you were looking for?"),
-		"You find yourself" = list(FALSE, "You are found. <br>\
-			You have great power. <br>You willingly lift the axe for the greater good."),
+		"空无一物" = list(TRUE, "黑暗. <br>\
+			虚空寂寥. 你可寻得所求之解?"),
+		"窥见己身" = list(FALSE, "你已被洞见. <br>\
+			你亦执掌伟力. <br>为至善之故，你甘愿高举裁决之斧."),
 	)
 
 	var/halo_status = "onesin_halo_normal" //used for changing the halo overlays
@@ -74,7 +74,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/onesin/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(GetWN())
-		if(work_type == "Confess")
+		if(work_type == "忏悔")
 			wn_work = TRUE
 			user.status_flags |= GODMODE//We really don't want them to die mid work
 			user.SetImmobilized(40, ignore_canstun = TRUE)
@@ -82,7 +82,7 @@
 				if(M.client)
 					M.playsound_local(get_turf(M), 'sound/abnormalities/onesin/confession_start.ogg', 25, 0)
 		else
-			to_chat(user, span_warning("The abnormality seems to be ignoring you... maybe try confessing."))
+			to_chat(user, span_warning("异想体似乎忽略了你，也许试试忏悔"))
 			return FALSE
 	return TRUE
 
@@ -98,12 +98,12 @@
 
 /mob/living/simple_animal/hostile/abnormality/onesin/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
 	wn_work = FALSE
-	if(work_type == "Confess")
+	if(work_type == "忏悔")
 		var/mob/living/simple_animal/hostile/abnormality/white_night/WN = GetWN()
 		if(WN)
-			to_chat(WN, span_colossus("The twelfth has betrayed us..."))
+			to_chat(WN, span_colossus("第十二个背叛了我们..."))
 			sound_to_playing_players('sound/abnormalities/whitenight/apostle_bell.ogg')
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 20, "Have I not chosen you the Twelve? Yet one of you is a devil", 25))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 20, "我不是拣选了你们十二个人吗？可你们中间却有一个是魔鬼.", 25))
 			WN.loot = list() // No loot for you!
 			WN.devil = user
 			user.status_flags &= ~GODMODE
@@ -143,7 +143,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/onesin/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
-	if(work_type != "Confess")
+	if(work_type != "忏悔")
 		new /obj/effect/temp_visual/onesin_blessing(get_turf(user))
 		user.adjustSanityLoss(-user.maxSanity * 0.5) // It's healing
 	if(pe >= datum_reference.max_boxes)
@@ -177,11 +177,11 @@
 	return
 
 /datum/reagent/abnormality/onesin
-	name = "Holy Light"
-	description = "It's calming, even if you can't quite look at it straight."
+	name = "圣光"
+	description = "它能让你平静下来，即使你无法直视它."
 	color = "#eff16d"
 	sanity_restore = -2
-	special_properties = list("may alter sanity of those near the subject")
+	special_properties = list("可能会改变受试者周围人的神志")
 
 /datum/reagent/abnormality/onesin/on_mob_life(mob/living/L)
 	for(var/mob/living/carbon/human/nearby in livinginview(9, get_turf(L)))

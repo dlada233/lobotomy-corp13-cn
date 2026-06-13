@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/tangle
-	name = "Tangle"
-	desc = "What seems to be a severed head laying in a tangle of hair."
+	name = "长发缠节"
+	desc = "一堆头发里好像有一颗被砍下来的头."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "tangle"
 	icon_living = "tangle"
@@ -34,21 +34,21 @@
 	gift_type =  /datum/ego_gifts/rapunzel
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "Four thousand nine-hundred fifty-one... <br>\
-	Four thousand nine-hundred fifty-two... <br>\
-	The time between you and me... <br>\
-	You've put down that much hair, you love me that much... <br>\
-	Let the hair down. So I can escape this hell. <br>\
-	The hair, let it down. <br>\
-	Let the hair down."
+	observation_prompt = "四千九百五十一……<br>\
+		四千九百五十二……<br>\
+		你我之间的时光……<br>\
+		你放下了那么多头发，你是如此爱我……<br>\
+		把头发放下来。好让我逃离这地狱。<br>\
+		头发，放下来吧。<br>\
+		把头发放下来。"
 	observation_choices = list(
-		"Repress the abnormality" = list(FALSE, "We shouldn't get close to the abnormalities. <br>\
-			But the abnormality isn't happy with your reply. <br>\
-			The hair surrounding you starts sneaking towards you to attack! <br>\
-			The cell of tangled hair becomes a mess of blood."),
-		"Go along with it" = list(TRUE, "Four thousand nine-hundred ninety-seven... <br>\
-			Four thousand nine-hundred ninety-eight... <br>\
-			Four thousand nine-hundred ninety-nine..."),
+		"压制异想体" = list(FALSE, "我们不该靠近异想体。<br>\
+			但异想体对你的回复并不满意。<br>\
+			环绕你的头发开始悄悄向你袭来，发动攻击！<br>\
+			那间缠满头发的牢房变成了一摊血泊。"),
+		"顺从其意" = list(TRUE, "四千九百九十七……<br>\
+			四千九百九十八……<br>\
+			四千九百九十九……"),
 	)
 
 	var/chosen
@@ -108,8 +108,8 @@
 // Hair turf
 /obj/structure/spreading/tangle_hair
 	gender = PLURAL
-	name = "blonde hair"
-	desc = "a patch of blonde hair."
+	name = "金发"
+	desc = "一撮金发."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "tanglehair"
 	anchored = TRUE
@@ -144,4 +144,4 @@
 		H.apply_damage(1, WHITE_DAMAGE, null, H.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
 		if(prob(10))
 			H.Immobilize(5)
-			to_chat(H, span_warning("You get caught in the hair!"))
+			to_chat(H, span_warning("你陷进了头发中!"))

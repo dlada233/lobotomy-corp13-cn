@@ -1,12 +1,12 @@
 //Coded by Coxswain, sprite by Mel
 /mob/living/simple_animal/hostile/abnormality/beanstalk
-	name = "Beanstalk without Jack"
-	desc = "A gigantic stem that reaches higher than the eye can see."
+	name = "没有杰克的豆茎"
+	desc = "一根巨大的茎，高度远超目视极限."
 	icon = 'ModularTegustation/Teguicons/64x98.dmi'
 	icon_state = "beanstalk"
 	portrait = "beanstalk"
-	maxHealth = 200
-	health = 200
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(35, 45, 55, 0, 10),
@@ -29,12 +29,12 @@
 	gift_type = /datum/ego_gifts/bean
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "You remember an employee was obsessed with this abnormality. <br>\"\
-		If you reach the top, you'll find what you've been looking for!\", He'd tell every employee. <br>\
-		One day he did climb the beanstalk, and never came back down. <br>Perhaps he's doing okay up there."
+	observation_prompt = "你记得曾有位员工痴迷于这个异想体。<br>\"\
+		如果你爬到顶端，就会找到你一直追寻的东西！\"，他逢人便说。<br>\
+		有天他真的爬上了豆茎，再也没下来。<br>也许他在上面过得不错。"
 	observation_choices = list( //TODO: Make this event a bit special
-		"Chop it down" = list(TRUE, "If something's too big to understand, it's too big to be allowed to exist. The axe bites into the stem..."),
-		"Climb the beanstalk" = list(FALSE, "You begin to climb the beanstalk, but no matter how much you climb there's always more stalk. You peer at the clouds, squinting your eyes, but still can't see anyone..."),
+		"砍倒它" = list(TRUE, "如果某物庞大到无法理解，那它就不该存在，斧刃深深劈入茎干..."),
+		"爬上豆茎" = list(FALSE, "你开始攀爬豆茎，但无论爬了多久，上方总还有更多茎干. 你眯眼望向云层，却仍看不到任何人影..."),
 	)
 
 	var/climbing = FALSE
@@ -70,7 +70,7 @@
 		if(QDELETED(user))
 			return
 		animate(user, alpha = 0,pixel_x = 0, pixel_z = 16, time = 3 SECONDS)
-		to_chat(user, span_userdanger("You will make it to the top, no matter what!"))
+		to_chat(user, span_userdanger("不管发生什么，你都会成功的!"))
 		user.death(TRUE)
 		QDEL_IN(user, 3.5 SECONDS)
 
@@ -94,7 +94,7 @@
 			ResetWorkDamage()
 			climbing = FALSE
 			return
-		to_chat(user, span_userdanger("You start to climb!"))
+		to_chat(user, span_userdanger("开始攀爬!"))
 		animate(user, alpha = 1,pixel_x = 0, pixel_z = 16, time = 3 SECONDS)
 		user.pixel_z = 16
 		user.Stun(10 SECONDS)
@@ -108,7 +108,7 @@
 		user.Apply_Gift(BWJEG)
 		animate(user, alpha = 255,pixel_x = 0, pixel_z = -16, time = 3 SECONDS)
 		user.pixel_z = 0
-		to_chat(user, span_userdanger("You return with the giant's treasure!"))
+		to_chat(user, span_userdanger("你带着巨人的宝藏回来了!"))
 
 	ResetWorkDamage()
 	climbing = FALSE

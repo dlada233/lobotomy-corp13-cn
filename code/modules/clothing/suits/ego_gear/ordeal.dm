@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor/ego_gear/claw
-	name = "claw armor"
+	name = "爪牙护甲"
 	desc = "A simple suit and tie with several injectors attached. The fabric is near indestructable."
 	icon_state = "claw"
 	icon = 'icons/obj/clothing/ego_gear/lc13_armor.dmi'
@@ -13,7 +13,7 @@
 	AddComponent(/datum/component/adjustable_clothing, list("claw", "claw_baral"))
 
 /obj/item/clothing/head/ego_hat/claw_head
-	name = "mask of the claw"
+	name = "爪牙面具"
 	desc = "A faceless mask with an injector stuck on top of it."
 	icon_state = "claw"
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH | PEPPERPROOF
@@ -26,7 +26,7 @@
 	worn_icon = 'icons/mob/clothing/ego_gear/ordeal.dmi'
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/eternal_feast
-	name = "Endless feast"
+	name = "无尽盛宴"
 	desc = "Made out of tough scales and flesh of a powerful ordeal. Wearing it makes you feel hungry as well."
 	icon_state = "eternal_feast"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 70, BLACK_DAMAGE = 80, PALE_DAMAGE = 40) // 240
@@ -38,7 +38,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/painful_purpose
-	name = "Painful purpose"
+	name = "苦难决心"
 	desc = "A heavy armor made as solace of the end of all. Wearing it is cumbersome but offers superior protection."
 	hat = /obj/item/clothing/head/ego_hat/helmet/painful_purpose
 	neck = /obj/item/clothing/neck/ego_neck/painful_purpose
@@ -53,18 +53,18 @@
 							)
 
 /obj/item/clothing/head/ego_hat/helmet/painful_purpose
-	name = "Painful purpose helmet"
+	name = "苦难决心之盔"
 	desc = "A helmet made of metal and lights.."
 	icon_state = "painful_purpose"
 	flags_inv = HIDEMASK | HIDEFACE
 
 /obj/item/clothing/neck/ego_neck/painful_purpose
-	name = "Painful purpose cape"
+	name = "苦难决心披风"
 	desc = "A cape thats more of a shield due to its material."
 	icon_state = "painful_purpose"
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/meaningless_march
-	name = "Meaningless march"
+	name = "枉然行军"
 	desc = "Want to know how I got these scars?"
 	icon_state = "meaningless_march"
 	armor = list(RED_DAMAGE = 80, WHITE_DAMAGE = 70, BLACK_DAMAGE = 50, PALE_DAMAGE = 40) // 240
@@ -76,7 +76,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/god_delusion//240 total can shift between 4 different armor modes once
-	name = "Delusionist's end"
+	name = "幻觉末日"
 	desc = "A runic armor with a colorless crystal in its center."
 	icon_state = "delusion_none"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 60, BLACK_DAMAGE = 60, PALE_DAMAGE = 60) // 240
@@ -173,7 +173,7 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/familial_strength
-	name = "Familial Strength"
+	name = "家庭之力"
 	desc = "A heavy armor from the mother of all sweepers."
 	icon_state = "familial_strength"
 	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 30, BLACK_DAMAGE = 80, PALE_DAMAGE = 60) // 240
@@ -185,7 +185,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/ordeal/wonderland
-	name = "Wonderland"
+	name = "仙境"
 	desc = "It's hard to look at it right."
 	icon_state = "wonderland"
 	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 40, BLACK_DAMAGE = 70, PALE_DAMAGE = 80) // 240

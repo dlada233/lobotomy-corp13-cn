@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/caterpillar
-	name = "Hookah Caterpillar"
-	desc = "A pathetic bug sitting on a mushroom."
+	name = "水烟毛毛虫"
+	desc = "一只可怜的虫子坐在树叶上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "caterpillar"
 	icon_living = "caterpillar"
@@ -46,21 +46,21 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
 	observation_prompt = "\"Kyukyu.\" <br>\
-		The smoke that fills the room is suffocating. <br>\
-		A fat worm sits lazily on a mushroom. <br>\
-		When you think about it, it's not too different from when you lazily sit in an office chair. <br>\
-		Enjoying a comfortable life working for a prestigious wing. <br.\
-		Away from the common riff-raff of the backstreets. <br>\
-		This uncanny feeling..."
+			弥漫在房间里的烟雾令人窒息。<br>\
+			一条肥硕的虫子懒洋洋地坐在蘑菇上。<br>\
+			仔细想想，这和你懒散地坐在办公椅上也差不了多少。<br>\
+			享受着在一家知名翼工作的舒适生活。<br.\
+			远离后巷那些普通的乌合之众。<br>\
+			这种怪诞的感觉..."
 	observation_choices = list(
-		"It's just like me" = list(TRUE, "You can see your face in the smoke, haughty and indignant. <br>\
-			Just like your old, shallow self. <br>\
-			It's probably not a good idea to spend too much time with this abnormality."),
-		"Just a filthy creature" = list(FALSE, "Repression, the emotion of refusal to face oneself. <br>\
-			It will not yield anything on its own. <br>\
-			One must face themselves through  constant insight. <br>\
-			The worm will fatten up from the despair and doubts blown towards it <br>\
-			To create silk... The silkworm must be boiled."),
+		"简直就像我一样" = list(TRUE, "你可以在烟雾中看到自己的脸，傲慢而又愤愤不平。<br>\
+			就像过去那个浅薄的自己。<br>\
+			和这个异想体待太久可能不是什么好事。"),
+		"不过是个肮脏的生物" = list(FALSE, "压制，是拒绝面对自我的情绪。<br>\
+			它自身不会产生任何东西。<br>\
+			人必须通过不断的内省来面对自己。<br>\
+			虫子会从投向它的绝望和疑虑中吸取养分而变得肥硕<br>\
+			要造出丝...蚕必须经受蒸煮。"),
 	)
 
 	var/eclosion_counter = 0 //How many times you worked on it without doing repression work
@@ -85,9 +85,9 @@
 /mob/living/simple_animal/hostile/abnormality/caterpillar/examine(mob/user)
 	. = ..()
 	if(IsContained() && eclosion_counter == 5)
-		. += "It isn't moving."
+		. += "它没有在动."
 	if(shell_broken)
-		. += "Its shell looks heavily damaged."
+		. += "它的外壳看起来严重受损."
 
 /mob/living/simple_animal/hostile/abnormality/caterpillar/HandleStructures()
 	. = ..()
@@ -154,7 +154,7 @@
 /mob/living/simple_animal/hostile/abnormality/caterpillar/BreachEffect()
 	icon = 'ModularTegustation/Teguicons/80x80.dmi'
 	icon_state = "caterpillar"
-	desc = "A large humanoid bug that's spewing smoke."
+	desc = "一只喷吐烟雾的巨大人形虫子。"
 	pixel_x = -24
 	base_pixel_x = -24
 	pixel_y = 0
@@ -205,7 +205,7 @@
 		icon_state = "caterpillar_damaged"
 		ChangeMoveToDelay(2.5)
 		playsound(get_turf(src), 'sound/effects/wounds/crack2.ogg', 200, 0, 7)
-		visible_message(span_warning("[src]'s shell finally breaks!"), span_boldwarning("Your shell is heavily damaged!"))
+		visible_message(span_warning("[src]的外壳就要破裂了!"), span_boldwarning("你的外壳受到了严重损伤!"))
 
 /mob/living/simple_animal/hostile/abnormality/caterpillar/Life()
 	. = ..()
@@ -235,8 +235,8 @@
 
 //Structures
 /obj/structure/hookah_mushroom
-	name = "Big Mushroom"
-	desc = "A large mushroom with a red top acting like a cushion."
+	name = "大蘑菇"
+	desc = "一个有着红色顶部的大型蘑菇，像垫子一样。"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "caterpillar_mushroon"
 	anchored = TRUE
@@ -248,8 +248,8 @@
 	base_pixel_x = -16
 
 /obj/structure/smoke_detector
-	name = "smoke detector"
-	desc = "A specialized smoke detector meant to detect Hookah Caterpillar's current Eclosion Counter."
+	name = "烟雾探测器"
+	desc = "一种专门用于检测水烟毛毛虫当前孵化计数的烟雾探测器。"
 	icon = 'ModularTegustation/Teguicons/lc13_structures.dmi'
 	icon_state = "smoke_detector"
 	anchored = TRUE
@@ -261,9 +261,9 @@
 	. = ..()
 	var/mob/living/simple_animal/hostile/abnormality/caterpillar/Hook = locate() in range(src, 3)
 	if(Hook && Hook.IsContained())
-		. += span_info("Current Eclosion Counter: [100*(Hook.eclosion_counter/5)]%.")
+		. += span_info("当前孵化值: [100*(Hook.eclosion_counter/5)]%.")
 	else
-		. += span_info("ERROR: The abnormality isn't contained currently!")
+		. += span_info("ERROR: 异想体当前不在收容单元内!")
 
 /////////////////////////////////////////////
 // Bad smoke
@@ -299,7 +299,7 @@
 		addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living, remove_smoke_delay)), 10)
 		C.deal_damage(damage_done, PALE_DAMAGE)
 		if(prob(40))
-			to_chat(C, span_danger("IT BURNS!"))
+			to_chat(C, span_danger("它在燃烧!"))
 			C.emote("scream")
 	else
 		addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living, remove_smoke_delay)), 5)

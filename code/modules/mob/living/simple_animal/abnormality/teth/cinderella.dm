@@ -1,7 +1,7 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/cinderella
-	name = "Cinderella's Pumpkin Carriage"
-	desc = "A beautiful pumpkin carriage adorned with golden trimmings."
+	name = "灰姑娘的南瓜马车"
+	desc = "一辆装饰着金色装饰的漂亮南瓜马车."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "cinderella_1"
 	icon_living = "cinderella_1"
@@ -29,23 +29,23 @@
 	gift_type = /datum/ego_gifts/curfew
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "(You sit and wait.) <br>\
-		The ground is solid. <br>\
-		(You sit and wait.) <br>\
-		The beautiful blonde girl is kissing her prince. <br>\
-		(You sit and wait.) <br>\
-		The prince and princess-to-be are leaving you, even the fairy godmother has left you. <br>\
-		(You sit and wait.) <br>\
-		The rot has set in on your once vibrant orange flesh and your wheels buckle from the elements. <br>\
-		(You sit and wait.) <br>\
-		Do you not need me anymore? Did I not take you to the happiest night of your life? <br>\
-		(You sit and...)"
+	observation_prompt = "(你坐着等待。)<br>\
+		地面坚实稳固。<br>\
+		(你坐着等待。)<br>\
+		美丽的金发女孩正亲吻她的王子。<br>\
+		(你坐着等待。)<br>\
+		王子与他未来的王妃正离你而去，连仙女教母也已抛弃你。<br>\
+		(你坐着等待。)<br>\
+		腐朽已侵蚀你曾经鲜活的橙黄身躯，车轮在风雨侵蚀下扭曲变形。<br>\
+		(你坐着等待。)<br>\
+		你不再需要我了吗？难道不是我带你度过生命中最幸福的夜晚吗？<br>\
+		(你坐着...)"
 	observation_choices = list(
-		"Remember that night" = list(TRUE, "Yes, it was the happiest night of both our lives... <br>\
-			(The colour returns to your flesh and your wheels begin to mend.) <br>\
-			Let's go back to that wonderous, magical night..."),
-		"Wait" = list(FALSE, "She still may have need of me, I'll wait until I'm called. <br>\
-			(Your flesh turns grey, no one will need such a horrid looking carriage.)"),
+		"回想起那个夜晚" = list(TRUE, "是啊，那曾是我们生命中最幸福的夜晚...<br>\
+			(你的躯体重焕光彩，车轮开始自我修复。)<br>\
+			让我们回到那个奇妙而魔幻的夜晚吧..."),
+		"你坐着等待" = list(FALSE, "她可能还需要我，我要等到被召唤为止。<br>\
+			(你的身躯化为灰暗，没人会需要如此可憎的马车。)"),
 	)
 
 	var/freshness = 0
@@ -57,13 +57,13 @@
 
 /mob/living/simple_animal/hostile/abnormality/cinderella/examine(mob/user)
 	. = ..()
-	var/freshness_state = "Rotten"
+	var/freshness_state = "腐烂"
 	switch(freshness)
 		if(4 to 6)
-			freshness_state = "Spoiled"
+			freshness_state = "破旧"
 		if(7  to 10)
-			freshness_state = "Pristine"
-	. += "It looks [freshness_state]"
+			freshness_state = "崭新"
+	. += "它看起来是[freshness_state]的"
 
 //Work mechanics
 /mob/living/simple_animal/hostile/abnormality/cinderella/AttemptWork(mob/living/carbon/human/user, work_type)
@@ -122,7 +122,7 @@
 	var/obj/effect/cinderella/seg = new(spawnPoint)
 	seg.dir = direction
 	seg.icon_state = "cinderella_1"
-	notify_ghosts("[seg] is preparing to depart!", source = seg, action = NOTIFY_ORBIT, header="Something Interesting!") // bless this mess
+	notify_ghosts("[seg]正准备启程!", source = seg, action = NOTIFY_ORBIT, header="有趣的事情!") // bless this mess
 	segments += seg
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(sound_to_playing_players), 'sound/abnormalities/cinderella/bell.ogg', 50), 1)
 	addtimer(CALLBACK(src, PROC_REF(MoveCarriage)), 10 SECONDS)

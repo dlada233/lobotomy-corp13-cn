@@ -1,15 +1,15 @@
 #define NOSFERATU_BANQUET_COOLDOWN (12 SECONDS)
 // Coded by Coxswain, initlaly sprited by crabby, sprites later improved on by Reddim
 /mob/living/simple_animal/hostile/abnormality/nosferatu
-	name = "Nosferatu"
-	desc = "A vampire, huh. Think I heard of it somewhere."
+	name = "诺斯费拉图"
+	desc = "吸血鬼啊，我好像在什么地方听说过."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "nosferatu"
 	icon_living = "nosferatu"
 	var/icon_aggro = "nosferatu_breach"
 	portrait = "nosferatu"
-	maxHealth = 800
-	health = 800
+	maxHealth = 1000
+	health = 1000
 	move_to_delay = 6
 	rapid_melee = 1
 	threat_level = WAW_LEVEL
@@ -47,14 +47,14 @@
 	gift_type = /datum/ego_gifts/dipsia
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "I was human once, am still human. <br>I think. It's hard to tell anymore. <br>\
-		He seemed lost, wandering the backstreets in such finery made him a tempting target, I never realised it was everyone else who was in danger. <br>\
-		He wears the mask of humanity well, but a single drop of blood is all it took for him to reveal his ferocity. <br>\
-		\"It's too early for a nap... <br>Won't you join me and share the pleasure?\" <br>He asks, his lips still red with my blood."
+	observation_prompt = "我曾是人类，现在也依然是人类。<br>我想是吧，已经很难分辨了。<br>\
+			他看起来迷路了，穿着如此华丽的衣服在后巷游荡让他成为了一个诱人的目标，但我从未意识到真正处于危险中的其实是其他所有人。<br>\
+			他很好地戴着一副人性的面具，但仅仅一滴血就足以让他暴露出自己的凶残。<br>\
+			\"离休息还太早了...<br>你不加入我，一起分享这份愉悦吗？\"<br>他问道，嘴唇上还沾着我的鲜血，猩红依旧。"
 	observation_choices = list(
-		"Join the Danse Macabre" = list(TRUE, "Refusing wasn't an option and he smiles, raising his glass. <br>\
-			\"A toast then! To a night when one is allowed to pursue all kinds of desire, a never-ending blood-red night!\" <br>\
-			Blood.... <br>The blood brings me eternal happiness, forfeiting false hope, let's forget all pretenses of humanity..."),
+		"加入死亡之舞" = list(TRUE, "拒绝并不是可选项，他微笑着举起了杯子。<br>\
+			\"那就干杯吧！为了这一夜，人们可以追逐各种欲望，一个永不终结的血色之夜！\"<br>\
+			鲜血...<br>鲜血带给我永恒的幸福，放弃虚假的希望，让我们抛开所有关于人性的伪装..."),
 	)
 
 	// Work Stuff
@@ -181,7 +181,7 @@
 	user.OtherDamageEffect(failure_penalty * 3, "bleed")
 	AdjustThirst(failure_penalty * 25) // We're angry so lets suck some blood
 	failed = TRUE
-	to_chat(user, span_warning("[src] suddenly sucks your blood!"))
+	to_chat(user, span_warning("[src] 突然吸取你的血液!"))
 
 /mob/living/simple_animal/hostile/abnormality/nosferatu/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(work_type == ABNORMALITY_WORK_REPRESSION && !failed) // Owe we got repessed
@@ -193,7 +193,7 @@
 		user.adjustHealthLoss(15)
 		OtherDamageEffect(15, "bleed")
 		if(!failed)
-			to_chat(user, span_warning("[src] suddenly sucks your blood!"))
+			to_chat(user, span_warning("[src] 突然吸取你的血液!"))
 	if(failed || datum_reference.qliphoth_meter < 3) // We sucked blood at least once, lets check the perp
 		if(last_drawn != user)
 			last_drawn_check = 0
@@ -211,11 +211,11 @@
 	if(bloodfeast && IsContained()) // dont want to succ blood while contained
 		switch(datum_reference.qliphoth_meter)
 			if(1)
-				shown_value = span_redtext("You can see a well of blood sloshing around in its longing eyes.")
+				shown_value = span_redtext("你可见到一口血井在它渴望的眼神中翻腾流淌.")
 			if(2)
-				shown_value = span_notice("Looks like it could use a bite.")
+				shown_value = span_notice("看起来可能需要咬一口.")
 			if(3)
-				shown_value = span_nicegreen("Looks like it's had enough for now.")
+				shown_value = span_nicegreen("看来现在已经够了.")
 		. += shown_value
 
 // Breach
@@ -482,8 +482,8 @@
 
 // Bat minion - A non-dense trash mob that automatically harvests blood on attacks and returns blood to nosferatu. Dangeorus.
 /mob/living/simple_animal/hostile/aminion/nosferatu_mob
-	name = "\improper Sanguine bat"
-	desc = "It looks like a bat."
+	name = "\improper 血蝙蝠"
+	desc = "它看起来像一只蝙蝠."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "nosferatu_mob"
 	icon_living = "nosferatu_mob"
@@ -496,8 +496,8 @@
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/abnormalities/nosferatu/bat_attack.ogg'
 	del_on_death = TRUE
-	health = 60
-	maxHealth = 60
+	health = 120
+	maxHealth = 120
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 1.8, BLACK_DAMAGE = 0.6, PALE_DAMAGE = 2)
 	melee_damage_type = RED_DAMAGE
 	melee_damage_lower = 2
@@ -532,7 +532,7 @@
 /mob/living/simple_animal/hostile/aminion/nosferatu_mob/OpenFire(atom/A)
 	if(istype(A, /mob/living/simple_animal/hostile/abnormality/nosferatu))
 		return
-	visible_message(span_danger("<b>[src]</b> flies around, seemingly aiming for [A]!"))
+	visible_message(span_danger("<b>[src]</b> 飞来飞去，似乎瞄准了 [A]!"))
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 /mob/living/simple_animal/hostile/aminion/nosferatu_mob/PickTarget(list/Targets)

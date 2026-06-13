@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/abnormality/shy_look
-	name = "Today's Shy Look"
-	desc = "A humanoid abnormality that's hiding behind what appears to be human skin that's etched with 5 different expressions.  \
-	You have a strange urge to look behind the net of skin. But getting a bad feeling, you decide to stop."
+	name = "今天也很害羞"
+	desc = "一个人形异想体，躲在一张刻有五种不同表情的人皮后面.  \
+	你有种奇怪的冲动想看看人皮后面，但感到不祥预感，你决定放弃."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "todayshylook_neutral"
 	icon_living = "todayshylook_neutral"
@@ -10,8 +10,8 @@
 	pixel_x = -16
 	base_pixel_x = -16
 
-	maxHealth = 120
-	health = 120
+	maxHealth = 230
+	health = 230
 	move_to_delay = 5
 	melee_damage_upper = 1
 	melee_damage_type = BLACK_DAMAGE
@@ -35,10 +35,10 @@
 	gift_type =  /datum/ego_gifts/shy
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "It's a good day! Are you still shy today?"
+	observation_prompt = "今天是个好日子！你今天还是很害羞吗?"
 	observation_choices = list(
-		"Yes" = list(TRUE, "\"That's no good, it's very important to have a smile on one's face! We need to be happy for our City!\""),
-		"No" = list(FALSE, "\"That's great to hear! Let's see the biggest smile you can put on to make those in the Outskirts jealous!\""),
+		"Yes" = list(TRUE, "\"那可不行，保持笑容很重要！我们要为这座都市感到高兴!\""),
+		"No" = list(FALSE, "\"太好了！露出你最灿烂的笑容，让郊区的人嫉妒吧!\""),
 	)
 
 	var/chance_modifier = 1

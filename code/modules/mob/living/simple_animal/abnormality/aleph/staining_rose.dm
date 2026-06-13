@@ -1,7 +1,7 @@
 // Re-coded by Coxswain, finally off fraud watch. The flower that kills you.
 /mob/living/simple_animal/hostile/abnormality/staining_rose
-	name = "Staining Rose"
-	desc = "A tiny, wilting rose."
+	name = "色染玫瑰"
+	desc = "一朵小小的、枯萎的玫瑰."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "rose_inactive"
 	portrait = "staining_rose"
@@ -31,11 +31,11 @@
 	gift_type = /datum/ego_gifts/blossoming
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "This isn't worth being called a sacrifice, is it? <br>I've always wanted to be a hero, but... <br>Even when I'm ordered forth to die a worthless death... <br>\
-		I find myself laughable for deciding to do it still. <br>I joined this company to save people. <br>If I can save the lives of those I love, I have no regrets."
+	observation_prompt = "这甚至不值得被称为牺牲，对吧? <br>我一直想成为英雄，但是... <br>即使被命令去无谓地送死... <br>\
+		我发现自己仍然决定这么做，真是可笑. <br>我加入这家公司是为了拯救他人. <br>若能拯救所爱之人的生命，我便无悔."
 	observation_choices = list(
-		"100 paper roses" = list(TRUE, "I was the only one who could do it... <br>\
-			... <br>That's all."),
+		"一百朵纸玫瑰" = list(TRUE, "我是唯一能做到的人... <br>\
+			... <br>仅此而已."),
 	)
 
 	var/mob/living/carbon/human/chosen = null
@@ -87,7 +87,7 @@
 		check_timer = addtimer(CALLBACK(src, PROC_REF(ChosenCheck)), 3 MINUTES, TIMER_STOPPABLE)
 		return
 	mychosen.apply_status_effect(/datum/status_effect/stained, datum_reference)
-	to_chat(mychosen, span_warning("You are now Staining Rose's Chosen."))
+	to_chat(mychosen, span_warning("你现在是色染玫瑰的被选者."))
 	icon_state = "rose"
 	deltimer(check_timer)
 	check_timer = null
@@ -116,7 +116,7 @@
 		return
 
 	if((user != chosen) && !safework)
-		user.visible_message(span_warning("Staining Rose already has a Chosen named [chosen]!"))
+		user.visible_message(span_warning("色染玫瑰已经拥有了名为[chosen]的被选者了!"))
 		var/datum/disease/staining_rose/D = new()
 		user.ForceContractDisease(D, FALSE, TRUE)
 		Shed()
@@ -167,7 +167,7 @@
 /mob/living/simple_animal/hostile/abnormality/staining_rose/AttemptWork(mob/living/carbon/human/user, work_type)
 	silent_work = FALSE
 	if(blooming)
-		to_chat(user, span_warning("It isn't safe to work on the staining rose right now!"))
+		to_chat(user, span_warning("现在对色染玫瑰工作是十分危险的!"))
 		return FALSE
 	if(datum_reference.console.meltdown && !chosen)
 		safework = TRUE
@@ -379,8 +379,8 @@
 	var/other_works_count = 0
 
 /atom/movable/screen/alert/status_effect/stained
-	name = "Rose-stained"
-	desc = "The staining rose has chosen you. It wishes to resonate with you."
+	name = "色染玫瑰"
+	desc = "色染玫瑰选择了你，它渴望与你共鸣."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "sacrifice"
 
@@ -416,8 +416,8 @@
 			damage_dealt = (owner.maxHealth * (0.50))
 			breachtime = TRUE
 	owner.apply_damage(damage_dealt, BRUTE)
-	owner.manual_emote("[owner] coughs up petals!")
-	to_chat(owner, span_warning("You are being penalized by the Staining Rose for working on another abnormality!"))
+	owner.manual_emote("[owner]咳出花瓣!")
+	to_chat(owner, span_warning("你因进行另一个异想体工作而被染色玫瑰处以惩罚!"))
 	owner.add_splatter_floor()
 	if(prob(10))
 		new /obj/item/rose(get_turf(owner))
@@ -440,8 +440,8 @@
 	datum_reference.qliphoth_change(-1)
 
 /obj/item/rose // It's more of an effect that you can pick up.
-	name = "rose"
-	desc = "Listen here - Every night has its dawn..."
+	name = "玫瑰"
+	desc = "听好 - 黎明会在每个夜晚照常来临..."
 	icon = 'icons/obj/hydroponics/harvest.dmi'
 	icon_state = "rose"
 	var/timerid

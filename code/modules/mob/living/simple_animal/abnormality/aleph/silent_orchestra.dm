@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/silentorchestra
-	name = "The Silent Orchestra"
-	desc = "From break and ruin, the most beautiful performance begins."
+	name = "沉默乐团"
+	desc = "从破碎和毁灭开始，从最美丽的表演开始."
 	health = 2000
 	maxHealth = 2000
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
@@ -37,12 +37,12 @@
 	gift_type =  /datum/ego_gifts/dacapo
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "I was the conductor of Lobotomy Corporation, I put my everything into it. <br>\
-		Now, I conduct the song of apocalypse to make everything right. <br>As if he is about to start the performance, he stretches his arm. <br>\
-		The conductor, who thought he is the freest soul, was not free at all. <br>The performance ended. <br>I......."
+	observation_prompt = "我曾是L公司的指挥家，为此付出了一切。<br>\
+		现在，我指挥着末日之歌来纠正一切。<br>仿佛即将开始演出，他伸展手臂。<br>\
+		这位曾以为自己是最自由灵魂的指挥家，其实一点也不自由。<br>演出结束了。<br>我......."
 	observation_choices = list(
-		"Did not give applause" = list(TRUE, "I am not worthy to give an applause yet. <br>The music replays. <br>Angelos, my movement."),
-		"Gave an applause" = list(FALSE, "The performance never ends. <br>And Da Capo."),
+		"没有鼓掌" = list(TRUE, "我还不配鼓掌。<br>音乐重新响起。<br>Angelos，我的乐章。"),
+		"鼓了掌" = list(FALSE, "演出永不结束。<br>然后从头再来。"),
 	)
 
 	/// Range of the damage
@@ -126,7 +126,7 @@
 						head.dismember()
 						QDEL_NULL(head)
 						H.regenerate_icons()
-						H.visible_message(span_danger("[H]'s head explodes!"))
+						H.visible_message(span_danger("[H]的头爆炸了!"))
 						new /obj/effect/gibspawner/generic/silent(get_turf(H))
 						playsound(get_turf(H), 'sound/abnormalities/silentorchestra/headbomb.ogg', 50, 1)
 				SLEEP_CHECK_DEATH(4 SECONDS)

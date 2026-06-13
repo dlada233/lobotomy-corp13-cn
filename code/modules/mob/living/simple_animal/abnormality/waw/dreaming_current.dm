@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/abnormality/dreaming_current
-	name = "\proper The Dreaming Current"
-	desc = "An abnormality resembling a cobalt blue shark with legs. \
-	There's a syringe embedded in a side of its body, and there are multiple injection holes on its lower body."
+	name = "\proper 梦中的洋流"
+	desc = "有腿的类似钴蓝色鲨鱼的异想体. \
+	它身体的一侧嵌入了一个注射器，下半身有多个注射孔."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "current"
 	icon_living = "current"
@@ -45,13 +45,13 @@
 		/mob/living/simple_animal/hostile/abnormality/siltcurrent = 2
 	)
 
-	observation_prompt = "My mom and dad took me to this place when I was very small, it smells strange and the people in it only wear white. <br>\
-		Mom says she and dad will come back for me very soon. <br>\
-		Today one of the men in the white clothing offers me the purple candy, it's grape-flavoured he says. <br>Grape is my favourite."
+	observation_prompt = "我很小的时候，爸妈带我来到这个地方，这里气味怪异，人们都穿着白色衣服。<br>\
+		妈妈说她和爸爸很快就会回来接我。<br>\
+		今天有个穿白衣服的人递给我紫色糖果，说是葡萄味的。<br>葡萄是我最喜欢的味道。"
 	observation_choices = list(
-		"Eat the candy" = list(TRUE, "It's grape flavour, the grape is my favourite. <br>\
-			When I eat the grape candy I imagine myself swimming in an ocean of colour. <br>Today, I think I'm going to go to the Sea..."),
-		"Don't eat the candy" = list(FALSE, "I don't eat the candy given to me. <br>When will mom and dad come? <br>Why aren't they here? <br>It doesn't stop hurting, <br>I'm scared..."),
+		"吃糖" = list(TRUE, "确实是葡萄味，我最喜欢葡萄了。<br>\
+			吃着糖时，我幻想自己在色彩海洋里游泳。<br>今天，我觉得自己要去那片海了..."),
+		"不吃糖" = list(FALSE, "我没吃那颗糖。<br>爸妈什么时候才来？<br>为什么他们还不来？<br>疼痛持续着，<br>我好害怕..."),
 	)
 
 	var/list/movement_path = list()
@@ -59,7 +59,7 @@
 	var/charging = FALSE
 	var/dash_cooldown
 	var/dash_cooldown_time = 8 SECONDS
-	var/dash_damage = 120
+	var/dash_damage = 150
 	/// Delay between each subsequent move when charging
 	var/dash_speed = 0.8
 	/// How many paths do we create between several landmarks?

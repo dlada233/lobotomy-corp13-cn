@@ -3,8 +3,8 @@
 #define STATUS_EFFECT_DAYBREAK /datum/status_effect/daybreak
 
 /mob/living/simple_animal/hostile/abnormality/hammer_light
-	name = "Hammer of Light"
-	desc = "A white hammer engraved with yellow runic writing."
+	name = "光之锤"
+	desc = "刻有金色符文的白色锤子."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "hammer_pedestal"
 	icon_living = "hammer_pedestal"
@@ -34,12 +34,12 @@
 	gift_type = /datum/ego_gifts/evening
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK // Technically it was in the beta but I dont want it showing it up in LC-only modes
 
-	observation_prompt = "I was the unluckiest man in the world.<br>\
-		Everything around me did nothing but ruining my life. But I had no power to change this fate.<br>\
-		Someday, someone made an offer to me. \"If you accept it, your whole world will change.\"<br>\
-		Such a tempting offer. I would become something that I could only hope to be."
+	observation_prompt = "我是世上最不幸之人.<br>\
+		周遭万物皆在摧毁我的生活，我却无力改变这命运.<br>\
+		某日，有人向我提议. \"若你接受此物，整个世界将为之改变.\"<br>\
+		这诱惑令人难以抗拒，我将成为梦寐以求的存在."
 	observation_choices = list(
-		"Accept the offer" = list(TRUE, "I accepted the offer and paid the price. <br>The $0 Hammer of Light shined.")
+		"接受提议" = list(TRUE, "我接受了提议并付出代价. <br>光之锤熠熠生辉.")
 	)
 
 	pet_bonus = "hums" // saves a few lines of code by allowing funpet() to be called by attack_hand()
@@ -120,13 +120,13 @@
 		return
 	var/mob/living/carbon/human/H = petter
 	if(!hammer_present)
-		to_chat(H, span_warning("The hammer is not there!"))
+		to_chat(H, span_warning("锤子不在这!"))
 		return
 	if(sealed)
-		to_chat(H, span_warning("The hammer is sealed!"))
+		to_chat(H, span_warning("锤子已封印!"))
 		return
 	if(get_user_level(H) <= 1)
-		to_chat(H, span_warning("Your body is reduced to atoms by the power of [src]!"))
+		to_chat(H, span_warning("你的身体被[src]的力量还原为原子!"))
 		H.dust(TRUE, TRUE)
 		return
 	PickUpHammer(H)
@@ -135,7 +135,7 @@
 // User-related Code
 /mob/living/simple_animal/hostile/abnormality/hammer_light/proc/PickUpHammer(mob/living/carbon/human/user)
 	if(user.ckey in banned)
-		to_chat(user, span_warning("[src] rejects you, not even reacting to your presence at all. You feel empty inside."))
+		to_chat(user, span_warning("[src] 拒绝了你，甚至对你的存在毫无反应。你内心感到空虚."))
 		return
 	usable_cooldown = world.time + usable_cooldown_time
 	banned += user.ckey
@@ -200,9 +200,9 @@
 
 // Item version
 /obj/item/ego_weapon/hammer_light
-	name = "hammer of light"
-	desc = "The $0 \[Hammer of Light\] is such a simple abnormality. It takes as much it gave to you. What price will you pay to it?"
-	special = "Use in hand to summon an army of spectral warriors to your location."
+	name = "光之锤"
+	desc = "$0 \[光之锤\] 是一种简单的异想体，它给予你多少力量，你就要需要付出多少代价，你愿意支付什么代价呢?"
+	special = "手持使用，召唤一支幽灵战士大军到你的位置."
 	icon_state = "hammer_light"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -235,12 +235,12 @@
 		return FALSE
 
 /obj/item/ego_weapon/hammer_light/EgoAttackInfo(mob/user)
-	return span_notice("It deals damage that ignores armor, and inflicts massive damage on stronger foes.")
+	return span_notice("造成无视护甲的伤害，并对更强大的敌人造成巨大伤害.")
 
 /obj/item/ego_weapon/hammer_light/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!CanUseEgo(user))
-		to_chat(user, span_warning("The [src] burns in your hands!"))
+		to_chat(user, span_warning("[src]在你手中燃烧!"))
 		user.dropItemToGround(src)
 		return
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
@@ -290,8 +290,8 @@
 
 // Item's teleport ability
 /obj/effect/proc_holder/ability/evening_twilight
-	name = "Evening Twilight"
-	desc = "An ability that teleports you to the nearest non-visible threat."
+	name = "暮光"
+	desc = "将你传送至附近威胁存在的传送能力."
 	action_icon_state = "gold0"
 	base_icon_state = "gold"
 	cooldown_time = 25 SECONDS
@@ -350,7 +350,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_nicegreen("You feel powerful."))
+	to_chat(status_holder, span_nicegreen("你感到活力充沛."))
 	ADD_TRAIT(status_holder, TRAIT_COMBATFEAR_IMMUNE, "Abnormality")
 	ADD_TRAIT(status_holder, TRAIT_WORK_FORBIDDEN, "Abnormality")
 	ADD_TRAIT(status_holder, TRAIT_IGNOREDAMAGESLOWDOWN, "Abnormality")
@@ -403,7 +403,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_danger("Your feel whole again, yet also diminished. The searing light has irreparably burnt a part of your soul."))
+	to_chat(status_holder, span_danger("你再次感到完整，却又变得微弱。那灼热的光芒已不可挽回地烧毁了你灵魂的一部分."))
 	status_holder.adjust_attribute_limit(-10) // It burns some of your potential, permanently.
 	status_holder.adjust_attribute_buff(FORTITUDE_ATTRIBUTE, 60)
 	status_holder.adjust_attribute_buff(PRUDENCE_ATTRIBUTE, 60)
@@ -419,8 +419,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/heroism
 
 /atom/movable/screen/alert/status_effect/heroism
-	name = "Heroism"
-	desc = "You are quickly recovering HP and SP due to the effects of hammer of light."
+	name = "英勇"
+	desc = "由于光之锤的影响，你正在迅速恢复HP和SP."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "rest"
 
@@ -435,8 +435,8 @@
 
 // Simple mob
 /mob/living/simple_animal/hostile/lighthammer
-	name = "Light Being"
-	desc = "What appears to be human, only made entirely out of light."
+	name = "光之存在"
+	desc = "看起来像人类的东西，只是完全由光构成."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "light_hammer"
 	icon_living = "light_hammer"

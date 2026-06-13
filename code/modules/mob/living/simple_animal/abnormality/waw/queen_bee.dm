@@ -1,12 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/queen_bee
-	name = "Queen Bee"
-	desc = "A disfigured creature resembling a bee queen."
+	name = "女王蜂"
+	desc = "形似蜂后的扭曲生物."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "queen_bee"
 	icon_living = "queen_bee"
 	portrait = "queen_bee"
 	faction = list("hostile")
 	speak_emote = list("buzzes")
+	maxHealth = 1200
+	health = 1200
 
 	pixel_x = -8
 	base_pixel_x = -8
@@ -36,18 +38,18 @@
 		/mob/living/simple_animal/hostile/abnormality/general_b = 5,
 	)
 
-	observation_prompt = "There was one summer so hot and unpleasant. <br>Bees were busily flying around the beehive. <br>\
-		They live for the only one queen. <br>'Are they happy? Living only to work' I asked myself. <br>Then someone answered."
+	observation_prompt = "那是个无比炎热难耐的夏天。<br>蜜蜂在蜂巢周围忙碌地飞舞。<br>\
+		它们只为唯一的女王而活。<br>'它们快乐吗？活着只为了工作' 我问自己。<br>这时有人答道。"
 	observation_choices = list(
-		"They work to survive" = list(TRUE, "They have no other option but to obey. <br>\
-			For they know that the moment they leave the queendom, only death awaits them. <br>\
-			It is years later that I found out that their unshakable loyalty is because of special pheromone which only queen can produce. <br>\
-			Everything started when I began to study that pheromone."),
-		"They work out of loyalty" = list(TRUE, "Loyalty that bees possess is a natural instinct. <br>\
-			If we find a way to control that instinct, <br>\
-			Things will change. <br>\
-			It is years later that I found out that their unshakable loyalty is because of special pheromone which only queen can produce. <br>\
-			Everything started when I began to study that pheromone."),
+		"它们工作是为了生存" = list(TRUE, "它们除了服从别无选择。<br>\
+			因为它们深知，离开蜂群的那一刻，等待它们的只有死亡。<br>\
+			多年后我才发现，它们那不可动摇的忠诚源于只有女王才能分泌的特殊信息素。<br>\
+			一切始于我开始研究那种信息素时。"),
+		"它们工作是出于忠诚" = list(TRUE, "蜜蜂所拥有的忠诚是种天性本能。<br>\
+			若能找到控制这种本能的方法，<br>\
+			局面必将改变。<br>\
+			多年后我才发现，它们那不可动摇的忠诚源于只有女王才能分泌的特殊信息素。<br>\
+			一切始于我开始研究那种信息素时。"),
 	)
 
 	var/datum/looping_sound/queenbee/soundloop
@@ -98,18 +100,18 @@
 
 /* Worker bees */
 /mob/living/simple_animal/hostile/aminion/worker_bee
-	name = "worker bee"
-	desc = "A disfigured creature with nasty fangs."
+	name = "工蜂"
+	desc = "一种长着毒牙的畸形生物."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "worker_bee"
 	icon_living = "worker_bee"
 	base_pixel_x = -8
-	health = 250
-	maxHealth = 250
+	health = 360 // More hp due to them spawning less often than in LC
+	maxHealth = 360
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 2)
 	melee_damage_lower = 6
-	melee_damage_upper = 8
+	melee_damage_upper = 10
 	rapid_melee = 2
 	obj_damage = 200
 	robust_searching = TRUE
@@ -138,7 +140,7 @@
 	var/mob/living/carbon/human/H = attacked_target
 	if(H.health <= 0)
 		var/turf/T = get_turf(H)
-		visible_message(span_danger("[src] bites hard on \the [H] as another bee appears!"))
+		visible_message(span_danger("伴随着另一只蜜蜂的出现，[src]猛烈撕咬[H]!"))
 		H.emote("scream")
 		H.gib()
 		new /mob/living/simple_animal/hostile/aminion/worker_bee(T)

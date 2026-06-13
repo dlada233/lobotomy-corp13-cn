@@ -1,8 +1,8 @@
 #define BIGBIRD_HYPNOSIS_COOLDOWN (20 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/big_bird
-	name = "Big Bird"
-	desc = "A large, many-eyed bird that patrols the dark forest with an everlasting lamp. \
-	Unlike regular birds, it lacks wings and instead has long arms with which it can pick things up."
+	name = "大鸟"
+	desc = "一只巨大的，多眼的鸟，带着一盏永恒的灯在黑暗的森林里巡逻. \
+	与普通鸟类不同，它没有翅膀，而是有长长的手臂，可以用来捡东西."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "big_bird"
 	icon_living = "big_bird"
@@ -61,17 +61,17 @@
 		/mob/living/simple_animal/hostile/abnormality/punishing_bird = 3,
 	)
 
-	observation_prompt = "Dozens of blazing eyes are looking at one place. <br>\
-		The bird that lived in the forest didn't like creatures being eaten by monsters. <br>\
-		\"If I kill creatures first, no creatures will be killed by the monster.\" <br>\
-		Every time the bird saved a life, it got an eye. <br>The big bird could not close those eyes no matter how tired it got. <br>\
-		For monsters could come, hurting creatures at any time. <br>By the time eyes covered the whole body of the big bird, no one was around for it to protect. <br>\
-		To shine the light in this dark forest, the big bird burned every single feather it had to make an everlasting lamp. <br>\
-		The big bird now could hardly be called a bird now, it has no feathers at all."
+	observation_prompt = "数十只炽热的眼睛凝视着同一处。<br>\
+		森林中的大鸟憎恶生物被怪物吞噬。<br>\
+		\"若我抢先杀死生物，便不会有生物死于怪物之口。\"<br>\
+		每拯救一个生命，大鸟便获得一只眼睛。<br>无论多么疲惫，大鸟都无法闭合这些眼睛。<br>\
+		因怪物随时可能现身伤害生灵。<br>当眼睛覆满大鸟全身时，已无生灵需要它守护。<br>\
+		为照亮黑暗森林，大鸟燃尽每根羽毛制成永恒明灯。<br>\
+		如今的大鸟浑身光秃，已难称其为鸟。"
 	observation_choices = list(
-		"Pet it" = list(TRUE, "It was not soft actually, it gave you chills. <br>You felt eyes looking at you with curiosity. <br>\
-			Eyes started closing as you pet the bird. <br>The big bird, for the first time in a very long time, peacefully fell asleep."),
-		"Don't pet it" = list(FALSE, "The bird could get angry and bite you. <br>You ran out of the room in fear."),
+		"抚摸它" = list(TRUE, "触感并不柔软，反而令你战栗。<br>你感到无数眼睛好奇地注视着你。<br>\
+			随着抚摸，眼睛开始闭合。<br>大鸟在漫长岁月后第一次安然入睡。"),
+		"不抚摸它" = list(FALSE, "大鸟可能发怒噬咬你。<br>你惊恐地逃出房间。"),
 	)
 
 	var/bite_cooldown
@@ -252,10 +252,10 @@
 		return ..()
 	if(client)
 		if(target == src)
-			to_chat(src, span_warning("You almost attack yourself, but then decide against it."))
+			to_chat(src, span_warning("你几乎要攻击自己，但最终还是放弃了."))
 			return
 		if(SSmaptype.maptype == "rcorp" && faction_check_mob(target, FALSE))
-			to_chat(src, span_warning("You almost attack your teammate, but then decide against it."))
+			to_chat(src, span_warning("你几乎要攻击你的队友，但最终还是放弃了."))
 			return
 	if(!can_act)
 		return
@@ -300,8 +300,8 @@
 		var/mob/to_bite = PickBiteVictim(potential_targets, T, TRUE)
 
 		if(!to_bite)
-			visible_message(span_danger("\The [src] bites the air!"))
-			to_chat(src, span_danger("You missed your attack!"))
+			visible_message(span_danger("[src]咬到了空气!"))
+			to_chat(src, span_danger("你的攻击打空了!"))
 			playsound(loc, attack_sound, 50, TRUE, TRUE)
 			do_attack_animation(T)
 			attack_cooldown = max(attack_cooldown, 1)
@@ -330,7 +330,7 @@
 				NestedItems(src, head)
 				H.regenerate_icons()
 				H.set_ssd_indicator(FALSE) // No they aren't in SSD, they're fucking dead
-				visible_message(span_danger("\The [src] bites off [H]'s head!"))
+				visible_message(span_danger("[src]咬掉了[H]的头!"))
 	if(current_guy)
 		EndEnchant(current_guy)
 	. = ..()
@@ -395,7 +395,7 @@
 			hypno_2 += C
 			continue
 		if(ismoth(C))
-			pick(C.emote("scream"), C.visible_message(span_boldwarning("[C] lunges for the light!")))
+			pick(C.emote("scream"), C.visible_message(span_boldwarning("[C] 冲向亮处!")))
 			C.throw_at((src), 10, 2)
 		if(prob(66) || (C in hypno_1_old) || (C in hypno_2_old))
 			var/new_overlay = mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "enchanted", -HALO_LAYER)
@@ -403,7 +403,7 @@
 				to_chat(C, span_warning("The light..."))
 				new_overlay = mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "enchanted_red", -HALO_LAYER)
 			else
-				to_chat(C, span_warning("You feel tired..."))
+				to_chat(C, span_warning("你感到疲惫..."))
 			C.blur_eyes(5)
 			hypnotize_list += C
 			C.add_overlay(new_overlay)
@@ -490,7 +490,7 @@
 		victim.cut_overlay(mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "enchanted_red", -HALO_LAYER))
 		if(istype(victim.ai_controller,/datum/ai_controller/insane/big_bird))
 			if(Snapped)
-				to_chat(victim, "<span class='boldwarning'>You snap out of your trance!")
+				to_chat(victim, "<span class='boldwarning'>你从幻觉中清醒过来!")
 			qdel(victim.ai_controller)
 
 /datum/ai_controller/insane/big_bird

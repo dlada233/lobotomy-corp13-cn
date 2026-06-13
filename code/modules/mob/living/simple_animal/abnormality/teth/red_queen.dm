@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/red_queen
-	name = "Red Queen"
-	desc = "A noble red abnormality sitting in her chair."
+	name = "红皇后"
+	desc = "她椅子上坐着一个高贵的红色怪人."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "redqueen"
 	portrait = "red_queen"
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 150
-	health = 150
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 45,
@@ -27,13 +27,13 @@
 	gift_type = /datum/ego_gifts/fury
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "This abnormality has a notorious reputation for being particularly dry to work with. <br>It's hard to tell what it's thinking or what work it prefers. <br>\
-		What type of work will you attempt?"
-	observation_choices = list( // Matches Red Queen's real preferred work.
-		ABNORMALITY_WORK_INSTINCT = list(FALSE, "You narrowly dodge the card-guillotine coming for your neck, that was close, let's try something else."),
-		ABNORMALITY_WORK_INSIGHT = list(FALSE, "You narrowly dodge the card-guillotine coming for your neck, that was close, let's try something else."),
-		ABNORMALITY_WORK_ATTACHMENT = list(FALSE, "You narrowly dodge the card-guillotine coming for your neck, that was close, let's try something else."),
-		ABNORMALITY_WORK_REPRESSION = list(FALSE, "You narrowly dodge the card-guillotine coming for your neck, that was close, let's try something else."),
+	observation_prompt = "该异常实体因工作过程极度枯燥而声名狼藉。<br>难以揣测其倾向或偏好。<br>\
+		你将尝试何种工作？"
+	observation_choices = list( // 匹配红皇后的真实偏好
+		ABNORMALITY_WORK_INSTINCT = list(FALSE, "纸牌铡刀擦过你的脖颈，惊险躲过一劫，换种方式试试。"),
+		ABNORMALITY_WORK_INSIGHT = list(FALSE, "纸牌铡刀擦过你的脖颈，惊险躲过一劫，换种方式试试。"),
+		ABNORMALITY_WORK_ATTACHMENT = list(FALSE, "纸牌铡刀擦过你的脖颈，惊险躲过一劫，换种方式试试。"),
+		ABNORMALITY_WORK_REPRESSION = list(FALSE, "纸牌铡刀擦过你的脖颈，惊险躲过一劫，换种方式试试。"),
 	)
 	var/liked
 
@@ -45,7 +45,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/red_queen/PostSpawn()
 	. = ..()
-	observation_choices[liked] = list(TRUE, "You are granted an audience with the red queen. <br>Today, you were able to to satisfy her unpredictable whims")
+	observation_choices[liked] = list(TRUE, "你获准觐见红皇后。<br>今日你恰好满足了她变幻莫测的兴致.")
 	var/list/potential_work_values = list(0, 35)
 	for(var/work in work_chances)
 		if(work == ABNORMALITY_WORK_INSTINCT)
@@ -60,7 +60,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/red_queen/FailureEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
-	user.visible_message(span_warning("An invisible blade slices through [user]'s neck!"))
+	user.visible_message(span_warning("无形利刃斩过[user]的脖颈!"))
 	user.deal_damage(100, RED_DAMAGE)
 	new /obj/effect/temp_visual/slice(get_turf(user))
 

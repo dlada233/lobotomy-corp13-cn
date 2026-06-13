@@ -10,13 +10,13 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 	))
 
 /mob/living/simple_animal/hostile/abnormality/dingledangle
-	name = "Dingle-Dangle"
-	desc = "A cone that goes up to the ceiling with a ribbon tied around it."
+	name = "叮当响"
+	desc = "一个顶在天花板上的圆锥体，上面系着丝带，尸体被绑在它周围，似乎被绑在天花板上."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "dangle"
 	portrait = "dingle_dangle"
-	maxHealth = 120
-	health = 120
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(70, 60, 40, 40, 40),
@@ -37,17 +37,17 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 		/datum/ego_datum/armor/lutemia
 	)
 	gift_type = /datum/ego_gifts/lutemis
-	gift_message = "Let's all become fruits. Let's hang together. Your despair, sadness... Let's all dangle down."
+	gift_message = "让我们都化为果实吧，一起悬挂，你的绝望，悲伤...让我们共同垂落."
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "You pass by the containment cell and, in the corner of your eye, spy your comrades dangling from ribbons, furiously scratching at their necks in choked agony."
+	observation_prompt = "途经收容单元时，你瞥见同僚们悬于缎带之下，抓挠喉颈在窒息中痛苦挣扎."
 	observation_choices = list(
-		"Save them" = list(TRUE, "Regardless of your resolution, you find yourself before the tree anyway as one of its ribbons wrap around your neck. <br>\
-			\"Let's dangle together, let your sorrows, your pain dangle, let's all dangle down...\" <br>It whispers into your mind. <br>\
-			Your comrades were never here, the life passes from your body painlessly. <br> None of this is real."),
-		"Do not save them" = list(TRUE, "Regardless of your resolution, you find yourself before the tree anyway as one of its ribbons wrap around your neck. <br>\
-			\"Let's dangle together, let your sorrows, your pain dangle, let's all dangle down...\" <br>It whispers into your mind. <br>\
-			Your comrades were never here, the life passes from your body painlessly. <br> None of this is real."),
+		"拯救他们" = list(TRUE, "无论作何抉择，你终立于树前，缎带缠绕颈项.<br>\
+			\"让我们共坠吧，让你的悲苦垂落，让一切垂落...\"<br>低语渗入脑海.<br>\
+			同僚从未存在，生命无声消逝。<br> 皆为虚妄."),
+		"别救他们" = list(TRUE, "无论作何抉择，你终立于树前，缎带缠绕颈项.<br>\
+			\"让我们共坠吧，让你的悲苦垂落，让一切垂落...\"<br>低语渗入脑海.<br>\
+			同僚从未存在，生命无声消逝。<br> 皆为虚妄."),
 	)
 	var/list/delirious_people = list()
 	var/list/entangled_people = list()
@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 
 /mob/living/simple_animal/hostile/abnormality/dingledangle/examine(mob/living/user)
 	if(user.has_status_effect(STATUS_EFFECT_DANGLE))
-		desc = "A cone that goes up to the ceiling with a ribbon tied around it. Bodies are strung up around it, seeming to be tied to the ceiling."
+		desc = "一个顶在天花板上的圆锥体，上面系着丝带，尸体被绑在它周围，似乎被绑在天花板上."
 	. = ..()
 	desc = initial(desc)
 
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 //On-kill visual effect
 //It's easy to accidentally kill someone instead of the roots. That is intentional
 /obj/structure/swarming_roots
-	name = "swarming roots"
+	name = "群聚的根"
 	desc = "A large amount of pink roots that are burrowing into someone!"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "dingle_roots_person"
@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 	M.pixel_x = M.base_pixel_x
 	unbuckle_mob(M,force=1)
 	M.pixel_z = 0
-	src.visible_message(text("<span class='danger'>[M] is free from [src]!</span>"))
+	src.visible_message(text("<span class='danger'>[M]从[src]处挣脱开了!</span>"))
 	M.Knockdown(10, FALSE)
 	REMOVE_TRAIT(M, TRAIT_INCAPACITATED, type)
 	REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, type)
@@ -253,8 +253,8 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 	return ..()
 
 /atom/movable/screen/alert/status_effect/dangle
-	name = "Delirious"
-	desc = "Your weakened mental state is causing you to see and hear things!"
+	name = "眩晕的感觉"
+	desc = "你的战斗意识已经变得敏锐，即使你感觉自己的思想在摇摆!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "delirious"
 
@@ -325,8 +325,8 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 
 /datum/ai_behavior/say_line/insanity_dingle
 	lines = list(
-		"It's trying to escape...!",
-		"I got to stop it from breaching!",
+		"它试图逃跑...!",
+		"我必须阻止它突破!",
 	)
 
 /datum/ai_controller/insane/dingle_possess/SelectBehaviors(delta_time)//Selects red shoes as the target

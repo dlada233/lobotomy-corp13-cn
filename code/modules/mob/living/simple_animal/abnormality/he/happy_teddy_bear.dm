@@ -1,16 +1,16 @@
 // coded by Byrene on July 2022. my first code, please go easy on me
 // shoutout to InsightfulParasite for doing the sprites
 /mob/living/simple_animal/hostile/abnormality/happyteddybear
-	name = "Happy Teddy Bear"
-	desc = "A worn-out teddy bear. It's missing an eye and spilling stuffing out of various tears."
+	name = "快乐泰迪"
+	desc = "一只破旧的泰迪熊，它少了一只眼睛，从各种破口中溢出填充物."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "teddy"
 	icon_living = "teddy"
 	portrait = "happy_teddy_bear"
 	// adding this for when it drops you
 	layer = BELOW_OBJ_LAYER
-	maxHealth = 200
-	health = 200
+	maxHealth = 500
+	health = 500
 	threat_level = HE_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 0,
@@ -38,13 +38,16 @@
 	grouped_abnos = list(
 		/mob/living/simple_animal/hostile/abnormality/hurting_teddy = 1.5,
 	)
-
-	observation_prompt = "Here lies a piece of rubbish, a teddy bear. <br>Its wool sticks out here and there. <br>\
-		The amount of dust piled up on it tells how long this teddy has been abandoned. <br>One of the buttons, which are eyes, is hanging loose."
+	observation_prompt = "眼前是件被遗弃的垃圾：泰迪熊玩偶. <br>它的绒毛四处支棱. <br>\
+		积满的灰尘诉说着它被抛弃的岁月. <br>作为眼睛的纽扣中，有一颗已摇摇欲坠."
 	observation_choices = list(
-		"Take the button off" = list(TRUE, "You took the button off. <br>It was disturbing for some reason. <br>The button is old and rotten and makes you uncomfortable. <br>\
-			You replace the button with one off your suit with great care. <br>While the teddy looks awkward because of the mismatching buttons, it adds to its charm."),
-		"Leave it alone" = list(FALSE, "You don't know what to do with it so you just left it alone. <br>The teddy sits there without any movement."),
+		"取下纽扣" = list(TRUE, "你取下那颗纽扣。<br>\
+			莫名的感到不安。<br>\
+			这枚老旧腐朽的纽扣有点令人不适。<br>\
+			你小心翼翼地将制服纽扣缝制到原位上。<br>\
+			纽扣不对称让玩偶略显怪异，但看起来还是比之前好一点。"),
+		"置之不理" = list(FALSE, "你不知如何处置，最终选择离开。<br>\
+			泰迪熊静坐原处，纹丝未动。"),
 	)
 
 	/// if the same person works on Happy Teddy Bear twice in a row, the person will die unless certain requirements are met.
@@ -69,7 +72,7 @@
 		return
 	buckle_mob(user, force = TRUE, check_loc = FALSE)
 	icon_state = "teddy_hug"
-	visible_message(span_warning("[src] hugs [user]!"))
+	visible_message(span_warning("[src]拥抱[user]!"))
 	var/last_pinged = 0
 	var/time_strangled = 0
 	while(user.stat != DEAD)
@@ -78,7 +81,7 @@
 				break_check = TRUE
 				unbuckle_mob(user, force=TRUE)
 				icon_state = "teddy"
-				visible_message(span_warning("[user] breaks free from [src]'s hug!"))
+				visible_message(span_warning("[user]挣脱了[src]的拥抱!"))
 				hugging = FALSE
 				last_worker = null
 				user.SetStun(0)
@@ -88,7 +91,7 @@
 			user.death(gibbed=FALSE)
 			break
 		if(world.time > last_pinged + 5 SECONDS)
-			to_chat(user, span_userdanger("[src] is suffocating you!"))
+			to_chat(user, span_userdanger("[src] 让你窒息!"))
 			last_pinged = world.time
 		user.adjustOxyLoss(10, updating_health=TRUE, forced=TRUE)
 		time_strangled++
@@ -100,7 +103,7 @@
 			return
 	unbuckle_mob(user, force=TRUE)
 	icon_state = "teddy"
-	visible_message(span_warning("[src] drops [user] to the ground!"))
+	visible_message(span_warning("[src]将[user]掉落到地上!"))
 	hugging = FALSE
 	last_worker = null
 

@@ -1,12 +1,12 @@
 //She tells stories, and does sanity damage. What can I say?
 /mob/living/simple_animal/hostile/abnormality/drownedsisters
-	name = "Drowned Sisters"
-	desc = "A pair of girls with masks covering their faces."
+	name = "溺毙姐妹"
+	desc = "一对女孩被遮住脸."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "sisters"
 	portrait = "drowned_sisters"
-	maxHealth = 80
-	health = 80
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 50,
@@ -29,13 +29,13 @@
 	gift_type =  /datum/ego_gifts/sorority
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "You sit cross-legged before the pair, flowers conceal their faces and expression. <br>\
-		\"Ahh, woe is us. We have become sinners. Please hear us, hear of our sins that we do not know we've committed, and absolve us of our grief...\""
+	observation_prompt = "你盘坐于异想体前，繁花掩去其面容与神情. <br>\
+		\"哀哉吾等，已成罪人，请聆听，聆听这未知之罪，宽恕吾等悲恸...\""
 	observation_choices = list(
-		"Listen to their story" = list(TRUE, "You exit the cell, their story leaving your mind and voices on the wind but their sorrow remains. <br>\
-			You'll be back again and still won't understand their grief."),
-		"Don't listen" = list(TRUE, "You exit the cell, their story leaving your mind and voices on the wind but their sorrow remains. <br>\
-			You'll be back again and still won't understand their grief."),
+		"听她们的故事" = list(TRUE, "你走出收容单元，她们的故事随风消散，只留下悲怆. <br>\
+			将来你还会再来，但永远也无法解开她们哀伤."),
+		"不要听故事" = list(TRUE, "你走出收容单元，她们的故事随风消散，只留下悲怆. <br>\
+			将来你还会再来，但永远也无法解开她们哀伤."),
 	)
 
 	var/breaching = FALSE
@@ -71,7 +71,7 @@
 	datum_reference.qliphoth_change(3)
 	if(!user)
 		return
-	to_chat(user, span_userdanger("You are attacked by an invisible assailant!"))
+	to_chat(user, span_userdanger("你被一个看不见的攻击者攻击了!"))
 	playsound(get_turf(src), 'sound/abnormalities/jangsan/tigerbite.ogg', 75, 0)
 	user.deal_damage(50, RED_DAMAGE, null)
 	if(user.health < 0 || user.stat == DEAD)
@@ -101,7 +101,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/drownedsisters/proc/TeleportPerson(mob/living/carbon/human/H, turf/teleport_target)
 	set waitfor = FALSE
-	to_chat(H, span_userdanger("You can't breathe!"))
+	to_chat(H, span_userdanger("你无法呼吸!"))
 	H.AdjustSleeping(10 SECONDS)
 	animate(H, alpha = 0, time = 2 SECONDS)
 	sleep(2 SECONDS)

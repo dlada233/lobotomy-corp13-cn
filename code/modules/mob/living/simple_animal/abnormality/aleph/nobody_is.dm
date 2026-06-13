@@ -1,7 +1,7 @@
 //Like a pink, weird nothing there. - Coxswain
 /mob/living/simple_animal/hostile/abnormality/nobody_is
-	name = "Nobody Is"
-	desc = "A mirror embedded in gross pink flesh."
+	name = "面目全非"
+	desc = "嵌在粗大的粉红色肉体中的镜子"
 	health = 1500
 	maxHealth = 1500
 	attack_verb_continuous = "slashes"
@@ -46,13 +46,13 @@
 		/mob/living/simple_animal/hostile/abnormality/kqe = 1.5,
 	)
 
-	observation_prompt = "No matter where you walk to in the cell, the mirror is always facing you. <br>You trace a path around it but all you ever see is your own reflection. <br>\
-		\"It's not fair, why do you get to be you and not me?\" <br>Your reflection mutters, parroting your voice. <br>\"Why are you, you and not I? I could be you so much better than you can, just let me try.\" <br>\
-		Your reflection is holding out its hand, waiting for a handshake."
+	observation_prompt = "无论你走到房间的哪个角落，镜子总是对着你. <br>你沿着它周围的路走，但所看见的都是自己的倒影. <br>\
+		\"这不公平, 为什么你能做自己而我不能?\" <br>镜中的倒影嘟囔着, 模仿着你的声音. <br>\"为什么是你，是你而不是我? 我是更出色的你, 就给我名字试试吧.\" <br>\
+		你的倒影伸出它的手，等待着握手."
 	observation_choices = list(
-		"Turn away and leave" = list(TRUE, "You make to exit the cell. \"Don't just leave me! I'm somebody, I'm real! I'm..! What's my name?! Just give me your name!\" <br>\
-			You don't give your name to the imitation, the closer it starts to mirrors another, the more its mimicry becomes mockery."),
-		"Shake their hand" = list(FALSE, "The you in the mirror smiles. <br>\"Just you wait, I'll show you what we can do.\""),
+		"转身离开" = list(TRUE, "你离开了收容单元. \"不要这么离开我，不要! 我是特别的, 我是真实的! 我是..! 我的名字是什么?! 把你的名字给我就好!\" <br>\
+			你不会把你的名字给模仿者, 它越是模仿你，就越像是对你的嘲弄."),
+		"握手" = list(FALSE, "镜子里在微笑. <br>\"看好了, 我会让你知道我们到底有多出色.\""),
 	)
 
 	//Contained Variables
@@ -127,7 +127,7 @@
 	return TRUE
 
 /datum/action/innate/abnormality_attack/toggle/nobody_attack_toggle
-	name = "Toggle Attack"
+	name = "攻击切换"
 	button_icon_state = "nt_toggle0"
 	chosen_attack_num = 2
 	chosen_message = span_colossus("You won't shoot anymore.")
@@ -169,7 +169,7 @@
 			solo_punish = TRUE
 		ReflectChosen(pick(potentialmarked))
 		if(!IsContained())
-			to_chat(chosen, span_warning("You feel the mirror's gaze upon you..."))
+			to_chat(chosen, span_warning("你感到镜子在凝视你..."))
 	else
 		ReflectChosen(null)
 
@@ -193,7 +193,7 @@
 	headicon.add_overlay(HD.get_limb_icon(TRUE,TRUE))
 	headicon.pixel_y -= 5
 	headicon.alpha = 150
-	headicon.desc = "It looks like [chosen] is reflected in the mirror."
+	headicon.desc = "[chosen]看起来像是镜子里的倒影."
 	HD.update_limb()
 	//Handles connected structure part
 	datum_reference.connected_structures = list(headicon = list(0,-5))
@@ -348,30 +348,30 @@
 		oberon_mode = TRUE
 		T.fused = TRUE
 		T.docile_confinement = TRUE
-		say("It's you,")
+		say("是你啊,")
 		SLEEP_CHECK_DEATH(2 SECONDS)
-		T.say("My nemesis, my beloved devil,")
+		T.say("我的克星, 我心爱的魔鬼,")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		T.say("The abhorrent name of the one who stole my child.")
+		T.say("偷走了我孩子的可恶名字.")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		T.say("Oberon,")
+		T.say("奥伯伦,")
 		SLEEP_CHECK_DEATH(2 SECONDS)
-		say("Is that who I am?")
+		say("这就是我吗?")
 		SLEEP_CHECK_DEATH(2 SECONDS)//theres more that I cut out but you know, people will be bored watching 2 alephs bonding before murder boning
-		say("I was born mere moments ago.")
+		say("我才刚刚出生.")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		say("Just now I was pondering what I should live as, and how I am to live.")
+		say("我才刚刚开始思考要怎样生活，要如何生活.")
 		SLEEP_CHECK_DEATH(2 SECONDS)
-		T.say("Now answer me. Are you Oberon,")
+		T.say("现在回答我，你是奥伯伦吗,")
 		SLEEP_CHECK_DEATH(2 SECONDS)
-		say("Regardless of my stuggles to live, those who remembered me and my memories of them would vaporize in the end...")
+		say("无论我如何挣扎求生，那些记得我的人最终都将随着我对他们的记忆一起消失无踪...")
 		SLEEP_CHECK_DEATH(0.5 SECONDS)
-		say("Leaving no trace behind to each other.")
+		say("留不下一点踪迹.")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		say("...If I earned a name, will I get to receive love and hate from you? Will you remember me as that name, as someone whom you emotionally cared for?")
+		say("...如果我获得了名字, 我是否可以得到你的爱与恨? 你是否会记住我，记住一个有过感情的名字?")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		name = "Oberon"
-		say("Then yes, I am the Oberon you seek.")
+		name = "奥伯伦"
+		say("那么是的，我便是你要找的奥伯伦.")
 		SLEEP_CHECK_DEATH(1 SECONDS)
 		Oberon_Fusion(T)
 
@@ -394,8 +394,8 @@
 	heal_percent_per_second = 0.00425//half of what it was when it had just 2k hp
 	maxHealth = 4000
 	adjustBruteLoss(-maxHealth, forced = TRUE) // It's not over yet!.
-	name = "Oberon"
-	desc = "Two horrifying and dangerous abnormalities fused into one. This can only end well."
+	name = "奥伯伦"
+	desc = "两种可怕的异想体合二为一，这怎么可能有好结果."
 	loot = list(
 		/obj/item/ego_weapon/oberon
 		)
@@ -551,7 +551,7 @@
 		grab_victim.forceMove(T)
 	animate(grab_victim, pixel_y = 8, time = 5)
 	SLEEP_CHECK_DEATH(5)
-	to_chat(grab_victim, span_userdanger("[src] has grabbed you! Attack [src] to break free!"))
+	to_chat(grab_victim, span_userdanger("[src]抓住你了! 攻击[src]来挣脱!"))
 	StrangleHit(1)
 
 /mob/living/simple_animal/hostile/abnormality/nobody_is/proc/StrangleHit(count)
@@ -767,7 +767,7 @@
 /mob/living/simple_animal/hostile/abnormality/nobody_is/examine(mob/user)
 	. = ..()
 	if(current_stage >= 1)
-		. += (span_notice("It looks angry!"))
+		. += (span_notice("它起来生气了!"))
 
 
 //Misc
@@ -898,5 +898,5 @@
 		out_icon.Insert(partial,dir=D)
 	icon = out_icon
 	name = "[copycat.name]?"
-	desc = "Is it [copycat.name]? You can't be sure..."
+	desc = "那是[copycat.name]? 你没法确认..."
 	qdel(copycat)

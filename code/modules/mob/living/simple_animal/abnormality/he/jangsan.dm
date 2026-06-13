@@ -2,8 +2,8 @@
 
 //Code by Coxswain, EGO sprites by Sky_ and abnormality sprites by Mel
 /mob/living/simple_animal/hostile/abnormality/jangsan
-	name = "Jangsan Tiger"
-	desc = "A monster that eats children. Reforms its face for a friendly image"
+	name = "苌山虎"
+	desc = "一个吃孩子的怪物，改革自己的面貌，塑造友好的形象."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "jangsan_idle"
 	icon_living = "jangsan_idle"
@@ -13,8 +13,8 @@
 	pixel_x = -16
 	base_pixel_x = -16
 	ranged = TRUE
-	maxHealth = 300
-	health = 300
+	maxHealth = 410
+	health = 410
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 2)
 	see_in_dark = 10
 	stat_attack = HARD_CRIT
@@ -46,15 +46,21 @@
 	gift_type =  /datum/ego_gifts/maneater
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "I'm in a field of flowers, the flowers are my friends. <br>There are many kinds of friends but I wish to pluck them all. <br>\
-		Some friends have thorns and hurt when I try to pick them. <br>Before me is a particularly juicy, thornless flower."
+	observation_prompt = "我身处花田，花朵皆是我的朋友。<br>\
+		朋友种类繁多，我却想全部采撷。<br>\
+		有些朋友带刺，采摘时会刺伤我。<br>\
+		眼前有朵特别多汁的无刺花朵。"
 	observation_choices = list(
-		"Smell it" = list(TRUE, "The flower shuffles away from me as I draw near, the scent is enticing but I do not pluck it. <br>\
-			There's always time to stop and enjoy the flowers."),
-		"Pluck the flower" = list(FALSE, "The flower lets out a scream as I pluck it with my teeth, its ichor stains my teeth and fur red - \
-			the other thornless flowers scream in unison and flee in all directions whilst the thorniest ones scratch my fur and skin. <br>\
-			Flowers are my friends and I shall pluck them all."),
+		"闻花香" = list(TRUE, "当我靠近时，花朵躲开了我。<br>\
+			香气诱人却未采摘。<br>\
+			总会有时间驻足赏花的。"),
+		"摘下花朵" = list(FALSE, "当我用牙齿摘下花朵时，它发出尖叫。<br>\
+			汁液染红我的牙齿与皮毛——<br>\
+			其他无刺花朵齐声尖叫四散奔逃，<br>\
+			带刺花朵抓伤我的皮毛与皮肤。<br>\
+			花朵是我的朋友，我将采尽所有。"),
 	)
+
 
 	var/bullet_threshold = 10
 //breach related
@@ -79,14 +85,14 @@
 
 //speak_list + location + speak_list2
 	var/list/speak_list = list(
-		";Hey guys im at ",
-		";Over here at ",
-		";Im in ",
+		";嘿，伙计们，我在 ",
+		";快来，我在 ",
+		";我在 ",
 	)
 	var/list/speak_list2 = list(
-		", let's have a pizza party!",
-		", i'll protect you!",
-		", let's work together!",
+		", 让我们来办个披萨排队吧!",
+		", 我保护你!",
+		", 我们一起工作吧!",
 	)
 
 //PLAYABLES ATTACKS
@@ -246,7 +252,7 @@
 	if (isturf(loc))
 		myarea = get_area(src)
 	say(pick(speak_list) + "[myarea]" + pick(speak_list2))
-	name = "Jangsan Tiger"
+	name = "苌山虎"
 
 //Combat
 /mob/living/simple_animal/hostile/abnormality/jangsan/CanAttack(atom/the_target)
@@ -278,7 +284,7 @@
 			return
 		head.dismember()
 		H.regenerate_icons()
-		visible_message(span_danger("\The [src] bites [H]'s head off!"))
+		visible_message(span_danger("[src]咬掉了[H]的头!"))
 		new /obj/effect/gibspawner/generic/silent(get_turf(H))
 		new /obj/effect/halo(get_turf(H))
 		playsound(get_turf(src), 'sound/abnormalities/bigbird/bite.ogg', 50, 1, 2)
@@ -288,7 +294,7 @@
 	H.apply_status_effect(/datum/status_effect/panicked_lvl_4)
 	H.adjustSanityLoss(-50)
 	H.Stun(5 SECONDS)
-	to_chat(target, span_warning("Is that what it really looks like? It's over... I can’t even move my legs..."))
+	to_chat(target, span_warning("这是它真正的样子吗？一切都结束了... 我的腿都不能动了..."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/jangsan/proc/TryFearStun()
@@ -342,7 +348,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/jangsan/bullet_act(obj/projectile/P)
 	if(P.damage <= bullet_threshold)
-		visible_message(span_userdanger("[P] is caught in [src]'s thick fur!"))
+		visible_message(span_userdanger("[P]被[src]的厚毛缠住了!"))
 		P.Destroy()
 		return
 	return ..()

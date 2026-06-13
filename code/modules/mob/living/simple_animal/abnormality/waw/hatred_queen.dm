@@ -1,8 +1,8 @@
 #define HATRED_COOLDOWN (15 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/hatred_queen
-	name = "Queen of Hatred"
-	desc = "An abnormality resembling pale-skinned girl in a rather bizzare outfit. \
-	Right behind her is what you presume to be a magic wand."
+	name = "憎恶女王"
+	desc = "一个反常的异想体，穿着相当奇怪的衣服，像一个皮肤苍白的女孩. \
+	就在她身后，你看到一根魔杖."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "hatred"
 	icon_living = "hatred"
@@ -20,8 +20,8 @@
 	retreat_distance = 1
 	minimum_distance = 2
 
-	maxHealth = 800
-	health = 800
+	maxHealth = 1200
+	health = 1200
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.3, PALE_DAMAGE = 1.5)
 	stat_attack = HARD_CRIT
 	ranged_cooldown_time = 12
@@ -55,7 +55,7 @@
 		/datum/ego_datum/armor/hatred,
 	)
 	gift_type = /datum/ego_gifts/love_and_hate
-	gift_message = "In fact, \"peace\" is not what she desires."
+	gift_message = "事实上，“和平”并非她所渴望的。"
 
 	grouped_abnos = list(
 		/mob/living/simple_animal/hostile/abnormality/despair_knight = 2,
@@ -64,14 +64,14 @@
 		/mob/living/simple_animal/hostile/abnormality/nihil = 1.5,
 	)
 
-	observation_prompt = "Everyone likes me, every day someone new visits me and asks about my stories, the villains I've fought, the friends I've made, the adventures I've had. <br>\
-		They never grow tired of my stories but, hey is it always peaceful around here? <br>The world still needs me, doesn't it?"
+	observation_prompt = "每个人都喜欢我，每天都有新访客听我讲述故事：击败的反派、结交的朋友、经历的冒险。<br>\
+		他们从不会厌倦我的故事，但是...这里总是这么和平吗？<br>世界仍然需要我，对吧？"
 	observation_choices = list(
-		"The world doesn't need you" = list(TRUE, "... <br>Somehow I think I already knew that. <br>\
-			I don't know if I can accept a world that doesn't love me as I love it. <br>Can I keep on loving the world, even if I'm no longer a real Magical Girl..?"),
-		"The world still needs you" = list(FALSE, "I knew it! Whilst I'm here, no villains will go unpunished! <br>Just call on me anytime!.. <br>\
-			... <br>\
-			Why is still so peaceful..?"),
+		"世界不再需要你" = list(TRUE, "...<br>其实我早已知晓。<br>\
+			不知能否接受这个不像我爱它那样爱我的世界。<br>即使不再是真正的魔法少女...我还能继续爱这个世界吗？"),
+		"世界仍然需要你" = list(FALSE, "我就知道！只要我在这里，恶徒必将受到惩罚！<br>随时呼唤我吧！..<br>\
+			...<br>\
+			为何依然如此平静..？"),
 	)
 
 	var/obj/effect/qoh_wand/wand
@@ -87,10 +87,10 @@
 	var/beam_startup = 2 SECONDS
 	var/beats_cooldown
 	var/beats_cooldown_time = 15 SECONDS
-	var/beats_damage = 50
+	var/beats_damage = 100
 	var/list/beats_hit = list()
 	/// BLACK damage done in line each 0.5 second
-	var/beam_damage = 4
+	var/beam_damage = 8
 	var/beam_maximum_ticks = 60
 	var/datum/looping_sound/qoh_beam/beamloop
 	var/datum/beam/current_beam
@@ -98,7 +98,7 @@
 	//Breach vars
 	var/friendly = TRUE
 	var/hp_teleport_counter = 3
-	var/explode_damage = 15
+	var/explode_damage = 26
 	var/breach_max_death = 0
 	//Nihil Related
 	var/nihil_present = FALSE
@@ -118,27 +118,27 @@
 	)
 
 /datum/action/innate/abnormality_attack/qoh_beam
-	name = "Arcana Slave"
+	name = "魔法光波"
 	button_icon_state = "qoh_beam"
-	chosen_message = span_colossus("You will now charge up a giant magic beam.")
+	chosen_message = span_colossus("你将蓄力发射巨型魔法光束.")
 	chosen_attack_num = 1
 
 /datum/action/innate/abnormality_attack/qoh_beats
-	name = "Arcana Beats"
+	name = "魔法波纹"
 	button_icon_state = "qoh_beats"
-	chosen_message = span_colossus("You will now fire a wave of energy.")
+	chosen_message = span_colossus("你将发射能量波.")
 	chosen_attack_num = 2
 
 /datum/action/innate/abnormality_attack/qoh_teleport
-	name = "Teleport"
+	name = "传送"
 	button_icon_state = "qoh_teleport"
-	chosen_message = span_colossus("You will now teleport to a random enemy.")
+	chosen_message = span_colossus("你现在将传送到一个随机的敌人处.")
 	chosen_attack_num = 3
 
 /datum/action/innate/abnormality_attack/qoh_normal
-	name = "Normal Attack"
+	name = "正常攻击"
 	button_icon_state = "qoh_normal"
-	chosen_message = span_colossus("You will now use normal attacks.")
+	chosen_message = span_colossus("你现在将进行普通攻击.")
 	chosen_attack_num = 5
 
 /mob/living/simple_animal/hostile/abnormality/hatred_queen/Initialize()
@@ -158,7 +158,7 @@
 	QDEL_NULL(current_beam)
 	if(nihil_present)
 		adjustBruteLoss(-999999)
-		visible_message(span_boldwarning("Oh no, [src] has been defeated!"))
+		visible_message(span_boldwarning("哦，不，[src]被打败了!"))
 		INVOKE_ASYNC(src, PROC_REF(petrify), 500000)
 		beamloop.stop()
 		return FALSE
@@ -174,7 +174,7 @@
 	addtimer(CALLBACK(S, TYPE_PROC_REF(/obj/effect/qoh_sygil, fade_out)), 5 SECONDS)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MOB_DEATH)
 	if(friendly)
-		src.say("I swore I would protect everyone to the end…")
+		src.say("我发誓我会保护大家到最后…")
 	if(wand)
 		qdel(wand)
 	..()
@@ -226,7 +226,7 @@
 		return
 
 	if(prob(4))
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "With love!"))
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "代表爱!"))
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/hatred_queen/Life()
@@ -296,13 +296,13 @@
 	if(target)
 		face_atom(target)
 	icon_state = "hatredbeats"
-	visible_message(span_danger("[src] prepares to mark the enemies of justice!"))
+	visible_message(span_danger("[src]准备标记正义之敌!"))
 	var/turf/target_turf = get_ranged_target_turf_direct(src, target, 5)
 	var/list/turfs_to_hit = getline(src, target_turf)
 	var/obj/effect/qoh_sygil/S = new(get_turf(src))
 	S.icon_state = "qoh1"
 	spawned_effects += S
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Go! Arcana Beats~!"))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "发射! 魔法波纹~!"))
 	switch(dir)
 		if(EAST)
 			S.pixel_x += 16
@@ -363,12 +363,12 @@
 	var/turf/my_turf = get_turf(src)
 	can_act = FALSE
 	var/list/beamtalk = list(
-		"Heed me, thou that are more azure than justice and more crimson than love…",
-		"In the name of those buried in destiny…",
-		"I shall make this oath to the light.",
-		"Mark the hateful beings who stand before us…",
-		"Let your strength merge with mine…",
-		"so that we may deliver the power of love to all…",
+		"聆听吾言，汝乃苍于正义、赤于仁爱者...",
+		"以沉沦命运之诸灵之名...",
+		"吾将向光明立此誓言。",
+		"铭记伫于我等前方之憎恶存在...",
+		"令汝之力与吾交融...",
+		"如此方能将仁爱之力播撒众生...",
 	)
 	for(var/i = 1 to 3)
 		var/obj/effect/qoh_sygil/S = new(my_turf)
@@ -420,7 +420,7 @@
 	var/beam_stage = 1
 	var/beam_damage_final = beam_damage
 	if(friendly)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "ARCANA SLAVE!"))
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "魔法光波!"))
 		icon_state = "hatredbeats"
 	else
 		accumulated_beam_damage = 50
@@ -502,7 +502,7 @@
 				targets_in_range += 1
 				break
 		if(targets_in_range >= 1)
-			to_chat(src, span_warning("You cannot teleport while enemies are nearby!"))
+			to_chat(src, span_warning("敌人在附近时无法传送!"))
 			return FALSE
 	var/list/teleport_potential = list()
 	for(var/mob/living/L in GLOB.mob_living_list)
@@ -598,8 +598,8 @@
 	can_act = FALSE
 	breach_max_death = 0
 	icon_state = icon_crazy
-	visible_message(span_danger("[src] falls to her knees, muttering something under her breath."))
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "I wasn’t able to protect anyone like she did…"))
+	visible_message(span_danger("[src]跪倒在地，低声咕哝着什么."))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "我不能像她那样保护所有人..."))
 	addtimer(CALLBACK(src, PROC_REF(HostileTransform)), 10 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/hatred_queen/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
@@ -622,7 +622,7 @@
 	if(stat == DEAD)
 		return
 	HostileMode(!contained)
-	visible_message(span_bolddanger("[src] transforms!")) //Begin Hostile breach
+	visible_message(span_bolddanger("[src]变形!")) //Begin Hostile breach
 	if(HAS_TRAIT_FROM(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT))
 		REMOVE_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
 	adjustBruteLoss(-maxHealth, forced = TRUE)
@@ -664,7 +664,7 @@
 				breach_max_death++
 		breach_max_death = max(breach_max_death/2, 1) //make it 1 if it's somehow zero
 		if(!nihil_present)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "In the name of Love and Justice~ Here comes Magical Girl!"))
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "以爱和正义的名义~魔法少女来了!"))
 		return ..()
 	HostileTransform(TRUE)
 	return ..()
@@ -680,13 +680,13 @@
 	NihilModeEnable()
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("This... Oh, no! This is one of the major arcana!")
+	say("这个..哦,不!这是一个大魔法！")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("Don't worry, I will protect everyone!")
+	say("别担心，我会保护大家的!")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("Here comes magical girl!")
+	say("魔法少女来了!")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("In the name of Love and Justice~!")
+	say("以爱与正义之名~!")
 	ChangeResistances(list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.3, PALE_DAMAGE = 1.5))
 
 /mob/living/simple_animal/hostile/abnormality/hatred_queen/proc/NihilModeEnable()
@@ -697,8 +697,8 @@
 	faction = list("neutral")
 
 /mob/living/simple_animal/hostile/abnormality/hatred_queen/proc/NihilIconUpdate()
-	name = "Magical Girl of Love"
-	desc = "A real magical girl!"
+	name = "爱魔法少女"
+	desc = "真正的魔法少女!"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "hatred"
 	pixel_x = 0
@@ -718,7 +718,7 @@
 	pixel_x = -24
 	base_pixel_x = -24
 	var/obj/structure/statue/petrified/magicalgirl/S = new(loc, src, statue_timer)
-	S.name = "Petrified Hate"
+	S.name = "石化憎恨"
 	ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 	SLEEP_CHECK_DEATH(1)
 	S.icon = src.icon

@@ -252,7 +252,7 @@
 	if(!QDELETED(H))
 		C.can_affect_emergency = FALSE
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
-		C.desc = "What appears to be [H.real_name], only charred and screaming incoherently..."
+		C.desc = "看起来像[H.real_name], only charred and screaming incoherently..."
 		C.gender = H.gender
 		C.faction = src.faction
 		C.master = src

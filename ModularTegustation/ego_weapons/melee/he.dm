@@ -1,8 +1,8 @@
 /obj/item/ego_weapon/grinder
-	name = "grinder MK4"
+	name = "粉碎机 MK4"
 	desc = "The sharp sawtooth of the grinder makes a clean cut through its enemy. \
 	Its operation is simple and straightforward, but that doesn't necessarily make it easy to wield."
-	special = "This weapon pierces to hit everything on the target's tile."
+	special = "这种武器可以刺穿目标地块上的所有东西."
 	icon_state = "grinder"
 	force = 16
 	damtype = RED_DAMAGE
@@ -28,9 +28,9 @@
 	return 40
 
 /obj/item/ego_weapon/harvest
-	name = "harvest"
+	name = "收获"
 	desc = "The last legacy of the man who sought wisdom. The rake tilled the human brain instead of farmland."
-	special = "Use this weapon in your hand to damage every non-human within reach."
+	special = "在手中使用这把武器能伤害触及范围内的所有非人类"
 	icon_state = "harvest"
 	force = 16
 	damtype = BLACK_DAMAGE
@@ -58,7 +58,7 @@
 	if(!CanUseEgo(user))
 		return
 	if(!can_spin)
-		to_chat(user,span_warning("You attacked too recently."))
+		to_chat(user,span_warning("你攻击的太频繁了."))
 		return
 	if(do_after(user, 12, src))
 		can_spin = TRUE
@@ -78,9 +78,9 @@
 
 
 /obj/item/ego_weapon/fury
-	name = "blind fury"
+	name = "震怒"
 	desc = "A fancy black and white halberd with a sharp blade. Whose head will it cut off next?"
-	special = "On kill, deal massive damage on next attack."
+	special = "击杀时，在下次攻击中造成大量伤害."
 	icon_state = "fury"
 	force = 24
 	attack_speed = 1.5
@@ -105,14 +105,14 @@
 
 	if(target.stat == DEAD && living)
 		if(!rage)
-			to_chat(user, span_userdanger("LONG LIVE THE QUEEN!"))
+			to_chat(user, span_userdanger("女王万岁!"))
 			rage = FALSE
 		force *= 3
 		rage = TRUE
 		living = FALSE
 
 /obj/item/ego_weapon/paw
-	name = "bear paw"
+	name = "熊熊抱"
 	desc = "The paws made form, and given life."
 	icon_state = "bear_paw"
 	force = 8
@@ -132,7 +132,7 @@
 	hitsound = "sound/weapons/punch[pick(1,2,3,4)].ogg"
 
 /obj/item/ego_weapon/shield/daredevil
-	name = "life for a daredevil"
+	name = "决死之心"
 	desc = "An ancient sword surrounded in death, yet it's having it in your grasp that makes you feel the most alive."
 	icon_state = "daredevil"
 	force = 8
@@ -147,10 +147,10 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/crumbling_parry.ogg'
-	projectile_block_message ="A God does not fear death!"
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	projectile_block_message ="神是不怕死的!"
+	block_message = "你尝试抵挡攻击!"
+	hit_message = "抵挡攻击!"
+	block_cooldown_message = "你重整架势."
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 40
 							)
@@ -215,20 +215,20 @@
 /obj/item/ego_weapon/shield/daredevil/AnnounceBlock(mob/living/carbon/human/source, damage, damagetype, def_zone)
 	if(damagetype == PALE_DAMAGE && can_hype)
 		if(naked_parry || realized_parry) // You get 100% pale resist on empowered parry, it deserves it's own message.
-			to_chat(source, span_nicegreen("Stand your ground in the face of death. Struggle against the inevitable with reckless abandon, for you shall have me by your side."))
+			to_chat(source, span_nicegreen("在死亡面前坚持自己的立场吧。与不可避免的困难斗争吧，不计后果的放弃一切吧，因为你将有我在你身边."))
 		else // On the other hand, non-empowered parry has 0% pale resist, tell the user that they are being dumb.
-			to_chat(source, span_warning("To attempt parry the aspect of death is to hide from inevitability. To hide is to fear. Show me that you do not fear death."))
+			to_chat(source, span_warning("试图回避死亡就是逃避必然性，躲藏就是恐惧，让我看看你到底怕不怕死."))
 		can_hype = FALSE // It's over.
 		addtimer(CALLBACK(src, PROC_REF(hype_returns)), 120) // Less intrusive than the big Colossus font, still on cooldown due to being quite the long message.
 	else if(naked_parry)
-		hit_message = "is untouchable!"
+		hit_message = "是不可侵犯的!"
 		force = 12 // bonus damage for like, 2 seconds.
 	else if(realized_parry)
 		force = 25 // bonus damage for like, 2 seconds.
-		hit_message = "is untouchable!"
+		hit_message = "是不可侵犯的!"
 		..()
 		if(can_hype)
-			to_chat(source, span_colossus("A GOD DOES NOT FEAR DEATH!")) // The font is LARGE, that's why it is on a cooldown.
+			to_chat(source, span_colossus("神是不怕死的!")) // The font is LARGE, that's why it is on a cooldown.
 			can_hype = FALSE // It's SO over.
 			addtimer(CALLBACK(src, PROC_REF(hype_returns)), 180) // But we WILL be back (after 18 seconds).
 		return
@@ -238,7 +238,7 @@
 	can_hype = TRUE
 
 /obj/item/ego_weapon/christmas
-	name = "christmas"
+	name = "悲惨圣诞"
 	desc = "With my infinite hatred, I give you this gift."
 	icon_state = "christmas"
 	force = 32
@@ -253,9 +253,9 @@
 							)
 
 /obj/item/ego_weapon/logging
-	name = "logging"
+	name = "伐木者"
 	desc = "A versatile equipment made to cut down trees and people alike."
-	special = "This weapon builds up attack speed as you attack before releasing it in a large burst."
+	special = "这个武器会在攻击中触发一次大爆发然后释放力量，从而提高攻击速度."
 	icon_state = "logging"
 	force = 16
 	damtype = RED_DAMAGE
@@ -277,7 +277,7 @@
 		if (ramping <= 0.5)
 			ramping = 1.5
 			if(!smashing)
-				to_chat(user, MESSAGE_TYPE_WARNING, "You smash the axe down repeatedly!")
+				to_chat(user, MESSAGE_TYPE_WARNING, "你不停地把斧子砸下来!")
 				Smash(user, target)
 		else
 			ramping -= 0.2
@@ -377,9 +377,9 @@
 	return
 
 /obj/item/ego_weapon/mini/courage
-	name = "courage"
+	name = "勇气"
 	desc = "Can I follow you forever? So I can tear them apart..."
-	special = "This weapon deals more damage the more allies you can see."
+	special = "你看到的盟友越多，该武器造成的伤害就越大."
 	icon_state = "courage"
 	force = 12 //if 4 people are around, the weapon can deal up to 28 damage per strike
 	swingstyle = WEAPONSWING_LARGESWEEP
@@ -405,17 +405,17 @@
 		to_chat(user, "<span class='warning'>Your weapon cowers and shatters in your hand!")
 		icon_state = "courage_broken"
 	else if(friend_count && icon_state == "courage_broken")
-		to_chat(user, "<span class='nicegreen'>Your weapon puffs back up to impress your allies!")
+		to_chat(user, "<span class='nicegreen'>你的武器膨胀起来，因为盟友就在身旁!")
 		icon_state = "courage"
 	user.update_inv_hands()
 	..()
 	force = initial(force)
 
 /obj/item/ego_weapon/shield/bravery
-	name = "bravery"
+	name = "勇敢"
 	desc = "Together we are unstoppable."
-	special = "This weapon has a slow attack speed and deals atrocious damage.	\
-			Block for longer when surrounded by allies."
+	special = "该武器攻击速度缓慢，造成严重伤害.	\
+			在被盟友环绕时，格挡时间更长."
 	icon_state = "bravery"
 	force = 44
 	damtype = RED_DAMAGE
@@ -443,11 +443,11 @@
 			block_cooldown -= 0.5 SECONDS
 			friend_count++
 	if(!friend_count && icon_state == "bravery")
-		to_chat(user, "<span class='warning'>Your weapon cowers in your hand!")
+		to_chat(user, "<span class='warning'>你手中武器的武器在畏缩!")
 		icon_state = "bravery_broken"
 		playsound(src, 'sound/abnormalities/scaredycat/catchange.ogg', 25, FALSE, 4)
 	else if(friend_count && icon_state == "bravery_broken")
-		to_chat(user, "<span class='nicegreen'>Your weapon puffs back up to impress your allies!")
+		to_chat(user, "<span class='nicegreen'>你的武器膨胀起来，因为盟友就在身旁!")
 		icon_state = "bravery"
 		playsound(src, 'sound/abnormalities/scaredycat/catgrunt.ogg', 50, FALSE, 4)
 	user.update_icon_state()
@@ -456,9 +456,9 @@
 	block_cooldown = initial(block_cooldown)
 
 /obj/item/ego_weapon/pleasure
-	name = "pleasure"
+	name = "因乐癫狂"
 	desc = "If the goal of life is happiness, does it really matter how we get it?"
-	special = "If you hit yourself with this weapon, it will deal additional damage proportional to your missing sanity for 20 seconds. this weapon deals armor piercing white damage to you."
+	special = "如果你用此武器击中自己，它将造成与你失去的SP成比例的额外伤害，持续20秒. 该武器对你造成白色穿甲伤害。"
 	icon_state = "pleasure"
 	force = 16
 	damtype = WHITE_DAMAGE
@@ -483,7 +483,7 @@
 		force = 0
 		happy = TRUE
 		icon_state = "pleasure_active"
-		to_chat(H, span_notice("The thorns start secreting some strange substance."))
+		to_chat(H, span_notice("刺开始分泌一些奇怪的物质."))
 		playsound(H, 'sound/abnormalities/porccubus/porccu_giggle.ogg', 50, FALSE, 4)
 		playsound(H, 'sound/weapons/bladeslice.ogg', 50, FALSE, 4)
 		addtimer(CALLBACK(src, PROC_REF(Withdrawal)), 20 SECONDS)
@@ -492,13 +492,13 @@
 
 /obj/item/ego_weapon/pleasure/proc/Withdrawal(mob/living/M, mob/living/user)
 	playsound(user, 'sound/abnormalities/porccubus/porccu_giggle.ogg', 50, FALSE, 4)
-	to_chat(user, span_notice("The [src] is returning back to normal."))
+	to_chat(user, span_notice("[src]正在恢复正常."))
 	icon_state = "pleasure"
 	happy = FALSE
 	force = 16
 
 /obj/item/ego_weapon/mini/metal
-	name = "bare metal"
+	name = "裸机"
 	desc = "Looks to be a fan blade with a handle welded to it."
 	icon_state = "metal"
 	force = 22
@@ -513,7 +513,7 @@
 							)
 
 /obj/item/ego_weapon/mini/alleyway
-	name = "alleyway"
+	name = "小巷"
 	desc = "It's a small knife forged of black metal."
 	icon_state = "alleyway"
 	force = 6
@@ -528,9 +528,9 @@
 							)
 
 /obj/item/ego_weapon/shield/giant
-	name = "giant"
+	name = "巨人"
 	desc = "I'll grind your bones to make my bread!"
-	special = "This weapon deals atrocious damage."
+	special = "这种武器造成可怕的伤害."
 	icon_state = "giant"
 	force = 44
 	damtype = RED_DAMAGE
@@ -548,9 +548,9 @@
 
 //gains 0.25 force for every step you take, up to 100 damage. However it deals 0 damage by default, making it more useful as a sidearm rather than a main weapon.
 /obj/item/ego_weapon/homing_instinct
-	name = "homing instinct"
+	name = "归巢本能"
 	desc = "It's about the journey AND the destination!"
-	special = "This weapon's damage scale with the number of steps you've taken before striking."
+	special = "这种武器的伤害与你在攻击前所走的步数有关."
 	icon_state = "homing_instinct"
 	damtype = BLACK_DAMAGE
 	force = 0 //Literally does no damage by default
@@ -592,7 +592,7 @@
 		force += 0.25 //It charges pretty slowly, but people walk pretty fast thanks to justice.
 
 /obj/item/ego_weapon/shield/maneater
-	name = "man eater"
+	name = "吃干抹净"
 	desc = "If friends were flowers, I'd pick you!"
 	icon_state = "maneater"
 	force = 12
@@ -615,9 +615,9 @@
 							)
 
 /obj/item/ego_weapon/revelation
-	name = "revelation"
+	name = "启示"
 	desc = "Death, where is thy sting?"
-	special = "This weapon attacks faster when hitting targets below 50% health"
+	special = "当击中生命值低于50%的目标时，该武器的攻击速度更快."
 	icon_state = "revelation"
 	force = 22
 	attack_speed = 1.5
@@ -640,9 +640,9 @@
 	..()
 
 /obj/item/ego_weapon/inheritance
-	name = "inheritance"
+	name = "继承"
 	desc = "You should consider it an honor. The humans who have joined me could attain greater wealth and glory."
-	special = "This weapon has a combo system. To turn off this combo system, use in hand."
+	special = "这个武器有一个连击系统，在手中使用以关闭这个连击系统."
 	icon_state = "inheritance"
 	force = 5
 	damtype = RED_DAMAGE
@@ -662,11 +662,11 @@
 /obj/item/ego_weapon/inheritance/attack_self(mob/user)
 	..()
 	if(combo_on)
-		to_chat(user,span_warning("You change your stance, and will no longer perform a finisher."))
+		to_chat(user,span_warning("你改变姿态，不再发动终结技了."))
 		combo_on = FALSE
 		return
 	if(!combo_on)
-		to_chat(user,span_warning("You change your stance, and will now perform a finisher."))
+		to_chat(user,span_warning("你改变姿态，将发动终结技."))
 		combo_on =TRUE
 		return
 
@@ -684,7 +684,7 @@
 			force *= 6
 			combo = -4
 			playsound(src, 'sound/weapons/fwoosh.ogg', 300, FALSE, 9)
-			to_chat(user,span_warning("You take a moment to reset your stance."))
+			to_chat(user,span_warning("你花了一些时间重整架势."))
 		else
 			user.changeNext_move(CLICK_CD_MELEE * 0.3)
 	..()
@@ -692,9 +692,9 @@
 	force = initial(force)
 
 /obj/item/ego_weapon/shield/legerdemain
-	name = "legerdemain"
+	name = "障眼把戏"
 	desc = "Together, we are in rot."
-	special = "This weapon restores health on a successful parry."
+	special = "这把武器在格挡成功时恢复HP."
 	icon_state = "legerdemain"
 	force = 36
 	attack_speed = 1.8
@@ -707,10 +707,10 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/abnormalities/goldenapple/Gold_Attack2.ogg'
-	projectile_block_message ="Your E.G.O swats the projectile away!"
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You reposition your E.G.O."
+	projectile_block_message ="你的E.G.O将弹丸弹开!"
+	block_message = "你尝试格挡攻击!"
+	hit_message = "格挡攻击!"
+	block_cooldown_message = "你重新架起E.G.O."
 	attribute_requirements = list(
 							PRUDENCE_ATTRIBUTE = 40
 							)
@@ -730,19 +730,19 @@
 
 /obj/item/ego_weapon/shield/legerdemain/AnnounceBlock(mob/living/carbon/human/source, damage, damagetype, def_zone)
 	if (damagetype == PALE_DAMAGE)
-		to_chat(source,span_nicegreen("Your [src] withers at the touch of death!"))
+		to_chat(source,span_nicegreen("你的[src]枯萎了!"))
 		return ..()
-	to_chat(source,span_nicegreen("You are healed by [src]."))
+	to_chat(source,span_nicegreen("你被[src]治疗了."))
 	source.adjustBruteLoss(-10)
 	source.adjustSanityLoss(-5)
 	..()
 
 /obj/item/ego_weapon/get_strong
-	name = "Get Strong"
+	name = "变得强壮"
 	desc = "It whirls and twirls and yet feels limp... Do you love the City you live in?"
-	special = "This weapon has multiple modes.\nA low power spear. A medium power sword, and a high-power gauntlet.\n\
-	Hitting with the spear and sword improve the damage of the next gauntlet. \n\
-	This weapon stuns you for a short period of time on spear mode."
+	special = "这种武器有多种模式.\n低威力的长矛. 中威力的剑以及高威力的护手.\n\
+	以长矛和剑击中对手会提高护手的伤害. \n\
+	长矛模式下攻击会使你昏迷一段时间."
 	icon_state = "become_strong_sp"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -784,9 +784,9 @@
 		if("Gauntlet")
 			mode = "Spear"
 			swingstyle = WEAPONSWING_THRUST
-	to_chat(user, span_notice("[src] makes a whirling sound as it changes shape!"))
+	to_chat(user, span_notice("[src]在改变形状时发出转齿的声音!"))
 	if(prob(5))
-		to_chat(user, span_notice("Do you love your city?"))
+		to_chat(user, span_notice("你爱你的都市吗?"))
 	icon_state = "become_strong"+mode_stats[mode][1]
 	update_icon_state()
 	force = mode_stats[mode][2]
@@ -806,9 +806,9 @@
 		if("Sword")
 			windup = min(windup+2, 50)
 		if("Gauntlet")
-			to_chat(user, span_notice("You start winding up your fist!"))
+			to_chat(user, span_notice("你开始握紧拳头!"))
 			if(!do_after(user, 0.75 SECONDS, target))
-				to_chat(user, span_warning("You stop winding up your fist!"))
+				to_chat(user, span_warning("你停止握紧拳头!"))
 				return
 			force += windup
 			windup = 0
@@ -819,7 +819,7 @@
 	switch(windup)
 		if(50 to INFINITY)
 			playsound(src, 'sound/weapons/ego/strong_charged2.ogg', 60)
-			to_chat(user, span_nicegreen("[src] beeps and whirls as it reaches full capacity!"))
+			to_chat(user, span_nicegreen("[src]在达到最大功率时发出嘟嘟声和转齿声！"))
 		if(25 to 49)
 			playsound(src, 'sound/weapons/ego/strong_charged1.ogg', 40)
 		else
@@ -827,10 +827,10 @@
 	return
 
 /obj/item/ego_weapon/impending_day
-	name = "impending day"
+	name = "迫近之日"
 	desc = "You, too, will be a live offering."
 	icon_state = "impending_day"
-	special = "This weapon will attack all non-humans in an AOE after killing a target."
+	special = "杀死目标后，该武器将攻击范围内所有非人类."
 	force = 32
 	attack_speed = 2
 	hitsound = 'sound/abnormalities/doomsdaycalendar/Doomsday_Attack.ogg'
@@ -854,7 +854,7 @@
 
 	if(target.stat == DEAD && living)
 		if(!sacrifice)
-			to_chat(user, span_userdanger("Impending Day extends outward!"))
+			to_chat(user, span_userdanger("迫近之日向外延伸!"))
 			playsound('sound/abnormalities/doomsdaycalendar/Doomsday_Attack.ogg', 3, TRUE)
 			sacrifice = FALSE
 		for(var/mob/living/L in range(1, target))
@@ -871,9 +871,9 @@
 		living = FALSE
 
 /obj/item/ego_weapon/fluid_sac
-	name = "fluid sac"
+	name = "液囊"
 	desc = "Crush them, even if you must disgorge everything."
-	special = "This weapon can be used to perform a jump attack after a short wind-up (Middle mouse button click/alt click an enemy)."
+	special = "这把武器会在短暂蓄力后执行跳跃攻击 (中键/Alt点击目标)."
 	icon_state = "fluid_sac"
 	force = 32
 	attack_speed = 2
@@ -910,7 +910,7 @@
 		return
 	var/mob/living/A = target
 	if(dash_cooldown > world.time)
-		to_chat(user, span_warning("Your dash is still recharging!"))
+		to_chat(user, span_warning("你的突袭尚在充能!"))
 		return
 	if((get_dist(user, A) < 2) || (!(can_see(user, A, dash_range))))
 		return
@@ -934,7 +934,7 @@
 		if(get_dist(user, A) < 2)
 			JumpAttack(A,user)
 		REMOVE_TRAIT(src, TRAIT_NODROP, STICKY_NODROP)
-		to_chat(user, span_warning("You jump towards [A]!"))
+		to_chat(user, span_warning("你跳向[A]!"))
 		animate(user, alpha = 255,pixel_x = 0, pixel_z = -16, time = 0.1 SECONDS)
 		user.pixel_z = 0
 
@@ -961,10 +961,10 @@
 	return 40
 
 /obj/item/ego_weapon/sanguine
-	name = "sanguine desire"
+	name = "血欲"
 	desc = "The axe may seem light, but the wielder musn't forget that it has hurt countless people as a consequence of poor choices. \
 			\nThe weapon is stronger when used by an employee with strong conviction."
-	special = "This weapon deals increased damage at a cost of sanity loss for every hit."
+	special = "该武器每此攻击将积累更高的伤害，但会以丧失SP为代价."
 	icon_state = "sanguine"
 	force = 32 //You get Giga DPS
 	stuntime = 4	//but a short stun
@@ -984,9 +984,9 @@
 	..()
 
 /obj/item/ego_weapon/regs
-	name = "move-in reg"
+	name = "复制品"
 	desc = "A mechanical yet sinewy claw ribbed with circuitry. It reminds you of toy claw machines."
-	special = "The charge effect of this weapon trips humans instead of injuring them."
+	special = "这种武器的充能效果是绊倒人类而不是伤害他们."
 	icon_state = "regs"
 	force = 16
 	damtype = BLACK_DAMAGE
@@ -998,7 +998,7 @@
 							)
 
 	charge = TRUE
-	charge_effect = "Pull a target from a distance."
+	charge_effect = "从远处拉取一个目标."
 	charge_cost = 2
 	charge_cap = 21 // you dont understand, they NEED that one extra point of cap
 
@@ -1045,9 +1045,9 @@
 	return TRUE
 
 /obj/item/ego_weapon/warp
-	name = "dimensional ripple"
+	name = "次元撕裂者"
 	desc = "They should've died after bleeding so much. You usually don't quarantine a corpse...."
-	special = "This weapon builds charge every 10 steps you've taken."
+	special = "这个武器每走10步就会充能."
 	icon_state = "warp2"
 	force = 16 		//Spears get increased damage, but this one has an ability
 	lefthand_file = 'icons/mob/inhands/weapons/ego_lefthand.dmi'
@@ -1069,7 +1069,7 @@
 	attack_charge_gain = FALSE // we have a unique way of getting charge
 	charge_cost = 10
 	var/accumulated_charge = 0
-	charge_effect = "Teleport and create a temporary two-way portal."
+	charge_effect = "传送并创建一个临时的双向传送门."
 
 	var/current_holder
 
@@ -1100,19 +1100,19 @@
 
 /obj/item/ego_weapon/warp/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	if(!CanUseEgo(user))
-		to_chat(user, span_notice("You cannot use this!"))
+		to_chat(user, span_notice("你无法使用这个!"))
 		return
 	if(!currently_charging)
 		return
 
 	if(!LAZYLEN(get_path_to(src,target, TYPE_PROC_REF(/turf, Distance), 0, 20)))
-		to_chat(user, span_notice("Invalid target."))
+		to_chat(user, span_notice("不可用目标."))
 		CancelCharge()
 		return
 
 	if(!proximity_flag)
 		currently_charging = FALSE
-		to_chat(user, span_notice("You release your charge, opening a rift!"))
+		to_chat(user, span_notice("你释放充能，打开了一个裂痕!"))
 		var/turf/proj_turf = user.loc
 		if(!isturf(proj_turf))
 			return
@@ -1137,7 +1137,7 @@
 			accumulated_charge = 0
 
 /obj/effect/portal/warp
-	name = "dimensional rift"
+	name = "次元撕裂者"
 	desc = "A glowing, pulsating rift through space and time."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "rift"
@@ -1152,7 +1152,7 @@
 	return ..()
 
 /obj/item/ego_weapon/warp/knife	// knife subtype of the above. knife has to be the subtype because it fits in a belt
-	name = "dimension shredder"
+	name = "次元撕裂者"
 	desc = "The path is intent on thwarting all attempts to memorize it."
 	icon_state = "warp"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
@@ -1166,7 +1166,7 @@
 	stuntime = 0
 
 /obj/item/ego_weapon/marionette
-	name = "marionette"
+	name = "长鼻子木偶"
 	desc = "People lie all the time. Why is that a bad thing?"
 	icon_state = "marionette"
 	force = 24
@@ -1180,9 +1180,9 @@
 							)
 
 /obj/item/ego_weapon/divinity
-	name = "divinity"
+	name = "神性"
 	desc = "The gods are always right, as they are just. Your sacrifice will please them."
-	special = "This weapon is enhanced by the effects of the corresponding abnormality, O-09-144."
+	special = "该武器通过相应的异想体O-09-144得到增强效果."
 	icon_state = "divinity"
 	force = 32//has an AOE for the amount of theonite stacks
 	attack_speed = 2
@@ -1241,9 +1241,9 @@
 		been_hit = user.HurtInTurf(T, been_hit, punishment_damage, PALE_DAMAGE, check_faction = TRUE)
 
 /obj/item/ego_weapon/destiny
-	name = "destiny"
+	name = "命运"
 	desc = "The elderly man showed a red thread connecting the young boy with his future lover. Disgusted at the sight, he ordered her to be executed."
-	special = "This weapon deals significantly more damage when attacking the same target repeatedly."
+	special = "当重复攻击同一目标时，该武器造成更大的伤害."
 	icon_state = "destiny"
 	force = 8
 	swingstyle = WEAPONSWING_LARGESWEEP
@@ -1268,7 +1268,7 @@
 	..()
 	if(target != stored_target)
 		stored_target = target
-		to_chat(user, span_notice("You pursue a new target."))
+		to_chat(user, span_notice("你选取了一个新目标."))
 		force = initial(force)
 		target_hits = 0
 
@@ -1276,9 +1276,9 @@
 	return 50
 
 /obj/item/ego_weapon/rhythm
-	name = "rhythm"
+	name = "韵律吉他"
 	desc = "Nothing makes as fascinating music as a human can."
-	special = "Use this weapon in hand to deal a small portion of damage to yourself to heal the sanity of people around you."
+	special = "使用这个武器会对自己造成小额伤害，以恢复你周围的人的SP."
 	icon_state = "rhythm"
 	force = 16
 	damtype = WHITE_DAMAGE
@@ -1301,9 +1301,9 @@
 	return 40
 
 /obj/item/ego_weapon/shield/trachea
-	name = "trachea"
+	name = "气管"
 	desc = "As if everything else were hollow and pointless, the wailing numbs even the brain, making it impossible to think."
-	special = "This weapon deals atrocious damage."
+	special = "这把武器造成可怕的伤害."
 	icon_state = "trachea"
 	force = 44
 	attack_speed = 3
@@ -1322,9 +1322,9 @@
 							)
 
 /obj/item/ego_weapon/roseate
-	name = "roseate desire"
+	name = "玫瑰与欲望"
 	desc = "A salacious cat o' nine tails made from pink ribbons. Merely touching it ushers a primal excitement."
-	special = "The damage of this weapon is significantly lowered depending on the user's temperance attribute."
+	special = "该武器的伤害会根据使用者的自律属性而显著降低."
 	icon_state = "roseate_desire"
 	force = 23
 	attack_speed = 0.8
@@ -1344,7 +1344,7 @@
 	return ..()
 
 /obj/item/ego_weapon/frostsplinter
-	name = "frost splinter"
+	name = "霜之碎片"
 	desc = "Anyone damaged by it will lose themselves for a moment. \
 	As the equipment was forged from snow, it shall disappear without a trace someday."
 	icon_state = "frostsplinter"
@@ -1367,7 +1367,7 @@
 /obj/item/ego_weapon/aedd//it's just a HE W.corp baton that deals red
 	name = "AEDD"
 	desc = "A nasty-looking bat covered with nails."
-	special = "Activating the weapon in your hand prepares an attack with additional black damage."
+	special = "在手中激活武器，可以造成一次带有额外黑色伤害的攻击."
 	icon_state = "aedd"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -1387,7 +1387,7 @@
 	if(!CanUseEgo(user))
 		return
 	if(do_after(user, 30, src))//3 seconds
-		to_chat(user, span_notice("You hoist [src] over your shoulder."))
+		to_chat(user, span_notice("你把[src]扛到肩上."))
 		charged = TRUE
 
 /obj/item/ego_weapon/aedd/attack(mob/living/target, mob/living/user)
@@ -1406,7 +1406,7 @@
 	new /obj/effect/temp_visual/justitia_effect(T)
 
 /obj/item/ego_weapon/lance/split
-	name = "split"
+	name = "分歧"
 	desc = "They existed everywhere, but we were the ones to first discover their existence. We were the first to encounter them. We were faced with fear. They were - are fear itself."
 	icon_state = "split"
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
@@ -1437,7 +1437,7 @@
 	return 40
 
 /obj/item/ego_weapon/lance/lifestew_lance
-	name = "lifetime stew"
+	name = "一辈子炖汤"
 	desc = "Salutations! I implore thee to try this soup!"
 	icon_state = "lifestew" //placeholder
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
@@ -1479,10 +1479,10 @@
 	return 40
 
 /obj/item/ego_weapon/lifestew
-	name = "lifetime stew"
+	name = "一辈子炖汤"
 	desc = "Take a large stone, put it into a sufficient quantity of boiling water; properly season it with pepper and salt... \
 	When the soup is made the stone may be thrown away!"
-	special = "This weapon stores up to 3 projectiles and gains a new projectile on a successful hit."
+	special = "该武器最多可储存三枚汤炮弹，每次成功命中可获得一枚新的汤炮弹."
 	icon_state = "lifetime_stew"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -1522,7 +1522,7 @@
 		if(stored_projectiles < projectile_max)
 			stored_projectiles += 1
 		else
-			to_chat(user, "<span class='warning'>[src] is full!")
+			to_chat(user, "<span class='warning'>[src]填满了!")
 	update_icon_state(user)
 	..()
 
@@ -1536,7 +1536,7 @@
 		if(!stored_projectiles)
 			return
 		if(firing_cooldown >= world.time)
-			to_chat(user, span_notice("[src] is overheated and not ready to fire!"))
+			to_chat(user, span_notice("[src]过热了，尚未准备好开火!"))
 			return
 		var/obj/projectile/ego_bullet/lifestew/G = new /obj/projectile/ego_bullet/lifestew(proj_turf)
 		G.fired_from = src //for signal check
@@ -1558,7 +1558,7 @@
 	return TRUE
 
 /obj/projectile/ego_bullet/lifestew
-	name = "soup projectile"
+	name = "汤炮弹"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	hitsound = 'sound/abnormalities/ichthys/jump.ogg'
@@ -1567,9 +1567,9 @@
 
 
 /obj/item/ego_weapon/faelantern
-	name = "midwinter nightmare"
+	name = "冬至噩梦"
 	desc = "How's about I tell you a tale?"
-	special = "This weapon can fire a projectile that deals damage over time."
+	special = "该武器可以发射能持续造成伤害的精灵."
 	icon_state = "faelantern"
 	force = 20	//Very low dps. You'll see why later
 	attack_speed = 2
@@ -1605,7 +1605,7 @@
 		if(!isturf(proj_turf))
 			return
 		if(firing_cooldown >= world.time)
-			to_chat(user, span_notice("The fairy has yet to return!"))
+			to_chat(user, span_notice("精灵们还没回来!"))
 			return
 		var/obj/projectile/ego_bullet/faelantern/G = new /obj/projectile/ego_bullet/faelantern(proj_turf)
 		G.fired_from = src //for signal check
@@ -1630,7 +1630,7 @@
 
 /obj/item/ego_weapon/faelantern/proc/Reload(mob/living/carbon/human/firer)
 	if(firing_cooldown < world.time)
-		to_chat(firer, span_notice("The fairy has returned!"))
+		to_chat(firer, span_notice("精灵回来了!"))
 	update_icon_state(firer)
 
 /obj/projectile/ego_bullet/faelantern
@@ -1647,7 +1647,7 @@
 	var/mob/living/H = target
 	if(!isbot(H) && isliving(H))
 		H.apply_status_effect(/datum/status_effect/fairybite)
-		H.visible_message(span_warning("The [src] latches on [target]!"))
+		H.visible_message(span_warning("[src]开始理解[target]!"))
 
 /datum/status_effect/fairybite
 	id = "fairybite"
@@ -1675,9 +1675,9 @@
 
 
 /obj/item/ego_weapon/lance/brick_road
-	name = "brick road"
+	name = "砖面路"
 	desc = "To the wizard we go!"
-	special = "This weapon leaves slowing yellow bricks from charging"
+	special = "充能攻击将留下金色减速地砖"
 	icon_state = "brick_road"
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/96x96_righthand.dmi'
@@ -1720,14 +1720,14 @@
 	M.TemporarySpeedChange(1.25, 3 SECONDS, TRUE)
 
 /atom/movable/screen/alert/status_effect/brown_bricks
-	name = "Yello Bricks"
-	desc = "These DAMN bricks are slowing you down by 25%!"
+	name = "金色地砖"
+	desc = "该死的路会让你减速25%!"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "gold" //note : find a proper brick road sprite later
 
 //Not an actual floor, but an effect you put on top of it.
 /obj/effect/golden_road2
-	name = "Golden Road"
+	name = "黄金路"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "gold" //note : find a proper brick road sprite later
 	alpha = 0
@@ -1751,7 +1751,7 @@
 		H.apply_status_effect(/datum/status_effect/brown_bricks)
 
 /obj/item/ego_weapon/coiling
-	name = "coiling"
+	name = "卷绕"
 	desc = "The snake leather used in this whip is hardened by the sun"
 	icon_state = "coiling"
 	force = 26
@@ -1766,10 +1766,10 @@
 							)
 
 /obj/item/ego_weapon/mini/scissors
-	name = "scissors"
+	name = "剪刀"
 	desc = "What seems to be a giant half of a scissors pair."
 	icon_state = "voodoo"
-	special = "This weapon can be paired with a second copy to use both at the same time."
+	special = "能够和另一把相同的剪刀搭配使用."
 	force = 11
 	swingstyle = WEAPONSWING_LARGESWEEP
 	attack_speed = 0.7
@@ -1782,7 +1782,7 @@
 							)
 
 /obj/item/ego_weapon/mini/scissors/Initialize()
-	name = "I'll go fer scissors. How 'bout you?"
+	name = "我去拿剪刀。你呢？"
 	..()
 
 /obj/item/ego_weapon/mini/scissors/attack(mob/living/target, mob/living/user)
@@ -1803,9 +1803,9 @@
 			log_combat(user, target, pick(attack_verb_continuous), Y.name, "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(Y.damtype)])")
 
 /obj/item/ego_weapon/crushbound
-	name = "crushbound past"
+	name = "破碎过往"
 	desc = "It looks like a hammer with a steam exhaust port."
-	special = "Use in hand to unlock its full power."
+	special = "在手中使用以全功率运转."
 	icon_state = "crushbound"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -1839,7 +1839,7 @@
 	if(do_after(user, 12, src))
 		charged = TRUE
 		force = 66 //FULL POWER
-		to_chat(user,span_warning("You put your strength behind this attack."))
+		to_chat(user,span_warning("你把力量都倾注在了这次攻击上."))
 		playsound(src.loc, 'sound/abnormalities/clock/clank.ogg', 75, TRUE)
 		set_light(3, 6, "#D4FAF37")
 		PlayChargeSound()
@@ -1856,10 +1856,9 @@
 
 //Gimmicky weapon with a potentially high payout
 /obj/item/ego_weapon/sunshower
-	name = "sunshower"
+	name = "狐雨"
 	desc = "I cannot protect you from this rain, but I can guard you from false kindness."
-	special = "This weapon gains 1 poise for every attack. 1 poise gives you a 2% chance to crit and deal 3x damage, stacking linearly. Critical hits reduce poise to 0. \
-		This weapon has a combo that increases damage and attack speed as you continue attacking."
+	special = "该武器每次攻击将累计1点平衡，每点平衡增加2%暴击概率，暴击造成三倍伤害，暴击后平衡清零。此外，随着持续攻击，这把武器的伤害和攻速会不断提升。"
 	icon_state = "sunshower"
 	force = 12
 	attack_speed = 1
@@ -1880,7 +1879,7 @@
 
 /obj/item/ego_weapon/sunshower/examine(mob/user)
 	. = ..()
-	. += "Current Poise: [poise]/20."
+	. += "当前平衡: [poise]/20."
 
 /obj/item/ego_weapon/sunshower/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!CanUseEgo(user))
@@ -1936,10 +1935,10 @@
 							)
 
 /obj/item/ego_weapon/uturn
-	name = "u-turn"
+	name = "U形弯"
 	desc = "It's a large scythe, that probably hurts a lot."
-	special = "Knocks certain enemies towards you in an area. \
-	This weapon does half damage when attacking 3 or more tiles more away."
+	special = "攻击会击倒一个区域内的特定敌人. \
+	当攻击到3个或更多的单位时，此武器造成一半伤害."
 	icon_state = "uturn"
 	force = 22
 	reach = 4
@@ -1977,13 +1976,13 @@
 				var/atom/throw_target = get_edge_target_turf(L, get_dir(L, get_step_towards(L, get_turf(user))))
 				if(!L.anchored)
 					L.throw_at(throw_target, 1, get_dist(user, L) - 1, user)
-				to_chat(user, MESSAGE_TYPE_WARNING, "You reel in [L]!")
-				to_chat(L, MESSAGE_TYPE_WARNING, "[user] reels you in!")
+				to_chat(user, MESSAGE_TYPE_WARNING, "你卷进了[L]!")
+				to_chat(L, MESSAGE_TYPE_WARNING, "[user]把你卷进去了!")
 
 /obj/item/ego_weapon/giant_tree_branch
-	name = "giant tree branch"
+	name = "巨大树枝"
 	desc = "Many wondered how such a large tree could prosper all the way out in the barren Outskirts."
-	special = "This weapon converts damage into healing sap. Use in hand to drink the sap."
+	special = "此武器可将伤害转化为治疗液. 手中使用可饮用治疗液."
 	icon_state = "sap"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -2004,9 +2003,9 @@
 /obj/item/ego_weapon/giant_tree_branch/examine(mob/user)
 	. = ..()
 	if(amount_filled)
-		. += "It looks [(amount_filled * 100) / amount_max]% full."
+		. += "它看起来[(amount_filled * 100) / amount_max]%满."
 	else
-		. += "It looks empty"
+		. += "它看起来是空的"
 
 /obj/item/ego_weapon/giant_tree_branch/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!CanUseEgo(user))
@@ -2021,21 +2020,21 @@
 				heal_amt = 0
 		amount_filled = clamp(amount_filled + heal_amt, 0, amount_max)
 		if(amount_filled >= amount_max)
-			to_chat(user, "<span class='warning'>[src] is full!")
+			to_chat(user, "<span class='warning'>[src]是满的!")
 	..()
 /obj/item/ego_weapon/giant_tree_branch/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!amount_filled)
-		to_chat(user, "<span class='warning'>[src] is empty!")
+		to_chat(user, "<span class='warning'>[src]是空的!")
 		return
 	if(do_after(user, 12, src))
-		to_chat(user, "<span class='warning'>You take a sip from [src]!")
+		to_chat(user, "<span class='warning'>你喝了一口[src]!")
 		playsound(get_turf(src), 'sound/items/drink.ogg', 50, TRUE) //slurp
 		user.adjustBruteLoss(-amount_filled*2)
 		amount_filled = 0
 
 /obj/item/ego_weapon/shield/isolation
-	name = "isolation"
+	name = "孤独"
 	desc = "The shelter still retains the memory of that day."
 	icon_state = "isolation"
 	force = 14
@@ -2049,18 +2048,18 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/clash1.ogg'
-	projectile_block_message = "You swat the projectile out of the air!"
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your E.G.O."
+	projectile_block_message = "你格挡了飞来的投射物!"
+	block_message = "你尝试格挡攻击!"
+	hit_message = "格挡攻击!"
+	block_cooldown_message = "你重新架起E.G.O."
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 40
 							)
 
 /obj/item/ego_weapon/telepole
-	name = "telepole"
+	name = "电线杆"
 	desc = "A hairy wooden longsword that's covered in barbed wire. It crackles with arcs of electricity."
-	charge_effect = "allows you to dash, grazing nearby targets with BLACK damage."
+	charge_effect = "允许进行突袭，对附近的目标造成黑色伤害."
 	icon_state = "telepole"
 	force = 14
 	damtype = BLACK_DAMAGE
@@ -2084,7 +2083,7 @@
 		return
 	var/dir_to_target = get_dir(get_turf(user), get_turf(target))
 	if(CheckPath(user, dir_to_target))
-		to_chat(user,span_notice("You need more room to do that!"))
+		to_chat(user,span_notice("你需要更多的空间来突袭!"))
 		return
 	hit_turfs = list()
 	leap_count = 0
@@ -2118,7 +2117,7 @@
 					if(!H.sanity_lost)
 						continue
 				L.apply_damage(aoe, BLACK_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
-				L.visible_message(span_danger("[user] sears [L] with the [src]!"))
+				L.visible_message(span_danger("[user]用[src]灼烧[L]!"))
 		return
 	addtimer(CALLBACK(src, PROC_REF(Leap), user, dir, leap_range), 0.1)
 
@@ -2138,7 +2137,7 @@
 	return fail_charge
 
 /obj/item/ego_weapon/hexnail
-	name = "hex nail"
+	name = "诅咒之钉"
 	desc = "A bear paw with a couple nails jabbed into the ends of the digits. It's hard not to poke yourself when putting it on."
 	icon_state = "hex_nail"
 	force = 8
@@ -2157,7 +2156,7 @@
 	hitsound = "sound/weapons/fixer/generic/knife[pick(1,2,3,4)].ogg"
 
 /obj/item/ego_weapon/desert
-	name = "desert wind"
+	name = "沙漠热风"
 	desc = "Some old bandages that look like they have been worn for a long time."
 	icon_state = "desert"
 	force = 9
@@ -2176,30 +2175,30 @@
 /obj/item/ego_weapon/desert/AltClick(mob/user)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
 		REMOVE_TRAIT(src, TRAIT_NODROP, SPECIAL)
-		to_chat(user, span_notice("You loosen the [src]."))
+		to_chat(user, span_notice("你失去了[src]."))
 		return
 	ADD_TRAIT(src, TRAIT_NODROP, SPECIAL)
-	to_chat(user, span_notice("You tightly attach [src] to your body."))
+	to_chat(user, span_notice("你紧紧地将[src]绑定到身体上."))
 
 
 /obj/item/ego_weapon/desert/examine(mob/user)
 	. = ..()
-	. += span_notice("Some attacks with this weapon will normally cause it to be dropped. You can use alt+click to tightly bind this weapon to your hand.")
-	. += span_notice("This weapon has light and heavy attacks. Use in hand to activate a heavy attack. Combos are as follows:")
-	. += span_notice("LLL - 3 Hit fast combo, ending in a quick finisher.")
-	. += span_notice("H 	 - Heavy drop kick attack with high range that briefly leaves you stunned.")
-	. += span_notice("LH 	 - An open palm strike that knocks back the target.")
-	. += span_notice("LLH 	 - High Damage combo, last hit ends in a 2.5x damage boost with no windup.")
+	. += span_notice("使用此武器的某些攻击通常会导致其掉落，你可使用alt+点击将此武器紧密绑定至手中.")
+	. += span_notice("此武器具有轻攻击与重攻击，手持时使用以激活重攻击，连招如下:")
+	. += span_notice("轻轻轻 - 3段快速连击，以快速终结技收尾.")
+	. += span_notice("重 	 - 大范围重踢击，造成短暂硬直.")
+	. += span_notice("轻重 	 - 掌击造成目标击退.")
+	. += span_notice("轻轻重 	 - 高伤害连击，末段无前摇且造成2.5倍伤害.")
 
 /obj/item/ego_weapon/desert/attack_self(mob/living/carbon/user)
 	if(world.time > combo_time)
 		chain = 0
 	if(activated)
 		activated = FALSE
-		to_chat(user, span_danger("You revoke your preparation of a heavy attack."))
+		to_chat(user, span_danger("你撤销了重攻击的准备."))
 	else
 		activated = TRUE
-		to_chat(user, span_danger("You prep a heavy attack!"))
+		to_chat(user, span_danger("你准备好进行重攻击!"))
 
 
 /obj/item/ego_weapon/desert/attack(mob/living/target, mob/living/user)
@@ -2223,7 +2222,7 @@
 	switch(chain)
 		if(1)
 			if(activated) //H - Drop Kick attack
-				to_chat(user, span_danger("You leap at your target."))
+				to_chat(user, span_danger("你扑向你的目标."))
 				step_towards(user,target)
 				stuntime = 20
 				force *= 3
@@ -2233,14 +2232,14 @@
 
 		if(2)
 			if(activated) //LH - Knockback Palm Strike
-				to_chat(user, span_danger("You strike with your palm."))
+				to_chat(user, span_danger("你发动掌击."))
 				hitsound = 'sound/weapons/fixer/generic/gen2.ogg'
 				knockback(target, user)
 				force *= 1.5
 
 		if(3)
 			if(activated) //LLH - Heavy hitting finisher
-				to_chat(user, span_danger("You strike a critical blow."))
+				to_chat(user, span_danger("你打出了致命一击."))
 				during_windup = TRUE
 				force *= 2.5
 				hitsound = 'sound/weapons/fixer/generic/gen2.ogg'
@@ -2260,7 +2259,7 @@
 	//Reset Everything
 	if(activated)
 		chain=0
-		to_chat(user, span_danger("Your chain is reset."))
+		to_chat(user, span_danger("你的绑定被重置."))
 		activated = FALSE
 	force = initial(force)
 	hitsound = initial(hitsound)
@@ -2287,4 +2286,4 @@
 	if((get_dist(user, A) < 2))
 		A.attackby(src,user)
 	playsound(src, 'sound/weapons/fixer/generic/dodge.ogg', 50, FALSE, 9)
-	to_chat(user, "<span class='warning'>You dash to [A]!")
+	to_chat(user, "<span class='warning'>你向[A]突进!")

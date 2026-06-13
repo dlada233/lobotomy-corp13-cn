@@ -2,7 +2,7 @@
 #define SWAN_UMBRELLA_DURATION (8 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/black_swan
-	name = "Dream of Black Swan"
+	name = "黑天鹅之梦"
 	gender = FEMALE
 	desc = null
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
@@ -12,8 +12,8 @@
 	var/icon_aggro = "blackswan_closed"
 	portrait = "black_swan"
 	del_on_death = FALSE
-	maxHealth = 1000
-	health = 1000
+	maxHealth = 1500
+	health = 1500
 	ranged_cooldown_time = 10 SECONDS
 
 	move_to_delay = 4
@@ -54,20 +54,20 @@
 		/datum/ego_datum/armor/swan,
 	)
 	gift_type =  /datum/ego_gifts/swan
-	gift_message = "You feel exhausted but if you work a little harder, things will work themselves out."
+	gift_message = "你感到精疲力竭，但再努力一点，事情总会解决的。"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "Elijah loved her brothers. <br>\
-		She kept working even through the constant haze that enveloped all of the Wing's nest. <br>\
-		Whenever she thought of her brothers, she clutched her brooch a little tighter, if she just worked a little harder, finished the nettle clothing - they could live their lives freely. <br>\
-		One day, her skin covered in blisters and her mouth oozing with spittle and pus, she passed by a lake, seemingly untouched by the pollution of the City. <br>\
-		Though her eyesight was almost ruined by fog and affliction, she could see it clearly. <br>\
-		Upon that lake were six white swans and a singular black swan. Elijah..."
+	observation_prompt = "伊利亚深爱着她的兄弟们。<br>\
+		即使在笼罩整个翼巢的阴霾中，她仍坚持工作。<br>\
+		每当想起兄弟们，她便更紧地握住胸针——只要再努力一点，完成荨麻衣物，他们就能自由生活。<br>\
+		某天，她浑身布满水泡，口中渗出脓液，路过一片似乎未被都市污染的湖泊。<br>\
+		尽管视线已被雾霭和病痛摧残，她却清晰地看见：<br>\
+		湖面上游着六只白天鹅和一只黑天鹅。伊利亚..."
 	observation_choices = list(
-		"Observed the black swan" = list(TRUE, "The black swan watches forlornly as her family takes flight, she's willing to give up everything for her family. <br>\
-			Elijah embraces the near-finished nettle clothing wholeheartedly, soon..."),
-		"Observed the white swans" = list(FALSE, "The white swans were Elijah's favourite. <br>\
-			They spread their wings and took flight to the sky, high above the fog, leaving the black swan behind. Elijah clutched her brooch tighter, she only had to work a little harder..."),
+		"观察黑天鹅" = list(TRUE, "黑天鹅凄凉地目送家人飞离，她愿为家庭放弃一切。<br>\
+			伊利亚全心拥抱那几近完成的荨麻衣物，很快..."),
+		"观察白天鹅" = list(FALSE, "白天鹅是伊利亚的最爱。<br>\
+			它们展翅飞向雾霭之上的高空，留下黑天鹅。伊利亚握紧胸针，她只需再努力一点..."),
 	)
 
 	//family breach conditions
@@ -93,7 +93,7 @@
 	attack_action_types = list(/datum/action/cooldown/blackswan_umbrella)
 
 /datum/action/cooldown/blackswan_umbrella
-	name = "Black Swan's Umbrella"
+	name = "黑天鹅之伞"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "swan"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -128,9 +128,9 @@
 /mob/living/simple_animal/hostile/abnormality/black_swan/examine(mob/user)
 	. = ..()
 	if(IsContained())
-		. += "Six tall blonde humanoids draped in nettle clothing. They simply stand there, waiting."
+		. += "六个披着荨麻衣的金发人形生物，静静伫立等待。"
 	else
-		. += "A young woman with the body of a black swan. Her eyes dart around looking for something."
+		. += "长着黑天鹅身躯的年轻女子，双眼正急切地搜寻着什么。"
 
 /mob/living/simple_animal/hostile/abnormality/black_swan/Destroy()
 	UnregisterSignal(SSdcs, list(COMSIG_GLOB_MOB_DEATH, COMSIG_GLOB_HUMAN_INSANE, COMSIG_GLOB_ABNORMALITY_BREACH))
@@ -218,7 +218,7 @@
 	if(umbrella_open)
 		if(is_A_facing_B(src,P.firer))
 			if(P.reflectable != NONE)
-				visible_message(span_userdanger("[src] deflects [P] with their umbrella!"))
+				visible_message(span_userdanger("[src]用伞使[P]偏转!"))
 				ReflectProjectile(P)
 				return BULLET_ACT_FORCE_PIERCE
 			return BULLET_ACT_BLOCK
@@ -238,7 +238,7 @@
 	umbrella_open = TRUE
 	umbrella_cooldown = world.time + SWAN_UMBRELLA_COOLDOWN
 	update_icon_state()
-	visible_message(span_userdanger("[src] opens up their umbrella!"), span_notice("You open up your umbrella"))
+	visible_message(span_userdanger("[src]打开了伞!"), span_notice("你打开伞"))
 	addtimer(CALLBACK(src, PROC_REF(CloseUmbrella)), SWAN_UMBRELLA_DURATION)
 
 /mob/living/simple_animal/hostile/abnormality/black_swan/proc/CloseUmbrella()
@@ -268,7 +268,7 @@
 				continue
 			if(L.stat == DEAD)
 				continue
-			L.deal_damage(25, WHITE_DAMAGE)
+			L.deal_damage(45, WHITE_DAMAGE)
 		playsound(get_turf(src), 'sound/abnormalities/blackswan/sis_roar.ogg', 30, 0, 4)
 	cut_overlay(visual_overlay)
 	can_act = TRUE

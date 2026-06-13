@@ -1,17 +1,17 @@
 //I literally devised a whole new number system just for this abno - Kirie
 /mob/living/simple_animal/hostile/abnormality/willyouplay
-	name = "Will You Play?"
-	desc = "A small girl holding a teddy bear."
+	name = "来玩吗？"
+	desc = "一个抱着泰迪熊的小女孩."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "willyouplay"
 	portrait = "will_you_play"
-	maxHealth = 120
-	health = 120
+	maxHealth = 220
+	health = 220
 	threat_level = HE_LEVEL
 	work_chances = list(
-		"Rock" = 60,
-		"Paper" = 60,
-		"Scissors" = 60,
+		"石头" = 60,
+		"布" = 60,
+		"剪刀" = 60,
 	)
 	work_damage_upper = 6
 	work_damage_lower = 3
@@ -37,9 +37,9 @@
 	else
 		janken = pick(1,2)
 	if(user == last_worked)
-		say("You again? Fine. We'll play again.")
+		say("再一次? 很好，我们再玩一遍.")
 	else
-		say("I'll go fer scissors. How 'bout you?")
+		say("我出剪刀，你呢？")
 	return TRUE
 
 
@@ -52,11 +52,11 @@
 		Win(user, work_type)
 		return
 	switch(work_type)
-		if("Scissors")
+		if("剪刀")
 			player = 0
-		if("Rock")
+		if("石头")
 			player = 1
-		if("Paper")
+		if("布")
 			player = 2
 
 	player*=3
@@ -90,16 +90,16 @@
 /mob/living/simple_animal/hostile/abnormality/willyouplay/proc/Tie(mob/living/carbon/human/user, work_type)
 	if(janken == 0)
 		SLEEP_CHECK_DEATH(20)
-		say("A draw. Did you think I wouldn't play scissors?")
+		say("平局，你以为我不会出剪刀吗？")
 		SLEEP_CHECK_DEATH(20)
-		say("I don't play with folks who don't trust me.")
+		say("我不和不信任我的人玩.")
 	else
-		say("Hmph, a draw. You got lucky this time.")
+		say("嗯，平局. 你这次很幸运..")
 	IncreaseStats(user, 1, FALSE)
 
 //Player wins RPS, loses an arm tho
 /mob/living/simple_animal/hostile/abnormality/willyouplay/proc/Win(mob/living/carbon/human/user, work_type)
-	say("You lose.")
+	say("你输了.")
 	user.deal_damage(20, RED_DAMAGE)
 	IncreaseStats(user, 1, FALSE)
 
@@ -121,13 +121,13 @@
 	if(janken == 0)
 		statgain += 4
 		SLEEP_CHECK_DEATH(20)
-		say("You win. Scissors are only useful when cloth's around")
+		say("你赢了. 剪刀只对布有用")
 		IncreaseStats(user, statgain, TRUE)
 
 
 	else	//Big Air bonus for picking the funny rare one
 		statgain += 7
-		say("You win, now get outta here.")
+		say("你赢了, 现在滚出去.")
 		IncreaseStats(user, statgain, TRUE)
 
 /mob/living/simple_animal/hostile/abnormality/willyouplay/proc/IncreaseStats(mob/living/carbon/human/user, statgain, check_melt = FALSE)

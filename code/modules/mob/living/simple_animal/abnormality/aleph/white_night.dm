@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(apostles)
 
 /mob/living/simple_animal/hostile/abnormality/white_night
-	name = "WhiteNight"
-	desc = "The heavens' wrath. Say your prayers, heretic, the day has come."
+	name = "白夜"
+	desc = "天堂之怒，祈祷吧，异教徒，那一天来了."
 	health = 12000
 	maxHealth = 12000
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(apostles)
 	pixel_y = -16
 	base_pixel_y = -16
 	loot = list(/obj/item/ego_weapon/paradise)
-	death_message = "evaporates in a moment, leaving heavenly light and feathers behind."
+	death_message = "瞬间消失，留下天光与羽毛."
 	death_sound = 'sound/abnormalities/whitenight/apostle_death.ogg'
 	can_breach = TRUE
 	threat_level = ALEPH_LEVEL
@@ -56,12 +56,12 @@ GLOBAL_LIST_EMPTY(apostles)
 		/mob/living/simple_animal/hostile/abnormality/onesin = 5,
 	)
 
-	observation_prompt = "Thou knocked the door, now it hath opened. <br>\
-		Thou who carries burden, came to seek the answer."
+	observation_prompt = "汝既叩门，门扉即开。<br>\
+		背负负担之人，前来寻求答案."
 	observation_choices = list( // TODO IN A FEW YEARS: multiple messages, the answer should be irrelevant, code should check for wing gift.
-		"Where did you come from?" = list(TRUE, "I am from the end." ),
-		"Who are you?" = list(FALSE, "Thy question is empty, I cannot answer"),
-		"Why have you come?" = list(FALSE, "Thy question is empty, I cannot answer"),
+		"你从何处来？" = list(TRUE, "我来自结尾." ),
+		"你是谁？" = list(FALSE, "空洞无义的问题，我无法回答"),
+		"你为何而来？" = list(FALSE, "空洞无义的问题，我无法回答"),
 	)
 
 	var/holy_revival_cooldown
@@ -84,11 +84,11 @@ GLOBAL_LIST_EMPTY(apostles)
 /mob/living/simple_animal/hostile/abnormality/white_night/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, 1, 5))
 	var/list/result_text_list = list(
-		"1" = list("There's no room for error here.", "My legs are trembling...", "Damn, it's scary."),
-		"2" = list("GODDAMN IT!!!!", "H-Help...", "I don't want to die!"),
-		"3" = list("What am I seeing...?", "I-I can't take it...", "I can't understand..."),
-		"4" = list("So this is God...", "My existence is meaningless...", "We are petty beings..."),
-		"5" = list("Please, mercy...", "Grant us salvation...", "Let us witness in awe..."),
+		"1" = list("这里容不得半点差错.", "我的腿在发抖...", "该死，太吓人了."),
+		"2" = list("操他妈的!!!!", "救...救命...", "我不想死！"),
+		"3" = list("我看到的是什么...？", "我...撑不住了...", "无法理解..."),
+		"4" = list("这就是神吗...", "我的存在毫无意义...", "我们只是卑微的存在..."),
+		"5" = list("求您慈悲...", "赐予我们救赎...", "让我们敬畏地见证..."),
 		)
 	return pick(result_text_list[level])
 
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(apostles)
 /mob/living/simple_animal/hostile/abnormality/white_night/death(gibbed)
 	if(devil)
 		devil.playsound_local(get_turf(devil), 'sound/abnormalities/whitenight/apostle_bell.ogg', 50)
-		to_chat(devil, span_userdanger("[devil], your Heresy will not be forgotten!"))
+		to_chat(devil, span_userdanger("[devil], 你的邪说逃不掉的!"))
 		devil.dust(TRUE, TRUE)
 	if(LAZYLEN(loot))
 		SSticker.superbosses |= initial(name)
@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(apostles)
 				continue
 			heretic.Apply_Gift(new /datum/ego_gifts/blessing)
 			heretic.playsound_local(get_turf(heretic), 'sound/abnormalities/whitenight/apostle_bell.ogg', 50)
-			to_chat(heretic, span_userdanger("[heretic], your Heresy will not be forgotten!"))
+			to_chat(heretic, span_userdanger("[heretic], 你的邪说逃不掉的!"))
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/white_night/Destroy()
@@ -175,12 +175,12 @@ GLOBAL_LIST_EMPTY(apostles)
 		L.deal_damage(dealt_damage, PALE_DAMAGE)
 		if(ishuman(L) && dealt_damage > 25)
 			L.emote("scream")
-		to_chat(L, span_userdanger("The holy light... IT BURNS!!"))
+		to_chat(L, span_userdanger("这圣光... 它在燃烧!!"))
 	else
 		if(istype(L, /mob/living/simple_animal/hostile/aminion/apostle) && L.stat == DEAD)
 			L.revive(full_heal = TRUE, admin_revive = FALSE)
 			L.grab_ghost(force = TRUE)
-			to_chat(L, span_notice("The holy light compels you to live!"))
+			to_chat(L, span_notice("圣光迫使你活下去!"))
 		else if(L.stat != DEAD)
 			L.adjustBruteLoss(-(holy_revival_damage * 0.75) * (L.maxHealth/100))
 			if(ishuman(L))
@@ -188,7 +188,7 @@ GLOBAL_LIST_EMPTY(apostles)
 				H.adjustSanityLoss(-(holy_revival_damage * 0.75) * (H.maxSanity/100))
 			L.regenerate_limbs()
 			L.regenerate_organs()
-			to_chat(L, span_notice("The holy light heals you!"))
+			to_chat(L, span_notice("圣光治愈你!"))
 
 /mob/living/simple_animal/hostile/abnormality/white_night/proc/SpawnApostles()
 	for(var/i = 1 to 11)
@@ -271,8 +271,8 @@ GLOBAL_LIST_EMPTY(apostles)
 /* Apostles */
 
 /mob/living/simple_animal/hostile/aminion/apostle
-	name = "apostle"
-	desc = "An apostle."
+	name = "使徒"
+	desc = "使徒."
 	health = 1000
 	maxHealth = 1000
 	attack_verb_continuous = "slashes"
@@ -350,8 +350,8 @@ GLOBAL_LIST_EMPTY(apostles)
 			OpenFire()
 
 /mob/living/simple_animal/hostile/aminion/apostle/scythe
-	name = "scythe apostle"
-	desc = "A disformed human wielding a terrifying scythe."
+	name = "镰刀使徒"
+	desc = "一个畸形的人挥舞着可怕的镰刀."
 	var/scythe_cooldown
 	var/scythe_cooldown_time = 10 SECONDS
 	var/scythe_range = 2
@@ -385,7 +385,7 @@ GLOBAL_LIST_EMPTY(apostles)
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/aminion/apostle/scythe/guardian
-	name = "guardian apostle"
+	name = "守卫使徒"
 	health = 1000
 	maxHealth = 1000
 	move_to_delay = 7
@@ -440,8 +440,8 @@ GLOBAL_LIST_EMPTY(apostles)
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/aminion/apostle/spear
-	name = "spear apostle"
-	desc = "A disformed human wielding a spear."
+	name = "长矛使徒"
+	desc = "一个挥舞长矛的畸形人."
 	attack_verb_continuous = "stabs"
 	attack_verb_simple = "stab"
 	attack_sound = 'sound/abnormalities/whitenight/spear.ogg'
@@ -513,13 +513,13 @@ GLOBAL_LIST_EMPTY(apostles)
 		var/list/new_hits = HurtInTurf(T, been_hit, spear_damage, BLACK_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE, hurt_structure = TRUE) - been_hit
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
-			visible_message(span_boldwarning("[src] runs through [L]!"), span_nicegreen("You impaled heretic [L]!"))
+			visible_message(span_boldwarning("[src]掠过[L]!"), span_nicegreen("你刺穿了[L]!"))
 			new /obj/effect/temp_visual/cleave(get_turf(L))
 	addtimer(CALLBACK(src, PROC_REF(do_dash), move_dir, (times_ran + 1)), 0.5) // SPEED
 
 /mob/living/simple_animal/hostile/aminion/apostle/staff
-	name = "staff apostle"
-	desc = "A disformed human wielding a magic staff."
+	name = "权杖使徒"
+	desc = "一个挥舞着权杖的畸形人."
 	icon_state = "apostle_staff"
 	icon_living = "apostle_staff"
 	attack_sound = 'sound/weapons/genhit1.ogg'

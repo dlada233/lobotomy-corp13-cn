@@ -2,13 +2,13 @@
 //Sorry Lads, not much I can do here - Kirie
 //I tried to improve it. - Coxswain
 /mob/living/simple_animal/hostile/abnormality/penitentgirl
-	name = "Penitent Girl"
-	desc = "A girl with hair flowing over her eyes."
+	name = "忏悔少女"
+	desc = "一个头发垂在眼睛上的女孩."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "penitent"
 	portrait = "penitent"
-	maxHealth = 100
-	health = 100
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 50,
@@ -30,15 +30,15 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 	can_spawn = FALSE // Normally doesn't appear
 
-	observation_prompt = "A girl in front of you dances, stumbling to and fro. <br>\
-		Her feet are chopped off at the ankles, and yet they still move. <br>\
-		You..."
+	observation_prompt = "面前的女孩在跳舞，摇摇晃晃地来回摆动。<br>\
+		她的双脚从脚踝处被砍断，却仍在移动。<br>\
+		你..."
 	observation_choices = list(
-		"Put on the shoes" = list(TRUE, "You remove the severed feet, and put on the shoes. <br>\
-			It feels good. <br>You want to dance. <br>Please, chop off my feet."),
-		"Don't put on the shoes" = list(FALSE, "How could you do something so gross? <br>\
-			You leave the shoes where they are. <br>\
-			The girl continues shifting about without a care in the world."),
+		"穿上鞋子" = list(TRUE, "你移开断脚，穿上鞋子。<br>\
+			感觉很好。<br>你想跳舞。<br>请砍掉我的双脚。"),
+		"不穿鞋子" = list(FALSE, "你怎么能做这么恶心的事？<br>\
+			你把鞋子留在原地。<br>\
+			女孩继续无忧无虑地移动着。"),
 	)
 
 //Work Mechanics
@@ -56,7 +56,7 @@
 
 	if(user.sanity_lost)
 		user.apply_status_effect(STATUS_EFFECT_PENITENCE)
-		user.say("Why can't I have a little bit of freedom? Her shoes look perfect!")
+		user.say("为什么我不能有一点自由？她的鞋子看起来很美!")
 		QDEL_NULL(user.ai_controller)
 		user.ai_controller = /datum/ai_controller/insane/wander/penitence
 		user.InitializeAIController()
@@ -92,7 +92,7 @@
 	if(!did_the_thing)
 		return
 	if(status_holder.stat < UNCONSCIOUS) //Not unconscious/dead
-		status_holder.say("Please forgive me... I'll just cut off my feet.")
+		status_holder.say("请原谅我...我这就把脚切掉.")
 	status_holder.adjustBruteLoss(300)//DIE! For real, this time.
 
 /datum/status_effect/penitence/tick()
@@ -113,11 +113,11 @@
 
 /datum/ai_behavior/say_line/insanity_penitence
 	lines = list(
-		"Care to join me?",
-		"Why do I want to dance? Why do you want to live?",
-		"Check out these moves!",
-		"Hahaha...",
-		"I feel so alive!",
+		"愿意加入我吗?",
+		"我为什么想跳舞? 你为什么想活下去?",
+		"看看这些动作!",
+		"哈哈哈...",
+		"我觉得自己充满活力!",
 	)
 
 /datum/status_effect/panicked_type/wander/penitence

@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_VOID /datum/status_effect/stacking/void
 //Coded by Coxswain, sprites by nutterbutter
 /mob/living/simple_animal/hostile/abnormality/nihil
-	name = "The Jester of Nihil"
-	desc = "What the heck is this... A clown?"
+	name = "虚无弄臣"
+	desc = "这他妈是什么... 一个小丑?"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "nihil"
 	icon_living = "nihil"
@@ -38,13 +38,13 @@
 	casingtype = /obj/item/ammo_casing/caseless/nihil_abnormality
 	projectilesound = 'sound/abnormalities/wrath_servant/hermit_magic.ogg'
 
-	observation_prompt = "I have no plans or destination. I'm too tired to fly. <br>With no one to guide me, and no path open to me. <br>It is my fate to play the fool. <br>\
-		Before I do, I turn to face the 4 Magical Girls. <br>Are they just like me, or am I just like them?"
+	observation_prompt = "我没有计划，也没有目的地。我太累了，无法飞翔。<br>无人指引我，也无路可走。<br>扮演愚人就是我的命运。<br>\
+		在开始之前，我转身面向那4位魔法少女。<br>她们是变得像我一样了，还是我变得像她们了？"
 	observation_choices = list(
-		"They've become me" = list(TRUE, "It doesn't matter. <br>My choices do not matter. <br>\
-			Nothing matters. <br>We will repeat this song and dance until the end of time.<br> I can only laugh at this pointless endeavor."),
-		"I came to resemble them" = list(TRUE, "It doesn't matter. <br>My choices do not matter. <br>\
-			Nothing matters. <br>We will repeat this song and dance until the end of time.<br> I can only laugh at this pointless endeavor."),
+		"她们变成了我" = list(TRUE, "这不重要。<br>我的选择无关紧要。<br>\
+			什么都不重要。<br>我们将重复这歌舞直至时间尽头。<br>我只能对这毫无意义的行为发笑。"),
+		"我变得像她们了" = list(TRUE, "这不重要。<br>我的选择无关紧要。<br>\
+			什么都不重要。<br>我们将重复这歌舞直至时间尽头。<br>我只能对这毫无意义的行为发笑。"),
 	)
 
 	var/can_act = TRUE
@@ -82,16 +82,16 @@
 		/mob/living/simple_animal/hostile/abnormality/greed_king
 	)
 	var/list/quotes = list(
-		"Everybody's agony becomes one.",
-		"I slowly traced the road back. It's the road you would've taken.",
-		"Where is the right path? Where do I go?",
-		"Where is the bright dog when I need it to lead me?",
-		"Leading the way through foolishness, there's not a thing to guide me.",
-		"All I can do is trust my own intuition.",
-		"I look just like them, and they look just like me when they're together.",
-		"I become more fearless as they become more vacant.",
-		"My mind is a void; my thoughts are empty.",
-		"In the end, all returns to nihil.",
+		"所有人的痛苦合而为一。",
+		"我慢慢寻着原路返回。那本是你该走的路。",
+		"正确的路在哪？我该去哪？",
+		"当我需要它来指引我时，那只发光的狗在哪？",
+		"在愚行中引路，却无物指引我。",
+		"我所能做的只有相信自己的直觉。",
+		"我看上去就像她们，而她们在一起时看上去也像我。",
+		"她们变得越空洞，我就变得越无畏。",
+		"我的头脑一片虚空；我的思想空空如也。",
+		"最终，一切归于虚无。",
 	)
 
 	// Prevents spawning in normal game modes
@@ -337,7 +337,7 @@
 			for(var/turf/T in view(3, src))
 				new /obj/effect/temp_visual/small_smoke(T)
 				for(var/mob/living/H in HurtInTurf(T, list(), (2 * explode_damage), RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE))
-					visible_message("[src] tosses [H] out of the way!")
+					visible_message("[src]把[H]扔到一边!")
 					var/rand_dir = pick(NORTH, SOUTH, EAST, WEST)
 					var/atom/throw_target = get_edge_target_turf(H, rand_dir)
 					if(!H.anchored)
@@ -345,7 +345,7 @@
 					if(H.stat == DEAD)
 						H.gib(FALSE, FALSE, FALSE)
 		if("HATE")
-			visible_message(span_bolddanger("[src] explodes!"))
+			visible_message(span_bolddanger("[src]爆炸了!"))
 			var/obj/effect/temp_visual/VO = new /obj/effect/temp_visual/voidout(get_turf(src))
 			var/matrix/new_matrix = matrix()
 			new_matrix.Scale(1.75)
@@ -521,8 +521,8 @@
 
 // Portal/Event code
 /mob/living/simple_animal/hostile/aminion/nihil_portal
-	name = "Portal to the Void"
-	desc = "A portal leading an evil villain to this world, it doesn't seem to be open yet..."
+	name = "虚无传送门"
+	desc = "将邪恶存在带到这个世界的传送门, 目前尚未开启..."
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "curse"
 	pixel_x = -16
@@ -564,7 +564,7 @@
 			L.flicker(10)
 
 	playsound(src, 'sound/abnormalities/hatredqueen/dead.ogg', 100, FALSE, 40, falloff_distance = 10) //Play a weird sound
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "How is the situation in your branch? We've got a disaster on our hands!", 25))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "你们支部情况如何？我们现在正处于灾难之中!", 25))
 	addtimer(CALLBACK(src, PROC_REF(SpawnPortals)), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(StartEvent)), 30 SECONDS)
 
@@ -586,7 +586,7 @@
 
 /mob/living/simple_animal/hostile/aminion/nihil_portal/proc/StartEvent()
 	DeletePortals()
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "Life, Dreams, Hope, where do they come from? And where will they go?", 25))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "生命、梦想、希望，它们从何而来？又将通向何处？", 25))
 	for(var/mob/living/simple_animal/hostile/abnormality/nihil/jester in contents)
 		jester.forceMove(get_turf(src))
 		jester.AIStatus = AI_ON
@@ -600,7 +600,7 @@
 	qdel(src)
 
 /mob/living/simple_animal/hostile/aminion/nihil_portal/death(gibbed)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "The crisis has been averted.", 25))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "危机得以避免.", 25))
 	DeletePortals()
 	for(var/mob/living/simple_animal/hostile/abnormality/A in GLOB.abnormality_mob_list) //delete the magical girls cause they won
 		if(!is_type_in_list(A, SSlobotomy_events.JN_breached))
@@ -610,7 +610,7 @@
 	return
 
 /obj/effect/magical_girl_portal
-	name = "Magical Portal"
+	name = "魔法传送门"
 	desc = "Where does it go?"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "portal1"
@@ -680,14 +680,14 @@
 	consumed_on_threshold = FALSE
 
 /atom/movable/screen/alert/status_effect/void
-	name = "Void"
-	desc = "You are empty inside."
+	name = "虚无"
+	desc = "白茫茫大地真干净."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "nihil"
 
 /datum/status_effect/stacking/void/on_apply()
 	. = ..()
-	to_chat(owner, span_warning("The whole world feels dark and empty..."))
+	to_chat(owner, span_warning("整个世界都感到消极与虚无..."))
 	if(owner.client)
 		owner.add_client_colour(/datum/client_colour/monochrome)
 
@@ -710,14 +710,14 @@
 	status_holder.adjust_attribute_bonus(PRUDENCE_ATTRIBUTE, 10 * stacks)
 	status_holder.adjust_attribute_bonus(TEMPERANCE_ATTRIBUTE, 10 * stacks)
 	status_holder.adjust_attribute_bonus(JUSTICE_ATTRIBUTE, 10 * stacks)
-	to_chat(owner, span_nicegreen("You feel normal again."))
+	to_chat(owner, span_nicegreen("你感觉恢复正常了."))
 	if(owner.client)
 		owner.remove_client_colour(/datum/client_colour/monochrome)
 
 //Items - Loot
 /obj/item/nihil
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
-	desc = "A playing card that seems to resonate with certain E.G.O."
+	desc = "一张扑克牌，似乎能与某些E.G.O产生共鸣."
 	var/special
 
 /obj/item/nihil/examine(mob/user)
@@ -726,29 +726,29 @@
 		. += span_notice("[special]")
 
 /obj/item/nihil/heart
-	name = "ace of hearts"
+	name = "红心A"
 	icon_state = "nihil_heart"
-	special = "Someone has to be the villain..."
+	special = "总得有人做坏人..."
 
 /obj/item/nihil/spade
-	name = "ace of spades"
+	name = "黑桃A"
 	icon_state = "nihil_spade"
-	special = "If I can't protect others, I may as well disappear..."
+	special = "如果我保护不了别人，那还不如让我消失..."
 
 /obj/item/nihil/diamond
-	name = "ace of diamonds"
+	name = "方块A"
 	icon_state = "nihil_diamond"
-	special = "I feel empty inside... Hungry. I want more things!"
+	special = "我感到内心空虚...好饿. 我想要更多的东西!"
 
 /obj/item/nihil/club
-	name = "ace of clubs"
+	name = "梅花A"
 	icon_state = "nihil_club"
-	special = "Sinners of the otherworlds! Embodiments of evil!!!"
+	special = "异界的罪人! 邪恶的化身!!!"
 
 //Petrified statue code for the magical girls
 /obj/structure/statue/petrified/magicalgirl
-	name = "magical girl statue"
-	desc = "A petrified magical girl."
+	name = "魔法少女雕像"
+	desc = "被石化的魔法少女."
 	max_integrity = 50
 	var/list/girl_types = list(
 		/mob/living/simple_animal/hostile/abnormality/wrath_servant,
@@ -767,7 +767,7 @@
 		if(S.mind)
 			if(petrified_mob)
 				S.mind.transfer_to(petrified_mob)
-				to_chat(petrified_mob, span_notice("You slowly come back to your senses. You are in control of yourself again!"))
+				to_chat(petrified_mob, span_notice("你慢慢地恢复了理智. 你能再次控制自身了!"))
 		qdel(S)
 
 	for(var/obj/O in src)

@@ -1,18 +1,18 @@
 /mob/living/simple_animal/hostile/abnormality/old_lady
-	name = "Old Lady"
-	desc = "An old, decrepit lady sitting in a worn-out rocking chair"
+	name = "老妇人"
+	desc = "一位年老体弱的老太太坐在一把破旧的摇椅上."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "old_lady"
 	portrait = "old_lady"
-	maxHealth = 80
-	health = 80
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(45, 45, 40, 40, 40),
 		ABNORMALITY_WORK_INSIGHT = list(45, 45, 50, 50, 50),
 		ABNORMALITY_WORK_ATTACHMENT = list(65, 65, 60, 60, 60),
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Clear Solitude" = -100,
+		"清理孤独" = -100,
 	)
 	start_qliphoth = 4
 	work_damage_upper = 3
@@ -26,16 +26,16 @@
 	gift_type =  /datum/ego_gifts/solitude
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "There was some cracking along the floor. \
-		Hair-raising screeching of wooden rocking chair filled the air. I did not want to enter this house. \
-		Because I don't like to listen to stories. Bugs were buzzing around here and there. \
-		Something slimy popped as I set my foot on it. I found her. Every hole on her face was swarming bugs. \
-		I don't want to stay here. I want to get out. It's damp, nasty, and awful. I can't stand it anymore."
+	observation_prompt = "地板上有些裂缝。\
+		木摇椅发出令人毛骨悚然的吱呀声。我不想进入这栋房子。\
+		因为我不喜欢听故事。虫子在这里嗡嗡地飞来飞去。\
+		当我踩上去时，某种粘滑的东西爆开了。我发现了她。她脸上的每个孔洞都爬满了虫子。\
+		我不想待在这里。我想出去。这里潮湿、恶心、可怕。我再也受不了了。"
 	observation_choices = list(
-		"Stay" = list(TRUE, "I stayed, bearing the unpleasantness. \
-			She was so talkative before. In the end, loneliness was the only listener. \
-			She called me, with her finger. I am now ready to listen to her story."),
-		"Get out" = list(FALSE, "I turned around to get out of this place. Once again, I bit lips in self-hatred while escaping."),
+		"留下" = list(TRUE, "我留了下来，忍受着不适。\
+			她以前很健谈。最终，孤独成了唯一的听众。\
+			她用手指召唤我。现在我准备好听她的故事了。"),
+		"出去" = list(FALSE, "我转身逃离这个地方，又一次，我在逃跑时咬着嘴唇自责."),
 	)
 
 	var/meltdown_cooldown_time = 120 SECONDS
@@ -57,22 +57,22 @@
 				new /obj/effect/solitude (T)
 
 /mob/living/simple_animal/hostile/abnormality/old_lady/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type == "Clear Solitude" && datum_reference.qliphoth_meter == 0)
+	if(work_type == "清理孤独" && datum_reference.qliphoth_meter == 0)
 		return TRUE
-	else if(datum_reference.qliphoth_meter == 0 || work_type == "Clear Solitude")
+	else if(datum_reference.qliphoth_meter == 0 || work_type == "清理孤独")
 		return FALSE
 	return TRUE
 
 /mob/living/simple_animal/hostile/abnormality/old_lady/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
-	if(work_type == "Clear Solitude")
+	if(work_type == "清理孤独")
 		datum_reference.qliphoth_change(4)
 		icon_state = "old_lady"
 	return
 
 //The Effect
 /obj/effect/solitude
-	name = "solitude gas"
-	desc = "You can hardly see through this."
+	name = "孤独气体"
+	desc = "几乎看不透."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "solitude1"
 	move_force = INFINITY

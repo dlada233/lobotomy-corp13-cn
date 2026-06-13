@@ -1,7 +1,7 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/clown
-	name = "Clown Smiling at Me"
-	desc = "An unnerving clown."
+	name = "对我微笑的小丑"
+	desc = "令人不安的小丑."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "clown_smiling"
 	icon_living = "clown_smiling"
@@ -11,8 +11,8 @@
 	pixel_y = 64
 	base_pixel_y = 64
 	speak_emote = list("honks")
-	maxHealth = 600
-	health = 600
+	maxHealth = 740
+	health = 740
 	rapid_melee = 4
 	melee_queue_distance = 4
 	damage_coeff = list(BRUTE = 1.0, RED_DAMAGE = 1.0, WHITE_DAMAGE = 1.0, BLACK_DAMAGE = 1.3, PALE_DAMAGE = 1.5)
@@ -43,7 +43,7 @@
 	work_damage_type = WHITE_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/gluttony
 	good_hater = TRUE
-	death_message = "blows up like a balloon!"
+	death_message = "像气球一样爆炸!"
 	speak_chance = 2
 	emote_see = list("honks.")
 	emote_hear = list("honks.")
@@ -58,41 +58,41 @@
 		/datum/ego_datum/armor/darkcarnival,
 	)
 	gift_type =  /datum/ego_gifts/darkcarnival
-	gift_message = "Life isn't scary when you don't fear death."
+	gift_message = "当你不惧怕死亡时，生活并不可怕."
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
 //TODO : resprite
-	observation_prompt = "One of the containment cells at Lobotomy Corporation houses a clown. <br>\
-		Some people are afraid of clowns, but I don't mind them at all. <br>\
-		Even then, nobody could be fooled into believing this \"clown\" was just a person in makeup. <br>\
-		When I first met this thing, I started to understand how those people feel. <br>\
-		Right now, during my attachment work, it started its usual clown performance. <br>\
-		Things are looking good so far. <br>Out of its pocket, the clown pulls out..."
+	observation_prompt = "L 公司的某个收容单元里关着一名小丑。<br>\
+		有些人惧怕小丑，但我完全不在意。<br>\
+		即便如此，也不会有人被愚弄到相信这\"小丑\"只是化了妆的人类。<br>\
+		初次遇见这东西时，我开始理解那些人的感受。<br>\
+		此刻，在我进行沟通工作时，它开始了惯常的小丑表演。<br>\
+		目前看来一切顺利。<br>小丑从口袋里掏出..."
 	observation_choices = list(
-		"Run" = list(TRUE, "I bolted out of containment unit as fast as I could. <br>\
-		I could hear giggling as I left. <br>But that was more than just a cruel prank."),
-		"It's just a tool" = list(FALSE, "I thought it was a tool. <br>Just for that moment."),
+		"逃跑" = list(TRUE, "我以最快速度冲出收容单元。<br>\
+		离开时听见咯咯的笑声。<br>但这远不止是个残酷的恶作剧。"),
+		"那只是工具" = list(FALSE, "我以为那是件工具。<br>就在那一刻。"),
 	)
 
 	del_on_death = FALSE //for explosions
 	var/finishing = FALSE
 	var/step = FALSE
-	var/finishing_small_damage = 3
-	var/finishing_big_damage = 15
+	var/finishing_small_damage = 5
+	var/finishing_big_damage = 40
 
 /mob/living/simple_animal/hostile/abnormality/clown/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Clown Smiling at Me, A Combat Role Abnormality.</h1><br>\
-		<b>|Dark Carnival|: When you click on a tile which is outside your melee range, you will throw a knife towards that tile. Your knife will deal no damage to abnormalities, and will pass through them. \
-		If you hit a human with this knife, you will deal RED damage to them, slow them down massively and inflict 8 'Bleed'. \
-		Also, You blades are able to bounch against walls! Each time they bounch against a wall, their damage will be doubled!<br>\
+	to_chat(src, "<h1>你是【对我微笑的小丑】，战斗型异想体。</h1><br>\
+		<b>|黑暗嘉年华|：点击近战范围外的格子时，会向该位置投掷飞刀。飞刀不会伤害异想体且会穿透它们。\
+		若击中人类，将造成红色伤害、大幅减速并施加8层'流血'。\
+		飞刀可反弹墙壁！每次反弹伤害翻倍！<br>\
 		<br>\
-		|Jovial Cutting|: When you attack a dead human, you will start rapidly gutting them, which will deal WHITE damage to all humans watching. \
-		A few seconds after gutting that human, you will gib them.<br>\
+		|欢乐切割|：攻击死亡人类时会快速解剖，对所有旁观人类造成白色伤害。\
+		解剖数秒后目标会碎裂成块。<br>\
 		<br>\
-		|Bleed|: When a target with bleed moves, they will take True damage equal to the stack, then it reduces by half.<br>\
+		|流血|：带有流血效果的目标移动时，会受到等于层数的真实伤害，随后层数减半。<br>\
 		<br>\
-		|A Show’s End|: Once you reach 0 HP, you will explode which deal great RED damage to nearby humans, inflict 30 'Bleed' and leave behind a few trails of lube, which can slip humans who cross them.</b>")
+		|演出终结|：生命值归零时将爆炸，对附近人类造成巨额红色伤害，施加30层'流血'，并留下润滑油痕迹使经过者滑倒。</b>")
 
 //A clown isn't a clown without his shoes
 /mob/living/simple_animal/hostile/abnormality/clown/BreachEffect(mob/living/carbon/human/user, breach_type)
@@ -201,7 +201,7 @@
 /mob/living/simple_animal/hostile/abnormality/clown/proc/DeathExplosion()
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	playsound(get_turf(src), 'sound/abnormalities/clownsmiling/announcedead.ogg', 75, 1)
 	for(var/mob/living/L in view(5, src))
 		if(!faction_check_mob(L))
@@ -219,8 +219,8 @@
 	new /obj/structure/clown_picture(get_turf(src))
 
 /obj/structure/clown_picture
-	name = "clown picture"
-	desc = "A picture of a clown, torn at the seams."
+	name = "小丑的照片"
+	desc = "一张小丑的照片，被撕破了."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "clown_picture"
 	anchored = TRUE

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/helper
-	name = "All-Around Helper"
-	desc = "A tiny robot with helpful intentions."
+	name = "小帮手"
+	desc = "一个有帮助意图的小机器人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "helper"
 	icon_living = "helper"
@@ -11,9 +11,9 @@
 	pixel_y = -16
 	base_pixel_y = -16
 	del_on_death = FALSE
-	death_message = "falls to the ground, deactivating."
-	maxHealth = 200
-	health = 200
+	death_message = "瘫倒在地上，失去了动力."
+	maxHealth = 300
+	health = 300
 	blood_volume = 0
 	rapid_melee = 4
 	ranged = TRUE
@@ -21,8 +21,8 @@
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/abnormalities/helper/attack.ogg'
 	stat_attack = HARD_CRIT
-	melee_damage_lower = 4
-	melee_damage_upper = 5
+	melee_damage_lower = 6
+	melee_damage_upper = 7
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1, BLACK_DAMAGE = 2, PALE_DAMAGE = 2)
 	speak_emote = list("states")
 	speech_span = SPAN_ROBOT
@@ -49,7 +49,7 @@
 	)
 	gift_type =  /datum/ego_gifts/grinder
 	secret_gift = /datum/ego_gifts/reddit
-	gift_message = "Contamination scan complete. Initiating cleaning protocol."
+	gift_message = "污染扫描完成，启动清洗程序."
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
 	grouped_abnos = list(
@@ -57,11 +57,11 @@
 		/mob/living/simple_animal/hostile/abnormality/cleaner = 1.5,
 	)
 
-	observation_prompt = "Is fun to clean. I was..."
+	observation_prompt = "打扫很有趣。我曾经..."
 	observation_choices = list(
-		"You are special" = list(TRUE, "There were many friends who looked like me. <br>I was special. <br>\
-			My creator always said to me. <br>\"You have to be sent to her. You are special. <br>You can give them a very special present.\" <br>\
-			Numbers of tools, which were devoid of for my friends, were put into me. <br>When I was sent to a new home, I gave them a present."),
+		"你是特别的" = list(TRUE, "曾有许多和我相似的同伴。<br>但我是特别的。<br>\
+			创造者总对我说：<br>\"你必须被送到她那里。你是特别的。<br>你能给他们非常特别的礼物。\"<br>\
+			许多同伴没有的工具，都被装进我的身体。<br>当我被送到新家时，我献上了礼物。"),
 	)
 
 	var/charging = FALSE
@@ -72,7 +72,8 @@
 	var/list/been_hit = list() // Don't get hit twice.
 	var/stuntime = 3 SECONDS
 	var/dir_to_target
-	var/dash_damage = 15
+	var/dash_damage_lower = 20
+	var/dash_damage_upper = 30
 	var/dash_speed = 1
 	var/clogged_blades_time = 1
 	var/dash_attack_volune = 75
@@ -92,15 +93,15 @@
 
 /mob/living/simple_animal/hostile/abnormality/helper/Login()
 	. = ..()
-	to_chat(src, "<h1>You are All Round Helper, A Combat Role Abnormality.</h1><br>\
-		<b>|Cleaning Protocol|: When you attack, if your charge attack is off cooldown you will use it. \
-		Once you start your spin attack, you will wind up for a few seconds. Then you will rush into the direction you attacked. \
-		While you are rushing, all humans next to you will take RED damage, inflict 5 'Bleed' and you will be able to move over small obstacles like barricades or windows. \
-		After to hit a human with a rush attack, you will be unable to hit them again within the next 2 seconds. \
-		Once you run into a wall while rushing, you will be stunned for 2 seconds and end your rush.<br>\
+	to_chat(src, "<h1>你扮演小帮手，战斗型异想体</h1><br>\
+		<b>|清洁协议|：攻击时若冲锋技能冷却完毕将自动触发。<br>\
+		发动旋转攻击需蓄力数秒，随后朝攻击方向突进。<br>\
+		突进时：<br>- 触碰人类造成RED伤害并附加5处'流血'<br>- 可穿越路障窗户等小型障碍<br>\
+		击中人类后2秒内无法再次击中同一目标。<br>\
+		撞击墙壁将眩晕2秒并结束冲锋。<br>\
 		<br>\
-		|Cleaning Mk2|: While you are rushing, you are able change directions. However, After you hit a human while rushing, you will be unable to change directions for 1 second. \
-		You are able to toggle your spin attack on and off with your ability.</b>")
+		|清洁协议Mk2|：突进中可改变方向，但击中人类后1秒内无法转向。<br>\
+		可通过技能按钮切换冲锋状态。</b>")
 
 /datum/action/innate/abnormality_attack/toggle/helper_dash_toggle
 	name = "Toggle Dash"
@@ -233,25 +234,24 @@
 						continue
 				else
 					continue
-			visible_message(span_boldwarning("[src] runs through [L]!"))
-			to_chat(L, span_userdanger("[src] pierces you with their spinning blades!"))
+			visible_message(span_boldwarning("[src]掠过[L]!"))
+			to_chat(L, span_userdanger("[src]用旋转的刀片掠过你!"))
 			playsound(L, attack_sound, dash_attack_volune, 1)
 			var/turf/LT = get_turf(L)
 			new /obj/effect/temp_visual/kinetic_blast(LT)
+			var/damage_done = rand(dash_damage_lower, dash_damage_upper)
 			if(!ishuman(L))
-				dash_damage = dash_damage * 2
-			L.deal_damage(dash_damage, melee_damage_type)
+				damage_done *= 2
+			L.deal_damage(damage_done, melee_damage_type)
 			if(IsCombatMap())
 				L.apply_lc_bleed(5)
-			if(!ishuman(L))
-				dash_damage = dash_damage / 2
 			if(L.stat >= HARD_CRIT)
 				L.gib()
 				continue
 			//been_hit += L
 			been_hit[L] = world.time
 			if(!clogged_blades)
-				to_chat(src, span_userdanger("Your spinning blades are now clogged with blood!"))
+				to_chat(src, span_userdanger("你的旋转刀片现在被血堵塞了!"))
 				clogged_blades = TRUE
 				color = "#f5413b"
 				addtimer(CALLBACK(src, PROC_REF(clogged_blades)), clogged_blades_time SECONDS)
@@ -262,10 +262,10 @@
 					continue
 			else
 				continue
-		visible_message(span_boldwarning("[src] runs through [V]!"))
-		to_chat(V.occupants, span_userdanger("[src] pierces your mech with their spinning blades!"))
+		visible_message(span_boldwarning("[src]掠过[V]!"))
+		to_chat(V.occupants, span_userdanger("[src]用旋转的刀片掠过你!"))
 		playsound(V, attack_sound, dash_attack_volune, 1)
-		V.take_damage(dash_damage, melee_damage_type, attack_dir = get_dir(V, src))
+		V.take_damage(dash_damage_upper, melee_damage_type, attack_dir = get_dir(V, src))
 		been_hit[V] = world.time
 	addtimer(CALLBACK(src, PROC_REF(do_dash), (times_ran + 1)), dash_speed)
 

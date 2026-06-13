@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/mhz
 	name = "1.76 MHz"
-	desc = "You can't see anything but static."
+	desc = "除了噪点你什么都看不到."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "mhz"
 	icon_living = "mhz"
@@ -9,8 +9,8 @@
 	base_pixel_x = -32
 	pixel_y = -32
 	base_pixel_y = -32
-	maxHealth = 100
-	health = 100
+	maxHealth = 230
+	health = 230
 	blood_volume = 0
 	start_qliphoth = 4
 	threat_level = TETH_LEVEL
@@ -39,14 +39,14 @@
 		/mob/living/simple_animal/hostile/abnormality/army = 1.5,
 	)
 
-	observation_prompt = "You remember that day and this room still does. <br>\
-		As you wait, your radio hisses with static and ghostly voices, buried in electromagnetic snow. <br>\
-		\"h...e...l...p\" <br>\
-		A ghost from the past calls out, the voice is familiar but you can't place who it belongs to."
+	observation_prompt = "你仍记得那天，也记得这个房间. <br>\
+		等待时，你的收音机在静电噪音中发出嘶嘶声，幽灵般的声音埋没在电磁雪花里. <br>\
+		\"救...命...\" <br>\
+		来自过去的幽灵在呼唤，声音很熟悉却想不起是谁."
 	observation_choices = list(
-		"Tune your radio to 1.76 MHz" = list(TRUE, "You tune your radio and hear her plea plain as day, her voice is like sunshine. <br>\
-			Unbridled anger and sorrow at the unfairness of it all fills you as you leave the cell."),
-		"Forget" = list(FALSE, "But you can't forget. Not until you've atoned."),
+		"把你的无线电调至1.76MHz" = list(TRUE, "你调谐收音机，清晰听见她的恳求，她的声音如阳光般温暖. <br>\
+			无法抑制的愤怒与对不公的悲伤充斥着你，你离开了收容室."),
+		"忘记" = list(FALSE, "但你无法忘记，赎罪完成前绝不忘记."),
 	)
 
 	var/reset_time = 4 MINUTES //Qliphoth resets after this time. To prevent bugs
@@ -86,17 +86,17 @@
 //We're gonna make it a weather that affects all hallways.
 //We've tried the spreading stuff effect with Snow White and it's super laggy. Having 2 at once would be horrible.
 /datum/weather/mhz
-	name = "static"
+	name = "白噪音"
 	immunity_type = "static"
 	desc = "Static created by 1.76 MHz."
-	telegraph_message = span_warning("You hear something in the distance.")
+	telegraph_message = span_warning("你听到远处有什么声音.")
 	telegraph_duration = 300
-	weather_message = span_userdanger("<i>Are.... those the sounds of humans wailing? Are they suffering?</i>")
+	weather_message = span_userdanger("<i>是....那是人类哀号的声音吗? 他们在受苦吗?</i>")
 	weather_overlay = "mhz"
 	weather_duration_lower = 1200		//2-3 minutes.
 	weather_duration_upper = 1800
 	end_duration = 100
-	end_message = span_boldannounce("It's all calm once more. You feel at peace.")
+	end_message = span_boldannounce("一切又平静下来了，你感到平静.")
 	area_type = /area/facility_hallway
 	target_trait = ZTRAIT_STATION
 

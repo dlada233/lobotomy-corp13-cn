@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/headless_ichthys
-	name = "Headless Ichthys"
-	desc = "A giant, headless sea creature."
+	name = "断首鱼"
+	desc = "一种巨大的无头海洋生物."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "headless_ichthys"
 	icon_living = "headless_ichthys"
@@ -9,8 +9,8 @@
 	portrait = "headless_icthys"
 	pixel_x = -16
 	base_pixel_x = -16
-	maxHealth = 300
-	health = 300
+	maxHealth = 450
+	health = 450
 	ranged = TRUE
 	attack_verb_continuous = "slaps"
 	attack_verb_simple = "slap"
@@ -45,14 +45,18 @@
 	gift_type =  /datum/ego_gifts/fluid_sac
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "Deep, deep, at the bottom of the sea, a creature lies, dreaming. <br>\
-		It seems to be holding on to a sack of fluid. <br>What will you do?"
+	observation_prompt = "在深海最底部，一个生物正沉睡着。<br>\
+		它似乎紧抓着一袋液体。<br>\
+		你要怎么做？"
 	observation_choices = list(
-		"Try and swim away" = list(TRUE, "You swim upwards, hoping it doesn't notice you. <br>\
-			Surprisingly, after a few seconds you break the water's surface and make your escape. <br>You find a trinket in your pocket."),
-		"Puncture the sack" = list(FALSE, "You cannot get close enough, the water slows your movements. <br>\
-			The creature notices you, and prepares an attack. <br>It is impossible to evade, and you are torn to shreds."),
+		"尝试游走" = list(TRUE, "你向上游动，希望不被发现。<br>\
+			几秒钟后，你成功浮出水面逃脱。<br>\
+			发现口袋里多了个小物件。"),
+		"刺破液袋" = list(FALSE, "水流阻碍了你的动作，无法靠近。<br>\
+			生物发现了你并准备攻击。<br>\
+			无法躲避，你被撕成了碎片。"),
 	)
+
 
 	var/can_act = TRUE
 	var/jump_cooldown = 0
@@ -234,7 +238,7 @@
 /mob/living/simple_animal/hostile/abnormality/headless_ichthys/proc/Enrage() //gains 25% more damage dealt and shorter cooldowns
 	if(enraged)
 		return
-	src.visible_message(span_userdanger("[src] looks angry!"))
+	src.visible_message(span_userdanger("[src]看起来很生气!"))
 	enraged = TRUE
 	icon_state = "[icon_state]" + "_enraged"
 	melee_damage_lower *= 2

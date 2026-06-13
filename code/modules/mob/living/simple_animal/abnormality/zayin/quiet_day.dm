@@ -4,8 +4,8 @@
 #define STATUS_EFFECT_DEMENTIA_RAMBLINGS /datum/status_effect/quiet/dementia
 
 /mob/living/simple_animal/hostile/abnormality/quiet_day
-	name = "A Quiet Day"
-	desc = "An old weather damaged bench, it feels oddly nostalgic to you. Like a spring day at the side of a lake."
+	name = "寂寥一日"
+	desc = "一张被风吹雨打过的旧长凳，让你产生一种奇怪的怀旧感，就像湖边的春日."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "quiet_day"
 	core_icon = "quiet_day"
@@ -40,87 +40,87 @@
 	)
 
 	chem_type = /datum/reagent/abnormality/quiet_day
-	harvest_phrase = span_notice("%ABNO looks curiously at %VESSEL for a moment. You blink, and suddenly, it seems to contain a shadowy substance.")
-	harvest_phrase_third = "%ABNO glances at %PERSON. Suddenly, %VESSEL seems to be more full."
+	harvest_phrase = span_notice("%ABNO 好奇地看了 %VESSEL 一会儿. 你眨了眨眼，它里面似乎突然多了一种阴影般的物质.")
+	harvest_phrase_third = "%ABNO 瞥了 %PERSON 一眼. 突然，%VESSEL 似乎变得更满了."
 
-	observation_prompt = "The shadow of an old man seems to be contemplating about something. <br>\
-		\"Don't you ever wish you could go back to those better times? To be able to enjoy life to the fullest? <br>\
-		To relive the best moments of your life again? <br>\
-		To remember her face? To remember that young man's name? <br>\
-		Perhaps it's foolish of me to ask for this. I want to hear your opinion, young'in. <br>\
-		Would it be worth chasing after those old, familiar memories?\""
+	observation_prompt = "一个老人的影子似乎在沉思着什么. <br>\
+		\"你有没有想过回到那些美好的时光? 去尽情享受生活? <br>\
+		去重温生命中最精彩的时刻? <br>\
+		去记起她的面容? 去记起那个年轻人的名字? <br>\
+		也许我这样问很傻. 我想听听你的看法，年轻人. <br>\
+		追寻那些古老、熟悉的记忆，值得吗?\""
 	observation_choices = list(
-		"Perhaps it's better to move on." = list(TRUE, "\"I suppose you're right after all.\" <br>\
-			\"If I can't even remember their names and faces, what worth even are those memories?\" <br>\
-			\"Go on. Leave before you forget too.\""),
-		"It's not wrong." = list(FALSE, "\"Indeed. There's no harm, right?\" <br>\
-			\"...Yet why can't I remember her face?\" <br>\
-			As you're about to leave, you hear the old man croak out something. \"Who are you again?\""),
+		"也许向前看更好." = list(TRUE, "\"我想你说得对.\" <br>\
+			\"如果我连他们的名字和面容都记不清，那些记忆还有什么价值呢?\" <br>\
+			\"走吧. 趁你还没忘记太多，离开吧.\""),
+		"这没有错." = list(FALSE, "\"确实. 这没什么坏处，对吧?\" <br>\
+			\"...可为什么我就是想不起她的脸?\" <br>\
+			就在你准备离开时，你听到老人沙哑地问了一句. \"你又是谁来着?\""),
 	)
 
 	var/performed_work
 	var/datum/looping_sound/quietday_ambience/soundloop
 
 	var/list/war_story = list(
-		"Ah, I see you're interested in hearing about my experiences in the Smoke Wars. I'm happy to oblige.",
-		"During my time in the war, I served as a medic for L Corp, It was a grueling and heartbreaking experience, seeing so many young men and women injured or killed in the line of duty.",
-		"It was a foggy morning, and our unit was tasked with holding a hallway of the nest against the enemy's advance.",
-		"The smoke from the gunfire and explosions made it difficult to see more than a few feet in front of us, but we knew the enemy was out there, somewhere.",
-		"We took heavy losses. I remember patching up wounded soldiers as quickly as I could, trying to keep them alive long enough to get them to a field hospital.",
-		"At one point, while pulling a wounded lady back to safety I found myself alone. I could hear the sound of footsteps approaching, and I readied myself for a fight.",
-		"But as the figure emerged from around the corner, I saw that it was a young zwei fixer, barely more than a boy.",
-		"He was clutching his side, blood seeping through his uniform. I could tell from the look on his face that he was terrified, and I did my best to calm him down as I worked on his wounds.",
-		"As I finished up my work and prepared to help him to safety, he looked up at me with tears in his eyes and said, \"Thank you, sir. You're a true gentleman.\"",
-		"That was the last I heard of him. I was shot in the back before I could pull the wounded woman back to safety.",
+		"啊，看来你对我在‘烟霾战争’中的经历感兴趣，我很乐意告诉你.",
+		"战争期间，我在L公司担任医疗兵. 那真是一段令人心力交瘁、心碎的经历，看着那么多年轻人在前线受伤或牺牲.",
+		"那是个雾蒙蒙的早晨，我们小队奉命在‘巢’的一条走廊里阻击敌人的进攻.",
+		"枪炮和爆炸产生的烟雾让我们几乎看不清几英尺外的东西，但我们知道敌人就在外面，某个地方.",
+		"我们损失惨重. 我记得我尽可能快地给伤员包扎，试图让他们撑到被送往战地医院.",
+		"有一次，当我拖着一个受伤的女人后撤时，我发现自己落了单，我能听到脚步声越来越近，我做好了战斗的准备.",
+		"但当那个身影从拐角出现时，我看到那只是个年轻的Zwei协会收尾人，几乎还是个孩子.",
+		"他捂着侧腹，鲜血浸透了他的制服. 从他脸上的表情我能看出他吓坏了，我一边处理他的伤口，一边尽力安抚他.",
+		"当我处理完伤口，准备帮他撤到安全地带时，他含着泪抬头看着我说，\"谢谢您，先生，您是个真正的绅士.\"",
+		"那是我最后一次听到他的消息，我在把那个女人拖回安全地带的路上被击中了后背.",
 	)
 
 	var/list/parable = list(
-		"Certainly, I would be happy to share a parable with you.",
-		"Once upon a time, in a small village nestled in a valley, there lived a wise old man. One day, a young traveler came to the village and sought out the old man, hoping to learn from his wisdom.",
-		"The young traveler asked the old man, \"What is the secret to a happy and fulfilled life?\" The old man replied, \"I will show you.\"",
-		"He took the young traveler to a nearby river and led him into the water. As they waded into the shallows, the old man suddenly grabbed the young man's head and held it under the water.",
-		"At first, the young traveler struggled and fought against the old man's grip, desperate for air. But as he began to lose consciousness, the old man released him and helped him back up to the surface.",
-		"The young traveler gasped for air, coughing and sputtering, and demanded to know why the old man had done such a thing. The old man replied, \"When you were underwater, what did you want more than anything else in the world?\".",
-		"The young traveler thought for a moment and then replied, \"Air. I wanted air more than anything.\"",
-		"The old man smiled and said, \"Exactly. The secret to a happy and fulfilled life is to want something as much as you wanted air when you were underwater. That kind of drive and determination will help you achieve anything you set your mind to.\"",
+		"当然，我很乐意分享一个寓言故事. ",
+		"从前，在一个山谷中的小村庄里，住着一位智慧的老人. 一天，一位年轻的旅行者来到村子，找到了这位老人，希望能从他那里学到智慧. ",
+		"年轻的旅行者问老人：\"幸福而充实生活的秘诀是什么？\" 老人回答：\"我会示范给你看. \"",
+		"他把年轻的旅行者带到附近的一条河边，领着他走进水里. 当他们涉入浅滩时，老人突然抓住年轻人的头，把他按进水里. ",
+		"起初，年轻的旅行者挣扎着反抗老人的钳制，拼命想要呼吸. 但当他开始失去意识时，老人松开了手，把他拉回了水面. ",
+		"年轻的旅行者喘着粗气，咳嗽着，呛着水，质问老人为什么要这样做. 老人回答：\"当你在水下时，你最想要这世上的什么东西？\"",
+		"年轻的旅行者想了一下，然后回答：\"空气. 我最想要空气. \"",
+		"老人微笑着说：\"没错. 幸福而充实生活的秘诀，就是像你在水下渴望空气那样去渴望某样东西. 那种动力和决心会帮助你实现你决心要做成的任何事. \"",
 	)
 
 	var/list/wife = list(
-		"Certainly, I would be happy to share a story about my dear wife",
-		"My wife and I were both from L Corporation, and we worked together in the same office for many years. We had a special bond, not just as husband and wife, but also as coworkers who shared a passion for our profession.",
-		"One day, she looked extremely stressed.",
-		"I asked her if everything was okay, and she confided in me that she was worried about a mistake she had made in one of the reports.",
-		"I am a very calm man, I reassured her that we would work together to fix the mistake and make sure that everything was correct. We spent the rest of the night poring over the reports, double-checking to make sure that everything was accurate.",
-		"By the time we finished, it was already well past midnight. We were both exhausted, but also relieved and proud of the work we had done. We hugged each other and I told my wife how much I appreciated her dedication and hard work.",
-		"She was quite the fiery woman, but I loved her so very much. I still miss her this very day, I hope she made it out of the nest.",
+		"当然，我很乐意分享一个关于我亲爱的妻子的故事. ",
+		"我和我的妻子都来自L公司，我们在同一个办公室共事了很多年. 我们之间有一种特殊的纽带，不仅是夫妻，也是拥有共同职业热情的同事. ",
+		"有一天，她看起来压力极大. ",
+		"我问她是否一切都好，她向我倾诉说她担心自己在一份报告中犯了个错误. ",
+		"我是个非常冷静的人，我向她保证我们会一起修正错误，确保一切无误. 我们熬了一整夜仔细检查报告，反复核对确保所有数据准确. ",
+		"当我们完成时，早已过了午夜. 我们都筋疲力尽，但也感到如释重负，并为我们完成的工作感到自豪. 我们拥抱了彼此，我告诉妻子我有多么欣赏她的奉献和努力. ",
+		"她是个相当热情似火的女人，但我非常非常爱她. 时至今日我依然想念她，希望她平安离开了那个‘巢’. ”",
 	)
 
 	var/list/dementia = list(
-		"I'm sorry, what was your name again? My memory isn't what it used to be.",
-		"I remember a time when we used to... oh, wait, where was I going with this?",
-		"Sometimes, I feel like my memory is slipping away. But I still have all these stories and experiences inside me that I want to share.",
-		"I'm having trouble finding the right words to express myself. Please bear with me.",
-		"I'm sorry, my mind isn't as sharp as it used to be. Could you please repeat what you said?",
-		"Oh dear, where did I put my glasses? I can't seem to find them anywhere.",
-		"Now, what was I going to say? It's right on the tip of my tongue...",
-		"I think I've seen you somewhere before, haven't I? Or am I mistaken?",
-		"Sometimes my mind feels like a jumbled mess. I wish I could straighten it all out.",
+		"抱歉，你叫什么名字来着？我的记性不如从前了. ",
+		"我记得有段时间我们常常……哦，等等，我刚刚说到哪了？",
+		"有时，我感觉我的记忆正在溜走. 但我心里仍装着所有这些想要分享的故事和经历. ",
+		"我很难找到合适的词来表达自己. 请多包涵. ",
+		"抱歉，我的头脑不像以前那么灵光了. 你能再说一遍刚才的话吗？",
+		"哎呀，我把眼镜放哪儿了？好像哪儿都找不着了. ",
+		"嗯，我刚才想说什么来着？就在嘴边...",
+		"我觉得我以前在哪儿见过你，是吧？还是我记错了？",
+		"有时我的脑子感觉像一团乱麻. 真希望能把它们都理顺. ",
 	)
 
 	var/list/catt = list(
-		"Once upon a time, there lived a small kitten and their pack of friends...",
-		"The small kitten looked up to their friends, and in turn their friends lead them down the straight path.",
-		"Then one day, the small kitten's friends got in trouble, and the small kitten, being small and only having followed their lead, could do nothing.",
-		"So the kitten's friends died and left the little kitten alone. Heartbroken, the kitten swore they'd never care for another so long as they lived.",
-		"Years passed, and the kitten, now grown, became a powerful lion. Powerful and uncaring, they tore down beast after beast, yet hardly feasted.",
-		"One day, the powerful lion found two kittens. The lion dismissed them as it had many others, believing them to weak and fragile, and left them to fend for themselves.",
-		"However, bit by bit, those kittens followed the lion, and the lion felt itself taking steps back so they could catch up.",
-		"As time passed, the lion felt itself beginning to care for the kittens, and in thise care it felt it felt fear.",
-		"The kittens assured the lion they'd never leave them, and for once in a long time, the lion believed in someone else.",
-		"However, that was the lion's greatest mistake. Soon after, one of the kittens grew sick. The kitten was dying, and nothing could be done.",
-		"So the lion, still a small kitten, ran. They ran to the ends of the earth trying to hide from the pain of losing a friend, the pain of being alone.",
-		"But there, standing at the end of the earth, was the other kitten; And for once, the lion, still a little kitten, saw them for what they truly were. A lion looking for a friend.",
-		"Yet in the end, the lion was still a small kitten and could not accept their friendship; So they ran.",
+		"从前，有一只小猫咪和它的一群伙伴们生活在一起...",
+		"小猫咪仰望着它的伙伴们，而伙伴们也引领它走上正途. ",
+		"然而有一天，小猫咪的伙伴们惹上了麻烦，而这只小小的、只会跟随它们脚步的小猫咪，什么也做不了. ",
+		"于是伙伴们死了，只留下小猫咪孤零零一个. 心碎之下，小猫咪发誓，只要它活着，就再也不会在乎任何人了. ",
+		"多年过去，小猫咪长大了，成为了一头强大的狮子. 强大而冷漠，它撕碎了一头又一头野兽，却很少享用猎物. ",
+		"一天，这头强大的狮子发现了两只小猫. 狮子像对待其他许多弱者一样无视了它们，认为它们太过弱小脆弱，便让它们自生自灭. ",
+		"然而，一点一滴地，那两只小猫跟上了狮子，狮子发现自己正放慢脚步让它们能够跟上. ",
+		"随着时间的流逝，狮子发现自己开始关心起这两只小猫，而在这种关心中，它感到了恐惧. ",
+		"小猫们向狮子保证永远不会离开它，长久以来第一次，狮子相信了别人. ",
+		"然而，那是狮子犯下的最大错误. 不久之后，其中一只小猫病倒了. 小猫奄奄一息，无药可救. ",
+		"于是狮子，内心仍是那只小猫咪，逃跑了. 它逃到天涯海角，试图躲避失去朋友的痛苦，躲避孤独的痛苦. ",
+		"但是，站在世界尽头的，是另一只小猫；而这一次，狮子——内心仍是那只小猫咪——终于看清了对方的真面目：一只也在寻找朋友的狮子. ",
+		"可最终，狮子内心仍是那只小猫咪，无法接受这份友谊；于是它再次逃跑了. ",
 	)
 
 	var/pink_speaktimer = null
@@ -131,7 +131,7 @@
 /mob/living/simple_animal/hostile/abnormality/quiet_day/examine()
 	. = ..()
 	if(currently_talking)
-		. += span_notice("You could shove [src] to stop his talking... but that would be rude.")
+		. += span_notice("你可以推[src]来阻止他说话...但那样就太粗鲁了.")
 
 /mob/living/simple_animal/hostile/abnormality/quiet_day/post_buckle_mob(mob/living/M)
 	M.layer = layer + 0.1
@@ -146,9 +146,9 @@
 	if(M.a_intent == "help" || !currently_talking)
 		return ..()
 
-	visible_message(span_notice("[M] asks [src] to stop telling the story."), \
-					span_notice("[M] asks you to stop telling the story."), null, null, M)
-	to_chat(M, span_notice("You ask [src] to stop telling the story."))
+	visible_message(span_notice("[M]要求[src]停止讲述这个故事."), \
+					span_notice("[M]要求你停止讲述这个故事."), null, null, M)
+	to_chat(M, span_notice("你要求[src]停止讲述这个故事."))
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	currently_talking = FALSE
 
@@ -228,7 +228,7 @@
 	if(currently_talking && (user in view(5, src)))
 		return TRUE
 
-	say("Ah, I suppose we can continue this another time.")
+	say("啊，我想我们可以下次再聊.")
 	return FALSE
 
 /mob/living/simple_animal/hostile/abnormality/quiet_day/BreachEffect(mob/living/carbon/human/user, breach_type)
@@ -268,8 +268,8 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/quiet
-	name = "A Quiet Day"
-	desc = "You listened to the old man's story."
+	name = "寂寥一日"
+	desc = "你听了老人的故事."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "quiet"
 
@@ -319,8 +319,8 @@
 #undef STATUS_EFFECT_DEMENTIA_RAMBLINGS
 
 /datum/reagent/abnormality/quiet_day
-	name = "Liquid Nostalgia"
-	description = "A deep, dark-colored goo. Looking at it, you're almost convinced you see something more."
+	name = "液化的怀念"
+	description = "粘稠，一种深色粘稠物，你几乎确信你看到了更多的东西."
 	color = "#110320"
 	sanity_restore = -2
 	stat_changes = list(2, 2, 2, 2) // Sort of reverse bottle. Stat gain for ongoing sanity loss. Not a huge stat gain since it's split into four, but something.

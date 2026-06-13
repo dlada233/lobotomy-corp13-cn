@@ -6,10 +6,10 @@
 #define ALEPH_LEVEL 5
 
 // Work types
-#define ABNORMALITY_WORK_INSTINCT "Instinct"
-#define ABNORMALITY_WORK_INSIGHT "Insight"
-#define ABNORMALITY_WORK_ATTACHMENT "Attachment"
-#define ABNORMALITY_WORK_REPRESSION "Repression"
+#define ABNORMALITY_WORK_INSTINCT "本能"
+#define ABNORMALITY_WORK_INSIGHT "洞察"
+#define ABNORMALITY_WORK_ATTACHMENT "沟通"
+#define ABNORMALITY_WORK_REPRESSION "压迫"
 
 // Breach types
 #define BREACH_NORMAL 0

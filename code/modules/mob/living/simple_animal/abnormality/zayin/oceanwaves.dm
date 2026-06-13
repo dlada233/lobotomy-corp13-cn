@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/oceanicwaves
-	name = "Vending Machine and Oceanic Waves"
-	desc = "An orange vending machine. Somehow reminds you of the sea."
+	name = "海浪售货机"
+	desc = "一台自动售货机，不知为何让你想起了大海."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "oceanicwaves"
 	portrait = "oceanicwaves"
@@ -41,14 +41,14 @@
 	projectiletype = /obj/projectile/oceanic/special // it's like wellcheers, but crack
 	projectilesound = 'sound/machines/machine_vend.ogg'
 
-	observation_prompt = "In an empty space, you find a lone vending machine. <br>\
-		Where does it get its power…? <br>Besides that, what’s with this sound of crashing waves? <br>\
-		Regardless, this vacant lot looks to be a good place to take a break. <br>\
-		Standing in front of the vending machine, you see rows of buttons."
+	observation_prompt = "在空旷的地方，你找到了这台孤零零的自动售货机. <br>\
+		它从哪获得电力…? <br>还有怎么会有阵阵涛声? <br>\
+		无论如何，这片空地似乎是个绝佳的休憩场所. <br>\
+		站到售货机前，你看到按钮排列."
 	observation_choices = list(
-		"Press one" = list(TRUE, "With just a single press, the machine ejected one can after another. <br>\
-			All the cans are purple. You can’t fathom the meaning of the ships and grapes doodled on them, but they somehow feel familiar, and well… cheery. <br>\
-			They should be okay to drink."),
+		"按下按钮" = list(TRUE, "不过是按下一次，机器便吐出一罐接一罐. <br>\
+			饮料罐体是紫色的. 你不是很懂上面船与葡萄的涂鸦意义, 却有点莫名熟悉的感觉, 且令人…放松. <br>\
+			喝下去应该没有什么问题."),
 	)
 
 	var/list/goodsoders = list(
@@ -151,7 +151,7 @@
 	P.original = the_target
 	P.preparePixelProjectile(the_target, src)
 	P.fire()
-	visible_message(span_notice("[src] fires a can of soda!"))
+	visible_message(span_notice("[src]发射了一罐苏打水!"))
 	count -= 1
 	HostileVend(null, the_target, count) // First arg is set to null so that only one soda actually drops
 
@@ -167,8 +167,8 @@
 	return FALSE
 
 /obj/projectile/oceanic
-	name = "shaken can of 'Oceanic Waves' soda"
-	desc = "A shaken can of sketchy orange soda."
+	name = "'海浪'苏打水"
+	desc = "A shaken can of sketchy 橙汁汽水."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "oceanbreeze"
 	spread = 15
@@ -220,8 +220,8 @@
 
 // Good Soders
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave
-	name = "can of 'Oceanic Waves' soda"
-	desc = "A sketchy can of orange soda."
+	name = "'海浪'苏打水"
+	desc = "A sketchy can of 橙汁汽水."
 	icon_state = "oceanbreeze"
 	inhand_icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/wellcheers_purple/oceanwave = 30)
@@ -231,7 +231,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/unlabeled
-	name = "can of 'Canned Experience Crush' soda"
+	name = "'粉碎体验'苏打水"
 	desc = "A sketchy can of soda that seems similar to a product by N-Corp. Taste is described as calming to the mind."
 	icon_state = "generic_can"
 	list_reagents = list(
@@ -241,7 +241,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/cola
-	name = "can of '****-cheers' soda"
+	name = "'****-干杯'苏打水"
 	desc = "Oddly, the label and the mascot have been partially censored out. It looks like a shrimp, but also... a polar bear? You can't be sure."
 	icon_state = "cola_tallboy"
 	list_reagents = list(
@@ -250,7 +250,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/coffee
-	name = "can of 'oceanic coffee'"
+	name = "'海洋咖啡'"
 	desc = "Oceanic coffee. The idea is alright, but the execution is terrible. Carbonated and made with seawater."
 	icon_state = "energy_tallboy"
 	list_reagents = list(
@@ -262,7 +262,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/milk
-	name = "can of 'Milky Port' soda"
+	name = "'牛乳白港'苏打水"
 	desc = "A can of milk with sugar-free soda to balance out the calorie count. Gross.."
 	icon_state = "milk_tallboy"
 	list_reagents = list(
@@ -273,7 +273,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/ultimate
-	name = "can of 'Wellcheers Ultimate' soda"
+	name = "'终极韦尔奇乐'苏打水"
 	desc = "A can of wellcheers 'every flavor' soda. Extra cheery."
 	icon_state = "oceanbreeze_tallboy"
 	list_reagents = list(
@@ -286,7 +286,7 @@
 
 // Bad (evil) soders
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/cocaine
-	name = "can of 'LIQUID COCAINE!!!' soda"
+	name = "'液体可卡因!!!'苏打水"
 	desc = "An extreme-looking energy drink featuring a green skull with crossbones and strange humanoids screaming. You probably shouldn't drink this."
 	icon_state = "cocaine"
 	list_reagents = list(
@@ -297,7 +297,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/lean
-	name = "can of 'Oceanic Lean' soda"
+	name = "'海之贫乏'苏打水"
 	desc = "A can of soda that is possibly and most likely laced with some recreational drugs."
 	icon_state = "oceanic_lean"
 	list_reagents = list(
@@ -306,7 +306,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/whale
-	name = "can of 'Pallid Sardine' flavored soda"
+	name = "'死气沙丁鱼'口味苏打水"
 	desc = "Similar to a certain ice cream sold in U-corp. This could have some weird effects if you drink it."
 	icon_state = "pallid"
 	list_reagents = list(
@@ -316,7 +316,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/cocktail
-	name = "can of 'Shrimp Cocktail' soda"
+	name = "'虾鸡尾酒'苏打水"
 	desc = "Cooked shrimp in a carbonated horseradish sauce. Sounds kind of gross, but some people swear by it."
 	icon_state = "ice_tea_can"
 	list_reagents = list(
@@ -326,7 +326,7 @@
 	)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/hootch
-	name = "can of 'Oceanic Waves Extra Hard' soda"
+	name = "'海浪超硬'苏打水"
 	desc = "You can't see any indicator of the proof on this can, but it reeks of alcohol."
 	icon_state = "hootch"
 	list_reagents = list(
@@ -338,10 +338,10 @@
 
 // Chems
 /datum/reagent/consumable/wellcheers_purple/oceanwave
-	name = "Orange Soda"
+	name = "橙汁苏打"
 	description = "It tastes like orange-flavored soda."
 	color = "#DB03FC"
-	taste_description = "orange soda"
+	taste_description = "橙汁汽水"
 	glass_icon_state = "lean"
-	glass_name = "glass of orange soda"
+	glass_name = "glass of 橙汁汽水"
 	glass_desc = "A glass of orange-flavored soda."

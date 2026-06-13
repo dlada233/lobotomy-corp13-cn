@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/kikimora
-	name = "Kikimora"
-	desc = "A beaked woman with one leg idly sweeping the floor with a broom."
+	name = "奇奇莫拉"
+	desc = "一个长着喙、一条腿的女人懒洋洋地拿着扫帚扫地."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "kikimora"
 	icon_living = "kikimora"
@@ -23,7 +23,7 @@
 	work_damage_upper = 4
 	work_damage_lower = 2
 	work_damage_type = WHITE_DAMAGE
-	death_message = "falls over."
+	death_message = "倒下了."
 	ego_list = list(
 		/datum/ego_datum/weapon/kikimora,
 		/datum/ego_datum/armor/kikimora,
@@ -34,13 +34,12 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 	can_spawn = FALSE // Normally doesn't appear
 
-	observation_prompt = "Kikimora? <br> Kikimora. <br>\
-	Kikimora Kikimora Kikimora Kikimora <br>\
-	Kikimora Kikimora Kikimora Kikimora <br>\
-	Kikimora Kikimora Kikimora Kikimora <br>\
-	Kikimora Kikimora Kikimora Kikimora <br>"
+	observation_prompt = "奇奇莫拉? <br> 奇奇莫拉. <br>\
+	奇奇莫拉 奇奇莫拉 奇奇莫拉 奇奇莫拉 <br>\
+	奇奇莫拉 奇奇莫拉 奇奇莫拉 奇奇莫拉 <br>\
+	奇奇莫拉 奇奇莫拉 奇奇莫拉 奇奇莫拉 <br>"
 	observation_choices = list(
-		"Kikimora?" = list(TRUE, "Kikimora."),
+		"奇奇莫拉?" = list(TRUE, "奇奇莫拉."),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/kikimora/ZeroQliphoth(mob/living/carbon/human/user)
@@ -57,12 +56,12 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.apply_status_effect(/datum/status_effect/kikimora)
-		to_chat(H, span_mind_control("Kikimora."))
+		to_chat(H, span_mind_control("奇奇莫拉."))
 
 //Graffiti
 /obj/effect/decal/cleanable/crayon/cognito/kikimora
 	name = "graffiti"
-	desc = "Kikimora?"
+	desc = "奇奇莫拉?"
 	icon_state = "kikimora"
 	mergeable_decal = TRUE
 	inflicted_effect = /datum/status_effect/kikimora
@@ -94,7 +93,7 @@
 			qdel(offering)
 			qdel(src)
 		else
-			to_chat(owner, span_notice("You sense something examined your offering of food."))
+			to_chat(owner, span_notice("你感觉到有东西在检查你的食物."))
 
 /datum/status_effect/kikimora/proc/CorruptWords(datum/source, list/speech_args)
 	SIGNAL_HANDLER

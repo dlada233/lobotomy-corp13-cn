@@ -8,13 +8,13 @@
 #define STATUS_EFFECT_SG_GUILTY /datum/status_effect/sg_guilty
 
 /mob/living/simple_animal/hostile/abnormality/silent_girl
-	name = "Silent Girl"
-	desc = "A purple haired girl in a sundress. You see a metalic glint from behind her back..."
+	name = "噤默处子"
+	desc = "一个穿背心裙的紫发女孩，你看到她背后闪着金属的光..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "silent_girl"
 	portrait = "silent_girl"
-	maxHealth = 130
-	health = 130
+	maxHealth = 430
+	health = 430
 	gender = FEMALE // Is this used basically anywhere? Not that I know of. But seeing "Gender: Male" on Silent Girl doesn't seem right.
 	threat_level = HE_LEVEL
 	work_chances = list(
@@ -38,9 +38,9 @@
 
 	observation_prompt = "..."
 	observation_choices = list(
-		"Accept your guilt" = list(TRUE, "The nails pierce your heart as the girl in the white dress hammers them home. <br>\
-			She opens hers eyes and you meet her gaze. <br>You're forgiven."),
-		"Plead your ignorance" = list(FALSE, "The nails pierce your heart as the girl in the white dress hammers them home."),
+		"认罪" = list(TRUE, "白衣女孩将钉子锤进你心脏。<br>\
+			她睁眼与你对视。<br>你获得宽恕。"),
+		"辩称不知情" = list(FALSE, "白衣女孩将钉子锤进你心脏。"),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/silent_girl/proc/GuiltEffect(mob/living/carbon/human/user, enable_qliphoth = TRUE, stack_count = 1)
@@ -106,8 +106,8 @@
 	var/works_required = 1
 
 /atom/movable/screen/alert/status_effect/sg_guilty
-	name = "Guilty"
-	desc = "A heavy weight lays upon you. What have you done?\nYour work success rate is reduced drastically."
+	name = "罪恶感"
+	desc = "你的肩膀很沉重，你做了什么？你的工作成功率会大大降低."
 
 /datum/status_effect/sg_guilty/on_creation(mob/living/new_owner, ...)
 	datum_reference = args[2]
@@ -115,7 +115,7 @@
 		works_required = args[3]
 	guilt_icon = mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "guilt", -MUTATIONS_LAYER)
 	. = ..()
-	linked_alert.desc = initial(linked_alert.desc)+" Complete [works_required] more Attachment works to attone."
+	linked_alert.desc = initial(linked_alert.desc)+" 完成[works_required]或更多的沟通工作来赎罪."
 	return
 
 /datum/status_effect/sg_guilty/on_apply()
@@ -123,7 +123,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_userdanger("You feel a heavy weight upon your shoulders."))
+	to_chat(status_holder, span_userdanger("你感到肩很沉重."))
 	playsound(get_turf(status_holder), 'sound/abnormalities/silentgirl/Guilt_Apply.ogg', 50, 0, 2)
 	status_holder.add_overlay(guilt_icon)
 	status_holder.physiology.work_success_mod *= 0.75
@@ -134,7 +134,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_nicegreen("You feel a weight lift from your shoulders."))
+	to_chat(status_holder, span_nicegreen("你感到肩上的重量减轻了."))
 	playsound(get_turf(status_holder), 'sound/abnormalities/silentgirl/Guilt_Remove.ogg', 50, 0, 2)
 	status_holder.cut_overlay(guilt_icon)
 	status_holder.physiology.work_success_mod /= 0.75
@@ -145,7 +145,7 @@
 /datum/status_effect/sg_guilty/refresh()
 	playsound(get_turf(owner), 'sound/abnormalities/silentgirl/Guilt_Apply.ogg', 50, 0, 2)
 	works_required++
-	linked_alert.desc = initial(linked_alert.desc)+" Complete [works_required] more Attachment works to attone."
+	linked_alert.desc = initial(linked_alert.desc)+" 完成[works_required]或更多的沟通工作来赎罪."
 
 /datum/status_effect/sg_guilty/proc/OnWorkComplete(datum/source, datum/abnormality/abno_reference, mob/living/carbon/human/user, work_type)
 	SIGNAL_HANDLER
@@ -153,7 +153,7 @@
 		return FALSE
 	works_required--
 	if(works_required > 0)
-		linked_alert.desc = initial(linked_alert.desc)+" Complete [works_required] more Attachment works attone."
+		linked_alert.desc = initial(linked_alert.desc)+" 完成[works_required]或更多的沟通工作来赎罪."
 		return
 	user.remove_status_effect(src)
 

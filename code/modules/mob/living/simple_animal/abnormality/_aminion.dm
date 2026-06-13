@@ -102,12 +102,12 @@
 /mob/living/simple_animal/hostile/aminion/proc/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, -1, 5))
 	var/list/result_text_list = list(
-		"-1" = list("I've got this.", "How boring.", "Doesn't even phase me."),
-		"0" = list("Just calm down, do what we always do.", "Just don't lose your head and stick to the manual.", "Focus..."),
-		"1" = list("Hah, I'm getting nervous.", "Breathe in, breathe out...", "It'll be fine if we focus, I think..."),
-		"2" = list("There's no room for error here.", "My legs are trembling...", "Damn, it's scary."),
-		"3" = list("GODDAMN IT!!!!", "H-Help...", "I don't want to die!"),
-		"4" = list("What am I seeing...?", "I-I can't take it...", "I can't understand..."),
+		"-1" = list("我做得到.", "多无聊啊.", "一点都没吓到我."),
+		"0" = list("冷静，就按平时的来就好.", "别失去理智，按照手册的来就好.", "集中..."),
+		"1" = list("哈，有点紧张.", "吸气，呼气...", "只要集中注意力就好，我猜..."),
+		"2" = list("没有一丝犯错的余地.", "我的腿在颤抖...", "该死，太吓人."),
+		"3" = list("该死该死真该死!!!!", "救-救命...", "我还不想死!"),
+		"4" = list("这是什么啊...?", "我-我做不到...", "我不懂..."),
 		"5" = list("......"),
 	)
 	return pick(result_text_list[level])

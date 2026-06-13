@@ -1,14 +1,14 @@
 //Code by Coxswain sprites by Sky
 /mob/living/simple_animal/hostile/abnormality/siren
-	name = "Siren"
-	desc = "The siren that sings the past."
+	name = "塞壬"
+	desc = "唱着过去的海妖."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
 	icon_state = "siren"
 	portrait = "siren"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	speak_emote = list("plays")
 	threat_level = HE_LEVEL
 	start_qliphoth = 5
@@ -31,16 +31,17 @@
 	)
 	gift_type = /datum/ego_gifts/song
 
-	observation_prompt = "My grandfather loved this song once, he used to tell me it was the first song he and his wife, my grandmother, danced and shared their first kiss to. <br>\
-		When she passed he would play this song all the time until the vinyl began to warp. <br>One day, I visited him after a long time and the song wasn't playing. <br>\
-		\"It's not the same song,\" he'd whisper chin resting over his clenched hands, gripped together until they were as white as his knuckles. <br>\
-		\"Why isn't the same song?\""
+	observation_prompt = "祖父曾深爱这首歌，他说这是和祖母第一次共舞和初吻时的曲子。<br>\
+		祖母去世后他不停播放这首歌，直到唱片变形。<br>\
+		久别后我去探望他，发现歌曲没有播放。<br>\
+		\"不是那首歌了，\"他下巴抵着紧握的双手低语，握得指节发白。<br>\
+		\"为什么不是同一首歌了？\""
 	observation_choices = list(
-		"Put the song on again" = list(TRUE, "The record began to play, the slow warped song filled the air. <br>\
-			\"It's just not the same without her here...\""),
-		"Throw it away" = list(FALSE, "You throw the old record into the trash, the well-used viny shattering. <br>\
-			\"NO! HOW CAN I REMEMBER HER NOW?\" Your grandfather wails, coming at you with fury in his eyes before stopping. <br>\
-			\"...Who were you again?\""),
+		"再次播放" = list(TRUE, "唱片开始转动，扭曲的慢歌在空气中回荡。<br>\
+			\"没有她在这里，这首歌就不一样了...\""),
+		"扔掉唱片" = list(FALSE, "你把旧唱片扔进垃圾桶，用旧的唱片摔得粉碎。<br>\
+			\"不！现在我怎么记住她？\"祖父哀嚎着冲向你，眼中充满愤怒，却在半途停下。<br>\
+			\"...你又是谁？\""),
 	)
 
 //meltdown effects
@@ -96,7 +97,7 @@
 	if(!datum_reference.qliphoth_meter)
 		musictime.stop()
 		for(var/mob/living/carbon/human/H in livinginrange(playrange, src))
-			to_chat(H, span_warning("The music begins to trail off.")) // This is specifically to let players know that abnormalities are no longer breaching
+			to_chat(H, span_warning("音乐声开始减弱.")) // This is specifically to let players know that abnormalities are no longer breaching
 	playstatus = 0
 	icon_state = "siren"
 
@@ -112,19 +113,19 @@
 	var/currentage = H.age
 	var/message
 	if(datum_reference.qliphoth_meter >= 5) //If we're at max qliphoth, die!
-		to_chat(user, span_danger("The last thing you remember is your heart stopping."))
+		to_chat(user, span_danger("你记得的最后一件事就是你的心脏停止跳动."))
 		playsound(loc, 'sound/magic/clockwork/ratvar_attack.ogg', 50, TRUE, channel = CHANNEL_SIREN)
 		user.dust(TRUE, TRUE)
 		return
 	H.age = rand(17 , 85) //minimum age is 17, max is 85. We do a funny and change the user's age to something random.
 	if (H.age > currentage)
-		message += "You feel older and lucid."
+		message += "你觉得自己变老了，头脑清醒了."
 		user.adjustSanityLoss(-user.maxSanity * 0.3) // It's healing
 	else if (H.age < currentage)
-		message += "You feel younger and vigorous."
+		message += "你觉得自己更年轻、更有活力."
 		user.adjustBruteLoss(-user.maxHealth * 0.3)
 	else
-		message += "Doesn't seem like it did anything this time."
+		message += "这次好像没起什么作用."
 
 	to_chat(H, span_warning("[message]"))
 
@@ -154,15 +155,15 @@
 /mob/living/simple_animal/hostile/abnormality/siren/proc/warning() //A bunch of messages for various occasions
 	if(datum_reference.qliphoth_meter > 0)
 		for(var/mob/living/carbon/human/H in livinginrange(playrange, src))
-			to_chat(H, span_warning("The abnormalities seem restless..."))
+			to_chat(H, span_warning("异常似乎不安分..."))
 		return
 
 	for(var/mob/living/carbon/human/H in livinginrange(playrange, src))
-		to_chat(H, span_warning("The abnormalities stir as the music plays..."))
+		to_chat(H, span_warning("随着音乐的播放，这些异想体也随之共鸣..."))
 	icon_state = "siren_breach"
 
 /mob/living/simple_animal/hostile/abnormality/siren/proc/blessing()
 	for(var/mob/living/carbon/human/H in livinginrange(playrange, src))
-		to_chat(H, span_nicegreen("The music calms your nerves."))
+		to_chat(H, span_nicegreen("随着音乐的播放，这些异想体也随之共鸣."))
 		H.adjustSanityLoss(-3) // It's healing
 	return

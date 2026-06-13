@@ -1,12 +1,12 @@
 #define STATUS_EFFECT_PRANKED /datum/status_effect/pranked
 /mob/living/simple_animal/hostile/abnormality/laetitia
-	name = "Laetitia"
-	desc = "A wee witch."
+	name = "蕾蒂希娅"
+	desc = "小女巫."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "laetitia"
 	portrait = "laetitia"
-	maxHealth = 300
-	health = 300
+	maxHealth = 400
+	health = 400
 	threat_level = HE_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(40, 45, 50, 50, 50),
@@ -30,17 +30,17 @@
 		/datum/ego_datum/armor/prank,
 	)
 	gift_type = /datum/ego_gifts/prank
-	gift_message = "I hope you're pleased with this!"
+	gift_message = "希望您对此满意!"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "This place is so gloomy, everyone always seems so sad and they don't smile. <br>\
-		It's lonely to be sad, so, this little lady has been secretly giving them all presents filled with friends! <br>\
-		Did they like the surprise?"
+	observation_prompt = "这个地方如此阴暗，每个人看起来总是那么悲伤，而且从不微笑。<br>\
+		独自悲伤很孤单，所以，这个小女孩一直在偷偷送给他们装满朋友的礼物！<br>\
+		他们喜欢这个惊喜吗？"
 	observation_choices = list(
-		"Tell the truth" = list(TRUE, "Oh, that's sad... <br>Even if they're my friends, that doesn't mean they're your friends as well. <br>\
-			I won't give you a present, but, could you stay and play with me some more today?"),
-		"Lie and say they did" = list(FALSE, "I'm glad! <br>I wish I could have seen their faces, I bet they were so surprised! <br>\
-			You look lonely too, I hope my present will make you laugh as well!"),
+		"说实话" = list(TRUE, "哦，真令人难过...<br>即使他们是我的朋友，也不代表他们也是你的朋友。<br>\
+			我不会送你礼物，但是，你今天能留下来多陪我玩一会儿吗？"),
+		"撒谎说他们喜欢" = list(FALSE, "我很高兴！<br>真希望我能看到他们的表情，我敢说他们一定很惊讶！<br>\
+			你看起来也很孤单，希望我的礼物也能让你笑起来！"),
 	)
 
 	attack_action_types = list(/datum/action/cooldown/laetitia_gift, /datum/action/cooldown/laetitia_summon)
@@ -50,7 +50,7 @@
 	var/summon_count = 0
 
 /datum/action/cooldown/laetitia_summon
-	name = "Call for Friends"
+	name = "呼叫朋友"
 	icon_icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	button_icon_state = "prank_gift"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -72,7 +72,7 @@
 	G2 = new /mob/living/simple_animal/hostile/aminion/gift(owner.loc)
 	delete_timer = addtimer(CALLBACK(src, PROC_REF(delete)), delete_cooldown, TIMER_STOPPABLE)
 	// send poll to all ghosts and wait
-	var/list/candidates = pollGhostCandidates("Laetitia is calling for help! Are you willing to protect her?", poll_time=100)
+	var/list/candidates = pollGhostCandidates("蕾蒂希娅在求救！你愿意保护她吗?", poll_time=100)
 	if (LAZYLEN(candidates) > 0)
 		var/mob/dead/observer/C = pick(candidates)
 		G1.key = C.key
@@ -102,24 +102,24 @@
 		return FALSE
 	if(!istype(owner, /mob/living/simple_animal/hostile/abnormality/laetitia))
 		return FALSE
-	var/kind = tgui_alert(owner, "What kind of gift?", "Custom Speech", list("Good", "Bad"))
-	var/strength = text2num(tgui_alert(owner, "What is the strength of the gift?", "Custom Speech", list("1", "2", "3")))
+	var/kind = tgui_alert(owner, "什么样的礼物?", "自定义发言", list("Good", "Bad"))
+	var/strength = text2num(tgui_alert(owner, "这份礼物的力量是什么?", "自定义发言", list("1", "2", "3")))
 	if (strength == null)
 		strength = 2
 	var/obj/item/laetitia_gift/g = new /obj/item/laetitia_gift(owner.loc)
 	g.strength = strength
 	if (strength == 1)
 		g.color = "#F48FB1"
-		g.name = "small laetitia's gift"
+		g.name = "小蕾蒂希娅的礼物"
 	else if (strength == 3)
 		g.color = "#C2185B"
-		g.name = "big laetitia's gift"
+		g.name = "大蕾蒂希娅的礼物"
 	if (kind == "Good")
 		g.strength *= -1
 	StartCooldown()
 
 /obj/item/laetitia_gift
-	name = "laetitia's gift"
+	name = "蕾蒂希娅的礼物"
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "prank_gift"
 	var/opening = FALSE
@@ -129,10 +129,10 @@
 
 /obj/item/laetitia_gift/attack_self(mob/user)
 	if(opening)
-		to_chat(user, span_warning("You're already opening this gift!"))
+		to_chat(user, span_warning("你已经打开了这个礼物!"))
 		return FALSE
 	opening = TRUE
-	to_chat(user, "Opening the gift!")
+	to_chat(user, "打开礼物!")
 	if(do_after(user, 5 SECONDS, src))
 		playsound(get_turf(src), 'sound/abnormalities/laetitia/spider_born.ogg', 50, 1)
 		if (istype(user, /mob/living))
@@ -141,7 +141,7 @@
 		for(var/turf/T in range(2, user))
 			new /obj/effect/temp_visual/smash_effect(T)
 			user.HurtInTurf(T, list(), (basepower*strength), RED_DAMAGE, check_faction = FALSE, hurt_mechs = TRUE)
-		to_chat(user, "You opened the gift!")
+		to_chat(user, "你打开了礼物!")
 		qdel(src)
 	opening = FALSE
 
@@ -195,20 +195,21 @@
 
 //Her friend
 /mob/living/simple_animal/hostile/aminion/gift
-	name = "Little Witch's Friend"
-	desc = "It's a horrifying amalgamation of flesh and eyes."
+	name = "小女巫的朋友"
+	desc = "这是一个可怕的肉体和眼睛的融合体"
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "witchfriend"
 	icon_living = "witchfriend"
 	icon_dead = "witchfriend_dead"
-	maxHealth = 150
-	health = 150
+	maxHealth = 350
+	health = 350
 	pixel_x = -16
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 1)
 	melee_damage_type = RED_DAMAGE
 	stat_attack = HARD_CRIT
-	melee_damage_lower = 4
-	melee_damage_upper = 6
+	melee_damage_lower = 8
+	melee_damage_upper = 10
+	rapid_melee = 0.7
 	faction = list("hostile", "laetitia")
 	attack_verb_continuous = "stabs"
 	attack_verb_simple = "stab"
@@ -223,7 +224,7 @@
 
 /mob/living/simple_animal/hostile/aminion/gift/AttackingTarget(atom/attacked_target)
 	if (istype(attacked_target, /mob/living/simple_animal/hostile/abnormality/laetitia))
-		manual_emote("pats Laetitia")
+		manual_emote("拍拍蕾蒂希娅")
 		return FALSE
 	return ..()
 
@@ -248,7 +249,7 @@
 
 /datum/status_effect/pranked/on_apply()
 	if(get_attribute_level(owner, PRUDENCE_ATTRIBUTE) >= 80)
-		to_chat(owner, span_warning("You feel something slipped into your pocket."))
+		to_chat(owner, span_warning("你感到有东西溜进了你的口袋."))
 	RegisterSignal(owner, COMSIG_WORK_STARTED, PROC_REF(WorkCheck))
 	return ..()
 
@@ -269,7 +270,7 @@
 	prank_overlay.mouse_opacity = 0
 	prank_overlay.vis_flags = VIS_INHERIT_ID
 	prank_overlay.alpha = 0
-	to_chat(status_holder, span_danger("Your heart-shaped present begins to crack..."))
+	to_chat(status_holder, span_danger("你的心形礼物开始破裂..."))
 	animate(prank_overlay, alpha = 255, time = (duration - world.time))
 	status_holder.vis_contents += prank_overlay
 
@@ -282,7 +283,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_userdanger("You feel something deep in your body explode!"))
+	to_chat(status_holder, span_userdanger("你感到身体深处有东西爆炸了!"))
 	status_holder.vis_contents -= prank_overlay
 	var/location = get_turf(status_holder)
 	new /mob/living/simple_animal/hostile/aminion/gift(location)

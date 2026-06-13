@@ -1,7 +1,7 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/sphinx
-	name = "Sphinx"
-	desc = "A gigantic stone feline."
+	name = "斯芬克斯"
+	desc = "一只巨大的石头猫像."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "sphinx"
 	icon_living = "sphinx"
@@ -11,8 +11,8 @@
 	pixel_x = -16
 	base_pixel_x = -16
 	ranged = TRUE
-	maxHealth = 700
-	health = 700
+	maxHealth = 1100
+	health = 1100
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.5)
 	stat_attack = HARD_CRIT
 	move_to_delay = 4
@@ -46,27 +46,27 @@
 	secret_icon_file = 'ModularTegustation/Teguicons/64x64.dmi'
 	secret_icon_state = "sphonx"
 
-	observation_prompt = "I found myself in an antique land <br>\
-		A vast and trunkless leg of stone stands before me in the desert that stretches far and wide. <br>\
-		Beside me, the great sphinx lies. <br>It beckons me to answer the plaque. <br>\
-		Written in characters I have never seen before, well are the sculptor's passions read. <br>\
-		\"What goes on four feet in the morning, two feet in midday, and three feet in the evening?\""
+	observation_prompt = "我发现自己身处一片古老土地<br>\
+		无垠沙漠中矗立着无躯的巨大石腿。<br>\
+		身旁，伟大的狮身人面像卧伏着。<br>它示意我解答碑文。<br>\
+		碑文刻着陌生的字符，却清晰传递着雕刻者的激情：<br>\
+		\"何物晨行四足，午行双足，暮行三足？\""
 	observation_choices = list(
-		"Man" = list(TRUE, "The sphinx says something. <br>It seems happy, or proud. <br>\
-			Then, it turns to stone, and sinks into the sand. <br>\
-			Nothing beside remains. Round the decay <br>\
-			Of that colossal Wreck, boundless and bare <br>\
-			The lone and level sands stretch far away."),
-		"Monster" = list(FALSE, "The sphinx seems displeased. \
-			It says some incomprehensible but hurtful words to me.<br>\
-			Then, it turns to stone. <br>I try and look away, but I find that I cannot move either.<br>\
-			My skin cracks like stone, my breathing stops. <br>I fall into an abyss. <br>\
-			... <br>\
-			I am entombed in stone, with no end in sight. <br>\
-			I cannot scream, for I have no tongue to scream with. <br>\
-			I cannot see, for I have no eyes to see with. <br>\
-			I cannot hear anything, for I have no ears to hear with. <br>\
-			Soon after, my heart is taken away too. <br>And then there is nothing left."),
+		"人类" = list(TRUE, "狮身人面像说了些什么。<br>它似乎愉悦或自豪。<br>\
+			随后化为石头沉入沙中。<br>\
+			此外别无他物。环绕着巨大残骸的衰败，<br>\
+			唯有无边荒凉，<br>\
+			平铺的寂寥黄沙延伸至远方。"),
+		"怪物" = list(FALSE, "狮身人面像显出不悦。<br>\
+			它吐出难以理解却伤人的话语。<br>\
+			随后化为石头。<br>我试图移开视线，却发现自己也无法动弹。<br>\
+			皮肤如石开裂，呼吸停滞。<br>我坠入深渊。<br>\
+			...<br>\
+			我被封入石中，永无尽头。<br>\
+			无法尖叫，因无舌可鸣。<br>\
+			无法视物，因无目可看。<br>\
+			无法听闻，因无耳可听。<br>\
+			不久心脏也被夺走。<br>最终空无一物。"),
 	)
 
 	//work-related
@@ -80,7 +80,7 @@
 	var/curse_cooldown_time = 12 SECONDS
 	var/quake_cooldown
 	var/quake_cooldown_time = 6 SECONDS
-	var/quake_damage = 6
+	var/quake_damage = 20
 
 //Playables buttons
 	attack_action_types = list(
@@ -89,7 +89,7 @@
 	)
 
 /datum/action/cooldown/sphinx_gaze
-	name = "Sphinx's Gaze"
+	name = "斯芬克斯的凝视"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "sphinx"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -112,7 +112,7 @@
 	return TRUE
 
 /datum/action/cooldown/sphinx_quake
-	name = "Sphinx's Earthquake"
+	name = "斯芬克斯的地震"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "ebony_barrier"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -171,16 +171,16 @@
 	var/chosenorgan = pick(eyes,ears,tongue)
 	while(!chosenorgan)
 		if(!eyes && !ears && !tongue)
-			to_chat(H, span_warning("With nothing left to lose, you lose your life."))
-			H.dust(TRUE, TRUE)
+			to_chat(H, span_warning("没有什么可失去的，于是你失去了生命."))
+			H.dust()
 			return
 		chosenorgan = pick(eyes,ears,tongue)
 	if(chosenorgan == eyes)
-		to_chat(user, span_warning("A brilliant flash of light is the last thing you see..."))
+		to_chat(user, span_warning("一道闪光是你最后看到的东西..."))
 	if(chosenorgan == ears)
-		to_chat(user, span_warning("Suddenly, everything goes quiet..."))
+		to_chat(user, span_warning("突然间，一切都安静下来了..."))
 	if(chosenorgan == tongue)
-		to_chat(user, span_warning("Your mouth feels uncomfortably hollow..."))
+		to_chat(user, span_warning("你的嘴感觉很不舒服..."))
 	H.internal_organs -= chosenorgan
 	qdel(chosenorgan)
 
@@ -315,7 +315,7 @@
 	if(!(H.has_movespeed_modifier(/datum/movespeed_modifier/petrify_partial)))
 		H.add_movespeed_modifier(/datum/movespeed_modifier/petrify_partial)
 		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob, remove_movespeed_modifier), /datum/movespeed_modifier/petrify_partial), 3 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
-		to_chat(H, span_warning("Your whole body feels heavy..."))
+		to_chat(H, span_warning("你的整个身体都感到沉重..."))
 		playsound(get_turf(H), 'sound/abnormalities/sphinx/petrify.ogg', 50, 0, 5)
 	else
 		H.petrify()
@@ -326,18 +326,18 @@
 
 /datum/ai_behavior/say_line/insanity_sphinx
 	lines = list(
-		"Our old masters are waiting for us.",
-		"Listen to the stars.",
-		"The age of mankind is over...",
+		"我们的老主人在等着我们.",
+		"聆听星星吧.",
+		"人类的时代结束了...",
 		"AHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA!!",
-		"I can't... It's too much!",
+		"我不能...它太多了!",
 	)
 
 // Objects - Items
 /obj/item/golden_needle
-	name = "golden needle"
-	desc = "A pair of golden needles, can treat total petrification or grant immunity to stuns for a short time. \
-	It could be helpful even if you aren't petrified..."
+	name = "金针"
+	desc = "一对金色的针，可以治疗完全石化或给予免疫眩晕短时间. \
+	即使你没有被石化，它也会有帮助..."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "gold_needles"
 
@@ -345,7 +345,7 @@
 	. = ..()
 	if(istype(A,/obj/structure/statue/petrified))
 		playsound(A, 'sound/effects/break_stone.ogg', rand(10,50), TRUE)
-		A.visible_message(span_danger("[A] returns to normal!"), span_userdanger("You break free of the stone!"))
+		A.visible_message(span_danger("[A]恢复正常!"), span_userdanger("你从石化中恢复正常!"))
 		A.Destroy()
 		qdel(src)
 		return TRUE
@@ -354,15 +354,15 @@
 	var/mob/living/carbon/human/H = user
 	H.reagents.add_reagent(/datum/reagent/medicine/theonic_gold, 15)
 	playsound(H, 'sound/effects/ordeals/green/stab.ogg', rand(10,50), TRUE)
-	to_chat(H, span_warning("You jab the golden needles into your vein!"))
-	to_chat(user, span_userdanger("You feel unstoppable!"))
+	to_chat(H, span_warning("你把金针扎进静脉"))
+	to_chat(user, span_userdanger("你感到不可阻挡!"))
 	qdel(src)
 	return
 
 /obj/item/canopic_jar
-	name = "canopic jar"
-	desc = "An ominous and foul-smelling jar, the contents can supposedly be consumed to replace missing organs. \
-	An extra heart could be useful, too..."
+	name = "坎努帕斯罐"
+	desc = "这是一个充满不祥和恶臭的罐子，里面的东西可以用来替换缺失的器官. \
+	一颗额外的心脏也很有用..."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "canopic_jar"
 
@@ -376,16 +376,16 @@
 			H.regenerate_organs()
 		else
 			H.reagents.add_reagent(/datum/reagent/medicine/ichor, 15)
-			to_chat(user, span_userdanger("You feel your heart rate increase!"))
+			to_chat(user, span_userdanger("你感到心率正在上升!"))
 		playsound(H, 'sound/items/eatfood.ogg', rand(25,50), TRUE)
-		to_chat(H, span_warning("You hold your nose and quaff the contents of the jar!"))
+		to_chat(H, span_warning("你捏着鼻子，把瓶子里的东西一饮而尽!"))
 		qdel(src)
 		return
 
 // Chems
 /datum/reagent/medicine/ichor //from jar
-	name = "Ichor"
-	description = "an anomalous substance"
+	name = "浓水"
+	description = "异常物质"
 	reagent_state = LIQUID
 	color = "#D2FFFA"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -426,7 +426,7 @@
 
 /datum/reagent/medicine/theonic_gold/overdose_process(mob/living/carbon/M)
 	if(prob(3) && iscarbon(M))
-		M.visible_message(span_danger("[M] starts having a seizure!"), span_userdanger("You have a seizure!"))
+		M.visible_message(span_danger("[M]开始癫痫发作!"), span_userdanger("你癫痫发作了!"))
 		M.Unconscious(100)
 		M.Jitter(350)
 
@@ -460,7 +460,7 @@
 	icon_state = "rockwarning"
 	duration = 10
 	layer = RIPPLE_LAYER // We want this HIGH. SUPER HIGH. We want it so that you can absolutely, guaranteed, see exactly what is about to hit you.
-	var/damage = 12 //Red Damage
+	var/damage = 24 //Red Damage
 	var/mob/living/caster // who made this, anyway
 
 /obj/effect/temp_visual/rockwarning/Initialize(mapload, new_caster)

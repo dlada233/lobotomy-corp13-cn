@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/wall_gazer
-	name = "Lady Facing the Wall"
-	desc = "An abnormality that is a pale, naked woman with long, black hair that completely obscures her face"
+	name = "面壁女"
+	desc = "一个苍白的裸体女人，长着黑色的长发，完全遮住了她的脸."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "ladyfacingthewall"
 	portrait = "lady_facing_the_wall"
@@ -30,14 +30,14 @@
 	gift_type =  /datum/ego_gifts/wedge
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "A woman is crying. \
-		You cannot see her face as you are turned back to her. But you know who she is. \
-		Her muttering is unintelligible, and it gives you goosebumps. You don't like being in the same space with her. \
-		You want to get out. The woman seems to be sobbing. You feel as though her crying is insisting you to turn towards her. \
-		And you also feel, that you should not."
+	observation_prompt = "一个女人正在哭泣. \
+		你背对着她无法看见面容，但你知道她是谁. \
+		她含糊的低语令人难以理解，使你寒毛直竖. 她含糊的低语令人难以理解，使你寒毛直竖. \
+		女人的啜泣仿佛在逼迫你转身. \
+		而你内心深处有个声音警告着：绝不能回头."
 	observation_choices = list(
-		"Turn back" = list(TRUE, "You face the fear, and turn to face the woman."),
-		"Do not turn back" = list(FALSE, "Something terrible could happen if you turn back. You exit the room, without looking back."),
+		"转身" = list(TRUE, "你直面恐惧，转身面向那个女人."),
+		"不要转身" = list(FALSE, "转身可能引发恐怖之事，你头也不回地离开了房间."),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/wall_gazer/NeutralEffect(mob/living/carbon/human/user, work_type, pe)

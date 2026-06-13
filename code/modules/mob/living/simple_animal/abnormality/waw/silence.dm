@@ -1,10 +1,13 @@
 //Coded by me, Kirie Saito!
 /mob/living/simple_animal/hostile/abnormality/silence
-	name = "The Price of Silence"
-	desc = "A scythe with a clock attached, quietly ticking."
+	name = "沉默的代价"
+	desc = "一把挂着时钟的镰刀，静静地滴答作响."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "silence"
 	portrait = "silence"
+	maxHealth = 1000
+	health = 1000
+
 	threat_level = WAW_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(0, 0, 40, 50, 50),
@@ -25,12 +28,12 @@
 	gift_type = /datum/ego_gifts/thirteen
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "Time's wasting. <br>Time's running out... <br>They are nothing but meaningless tantrums. <br>\
-		The watch will not only take your lost time back, but also give you even more time."
+	observation_prompt = "时间正在浪费。<br>时间所剩无几...<br>那不过是无谓的狂怒罢了。<br>\
+		这座钟表不仅能收回你逝去的时间，更将赠予你额外光阴。"
 	observation_choices = list(
-		"Use the watch" = list(TRUE, "The price will follow to your decision. <br>It is designed this way."),
-		"Do not use the watch" = list(FALSE, "Actually, you have no right to refuse this gift. <br>\
-			Whether you want it or not, we all know that you have to take it."),
+		"使用钟表" = list(TRUE, "代价将随你的决定而至。<br>这本就是它的设计。"),
+		"不使用钟表" = list(FALSE, "事实上你无权拒绝这份馈赠。<br>\
+			无论接受与否，你终将收下它。"),
 	)
 
 	var/meltdown_cooldown_time = 13 MINUTES
@@ -52,14 +55,14 @@
 /mob/living/simple_animal/hostile/abnormality/silence/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	safe = TRUE
-	to_chat(user, span_nicegreen("The bells do not toll for thee. Not yet."))
+	to_chat(user, span_nicegreen("丧钟不为你而鸣，暂时不为."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/silence/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	if(prob(50))
 		safe = TRUE
-		to_chat(user, span_nicegreen("The bells do not toll for thee. Not yet."))
+		to_chat(user, span_nicegreen("丧钟不为你而鸣，暂时不为."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/silence/Life()

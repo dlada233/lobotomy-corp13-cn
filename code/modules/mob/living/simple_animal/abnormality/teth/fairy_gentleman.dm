@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/fairy_gentleman
-	name = "Fairy Gentleman"
-	desc = "A very wide humanoid with long arms made of green, dripping slime."
+	name = "绅士精灵"
+	desc = "一个非常宽的人形生物，长臂由绿色滴着的粘液制成."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "fairy_gentleman"
 	core_icon = "fairygentleman_egg"
 	portrait = "fairy_gentleman"
-	maxHealth = 200
-	health = 200
+	maxHealth = 320
+	health = 320
 	ranged = TRUE
 	rapid_melee = 1
 	melee_queue_distance = 2
@@ -40,7 +40,7 @@
 		/datum/ego_datum/armor/sloshing,
 	)
 	gift_type = /datum/ego_gifts/sloshing
-	gift_message = "This wine tastes quite good..."
+	gift_message = "这酒味道很好..."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
 	grouped_abnos = list(
@@ -49,11 +49,11 @@
 		/mob/living/simple_animal/hostile/abnormality/faelantern = 1.5,
 	)
 
-	observation_prompt = "\"Care for a drink?\""
+	observation_prompt = "\"想喝一杯吗？\""
 	observation_choices = list(
-		"Yes" = list(TRUE, "\"Yer a good drinkin buddy as any!\""),
-		"No" = list(FALSE, "\"Pssh! you're no fun!\" <br>\
-			The fairy walks away, stumbling along the way."),
+		"Yes" = list(TRUE, "\"你是个好酒友！\""),
+		"No" = list(FALSE, "\"啧！真没劲！\"<br>\
+			精灵摇摇晃晃地走开了。"),
 	)
 
 	var/can_act = TRUE
@@ -64,26 +64,26 @@
 	var/jump_aoe = 1
 
 	var/list/give_drink = list(
-		"You quite an interesting one, Feel free to take this drink! It is on the house!",
-		"Attaboy, I think you deserve this! Drink! Drink 'til you're half seas over!",
-		"HA HA HA HA!!! You can really talk an earful! Here, have one on me!",
-		"Come on now, no need to worry. Try some of this giggle water, it's the bee's knees!",
-		"Plum outta luck for eatery, I've already had all the food. Would ya care for a drink?",
+		"你真是个有趣的家伙，请随意喝一杯！我请客！",
+		"好样的，这杯酒你值得拥有！喝吧！喝个痛快！",
+		"哈哈哈！！！你太能聊了！这杯算我的！",
+		"别担心，尝尝这杯快乐水，绝对一流！",
+		"真不巧食物都吃光了，来杯饮料如何？",
 	)
 	var/list/disappointed = list(
-		"Pipe down, pinko. I don't think this will help any of us if you continue like this.",
-		"Come on now, what did I ever do to you? A little hootch never hurt nobody.",
-		"This is how you treat me after giving you all of you my finest drinks?",
-		"I have to go see a man about a dog.",
-		"Are you okay? A big shot like yourself has no need to hold back.",
+		"闭嘴吧，再这样对我们都没好处。",
+		"我到底哪里得罪你了？喝一杯又不会怎样。",
+		"我请你喝了最好的酒，你就这样对我？",
+		"我得去办点事。",
+		"你还好吗？大人物没必要这么拘束。",
 	)
 
 	var/list/angry = list(
-		"I'll wring you out!",
-		"Come on, I'm taking you for a ride!",
-		"This is all I got!",
-		"I'll be havin' this!",
-		"Scram!",
+		"我要收拾你！",
+		"过来，我带你兜风！",
+		"我就这点本事了！",
+		"这个归我了！",
+		"滚开！",
 	)
 
 //Action Buttons
@@ -107,15 +107,15 @@
 	if(pe >= 11) // Almost perfect work
 		var/turf/dispense_turf = get_step(src, pick(1,2,4,5,6,8,9,10))
 		new/obj/item/reagent_containers/food/drinks/fairywine(dispense_turf)
-		visible_message(span_notice("[src] gives out some fairy wine."))
+		visible_message(span_notice("[src]给了一些精灵仙酿."))
 		say(pick(give_drink))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/fairy_gentleman/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(work_type == ABNORMALITY_WORK_INSTINCT)
 		user.reagents.add_reagent(/datum/reagent/consumable/ethanol/fairywine, 10)
-		visible_message(span_notice("You take a drink with the fairy gentleman."))
-		say("Ha! Easy on the good stuff, hot shot!")
+		visible_message(span_notice("你和那位精灵绅士喝了一杯."))
+		say("哈! 少喝点好东西, 帅家伙!")
 	return
 
 /mob/living/simple_animal/hostile/abnormality/fairy_gentleman/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
@@ -146,7 +146,7 @@
 		return ..()
 	var/mob/living/carbon/human/H = attacked_target
 	H.drunkenness += 5
-	to_chat(H, span_warning("Yuck, some of it got in your mouth!"))
+	to_chat(H, span_warning("真恶心，有些进你嘴里了!"))
 	if(H.sanity_lost)
 		melee_damage_type = RED_DAMAGE
 	return ..()
@@ -217,6 +217,6 @@
 		var/wait_time = 0.5 SECONDS
 		if(target_drunk)
 			wait_time += 3.5 SECONDS
-			visible_message(span_boldwarning("[src] staggers around, exposing a weak point!"), span_nicegreen("You feel dizzy!"))
+			visible_message(span_boldwarning("[src]摇摇晃晃，暴露了一个弱点!"), span_nicegreen("你觉得头晕!"))
 		SLEEP_CHECK_DEATH(wait_time)
 		can_act = TRUE

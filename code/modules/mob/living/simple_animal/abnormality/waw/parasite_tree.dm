@@ -5,12 +5,14 @@
 //is better than using global values. Evidence is leaning towards yes.
 
 /mob/living/simple_animal/hostile/abnormality/parasite_tree
-	name = "Parasite Tree"
-	desc = "A green barked tree with a calm face nested in the center of its trunk. It exudes an aura of tranquility."
+	name = "寄生树"
+	desc = "一棵绿色的树皮树，树干中央嵌着一张平静的脸，它散发出一种宁静的气氛."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	icon_state = "parasitetreeshine"
 	icon_living = "parasitetreeshine"
 	portrait = "parasite_tree"
+	maxHealth = 1200
+	health = 1200
 	pixel_x = -48
 	base_pixel_x = -48
 	pixel_y = -10
@@ -38,24 +40,24 @@
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	gift_type =  /datum/ego_gifts/hypocrisy
-	gift_message = "Your ears seem to have grown longer. Weird."
+	gift_message = "你的耳朵似乎变长了，真奇怪。"
 
-	observation_prompt = "The containment unit is overrun with plant-life, in spite of the fact its artifical floors and walls could never have hoped to support life. <br>\
-		At the heart of the minituare forest you see a lush green tree with heavy, ripened fruit and a peaceful-looking face upon its trunk. <br>\
-		\"Hello, have you come here to recieve my blessing, too?\" <br>\
-		The voice on the wind (there is no wind) spoke, carrying a sweet, flowery scent asked. \"I just want to help you all, could you bring your friends to me as well?\" "
+	observation_prompt = "收容单元内植物疯长，尽管人造的地板和墙壁本不可能维持生命。<br>\
+	在这片微型森林中央，你看到一棵葱郁大树，枝头硕果累累，树干上浮现安详面容。<br>\
+	\"你好，你也是来接受祝福的吗？\"<br>\
+	声音随风而来(明明没有风)带着甜美花香问道：\"我只想帮助大家，能把你的朋友们也带来吗？\""
 	observation_choices = list(
-		"Accept the blessing and refuse" = list(TRUE, "\"You're a bad child, I don't need someone like you.\" <br>\
-			Blessings should be given earnestly, not treated as an obligation. <br>You leave the chamber, pleased with yourself."),
-		"Refuse the blessing" = list(FALSE, "\"If you say you've never had need of anyone's blessing, then that's a lie.\" The tree said, frowning deeply. <br>\
-			\"... if you don't need my blessing then you're a bad person. <br>\
-			There's nothing for you here, leave.\" <br>\
-			You leave the verdant containment unit behind, the tree waits for someone else to fall into its snare."),
-		"Accept the blessing and do as it asks" = list(FALSE, "You venture out and find some of your most trusting colleagues. <br>\
-			\"Come with me, I have something wonderous to show you all\", you tell them as you bring them to stand before the tree, that same calm visage etched into its trunk. <br>\
-			\"You're a good child, aren't you? Thank you for bringing these children to me.\" <br>\
-			It says as you all stare rapturously at the bulbs about to flower. \"Let me gift you with something...\" <br>\
-			I feel something sprout from my body..."),
+		"接受祝福但拒绝要求" = list(TRUE, "\"坏孩子，我不需要你这样的人。\"<br>\
+			祝福应当是自愿接受的，而并非是一种要求，<br>你离开收容室，暗自得意。"),
+		"拒绝祝福" = list(FALSE, "\"若说你从不需要他人祝福，那便是谎言。\"树深深皱眉。<br>\
+			\"...若不需要我的祝福，你就是坏人。<br>\
+			这里没有你要的东西，离开吧。\"<br>\
+			你离开葱郁的收容单元，树继续等待下一个落入陷阱者。"),
+		"接受祝福并照做" = list(FALSE, "你找来最信任的同事们。<br>\
+			\"跟我来，有好东西给你们看\"，你带他们来到树前，树干上仍是那副安详面容。<br>\
+			\"好孩子，谢谢你带来这些孩子。\"<br>\
+			当你们痴迷地望着即将绽放的花苞时，它说：\"让我赐予你们一些礼物...\"<br>\
+			我感觉体内有什么东西正在萌发..."),
 	)
 
 	var/origin_cooldown = 0 //null when compared to numbers is a eldritch concept so world.time cannot be more or less.
@@ -72,17 +74,17 @@
 			var/mob/living/carbon/human/witness = locate(/mob/living/carbon/human) in livinginview(1, src) //included mostly for lore since you encourage people to use it.
 			if(witness && !witness.has_status_effect(THE_LIARS_BLESSING))
 				witness.apply_status_effect(THE_LIARS_BLESSING)
-				to_chat(witness, span_notice("The air around [src] makes you feel at peace."))
+				to_chat(witness, span_notice("[src]周围的空气让你感到平静."))
 		else if(datum_reference.qliphoth_meter <= 0)
 			user.apply_status_effect(THE_TREE_CURSE)
 		else
 			user.apply_status_effect(THE_LIARS_BLESSING)
 			if(prob(5))
-				to_chat(user, span_notice("You hear a voice telling you to bring anyone who needs help here."))
+				to_chat(user, span_notice("你听到一个声音，让你把需要帮助的人带到这里来."))
 		return
 	if(datum_reference.qliphoth_meter <= 4)
 		if(canceled || pe < datum_reference.neutral_boxes)
-			to_chat(user, span_notice("You feel refreshed after being near [src]."))
+			to_chat(user, span_notice("靠近[src]让你感到神清气爽."))
 			if(datum_reference.qliphoth_meter >= 1)
 				user.apply_status_effect(THE_LIARS_BLESSING)
 			else
@@ -92,9 +94,9 @@
 			resetQliphoth()
 			for(var/datum/status_effect/display/parasite_tree_curse/curse in blessed)
 				qdel(curse)
-			to_chat(user, span_nicegreen("The scarlet red eye closes as you smash apart [src]'s flowers."))
+			to_chat(user, span_nicegreen("当你粉碎[src]的花朵时，猩红的眼睛闭上了."))
 			return ..()
-		to_chat(user, span_notice("[src] stands silently as you finish destroying the buds."))
+		to_chat(user, span_notice("当你摧毁花苞时，[src]沉默伫立."))
 		resetQliphoth()
 	return ..()
 
@@ -155,7 +157,7 @@
 					potentialFollowers[L] += (L.health - 1) + (L.sanityhealth - 1)
 		if(potentialFollowers.len)
 			var/mob/living/carbon/human/chosen_agent = pickweight(potentialFollowers)
-			to_chat(chosen_agent, span_nicegreen("A large leaf lands nearby."))
+			to_chat(chosen_agent, span_nicegreen("一片大叶子落在附近."))
 			var/list/possibleleafturf = list()
 			for(var/turf/T in oview(3, chosen_agent))
 				if(!T.density && !locate(/obj/structure/window || /obj/machinery/door) in T.contents)
@@ -165,8 +167,8 @@
 
 	//SAPLING MINION
 /mob/living/simple_animal/hostile/aminion/parasite_tree_sapling
-	name = "toxic sapling"
-	desc = "A humanoid tree, it spews thick noxious gas from its agonized face."
+	name = "有毒树种"
+	desc = "这是一棵人形树，它痛苦的脸上喷出浓浓的有毒气体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "sapling"
 	icon_living = "sapling"
@@ -180,7 +182,7 @@
 	obj_damage = 0
 	del_on_death = TRUE
 	environment_smash = ENVIRONMENT_SMASH_NONE
-	death_message = "shatters into numerous spongy splinters."
+	death_message = "粉碎成无数的海绵状碎片."
 	death_sound = 'sound/creatures/venus_trap_death.ogg'
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
 	projectilesound = 'sound/machines/clockcult/steam_whoosh.ogg'
@@ -267,7 +269,7 @@
 
 
 /obj/effect/particle_effect/smoke/parasite_tree/proc/smoke_mob_effect(mob/living/carbon/human/M)
-	M.deal_damage(10, WHITE_DAMAGE)
+	M.deal_damage(15, WHITE_DAMAGE)
 	if(prob(15))
 		M.emote("cough")
 	if(M.sanity_lost)
@@ -342,7 +344,7 @@
 /datum/status_effect/display/parasite_tree_curse/on_apply()
 	. = ..()
 	connected_abno = locate(/mob/living/simple_animal/hostile/abnormality/parasite_tree) in GLOB.abnormality_mob_list
-	to_chat(owner, span_warning("You feel something sprouting under your skin! Its time to be reborn with the tree."))
+	to_chat(owner, span_warning("你感到皮肤下有东西发芽了！是时候以树的姿态重生了."))
 	if(connected_abno)
 		connected_abno.blessed += src
 
@@ -381,7 +383,7 @@
 
 /datum/status_effect/display/parasite_tree_curse/proc/TransformOverride(mob/living/carbon/human/H)
 	if(H && H.has_status_effect(/datum/status_effect/display/melting_love_blessing))
-		to_chat(H, span_warning("You feel the pink slime dissolve your flesh before it becomes wood."))
+		to_chat(H, span_warning("你感觉到粉红色的粘液在你变成木头之前就溶解了你的肉."))
 		H.deal_damage(400, BLACK_DAMAGE)
 		H.remove_status_effect(/datum/status_effect/display/melting_love_blessing)
 		if(!H || H.stat == DEAD)
@@ -394,8 +396,8 @@
 //Parasite Tree Ego Weapon Trap
 /obj/structure/liars_leaf
 	gender = PLURAL
-	name = "strange tree leaf"
-	desc = "A leaf from a large tree. Touching it will heal your wounds."
+	name = "奇怪的树叶"
+	desc = "大树上的叶子，触摸它会治愈你的伤口."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "liars_leaf"
 	anchored = TRUE
@@ -423,7 +425,7 @@
 			L.apply_status_effect(THE_LIARS_BLESSING)
 		L.adjustBruteLoss(heal_amount)
 		new /obj/effect/temp_visual/cloud_swirl(get_turf(L)) //placeholder
-		to_chat(L, span_nicegreen("Your wounds quickly close after touching the [src]."))
+		to_chat(L, span_nicegreen("你的重伤口在接触到[src]后恢复了."))
 		qdel(src)
 
 #undef THE_LIARS_BLESSING

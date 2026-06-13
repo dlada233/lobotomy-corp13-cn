@@ -6,8 +6,8 @@ it debuffs random players and then summons a murderer to kill them one at a time
 Defeating the murderer also surpresses the abnormality.
 */
 /mob/living/simple_animal/hostile/abnormality/screenwriter
-	name = "Poor Screenwriter's Note"
-	desc = "A notebook containing a script used in a play. It is titled \"Peccatum Proprium\"."
+	name = "落魄编剧的笔记"
+	desc = "一本记有剧本的笔记本. 其标题为 \"原罪\"."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "screenwriter"
 	portrait = "screenwriter"
@@ -19,18 +19,18 @@ Defeating the murderer also surpresses the abnormality.
 	start_qliphoth = 2
 	blood_volume = 0
 	work_chances = list(
-		"Nutrition" = 35,
-		"Cleanliness" = 35,
-		"Consensus" = 35,
-		"Amusement" = 35,
-		"Violence" = 35,
+		"营养" = 35,
+		"清洁" = 35,
+		"共识" = 35,
+		"娱乐" = 35,
+		"暴力" = 35,
 	)
 	work_attribute_types = list(
-		"Nutrition" = FORTITUDE_ATTRIBUTE,
-		"Cleanliness" = PRUDENCE_ATTRIBUTE,
-		"Consensus" = PRUDENCE_ATTRIBUTE,
-		"Amusement" = TEMPERANCE_ATTRIBUTE,
-		"Violence" = JUSTICE_ATTRIBUTE,
+		"营养" = FORTITUDE_ATTRIBUTE,
+		"清洁" = PRUDENCE_ATTRIBUTE,
+		"共识" = PRUDENCE_ATTRIBUTE,
+		"娱乐" = TEMPERANCE_ATTRIBUTE,
+		"暴力" = JUSTICE_ATTRIBUTE,
 	)
 	max_boxes = 24
 	work_damage_upper = 6
@@ -45,11 +45,11 @@ Defeating the murderer also surpresses the abnormality.
 	gift_type = /datum/ego_gifts/scene
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK //Technically it was in the beta but I dont want it showing it up in LC-only modes
 
-	observation_prompt = "The play started long ago. Here is the man who killed many. And you are holding a gun."
+	observation_prompt = "这出戏很久以前就开始了，这有个杀了很多人的人，而你则拿着枪."
 	observation_choices = list( //TODO: multiple texts
-		"Shoot the man" = list(TRUE, "Whether you shoot or not, the play ends with tragedy."),
-		"Wait and see" = list(TRUE, "Whether you shoot or not, the play ends with tragedy."),
-		"Shoot someone else" = list(TRUE, "Whether you shoot or not, the play ends with tragedy."),
+		"射击那个人" = list(TRUE, "不管你是否开枪，这出戏都会以悲剧收场."),
+		"等待然后观察" = list(TRUE, "不管你是否开枪，这出戏都会以悲剧收场."),
+		"射击其他人" = list(TRUE, "不管你是否开枪，这出戏都会以悲剧收场."),
 	)
 
 	pet_bonus = "shuffles" //saves a few lines of code by allowing funpet() to be called by attack_hand()
@@ -79,7 +79,7 @@ Defeating the murderer also surpresses the abnormality.
 //Work stuff
 /mob/living/simple_animal/hostile/abnormality/screenwriter/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(A)
-		to_chat(user, span_warning("The abnormality ignores you!"))
+		to_chat(user, span_warning("异想体忽略了你!"))
 		return FALSE
 	if(work_type == preferred_work_type || !preferred_work_type)
 		happy = TRUE
@@ -110,16 +110,16 @@ Defeating the murderer also surpresses the abnormality.
 /mob/living/simple_animal/hostile/abnormality/screenwriter/funpet(mob/petter)
 	SpawnIcon()
 	switch(preferred_work_type)
-		if("Nutrition")
-			to_chat(petter, span_nicegreen("On the page is a depiction of meat on a bone."))
-		if("Cleanliness")
-			to_chat(petter, span_nicegreen("On the page is a depiction of a scrubber."))
-		if("Consensus")
-			to_chat(petter, span_nicegreen("On the page is a depiction of joined hands."))
-		if("Amusement")
-			to_chat(petter, span_nicegreen("On the page is a depiction of a toy ball."))
-		if("Violence")
-			to_chat(petter, span_nicegreen("On the page is a depiction of a nasty-looking whip."))
+		if("营养")
+			to_chat(petter, span_nicegreen("这一页上有一幅画，画的是骨头上的肉."))
+		if("清洁")
+			to_chat(petter, span_nicegreen("这一页上有一幅洗涤器的画像."))
+		if("共识")
+			to_chat(petter, span_nicegreen("这一页上有一幅手牵手的图画."))
+		if("娱乐")
+			to_chat(petter, span_nicegreen("这一页上有一幅玩具球的图画."))
+		if("暴力")
+			to_chat(petter, span_nicegreen("这一页上描绘了一根难看的鞭子."))
 
 //Breach
 /mob/living/simple_animal/hostile/abnormality/screenwriter/ZeroQliphoth(mob/living/carbon/human/user)
@@ -158,20 +158,20 @@ Defeating the murderer also surpresses the abnormality.
 	if(marked.len <= 0) //Oh no, everyone's dead!
 		return
 	var/list/role_list = list(
-		"coward",
-		"broken",
-		"failed",
+		"懦夫",
+		"破碎者",
+		"失败者",
 	)
 	for(Y in marked)
-		to_chat(Y, span_warning("The play is starting, do you remember your lines?"))
+		to_chat(Y, span_warning("戏剧要开始了，你还记得台词吗？"))
 		Y.apply_status_effect(STATUS_EFFECT_ACTOR)
 		var/datum/status_effect/actor/S = Y.has_status_effect(/datum/status_effect/actor)
 		if(LAZYLEN(role_list) > 2)
 			S.role = pick_n_take(role_list)
 
 		else
-			S.role = "victim"
-		to_chat(Y, span_userdanger("You will play the role of the [S.role]!"))
+			S.role = "受害者"
+		to_chat(Y, span_userdanger("你将扮演[S.role]!"))
 		S.AssignRole()
 
 /mob/living/simple_animal/hostile/abnormality/screenwriter/proc/EndScenario(should_sleep = TRUE)
@@ -222,14 +222,14 @@ Defeating the murderer also surpresses the abnormality.
 /datum/status_effect/actor/on_remove()
 	var/mob/living/carbon/human/H = owner
 	owner.cut_overlay(mutable_appearance('icons/effects/32x64.dmi', role, -ABOVE_MOB_LAYER))
-	if(role == "victim")
+	if(role == "受害者")
 		H.adjust_all_attribute_bonuses(-stat_modifier)
 	else
 		H.adjust_attribute_bonus(stat, -stat_modifier)
 	return..()
 
 /datum/status_effect/actor/proc/ChangeToVictim() // So you have chosen death
-	if(role == "victim")
+	if(role == "受害者")
 		return
 	var/mob/living/carbon/human/status_holder = owner
 	if(stat)
@@ -239,25 +239,25 @@ Defeating the murderer also surpresses the abnormality.
 	stat_modifier = -40
 	status_holder.adjust_all_attribute_bonuses(stat_modifier)
 	owner.cut_overlay(mutable_appearance('icons/effects/32x64.dmi', role, -ABOVE_MOB_LAYER))
-	role = "victim"
+	role = "受害者"
 	owner.add_overlay(mutable_appearance('icons/effects/32x64.dmi', role, -ABOVE_MOB_LAYER))
 	playsound(get_turf(owner), 'sound/abnormalities/someonesportrait/panic.ogg', 40, FALSE, -5)
-	to_chat(owner, span_userdanger("You will now play the role of the victim!"))
+	to_chat(owner, span_userdanger("你将扮演受害者!"))
 
 /datum/status_effect/actor/proc/AssignRole()
 	var/mob/living/carbon/human/status_holder = owner
 	owner.add_overlay(mutable_appearance('icons/effects/32x64.dmi', role, -ABOVE_MOB_LAYER))
 	switch(role)
-		if("coward")
-			stat_modifier = -30
+		if("懦夫")
+			stat_modifier = -75
 			stat = JUSTICE_ATTRIBUTE
-		if("broken")
-			stat_modifier = -40
+		if("破碎者")
+			stat_modifier = -100
 			stat = FORTITUDE_ATTRIBUTE
-		if("failed")
-			stat_modifier = -40
+		if("失败者")
+			stat_modifier = -100
 			stat = PRUDENCE_ATTRIBUTE
-		if("victim")
+		if("受害者")
 			stat_modifier = -40
 			status_holder.adjust_all_attribute_bonuses(stat_modifier)
 			return
@@ -265,16 +265,15 @@ Defeating the murderer also surpresses the abnormality.
 
 //Mob
 /mob/living/simple_animal/hostile/aminion/actor
-	name = "The actor A"
-	desc = "A man wearing a creepy mask. They have a sleek pistol in one hand \
-			and a knife in the other."
+	name = "演员A"
+	desc = "一个戴着诡异面具的男人，他一只手拿着一把精致的手枪，另一只手拿着一把刀."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "actor"
 	icon_living = "actor"
 	icon_dead = "actor_dead"
 	faction = list("hostile")
-	maxHealth = 700
-	health = 700
+	maxHealth = 800
+	health = 800
 	melee_damage_type = WHITE_DAMAGE
 	melee_damage_lower = 5
 	melee_damage_upper = 10
@@ -308,7 +307,7 @@ Defeating the murderer also surpresses the abnormality.
 		if(!S)
 			continue
 		potential_target = L
-		if(S.role == "victim") //We found 'em!
+		if(S.role == "受害者") //We found 'em!
 			patrol_to(get_turf(L))
 			return
 	if(potential_target)
@@ -354,7 +353,7 @@ Defeating the murderer also surpresses the abnormality.
 /mob/living/simple_animal/hostile/aminion/actor/death(gibbed)
 	icon_state = icon_dead
 	playsound(get_turf(src), 'sound/effects/ordeals/white/pale_pistol.ogg', 100, FALSE, 4)
-	visible_message(span_nicegreen("You hear gunfire from the distance, and [src] collapses to the ground!"))
+	visible_message(span_nicegreen("你听到远处的枪声，[src]倒在了地上"))
 	density = FALSE
 	animate(src, alpha = 0, time = 5 SECONDS)
 	QDEL_IN(src, 5 SECONDS)
@@ -367,11 +366,11 @@ Defeating the murderer also surpresses the abnormality.
 
 /datum/ai_behavior/say_line/insanity_scene
 	lines = list(
-		"If thou be merciful, open the tomb, lay me with peace.",
-		"Thy knives are quick. Thus with a kiss I die.",
-		"He has killed me, friend. Run away, I pray you!",
-		"Out on thee, murderer! Thou kill'st my heart!",
-		"Thus I die. Thus, thus, thus. Now I am dead, Now I am fled, My soul is in the sky!",
+		"如果你是个仁慈的好人, 就请打开坟墓, 将我放进去.",
+		"你的刀很快，我会这样带着一个吻死去.",
+		"他已经杀了我，朋友，快跑吧，我求求你！",
+		"出来吧，杀人犯！你扼杀了我的心！",
+		"就这样我就死了，就这样，就这样，就这样. 如今我已死去，如今我已离去，我的灵魂会在天空！",
 	)
 
 /datum/status_effect/panicked_type/scene
@@ -386,7 +385,7 @@ Defeating the murderer also surpresses the abnormality.
 		human_pawn.do_jitter_animation(human_pawn.jitteriness)
 		suicide_timer += 1
 	if((suicide_timer >= suicide_target) && (human_pawn.mobility_flags & MOBILITY_MOVE))
-		human_pawn.visible_message(span_danger("[human_pawn] produces a knife seemingly out of nowhere and stabs themselves!"))
+		human_pawn.visible_message(span_danger("[human_pawn]不知从哪里冒出来一把刀，刺伤了自己!"))
 		playsound(get_turf(human_pawn), 'sound/weapons/fixer/generic/nail1.ogg', 100, FALSE, 4)
 		human_pawn.adjustBruteLoss(400)
 		human_pawn.jitteriness = 0

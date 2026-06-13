@@ -1,7 +1,7 @@
 // A vending machine that is a mob type. My descent into madness continues.
 /mob/living/simple_animal/hostile/abnormality/wellcheers
-	name = "Wellcheers Vending Machine"
-	desc = "A vending machine selling cans of \"Wellcheers\"."
+	name = "韦尔奇乐牌汽水"
+	desc = "自动贩卖机售卖 \"韦尔奇乐牌汽水\"."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "wellcheers_vendor"
 	icon_living = "wellcheers_vendor"
@@ -45,7 +45,7 @@
 		/datum/ego_datum/armor/soda,
 	)
 	gift_type = /datum/ego_gifts/soda
-	gift_message = "You feel like you've been doing this your whole life."
+	gift_message = "你觉得你这辈子都在做这件事."
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
 	grouped_abnos = list(
@@ -53,16 +53,16 @@
 	)
 
 	chem_type = /datum/reagent/abnormality/wellcheers_zero
-	harvest_phrase = span_notice("The machine dispenses some clear-ish soda into %VESSEL.")
-	harvest_phrase_third = "%PERSON holds up %VESSEL and lets %ABNO dispense some clear-ish soda into it."
+	harvest_phrase = span_notice("机器将某种半透明的苏打水注入 %VESSEL.")
+	harvest_phrase_third = "%PERSON 举起 %VESSEL，让 %ABNO 向其注入半透明的苏打水."
 
-	observation_prompt = "A vending machine stands before you. <br>\
-		Two delicious looking shrimp are standing at both sides of the machine. <br>Will you buy soda?"
+	observation_prompt = "一台自动售货机矗立在你面前. <br>\
+		两只诱人的虾分别站在机器两侧. <br>要买苏打水吗?"
 	observation_choices = list(
-		"Yes" = list(TRUE, "Before you can make a choice, one of the shrimp buys you soda. <br>\
-			You drink the soda, and fall asleep... <br>... <br>Somewhere in the distance, you hear seagulls."),
-		"No" = list(TRUE, "Before you can make a choice, one of the shrimp buys you soda. <br>\
-			You drink the soda, and fall asleep... <br>... <br>Somewhere in the distance, you hear seagulls.")
+		"Yes" = list(TRUE, "未等你做出选择，其中一只虾已为你买下苏打水. <br>\
+			你喝下苏打水，随即陷入沉睡... <br>... <br>远处依稀传来海鸥的鸣叫."),
+		"No" = list(TRUE, "未等你做出选择，其中一只虾已为你买下苏打水. <br>\
+			你喝下苏打水，随即陷入沉睡... <br>... <br>远处依稀传来海鸥的鸣叫.")
 	)
 
 //Not only is it funny, I want it to have the shit it does on Legacy
@@ -94,7 +94,7 @@
 	var/turf/dispense_turf = get_step(src, pick(NORTH, SOUTH, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 	dropped_can = new dropped_can(dispense_turf)
 	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE)
-	visible_message(span_notice("[src] dispenses [dropped_can]."))
+	visible_message(span_notice("[src]掉出[dropped_can]."))
 	return
 
 // Death!
@@ -108,7 +108,7 @@
 
 	// Actual effects
 	playsound(get_turf(src), 'sound/abnormalities/wellcheers/ability.ogg', 75, 0)
-	to_chat(user, span_userdanger("You feel sleepy..."))
+	to_chat(user, span_userdanger("你感觉想睡觉..."))
 	user.AdjustSleeping(10 SECONDS)
 	var/shrimpspot = locate(/obj/effect/landmark/shrimpship) in world.contents
 	animate(user, alpha = 0, time = 2 SECONDS)
@@ -143,30 +143,30 @@
 
 // Soda cans
 /obj/item/reagent_containers/food/drinks/soda_cans/wellcheers_red
-	name = "can of cherry 'Wellcheers' soda"
-	desc = "A can of cherry-flavored soda."
+	name = "罐装樱桃味'韦尔奇乐'苏打水"
+	desc = "一罐樱桃味碳酸饮料。"
 	icon_state = "wellcheers_red"
 	inhand_icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/wellcheers_red = 10)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/wellcheers_white
-	name = "can of 'Wellcheers' soda"
-	desc = "A can of regular soda."
+	name = "罐装原味'韦尔奇乐'苏打水"
+	desc = "一罐普通碳酸饮料。"
 	icon_state = "wellcheers_white"
 	inhand_icon_state = "monkey_energy"
 	list_reagents = list(/datum/reagent/consumable/wellcheers_white = 10)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/wellcheers_purple
-	name = "can of grape 'Wellcheers' soda"
-	desc = "A can of grape-flavored soda."
+	name = "罐装葡萄味'韦尔奇乐'苏打水"
+	desc = "一罐葡萄味碳酸饮料。"
 	icon_state = "wellcheers_purple"
 	inhand_icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/wellcheers_purple = 10)
 
 /datum/reagent/abnormality/wellcheers_zero
-	name = "Wellcheers Zero"
-	description = "Low-impact soda for the high-energy lifestyle."
-	special_properties = list("substance may have erratic effects on subject's physical and mental state")
+	name = "韦尔奇乐零度"
+	description = "为高能量生活方式打造的低冲击苏打水。"
+	special_properties = list("该物质可能对受试者的生理及精神状态产生不稳定影响")
 	color = "#b2e0c0"
 
 /datum/reagent/abnormality/wellcheers_zero/on_mob_life(mob/living/L)
@@ -178,8 +178,8 @@
 	return ..()
 
 /obj/projectile/wellcheers
-	name = "shaken can of cherry 'Wellcheers' soda"
-	desc = "A shaken can of cherry-flavored soda."
+	name = "摇晃过的樱桃味'韦尔奇乐'苏打水"
+	desc = "一罐摇晃过的樱桃味碳酸饮料。"
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "wellcheers_red"
 	nodamage = TRUE
@@ -192,14 +192,14 @@
 		cooler_target.apply_status_effect(effect_type)
 
 /obj/projectile/wellcheers/white
-	name = "shaken can of 'Wellcheers' soda"
-	desc = "A shaken can of soda."
+	name = "摇晃过的原味'韦尔奇乐'苏打水"
+	desc = "一罐摇晃过的普通碳酸饮料。"
 	icon_state = "wellcheers_white"
 	effect_type = /datum/status_effect/wellcheers_bad/white
 
 /obj/projectile/wellcheers/purple
-	name = "shaken can of grape 'Wellcheers' soda"
-	desc = "A shaken can of grape-flavored soda."
+	name = "摇晃过的葡萄味'韦尔奇乐'苏打水"
+	desc = "一罐摇晃过的葡萄味碳酸饮料。"
 	icon_state = "wellcheers_purple"
 	effect_type = /datum/status_effect/wellcheers_bad/purple
 
@@ -219,8 +219,8 @@
 	owner.deal_damage(debuff_damage, damage_type)
 
 /atom/movable/screen/alert/status_effect/wellcheers_bad
-	name = "Shrimp Soda"
-	desc = "Oh my god it smells like fish oil... You're constantly taking damage!"
+	name = "虾苏打"
+	desc = "天啊，闻起来像鱼油... 你持续受到伤害!"
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "wellcheers_red"
 
@@ -280,7 +280,7 @@
 
 /turf/open/water/deep/saltwater/extradeep/proc/Drown(mob/living/carbon/human/H)
 	H.Stun(30 SECONDS)
-	H.visible_message(span_userdanger("[H] falls in the water and starts to squirm frantically! It looks like they're going to drown!"), span_userdanger("The sea is far too dangerous! You slip into the depths..."))
+	H.visible_message(span_userdanger("[H]掉进水里，开始疯狂地扑腾！看起来他们要淹死了"), span_userdanger("大海太危险了！你滑入深渊..."))
 	playsound(src, 'sound/voice/human/wilhelm_scream.ogg', 50, TRUE, -3)
 	animate(H, alpha = 0,pixel_x = 0, pixel_z = 0, time = 3 SECONDS)
 	QDEL_IN(H, 3.5 SECONDS)
@@ -293,8 +293,8 @@
 
 // Wellcheers Side Shrimps
 /obj/structure/wellcheers_side_shrimp
-	name = "wellcheers shrimp"
-	desc = "A peppy shrimp accompanying the soda machine, it seems friendly."
+	name = "韦尔奇乐虾"
+	desc = "一只精力充沛的虾伴着汽水机，看起来很友好."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_sideshrimp"
 	anchored = TRUE

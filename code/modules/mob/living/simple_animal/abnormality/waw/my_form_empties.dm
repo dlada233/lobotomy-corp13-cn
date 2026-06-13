@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_KARMA /datum/status_effect/stacking/karma
 /mob/living/simple_animal/hostile/abnormality/my_form_empties
-	name = "My Form Empties"
-	desc = "A statue created as an idol for worship. It appears to float in the air at all times, showing no particular movement outside of gesturing with one hand."
+	name = "无我入定"
+	desc = "一尊作为崇拜偶像而造的雕像，它似乎始终悬浮于空中，除单手做手势外无其他动作。"
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "myform_empties"
 	icon_living = "myform_empties"
@@ -12,8 +12,8 @@
 	pixel_x = -16
 	base_pixel_x = -16
 
-	maxHealth = 700
-	health = 700
+	maxHealth = 800
+	health = 800
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 1.4, PALE_DAMAGE = 1)
 
 	threat_level = WAW_LEVEL
@@ -41,15 +41,15 @@
 	gift_type =  /datum/ego_gifts/sunyata
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "A bell occasionally tolls in the room. <br>\
-		It's a heavy, subduing sound. You're unable to recognize its words. <br>\
-		But, you feel that whatever it is, is not a joyous thing."
+	observation_prompt = "房间里偶尔响起钟声。<br>\
+		那是沉重而压抑的声音。你无法辨认其言语。<br>\
+		但你觉得无论那是什么，都不会是令人愉悦的事。"
 	observation_choices = list(
-		"Listen closer" = list(TRUE, "You close your eyes and focus on the sound. What is is saying? <br>\
-			This thing is uttering thoughts. Empty oneself by verbalizing one's thoughts. <br>\
-			Expel everything within so that nothing remains."),
-		"Repeat the mantras" = list(FALSE, "The statue won't move, no matter what happens around it. <br>\
-			Though the tone of its mantra remains consistent, you knew its chants are imbued with a curse.")
+		"凑近聆听" = list(TRUE, "你闭目凝听。它在说什么？<br>\
+			这东西在诉说着思想。通过言语来放空自我。<br>\
+			排出内在的一切，直至空无一物。"),
+		"重复咒语" = list(FALSE, "无论周遭发生何事，雕像都纹丝不动。<br>\
+			尽管咒语的音调始终如一，你却知其中暗含诅咒。")
 	)
 
 	var/anatman_state = FALSE
@@ -186,7 +186,7 @@
 		var/karma_vis = new /obj/effect/karma_halo
 		var/picked = pick(possible_minion_list)
 		var/mob/living/simple_animal/hostile/minion = new picked(get_turf(src), TRUE)
-		minion.name = "Lured " + "[minion.name]"
+		minion.name = "被诱惑的" + "[minion.name]"
 		minion.maxHealth = 2000
 		minion.faction = faction
 		minion.vis_contents += karma_vis
@@ -249,7 +249,7 @@
 		for(var/mob/living/carbon/human/H in view(3, src))
 			//Heal 5% for every 3 seconds you're here
 			H.adjustSanityLoss(-(H.maxSanity*0.05))
-		to_chat(user, span_notice("[src] chants something, but you can't recognize its words."))
+		to_chat(user, span_notice("[src]吟诵一些东西，但你不认识那些词."))
 		SLEEP_CHECK_DEATH(30)
 	praying = FALSE
 
@@ -274,7 +274,7 @@
 	else//if the employee already has the buff
 		K.add_stacks(stacks)
 		K.refresh()
-	to_chat(target, span_warning("You have gained [stacks] karma!"))
+	to_chat(target, span_warning("你获得了[stacks]业!"))
 	new /obj/effect/temp_visual/karma_hit(get_turf(target))
 	return
 
@@ -305,8 +305,8 @@
 	var/hp_limit = 2000
 
 /atom/movable/screen/alert/status_effect/karma
-	name = "Karma"
-	desc = "You are being judged by a divine being. Damage taken will be increased by "
+	name = "业"
+	desc = "你正在被一位神圣存在审判，受到的伤害将增加 "
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "karma"
 
@@ -382,7 +382,7 @@
 	if(istype(target, /mob/living/simple_animal/hostile/abnormality/my_form_empties))
 		return
 	var/datum/status_effect/stacking/karma/K = target.has_status_effect(/datum/status_effect/stacking/karma)
-	to_chat(owner, span_warning("You have transferred [karma_transfer_rate] karma to [target]!"))
+	to_chat(owner, span_warning("你已将[karma_transfer_rate]的业转移到[target]!"))
 	if(!K)//applying the buff for the first time (it lasts for one minute)
 		target.apply_status_effect(STATUS_EFFECT_KARMA)
 		return

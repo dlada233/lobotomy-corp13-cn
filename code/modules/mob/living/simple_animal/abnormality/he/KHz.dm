@@ -1,20 +1,20 @@
 //This is an abnormality where you get a callsign in and have to give the correct output
 /mob/living/simple_animal/hostile/abnormality/khz
 	name = "680 KHz"
-	desc = "A ham radio resting on a table."
+	desc = "桌上放着一台业余无线电."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "radio"
 	portrait = "khz"
-	maxHealth = 100
-	health = 100
+	maxHealth = 300
+	health = 300
 	threat_level = HE_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 40,
 		ABNORMALITY_WORK_INSIGHT = 40,
 		ABNORMALITY_WORK_ATTACHMENT = 40,
 		ABNORMALITY_WORK_REPRESSION = 40,
-		"Input One" = 0,		//These should never be used, but it's here for brevity
-		"Input Zero" = 0,
+		"输入一" = 0,		//These should never be used, but it's here for brevity
+		"输入零" = 0,
 	)
 	work_damage_upper = 4
 	work_damage_lower = 3
@@ -34,21 +34,21 @@
 		/mob/living/simple_animal/hostile/abnormality/army = 1.5,
 	)
 
-	observation_prompt = "A faint buzzing enters your ears from your radio.<br>\
-		Sounds of gunshots. <br>Sounds of a battle. <br>\
-		\"Sierra... Oscar... Sierra...\" <br>\
-		What could this callsign mean? <br>\
-		Are you in danger, or is someone else? <br>What will you do?"
+	observation_prompt = "一阵微弱的嗡鸣从你的收音机传入耳中。<br>\
+		枪声。<br>战斗的声响。<br>\
+		\"Sierra... Oscar... Sierra...\"<br>\
+		这个呼号可能意味着什么？<br>\
+		身处险境的是你，还是别人？<br>你要怎么做？"
 	observation_choices = list(
-		"Tune your radio to 680 KHz" = list(TRUE, "Suddenly, you hear something from your radio, clear as day. <br>\
-			\"We hear you loud and clear.\" <br>\
-			\"You've done a great service.\" <br>\
-			The operator on the other end continues babbling, completely obscured by the returning static. <br>\
-			However, it seems you somehow managed solve their problem somehow."),
-		"Ignore it" = list(FALSE, "You turn off your radio and leave the room. <br>\
-			All abnormalities are dangerous, right? <br>\
-			This cry for help could just be a trick to make you let your guard down. <br>\
-			If there is anyone really out there, they are going to have to fend for themselves."),
+		"将收音机调至680千赫" = list(TRUE, "突然间，你清晰地听到收音机传来声音。<br>\
+			\"我们听得很清楚。\"<br>\
+			\"你立了大功。\"<br>\
+			另一端的操作员继续说着什么，但声音完全被重新出现的静电噪音淹没。<br>\
+			不过看起来你似乎阴差阳错地解决了他们的问题。"),
+		"不予理会" = list(FALSE, "你关掉收音机离开了房间。<br>\
+			所有异常存在都是危险的，对吧？<br>\
+			这求救声可能只是诱你放松警惕的陷阱。<br>\
+			若真有人身陷险境，他们也只能靠自己了。"),
 	)
 
 	var/input
@@ -59,16 +59,16 @@
 
 //This is related to setting inputs
 /mob/living/simple_animal/hostile/abnormality/khz/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type == "Input One" && isopen)
+	if(work_type == "输入一" && isopen)
 		active()
 		InputOne(user)
 		return FALSE
-	else if(work_type == "Input Zero" && isopen)
+	else if(work_type == "输入零" && isopen)
 		active()
 		InputZero(user)
 		return FALSE
-	else if(work_type == "Input Zero" || work_type == "Input Zero" && !isopen)
-		to_chat(user, span_notice("You have not recieved an input."))
+	else if(work_type == "输入零" || work_type == "输入零" && !isopen)
+		to_chat(user, span_notice("你没有收到输入."))
 		return FALSE
 	return TRUE
 
@@ -80,7 +80,7 @@
 	if(bitcalculator == input && isopen)
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			H.adjustSanityLoss(-5)
-			to_chat(H, span_notice("You feel a pleasant sound."))
+			to_chat(H, span_notice("你感觉到一种悦耳的声音."))
 
 	//If you fuck it up
 	else if(bitcalculator != input && bitcalculator != 0 && isopen)
@@ -89,7 +89,7 @@
 				continue
 			H.adjustSanityLoss(20)
 			new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(H), pick(GLOB.alldirs))
-			to_chat(H, span_notice("You feel a crackling noise in your head."))
+			to_chat(H, span_notice("你感到脑袋里有噼里啪啦的声音."))
 	bitcalculator = 0
 
 	//If you're new, grab a callsign paper. Also set new input
@@ -131,17 +131,17 @@
 	if (bitposition>=0)
 		bitcalculator += 1*2**bitposition
 		bitposition -=1
-		to_chat(user, span_notice("You input a one."))
+		to_chat(user, span_notice("你输入一."))
 	else
-		to_chat(user, span_notice("You can only input 5 digits."))
+		to_chat(user, span_notice("只能输入5位数字."))
 
 /mob/living/simple_animal/hostile/abnormality/khz/proc/InputZero(mob/living/carbon/human/user)
 	if (bitposition>=0)
 		bitcalculator += 0*2**bitposition
 		bitposition -=1
-		to_chat(user, span_notice("You input a zero."))
+		to_chat(user, span_notice("你输入零."))
 	else
-		to_chat(user, span_notice("You can only input 5 digits."))
+		to_chat(user, span_notice("只能输入5位数字."))
 
 //What happens if the stars align
 /mob/living/simple_animal/hostile/abnormality/khz/WorkChance(mob/living/carbon/human/user, chance)
@@ -162,8 +162,8 @@
 
 
 /obj/item/paper/fluff/radio_call
-	name = "Radio Call"
-	info = {"Input and send back. <br>
+	name = "无线电呼叫"
+	info = {"输入并发回. <br>
 	Delta - Oscar - Lima 	> 01000	<br>
 	Charlie - Echo - Papa	> 11001	<br>
 	Yankee - Echo - Oscar	> 11000	<br>

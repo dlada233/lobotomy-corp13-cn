@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/watchman
-	name = "The Watchman"
-	desc = "A man holding a large lantern. The lantern, despite having a visible flame, gives off no light."
+	name = "守夜人"
+	desc = "一个人举着一盏大灯笼，这盏灯尽管有可见的火焰，却不发光."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "watchman"
 	icon_living = "watchman"
 	portrait = "watchman"
 	del_on_death = FALSE
-	maxHealth = 350
-	health = 350
+	maxHealth = 420
+	health = 420
 	rapid_melee = 2
 	move_to_delay = 6
 	see_in_dark = 30
@@ -43,43 +43,42 @@
 	light_color = "FFFFFFF"
 	light_power = -10
 
-	observation_prompt = "\"Natureless creatures roam the night, you should find shelter.\" <br>\
-		The watchman beckons you over. <br>You..."
+	observation_prompt = "\"无自然造物在黑夜游荡，你该寻找庇护所。\"<br>\
+		守夜人向你招手示意。<br>你..."
 	observation_choices = list(
-		"Approach" = list(TRUE, "Good. <br>It's not safe to roam the backstreets at night.<br>\
-			Come now, I will guide you home."),
-		"Run away" = list(FALSE, "You don't get far before you start hearing howling and shrieking. <br>\
-		The clock strikes 3:13 A.M., a mechanical hissing fills the air. <br>\
-		Numerous hooks, claws, and sickles bite into you all at once. <br>\ Now you will know why you fear the night."),
+		"靠近" = list(TRUE, "很好。<br>夜间在林中游荡不安全。<br>\
+			随我来，我带你回家。"),
+		"逃跑" = list(FALSE, "没跑多远就听到嚎叫尖啸。<br>\
+			无数利爪尖牙同时撕咬你。<br>此刻你才明白为何要畏惧黑夜。"),
 	)
 
 	// Speech Lines
 	speak_chance = 4
 	var/speak_normal = list(
-		"#The night is upon us, find somewhere safe.",
-		"#Another night, another shift.",
-		"#Stay safe out here.",
-		"#It's not safe to roam the streets at night.",
-		"#Be careful of what may lie in the dark.",
+		"#夜幕降临，找安全处躲避。",
+		"#又一夜，又一轮值。",
+		"#在外注意安全。",
+		"#夜间在街上游荡不安全。",
+		"#当心黑暗中的存在。",
 	)
 	var/speak_alert = list(
-		"Creatures roam the night, you should find shelter.",
-		"The night has become home to many creatures of the dark, be careful.",
-		"It's not safe out, return home.",
-		"This darkness hides evil within it, stay safe.",
-		"I pray the beings of the night return to their dens soon...",
+		"黑夜造物正在游荡，快找庇护所。",
+		"黑夜已成黑暗生物的巢穴，务必小心。",
+		"外面不安全，速速回家。",
+		"此等黑暗藏匿邪恶，注意安全。",
+		"但愿夜行生物速归巢穴...",
 	)
 	var/speak_attacked_human = list(
-		"#Nothing better to do than hit the Watchman..?",
-		"#Kids these days...",
-		"#The audacity of some people..!",
-		"#May your woes be many and your days few.",
+		"#除了殴打守夜人就无事可做吗..?",
+		"#现在的年轻人啊...",
+		"#有些人简直胆大包天..!",
+		"#愿你灾祸缠身，命不久矣。",
 	)
 	var/speak_attacked_monster = list(
-		"Begone, foul creature of the night!",
-		"Your kind are unwelcome here!",
-		"Never should have come here!",
-		"This darkness is not for you and you alone, monster!",
+		"滚开，肮脏的夜行怪物！",
+		"此地不欢迎尔等！",
+		"就不该来此！",
+		"这黑暗非你独有，怪物！",
 	)
 	// Breached Abno tracker.
 	var/list/dangers = list()
@@ -142,7 +141,7 @@
 		damage_taken = 0
 		TryTeleport()
 		times_fled += 1
-		adjustHealth(-350, TRUE, TRUE)
+		adjustHealth(-420, TRUE, TRUE)
 		adjustHealth(times_fled * 100, TRUE, TRUE)
 
 /mob/living/simple_animal/hostile/abnormality/watchman/proc/TryTeleport()

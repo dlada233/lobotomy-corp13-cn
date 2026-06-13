@@ -1,20 +1,21 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/clouded_monk
-	name = "Clouded Monk"
-	desc = "An abnormality in the form of a tall Buddhist monk wearing a kasa hat."
+	name = "风云法师"
+	desc = "一个戴着袈裟的高个和尚的异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "cloudedmonk"
 	icon_living = "cloudedmonk"
 	var/icon_aggro = "pretamonk"
 	icon_dead = "pretamonk"
 	portrait = "clouded_monk"
-	maxHealth = 700
-	health = 700
+	maxHealth = 1200
+	health = 1200
 	rapid_melee = 2
 	ranged = TRUE
 	damage_coeff = list(BRUTE = 1.0, RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.5)
-	melee_damage_lower = 11
-	melee_damage_upper = 14
+	rapid_melee = 0.7
+	melee_damage_lower = 12
+	melee_damage_upper = 23
 	obj_damage = 22 //otherwise his charge just destroys everything
 	melee_damage_type = RED_DAMAGE
 	see_in_dark = 10
@@ -42,12 +43,12 @@
 		/datum/ego_datum/armor/amrita,
 	)
 	gift_type =  /datum/ego_gifts/amrita
-	gift_message = "But if you were to consume them, perhaps, you would display more sarira than Buddha himself..."
+	gift_message = "但如果你吃了它们，也许你会烧出比佛陀还要多的舍利..."
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "Are you a monk?"
+	observation_prompt = "你是僧侣吗?"
 	observation_choices = list(
-		"I am no longer a monk" = list(TRUE, "A demon shall never reach Heaven."),
+		"我不再是僧侣了" = list(TRUE, "恶魔永远进不了天堂."),
 	)
 
 	var/datum/looping_sound/cloudedmonk_ambience/soundloop
@@ -57,8 +58,8 @@
 	var/monk_charge_cooldown = 0
 	var/monk_charge_cooldown_time = 6 SECONDS
 	var/deathcount
-	var/heal_amount = 60
-	var/charge_damage = 90
+	var/heal_amount = 120
+	var/charge_damage = 150
 	var/eaten = FALSE
 	var/damage_taken
 	var/slam_damage = 30
@@ -120,8 +121,8 @@
 
 /mob/living/simple_animal/hostile/abnormality/clouded_monk/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time, canceled)
 	if(work_type == ABNORMALITY_WORK_INSIGHT)
-		user.adjustSanityLoss(-30) // It's healing
-		to_chat(user, span_nicegreen("[src] guides you through a session of meditation."))
+		user.adjustSanityLoss(-15) // It's healing
+		to_chat(user, span_nicegreen("[src]指导你进行一段冥想."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/clouded_monk/BreachEffect(mob/living/carbon/human/user, breach_type)
@@ -130,7 +131,7 @@
 	playsound(src, 'sound/abnormalities/clouded_monk/howl.ogg', 50, 1)
 	playsound(src, 'sound/abnormalities/clouded_monk/transform.ogg', 50, 1)
 	icon_state = icon_aggro
-	desc = "A monk that has forgotten he has become a demon. It resembles a preta from legends."
+	desc = "一个忘记了自己已经变成了恶魔的僧侣，它就像传说中的游魂."
 	GiveTarget(user)
 
 //breach code
@@ -142,7 +143,7 @@
 		damage_taken += .
 	if(damage_taken >= maxHealth * 0.2 && !charge_ready)
 		charge_ready = TRUE
-		to_chat(src, span_userdanger("YOU ARE READY TO CHARGE!"))
+		to_chat(src, span_userdanger("你准备好冲锋了!"))
 
 /mob/living/simple_animal/hostile/abnormality/clouded_monk/Goto(target, delay, minimum_distance)
 	if(revving_charge || charging)
@@ -240,8 +241,8 @@
 				continue
 			if(L.z != z)
 				continue
-			visible_message(span_boldwarning("[src] slams [L]!"))
-			to_chat(L, span_userdanger("[src] slams you!"))
+			visible_message(span_boldwarning("[src]猛击[L]!"))
+			to_chat(L, span_userdanger("[src]猛击你!"))
 			var/turf/LT = get_turf(L)
 			new /obj/effect/temp_visual/kinetic_blast(LT)
 			L.apply_damage(slam_damage,RED_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
@@ -257,8 +258,8 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			if(!faction_check_mob(L))
-				visible_message(span_boldwarning("[src] bites [L]!"), span_boldwarning("You take a bite out of [L]!"), ignored_mobs = L)
-				to_chat(L, span_userdanger("[src] takes a bite out of you!"))
+				visible_message(span_boldwarning("[src]咬[L]!"), span_boldwarning("你咬了[L]一口"), ignored_mobs = L)
+				to_chat(L, span_userdanger("[src]会咬你一口!"))
 				do_attack_animation(L, ATTACK_EFFECT_BITE)
 				playsound(src, 'sound/abnormalities/clouded_monk/monk_bite.ogg', 75, 1)
 				shake_camera(L, 4, 3)
@@ -282,6 +283,6 @@
 			var/obj/vehicle/V = A
 			V.take_damage(charge_damage*1.5, RED_DAMAGE)
 			for(var/mob/living/occupant in V.occupants)
-				to_chat(occupant, span_userdanger("Your [V.name] is bit by [src]!"))
+				to_chat(occupant, span_userdanger("你的[V.name]被[src]咬了!"))
 			EndCharge(FALSE)
 	return ..()

@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_OVERWHELMING_FEAR /datum/status_effect/overwhelming_fear
 /mob/living/simple_animal/hostile/abnormality/censored
-	name = "CENSORED"
-	desc = "What is this... It's too disgusting to even look at..."
+	name = "数据删除"
+	desc = "这是什么啊... 光是看着就够恶心的了..."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "censored"
 	icon_living = "censored"
@@ -25,6 +25,8 @@
 	ranged = TRUE
 	/* Works */
 	start_qliphoth = 2
+	good_hater = TRUE
+	success_boxes = 99 // Under normal circumstances, impossible
 	can_breach = TRUE
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(80, 70, 60, 55, 50),
@@ -45,35 +47,35 @@
 	)
 
 	gift_type =  /datum/ego_gifts/censored
-	gift_message = "You feel disgusted just looking at it."
+	gift_message = "光是看着它就够让你感觉恶心的了."
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "This is the containment unit of \[CENSORED\]. <br>Many managers went mad, before they implemented the cognition filter, from the sight of it."
+	observation_prompt = "这里的\[数据删除\]的收容单元. <br>许多没有植入认知滤网的主管在看见它的第一眼就陷入疯狂."
 	observation_choices = list(
-		"Enter the containment unit" = list(TRUE, "You enter the containment unit of \[CENSORED\], the smell of \[REDACTED\] and the sound of \[ANULLED\] filled the air. <br>\
-			After steeling yourself, you finally saw \[CENSORED\]. <br>You manage to face the fear."),
-		"Don't enter" = list(FALSE, "A wave of nausea rises up within at the thought of entering the containment unit, and you turn on your heels to leave. <br>\
-			You're not ready to build the future."),
+		"进入收容单元" = list(TRUE, "你进入了\[数据删除\]的收容单元, \[屏蔽\]的味道以及\[禁用\]的声音充斥在空气中. <br>\
+			在经历磨难后, 你终于看见了\[数据删除\]. <br>你准备好直面恐惧了."),
+		"不要进入" = list(FALSE, "一想到要进入收容单元，一股恶心的情绪便涌上心头，你于是转身离去. <br>\
+			你还没有准备好创造未来."),
 	)
 
 	var/can_act = TRUE
-	var/ability_damage = 50
+	var/ability_damage = 60
 	var/ability_cooldown
 	var/ability_cooldown_time = 10 SECONDS
 
 /mob/living/simple_animal/hostile/abnormality/censored/Login()
 	. = ..()
-	to_chat(src, "<h1>You are CENSORED, A Tank Role Abnormality.</h1><br>\
-		<b>|'CENSORED, CENSORED'|: When you click on a tile outside your melee range, you will trigger your ranged attack.<br>\
-		When you trigger your ranged attack, there will be a short delay before you will send out a 'CENSORED' towards your target tile.<br>\
-		Anyone who is hit by your 'CENSORED' will take BLACK damage and will gain the statues effect 'Overwhelming Fear'<br>\
-		If you don't want to trigger you ranged attack when clicking on a tile, you can hold SHIFT while clicking on a tile to disable it.<br>\
+	to_chat(src, "<h1>你是数据删除, 坦克型异想体.</h1><br>\
+		<b>|'数据删除, 数据删除'|: 当你点击近战距离之外的地块时将发动远程攻击.<br>\
+		在短暂延迟之后将向目标位置发射'数据删除'.<br>\
+		任何被你的'数据删除'击中的人都将受到大量黑色伤害，并获得状态'过量恐惧'<br>\
+		如果你不想发动远程攻击，按住SHIFT并单击地块即可关闭.<br>\
 		<br>\
-		|Overwhelming Fear|: Humans with this statues effect will have their sanity quickly reduce to 30%, And this statues effect lasts for 20 seconds.<br>\
+		|过量恐惧|: 拥有这种状态的人的精神值将会快速减少至最大精神值的30%, 这个效果持续20秒.<br>\
 		<br>\
-		|'...CENSORED?'|: When you attack a dead human, you will convert them into a mini 'CENSORED'.<br>\
-		Each time you convert a human into a mini 'CENSORED' you heal 10% of your max HP.<br>\
-		However, Once a mini 'CENSORED' is killed, all humans around them heal 40% of their SP.</b>")
+		|'...小数据删除?'|: 当你攻击死人的时候，你会将它们转化成'小数据删除'.<br>\
+		每次转化'小数据删除'都会治疗你最大血上限10%的HP.<br>\
+		然而, 一旦'小数据删除'被杀死, 周围所有人类的都会恢复40%的SP.</b>")
 
 
 /mob/living/simple_animal/hostile/abnormality/censored/Life()
@@ -92,9 +94,9 @@
 /mob/living/simple_animal/hostile/abnormality/censored/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, 3, 5))
 	var/list/result_text_list = list(
-		"3" = list("GODDAMN IT!!!!", "H-Help...", "I don't want to die!"),
-		"4" = list("What am I seeing...?", "I-I can't take it...", "I can't understand..."),
-		"5" = list("It's all over...", "What..."),
+		"3" = list("我操我操我操!!!!", "救-救命...", "我不想死!"),
+		"4" = list("什么啊这是...?", "我-我受不了了...", "我无法理解..."),
+		"5" = list("全都结束了...", "啊..."),
 	)
 	return pick(result_text_list[level])
 
@@ -164,7 +166,7 @@
 		SLEEP_CHECK_DEATH(5.5)
 	var/mob/living/simple_animal/hostile/aminion/mini_censored/C = new(get_turf(src))
 	if(!QDELETED(H))
-		C.desc = "What the hell is this? It shouldn't exist... On the second thought, it reminds you of [H.real_name]..."
+		C.desc = "这到底是什么东西? 它就不应该存在... 但冷静下来一想, 它让你想起了[H.real_name]..."
 		H.gib()
 	ChangeResistances(list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 0.4, PALE_DAMAGE = 1))
 	adjustBruteLoss(-(maxHealth*0.1))
@@ -207,11 +209,11 @@
 
 /* Work */
 /mob/living/simple_animal/hostile/abnormality/censored/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type == "Sacrifice")
-		to_chat(user, span_warning("You hesitate for a moment..."))
+	if(work_type == "献祭")
+		to_chat(user, span_warning("你犹豫了一会..."))
 		datum_reference.working = TRUE
 		if(!do_after(user, 3 SECONDS, target = user))
-			to_chat(user, span_warning("You decide it's not worth it."))
+			to_chat(user, span_warning("你觉得不值得."))
 			datum_reference.working = FALSE
 			return null
 		user.Stun(30 SECONDS)
@@ -257,7 +259,7 @@
 /* The mini censoreds */
 /mob/living/simple_animal/hostile/aminion/mini_censored
 	name = "???"
-	desc = "What the hell is this? It shouldn't exist..."
+	desc = "这什么鬼东西? 它就不应该存在..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "censored_mini"
 	icon_living = "censored_mini"
@@ -271,9 +273,9 @@
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 1)
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 13
-	melee_damage_upper = 18
+	melee_damage_upper = 16
 	speed = 2
-	move_to_delay = 2
+	move_to_delay = 4
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
@@ -317,7 +319,7 @@
 				continue
 			H.adjustSanityLoss(-(H.getMaxSanity() * recoved_sanity))
 			playsound(H, 'sound/abnormalities/voiddream/skill.ogg', 40, TRUE, 2)
-			to_chat(H, span_nicegreen("Good... It is now dead."))
+			to_chat(H, span_nicegreen("好... 现在它死了."))
 	return ..()
 
 // Status effect applied by CENSORED
@@ -332,8 +334,8 @@
 	var/sanity_damage_percent = 0.05
 
 /atom/movable/screen/alert/status_effect/overwhelming_fear
-	name = "Overwhelming Fear"
-	desc = "You find it difficult to recollect yourself. Your sanity will be slowly lowering to 20%."
+	name = "压倒性的恐惧"
+	desc = "你发现很难重整精神. 你的精神值会慢慢下降到20%."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "overwhelming_fear"
 

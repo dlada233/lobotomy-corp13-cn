@@ -9,17 +9,17 @@
 #define ICE_ARENA_TIMER 10 MINUTES
 
 /mob/living/simple_animal/hostile/abnormality/snow_queen
-	name = "Snow Queen"
-	desc = "A tall construct of ice resembling royalty. Their robe seems to leave a \
-	faint trail of snow flakes in their wake. They move with a cold elegance."
+	name = "冰雪女皇"
+	desc = "像宫殿一样的高大的冰女皇. \
+	她的长袍似乎在她的身后留下了一缕淡淡的雪花，她走起路来冷峻优雅."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "snowqueen"
 	icon_living = "snowqueen"
 	icon_dead = "snowqueen_dead"
 	portrait = "snow_queen"
 	mob_biotypes = MOB_MINERAL
-	maxHealth = 300
-	health = 300
+	maxHealth = 500
+	health = 500
 	blood_volume = 0
 	move_to_delay = 5
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1.1, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 0.8, FIRE = 2) //ASK SOMEONE GOOD AT BALANCING ABOUT THIS -IP
@@ -29,7 +29,7 @@
 	del_on_death = FALSE
 	threat_level = HE_LEVEL
 	melee_damage_lower = 3
-	melee_damage_upper = 4
+	melee_damage_upper = 6
 	melee_damage_type = RED_DAMAGE
 	ranged = TRUE
 	ranged_cooldown_time = 10 SECONDS
@@ -48,15 +48,15 @@
 	max_boxes = 18
 	wander = FALSE
 
-	observation_prompt = "You remember her. <br>\
-		She got cold easily. <br>\
-		The cryo-coffin must have been freezing. <br>\
-		Freezing and cold. <br>\
-		You thought about it often, seeing she who couldn't see her dreams come true, trapped inside ice. <br>\
-		The brave agent headed to the Snow Palace and..."
+	observation_prompt = "你记得她。<br>\
+		她很容易感到寒冷。<br>\
+		冷棺里一定冰冷刺骨。<br>\
+		冰冷而寒冷。<br>\
+		你常想象她被冰封其中，无法看到梦想实现的样子。<br>\
+		勇敢的员工前往雪之宫殿，然后..."
 	observation_choices = list(
-		"Met the Snow Queen" = list(TRUE, "The Snow Queen was cold and beautiful. <br>You heard ice melting."),
-		"Saved Kai" = list(FALSE, "Gerda saved Kai and returned home. <br>They lived happily ever after."),
+		"遇见冰雪女皇" = list(TRUE, "冰雪女皇冷酷而美丽。<br>你听见冰在融化。"),
+		"拯救了凯" = list(FALSE, "格尔达拯救了凯，然后回了家。<br>他们从此过上了幸福的生活。"),
 	)
 
 	ego_list = list(
@@ -144,20 +144,20 @@
 				BringToArena(src, user, snow_prison)
 				datum_reference.console.meltdown = FALSE
 			else
-				to_chat(user, span_notice("The Snow Queen is currently in battle."))
+				to_chat(user, span_notice("冰雪女皇正在决斗."))
 				datum_reference.console.meltdown = FALSE
 				return FALSE
 		else
-			to_chat(user, span_notice("No one is frozen by the Snow Queen yet."))
+			to_chat(user, span_notice("到目前为止，还没有人被冻结."))
 			frozen_employee = null
 		return FALSE
 	if(frozen_employee || snow_prison)
 		if(QDELETED(snow_prison))
-			to_chat(user, span_notice("You brush the shards of ice out of the way."))
+			to_chat(user, span_notice("你把路上的冰块清理掉."))
 			snow_prison = null
 			frozen_employee = null
 			return FALSE
-		to_chat(user, span_notice("You'll need to shatter the frozen employee to continue normal working."))
+		to_chat(user, span_notice("你需要粉碎被冻结的员工才能继续正常工作."))
 		return FALSE
 	return TRUE
 
@@ -268,7 +268,7 @@
 		return FALSE
 	var/obj/item/clothing/suit/armor/ego_gear/user_ego = H.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 	if(istype(user_ego, /obj/item/clothing/suit/armor/ego_gear/waw/feather))
-		to_chat(H, span_userdanger("Snow Queen reacts to your ego and freezes you."))
+		to_chat(H, span_userdanger("冰雪女皇对你的ego做出反应，冻结了你."))
 		return TRUE
 
 		/*-------------------\
@@ -350,7 +350,7 @@
 		\--------*/
 //This can be connected to a LCL gamemode ability
 /mob/living/simple_animal/hostile/abnormality/snow_queen/proc/KissEmployee(mob/living/carbon/human/H)
-	to_chat(H, span_notice("[src] gives you a kiss."))
+	to_chat(H, span_notice("[src]给了你一个吻."))
 	if(!locate(H) in kissed)
 		kissed += H
 		kissed[H] = 0
@@ -371,7 +371,7 @@
 	P.GrabEmployee(H)
 	snow_prison = P
 	frozen_employee = H
-	to_chat(frozen_employee, "In an unforgiving blizzard, Kai met the Snow Queen. He became curious of the world beyond his knowledge..")
+	to_chat(frozen_employee, "在一场无情的暴风雪中, 凯遇见了冰雪女皇. 他开始对那超出自己认知的世界感到好奇..")
 	return TRUE
 
 //Remotely defrosts employee, lethally or non lethally.
@@ -490,10 +490,10 @@
 	storybook_hero = hero
 	RegisterSignal(hero, COMSIG_PARENT_QDELETING, PROC_REF(WinterContinues))
 	prison.forceMove(arena_landmarks[ICE_ARENA_VICTEM_SPAWN])
-	var/storybook_text = "Gerda was strong enough to remain unpierced by the mirror, and brave enough to go on a journey to rescue Kai. So she set off towards the Snow Palace."
+	var/storybook_text = "格尔达足够坚强，没有被镜子刺穿，她也很勇敢，踏上了营救凯的旅程，于是她向冰雪宫殿出发了."
 	to_chat(storybook_hero, storybook_text)
 	to_chat(frozen_employee, storybook_text)
-	notify_ghosts("[hero] is challenging the Snow Queen to a duel!", source = src, action = NOTIFY_ORBIT, header="Something Interesting!")
+	notify_ghosts("[hero]要和冰雪女皇决斗!", source = src, action = NOTIFY_ORBIT, header="有趣的事情!")
 	return TRUE
 
 //For removing blood and debris
@@ -522,7 +522,7 @@
 	if(!rewardee)
 		return
 	rewardee.forceMove(release_location)
-	to_chat(rewardee, "The roses blossom and the Snow Palace falls. Not a single soul remembered the woman sleeping there.")
+	to_chat(rewardee, "玫瑰绽放，雪宫坍塌，无人记得沉睡其中的女子.")
 	if(ishuman(rewardee))
 		var/datum/ego_gifts/frostsplinter/S = new
 		S.datum_reference = datum_reference
@@ -640,7 +640,7 @@
 			i++
 			continue
 		else
-			visible_message("[src] breaks concentration on her spell due to your attacks.")
+			visible_message("[src]因为你的攻击而停止法术维持.")
 			playsound(get_turf(src), 'sound/magic/magic_missile.ogg', 50, 0, 4)
 			break
 
@@ -710,11 +710,11 @@
 /datum/reusable_visual_pool/proc/NewSnowQueenEffect(turf/location, duration = 10, telegraph = FALSE)
 	var/obj/effect/reusable_visual/RV = TakePoolElement()
 	if(telegraph)
-		RV.name = "cracked floor"
+		RV.name = "裂开的地板"
 		RV.icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 		RV.icon_state = "cracks_dark"
 	else
-		RV.name = "ice spike"
+		RV.name = "冰刺"
 		RV.icon = 'ModularTegustation/Teguicons/32x48.dmi'
 		RV.icon_state = pick("ice_spike1", "ice_spike2", "ice_spike3")
 	RV.layer = ABOVE_MOB_LAYER
@@ -743,7 +743,7 @@
 
 //Healing Roses
 /obj/structure/spring_healing
-	name = "blooming roses"
+	name = "盛开的玫瑰"
 	desc = ""
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "rdflowers_1"
@@ -770,7 +770,7 @@
 		new /obj/effect/temp_visual/area_heal(where_we_are)
 		for(var/mob/living/carbon/human/H in range(1, where_we_are))
 			if(H.stat != DEAD)
-				to_chat(H, span_nicegreen("The warmth of spring melts away the winter frost and restores you."))
+				to_chat(H, span_nicegreen("春天的温暖融化了冬天的冰霜，使你恢复活力."))
 				H.adjustBruteLoss(-5)
 	if(auto_deactivate_cooldown <= world.time)
 		STOP_PROCESSING(SSobj, src)
@@ -789,10 +789,10 @@
 	if(istype(W, /obj/item/ego_weapon/shield/ice_sword))
 		thawing += 35
 		if(thawing >= 500)
-			to_chat(user, span_notice("The ice melts away."))
+			to_chat(user, span_notice("冰雪消融了."))
 			ReleaseSafe()
 			return
-		to_chat(user, span_notice("The ice slowly melts."))
+		to_chat(user, span_notice("冰雪开始缓慢消融."))
 		playsound(get_turf(src), 'sound/effects/glass_step.ogg', 50, TRUE)
 		return
 	return ..()
@@ -828,7 +828,7 @@
 	REMOVE_TRAIT(prisoner, TRAIT_HANDS_BLOCKED, src)
 
 /obj/structure/chair/snowqueen
-	name = "Snow Queen's Throne"
+	name = "冰雪女皇的宝座"
 	desc = "An icey throne."
 	icon = 'ModularTegustation/Teguicons/160x160.dmi'
 	icon_state = "snowqueen_throne"
@@ -843,8 +843,8 @@
 
 //The sword holder
 /obj/structure/frozensword
-	name = "frozen sword"
-	desc = "A sword, partially frozen. It beckons you to try and pull it out."
+	name = "冰剑"
+	desc = "一把剑，部分冻结，它在召唤你把它拔出来."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "icechunk"
 	anchored = TRUE
@@ -868,7 +868,7 @@
 	if(dueling_sword)
 		user.put_in_hands(dueling_sword)
 		RegisterSignal(dueling_sword, COMSIG_PARENT_QDELETING, PROC_REF(Refresh))
-		to_chat(user, span_notice("You pull out [dueling_sword]!"))
+		to_chat(user, span_notice("你拔出了[dueling_sword]!"))
 		src.add_fingerprint(user)
 		empty = TRUE
 		playsound(get_turf(src), 'sound/items/unsheath.ogg', 50, TRUE)
@@ -893,9 +893,9 @@
 	update_icon()
 
 /obj/item/ego_weapon/shield/ice_sword
-	name = "old sword"
-	desc = "This blade is almost encased in frost yet it eminates a soothing warmth."
-	special = "Use in hand to deflect attacks and prevent damage."
+	name = "老旧的剑"
+	desc = "剑刃几乎被霜包裹，但它散发出一种舒缓的温暖."
+	special = "在手中使用来偏转攻击和伤害."
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left.dmi'
 	righthand_file = 'ModularTegustation/Teguicons/lc13_right.dmi'
@@ -910,10 +910,10 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/crumbling_parry.ogg'
-	projectile_block_message ="Spring arrives with blossoming roses."
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	projectile_block_message ="春天带着盛开的玫瑰到来."
+	block_message = "你试图抵挡攻击!"
+	hit_message = "抵挡攻击!"
+	block_cooldown_message = "你重新举起你的剑."
 	//For deleting it whenever seperated from user.
 	slot_flags = null
 	item_flags = DROPDEL

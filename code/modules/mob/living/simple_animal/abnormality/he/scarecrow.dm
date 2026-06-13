@@ -1,19 +1,19 @@
 /mob/living/simple_animal/hostile/abnormality/scarecrow
-	name = "Scarecrow Searching for Wisdom"
-	desc = "An abnormality taking form of a scarecrow with metal rake in place of its hand."
+	name = "寻找智慧的稻草人"
+	desc = "用金属耙子代替手的稻草人异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "scarecrow"
 	icon_living = "scarecrow"
 	icon_dead = "scarecrow_dead"
 	portrait = "scarecrow"
 	del_on_death = FALSE
-	maxHealth = 200
-	health = 200
+	maxHealth = 500
+	health = 500
 	rapid_melee = 2
 	move_to_delay = 3
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 2)
-	melee_damage_lower = 4
-	melee_damage_upper = 5
+	melee_damage_lower = 3
+	melee_damage_upper = 7
 	melee_damage_type = BLACK_DAMAGE
 	stat_attack = HARD_CRIT
 	attack_sound = 'sound/abnormalities/scarecrow/attack.ogg'
@@ -51,10 +51,10 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "Poor stuffing of straw. <br>I'll give you the wisdom to ponder over anything. <br>The wizard grants you..."
+	observation_prompt = "稻草填充地粗劣，<br>我将赐你参透万物的智慧。<br>巫师授予你..."
 	observation_choices = list(
-		"A silk sack of sawdust" = list(TRUE, "Do you think jabbering away with your oh-so smart mouth is all that matters?"),
-		"Wisdom" = list(FALSE, "Come closer. <br>I’ll help you forget all of your woes and worries."),
+		"一袋锯末丝囊" = list(TRUE, "你以为伶牙俐齿就是智慧的全部？"),
+		"智慧" = list(FALSE, "靠近些。<br>我帮你忘却所有烦忧。"),
 	)
 
 	/// Can't move/attack when it's TRUE
@@ -71,16 +71,16 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<h1>You are Scarecrow Searching for Wisdom, A Tank Role Abnormality.</h1><br>\
-		<b>|Seeking Wisdom|: When you attack corpses, You heal.<br>\
-		Unlike other abnormalities which use corpses, you are able to reuse the corpses you drain as many times as you would like.<br>\
-		|Hungering for Wisdom|: You have an ability which causes you to enter a 'Hungering' State.<br>\
-		While you are in the 'Hungering' State, You have increased movement speed and melee damage. As well, Your melee attack heal 5% of your max HP on hit.<br>\
-		You will need to hit at least on human every 6 seconds in order to keep this state active.<br>\
-		However, If you don't hit any humans you will lose 5% of your max HP, become slowed down for 3.5 seconds and lose your 'Hungering' state.</b>")
+	to_chat(src, "<h1>你是寻找智慧的稻草人，担任坦克型异常实体。</h1><br>\
+		<b>|寻求智慧|: 攻击尸体可恢复生命值。<br>\
+		与其他消耗尸体的异常不同，你可无限重复利用吸食过的尸体。<br>\
+		|渴求智慧|: 拥有进入'饥渴'状态的能力。<br>\
+		此状态下获得移速与近战伤害加成，且每次近战命中恢复5%最大生命值。<br>\
+		需每6秒内至少命中一名人类维持状态。<br>\
+		若未命中人类，将损失5%生命值，减速3.5秒并解除'饥渴'状态。</b>")
 
 /datum/action/cooldown/hungering
-	name = "Hungering for Wisdom"
+	name = "渴求智慧"
 	icon_icon = 'icons/mob/actions/actions_rcorp.dmi'
 	button_icon_state = "hungering"
 	desc = "Gain a short speed/damage boost to rush at your foes!"
@@ -102,7 +102,7 @@
 		var/sound/heartbeat = sound('sound/health/fastbeat.ogg', repeat = TRUE)
 		var/mob/living/simple_animal/hostile/abnormality/scarecrow/H = owner
 		if(H.hunger == TRUE)
-			to_chat(H, span_nicegreen("YOU ARE RUSHING RIGHT NOW!"))
+			to_chat(H, span_nicegreen("你现在太渴求了!"))
 			return FALSE
 		else
 			old_speed = H.move_to_delay
@@ -111,13 +111,13 @@
 			H.UpdateSpeed()
 			H.target_hit = FALSE
 			H.color = "#ff5770"
-			H.manual_emote("starts twitching...")
+			H.manual_emote("开始抽搐...")
 			H.hunger = TRUE
 			min_dam_old = H.melee_damage_lower
 			max_dam_old = H.melee_damage_upper
 			H.melee_damage_lower = min_dam_buff
 			H.melee_damage_upper = max_dam_buff
-			to_chat(H, span_nicegreen("THEIR WISDOM, SHALL BE YOURS!"))
+			to_chat(H, span_nicegreen("他们的智慧，都属于你!"))
 			addtimer(CALLBACK(src, PROC_REF(Hunger)), speed_duration)
 			StartCooldown()
 
@@ -127,7 +127,7 @@
 		if (H.target_hit)
 			addtimer(CALLBACK(src, PROC_REF(Hunger)), speed_duration)
 			H.target_hit = FALSE
-			to_chat(H, span_nicegreen("YOUR FEAST CONTINUES!"))
+			to_chat(H, span_nicegreen("你的盛宴继续!"))
 		else
 			H.stop_sound_channel(CHANNEL_HEARTBEAT)
 			H.melee_damage_lower = min_dam_old
@@ -135,8 +135,8 @@
 			H.move_to_delay = punishment_speed
 			H.deal_damage(20, WHITE_DAMAGE)
 			H.color = null
-			H.manual_emote("starts slowing down...")
-			to_chat(H, span_userdanger("No... I need that wisdom..."))
+			H.manual_emote("开始减速...")
+			to_chat(H, span_userdanger("不... 我需要那份智慧..."))
 			H.target_hit = TRUE
 			addtimer(CALLBACK(src, PROC_REF(RushEnd)), weaken_duration)
 			H.UpdateSpeed()
@@ -145,7 +145,7 @@
 	if (istype(owner, /mob/living/simple_animal/hostile/abnormality/scarecrow))
 		var/mob/living/simple_animal/hostile/abnormality/scarecrow/H = owner
 		H.move_to_delay = old_speed
-		to_chat(H, span_nicegreen("You calm down from your feast..."))
+		to_chat(H, span_nicegreen("你从狂热中冷静下来..."))
 		H.hunger = FALSE
 		H.UpdateSpeed()
 

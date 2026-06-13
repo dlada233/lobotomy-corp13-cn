@@ -2,9 +2,9 @@
 #define SERVANT_SMASH_COOLDOWN (30 SECONDS)
 #define SERVANT_DASH_COOLDOWN (15 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/wrath_servant
-	name = "\proper Servant of Wrath"
-	desc = "A small girl in a puffy green magical girl outfit. \
-		She seems lonely."
+	name = "\proper 愤怒侍从"
+	desc = "穿着绿色魔法少女服装的小女孩. \
+		她看起来很孤独."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wrath"
 	icon_living = "wrath"
@@ -16,8 +16,8 @@
 	trigger_lights = FALSE
 
 	ranged = TRUE
-	maxHealth = 600
-	health = 600
+	maxHealth = 1200
+	health = 1200
 	damage_coeff = list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1.5)
 
 	move_to_delay = 6
@@ -31,7 +31,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(40, 45, 50, 55, 60),
 		ABNORMALITY_WORK_ATTACHMENT = list(80, 70, 60, 50, 40),
 		ABNORMALITY_WORK_REPRESSION = list(30, 30, 40, 40, 50),
-		"Request" = 100,
+		"要求" = 100,
 	)
 	work_damage_upper = 6
 	work_damage_lower = 4
@@ -44,7 +44,7 @@
 	rapid_melee = 2
 	attack_sound = 'sound/abnormalities/wrath_servant/small_smash1.ogg'
 	stat_attack = HARD_CRIT
-	death_message = "vanishes from existance."
+	death_message = "消失无踪."
 
 	can_patrol = FALSE
 
@@ -62,14 +62,14 @@
 		/mob/living/simple_animal/hostile/abnormality/nihil = 1.5,
 	)
 
-	observation_prompt = "I made a mistake, I put my trust in someone I shouldn't have and my world paid the price for my indiscretion. <br>\
-		Was I wrong to call them friend? <br>Were they really my friend, all along?"
+	observation_prompt = "我犯下了错误，错信了不该信任之人，我的世界为我的轻率付出了代价。<br>\
+		我称他们为朋友是错的吗？<br>他们自始至终真的是我的朋友吗？"
 	observation_choices = list(
-		"It wasn't wrong" = list(TRUE, "If that's the case, then why did balance, why did justice, fail me? <br>\
-			Why did my world burn if I truly did not make a mistake? <br>It still hurts, but, if you're right then maybe I can put my trust in you..."),
-		"You were wrong" = list(FALSE, "It was the most precious relationship to me... <br>\
-			That's why I lost; I fell to my beloved companion... <br>\
-			I should have killed them when I had the chance! <br>Sinners!! <br>Embodiments of evil..!"),
+		"这没有错" = list(TRUE, "如果真是这样，那为什么平衡，为什么正义，抛弃了我？<br>\
+			如果我真的没有犯错，为什么我的世界会被焚毁？<br>我仍然心痛，但如果你是对的，也许我还可以信任你..."),
+		"你错了" = list(FALSE, "那是我最珍贵的关系...<br>\
+			也是我失败的原因；我败给了心爱的同伴...<br>\
+			我本该在有机会时杀了他们！<br>罪人！！<br>邪恶的化身...！"),
 	)
 
 	var/friendly = TRUE
@@ -99,7 +99,7 @@
 	)
 
 /datum/action/cooldown/wrath_smash
-	name = "Blind Rage"
+	name = "盲目愤怒"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "wrath_smash"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -173,13 +173,13 @@
 			L.deal_damage(30, WHITE_DAMAGE)
 			var/obj/effect/temp_visual/eldritch_smoke/ES = new(get_turf(L))
 			ES.color = COLOR_GREEN
-			to_chat(L, span_warning("The Azure hermit's magic being channeled through [src] racks your mind!"))
+			to_chat(L, span_warning("青林隐士的魔法正在通过[src]引导你的思维!"))
 		COOLDOWN_START(src, stun, stunned_cooldown)
 	if(stunned)
 		return
 	var/mob/living/simple_animal/hostile/aminion/azure_hermit/AH = locate() in view(5, src)
 	if(AH?.status_flags & GODMODE)
-		manual_emote("smashes the Azure Hermit with its hammer.")
+		manual_emote("用锤子砸碎了青林隐士.")
 		PerformEnding(AH)
 		return
 	if(isnull(hunted_target) || !hunted_target)
@@ -197,11 +197,11 @@
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/attack_hand(mob/living/carbon/human/M)
 	if(!stunned)
 		return ..()
-	to_chat(M, span_warning("You start pulling the staff from the [src]!"))
+	to_chat(M, span_warning("你从[src]里取出魔杖!"))
 	if(!do_after(M, 2 SECONDS, src) || !stunned)
-		to_chat(M, span_warning("You let go before the staff is free!"))
+		to_chat(M, span_warning("你在魔杖解放前松手了!"))
 		return
-	to_chat(M, span_warning("The staff rips free from the [src]!"))
+	to_chat(M, span_warning("魔杖从[src]里解放出来了!"))
 	Unstun()
 	return
 
@@ -214,13 +214,13 @@
 			desc = initial(desc)
 			icon_state = initial(icon_state)
 		if(10 to 20)
-			desc = "A small girl in a puffy green magical girl outfit. She smiles as you approach."
+			desc = "穿着绿色魔法少女服装的小女孩. 当你走近时她会微笑."
 			icon_state = initial(icon_state)
 		if(20 to 30)
-			desc = "A small girl in a puffy orange magical girl outfit. Uncertainty fills the air."
+			desc = "穿着橙色魔法少女服装的小女孩. 空气中弥漫着不稳定性."
 			icon_state = "wrath_1"
 		if(30 to 100)
-			desc = "A small girl in a puffy red magical girl outfit. It seems she has a headache."
+			desc = "穿着红色魔法少女服装的小女孩. 她看起来陷入了头痛."
 			icon_state = "wrath_2"
 	return TRUE
 
@@ -231,8 +231,8 @@
 	adjustBruteLoss(-maxHealth, forced = TRUE)
 	stunned = FALSE
 	icon_state = icon_living
-	desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid."
-	manual_emote("begins to move once more!")
+	desc = "一只巨大的红色怪物，身上挂着白色的绷带，它的血肉渗出酸性气泡."
+	manual_emote("再一次开始行动!")
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/Move()
 	if(!can_act || stunned)
@@ -283,17 +283,17 @@
 		datum_reference.qliphoth_change(-1)
 		if(LAZYLEN(friend_ship))
 			var/mob/living/L = pick(friend_ship)
-			say("I... I shouldn't be treating them this way... [L.first_name()]...")
+			say("我... 我不应该这样对待他们... [L.first_name()]...")
 		else
-			say("No... I must keep my mind in check. I'm sorry, [user.first_name()].")
+			say("不... 我必须控制自己的思维. 抱歉, [user.first_name()].")
 	switch(work_type)
 		if(ABNORMALITY_WORK_ATTACHMENT)
 			AdjustInstability(4) // Was 2
 			if(!(user in friend_ship) && (pe >= datum_reference.success_boxes))
 				say(pick(
-					"You want to be my friend..?",
-					"\"Friend\" is not a word in the book of law...",
-					"I can be a friend that you deserve.",
+					"你想做我的朋友..?",
+					"律法书上没有\"朋友\"这样的词...",
+					"我可以成为你想要的朋友.",
 				))
 				friend_ship += user
 				AdjustInstability(8) // Was 5
@@ -304,32 +304,32 @@
 	if(pe >= src.datum_reference.success_boxes)
 		AdjustInstability(3) // Was 2
 	if(user in friend_ship)
-		say("It was good to see you again, [user.first_name()].")
-		to_chat(user, span_nicegreen("A light green light flows over you... You feel better!"))
+		say("很高兴又见到你了 [user.first_name()].")
+		to_chat(user, span_nicegreen("一道淡绿色的光从你身上流过... 你感觉更好了!"))
 		user.adjustBruteLoss(-20)
 		user.adjustSanityLoss(-20)
 		AdjustInstability(3) // Was 1
 	return
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type != "Request")
+	if(work_type != "要求")
 		return ..()
 	if(datum_reference.console.meltdown)
-		say("A-Aghh...")
+		say("啊-啊...")
 		return FALSE
 	if(!(user in friend_ship))
-		say("All are to be treated equally, even those you keep in cages. You are no exception, [user.first_name()].")
+		say("大家都应该被平等对待, 即便是被关在笼子里. 你也不例外, [user.first_name()].")
 		return FALSE
 	if(!IsContained())
-		to_chat(user, "<span>There's no one here to make a request of...</span>")
+		to_chat(user, "<span>这里没有人可以提出要求...</span>")
 		return FALSE
 	if(src.datum_reference.qliphoth_meter <= 2)
 		friendly = FALSE
-		say("I must... uphold balance... I...")
+		say("我必须... 维持平衡... 我...")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		say("I've made a mistake once again!!!")
+		say("我又一次犯了错!!!")
 		SLEEP_CHECK_DEATH(1 SECONDS)
-		say("I-I... What a foolish deed I've done...")
+		say("我... 我做了一件多么愚蠢的事啊...")
 		BreachEffect(user)
 		return FALSE
 	friendly = TRUE
@@ -381,7 +381,7 @@
 			hunted_target = H
 		if(!hunted_target)
 			return FALSE
-		say("If it's to help a friend...")
+		say("如果是为了帮助朋友...")
 		SLEEP_CHECK_DEATH(8)
 		src.datum_reference.qliphoth_change(-2)
 		src.faction = list("neutral")
@@ -408,8 +408,8 @@
 	status_flags &= ~GODMODE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ABNORMALITY_BREACH, src)
 	FearEffect()
-	say("EMBODIMENTS OF EVIL!!!")
-	desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid."
+	say("邪恶的化身!!!")
+	desc = "一只巨大的红色怪物，身上挂着白色的绷带，它的血肉渗出酸性气泡."
 	can_act = TRUE
 	if(!datum_reference)
 		can_patrol = TRUE
@@ -427,7 +427,7 @@
 	patrol_to(get_closest_atom(/turf, GLOB.xeno_spawn, src))
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/proc/Dash()
-	visible_message(span_warning("[src] sprints toward [target]!"), span_notice("You quickly dash!"), span_notice("You hear heavy footsteps speed up."))
+	visible_message(span_warning("[src]猛冲向[target]!"), span_notice("你迅速突进!"), span_notice("你听到重重地蹬地声."))
 	var/duration = 1 SECONDS
 	if(client)
 		duration = 1.5 SECONDS
@@ -443,7 +443,7 @@
 	if(!friendly)
 		icon_state = "wrath_charge"
 		playsound(src, 'sound/abnormalities/wrath_servant/enrage.ogg', 75, FALSE, 20, falloff_distance = 10)
-	manual_emote("raises [friendly ? "their" : "its"] hammers!")
+	manual_emote("举起[friendly ? "她的" : "它的"]锤子!")
 	var/list/show_area = list()
 	show_area |= range(3, src)
 	show_area |= view(5, src)
@@ -496,7 +496,7 @@
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/proc/ReturnHome()
 	can_act = FALSE
 	hunted_target = null
-	say("For our friendship...")
+	say("为了我们的友谊...")
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	Teleport(src.datum_reference.landmark)
 	can_act = FALSE
@@ -518,7 +518,7 @@
 	toggle_ai(AI_OFF)
 	status_flags |= GODMODE
 	density = FALSE
-	say("Justice and balance finally restored. We...")
+	say("正义和平衡终于恢复了. 我们...")
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	animate(src, alpha = 0, time = 5)
 	new /obj/effect/temp_visual/guardian/phase(get_turf(src))
@@ -527,7 +527,7 @@
 	new /obj/effect/temp_visual/guardian/phase/out(get_turf(src))
 	icon_state = "wrath_end"
 	speak_emote = list()
-	say("We were true friends... Right?")
+	say("我们是真正的朋友... 对吗?")
 	SLEEP_CHECK_DEATH(4.5 SECONDS)
 	Teleport(src.datum_reference.landmark)
 	can_act = FALSE
@@ -554,7 +554,7 @@
 	can_act = FALSE
 	status_flags |= GODMODE
 	if(friendly)
-		say("I've... failed. S-Sorry...")
+		say("我... 失败了. 对-对不起...")
 		SLEEP_CHECK_DEATH(1 SECONDS)
 		Teleport(src.datum_reference.landmark)
 		breach_affected = list()
@@ -563,13 +563,13 @@
 		can_act = TRUE
 		return FALSE
 	say("GR-RRAHHH!!!")
-	visible_message(span_warning("[src] falls down!"))
+	visible_message(span_warning("[src]倒下!"))
 	icon_state = "wrath_stun"
 	SLEEP_CHECK_DEATH(15 SECONDS)
 	status_flags &= ~GODMODE
 	icon_state = icon_living
 	adjustBruteLoss(-maxHealth, forced = TRUE)
-	visible_message(span_warning("[src] gets back up!"))
+	visible_message(span_warning("[src]重新站了起来!"))
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/death(gibbed)
@@ -578,7 +578,7 @@
 		return ..()
 	if(nihil_present)
 		adjustBruteLoss(-999999)
-		visible_message(span_boldwarning("Oh no, [src] has been defeated!"))
+		visible_message(span_boldwarning("哦不, [src]被击败了!"))
 		INVOKE_ASYNC(src, PROC_REF(petrify), 500000)
 		return FALSE
 	if(ending)
@@ -598,13 +598,13 @@
 	NihilModeEnable()
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("This is really bad...")
+	say("这真的太糟糕了...")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("With this, we can restore balance to the world...")
+	say("有了这个，我可以恢复世界的平衡...")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("We can't lose this time!")
+	say("我们决不能放弃这个机会!")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("For the Justice and Balance of this Land!")
+	say("为了这片土地的正义与平衡!")
 	ChangeResistances(list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1.5))
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/proc/NihilModeEnable()
@@ -617,8 +617,8 @@
 		badguy.gib(TRUE)
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/proc/NihilIconUpdate()
-	name = "Magical Girl of Courage"
-	desc = "A real magical girl!"
+	name = "勇气魔法少女"
+	desc = "真正的魔法少女!"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wrath"
 	pixel_x = 0
@@ -635,7 +635,7 @@
 	pixel_x = -32
 	base_pixel_x = -32
 	var/obj/structure/statue/petrified/magicalgirl/S = new(loc, src, statue_timer)
-	S.name = "Lapidified Wrath"
+	S.name = "石化愤怒"
 	ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 	SLEEP_CHECK_DEATH(1)
 	S.icon = src.icon
@@ -664,8 +664,8 @@
 
 //Rival's code
 /mob/living/simple_animal/hostile/aminion/azure_hermit
-	name = "Hermit of the Azure Forest"
-	desc = "Please make way, I am here to meet a dear friend."
+	name = "青林隐士"
+	desc = "请让路，我是来见一位好朋友的."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "hermit"
 	icon_living = "hermit"
@@ -675,8 +675,8 @@
 	faction = list("hostile", "azure")
 	can_patrol = TRUE
 
-	maxHealth = 500
-	health = 500
+	maxHealth = 700
+	health = 700
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.2)
 
 	alpha = 0
@@ -758,17 +758,17 @@
 				SLEEP_CHECK_DEATH(3)
 		else
 			playsound(SW, 'sound/abnormalities/wrath_servant/enrage.ogg', 100, FALSE, 40, falloff_distance = 20)
-			visible_message(span_userdanger("[src] plunges their staff into [SW]'s chest!"))
+			visible_message(span_userdanger("[src]将魔杖插入[SW]的胸膛!"))
 			SW.stunned = TRUE
 			addtimer(CALLBACK(SW, TYPE_PROC_REF(/mob/living/simple_animal/hostile/abnormality/wrath_servant, Unstun)), 3 MINUTES)
 			SW.status_flags |= GODMODE
 			SW.icon_state = "wrath_staff_stun"
-			SW.desc = "A large red monster with white bandages hanging from it. Its flesh oozes a bubble acid. A wooden staff is impaled in its chest, it can't seem to move!"
+			SW.desc = "一只巨大的红色怪物，身上挂着白色的绷带，它的血肉渗出酸性气泡. 一根木杖刺进了它的胸膛，它似乎不能动了!"
 		return
 	if(ishuman(attacked_target))
 		var/mob/living/carbon/human/H = attacked_target
 		if(get_user_level(H) < 3)
-			say("Pardon me.")
+			say("原谅我.")
 			var/turf/TT = get_turf(H)
 			H.gib(FALSE, TRUE, TRUE)
 			var/mob/living/simple_animal/hostile/aminion/azure_stave/AS = new(TT)
@@ -822,7 +822,7 @@
 	return
 
 /mob/living/simple_animal/hostile/aminion/azure_hermit/proc/Downed()
-	say("Fufu~ If you're so insistent, I'll have a bit of a rest.")
+	say("Fufu~ 如果你如此坚持，我就休息一会儿好了.")
 	manual_emote("sits down.")
 	icon_state = "hermit_stun"
 	density = FALSE
@@ -841,26 +841,26 @@
 		death()
 		return
 	can_act = FALSE
-	manual_emote("crumbles apart.")
+	manual_emote("破碎崩解.")
 	icon_state = icon_dead
 	density = FALSE
 	status_flags |= GODMODE
 	for(var/mob/living/L in staves)
-		L.visible_message(span_notice("[L] crumbles before you!"))
+		L.visible_message(span_notice("[L]在你面前破碎崩解!"))
 		qdel(L)
 	animate(src, alpha = 0, time = (15 SECONDS))
 	QDEL_IN(src, 15 SECONDS)
 	return
 
 /mob/living/simple_animal/hostile/aminion/azure_stave
-	name = "Hermit's Staff"
-	desc = "This wood's blueish hue almost resembles a person..."
+	name = "隐士木杖"
+	desc = "这种木材的蓝色色调让你想起一个人..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "stave"
 	icon_living = "stave"
-	maxHealth = 50
-	health = 50
-	death_message = "crumples to dust."
+	maxHealth = 120
+	health = 120
+	death_message = "化为尘埃."
 
 	a_intent = INTENT_HARM
 	move_resist = MOVE_FORCE_STRONG
@@ -883,7 +883,7 @@
 	del_on_death = TRUE
 
 /obj/effect/decal/cleanable/wrath_acid/
-	name = "Not-so Acidic Goo"
+	name = "不那么酸的黏液"
 	desc = "Ah, that kinda stings..."
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "wrath_acid"
@@ -937,7 +937,7 @@
 	L.apply_status_effect(STATUS_EFFECT_ACIDIC_GOO)
 
 /obj/effect/decal/cleanable/wrath_acid/bad/
-	name = "Acidic Goo"
+	name = "酸黏液"
 	desc = "It seems to burn whatever it touches, best to stay away!"
 
 /obj/effect/decal/cleanable/wrath_acid/bad/Crossed(atom/movable/AM)
@@ -968,8 +968,8 @@
 	tick_interval = 0.5 SECONDS
 
 /atom/movable/screen/alert/status_effect/wrath_burning
-	name = "Acidic Goo"
-	desc = "The goo has stuck to you and burns your flesh and mind!"
+	name = "酸黏液"
+	desc = "黏液粘在你身上，灼烧着你的肉体和心灵!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "acid_goo"
 

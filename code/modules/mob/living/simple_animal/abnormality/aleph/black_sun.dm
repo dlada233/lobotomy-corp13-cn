@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/black_sun
-	name = "Waxing of the Black Sun"
-	desc = "A sundial. Inscribed on the side is the phrase ''Memento Mori''."
+	name = "黑太阳之盈"
+	desc = "一座日晷装置，侧面刻有铭文：'Memento Mori（铭记死亡）'。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "sundial"
 	maxHealth = 1000
@@ -61,16 +61,16 @@
 
 	switch(stage)
 		if(1)
-			to_chat(GLOB.clients,span_notice("You see The Black Sun rise in the east."))
+			to_chat(GLOB.clients,span_notice("你看见黑太阳在东边升起."))
 			nextstage = world.time + 2 MINUTES
 		if(2)
-			to_chat(GLOB.clients,span_danger("The Black Sun clears the horizon, filling you with it's warmth."))
+			to_chat(GLOB.clients,span_danger("黑太阳照亮地平线，让你感受到它的温暖."))
 			nextstage = world.time + 4 MINUTES
 		if(3)
-			to_chat(GLOB.clients,span_userdanger("The Black sun is halfway to it's zenith. Dread fills you. You must hurry."))
+			to_chat(GLOB.clients,span_userdanger("黑太阳快升至它的天顶了，恐惧涌上心头，你得快点了."))
 			nextstage = world.time + 4 MINUTES
 		if(4)
-			to_chat(GLOB.clients,span_danger("YOUR TIME IS LIMITED. THE SUN IS NEAR IT'S ZENITH."))
+			to_chat(GLOB.clients,span_danger("你的时间极为有限. 黑太阳几乎要升至天顶."))
 			SSweather.run_weather(/datum/weather/bloody_water)
 			for(var/mob/living/carbon/human/L in GLOB.player_list)
 				flash_color(L, flash_color = COLOR_RED, flash_time = 150)
@@ -81,7 +81,7 @@
 /mob/living/simple_animal/hostile/abnormality/black_sun/ZeroQliphoth()
 	datum_reference.qliphoth_change(3)
 
-	to_chat(GLOB.clients,"<span class='colossus'>THE BLACK SUN HAS RISEN.</span>")
+	to_chat(GLOB.clients,"<span class='colossus'>黑太阳已经升起.</span>")
 	//Also remove your stats
 	var/removestats = stage*10
 	for(var/mob/living/carbon/human/L in affected_players)
@@ -104,7 +104,7 @@
 	nextstage += time_addition
 	if(time_addition >=0 && stage!=4)
 		time_addition =- 5 SECONDS
-	to_chat(GLOB.clients, span_notice("The sun has stalled but a moment."))
+	to_chat(GLOB.clients, span_notice("太阳只悬停了一会."))
 	return TRUE
 
 /mob/living/simple_animal/hostile/abnormality/black_sun/WorkChance(mob/living/carbon/human/user, chance)
@@ -113,7 +113,7 @@
 	return chance + chance_modifier
 
 /mob/living/simple_animal/hostile/abnormality/black_sun/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
-	to_chat(GLOB.clients, span_warning("The Black Sun fades from the sky. You are safe for now."))
+	to_chat(GLOB.clients, span_warning("黑太阳从天空中消失. 你暂时安全了."))
 	var/removestats = stage*10
 	for(var/mob/living/carbon/human/L in affected_players)
 		L.adjust_attribute_buff(FORTITUDE_ATTRIBUTE, -removestats)
@@ -126,15 +126,15 @@
 	name = "bloodwater"
 	desc = "A visual water weather."
 
-	telegraph_message = "<span class='warning'>Something feels off.</span>"
+	telegraph_message = "<span class='warning'>感觉有些不对劲.</span>"
 	telegraph_duration = 150
 
-	weather_message = "<span class='danger'>The blood.... it sings to you</span>"
+	weather_message = "<span class='danger'>这些血....它在对你唱歌</span>"
 	weather_duration_lower = 1200
 	weather_duration_upper = 1200
 	weather_overlay = "bloodwater"
 
-	end_message = "<span class='danger'>The blood subsides.</span>"
+	end_message = "<span class='danger'>血液消退.</span>"
 	end_duration = 0
 
 	area_type = /area
@@ -147,8 +147,8 @@
 
 //Pillars. Do minor white damage, and fire projectiles
 /mob/living/simple_animal/hostile/aminion/sun_pillar
-	name = "pillar of the black sun"
-	desc = "A glowing pillar."
+	name = "黑太阳之柱"
+	desc = "发光支柱."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "sun_pillar"
 	icon_living = "sun_pillar"
@@ -205,7 +205,7 @@
 
 //Laser attack
 /obj/effect/temp_visual/blacksun_laser
-	name = "black sun laser"
+	name = "黑太阳射线"
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "pillar_strike"
 	duration = 15

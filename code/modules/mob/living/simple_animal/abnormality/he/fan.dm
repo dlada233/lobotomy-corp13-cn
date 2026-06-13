@@ -2,12 +2,12 @@
 //The works are always max but you can only do it 3 times per person.	-Kirie
 /mob/living/simple_animal/hostile/abnormality/fan
 	name = "F.A.N."
-	desc = "It appears to be an office fan."
+	desc = "它似乎是个办公室电风扇."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "fan"
 	portrait = "fan"
-	maxHealth = 100
-	health = 100
+	maxHealth = 300
+	health = 300
 	speak_emote = list("states")
 	speech_span = SPAN_ROBOT
 	threat_level = HE_LEVEL
@@ -32,13 +32,13 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 	can_spawn = FALSE // Does Nothing.
 
-	observation_prompt = "It's an ordinary office fan, made of metal. <br>It's turned off for now and you're feeling warm. <br>\
-		Turn it on?"
+	observation_prompt = "这是个普通的金属办公室风扇。<br>目前处于关闭状态，你感到闷热。<br>\
+		要打开吗？"
 	observation_choices = list(
-		"Set it to 3" = list(TRUE, "You set it to its highest setting. <br>The breeze feels pleasant, a nap would be nice..."),
-		"Leave it off" = list(FALSE, "It's just an old urban legend, but, they say fans like this one can kill people if you slept with them on..."),
-		"Set it to 1" = list(FALSE, "It's not enough, you're still too hot!"),
-		"Set it to 2" = list(FALSE, "You can barely feel a breeze, you just need a little more..."),
+		"调到3档" = list(TRUE, "你设置为最高档位。<br>微风舒适宜人，适合小憩..."),
+		"保持关闭" = list(FALSE, "虽只是古老都市传说，但据说这种风扇在睡眠时开启会致命..."),
+		"调到1档" = list(FALSE, "风力不足，还是太热！"),
+		"调到2档" = list(FALSE, "几乎感觉不到风，只差一点..."),
 	)
 
 	var/list/safe = list()
@@ -57,7 +57,7 @@
 /mob/living/simple_animal/hostile/abnormality/fan/examine(mob/user)
 	. = ..()
 	if(turned_off)
-		. += span_notice("It looks like it's turned off.")
+		. += span_notice("看起来好像关机了.")
 
 //Work Mechanics
 /mob/living/simple_animal/hostile/abnormality/fan/WorkChance(mob/living/carbon/human/user, chance)
@@ -71,7 +71,7 @@
 /mob/living/simple_animal/hostile/abnormality/fan/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(user in danger)
 		if(safework)
-			to_chat(user, span_notice("You don't feel quite as tempted this time."))
+			to_chat(user, span_notice("这次你不会觉得很受诱惑."))
 			safework = FALSE
 			return
 		to_chat(user, span_danger("Oh."))
@@ -82,20 +82,20 @@
 
 	else if(user in warning)
 		danger+=user
-		to_chat(user, span_nicegreen("You feel elated."))
+		to_chat(user, span_nicegreen("你感到欣喜若狂."))
 
 	else if(user in safe)
 		warning+=user
-		to_chat(user, span_nicegreen("You feel refreshed."))
+		to_chat(user, span_nicegreen("你感到神清气爽."))
 
 	else
 		safe+=user
-		to_chat(user, span_nicegreen("You could use some more."))
+		to_chat(user, span_nicegreen("你还想多享受会儿."))
 
 //Meltdown
 /mob/living/simple_animal/hostile/abnormality/fan/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(turned_off)
-		to_chat(user, span_nicegreen("You hit the on switch. Aaah, that feels nice."))
+		to_chat(user, span_nicegreen("你按下启动开关。啊，感觉真舒服."))
 		TurnOn()
 		return FALSE
 	if(datum_reference.console.meltdown)
@@ -104,7 +104,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/fan/funpet(mob/petter)
 	if(turned_off)
-		to_chat(petter, span_nicegreen("You hit the on switch. Aaah, that feels nice."))
+		to_chat(petter, span_nicegreen("你按下启动开关。啊，感觉真舒服."))
 		TurnOn()
 
 //Breach
@@ -169,14 +169,14 @@
 	consumed_on_threshold = FALSE
 
 /atom/movable/screen/alert/status_effect/fanhot
-	name = "Hot"
-	desc = "Someone turn on the AC!"
+	name = "热"
+	desc = "谁去把空调打开!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "hot"
 
 /datum/status_effect/stacking/fanhot/on_apply()
 	. = ..()
-	to_chat(owner, span_warning("You're starting to sweat."))
+	to_chat(owner, span_warning("你开始出汗了."))
 	if(owner.client)
 		owner.add_client_colour(/datum/client_colour/glass_colour/orange)
 
@@ -193,7 +193,7 @@
 	. = ..()
 	if(!ishuman(owner))
 		return
-	to_chat(owner, span_nicegreen("Someone turned on the AC! Rejoice!"))
+	to_chat(owner, span_nicegreen("有人把空调打开了! 好耶!"))
 	if(owner.client)
 		owner.remove_client_colour(/datum/client_colour/glass_colour/orange)
 
@@ -201,6 +201,6 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_warning("IT'S TOO HOT!"))
+	to_chat(status_holder, span_warning("太热了!"))
 	owner.apply_lc_burn(10)
 	stacks -= 10

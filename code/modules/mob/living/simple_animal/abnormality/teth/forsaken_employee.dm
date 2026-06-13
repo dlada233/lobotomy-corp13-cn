@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/forsaken_employee
-	name = "Forsaken Employee"
-	desc = "A person who seems to be wearing an L Corp Uniform covered in chains. A box resembling Enkephalin is stuck on their head."
+	name = "被遗弃的员工"
+	desc = "一个人似乎穿着L公司的制服，戴着锁链，头上戴着一个盒子，里面装着脑啡肽."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "forsaken_employee"
 	portrait = "forsaken_employee"
@@ -39,19 +39,19 @@
 	var/splash_cooldown_time = 2 SECONDS
 
 	//Observation is mostly mirror dungeon but with some changed phrasing
-	observation_prompt = "The sound of plastic crashing is accompanied by the sloshing of a liquid. <br>\
-		It looks like something that used to be a fellow employee. <br>\
-		Its identity is evidenced by the now-worn formal outfit and the employee card. <br>\
-		The card is almost too battered and contaminated to recognize. <br>\
-		Wearing a box filled with Enkephalin on their head, the employee rams it into what looks like the door to a containment unit. <br>\
-		A rubber O-ring is worn around their neck. Could it be there to prevent Enkephalin from spilling?"
+	observation_prompt = "塑料撞击声混杂着液体晃荡声。<br>\
+		那东西似乎是曾经的员工。<br>\
+		磨损的制服和员工证证实了其身份。<br>\
+		证件已严重污损难以辨认。<br>\
+		头顶脑啡肽盒的员工正猛撞收容单元的门。<br>\
+		颈部的橡胶O型环是否用于防止脑啡肽泄漏？"
 	observation_choices = list(
-		"Cut the ring" = list(TRUE, "The blade kept bouncing off the slippery O-ring... <br>\
-			\"Brgrrgh...\ <br>\
-			And the submerged thing pushed you away and ran off. Did it prefer to stay like that? <br>\
-			All it left was a small employee card."),
-		"Don't cut the ring" = list(FALSE, "Tang- Tang- Tang- The ramming at the door and the sloshing continue. <br>\
-			I keep watching and listening. A more attentive hearing reveals that the sounds have a rhythm. Perhaps there is delight to be found in it."),
+		"切断颈环" = list(TRUE, "刀刃不断从滑溜的O型环上弹开...<br>\
+			\"呃呃呃...\"<br>\
+			液体中的生物推开你逃走了。它更愿保持现状吗？<br>\
+			仅留下一张小小的员工证。"),
+		"不要切断颈环" = list(FALSE, "哐-哐-哐-撞门声与晃荡声持续不断。<br>\
+			你持续观察倾听。仔细分辨发现声响带有节奏，或许其中自有乐趣。"),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/forsaken_employee/FailureEffect(mob/living/carbon/human/user, work_type, pe, work_time, canceled)
@@ -86,7 +86,7 @@
 	gibamounts = list(5)
 
 /obj/effect/decal/cleanable/wrath_acid/enkephalin
-	name = "Enkephalin"
+	name = "脑啡肽"
 	desc = "There are some harsh fumes coming off of it."
 	icon_state = "acid_greyscale"
 	random_icon_states = list("acid_greyscale")

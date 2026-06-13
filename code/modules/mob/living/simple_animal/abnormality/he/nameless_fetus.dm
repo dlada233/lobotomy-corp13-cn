@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/fetus
-	name = "Nameless Fetus"
-	desc = "A giant, pus-filled baby."
+	name = "无名怪婴"
+	desc = "一个巨大的，充满脓液的婴儿."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "fetus"
 	portrait = "nameless_fetus"
@@ -37,15 +37,15 @@
 	gift_type =  /datum/ego_gifts/syrinx
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "The baby never cries. <br>It kept that way forever. <br>\
-		As a lack of words doesn't necessarily mean a lack of emotions, a lack of crying doesn't mean lack of desire. <br>\
-		Since time unknown, the baby has had a mouth. <br>The baby who does not understand cries, expresses hunger, and causes pain for the others. <br>You..."
+	observation_prompt = "婴儿从不哭泣。<br>它永远如此。<br>\
+		无言未必无感，无泪亦非无欲。<br>\
+		自不可知之时起，婴儿便生有一张嘴。<br>这个不理解哭泣的婴儿，表达着饥饿，给他人带来痛苦。<br>你..."
 	observation_choices = list(
-		"Call its name" = list(TRUE, "No one else knows the name of the fetus. <br>\
-			But you know. <br>You called its name. <br>\
-			The unstoppable desire shut its mouth for a while. <br>Even only for a short time, the desire silenced."),
-		"Didn't call its name" = list(FALSE, "The fetus is still crying. <br>\
-			You plugged your ears silently. <br>No sound is heard."),
+		"呼唤其名" = list(TRUE, "无人知晓那胎儿的名字。<br>\
+			但你知道。<br>你唤出了它的名字。<br>\
+			无法遏制的欲望暂时闭上了嘴。<br>即便只有片刻，欲望沉寂了。"),
+		"未呼唤其名" = list(FALSE, "胎儿仍在哭泣。<br>\
+			你默默捂住耳朵。<br>听不见任何声音。"),
 	)
 
 	var/mob/living/carbon/human/calling = null
@@ -108,7 +108,7 @@
 			if(ishuman(L))
 				satisfied = TRUE
 				for(var/mob/living/carbon/human/H in GLOB.player_list)
-					to_chat(H, span_userdanger("The creature is satisfied."))
+					to_chat(H, span_userdanger("生物满足了."))
 		bite_cooldown = world.time + bite_cooldown_time
 
 /mob/living/simple_animal/hostile/abnormality/fetus/Destroy()
@@ -126,7 +126,7 @@
 		satisfied = FALSE
 		hunger = 0
 		datum_reference.qliphoth_change(1)
-		visible_message(span_userdanger("The fetus starts to wimper, but only for a moment..."))
+		visible_message(span_userdanger("怪婴开始抽动，但只是短暂的一瞬间..."))
 	else
 		criesleft = 5
 		for(var/mob/living/carbon/human/H in GLOB.player_list)	//Way harder to get a list of living humans.
@@ -141,18 +141,18 @@
 		hunger--
 		if(hunger <= 0)
 			satisfied = FALSE
-			visible_message(span_userdanger("The fetus is starting to look famished!"))
+			visible_message(span_userdanger("怪婴看起来有些饥饿!"))
 
 /mob/living/simple_animal/hostile/abnormality/fetus/user_buckle_mob(mob/living/M, mob/user, check_loc)
 	if(crying || user == src || !ishuman(M) || (GODMODE in M.status_flags) || M.stat != DEAD)
-		to_chat(user, span_warning("[src] rejects your offering!"))
+		to_chat(user, span_warning("[src]拒绝了你的提供!"))
 		return FALSE
 	. = ..()
-	to_chat(user, span_userdanger("The fetus opens its maw and..."))
+	to_chat(user, span_userdanger("怪婴张开了嘴..."))
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	if(M in view(1,src))
 		M.gib()
-		to_chat(user, span_nicegreen("[src] is satisfied by your offering!"))
+		to_chat(user, span_nicegreen("[src]很满意你的提供!"))
 		satisfied = TRUE
 		hunger += 4
 		playsound(get_turf(src),'sound/effects/limbus_death.ogg', 50, 1)
@@ -182,9 +182,9 @@
 			satisfied = TRUE
 	if(satisfied)
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			to_chat(H, span_userdanger("The creature is satisfied."))
+			to_chat(H, span_userdanger("生物满足了."))
 
-		notify_ghosts("The nameless fetus is satisfied.", source = src, action = NOTIFY_ORBIT, header="Something Interesting!") // bless this mess
+		notify_ghosts("无名怪婴满足了.", source = src, action = NOTIFY_ORBIT, header="有趣的事情!") // bless this mess
 		datum_reference.qliphoth_change(1)
 		return
 
@@ -199,7 +199,7 @@
 		return
 	if(criesleft<=0)
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			to_chat(H, span_warning("The crying stops. Finally, silence."))
+			to_chat(H, span_warning("哭声停止了。终于，安静了."))
 			datum_reference.qliphoth_change(1)
 		return
 
@@ -216,9 +216,9 @@
 
 		//and make a global announce
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			to_chat(H, span_userdanger("The fetus calls out for [calling.real_name]."))
+			to_chat(H, span_userdanger("怪婴呼唤着 [calling.real_name]."))
 
-		notify_ghosts("The fetus calls out for [calling.real_name].", source = src, action = NOTIFY_ORBIT, header="Something Interesting!") // bless this mess
+		notify_ghosts("怪婴呼唤着 [calling.real_name].", source = src, action = NOTIFY_ORBIT, header="有趣的事情!") // bless this mess
 	Cry()
 	addtimer(CALLBACK(src, PROC_REF(check_players)), 10 SECONDS)
 
@@ -248,7 +248,7 @@
 				continue
 			if(!(L in hearers))
 				hearers += L
-				to_chat(L, span_warning("The crying hurts your head..."))
+				to_chat(L, span_warning("哭声让你的头感到疼痛..."))
 			L.deal_damage(pick(1,1.5), WHITE_DAMAGE)
 		SLEEP_CHECK_DEATH(4)
 	SLEEP_CHECK_DEATH(3)

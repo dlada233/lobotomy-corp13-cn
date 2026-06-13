@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/red_buddy
-	name = "Reddened Buddy"
-	desc = "A small whimpering dog like creature."
+	name = "染红的巴迪"
+	desc = "像狗一样呜咽的小动物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "redbuddy"
 	icon_living = "redbuddy"
@@ -9,8 +9,8 @@
 	del_on_death = FALSE
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 400 //Tanky but hurts itself every now and then to make up for it
-	health = 400
+	maxHealth = 740 //Tanky but hurts itself every now and then to make up for it
+	health = 740
 	move_to_delay = 5
 	stop_automated_movement_when_pulled = TRUE
 	rapid_melee = 1
@@ -51,18 +51,19 @@
 		/mob/living/simple_animal/hostile/abnormality/blue_shepherd = 5,
 	)
 
-	observation_prompt = "You enter the containment unit and see a cartoonish-looking dog collapsed in the centre, shivering from pain and inflicted with terribly deep, red wounds. <br>\
-		\"My master wants a wolf...\" <br>It says breathlessly. <br>\"I'm waiting for my master, waiting, waiting... <br>I'm waiting for them...\""
+	observation_prompt = "步入收容单元，你看见卡通形象的狗瘫在中央，<br>\
+		因痛苦颤抖着，身上布满深可见骨的红色伤口。<br>\
+		\"主人想要一匹狼...\"<br>它气息微弱地说。<br>\"我在等主人，等着，等着...<br>我在等他们...\""
 	observation_choices = list(
-		"Hug and console it" = list(TRUE, "You hold the wounded animal in your arms as it continues to shake. <br>\
-			\"I shook my split tail hard until flesh fell off it, I lied flat on the floor and begged... <br>My heart for my Master...\" <br>\
-			Finally it stops shivering and wounds stopped appearing on its body. <br>\"Left only red scars...\""),
-		"Beat it within an inch of it's life" = list(FALSE, "You pull out your baton and hit the animal over and over again, kicking, spitting and cursing at it but it never reacts to any of your abuse beyond hastening its transformation. <br>\
-			The skinless dog now stands above you, neither wolf nor dog. <br>\"You can't stop a wolf with a touch gentler than my master's. <br>I'm a wolf, vile and vicious, belonging to my master.\" <br>\
-			The faux-wolf eats you in one bite."),
+		"拥抱并安抚" = list(TRUE, "你将颤抖的伤兽拥入怀中。<br>\
+			\"我拼命摇晃分叉的尾巴直到皮肉脱落，匍匐在地哀求...<br>这颗心永远属于主人...\"<br>\
+			颤抖终于停止，伤口不再新增。<br>\"只剩下红色的疤痕...\""),
+		"殴打至濒死" = list(FALSE, "你抽出警棍反复击打，踢踹唾骂，虐待只加速了它的异变。<br>\
+			无皮的犬形生物伫立面前，非狼非狗。<br>\"你阻止不了狼，你的触碰比主人温柔太多。<br>我是匹恶狼，凶残卑劣，只属主人所有。\"<br>\
+			伪狼将你一口吞下。"),
 	)
 
-	///The blue smocked shepherd linked to red buddy
+	///The 蓝袍牧羊人 linked to red buddy
 	var/datum/abnormality/master
 	//the living shepherd it is currently fighting with
 	var/mob/living/simple_animal/hostile/abnormality/blue_shepherd/awakened_master
@@ -89,7 +90,7 @@
 		faction |= "hostile"
 	if(LAZYLEN(SSlobotomy_corp.all_abnormality_datums))
 		for(var/datum/abnormality/A in SSlobotomy_corp.all_abnormality_datums)
-			if(A.name == "Blue Smocked Shepherd")
+			if(A.name == "蓝袍牧羊人")
 				master = A
 				return
 	if(!master)
@@ -97,7 +98,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/red_buddy/proc/OnAbnoSpawn(datum/source, datum/abnormality/abno)
 	SIGNAL_HANDLER
-	if(abno.name == "Blue Smocked Shepherd")
+	if(abno.name == "蓝袍牧羊人")
 		master = abno
 		UnregisterSignal(SSdcs, COMSIG_GLOB_ABNORMALITY_SPAWN)
 
@@ -258,7 +259,7 @@
 		awakened_master.melee_damage_upper = initial(awakened_master.melee_damage_upper)
 		awakened_master.slash_damage = initial(awakened_master.slash_damage)
 		awakened_master.ChangeMoveToDelayBy(-0.8) //we severely nerf shepherd's damage but make him way faster on buddy's death, it's last one tango.
-		awakened_master.say("A wolf. A wolf. Why won't you believe me? It's right there. IT WAS RIGHT THERE!")
+		awakened_master.say("一只狼，一只狼，你为什么不相信我？就在那儿！就在那里!")
 	awakened_master = null
 	density = FALSE
 	animate(src, alpha = 0, time = 10 SECONDS)

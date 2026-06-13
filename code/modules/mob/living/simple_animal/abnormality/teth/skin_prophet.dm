@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/skin_prophet
-	name = "Skin Prophet"
-	desc = "A little fleshy being reading a tiny book."
+	name = "人皮预言者"
+	desc = "一个小肉人在读一本书."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "skin_prophet"
 	icon_dead = "prophet_egg"
@@ -46,22 +46,22 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 	chem_type = /datum/reagent/abnormality/sin/wrath
 
-	observation_prompt = "Candles quietly burn away. <br>\
-		Scribbling sounds are all that fill the air. <br>\
-		A trio of eyes takes turns glaring into a grand tome, bound in skin. <br>\
-		You can’t tell what it’s referencing, <br>\
-		or if there is any deliberation in its writing; <br>\
-		hands are busy nonetheless. <br>\
-		Yearning for destruction and doom, it writes and writes and writes. <br>\
-		You feel the passages it’s writing may be prophecies for someplace and sometime."
+	observation_prompt = "蜡烛静静燃烧。<br>\
+		空气中只有书写声在回荡。<br>\
+		三只眼睛轮流凝视着一本用皮肤装订的巨册。<br>\
+		你无法分辨它在参考什么，<br>\
+		也无法判断它的书写是否有任何考量；<br>\
+		但它的双手始终忙碌不停。<br>\
+		它渴望着毁灭与末日，不停地写啊写。<br>\
+		你感觉它写下的段落可能是对某时某地的预言。"
 	observation_choices = list(
-		"Snuff out the candles" = list(TRUE, "You hushed the candles, one by one. <br>\
-			The space grew darker, but its hands won’t stop. <br>\
-			The only light left was on the quill it held. <br>\
-			Even that was snuffed by our breaths. <br>\
-			Then, the whole place went dark. <br>\
-			All that’s left is the pen in its hand."),
-		"Peek at the book" = list(FALSE, "!@)(!@&)&*%(%@!@#*(#)*(%&!@#$ <br>\
+		"熄灭蜡烛" = list(TRUE, "你逐一熄灭了蜡烛。<br>\
+			空间渐暗，但它的双手仍未停止。<br>\
+			「羽毛笔」是唯一残留的光源。<br>\
+			连这微光也被我们的呼吸所熄灭。<br>\
+			随后，整个空间陷入黑暗。<br>\
+			唯剩它手中的笔。"),
+		"偷看书本" = list(FALSE, "!@)(!@&)&*%(%@!@#*(#)*(%&!@#$ <br>\
 			@$*@)$ ? <br> @#$!!@#* ! <br> @*()!%&$(^!!!!@&(@)"),
 	)
 

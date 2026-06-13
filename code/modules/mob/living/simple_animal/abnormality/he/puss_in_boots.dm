@@ -1,16 +1,16 @@
 //The real clerk lives matter abnormality -Coxswain
 #define STATUS_EFFECT_CHOSEN /datum/status_effect/chosen
 /mob/living/simple_animal/hostile/abnormality/puss_in_boots
-	name = "Puss in Boots"
-	desc = "A scraggly looking black cat, it seems like the boots are missing."
+	name = "靴子里的猫"
+	desc = "一只看起来蓬头垢面的黑猫，靴子好像不见了."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "cat_contained"
 	var/icon_aggro = "cat_breached"
 	var/icon_friendly = "cat_breached_friendly"
 	icon_dead = "cat_breached"  //defeated icon? Maybe someday.
 	portrait = "puss_in_boots"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	threat_level = HE_LEVEL
 	faction = list("neutral")
 	del_on_death = FALSE
@@ -44,12 +44,12 @@
 	gift_type =  /datum/ego_gifts/inheritance
 	abnormality_origin = "Artbook"
 
-	observation_prompt = "The miller, my old master, when he passed he left his mill, his donkey and myself to his three sons. <br>\
-		I was left to the youngest and the elders denied him any right to the mill. <br>I felt for the poor lad and so, I turned the young master into a Prince, <br>\
-		and one day a King. <br>I can do the same for you - Are you ready to claim your inheritance?"
+	observation_prompt = "老磨坊主临终时将磨坊、驴和我分给三个儿子。<br>\
+		我被分给幼子，而兄长们剥夺了他对磨坊的继承权。<br>我怜悯那可怜的孩子，<br>\
+		于是将少主变成王子，终有一日成为国王。<br>我也能为你做到——准备好继承属于你的王国了吗？"
 	observation_choices = list(
-		"Yes" = list(TRUE, "Excellent, by my paw you shall make a fine master, envy of all your peers!"),
-		"No" = list(FALSE, "Bah! When will someone worthy arrive?"),
+		"是" = list(TRUE, "妙极，凭我的爪子保证，你将成为令所有同僚艳羡的杰出主人！"),
+		"否" = list(FALSE, "啧！何时才会有配得上的人出现？"),
 	)
 
 	//Work/misc Vars
@@ -74,13 +74,13 @@
 	attack_action_types = list(/datum/action/innate/abnormality_attack/toggle/puss_finisher_toggle)
 
 /datum/action/innate/abnormality_attack/toggle/puss_finisher_toggle
-	name = "Toggle Finisher"
+	name = "切换终结技"
 	button_icon_state = "puss_toggle0"
 	chosen_attack_num = 2
-	chosen_message = span_colossus("You will now perform a powerful finisher move.")
+	chosen_message = span_colossus("现在将发动强力终结攻击。")
 	button_icon_toggle_activated = "puss_toggle1"
 	toggle_attack_num = 1
-	toggle_message = span_colossus("You will not perform a finisher anymore.")
+	toggle_message = span_colossus("不再发动终结技。")
 	button_icon_toggle_deactivated = "puss_toggle0"
 
 //Init stuff
@@ -102,13 +102,13 @@
 		return
 	if(user.stat != DEAD && !blessed_human && istype(user))
 		if(get_user_level(user) >= 2)
-			say("I cannot teach you anything, human.")
+			say("我没什么可教你的，人类.")
 			return
 		blessed_human = user
 		Blessing(user)
 		playsound(get_turf(user), 'sound/abnormalities/pussinboots/gatoblessing.ogg', 50, 0, 2)
 		friendly = TRUE
-		say("At last, someone worthy!")
+		say("终于等到配得上的人了!")
 
 /mob/living/simple_animal/hostile/abnormality/puss_in_boots/proc/Blessing(mob/living/carbon/human/user)
 	var/datum/status_effect/chosen/status_holder = blessed_human.has_status_effect(/datum/status_effect/chosen)
@@ -188,8 +188,8 @@
 	desc = "He's got a sword!"
 	if(friendly)
 		fear_level = ZAYIN_LEVEL
-		maxHealth = 300
-		health = 300 //He's pretty tough at max HP
+		maxHealth = 600
+		health = 600 //He's pretty tough at max HP
 		breach_index = MOB_ABNO_PASSIVE_INDEX
 		GoToFriend()
 		density = FALSE
@@ -202,7 +202,7 @@
 	if(!density) //sanity check for if he was friendly breaching and is no longer friendly
 		density = TRUE
 		fear_level = HE_LEVEL
-		src.visible_message(span_warning("[src] is looking around, eyes wild with rage!"))
+		src.visible_message(span_warning("[src]环顾四周，眼睛里充满了愤怒!"))
 		HostileMode(TRUE)
 		breach_affected = list()
 		FearEffect()
@@ -229,9 +229,9 @@
 		playsound(src, 'sound/weapons/fwoosh.ogg', 250, FALSE, 4)
 		forceMove(T)
 		if(friendly)
-			src.visible_message(span_nicegreen("[src] looks ready to help [blessed_human]!"))
+			src.visible_message(span_nicegreen("[src]似乎准备好帮助[blessed_human]了!"))
 		else
-			src.visible_message(span_warning("[src] looks angrily at [blessed_human]!"))
+			src.visible_message(span_warning("[src]愤怒地看着[blessed_human]!"))
 		LoseTarget()
 		for(var/mob/living/enemy in oview(src, vision_range))
 			if(enemy == blessed_human)
@@ -290,7 +290,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/puss_in_boots/proc/Finisher(mob/living/target) //This is super easy to avoid
 	target.apply_damage(50, PALE_DAMAGE, null, target.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE) //50% of your health in red damage
-	to_chat(target, span_danger("[src] is trying to cut you in half!"))
+	to_chat(target, span_danger("[src]想把你切成两半!"))
 	if(!ishuman(target))
 		target.deal_damage(50, PALE_DAMAGE)
 		return

@@ -2,15 +2,15 @@
 #define STATUS_EFFECT_BLINDED /datum/status_effect/blinded
 //CREDIT TO REDACTED FOR HELPING ME WITH THIS UNHOLY CODE
 /mob/living/simple_animal/hostile/abnormality/fire_bird
-	name = "The Firebird"
-	desc = "A large bird covered in ashes, pray its feathers do not re-ignite."
+	name = "炎雀"
+	desc = "一只满身灰烬的大鸟，祈祷它的羽毛不要重新点燃."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "burntbird"
 	icon_living = "firebird_active"
 	portrait = "fire_bird"
 	threat_level = WAW_LEVEL
-	maxHealth = 700
-	health = 700
+	maxHealth = 1500
+	health = 1500
 	max_boxes = 24
 	pixel_x = -32
 	base_pixel_x = -32
@@ -41,19 +41,19 @@
 	friendly_verb_continuous = "grazes"
 	friendly_verb_simple = "grazes"
 
-	observation_prompt = "You can only hunt it wearing a thick blindfold, but even through the fabric you can track it by the light that manages to seep through and by the heat it radiates. <br>\
-		In your hands you carry a bow nocked with an arrow, it's your last one. <br>\
-		You've been pursuing your prey for days, you..."
+	observation_prompt = "你只能蒙着厚眼罩追猎它，但透过织物仍能追踪渗入的光线与它散发的热量。<br>\
+		手中弓箭搭着最后一支箭。<br>\
+		你已追捕猎物多日..."
 	observation_choices = list(
-		"Do nothing" = list(TRUE, "You watch and wait as the light and heat pass until only cold and darkness reign in the forest. <br>\
-			Feeling safe, you remove your blindfold and find on the ground one of its radiant feathers. <br>\
-			Bravo brave hunter, have you found what you were seeking?"),
-		"Take off your blindfold" = list(TRUE, "Your curiosity gets the better of you. <br>\
-			The sight of a mythological bird that no one has seen before is a prize no hunter has claimed. <br>\
-			Steeling yourself, you remove the blindfold and immediately your vision is seared by the intensity of the light but you will yourself through the pain to catch a glimpse of what has long evaded every hunter's sight. <br>\
-			The bird offers a tear for your efforts. <br>\
-			Though your eyes may never recover, you have done what no hunter has dared to accomplish - captured it in your sight."),
-		"Fire an arrow" = list(FALSE, "You fire an arrow at what you percieve to be the source of the light and miss entirely. <br>You return empty-handed like so many hunters before you."),
+		"静观其变" = list(TRUE, "你静候光芒与热量消逝，直至森林被寒冷黑暗笼罩。<br>\
+			确信安全后扯下眼罩，发现地上有根发光羽毛。<br>\
+			勇敢的猎人啊，你找到所求之物了吗？"),
+		"扯下眼罩" = list(TRUE, "好奇心压倒理智。<br>\
+			亲眼目睹无人见过的神话之鸟，将是前无古人的成就。<br>\
+			你咬牙扯下眼罩，强光瞬间灼伤视线，却忍着剧痛瞥见世代猎人未能目睹的存在。<br>\
+			飞鸟为你的执着落泪。<br>\
+			纵使双目永损，你达成了前无古人的成就。"),
+		"射出箭矢" = list(FALSE, "你朝光源射箭却完全落空。<br>如无数前人般空手而归。"),
 	)
 
 	var/pulse_cooldown
@@ -63,7 +63,7 @@
 	var/dash_cooldown
 	var/dash_cooldown_time = 5 SECONDS
 	var/dash_max = 50
-	var/dash_damage = 50
+	var/dash_damage = 100
 	var/list/been_hit = list()
 
 //Initialize
@@ -114,7 +114,7 @@
 /mob/living/simple_animal/hostile/abnormality/fire_bird/WorkComplete(mob/living/carbon/human/user, work_type, pe, work_time)
 	. = ..()
 	if(datum_reference?.qliphoth_meter == 1 || user.health <= (user.maxHealth * 0.2))
-		to_chat(user, span_nicegreen("The Fire Bird heals your wounds!"))
+		to_chat(user, span_nicegreen("火鸟会治愈你的伤口!"))
 		user.health = user.maxHealth
 		if(ishuman(user))
 			user.apply_status_effect(STATUS_EFFECT_BLAZING)
@@ -202,7 +202,7 @@
 		for(var/mob/living/carbon/human/L in TF)
 			if(L in been_hit)
 				continue
-			visible_message(span_boldwarning("[src] blazes through [L]!"))
+			visible_message(span_boldwarning("[src]掠过[L]!"))
 			L.deal_damage(dash_damage, WHITE_DAMAGE)
 			L.deal_damage(dash_damage * 0.1, FIRE)
 			new /obj/effect/temp_visual/cleave(get_turf(L))
@@ -231,8 +231,8 @@
 
 //Containment object
 /obj/structure/firetree
-	name = "Fire Bird's tree"
-	desc = "A burnt tree that is the Fire Bird's favored perching spot. There should probably be a bird here." //uhoh
+	name = "炎雀的树"
+	desc = "一棵烧焦的树，是火鸟最喜欢栖息的地方，这里应该有只鸟." //uhoh
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "burnttree"
 	anchored = TRUE
@@ -252,8 +252,8 @@
 	tick_interval = 5 SECONDS
 
 /atom/movable/screen/alert/status_effect/FireRegen
-	name = "Blazing"
-	desc = "The Firebird's flames are healing your wounds"
+	name = "燃烧"
+	desc = "它的火焰正在治愈你的伤口"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "rest"
 
@@ -275,8 +275,8 @@
 	var/cantsee = list()
 
 /atom/movable/screen/alert/status_effect/OwMyEyes
-	name = "Burnt Eyes"
-	desc = "The Firebird has burnt your eyes and made it harder to work!"
+	name = "燃烧之眼"
+	desc = "你的眼睛被烫伤了，工作起来更困难了!"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "burnt_eyes"
 
@@ -288,7 +288,7 @@
 	cantsee += status_holder
 	cantsee[status_holder] = get_attribute_level(status_holder, TEMPERANCE_ATTRIBUTE)/2
 	status_holder.adjust_attribute_bonus(TEMPERANCE_ATTRIBUTE, -cantsee[status_holder])
-	to_chat(status_holder, span_userdanger("The light of the bird burns your eyes!"))
+	to_chat(status_holder, span_userdanger("鸟儿的光芒灼伤了你的眼睛!"))
 	RegisterSignal(status_holder, COMSIG_WORK_COMPLETED, PROC_REF(BlindedWork))
 
 /datum/status_effect/blinded/on_remove()
@@ -298,7 +298,7 @@
 	var/mob/living/carbon/human/status_holder = owner
 	status_holder.adjust_attribute_bonus(TEMPERANCE_ATTRIBUTE, cantsee[status_holder])
 	cantsee -= status_holder
-	to_chat(status_holder, span_nicegreen("The blinding light fades..."))
+	to_chat(status_holder, span_nicegreen("眩目的光芒渐渐褪去..."))
 	UnregisterSignal(status_holder, COMSIG_WORK_COMPLETED, PROC_REF(BlindedWork))
 
 /datum/status_effect/blinded/proc/BlindedWork(datum/source, datum/abnormality/datum_sent, mob/living/carbon/human/user)

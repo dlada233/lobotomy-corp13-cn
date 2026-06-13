@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/road_home
-	name = "The Road Home"
-	desc = "An abnormality ressembling a small girl."
+	name = "回家的路"
+	desc = "像小女孩的异想体."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "road_home"
 	icon_living = "road_home"
 	portrait = "road_home"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 	move_resist = MOVE_FORCE_STRONG //So she can't be yeeted away and delayed indefinitely
 	move_to_delay = 13 //She needs to be slow so she doesn't reach home too fast
 	damage_coeff = list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 2, BLACK_DAMAGE = 2, PALE_DAMAGE = 2) //Endure red because catt mentions physical attacks can't hurt her at all.
@@ -45,10 +45,10 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5
 	)
 
-	observation_prompt = "Last of all, road that is lost. <br>I will send you home. <br>The wizard grants you..."
+	observation_prompt = "最后，这条路是错的. <br>我要送你回家. <br>于是巫师给予了你..."
 	observation_choices = list(
-		"The home cannot be reached" = list(TRUE, "What are you fighting for so fiercely when you have nowhere to go back to?"),
-		"The road home" = list(FALSE, "Wear this pair of shoes and be on your way. To the hometown you miss so much."),
+		"无法被抵达的家" = list(TRUE, "当你无处可去的时候，还在如此辛苦地奋斗什么?"),
+		"回家的路" = list(FALSE, "穿上这双鞋，走吧，回你思念的家."),
 	)
 
 	///Stuff related to the house and its path
@@ -113,7 +113,7 @@
 	for(var/obj/effect/golden_road/GR in user_turf.contents)
 		retaliation = 2
 	attacker.deal_damage(retaliation, BLACK_DAMAGE)
-	to_chat(attacker, span_userdanger("[src] counter attacks!"))
+	to_chat(attacker, span_userdanger("[src]承受攻击!"))
 	if(attacker.has_status_effect(/datum/status_effect/stay_home) || !ishuman(attacker) || stat == DEAD)
 		return
 	attacker.apply_status_effect(/datum/status_effect/stay_home)
@@ -300,8 +300,8 @@
 
 //The house that road home tries to go back to. It falls down like a purple noon and serves as a "goal" to the road home.
 /obj/road_house
-	name = "Home"
-	desc = "So let's go home! Together!"
+	name = "家"
+	desc = "让我们回家吧! 一起回家!"
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "House"
 	layer = ABOVE_MOB_LAYER
@@ -322,7 +322,7 @@
 	if(fall_speed > 0.5 SECONDS) //it falls very slowly at first but it can get very fast if you let her reach home too many times.
 		fall_speed -= 0.5 SECONDS //home falls faster and faster
 
-	visible_message(span_danger("[src] falls down on the ground!"))
+	visible_message(span_danger("[src]倒在地上!"))
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(get_turf(src), src)
 	animate(D, alpha = 0, transform = matrix()*2, time = 3)
 	var/turf/orgin = get_turf(src)
@@ -355,7 +355,7 @@
 
 //Not an actual floor, but an effect you put on top of it. The gold road is periodically being created by the road home.
 /obj/effect/golden_road
-	name = "Golden Road"
+	name = "金色道路"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "gold" //note : find a proper brick road sprite later
 	alpha = 0
@@ -374,9 +374,9 @@
 
 /datum/ai_behavior/say_line/insanity_road_home
 	lines = list(
-		"The sound of back home... If I can just go back...",
-		"Let us all gather, let us all dance around...",
-		"Let's go on an adventure!",
+		"回家的声音... 如果我能回去...",
+		"让我们聚在一起, 让我们一起跳舞...",
+		"让我们去冒险吧!",
 	)
 
 /datum/ai_controller/insane/road_home/PossessPawn(atom/new_pawn)
@@ -402,8 +402,8 @@
 	var/stepped_on_road = FALSE
 
 /atom/movable/screen/alert/status_effect/stay_home
-	name = "stay home"
-	desc = "Everyone must go home eventually, you are no different."
+	name = "待在家里"
+	desc = "每个人最终都要回家，你也不例外."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "home"
 

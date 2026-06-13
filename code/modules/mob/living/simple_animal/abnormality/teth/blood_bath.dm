@@ -1,11 +1,11 @@
 /mob/living/simple_animal/hostile/abnormality/bloodbath
-	name = "Bloodbath"
-	desc = "A constantly dripping bath of blood"
+	name = "血浴缸"
+	desc = "不断滴血的浴池"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "bloodbath"
 	portrait = "blood_bath"
-	maxHealth = 200
-	health = 200
+	maxHealth = 260
+	health = 260
 	rapid_melee = 1
 	melee_queue_distance = 2
 	move_to_delay = 3
@@ -39,14 +39,14 @@
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "The Enkephalin cure affected not only mind, but also body. <br>\
-		The problem is, the supply of cure became tremendously huge to control when we realized the problem. <br>\
-		One of problems, one of them was numbing. <br>People believed they could live happy life. <br>\
-		People believed they could buy sadness and sell happiness with money. <br>When the first suicide happened, we should have known that these beliefs had been shattered. <br>\
-		Many hands float in the bath. <br>Hands that wanted to grab something but could not. <br>You......"
+	observation_prompt = "脑啡肽治疗剂不仅影响了心智，更侵蚀了肉体. <br>\
+		问题在于，当我们意识到危机时，治疗剂的供应量已失控到骇人听闻的程度. <br>\
+		众多后遗症中，最致命的是麻木. <br>人们深信自己能获得幸福. <br>\
+		人们迷信金钱可以购买悲伤，贩卖欢愉. <br>当第一例自杀发生时，我们早该明白这些信念已然粉碎. <br>\
+		无数手臂在浴池中沉浮. <br>那些渴望抓住什么却徒劳无功的手. <br>你......"
 	observation_choices = list(
-		"Grabbed a hand" = list(TRUE, "I feel coldness and stiffness. <br>I know these hands. <br>These are the hands of people I once loved."),
-		"Did not grab a hand" = list(FALSE, "You looked away. <br>This is not the first time you ignore them. <br>It will be the same afterwards."),
+		"抓住一只手" = list(TRUE, "冰冷与僵硬渗入骨髓. <br>我认得这些手. <br>它们属于我曾爱过的人们."),
+		"没有伸手" = list(FALSE, "你移开视线. <br>这不是你第一次漠视它们. <br>往后也将如此循环."),
 	)
 
 	var/hands = 0
@@ -68,7 +68,7 @@
 		if(QDELETED(user))
 			return
 		user.dust(TRUE,TRUE)
-		visible_message(span_warning("[src] drags [user] into itself!"))
+		visible_message(span_warning("[src]把[user]拽进自身!"))
 		playsound(get_turf(src),'sound/effects/wounds/blood2.ogg')
 		playsound(get_turf(src),'sound/effects/footstep/water1.ogg')
 		SLEEP_CHECK_DEATH(3 SECONDS)

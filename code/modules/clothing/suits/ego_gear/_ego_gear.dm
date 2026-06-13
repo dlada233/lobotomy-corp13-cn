@@ -84,7 +84,7 @@
 	var/mob/living/carbon/human/H = user
 	for(var/atr in attribute_requirements)
 		if(attribute_requirements[atr] > get_attribute_level(H, atr) + equip_bonus)
-			to_chat(H, "<span class='notice'>You cannot use [src]!</span>")
+			to_chat(H, "<span class='notice'>你无法使用 [src]!</span>")
 			return FALSE
 	if(!SpecialEgoCheck(H))
 		return FALSE
@@ -109,7 +109,7 @@
 /obj/item/clothing/suit/armor/ego_gear/Topic(href, href_list)
 	. = ..()
 	if(href_list["list_attributes"])
-		var/display_text = "<span class='warning'><b>It requires the following attributes:</b></span>"
+		var/display_text = "<span class='warning'><b>它需要以下属性:</b></span>"
 		for(var/atr in attribute_requirements)
 			if(attribute_requirements[atr] > 0)
 				display_text += "\n <span class='warning'>[atr]: [attribute_requirements[atr]].</span>"

@@ -1,8 +1,8 @@
 /mob/living/simple_animal/hostile/abnormality/oracle
-	name = "Oracle of No Future"
-	desc = "An ancient cryopod with the name 'Maria' etched into the side. \
-		You look inside expecting to see the body of the person named, \
-		but all you see is a gooey substance at the bottom."
+	name = "没有未来的神谕"
+	desc = "一只古老的冷冻尸体，侧面刻着“玛丽亚”的名字. \
+		你往里面看，希望看到那个人的尸体, \
+		但你看到的只是底部的粘稠物质."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "oracle"
 	icon_living = "oracle"
@@ -16,7 +16,7 @@
 		ABNORMALITY_WORK_INSIGHT = 70,
 		ABNORMALITY_WORK_ATTACHMENT = 40,
 		ABNORMALITY_WORK_REPRESSION = 80,
-		"Fall Asleep" = 100,
+		"入睡" = 100,
 	)
 	work_damage_upper = 2
 	work_damage_lower = 1
@@ -31,53 +31,53 @@
 	gift_type =  /datum/ego_gifts/oracle
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
-	observation_prompt = "In a vivid dream you see her, as she was. \
-		<br>She was told that it would feel like no time at all. \
-		<br>Silently sleeping she dreams of the future, a future she was promised. \
-		<br>Before your eyes untold time passes until one day."
+	observation_prompt = "在鲜活的梦境中，你看见她往昔的模样. \
+		<br>她曾被告知：沉睡不过弹指一瞬. \
+		<br>静眠之人憧憬着应许的未来. \
+		<br>在你眼前，无垠时光流转直至某日."
 	observation_choices = list(
-		"The pod broke" = list(TRUE, "You look into the window as you see her stir in her slumber before falling still. \
-			<br>Holding your breath in silence, \
-			<br>You remember Maria, \
-			<br>Forever dreaming of a future she will never see."),
-		"She woke up" = list(FALSE, "The pod opens with a hiss as you watch her step out. \
-			<br>The joy on her face is immesurable, for she left behind so much to be here. \
-			<br>Then she melts away, for this was your dream."),
+		"休眠舱破裂" = list(TRUE, "透过视窗见她于梦中惊颤后归于沉寂. \
+			<br>你在静默中屏息, \
+			<br>你追忆玛丽亚, \
+			<br>她永远陷于永不可及的明日之梦."),
+		"她苏醒了" = list(FALSE, "休眠舱开启，你目睹她走了出来. \
+			<br>她脸上洋溢难言的欢欣，因为所有的一切都被丢在了身后. \
+			<br>但随后她如泡影消散，原来这不过是你的一枕黄粱."),
 	)
 
 	var/list/sleeplines = list(
-		"Hello...",
-		"I am reaching you from beyond the veil...",
-		"I cannot move, I cannot speak...",
-		"But for you, I have some information to part...",
-		"Please wait a moment while I retrieve it for you....",
-		"Ah, I have information on the next ordeal.... as you call it...",
-		"The next ordeal is...",
+		"你好...",
+		"我正穿越帷幕与你对话...",
+		"我身不能动，口不能言...",
+		"但有些事情想要相告...",
+		"请稍候，待我寻找关于你的信息....",
+		"啊，我了解了下一场考验....你们如此称呼它...",
+		"下一场考验将是...",
 	)
 	var/list/fakeordeals = list(
 		//Some Based off the 7 trumpets
-		"Hail of fire and blood..... Thrown to the earth.... burning up nature...",
-		"A great mountain..... plunging into the sea..... oceans of blood..... killing sea life....",
-		"A star.... falling to earth.... poisoning the fresh water....",
-		"The sky goes dark..... all the stars, the moon and even the sun.....",
-		"Woe...... Woe to those who dwell on earth....",
-		"A star falls to earth.... opening the abyss...",
-		"Locusts.... with scorpion tails.... man's face... and lion's teeth.....",
-		"Two hundred million troops.... fire and smoke.... and their plague will kill man...",
-		"The kingdom of the world has become the kingdom of His Messiah.... reigning forever and ever...",
+		"火与血之雹..... 倾泻大地.... 焚尽自然...",
+		"巨山.....坠入汪洋.....血海滔天.....灭绝生灵...",
+		"陨星.....坠入尘寰.....毒染清泉...",
+		"天幕晦暗.....群星隐没，日月无光.....",
+		"灾厄......降临大地众生.....",
+		"陨星坠地.....开启无底深渊...",
+		"蝗群....蝎尾....人面....狮齿.....",
+		"亿万军阵.....火与烟.....瘟疫灭世...",
+		"尘世之国终成弥赛亚之国.....永世长存...",
 		//And some I made
-		"Cold.... Endless Cold.....",
-		"A man with many arms......",
-		"A woman without a face.... and many children screaming....",
+		"极寒....永无止境的酷寒.....",
+		"千臂之人......",
+		"无面之妇....与无数孩童的尖啸....",
 		// -IP additions
-		"In a ruined hallway... scavengers feed on a worker...",
-		"Hundred eyes... a endless maw... long legs... im scared...",
-		"I hear it around the corner... but i cant look... i dont want to see whats there...",
-		"The corner of a room... someone is smiling... their skin isnt on right...",
-		"A plume of light erupts from a city...",
-		"Monsters... monsters everywhere... they are eating people in the streets...",
-		"A woman with a dog head... she is smoking silently...",
-		"A person in a blue coat... they fold into a book...",
+		"在倾颓的走廊...食腐者啃噬着工人...",
+		"百目...无尽巨口...修长肢足...恐惧攫住了我...",
+		"转角传来声响...我不敢窥看...不愿目睹彼方之物...",
+		"房间角落...有人在微笑...他们的皮肤扭曲错位...",
+		"光之羽翼自城市升腾...",
+		"怪物...无处不在的怪物...当街噬人...",
+		"犬首女子...默然吐着烟圈...",
+		"蓝衣之人...折叠遁入书页...",
 		)
 
 /mob/living/simple_animal/hostile/abnormality/oracle/Move()
@@ -108,7 +108,7 @@
 			to_chat(user, span_notice("[chosenfake]"))
 			return
 		if(!SSlobotomy_corp.next_ordeal)
-			to_chat(user, span_notice("All ordeals.... are completed..."))
+			to_chat(user, span_notice("所有的考验....都已经通过了..."))
 			return
 		to_chat(user, span_notice("[SSlobotomy_corp.next_ordeal.name]"))
 	..()
@@ -123,7 +123,7 @@
 
 
 /mob/living/simple_animal/hostile/abnormality/oracle/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type == "Fall Asleep")
+	if(work_type == "入睡")
 		user.drowsyness += 30
 		user.Sleeping(30 SECONDS) // Won't get any info, but you can listen for any breaches for 30 seconds
 		return FALSE
@@ -141,7 +141,7 @@
 	for(var/mob/living/carbon/human/H in GLOB.clients)
 		if(H.IsSleeping())
 			continue //You need to be sleeping to get notified
-		to_chat(H, span_notice("Oh.... [abno]... It has breached containment..."))
+		to_chat(H, span_notice("啊.... [abno]... 它突破了收容..."))
 
 //ER stuff
 /mob/living/simple_animal/hostile/abnormality/oracle/BreachEffect(mob/living/carbon/human/user, breach_type)//finish this shit
@@ -165,7 +165,7 @@
 			continue
 		if(faction_check_mob(L))
 			continue
-		to_chat(L, span_userdanger("Visions of a horrible future flash before your eyes!"))
+		to_chat(L, span_userdanger("可怕的未来在你眼前闪过!"))
 		L.deal_damage((50 - get_dist(src, L)), WHITE_DAMAGE)
 	qdel(src)
 
@@ -175,7 +175,7 @@
 	if(!dreamer.IsSleeping())
 		return
 	var/datum/oracle_dream/dream = new chosen_dream
-	to_chat(dreamer, span_notice("The oracle shows you [dream.desc]"))
+	to_chat(dreamer, span_notice("神谕向你揭示了 [dream.desc]"))
 
 #define ABNO_GET(X) /mob/living/simple_animal/hostile/abnormality/##X // This will make our life SO much easier.
 #define VERY_LOW_DREAM_WEIGHT 0.25

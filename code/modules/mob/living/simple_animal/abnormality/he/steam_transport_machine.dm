@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/steam
-	name = "Steam Transport Machine"
-	desc = "A bipedal, steam-powered automaton made of a brown, wood-like material with brass edges."
+	name = "蒸汽运输机"
+	desc = "一种两足蒸汽动力的自动机，由棕色的似木的材料制成，边缘是黄铜的."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "steam"
 	icon_living = "steam"
@@ -55,19 +55,19 @@
 	gift_type =  /datum/ego_gifts/nixie
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "It carries heavy objects without a word. <br>\
-		As it does its work, the number on the electronic display seems to update. <br>\
-		Machines exist for a purpose. <br>\
-		You feel like you should give it an order."
+	observation_prompt = "它默默搬运重物。<br>\
+		工作时机身电子屏数字持续更新。<br>\
+		机器因目的而存在。<br>\
+		你觉得应该下达指令。"
 	observation_choices = list(
-		"Order it to carry luggage" = list(TRUE, "It lifts a nearby object to carry it from left to right. <br>\
-			The count on its body went up by 1. <br>\
-			Just as you started to wonder if that was it, the machine replaced one of its vacuum tubes with a new one. <br>\
-			It presented the old one to you, and naturally, you accepted."),
-		"Order it to do nothing" = list(FALSE, "A purposeless machine is bound to lose the meaning of its existence, even if it is functional. <br>\
-			A machine whose purpose is to do nothing will do whatever it takes to achieve its directive. <br>\
-			With a loud boiling noise, the machine’s body begins to heat, expelling hot steam. <br>\
-			Seeing it glow a dangerous-looking hue, you quickly escaped the room."),
+		"命令搬运货物" = list(TRUE, "它抬起附近物体从左运到右。<br>\
+			机身计数增加1。<br>\
+			当你以为结束时，机器用新真空管替换了旧部件。<br>\
+			它将旧部件递给你，你自然接受了。"),
+		"命令待机" = list(FALSE, "无目的的机器终将丧失存在意义，即使功能完好。<br>\
+			以'待机'为目标的机器会不择手段达成指令。<br>\
+			伴随沸腾巨响，机体开始发热喷出蒸汽。<br>\
+			眼见它泛起危险红光，你迅速逃离房间。"),
 	)
 
 	var/gear = 0
@@ -186,7 +186,7 @@
 		return
 	if(health <= (maxHealth * 0.3))
 		steam_venting = TRUE
-		visible_message(span_warning("[src]'s engine explodes!"), span_boldwarning("Your steam engine malfunctions!"))
+		visible_message(span_warning("[src]的引擎爆炸了!"), span_boldwarning("你的蒸汽引擎故障了!"))
 		new /obj/effect/temp_visual/explosion(get_turf(src))
 		playsound(get_turf(src), 'sound/abnormalities/scorchedgirl/explosion.ogg', 50, FALSE, 8)
 		playsound(get_turf(src), 'sound/abnormalities/steam/steambreak.ogg', 125, FALSE)

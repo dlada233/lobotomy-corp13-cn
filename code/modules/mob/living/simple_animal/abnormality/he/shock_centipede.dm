@@ -1,13 +1,13 @@
 // Coded by endermage
 /mob/living/simple_animal/hostile/abnormality/shock_centipede
-	name = "Shock Centipede"
-	desc = "An enormous blue centipede with electricity sparking around it."
+	name = "电击蜈蚣"
+	desc = "一只巨大的蓝色蜈蚣，周围有电火花."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "shock_centipede"
 	icon_living = "shock_centipede"
 	portrait = "shock_centipede"
-	maxHealth = 320
-	health = 320
+	maxHealth = 480
+	health = 480
 	rapid_melee = 3
 	ranged = TRUE
 	attack_verb_continuous = "bites"
@@ -45,27 +45,27 @@
 	gift_type = /datum/ego_gifts/aedd
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "\"This centipede is capable of discharging a high voltage.\" <br>\
-		That's what the sign attached to the tank says. <br>\
-		Is this an aquarium, or a laboratory? <br>\
-		The segments of the creature spark each time they move, suggesting faulty connections. <br>\
-		There are two buttons at the tank. <br>\
-		One is shaped like a thunderbolt, while the other looks like a waterdrop."
+	observation_prompt = "\"此蜈蚣可释放高压电流。\"<br>\
+		这是贴在容器上的标签所写的内容。<br>\
+		这里究竟是水族馆，还是实验室？<br>\
+		该生物每次移动时体节都会迸出火花，表明连接存在故障。<br>\
+		容器设有两个按钮：<br>\
+		一个呈闪电形，另一个则似水滴形。"
 	observation_choices = list(
-		"Thunderbolt" = list(TRUE, "You press the lightning-shaped button. <br>\
-			\"Apply stimulation and pain to the centipede to increase the discharge intensity.\" <br>\
-			So writes a message above the buttons. <br>\
-			That seems to be what this one does. <br>\
-			When you pressed it, a mechanical sound played for a short while. <br>\
-			The centipede has stopped moving."),
-		"Water drop" = list(FALSE, "You press the water drop-shaped button. <br>\
-			\"Apply stimulation and pain to the centipede to increase the discharge intensity.\" <br>\
-			So writes a message above the buttons. <br>\
-			When you pressed the drop-shaped button, the tank was filled with water. <br>\
-			The centipede twists its body as if in some sort of dance. <br>\
-			You watched the centipede’s tail scratch the tank’s surface. <br>\
-			The glass cracked and fell apart immediately afterward. <br>\
-			The electrified water fell right on your head."),
+		"闪电按钮" = list(TRUE, "你按下闪电形按钮。<br>\
+			按钮上方写着。<br>\
+			\"通过刺激和施加痛苦来增强蜈蚣的放电强度\"<br>\
+			看来此按钮正是此用途。<br>\
+			按下按钮后，短暂的机械音响起。<br>\
+			蜈蚣停止了移动。"),
+		"水滴按钮" = list(FALSE, "你按下水滴形按钮。<br>\
+			按钮上方写着。<br>\
+			\"通过刺激和施加痛苦来增强蜈蚣的放电强度\"<br>\
+			按下水滴按钮后，容器内注满了水。<br>\
+			蜈蚣如舞蹈般扭动身躯。<br>\
+			你看到蜈蚣的尾巴刮擦容器表面。<br>\
+			玻璃随即破裂并崩塌。<br>\
+			带电的水直直地淋在你头上。"),
 	)
 
 // Work vars
@@ -84,7 +84,7 @@
 	var/currentShieldTimer = 0
 	var/coil_cooldown = 0
 	var/coil_cooldown_time = 100
-	var/coil_max_shield = 500
+	var/coil_max_shield = 200
 	var/coil_start_charge = 12
 	var/can_act = TRUE
 	var/immortal = FALSE
@@ -153,7 +153,7 @@
 	if(datum_reference?.qliphoth_meter == 1 && work_type == ABNORMALITY_WORK_REPRESSION)
 		datum_reference.qliphoth_change(2)
 		datum_reference.stored_boxes += bonus_pe
-		to_chat(user, "<span class='nicegreen'>[bonus_pe] extra PE Boxes have been generated!</span>")
+		to_chat(user, "<span class='nicegreen'>[bonus_pe]额外的PE-Box已经生成!</span>")
 
 /* Neutral Effect */
 /mob/living/simple_animal/hostile/abnormality/shock_centipede/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
@@ -227,7 +227,7 @@
 			// stop coiling animation
 			deltimer(currentShieldTimer)
 			currentShieldTimer = 0
-		manual_emote("crumbles to the ground...")
+		manual_emote("瓦解崩塌...")
 		// stun
 		icon_state = "shock_centipede"
 		can_act = FALSE
@@ -273,12 +273,12 @@
 		// icon_state end chage
 		icon_state = "shock_centipede_coil"
 		currentShieldTimer = addtimer(CALLBACK(src, PROC_REF(CoilEnd)), coil_cooldown_time, TIMER_STOPPABLE)
-		manual_emote("starts coiling up...")
+		manual_emote("开始卷绕...")
 
 /mob/living/simple_animal/hostile/abnormality/shock_centipede/proc/CoilEnd()
 	currentShieldTimer = 0
 	if (shield > 0)
-		manual_emote("electricity escapes from its body...")
+		manual_emote("电流从它的身体中逸出...")
 		//start AoE
 		CoilDischargeAoe()
 		coil_cooldown = world.time + coil_cooldown_time
@@ -321,7 +321,7 @@
 	if(health > 0)
 		return
 	if (!immortal)
-		manual_emote("rises back up...")
+		manual_emote("重新升起...")
 		immortal = TRUE
 		icon_state = "shock_centipede_broken"
 		melee_damage_type = immortal_damagetype
@@ -341,7 +341,7 @@
 		return ..()
 
 /mob/living/simple_animal/hostile/abnormality/shock_centipede/proc/TailAttack(target)
-	manual_emote("pulls it's tail back...")
+	manual_emote("把尾巴往后拉...")
 	tail_attack_cooldown = world.time + tail_attack_cooldown_time
 	can_act = FALSE
 	face_atom(target)

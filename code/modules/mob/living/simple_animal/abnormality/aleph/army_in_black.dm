@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_PROTECTION /datum/status_effect/protection
 GLOBAL_LIST_EMPTY(army)
 /mob/living/simple_animal/hostile/abnormality/army
-	name = "Army in Black"
-	desc = "The color of the human heart is pink, and by wearing the same color, we can blend in with people's minds."
+	name = "深黯军团"
+	desc = "人类有着粉色的心脏, 通过穿戴相同的颜色, 我们也可以融入人们的思想."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "armyinpink"
 	icon_living = "armyinpink"
@@ -55,12 +55,12 @@ GLOBAL_LIST_EMPTY(army)
 	)
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "\"We're here to help sir, to keep the hearts of humans a clean pink, we're willing to dirty our own. We won't overlook a single speck of black.\" <br>\
-		The soldier in pink makes a salute. <br>You..."
+	observation_prompt = "\"长官，我们将协助保卫纯净粉红的人类之心，我们将甘愿自污其身，我们将绝不放过任何黑色.\" <br>\
+		粉色军服的士兵行军礼. <br>你..."
 	observation_choices = list(
-		"Don't salute" = list(TRUE, "The soldier frowns. <br>\"As expected. <br>You're only human, a clean heart is only ever temporary for you. <br>\
-			Yours is rife with sin. <br>Ours are...\" <br>The soldier falls silent, as if in deep thought."),
-		"Salute him back" = list(FALSE, "The soldier in pink smiles. <br>\"Glad to have you on board Sir, with our help, there will be no more black hearts.\""),
+		"不要敬礼" = list(TRUE, "士兵皱眉. <br>\"果然如此. <br>你终究也只是凡人, 一颗纯净的心在你身上不过是昙花一现. <br>\
+			你也充满了罪恶. <br>而我们...\" <br>士兵陷入沉默, 恍若深思."),
+		"回敬军礼" = list(FALSE, "士兵露出笑容. <br>\"很高兴您加入我们，长官. 在我们的帮助下，世界将再无黑色之心.\""),
 	)
 
 	//Unique variables
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(army)
 	var/protected_targets = list()
 	var/summoned_army = list()//hostile unit list
 	var/boom_radius = 20
-	var/boom_damage = 45
+	var/boom_damage = 40
 	var/adds_max = 1
 
 /***Simple mob procs***/
@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY(army)
 //protect work grants you a buff in exchange for reducing its counter
 /mob/living/simple_animal/hostile/abnormality/army/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(LAZYLEN(protected_targets))
-		to_chat(user, span_warning("The Abnormality has breached containment!"))
+		to_chat(user, span_warning("该异想体已经突破了收容!"))
 		return FALSE
 	..()
 	if(work_type == "Protection")
@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(army)
 				return FALSE
 			protected_targets += user
 			user.apply_status_effect(STATUS_EFFECT_PROTECTION)
-			to_chat(user, span_nicegreen("You feel like you're in good company."))
+			to_chat(user, span_nicegreen("你感到有好伙伴们陪着你."))
 			playsound(get_turf(user), 'sound/abnormalities/armyinblack/pink_heal.ogg', 50, 0, 2)
 		return FALSE
 	return TRUE
@@ -205,8 +205,8 @@ GLOBAL_LIST_EMPTY(army)
 
 //hostile breach mob
 /mob/living/simple_animal/hostile/aminion/army_enemy
-	name = "Army In Black"
-	desc = "Yes.. we, the Army in Black.. blend into the human heart.. and drive away good thoughts.."
+	name = "深黯军团"
+	desc = "是的.. 我们, 深黯军团.. 融入人心.. 并驱除美好的思想.."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "armyinblack"
 	icon_living = "armyinblack"
@@ -234,7 +234,7 @@ GLOBAL_LIST_EMPTY(army)
 	threat_level = ALEPH_LEVEL
 	var/shot_cooldown
 	var/shot_cooldown_time = 5 SECONDS
-	var/boom_damage = 45
+	var/boom_damage = 40
 	var/targetted_beacon
 	var/list/moving_path
 
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(army)
 	if(QDELETED(src))
 		return
 	playsound(get_turf(src), 'sound/abnormalities/armyinblack/black_explosion.ogg', 125, 0, 8)
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸"))
 	for(var/mob/living/simple_animal/hostile/abnormality/P in livinginrange(20, src))
 		if(!P.datum_reference)//Prevents a runtime if the abno lacks datums, such as those spawned by contract
 			continue
@@ -347,7 +347,7 @@ GLOBAL_LIST_EMPTY(army)
 	for(var/mob/living/L in view(4, src))
 		if(faction_check_mob(L))
 			continue
-		L.deal_damage(25, BLACK_DAMAGE)
+		L.deal_damage(20, BLACK_DAMAGE)
 	playsound(get_turf(src), 'sound/abnormalities/armyinblack/black_attack.ogg', 100, 0, 8)
 	shot_cooldown = world.time + shot_cooldown_time
 
@@ -394,7 +394,7 @@ GLOBAL_LIST_EMPTY(army)
 	status_holder.physiology.pale_mod /= 0.8
 	status_holder.cut_overlay(mutable_appearance('ModularTegustation/Teguicons/tegu_effects10x10.dmi', "pink", -MUTATIONS_LAYER))
 	status_holder.vis_contents -= army_bud
-	to_chat(status_holder, span_notice("The pink soldier assigned to you returns to its containment cell."))
+	to_chat(status_holder, span_notice("分配给你的粉红士兵回到了它的收容单元."))
 
 /datum/status_effect/protection/tick()
 	if(owner.health < 0)

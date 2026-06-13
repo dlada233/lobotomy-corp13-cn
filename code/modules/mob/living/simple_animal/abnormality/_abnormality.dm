@@ -185,9 +185,9 @@
 			else
 				gift_chance = 0
 	if(isnull(gift_message))
-		gift_message = "You are granted a gift by [src]!"
+		gift_message = "你获得了来自[src]赠送的饰品!"
 	else
-		gift_message += "\nYou are granted a gift by [src]!"
+		gift_message += "\n你获得了来自[src]赠送的饰品!"
 
 	if(secret_chance && prob(1))
 		InitializeSecretIcon()
@@ -258,16 +258,16 @@
 	if(!istype(O, /obj/item/reagent_containers))
 		return ..()
 	if(!(status_flags & GODMODE))
-		to_chat(user, span_notice("Now isn't the time!"))
+		to_chat(user, span_notice("现在不是时候!"))
 		return
 	if(datum_reference.console.mechanical_upgrades["abnochem"] == 0)
 		to_chat(user, span_notice("This abnormality's cell is not properly equipped for substance extraction."))
 		return
 	if(world.time < chem_cooldown_timer)
-		to_chat(user, span_notice("You may need to wait a bit longer."))
+		to_chat(user, span_notice("你可能需要稍等片刻."))
 		return
 	if(datum_reference.console.chem_charges < 1)
-		to_chat(user, span_notice("No chemicals are ready for harvest. More work must be completed."))
+		to_chat(user, span_notice("目前还没有准备好收获的化学物质，还需完成更多工作."))
 		return
 	datum_reference.console.chem_charges -= 1
 	var/obj/item/reagent_containers/my_container = O
@@ -304,7 +304,7 @@
 			continue
 		breach_affected += H
 		if(HAS_TRAIT(H, TRAIT_COMBATFEAR_IMMUNE))
-			to_chat(H, span_notice("This again...?"))
+			to_chat(H, span_notice("又一次...?"))
 			H.apply_status_effect(/datum/status_effect/panicked_lvl_0)
 			continue
 		var/sanity_result = clamp(fear_level - get_user_level(H), -1, 5)
@@ -341,12 +341,12 @@
 /mob/living/simple_animal/hostile/abnormality/proc/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, -1, 5))
 	var/list/result_text_list = list(
-		"-1" = list("I've got this.", "How boring.", "Doesn't even phase me."),
-		"0" = list("Just calm down, do what we always do.", "Just don't lose your head and stick to the manual.", "Focus..."),
-		"1" = list("Hah, I'm getting nervous.", "Breathe in, breathe out...", "It'll be fine if we focus, I think..."),
-		"2" = list("There's no room for error here.", "My legs are trembling...", "Damn, it's scary."),
-		"3" = list("GODDAMN IT!!!!", "H-Help...", "I don't want to die!"),
-		"4" = list("What am I seeing...?", "I-I can't take it...", "I can't understand..."),
+		"-1" = list("我做得到.", "多无聊啊.", "一点都没吓到我."),
+		"0" = list("冷静，就按平时的来就好.", "别失去理智，按照手册的来就好.", "集中..."),
+		"1" = list("哈，有点紧张.", "吸气，呼气...", "只要集中注意力就好，我猜..."),
+		"2" = list("没有一丝犯错的余地.", "我的腿在颤抖...", "该死，太吓人."),
+		"3" = list("该死该死真该死!!!!", "救-救命...", "我还不想死!"),
+		"4" = list("这是什么啊...?", "我-我做不到...", "我不懂..."),
 		"5" = list("......"),
 	)
 	return pick(result_text_list[level])
@@ -516,7 +516,7 @@ The variable's key needs to be non-numerical.*/
 	status_flags &= ~GODMODE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ABNORMALITY_BREACH, src)
 	if(istype(datum_reference))
-		deadchat_broadcast(" has breached containment.", "<b>[src.name]</b>", src, get_turf(src))
+		deadchat_broadcast(" 突破了收容.", "<b>[src.name]</b>", src, get_turf(src))
 	FearEffect()
 	return TRUE
 
@@ -564,20 +564,20 @@ The variable's key needs to be non-numerical.*/
 
 /mob/living/simple_animal/hostile/abnormality/proc/FinalObservation(mob/living/carbon/human/user)
 	if(!datum_reference.observation_ready) //They didn't refresh the panel
-		to_chat(user, span_notice("This final observation has already been completed."))
+		to_chat(user, span_notice("该异想体最终观察已经完成."))
 		return
 	if(gift_type && !istype(user.ego_gift_list[gift_type.slot], /datum/ego_gifts/empty))
 		if(istype(user.ego_gift_list[gift_type.slot], gift_type))
-			to_chat(user, span_warning("You have already recieved a gift from this abnormality. Do not be greedy!"))
+			to_chat(user, span_warning("你已经从该异想体获得了礼物. 不要太贪婪了!"))
 			return
-		to_chat(user, span_warning("You already have a gift in the [gift_type.slot] slot, dissolve it first!"))
+		to_chat(user, span_warning("你在[gift_type.slot]槽里已经有了一件礼物, 先解除它!"))
 		return
 
 	if(observation_in_progress)
-		to_chat(user, span_notice("Someone is already observing [src]!"))
+		to_chat(user, span_notice("某人已经在观察[src]了!"))
 		return
 	observation_in_progress = TRUE
-	var/answer = final_observation_alert(user, "[observation_prompt]", "Final Observation of [src]", shuffle(observation_choices), timeout = 60 SECONDS)
+	var/answer = final_observation_alert(user, "[observation_prompt]", "最终观察：[src]", shuffle(observation_choices), timeout = 60 SECONDS)
 	if(answer == "timed out")
 		ObservationResult(user, reply = answer)
 	else
@@ -588,13 +588,13 @@ The variable's key needs to be non-numerical.*/
 
 /mob/living/simple_animal/hostile/abnormality/proc/ObservationResult(mob/living/carbon/human/user, success = FALSE, reply = "")
 	if(success) //Successful, could override for longer observations as well.
-		final_observation_alert(user, "[reply]", "OBSERVATION SUCCESS", list("Ok"), timeout = 20 SECONDS) //Some of these take a long time to read
+		final_observation_alert(user, "[reply]", "观察项目成功", list("Ok"), timeout = 20 SECONDS) //Some of these take a long time to read
 		if(gift_type)
 			user.Apply_Gift(new gift_type)
 			playsound(get_turf(user), 'sound/machines/synth_yes.ogg', 30 , FALSE)
 	else
 		if(reply != "timed out")
-			final_observation_alert(user, "[reply]", "OBSERVATION FAIL", list("Ok"), timeout = 20 SECONDS)
+			final_observation_alert(user, "[reply]", "观察项目成功", list("Ok"), timeout = 20 SECONDS)
 		playsound(get_turf(user), 'sound/machines/synth_no.ogg', 30 , FALSE)
 	datum_reference.observation_ready = FALSE
 

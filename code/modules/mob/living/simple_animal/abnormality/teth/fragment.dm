@@ -1,14 +1,14 @@
 #define FRAGMENT_SONG_COOLDOWN (14 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/fragment
-	name = "Fragment of the Universe"
-	desc = "An abnormality taking form of a black ball covered by 'hearts' of different colors."
+	name = "宇宙碎片"
+	desc = "一种由不同颜色的“心”覆盖的黑色球体的异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "fragment"
 	icon_living = "fragment"
 	portrait = "fragment"
-	maxHealth = 200
-	health = 200
+	maxHealth = 230
+	health = 230
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
 	ranged = TRUE
 	melee_damage_lower = 2
@@ -42,11 +42,11 @@
 	gift_type =  /datum/ego_gifts/fragments
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "It started singing. You..."
+	observation_prompt = "它开始歌唱，你..."
 	observation_choices = list(
-		"Listen to it" = list(TRUE, "You silently listen to it. \
-			The universe lingers in your ears. You see the song. Glamorously, it approaches you."),
-		"Plug your ears" = list(FALSE, "You are not prepared yet. The song stopped when you plugged the ears."),
+		"听歌" = list(TRUE, "你静默聆听。<br>\
+			宇宙在耳中萦绕。你看见歌声。华美地，它向你靠近。"),
+		"捂住耳朵" = list(FALSE, "你尚未准备好。当你捂住耳朵时，歌声停止了。"),
 	)
 
 	var/song_cooldown
@@ -64,13 +64,13 @@
 
 /mob/living/simple_animal/hostile/abnormality/fragment/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Fragment of the Universe, A Combat Role Abnormality.</h1><br>\
-		<b>|Echoes of the Stars|: You are able to trigger your “Song” ability using the button on your screen or a hotkey (Spacebar by Default).<br>\
-		While you are using your “Song” all humans that you see will start taking WHITE damage over time.<br>\
-		This attack goes through the Rhinos mechs, which can cause the user to panic within the mech and become completely helpless.</b>")
+	to_chat(src, "<h1>你是宇宙碎片，战斗型异想体.</h1><br>\
+		<b>|星辰回响|: 你可以使用屏幕按钮或快捷键（默认为空格键）触发‘歌声’能力.<br>\
+		当你使用‘歌声’时，视野内所有人类将持续受到白色伤害.<br>\
+		此攻击可穿透犀牛机甲，导致驾驶员恐慌并丧失作战能力.</b>")
 
 /datum/action/cooldown/fragment_song
-	name = "Sing"
+	name = "唱歌"
 	icon_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	button_icon_state = "fragment"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -189,8 +189,8 @@
 
 //Exists so the head can be animated separatedly from the legs when it sings
 /obj/effect/fragment_legs
-	name = "Fragment of the Universe"
-	desc = "An abnormality taking form of a black ball covered by 'hearts' of different colors."
+	name = "宇宙碎片"
+	desc = "一种由不同颜色的“心”覆盖的黑色球体的异常现象."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "fragment_song_legs"
 	move_force = INFINITY

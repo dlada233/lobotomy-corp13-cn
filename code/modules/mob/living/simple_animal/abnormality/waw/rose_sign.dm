@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_THORNS /datum/status_effect/stacking/crownthorns
 /mob/living/simple_animal/hostile/abnormality/rose_sign
-	name = "Sign Of Roses"
-	desc = "An armless humanoid shape strapped onto a signboard with rose vines."
+	name = "玫瑰标牌"
+	desc = "一个没有手臂的人形被绑在带有玫瑰藤蔓的招牌上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "rose_sign"
 	icon_living = "rose_sign"
@@ -11,8 +11,8 @@
 	del_on_death = FALSE
 	gender = NEUTER
 	threat_level = WAW_LEVEL
-	maxHealth = 800
-	health = 800
+	maxHealth = 1200
+	health = 1200
 	max_boxes = 16
 	pixel_x = -16
 	base_pixel_x = -16
@@ -38,20 +38,20 @@
 	gift_type = /datum/ego_gifts/rosa
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "What does this signboard say? <br>\
-		It hangs itself on a tree, trying to make its content known. <br>\
-		Its desperation is almost pitiable."
+	observation_prompt = "这个告示牌写着什么？<br>\
+		它将自己悬挂在树上，试图让人知晓其内容。<br>\
+		绝望的姿态几近可怜。"
 	observation_choices = list(
-		"Pick a rose" = list(TRUE, "You pick a rose out of it. <br>\
-			With closer examination, you notice <br>\
-			that it has an intestinal texture. <br>\
-			What is a flower-shaped organ for?"),
-		"Unravel the brambles" = list(FALSE, "As you try to untangle the vines, <br>\
-			sallow bits of flesh fall off. <br>\
-			The thorny brambles you thought were a source of constricting pain <br>\
-			ironically had been keeping the body together. <br>\
-			The body writhes as its flesh falls apart. <br>\
-			Blossoms of flowers sprawled on the ground substitute its screams."),
+		"摘取玫瑰" = list(TRUE, "你从中摘下一朵玫瑰。<br>\
+			仔细检查后，你发现<br>\
+			它有着肠子般的质地。<br>\
+			这个花朵形状的器官有何用途？"),
+		"揭开荆棘" = list(FALSE, "当你试图解开藤蔓时，<br>\
+			蜡黄的肉块纷纷掉落。<br>\
+			这些带刺的荆棘你原以为是束缚痛苦的根源，<br>\
+			讽刺的是它们一直维持着躯体的完整。<br>\
+			随着血肉分崩离析，躯体不断扭动。<br>\
+			散落遍地的花朵代替了它的尖叫声。"),
 	)
 
 	var/list/work_roses = list()
@@ -126,13 +126,13 @@
 			SPAN_ITALICS,
 		)
 		var/list/lines = list(
-			"Foolish.",
-			"Everyone has wishes. To deny them is to deny yourself.",
-			"I can see how... vivid your seeds are. To not allow them to bloom isn't fair.",
-			"Well... That's too bad.",
-			"If you have no wishes, then remain here forevermore.",
-			"Until you realize that there is no moving on without acceptance.",
-			"Be with us. With me.",
+			"愚蠢。",
+			"人皆有愿。否定它们即是否定自我。",
+			"我能看见...你的种子何其鲜活，不让它们绽放有失公允。",
+			"唉...真是可惜。",
+			"若无愿望，便永留此地吧。",
+			"直到你明白：不接受则无路可走。",
+			"加入我们，加入我。",
 		)
 		INVOKE_ASYNC(src, PROC_REF(WorkSpeech), lines, speech_styles)
 		return
@@ -140,9 +140,9 @@
 		datum_reference.qliphoth_change(-1)
 		var/list/speech_styles = list(SPAN_ITALICS, SPAN_ROBOT, SPAN_SANS)
 		var/list/lines = list(
-			"Mm, still too pale.",
-			"We don't need bland flowers like yours.",
-			"How disappointing~",
+			"嗯，色泽仍太苍白。",
+			"我们不需要你这种乏味的花。",
+			"真令人失望~",
 		)
 		INVOKE_ASYNC(src, PROC_REF(WorkSpeech), lines, speech_styles)
 		return
@@ -261,7 +261,7 @@
 	var/datum/status_effect/stacking/crownthorns/C = target.has_status_effect(/datum/status_effect/stacking/crownthorns)
 	C.status_applicant = R
 	C.master = src
-	to_chat(target, span_userdanger("You feel a terrifying pain coming from [get_area(T)]."))
+	to_chat(target, span_userdanger("你感到一种可怕的疼痛来自[get_area(T)]."))
 
 /mob/living/simple_animal/hostile/abnormality/rose_sign/OpenFire()
 	if(!can_act)
@@ -307,7 +307,7 @@
 	pull_force = INFINITY
 	generic_canpass = FALSE
 	movement_type = PHASING | FLYING
-	var/boom_damage = 15
+	var/boom_damage = 30
 	var/grabbed
 	layer = POINT_LAYER//Sprite should always be visible
 
@@ -341,8 +341,8 @@
 	qdel(src)
 
 /obj/effect/roseRoot
-	name = "root"
-	desc = "A target warning you of incoming pain"
+	name = "根"
+	desc = "警告你痛苦即将到来的标识."
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "vines"
 	move_force = INFINITY
@@ -350,7 +350,7 @@
 	generic_canpass = FALSE
 	movement_type = PHASING | FLYING
 	damtype = BLACK_DAMAGE
-	var/root_damage = 10 //Black Damage
+	var/root_damage = 20 //Black Damage
 	layer = POINT_LAYER//should always be visible.
 
 /obj/effect/roseRoot/Initialize()
@@ -388,7 +388,7 @@
 /mob/living/simple_animal/hostile/rose_summoned
 	mob_size = MOB_SIZE_HUGE
 	gender = NEUTER
-	name = "Blank rose"
+	name = "空白玫瑰"
 	desc = "You shouldn't see this"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "rose_red"
@@ -403,17 +403,17 @@
 
 /mob/living/simple_animal/hostile/rose_summoned/proc/PickColor(picked_color)
 	icon_state = "rose_" + picked_color
-	desc = "The heavier your sins, the deeper the color of petals will be."
+	desc = "你的罪越重，花瓣的颜色就会越深."
 	flower_damage_type = picked_color
 	switch(picked_color)
 		if(RED_DAMAGE)
-			name = "rose of war"
+			name = "战争玫瑰"
 		if(WHITE_DAMAGE)
-			name = "rose of conquest"
+			name = "征服玫瑰"
 		if(BLACK_DAMAGE)
-			name = "rose of famine"
+			name = "饥荒玫瑰"
 		if(PALE_DAMAGE)
-			name = "rose of death"
+			name = "死亡玫瑰"
 	ChangeResistance(picked_color, 2, update = TRUE)
 
 /mob/living/simple_animal/hostile/rose_summoned/Move()
@@ -487,20 +487,20 @@
 	. = ..()
 	picked_color = pick(RED_DAMAGE, WHITE_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
 	icon_state = "rose_" + picked_color
-	desc = "The heavier your sins, the deeper the color of petals will be."
+	desc = "你的罪越重，花瓣的颜色就会越深."
 	switch(picked_color)
 		if(RED_DAMAGE)
-			name = "rose of war"
-			sin = "war"
+			name = "战争玫瑰"
+			sin = "战争"
 		if(WHITE_DAMAGE)
-			name = "rose of conquest"
-			sin = "conquest"
+			name = "征服玫瑰"
+			sin = "征服"
 		if(BLACK_DAMAGE)
-			name = "rose of famine"
-			sin = "famine"
+			name = "饥荒玫瑰"
+			sin = "饥荒"
 		if(PALE_DAMAGE)
-			name = "rose of death"
-			sin = "death"
+			name = "死亡玫瑰"
+			sin = "死亡"
 
 /obj/structure/rose_work/proc/RoseLines(mob/living/simple_animal/hostile/abnormality/rose_sign/master)
 	var/list/speech_styles = list(
@@ -513,13 +513,13 @@
 		SPAN_SINGING,
 	)
 	var/list/lines = list(
-		"Ah, how pretty.",
-		"And so vivid, too!",
-		"Your sin was such a beautiful hue of [sin].",
-		"You've really made a fine addition to the garden.",
-		"The color [sin]?! I'll plant it right next to me.",
-		"Then... Shall we play some more?",
-		"This garden will become terribly beautiful with more sinful flowers we bloom!",
+		"啊，真漂亮.",
+		"而且很生动!",
+		"你的罪孽呈现出如此美丽的[sin]之色.",
+		"你给花园增添了一道美丽的风景线.",
+		"[sin]之色?! 我会把它们种在身旁.",
+		"然后...我们再玩一会好吗?",
+		"如果我们开出更多罪恶之花，这个花园将变得无比美丽!",
 	)
 	INVOKE_ASYNC(master, TYPE_PROC_REF(/mob/living/simple_animal/hostile/abnormality/rose_sign, WorkSpeech), lines, speech_styles)
 
@@ -545,8 +545,8 @@
 	var/attribute_penalty = 25
 
 /atom/movable/screen/alert/status_effect/crownthorns
-	name = "Crown of Thorns"
-	desc = "You are bound to an abnormal entity."
+	name = "荆棘之冠"
+	desc = "你被束缚在一个不正常的实体上."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "rose_sign"
 
@@ -556,7 +556,7 @@
 	return ..()
 
 /datum/status_effect/stacking/crownthorns/tick()
-	to_chat(owner, span_warning("Thorns painfully dig into your skin!"))
+	to_chat(owner, span_warning("荆棘会刺痛你的皮肤!"))
 	owner.emote("scream")
 	stacks += 1
 	var/mob/living/carbon/human/status_holder = owner
@@ -579,7 +579,7 @@
 	qdel(src)
 
 /datum/status_effect/stacking/crownthorns/on_remove()
-	to_chat(owner, span_nicegreen("The prickly feeling stops."))
+	to_chat(owner, span_nicegreen("刺痛的感觉停止了."))
 	var/mob/living/carbon/human/status_holder = owner
 	status_holder.adjust_attribute_bonus(FORTITUDE_ATTRIBUTE, attribute_penalty)
 	status_holder.adjustBruteLoss(-attribute_penalty)
@@ -599,8 +599,8 @@
 
 //On-kill visual effect
 /obj/structure/rose_crucifix
-	name = "thorny crucifix"
-	desc = "A terrifying yet beautiful covering of roses."
+	name = "荆棘十字架"
+	desc = "一层可怕而美丽的玫瑰."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "crucify"
 	max_integrity = 60
@@ -636,7 +636,7 @@
 	M.pixel_x = M.base_pixel_x
 	unbuckle_mob(M,force=1)
 	M.pixel_z = 0
-	src.visible_message(text("<span class='danger'>[M] falls free of [src]!</span>"))
+	src.visible_message(text("<span class='danger'>[M]脱离[src]!</span>"))
 	M.update_icon()
 
 /obj/structure/rose_crucifix/Destroy()

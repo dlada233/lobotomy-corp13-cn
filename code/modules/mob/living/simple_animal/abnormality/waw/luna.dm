@@ -1,12 +1,12 @@
 #define STATUS_EFFECT_LUNAR /datum/status_effect/lunar
 /mob/living/simple_animal/hostile/abnormality/luna
-	name = "\proper Il Pianto della Luna"
-	desc = "A piano, with a woman sitting on the stool next to it"
+	name = "\proper 月光女神"
+	desc = "一架钢琴，旁边的凳子上坐着一个女人."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "dellaluna"
 	portrait = "luna"
-	maxHealth = 1000
-	health = 1000
+	health = 1300
+	maxHealth = 1300
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
 	start_qliphoth = 3
 	threat_level = WAW_LEVEL
@@ -31,17 +31,17 @@
 	gift_type =  /datum/ego_gifts/moonlight
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "You enter the containment unit as respectfully as you can, the woman by the piano does not acknowledge your presence, merely clutching her cane tighter. <br>\
-		\"Begin.\" She commands, her lips a tight thin line. <br>It's the first time she's ever spoken. <br>\
-		The piano waits for you expectantly."
+	observation_prompt = "你尽可能恭敬地走进收容单元，钢琴旁的女人无视你的存在，只是更紧地握住手杖。<br>\
+		\"开始吧。\"她命令道，双唇抿成一条细线。<br>这是她首次开口说话。<br>\
+		钢琴正期待地等待着你。"
 	observation_choices = list(
-		"Begin a performance" = list(TRUE, "You begin to play, there is no sheet music to guide you, you play the performance that you were always meant to play. <br>\
-			It's haunting and beautiful, <br>terrifying yet entrancing. <br>\
-			With every key press, your body feels heavier and heavier and with every step upon the shrunken heads for pedals, your mind grows slower and more sluggish. <br>\
-			By the end of the performance, you're slumped over the keyboard with hardly the strength or wherewithal to move. <br>\
-			Above the piano, through your fading vision, you can swear you see the moon. <br>\
-			And you despair."),
-		"Refuse" = list(FALSE, "She gives no indication of being disappointed. <br>Perhaps if you played, you might understand the truth behind yourself as she did."),
+		"开始演奏" = list(TRUE, "你开始弹奏，没有乐谱指引，弹奏着命中注定的旋律。<br>\
+			这乐声既令人难忘又美妙绝伦，<br>既恐怖又迷人。<br>\
+			每次按键都让身体愈加沉重，踩着充当踏板的干瘪头颅让思维愈发迟钝。<br>\
+			演奏结束时，你瘫倒在琴键上，几乎无力动弹。<br>\
+			透过模糊的视线，你确信在钢琴上方看见了月亮。<br>\
+			你陷入绝望。"),
+		"拒绝演奏" = list(FALSE, "她未显露失望之色。<br>或许若你弹奏，便能如她般洞悉自身背后的真相。"),
 	)
 
 	var/performance = FALSE
@@ -96,7 +96,7 @@
 	return
 
 /mob/living/simple_animal/hostile/abnormality/luna/WorkComplete(mob/living/carbon/human/user, work_type, pe)
-	if(work_type == "Performance")
+	if(work_type == "演奏")
 		datum_reference.qliphoth_change(-1)
 		if(get_attribute_level(user, PRUDENCE_ATTRIBUTE) < 60)
 			user.adjustSanityLoss(-500) // It's not stated in game but performing with level 3 prudence and lower make them instantly panic
@@ -111,8 +111,8 @@
 
 
 /mob/living/simple_animal/hostile/abnormality/luna/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type == "Performance")
-		to_chat(user, span_nicegreen("Please wait until the performance is completed."))
+	if(work_type == "演奏")
+		to_chat(user, span_nicegreen("请等演奏结束."))
 		addtimer(CALLBACK(src, PROC_REF(PerformanceEnd), user), performance_length)
 		for(var/mob/living/carbon/human/L in GLOB.player_list)
 			L.apply_status_effect(STATUS_EFFECT_LUNAR)
@@ -138,7 +138,7 @@
 
 	killspawn = FALSE
 	performance = FALSE
-	to_chat(user, span_nicegreen("The performance is completed."))
+	to_chat(user, span_nicegreen("演奏结束."))
 
 
 //Side Gamemodes stuff, should only ever be called outside of the main gamemode
@@ -148,8 +148,8 @@
 
 /* Monster Half */
 /mob/living/simple_animal/hostile/aminion/luna
-	name = "La Luna"
-	desc = "A tall, cloaked figure."
+	name = "月光"
+	desc = "一个身披斗篷的高大身影."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "luna"
 	base_pixel_x = -8
@@ -158,9 +158,9 @@
 	maxHealth = 900
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
-	melee_damage_lower = 10
-	melee_damage_upper = 12
-	rapid_melee = 2
+	melee_damage_lower = 14
+	melee_damage_upper = 16
+	rapid_melee = 1
 	robust_searching = TRUE
 	ranged = TRUE
 	stat_attack = HARD_CRIT
@@ -213,8 +213,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/lunar
 
 /atom/movable/screen/alert/status_effect/lunar
-	name = "Lunar Blessing"
-	desc = "Your temperance is buffed for a short period of time."
+	name = "月光祝福"
+	desc = "你的自律能力会在短时间内得到加强."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "lunar"
 

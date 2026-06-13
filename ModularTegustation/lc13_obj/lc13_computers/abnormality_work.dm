@@ -150,7 +150,7 @@
 				to_chat(usr, span_warning("The Abnormality is currently in the process of revival!"))
 				return
 			if(!(datum_reference.current.status_flags & GODMODE))
-				to_chat(usr, span_warning("The Abnormality has breached containment!"))
+				to_chat(usr, span_warning("该异想体已经突破了收容!"))
 				return
 			var/work_attempt = datum_reference.current.AttemptWork(usr, href_list["do_work"])
 			if(!work_attempt)
@@ -169,7 +169,7 @@
 				to_chat(usr, span_warning("The Abnormality is currently in the process of revival!"))
 				return
 			if(!(datum_reference.current.status_flags & GODMODE))
-				to_chat(usr, span_warning("The Abnormality has breached containment!"))
+				to_chat(usr, span_warning("该异想体已经突破了收容!"))
 				return
 			datum_reference.current.FinalObservation(usr)
 

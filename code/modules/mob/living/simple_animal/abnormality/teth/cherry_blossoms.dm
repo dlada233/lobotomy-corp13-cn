@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_MARKEDFORDEATH /datum/status_effect/markedfordeath
 /mob/living/simple_animal/hostile/abnormality/cherry_blossoms
-	name = "Grave of Cherry Blossoms"
-	desc = "A beautiful cherry tree."
+	name = "樱下墓"
+	desc = "一棵美丽的樱花树."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	icon_state = "graveofcherryblossoms_3"
 	portrait = "cherry_blossoms"
@@ -9,8 +9,8 @@
 	base_pixel_x = -48
 	pixel_y = -16
 	base_pixel_y = -16
-	maxHealth = 150
-	health = 150
+	maxHealth = 230
+	health = 230
 	threat_level = TETH_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 40,
@@ -33,14 +33,14 @@
 	gift_type = /datum/ego_gifts/blossom
 	abnormality_origin = ABNORMALITY_ORIGIN_ALTERED
 
-	observation_prompt = "The tree is adorned with beautiful leaves growing here and there. <br>\
-		The kind of sight you could never even hope to see in this dark and dreary place. <br>\
-		You can take a moment to take in the beauty before you begin to work."
+	observation_prompt = "树上点缀着美丽的叶子，四处生长。<br>\
+		在这阴暗沉闷的场所中，你本不敢奢望能见到此等景象。<br>\
+		你可以在开始工作前，花点时间欣赏眼前的美景。"
 	observation_choices = list(
-		"Take in the beauty" = list(TRUE, "You feel refreshed after just taking a moment to watch such a beautiful thing. <br>\
-			This doesn't mean that you don't know that this is a dangerous abnormality. <br>\
-			There is beauty even in great and terrible things. <br>\
-			Even the bodies underneath this tree would agree with you."),
+		"欣赏美景" = list(TRUE, "仅仅是花片刻欣赏此等美丽之物，你便感到精神焕发. <br>\
+			这并不意味着你不知道这是个危险的异想体. <br>\
+			即便在可怖之物中，亦存在美感. <br>\
+			就连这树下的尸骸想必也会赞同你的想法."),
 	)
 
 	var/number_of_marks = 5
@@ -75,7 +75,7 @@
 		if(L.stat >= HARD_CRIT || L.sanity_lost || z != L.z) // Dead or in hard crit, insane, or on a different Z level.
 			continue
 		potentialmarked += L
-		to_chat(L, span_danger("It's cherry blossom season."))
+		to_chat(L, span_danger("现在樱花盛开的季节."))
 
 	SLEEP_CHECK_DEATH(10 SECONDS)
 	for(var/blossoming in 1 to number_of_marks)
@@ -86,7 +86,7 @@
 			continue
 		marked += Y
 		new /obj/effect/temp_visual/markedfordeath(get_turf(Y))
-		to_chat(Y, span_userdanger("You feel like you're going to die!"))
+		to_chat(Y, span_userdanger("你感觉自己要死了!"))
 		Y.apply_status_effect(STATUS_EFFECT_MARKEDFORDEATH)
 
 //Mark for Death
@@ -98,8 +98,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/marked
 
 /atom/movable/screen/alert/status_effect/marked
-	name = "Marked For Death"
-	desc = "You are marked for death. You will die when struck."
+	name = "死亡标记"
+	desc = "你被死亡标记了，你会死的."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "marked_for_death"
 

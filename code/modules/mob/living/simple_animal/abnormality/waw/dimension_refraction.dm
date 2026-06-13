@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/dimensional_refraction
-	name = "Dimensional Refraction Variant"
-	desc = "A barely visible haze"
+	name = "次元衍射变体"
+	desc = "几乎看不见的薄雾"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "dmr_abnormality"
 	icon_living = "dmr_abnormality"
@@ -11,8 +11,8 @@
 	pixel_y = -16
 	base_pixel_y = -16
 
-	maxHealth = 800
-	health = 800
+	maxHealth = 600
+	health = 600
 	blood_volume = 0
 	density = FALSE
 	damage_coeff = list(RED_DAMAGE = 0, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1)
@@ -42,17 +42,17 @@
 	gift_type =  /datum/ego_gifts/diffraction
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "It's invisible to almost all means of measurement, the only way I know it's there is due to the effect it has on the cup of water before me. <br>\
-		I calmly observe the chamber's surroundings and make adjustments when I notice the surface of the cup's liquid begin to bubble."
+	observation_prompt = "它几乎无法通过任何手段被观测到，唯一能证明其存在的只有眼前水杯的变化。<br>\
+		我冷静观察收容单元环境，当注意到杯内液体开始冒泡时便进行调整。"
 	observation_choices = list(
-		"Stay and observe" = list(TRUE, "I continue to record my observations as the water rises up into the air, followed by the cup. <br>\
-			The water folds into a sphere around the cup in a most immaculate manner before being violently dispersed, the cup shattering into infinitesmal fragments. <br>\
-			I leave the chamber, satisfied with my observations."),
-		"Exit the containment unit" = list(FALSE, "The manual says to leave the chamber immediately if the cup's condition becomes violent. <br>As I leave, the water falls still."),
+		"留下观察" = list(TRUE, "我持续记录观测结果，此时杯中的水升到空中，水杯也随之浮起。<br>\
+			水体以最精妙的方式包裹水杯形成球体，随后猛烈爆散，杯子粉碎成微尘。<br>\
+			我离开收容单元，对观测结果感到满意。"),
+		"离开收容单元" = list(FALSE, "手册要求若水杯出现剧烈变化需立即撤离。<br>离开时，水面恢复了平静。"),
 	)
 
-	var/cooldown_time = 3
-	var/aoe_damage = 6
+	var/cooldown_time = 2
+	var/aoe_damage = 10
 
 /mob/living/simple_animal/hostile/abnormality/dimensional_refraction/proc/Melter()
 	for(var/mob/living/L in livinginview(1, src))

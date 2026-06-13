@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/pygmalion
-	name = "Pygmalion"
-	desc = "A tall statue of a humanoid abnormality in a pink dress holding a bouquet of light blue flowers."
+	name = "皮格马利翁"
+	desc = "一个高大的异形人形雕像，穿着粉红色的裙子，手里拿着一束浅蓝色的花."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "pygmalion"
 	icon_living = "pygmalion_breach"
@@ -38,12 +38,12 @@
 	gift_type =  /datum/ego_gifts/bride
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "The King Pygmalion prayed earnestly to the Goddess Aphrodite, wishing for the marble statue he had made and fallen in love to come to life. <br>\
-		She answered his prayer, bringing Galatea to life and united them in matrinomy. <br>\
-		What is the real name of the abnormality before you?"
+	observation_prompt = "国王皮格马利翁向女神阿佛洛狄忒虔诚祈祷，希望他亲手雕琢并爱上的大理石雕像获得生命。<br>\
+		女神应允祈愿，赋予伽拉忒亚生命并让他们结为夫妻。<br>\
+		你面前的异想体真实名字是什么？"
 	observation_choices = list(
-		"Galatea" = list(TRUE, "Perhaps they sculpted each other."),
-		"Pygmalion" = list(TRUE, "Perhaps they sculpted each other."),
+		"伽拉忒亚" = list(TRUE, "或许他们互相塑造了彼此。"),
+		"皮格马利翁" = list(TRUE, "或许他们互相塑造了彼此。"),
 	)
 
 	var/last_worker = null
@@ -234,8 +234,8 @@
 //**FINGERS**//
 
 /mob/living/simple_animal/pygmalion_finger
-	name = "finger"
-	desc = "A floating ceramic finger. There's a pink fluid seeping from the cracks."
+	name = "指"
+	desc = "一只漂浮的陶瓷手指，裂缝中渗出粉红色的液体。."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "bride_finger1"
 	health = 200

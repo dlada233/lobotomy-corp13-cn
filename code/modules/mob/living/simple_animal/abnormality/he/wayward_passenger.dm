@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/wayward
-	name = "Wayward Passenger"
-	desc = "A large humanoid with its torso caved open and lined with teeth. Thread-like projections cover its open wounds."
+	name = "迷失的乘客"
+	desc = "一个巨大的人形动物，躯干裂开，布满了牙齿，丝状的突起覆盖着它的伤口."
 	icon = 'ModularTegustation/Teguicons/48x96.dmi'
 	icon_state = "wayward"
 	icon_living = "wayward_breach"
@@ -8,8 +8,8 @@
 	core_icon = "waywardpass_egg"
 	portrait = "wayward_passenger"
 	del_on_death = FALSE
-	maxHealth = 220
-	health = 220
+	maxHealth = 430
+	health = 430
 
 	move_to_delay = 4
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1.5)//lovetown residents LOVE physical pain, so highly resistant to black and red
@@ -47,7 +47,7 @@
 		/datum/ego_datum/armor/warp,
 	)
 	gift_type =  /datum/ego_gifts/warp
-	gift_message = "This lighter is branded with a certain company logo."
+	gift_message = "这个打火机上印有某个公司的标志."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
 	attack_action_types = list(
@@ -55,25 +55,25 @@
 		/datum/action/innate/abnormality_attack/wayward_dash,
 	)
 
-	observation_prompt = "Seated on a train, you see a poor passenger, stranded between dimensions. <br>\
-		Most will never realize that this person ever disappeared. <br>\
-		Well, a certain company would know, <br>\
-		but they’ll simply pretend that the passenger never existed. <br>\
-		Lost and abandoned, tossed out like trash, <br>\
-		having no place left in the City."
+	observation_prompt = "坐在列车上，你看见一个被困在维度间的可怜乘客。<br>\
+		大多数人永远不会意识到这个人曾经消失过。<br>\
+		嗯，某家公司肯定会知道，<br>\
+		但他们只会假装这名乘客从未存在过。<br>\
+		迷失、被遗弃，像垃圾一样被丢弃，<br>\
+		在都市中再无容身之处。"
 	observation_choices = list(
-		"Guide them out" = list(TRUE, "You take a few steps, and the passenger follows. <br>\
-			As you draw closer to what appears to be an exit, the passenger bows down as though to show you gratitude. <br>\
-			You heard something fall; it left behind a gift. <br>\
-			Looks like it wasn't lost after all. It may have been an employee that happened to be patrolling the area. <br>\
-			Maybe you didn't guide it—maybe it was merely following you to make sure that you found the right exit."),
-		"Sit still" = list(FALSE, "It idly stared in your direction. <br>\
-			Then, it began shambling for you, realizing something. <br>\
-			As it drew closer, you were able to identify <br>\
-			that the being was an employee of a certain transport company, not a passenger. <br>\
-			The ID card on its chest gave it away. <br>\
-			This stranded employee was approaching you, <br>\
-			preparing to go through the motions."),
+		"引导其离开" = list(TRUE, "你走了几步，那名乘客跟了上来。<br>\
+			当你靠近看似出口的地方时，乘客俯身仿佛在表达感激。<br>\
+			你听到有东西掉落；它留下了一份礼物。<br>\
+			看来它并非真的迷失了。它可能只是个恰好在附近巡逻的员工。<br>\
+			也许你并未引导它——也许它跟着你只是为了确保你找到了正确的出口。"),
+		"静坐不动" = list(FALSE, "它茫然地凝视着你的方向。<br>\
+			接着，它似乎意识到了什么，开始踉跄地朝你走来。<br>\
+			随着距离拉近，你辨认出<br>\
+			这个存在是某家运输公司的员工，而非乘客。<br>\
+			它胸前的工牌泄露了身份。<br>\
+			这名被困的员工正在接近你，<br>\
+			准备执行它的例行公事。"),
 	)
 
 	//teleport vars
@@ -134,7 +134,7 @@
 		switch(chosen_attack)
 			if(1)
 				if(!LAZYLEN(get_path_to(src,target, TYPE_PROC_REF(/turf, Distance), 0, 30)))
-					to_chat(src, span_notice("Invalid target."))
+					to_chat(src, span_notice("无效目标."))
 					return
 				TryTeleport(get_turf(target))
 			if(2)
@@ -160,10 +160,10 @@
 /mob/living/simple_animal/hostile/abnormality/wayward/FearEffectText(mob/affected_mob, level = 0)
 	level = num2text(clamp(level, -1, 4))
 	var/list/result_text_list = list(
-		"-1" = list("I've got this.", "How boring.", "Doesn't even phase me."),
-		"0" = list("Just calm down, do what we always do.", "Just don't lose your head and stick to the manual.", "Focus...", "Just call the squire... wait, what?", "I've seen that logo somewhere..."),
-		"3" = list("Why do I feel so angry?", "Help me...", "I don't want to die!", "Why does this look familiar?"),
-		"4" = list("Is that... from a wing?!", "No... it can't be...", "WHAT IS THAT THING?!"),
+		"-1" = list("我做得到.", "多无聊啊.", "一点都没吓到我."),
+		"0" = list("冷静，就按平时的来就好.", "别失去理智，按照手册的来就好.", "集中...", "只要呼叫增援... 等等，什么?", "我在其他地方看过这个标志..."),
+		"3" = list("为什么我感觉如此愤怒?", "救救我...", "我不想死!", "为什么这个看起来如此熟悉?"),
+		"4" = list("这... 来自一个翼?!", "不... 这不可能...", "这是什么啊?!"),
 	)
 	return pick(result_text_list[level])
 
@@ -274,7 +274,7 @@
 		if(!faction_check_mob(L))
 			if(L in been_hit)
 				continue
-			L.visible_message(span_boldwarning("[src] slices through [L]!"), span_userdanger("[src] rushes past you, searing you with its blades!"))
+			L.visible_message(span_boldwarning("[src]掠过[L]!"), span_userdanger("[src]从你身边冲过，用它的刀锋割伤你!"))
 			playsound(L, attack_sound, 75, 1)
 			var/turf/LT = get_turf(L)
 			new /obj/effect/temp_visual/kinetic_blast(LT)
@@ -283,8 +283,8 @@
 	for(var/obj/vehicle/sealed/mecha/V in turfs_to_hit)
 		if(V in been_hit)
 			continue
-		V.visible_message(span_boldwarning("[src] slices through [V]!"))
-		to_chat(V.occupants, span_userdanger("[src] rushes past you, searing your mech with its blades!"))
+		V.visible_message(span_boldwarning("[src]掠过[V]!"))
+		to_chat(V.occupants, span_userdanger("[src]从你身边冲过，用它的刀锋割伤你!"))
 		playsound(V, attack_sound, 75, 1)
 		new /obj/effect/temp_visual/kinetic_blast(get_turf(V))
 		V.take_damage(12, RED_DAMAGE, attack_dir = get_dir(V, src))
@@ -292,8 +292,8 @@
 	addtimer(CALLBACK(src, PROC_REF(Do_Dash), move_dir, (times_ran + 1)), 1)
 
 /obj/effect/portal/abno_warp
-	name = "dimensional rift"
-	desc = "A glowing, pulsating rift through space and time."
+	name = "维度裂痕"
+	desc = "一个穿越时空的发光裂缝."
 	icon = 'ModularTegustation/Teguicons/48x96.dmi'
 	icon_state = "rift_big"
 	base_pixel_x = -8

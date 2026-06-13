@@ -1,7 +1,7 @@
 //Brain go brrrr.
 /mob/living/simple_animal/hostile/abnormality/my_sweet_home
-	name = "My Sweet Home"
-	desc = "This cozy little house is a safe nest built only for you. Everything is here for you..."
+	name = "甜蜜之家"
+	desc = "这个舒适的小房子是专为你建造的安全巢穴，一切都为你准备好了..."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "sweet_home"
 	icon_living = "sweet_home"
@@ -48,18 +48,17 @@
 	gift_type =  /datum/ego_gifts/hearth
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "\"I am a home.\" <br>\
-		A happy little home, just for you. <br>\
-		A perfect, safe place away from this scary room. <br>\
-		Everything for you. <br>\
-		Won't you come inside?"
+	observation_prompt = "\"我是一个家.\" <br>\
+		一个快乐的小家，只为你而存在. <br>\
+		一个远离这恐怖房间的完美安全之地. <br>\
+		一切都为你准备. <br>\
+		你不想进来吗?"
 	observation_choices = list(
-		"Don't go inside" = list(TRUE, "Some things are too good to be true. <br>\
-			You take the key from under the doormat, and leave.<br>\
-			You also find something else from under the doormat too."),
-		"Go inside" = list(FALSE, "A key appears in your hand. <br>\
-			You move to open the door. <br>\
-			But at the last minute, you are pulled away by another agent to safety."),
+		"不要进去" = list(TRUE, "有些事情好得令人难以置信.<br>\
+			你从门垫下拿走钥匙，离开了."),
+		"进去" = list(FALSE, "一把钥匙出现在你手中.<br>\
+			你准备开门.<br>\
+			但在最后一刻，你被另一名员工拉到安全地带."),
 	)
 
 	var/ranged_damage = 10
@@ -97,14 +96,14 @@
 	. = ..()
 	if(canceled)
 		return
-	to_chat(user, span_danger("It whispers in your mind..."))
+	to_chat(user, span_danger("它在你的脑海中低语..."))
 	user.Stun(1 SECONDS)
 	SLEEP_CHECK_DEATH(5)
 	if(prob(50))
-		to_chat(user, span_danger("...and you accept."))
+		to_chat(user, span_danger("...而你接受了."))
 		Approach(user)
 	else
-		to_chat(user, span_danger("...and you almost agree but refuse at the last moment."))
+		to_chat(user, span_danger("...你几乎同意，但在最后一刻拒绝了."))
 	return
 
 /mob/living/simple_animal/hostile/abnormality/my_sweet_home/AttemptWork(mob/living/carbon/human/user, work_type)
@@ -122,7 +121,7 @@
 		else if(user in attach_once)
 			attach_twice+=user
 			attach_once-=user
-			to_chat(user, span_danger("It speaks in your mind, reassuring you, you feel safe."))
+			to_chat(user, span_danger("它在你的脑海中说话，安抚着你，你感到安全."))
 		else
 			attach_once+=user
 			RegisterSignal(user, COMSIG_WORK_STARTED, PROC_REF(OnAbnoWork))
@@ -153,7 +152,7 @@
 	if(IsAgentDead(user))
 		someone_entering = FALSE
 		return
-	to_chat(user, span_danger("You grip the key and approach."))
+	to_chat(user, span_danger("你握住钥匙，走向门口."))
 	step_towards(user, src)
 	sleep(0.5 SECONDS)
 	if(IsAgentDead(user))
@@ -165,7 +164,7 @@
 		someone_entering = FALSE
 		return
 	playsound(get_turf(src), 'sound/machines/door_open.ogg', 50, 1)
-	to_chat(user, span_danger("You open the door and..."))
+	to_chat(user, span_danger("你打开门，然后..."))
 	sleep(0.5 SECONDS)
 	someone_entering = FALSE
 	if(IsAgentDead(user))
@@ -212,12 +211,12 @@
 		return
 	. = ..()
 	update_icon_state()
-	desc = "A large, shadowy figure that's clearly too big to fit into the little house they're in."
+	desc = "一个巨大的、形影绰绰的身影，显然太大了，根本无法进入他们所住的小屋."
 	pixel_x = -16
 	base_pixel_x = -16
 	icon_state = "sweet_home_breach"
 	if(user)
-		desc = "A large figure that's clearly too big to fit into the little house they're in... Wait, isn't that [user]?"
+		desc = "一个巨大的、形影绰绰的身影，显然太大了，根本无法进入他们所住的小... 等等，那是[user]吗?"
 		resident = user
 		user.forceMove(src)
 		user.death()
@@ -241,8 +240,8 @@
 		melee_damage_lower = 4
 		melee_damage_upper = 6
 		ranged_damage = 7
-		maxHealth = 150
-		health = 150
+		maxHealth = 230
+		health = 230
 
 /mob/living/simple_animal/hostile/abnormality/my_sweet_home/death(gibbed)
 	density = FALSE

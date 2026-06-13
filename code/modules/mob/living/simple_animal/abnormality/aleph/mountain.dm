@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/mountain
-	name = "Mountain Of Smiling Bodies"
-	desc = "The Mountain of Smiling Bodies is searching for the smell of a body, carrying the smiles of many."
+	name = "微笑的尸山"
+	desc = "微笑的尸山正在寻觅尸体的气味，它承载着众多人的欢笑."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "mosb"
 	icon_living = "mosb"
@@ -48,12 +48,12 @@
 	secret_icon_state = "amog"
 	secret_gift = /datum/ego_gifts/amogus
 
-	observation_prompt = "It smells like death itself in its containment unit, the mound of rotted, half-purtefied flesh stares at you with its many faces. <br>\
-		Arms and legs bent at odd angles, entrails draped like lazy christmas decorations, innumerable limbs twisted and distorted into a sphere - all blanketed black with necrotic skin. <br>\
-		Yet the faces remain intact, pale from a lack of blood, but still as recognizable as they've always been. <br>They're smiling at you."
+	observation_prompt = "收容单元里弥漫着死亡本身的味道, 那堆腐烂、半腐烂的肉块用它那众多的面孔盯着你. <br>\
+		胳膊和腿弯曲成奇怪的角度，内脏像懒散的圣诞装饰一样耸拉着，无数扭曲变形的肢体蜷缩成一个球体————全都覆盖着一层黑色的坏死皮肤. <br>\
+		然而那些面容依旧完好无损，只是因缺陷而苍白. <br>他们在对你微笑."
 	observation_choices = list(
-		"I recognize those faces" = list(TRUE, "From the mountain of bodies; the dead give their life to be something greater. <br>Why shouldn't they be smiling? <br>You should be smiling too."),
-		"I don't recognize them" = list(FALSE, "They're holding all the laughter of those who cannot be seen here. <br>The mounds begins to shamble, upon borrowed hands and feet, it has your scent now and it will never be satisfied."),
+		"我认出了这些面孔" = list(TRUE, "从堆积如山的尸体中；死去的人献出了自己生命，成就了更伟大的事业. <br>他们怎能不微笑? <br>你也应该微笑."),
+		"我不认识他们" = list(FALSE, "他们承载着早已消失了的人们的笑声. <br>尸山凭借手脚开始蹒跚而行，它现在拥有了你的气味，它永远不会满足."),
 	)
 
 	/// Is user performing work hurt at the beginning?
@@ -64,10 +64,10 @@
 	var/phase = 1
 	var/scream_cooldown
 	var/scream_cooldown_time = 6 SECONDS
-	var/scream_damage = 20
+	var/scream_damage = 25
 	var/slam_cooldown
 	var/slam_cooldown_time = 2 SECONDS
-	var/slam_damage = 10
+	var/slam_damage = 16
 	var/spit_cooldown
 	var/spit_cooldown_time = 8 SECONDS
 	/// Actually it fires this amount thrice, so, multiply it by 3 to get actual amount
@@ -273,7 +273,7 @@
 	if(scream_cooldown > world.time)
 		return
 	scream_cooldown = world.time + scream_cooldown_time
-	visible_message(span_danger("[src] screams wildly!"))
+	visible_message(span_danger("[src]惊声尖啸!"))
 	new /obj/effect/temp_visual/voidout(get_turf(src))
 	playsound(get_turf(src), 'sound/abnormalities/mountain/scream.ogg', 75, 1, 5)
 	var/list/been_hit = list()
@@ -284,7 +284,7 @@
 	if(slam_cooldown > world.time)
 		return
 	slam_cooldown = world.time + slam_cooldown_time
-	visible_message(span_danger("[src] slams on the ground!"))
+	visible_message(span_danger("[src]摔在地上!"))
 	playsound(get_turf(src), 'sound/abnormalities/mountain/slam.ogg', 75, 1)
 	var/list/been_hit = list()
 	for(var/turf/open/T in view(2, src))
@@ -295,7 +295,7 @@
 	if(spit_cooldown > world.time)
 		return
 	finishing = TRUE
-	visible_message(span_danger("[src] prepares to spit an acidic substance at [target]!"))
+	visible_message(span_danger("[src]准备向[target]喷吐酸性物质!"))
 	SLEEP_CHECK_DEATH(4)
 	spit_cooldown = world.time + spit_cooldown_time
 	playsound(get_turf(src), 'sound/abnormalities/mountain/spit.ogg', 75, 1, 3)

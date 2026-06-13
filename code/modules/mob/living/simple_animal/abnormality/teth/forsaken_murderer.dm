@@ -1,15 +1,15 @@
 	//Designed to be a very forgiving and standard abnormality.
 /mob/living/simple_animal/hostile/abnormality/forsaken_murderer
-	name = "Forsaken Murderer"
-	desc = "A unhealthy looking human bound in a full body straightjacket."
+	name = "被遗弃的杀人魔"
+	desc = "一个看起来很不健康的人，全身裹着紧身衣."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "forsakenmurdererinert"
 	icon_living = "forsakenmurdererinert"
 	icon_dead = "forsakenmurdererdead"
 	portrait = "forsaken_murderer"
 	del_on_death = FALSE
-	maxHealth = 300
-	health = 300
+	maxHealth = 270
+	health = 270
 	//Attack speed modifier. 2 is twice the normal.
 	rapid_melee = 1
 	//If target is close enough start preparing to hit them if we have rapid_melee enabled. Originally was 4.
@@ -54,10 +54,10 @@
 	chem_type = /datum/reagent/abnormality/sin/pride
 
 	//shows in chat when the creature is defeated. Default is "stops moving".
-	death_message = "falls over."
+	death_message = "倒下了."
 	//Phrases that the creature will emote randomly based on speak chance.
 	speak_chance = 2
-	emote_see = list("shakes while mumbling...")
+	emote_see = list("一边颤抖一边喃喃自语...")
 	//Makes the mob move in a random direction once in a while. I personally would rather them stay still.
 	wander = FALSE
 	/**
@@ -84,10 +84,10 @@
 	 * observation_choices is made in the format of:
 	 * "Choice" = list(TRUE or FALSE [depending on if the answer is correct], "Response"),
 	 */
-	observation_prompt = "Around his neck is a rope. It is up to you to cut his rope."
+	observation_prompt = "他的脖子上围着一根绳子，该由你来割断他的绳子了."
 	observation_choices = list(
-		"Don't cut the rope" = list(TRUE, "His neck snaps, granting him silence and eternal rest."),
-		"Cut the rope" = list(FALSE, "\"You think I'm pathetic, huh? But is you people who are really pathetic. Because you get killed. By people like me.\""),
+		"不要切断绳子" = list(TRUE, "他的脖子啪的一声扭断，让他安静下来，永远安息."),
+		"切断绳子" = list(FALSE, "\"你觉得我很可悲，是吗，但你们这些人才是真的很可悲，因为你们会被杀，被像我这样的人杀.\""),
 	)
 
 	//Unique variable im defining for this abnormality. This is the timer for their during work emotes.
@@ -109,9 +109,9 @@
 /mob/living/simple_animal/hostile/abnormality/forsaken_murderer/examine(mob/user)
 	. = ..()
 	if(IsContained())
-		. += "His neck is broken and in the middle of his forehead is a old wound that refuses to heal."
+		. += "他的脖子骨折了，额头上有一道旧伤，一直无法愈合."
 	else
-		. += "Their head has become a large chunk of metal."
+		. += "他的头已经变成了一大块金属."
 
 //So people see him fall.
 /mob/living/simple_animal/hostile/abnormality/forsaken_murderer/death(gibbed)
@@ -154,10 +154,10 @@
 				emote(pick("twitches", "mumbles"))
 			if(4 to 5)
 				//This text shows up in the textbox of the defined creature or player
-				to_chat(user, span_notice("You smell an unbearable odor of despair."))
+				to_chat(user, span_notice("你闻到一股难以忍受的绝望气息."))
 			if(6)
 				//This text shows up for all entities who can see this creature.
-				visible_message("[src] suddenly screams and struggles against their restraints!")
+				visible_message("[src]突然尖叫起来，挣扎着挣脱束缚!")
 				/**
 				 * Playsound is a unique proc that... plays a sound at the defined location.
 				 * The first slot is location.

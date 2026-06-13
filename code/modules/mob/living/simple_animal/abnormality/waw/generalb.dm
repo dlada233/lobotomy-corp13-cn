@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/general_b
-	name = "General Bee"
-	desc = "A bee humanoid creature."
+	name = "将军蜂"
+	desc = "蜜蜂类人生物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "generalbee"
 	icon_living = "generalbee"
@@ -27,8 +27,8 @@
 	)
 	gift_type =  /datum/ego_gifts/loyalty
 	loot = list(/obj/item/clothing/suit/armor/ego_gear/aleph/praetorian) // Don't think it was dropping before, this should make it do so
-	health = 1000
-	maxHealth = 1000
+	health = 1400
+	maxHealth = 1400
 	damage_coeff = list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 0.6, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1)
 	melee_damage_lower = 12
 	melee_damage_upper = 16
@@ -40,23 +40,23 @@
 	)
 	//She has a Quad Artillery Cannon
 
-	observation_prompt = "I toil endlessly for the queen. <br>\
-		Break everything that threatens the hive. <br>\
-		Shoot anything that moves that isn't a bee. <br>\
-		Unquestioningly loyal, I follow my orders to the letter. <br>\
-		I even feel excited whenever I get a new order. <br>\
-		Why am I doing this all again?"
+	observation_prompt = "我为女王不知疲倦地劳作. <br>\
+		摧毁一切威胁蜂巢的事物. <br>\
+		射杀任何会动但不是蜜蜂的东西. <br>\
+		毫无质疑地忠诚，我严格遵从我的命令. <br>\
+		甚至每次接到新命令时我都会感到兴奋. <br>\
+		我做这一切又是为了什么?"
 	observation_choices = list(
-		"I fight to survive" = list(TRUE, "Bees have a natural instinct to fight for their queen. <br>\
-			It is not something as complicated as human emotion. <br>\
-			Rather, it is a hormone produced by the queen. <br>\
-			I will die the moment I leave the queendom.<br>\
-			There is no other option but to remain unquestionably loyal."),
-		"I fight out of loyalty" = list(TRUE, "Bees have a natural instinct to fight for their queen. <br>\
-			It is not something as complicated as human emotion. <br>\
-			Rather, it is a hormone produced by the queen. <br>\
-			I will die the moment I leave the queendom.<br>\
-			There is no other option but to remain unquestionably loyal."),
+		"我为生存而战" = list(TRUE, "蜜蜂有为蜂后而战的天性. <br>\
+			这并不像人类情感那样复杂. <br>\
+			更确切地说，这是蜂后分泌的一种激素. <br>\
+			离开蜂群的那一刻我就会死去.<br>\
+			除了保持毫无质疑的忠诚之外别无选择."),
+		"我为忠诚而战" = list(TRUE, "蜜蜂有为蜂后而战的天性. <br>\
+			这并不像人类情感那样复杂. <br>\
+			更确切地说，这是蜂后分泌的一种激素. <br>\
+			离开蜂群的那一刻我就会死去.<br>\
+			除了保持毫无质疑的忠诚之外别无选择."),
 	)
 
 	var/fire_cooldown_time = 3 SECONDS	//She has 4 cannons, fires 4 times faster than the artillery bees
@@ -160,7 +160,7 @@
 /mob/living/simple_animal/hostile/abnormality/general_b/BreachEffect(mob/living/carbon/human/user, breach_type)
 	if(breach_type != BREACH_PINK)
 		if(!combat_map)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "My queen? I hear your cries...", 25))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, "我的女王? 我听到您在哭泣...", 25))
 		icon = 'ModularTegustation/Teguicons/48x96.dmi'
 		flick("generalbee_", src)
 		SLEEP_CHECK_DEATH(80)
@@ -230,15 +230,15 @@
 
 /* Soldier bees */
 /mob/living/simple_animal/hostile/aminion/soldier_bee
-	name = "soldier bee"
-	desc = "A disfigured creature with nasty fangs, and a snazzy cap"
+	name = "士兵蜂"
+	desc = "一个毁容的生物，长着讨厌的尖牙，戴着时髦的帽子."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "soldier_bee"
 	icon_living = "soldier_bee"
 	base_pixel_x = -8
 	pixel_x = -8
-	health = 150
-	maxHealth = 150
+	health = 200
+	maxHealth = 200
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 2)
 	melee_damage_lower = 5
@@ -258,8 +258,8 @@
 
 /* Artillery bees */
 /mob/living/simple_animal/hostile/aminion/artillery_bee
-	name = "artillery bee"
-	desc = "A disfigured creature with nasty fangs, and an oversized thorax"
+	name = "炮兵蜂"
+	desc = "一个毁容的生物，长着讨厌的尖牙，还有一个超大的胸腔."
 	icon = 'ModularTegustation/Teguicons/48x96.dmi'
 	icon_state = "artillerysergeant"
 	icon_living = "artillerysergeant"
@@ -269,8 +269,8 @@
 	base_pixel_x = -8
 	pixel_y = -8
 	base_pixel_y = -8
-	health = 200
-	maxHealth = 200
+	health = 400
+	maxHealth = 400
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1) // Just so it's declared.
 	del_on_death = TRUE
 	death_sound = 'sound/abnormalities/bee/death.ogg'
@@ -476,4 +476,3 @@
 	S.set_up(4, get_turf(src))	//Make the smoke bigger
 	S.start()
 	qdel(src)
-

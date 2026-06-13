@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/fairy_festival
-	name = "Fairy Festival"
+	name = "精灵盛宴"
 	desc = "The abnormality is similar to a fairy, having two pairs of wings and a small body. The small fairies around it act as a cluster."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fairy"
@@ -56,15 +56,15 @@
 	)
 
 	chem_type = /datum/reagent/abnormality/fairy_festival
-	harvest_phrase = span_notice("A fairy presents you a small flower, then pours its contents into %VESSEL.")
-	harvest_phrase_third = "A fairy presents %PERSON with a small flower, then pours it into %VESSEL."
+	harvest_phrase = span_notice("一只妖精向你献上小花，将其中的液体倾入 %VESSEL .")
+	harvest_phrase_third = "妖精向 %PERSON 献上小花，将其中的液体倾入 %VESSEL ."
 
-	observation_prompt = "A gaggle of fairies flitter to and fro about the containment cell, they giggle as you approach.<br>\
-		\"You're a peaceful child, aren't you? You're lucky to accept our care.\" <br>\
-		They say in a sing-song all around you. \"Only good people ever speak to us, you're a good person too, right?\""
+	observation_prompt = "成群的妖精在收容单元内翩跹飞舞，你靠近时她们发出银铃般的轻笑.<br>\
+		\"你是个温顺的孩子，对吧？能接受我们的照料可是运气呢.\" <br>\
+		歌声般的絮语环绕着你. \"只有好孩子才配和我们说话，你也是个好孩子，对不对?\""
 	observation_choices = list(
-		"Accept their care" = list(TRUE, "The fairies sprinkle their powder around you and it collects upon your hands. <br>You feel special. <br>\
-			You retreat from the cell and the fairies' hungry gazes. <br>You've always known the true meaning of The Fairies' Care."),
+		"接受照料" = list(TRUE, "妖精们将闪亮的粉末洒向你周身，粉末在你掌心汇聚成光. <br>你感受到被选中的殊荣. <br>\
+			当你退出收容单元时，瞥见妖精们饥渴的目光. <br>你终于明白妖精的照料意味着什么."),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/fairy_festival/proc/FairyHeal()
@@ -221,7 +221,7 @@
 	armor_mods = list(-2, 0, 0, 0)
 
 /mob/living/simple_animal/hostile/mini_fairy
-	name = "\improper Lost Fairy"
+	name = "\improper 迷路精灵"
 	desc = "They wander in search of food."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fairy_bastard"
@@ -274,7 +274,7 @@
 				M.Goto(src,M.move_to_delay,M.minimum_distance)
 
 /mob/living/simple_animal/hostile/fairy_mass
-	name = "\improper Fairy Mass"
+	name = "精灵群"
 	desc = "They wander in search of food."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fairy_mass"

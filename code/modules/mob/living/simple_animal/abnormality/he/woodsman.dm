@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/woodsman
-	name = "Warm-Hearted Woodsman"
-	desc = "A mossy old robot that reeks of iron..."
+	name = "热心的樵夫"
+	desc = "一个长满苔藓的老机器人，浑身散发着钢铁的味道..."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "woodsman"
 	icon_living = "woodsman_breach"
 	portrait = "woodsman"
 	layer = BELOW_OBJ_LAYER
-	maxHealth = 300
-	health = 300
+	maxHealth = 430
+	health = 430
 	ranged = TRUE
 	attack_verb_continuous = "chops"
 	attack_verb_simple = "chop"
@@ -51,10 +51,10 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "Tin-cold woodsman. <br>I’ll give you the heart to forgive and love anyone. <br>The wizard grants you..."
+	observation_prompt = "锡一般冰冷的樵夫。<br>我将赐予你宽恕并关爱任何人的心。<br>巫师赠予你..."
 	observation_choices = list(
-		"A heart of lead" = list(TRUE, "Who do you possibly expect to understand with that ice-cold heart of yours?"),
-		"A warm heart" = list(FALSE, "You’re a machine, aren’t you? A heart is unnecessary for a machine."),
+		"铅制的心" = list(TRUE, "你以为用那颗冰冷的心能理解谁？"),
+		"温暖的心" = list(FALSE, "你是机器吧？机器根本不需要心脏。"),
 	)
 
 	// Flurry Vars
@@ -102,17 +102,17 @@
 
 /mob/living/simple_animal/hostile/abnormality/woodsman/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Warm Hearted Woodsman, A Combat Role Abnormality.</h1><br>\
-		<b>|Seeking Hearts...|:</b> When you attack dead bodies, you will extract their heart.<br>\
-		Extracting their heart will cause you to heal and cause you to deal more damage with all of your attacks for short time.<br>\
+	to_chat(src, "<h1>你是有热心的樵夫，战斗型异想体。</h1><br>\
+		<b>|寻觅心脏...|:</b> 当你攻击尸体时，会取出它们的心脏。<br>\
+		取出心脏将恢复你的生命值，并在短时间内提升你的所有攻击伤害。<br>\
 		<br>\
-		<b>|Heart Ripper|:</b> After you press your 'Axe Throw' ability, You will throw your axe towards the next tile you click on.<br>\
-		Any human hit by your axe, will become chained to you, making them unable to run away. You will also start reeling them to yourself.<br>\
-		If you pull them all the way next to you, they will be released and knocked down for 3 seconds. They will also be released if they break line of sight with you.<br>\
+		<b>|撕裂心脏|:</b> 使用'投掷斧头'能力后，你将向点击的下一个格子投掷斧头。<br>\
+		任何被斧头击中的人类将被链子束缚无法逃跑，同时你会开始将他们拉向自己。<br>\
+		若将他们拉到你身边，会被释放并击倒3秒。若目标脱离你的视线，同样会被释放。<br>\
 		<br>\
-		<b>|Chopping Down|:</b> When you attack, if your flurry attack is off cooldown you will use it.<br>\
-		Your flurry attack is a 3x2 AoE in front of you, which deals RED damage, which will repeat 7 times in a row before end with a extra strong final hit.<br>\
-		You are able to toggle your flurry attack on and off with your ability.")
+		<b>|砍伐|:</b> 攻击时若连斩攻击不在冷却中，将自动使用该技能。<br>\
+		连斩是面前3x2范围的AoE攻击，造成红色伤害，连续重复7次后以强力终结攻击结束。<br>\
+		可通过能力按钮切换连斩攻击的开启状态。")
 
 /datum/action/spell_action/spell/axe_throw/IsAvailable()
 	if (istype(owner, /mob/living/simple_animal/hostile/abnormality/woodsman))
@@ -123,8 +123,8 @@
 
 
 /obj/effect/proc_holder/spell/pointed/axe_throw
-	name = "Chain Axe throw"
-	desc = "Throw your axe, and any human hit by hit will be chained to you making them unable to run away."
+	name = "链斧投掷"
+	desc = "投掷你的斧头，任何被击中的人类将被链子束缚无法逃跑。"
 	has_action = TRUE
 	action_icon = 'icons/mob/actions/actions_abnormality.dmi'
 	action_icon_state = "wood_axe"
@@ -132,8 +132,8 @@
 	charge_max = 150
 	range = 10
 	selection_type = "range"
-	active_msg = "You prepare to throw your axe..."
-	deactive_msg = "You put away your axe..."
+	active_msg = "你准备投掷斧头..."
+	deactive_msg = "你收起了斧头..."
 	base_action = /datum/action/spell_action/spell/axe_throw
 
 
@@ -292,8 +292,8 @@
 	var/view_range = 7
 
 /atom/movable/screen/alert/status_effect/chained
-	name = "Chained"
-	desc = "You've been caught by the woodsman's chain!"
+	name = "束缚"
+	desc = "你被樵夫的铁链拴住了！"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "locked"
 
@@ -320,7 +320,7 @@
 	var/new_dist = get_dist(get_turf(W), NewLoc)
 
 	if(new_dist > current_dist)
-		to_chat(H, "<span class='warning'>The chain prevents you from moving further away!</span>")
+		to_chat(H, "<span class='warning'>链条阻止你进一步移动!</span>")
 		return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 
@@ -330,7 +330,7 @@
 		if(soundloop.timerid)
 			soundloop.stop()
 		ramping = 0
-		to_chat(src, span_notice("You feel a cold emptyness in your chest... it's still not enough."))
+		to_chat(src, span_notice("你感到胸中有一股冰冷的空虚...这还不够."))
 		RampingUpdate()
 
 /mob/living/simple_animal/hostile/abnormality/woodsman/Move()
@@ -384,7 +384,7 @@
 	if(ramping >= ramping_max)
 		ramping = ramping_max
 		if(!soundloop.timerid)
-			to_chat(src, span_warning("Your chest echoes loudly... is this how it feels to have a thumping heart?"))
+			to_chat(src, span_warning("你的胸膛回响着...这就是心脏跳动的感觉吗?"))
 			soundloop.start()
 		return
 	RampingUpdate()
@@ -397,10 +397,10 @@
 	ChangeMoveToDelay(initial_move_to_delay - (ramping * 0.22))
 
 /mob/living/simple_animal/hostile/abnormality/woodsman/proc/Heal(mob/living/carbon/human/body)
-	src.visible_message(span_warning("[src] plunges their hand into [body]'s chest and rips out their heart!"), \
-		span_notice("You plung your hand into the body of [body] and take their heart, placing it into your cold chest. It's not enough."), \
-		span_hear("You hear a metal clange and squishing."))
-	src.adjustBruteLoss(-666) // Actually just the conversion of health he heals scaled to equivalent health that Helper has.
+	src.visible_message(span_warning("[src]将手伸进[body]的胸膛并撕裂了他们的心脏!"), \
+		span_notice("你将手伸进[body]的胸膛并取出了温暖的心脏，放入自己冰冷的胸膛. 这还不够."), \
+		span_hear("你听到金属的撞击声和挤压声."))
+	src.adjustBruteLoss(-200)
 	for(var/obj/item/organ/O in body.getorganszone(BODY_ZONE_CHEST, TRUE))
 		if(istype(O,/obj/item/organ/heart))
 			O.Remove(body)
@@ -568,7 +568,7 @@
 	if (GODMODE in user.status_flags)
 		return
 	if(datum_reference.qliphoth_meter == 1)
-		to_chat(user, span_userdanger("The Woodsman swings his axe down!"))
+		to_chat(user, span_userdanger("樵夫把斧头挥了下来!"))
 		datum_reference.qliphoth_change(-1)
 		user.gib()
 
@@ -576,7 +576,7 @@
 	if(!IsContained() || user == src || !ishuman(M) || (GODMODE in M.status_flags))
 		return FALSE
 	. = ..()
-	to_chat(user, span_userdanger("The Woodsman swings his axe down and...!"))
+	to_chat(user, span_userdanger("樵夫挥了挥斧头，然后...!"))
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	var/obj/item/organ/heart/O = M.getorgan(/obj/item/organ/heart)
 	if(istype(O))
@@ -584,11 +584,11 @@
 		QDEL_NULL(O)
 	M.gib()
 	if(datum_reference.qliphoth_meter == 1)
-		to_chat(user, span_nicegreen("Rests it on the ground."))
+		to_chat(user, span_nicegreen("把它放在地上."))
 		datum_reference.qliphoth_change(1)
 		icon_state = "woodsman"
 	else
-		to_chat(user, span_userdanger("Stands up!"))
+		to_chat(user, span_userdanger("站起来!"))
 		datum_reference.qliphoth_change(-2)
 
 /mob/living/simple_animal/hostile/abnormality/woodsman/BreachEffect(mob/living/carbon/human/user, breach_type)

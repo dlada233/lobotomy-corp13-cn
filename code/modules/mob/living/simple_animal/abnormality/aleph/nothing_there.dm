@@ -1,8 +1,8 @@
 #define NT_GOODBYE_COOLDOWN (20 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/nothing_there
-	name = "Nothing There"
-	desc = "A wicked creature that consists of various human body parts and organs."
+	name = "一无所有"
+	desc = "由各种人体部位和器官组成的邪恶生物."
 	health = 2000
 	maxHealth = 2000
 	attack_verb_continuous = "slashes"
@@ -50,18 +50,18 @@
 		/mob/living/simple_animal/hostile/abnormality/nobody_is = 1.5,
 	)
 
-	observation_prompt = "*Teeth grinding* <br>Incomprehensible sounds can be heard. <br>\
-		Its body was already broken long time ago. <br>\
-		The twisted mouth opens, the crushed down tongue undulates. <br>\"M-ma......man-ag......r.......\" <br>It's calling for the manager."
+	observation_prompt = "*磨牙* <br>你听到了难以理解的声音. <br>\
+		它的身体很久以前就已经破碎了. <br>\
+		扭曲的嘴巴张开, 被压扁的舌头蠕动着. <br>\"主-主......主-管......管.......\" <br>它在呼叫主管."
 	observation_choices = list(
-		"Ignore it" = list(TRUE, "A chunk of flesh dropped from the mouth to the ground, depriving the abnormality an ability to talk. <br>\
-			It's talking inside the body of an employee. <br>But it is not the employee who speaks. <br>\
-			The sound of calling me. <br>Is nothing but an empty shell mimicking a dead person. <br>\
-			How many employees would have suffered to this sound? <br>It keeps getting closer to human. <br>\
-			It keeps trying. <br>However, as always, at the end, Nothing there."),
-		"Approach it" = list(FALSE, "I think of people who were friends with this employee. <br>\
-			Those eyes, shoulders, and every bit of muscle belong to someone else. <br>\
-			It smiles. <br>No, it pretends to smile. <br>Who could be it?"),
+		"忽略它" = list(TRUE, "一块肉从嘴里掉到了地上, 这个异想体失去了说话的能力. <br>\
+			它在一名员工的体内说话的. <br>但这名员工本身没有说话. <br>\
+			这个呼叫我的声音. <br>只是一具模仿死人的空壳，内部它一无所有. <br>\
+			有多少员工会受到这种声音的影响? <br>它越来越接近人类了. <br>\
+			它一直在尝试. <br>然而, 归根结底, 到最后, 它一无所有."),
+		"接近它" = list(FALSE, "我想到了这名员工的朋友. <br>\
+			这些眼睛, 肩膀, 还有每一快肌肉都属于别人. <br>\
+			它微笑着. <br>不，它在假装微笑. <br>会是谁呢?"),
 	)
 
 	var/shelled
@@ -73,10 +73,10 @@
 
 	var/hello_cooldown
 	var/hello_cooldown_time = 6 SECONDS
-	var/hello_damage = 40
+	var/hello_damage = 55
 	var/goodbye_cooldown
 	var/goodbye_cooldown_time = 20 SECONDS
-	var/goodbye_damage = 150
+	var/goodbye_damage = 300
 
 	var/last_heal_time = 0
 	var/heal_percent_per_second = 0.0085
@@ -265,7 +265,7 @@
 	. = ..()
 	if(damagetype == RED_DAMAGE || damage < 10)
 		return
-	last_heal_time = world.time + 10 SECONDS // Heal delayed when taking damage; Doubled because it was a little too quick.
+	last_heal_time = world.time + 20 SECONDS
 
 /mob/living/simple_animal/hostile/abnormality/nothing_there/proc/disguise_as(mob/living/M)
 	if(!(status_flags & GODMODE)) // Already breaching

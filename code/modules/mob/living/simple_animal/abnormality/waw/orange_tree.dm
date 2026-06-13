@@ -1,13 +1,16 @@
 //Coded and sprited by Coxswain, E.G.O. sprites by Rotipik#8251
 /mob/living/simple_animal/hostile/abnormality/orange_tree
-	name = "My Sweet Orange Tree"
-	desc = "A formless being of yellow, light blue and green particles. They are floating around, lazily."
+	name = "我亲爱的甜橙树"
+	desc = "黄色、浅蓝色和绿色的粒子状奇怪生物群落，它们懒洋洋地四处漂浮."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "orange_tree"
 	icon_living = "orange_tree"
 	portrait = "orange_tree"
 	faction = list("hostile")
 	speak_emote = list("hums")
+	maxHealth = 1000
+	health = 1000
+
 	is_flying_animal = TRUE
 	pixel_x = -8
 	base_pixel_x = -8
@@ -35,14 +38,14 @@
 		/datum/ego_datum/armor/innocence,
 	)
 	gift_type =  /datum/ego_gifts/innocence
-	gift_message = "Everyone has their own sweet orange tree in their heart."
+	gift_message = "每个人心中都有一棵属于自己的甜橙树."
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "Whenever I enter this containment cell, I find myself whisked away to Never Never Land by Peter Pan to join his merry band of Lost Boys. <br>\
-		I had forgotten all about him when I grew up, I want to stay longer..."
+	observation_prompt = "每当我踏入这间收容单元，就会被彼得·潘带到永无岛，加入快乐的迷失少年们。<br>\
+		长大后我已将他遗忘，此刻却想永远停留..."
 	observation_choices = list(
-		"Leave" = list(TRUE, "Second to the right, and straight on till morning, I found my way back to where I'm supposed to - there's still work to be done."),
-		"Stay" = list(FALSE, "If no one comes to get me, I'll remain here - never noticing the passing of time..."),
+		"离开" = list(TRUE, "第二个路口向右拐，然后一直飞到天亮，我找回了归途——还有未完成的工作等待着我。"),
+		"留下" = list(FALSE, "若无人来寻，我就永远呆在这里——浑然不觉时光流逝..."),
 	)
 
 	var/datum/looping_sound/orangetree_ambience/soundloop
@@ -154,10 +157,10 @@
 //Panic Ai Behavior
 /datum/ai_behavior/say_line/insanity_wander/orangetree //this subtype should make the lines cause white damage... probably.
 	lines = list(
-		"Come with me! I've got to introduce you to my new friend!",
-		"Where are you going? We're going to be late for supper!",
-		"Would you like an adventure now, or would like to have your tea first?",
-		"We're off to Neverland!",
+		"跟我来！我得把你介绍给我的新朋友！",
+		"你要去哪里？我们晚饭要迟到了！",
+		"你想现在就去冒险，还是先喝茶？",
+		"我们要去永无岛了！",
 	)
 
 /datum/ai_behavior/insanity_chase_mob
@@ -213,8 +216,8 @@
 
 //Its the gun storage cabinet! Aww, it's just a reskinned fire axe cabinet...
 /obj/structure/flamethrowercabinet
-	name = "flamethrower"
-	desc = "There is a small label that reads \"For use in abnormality breach\" along with details for safe use of the thing. As if."
+	name = "火焰喷射器"
+	desc = "有一个小标签，上面写着“用于异想体突破收容”，以及安全使用的详细信息。"
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "flamethrower"
 	anchored = TRUE
@@ -237,7 +240,7 @@
 		if(flamethrower)
 			user.put_in_hands(flamethrower)
 			flamethrower = null
-			to_chat(user, span_notice("You take the flamethrower from the [name]."))
+			to_chat(user, span_notice("你从[name]上取下火焰喷射器."))
 			src.add_fingerprint(user)
 			update_icon()
 			return
@@ -273,7 +276,7 @@
 			if(!user.transferItemToLoc(F, src))
 				return
 			flamethrower = F
-			to_chat(user, span_notice("You place the [F.name] back in the [name]."))
+			to_chat(user, span_notice("你把[F.name]放回[name]."))
 			update_icon()
 			return
 	else

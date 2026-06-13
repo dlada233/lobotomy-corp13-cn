@@ -1,11 +1,11 @@
 /mob/living/simple_animal/hostile/abnormality/flesh_idol
-	name = "Flesh Idol"
-	desc = "A cross with flesh stapled in the middle."
+	name = "血肉偶像"
+	desc = "中间钉着肉的十字架."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "flesh_idol"
 	portrait = "flesh_idol"
-	maxHealth = 600
-	health = 600
+	maxHealth = 700
+	health = 700
 	threat_level = WAW_LEVEL
 	pixel_x = -16
 	base_pixel_x = -16
@@ -30,12 +30,12 @@
 	gift_type = /datum/ego_gifts/heart
 	abnormality_origin = ABNORMALITY_ORIGIN_ALTERED
 
-	observation_prompt = "I've been praying for 7 days and 7 nights, my skin is taut from malnutrition, my eyes bloodshot from lack of sleep and my clothes soiled with my own filth. <br>\
-		Though my throat is so dry I cannot even maintain the chants I move my lips anyway. <br>\
-		Is anyone even listening? <br>Does my prayer reach Him? <br>All I ask for is a sign."
+	observation_prompt = "我已祈祷七天七夜，营养不良使皮肤紧绷，缺觉让双眼充血，衣服也被自己的污物弄脏。<br>\
+		尽管喉咙干得无法持续诵经，我仍翕动嘴唇。<br>\
+		真的有人在听吗？<br>我的祈祷能传达到祂那里吗？<br>我只求一个征兆。"
 	observation_choices = list(
-		"Stop praying" = list(TRUE, "No one is there, God does not reside here."),
-		"Keep praying" = list(FALSE, "If God truly loves us, he'll show us a sign."),
+		"停止祈祷" = list(TRUE, "那里空无一人，上帝不在此处。"),
+		"继续祈祷" = list(FALSE, "若上帝真爱世人，自会显现征兆。"),
 	)
 
 	var/counter_interval = 5 MINUTES

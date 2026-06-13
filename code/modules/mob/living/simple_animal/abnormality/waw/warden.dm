@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/warden
-	name = "The Warden"
-	desc = "An abnormality that takes the form of a fleshy stick wearing a dress and eyes. You don't want to know what's under that dress."
+	name = "典狱长"
+	desc = "一个异想体，以一根肉棍的形式穿戴裙子和悬挂眼睛，你不会想知道裙子下面是什么的."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "warden"
 	icon_living = "warden"
 	icon_dead = "warden_dead"
 	portrait = "warden"
-	maxHealth = 750
-	health = 750
+	maxHealth = 1000
+	health = 1000
 	pixel_x = -8
 	base_pixel_x = -8
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.4, PALE_DAMAGE = 1.5)
@@ -42,16 +42,16 @@
 	gift_type =  /datum/ego_gifts/correctional
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "She wanders the facility's halls, doing her rounds and picking the last of us off. <br>\
-		As far as I know it's just me left. <br>\
-		The site burial went off and escape is impossible, yet, the other abnormalities remain in their cells - if they leave she forces them back inside. <br>\
-		Maybe if I enter one of the unused cells, she might leave me alone?"
+	observation_prompt = "她游荡在设施走廊中，例行巡查并清除最后的幸存者。<br>\
+		据我所知，整个设施只剩下我一个人。<br>\
+		设施的埋葬程序已启动，逃生无望，但其他异想体仍困于各自的收容单元中，若其出逃，她会将其驱回。<br>\
+		也许我也应该进入废弃单元，这样她或许就会放过我？"
 	observation_choices = list(
-		"Enter a cell" = list(TRUE, "I step inside and lock the door behind me, <br>I'm stuck inside. <br>\
-			She passes by the containment unit and peers through the glass and seems satisfied."),
-		"Surrender to her" = list(FALSE, "Steeling myself, I confront her during one of her rounds. <br>I tell her I'm tired and just want it to end. <br>\
-			She gets closer and lifts her skirt(?) and I'm thrust underneath, my colleagues are here- they're alive and well! <br>\
-			But, they seem despondent. <br>One looks at me says simply; \"In here, you're with us. Forever.\""),
+		"进入单元" = list(TRUE, "我踏入单元反锁门扉，<br>就此困于其中。<br>\
+			她经过收容单元，透过玻璃窥视后似乎感到满意。"),
+		"向她投降" = list(FALSE, "我趁她巡查时与她面对面，<br>坦言疲惫只求终结.<br>\
+			她向我趋近然后掀起裙摆(？)，我随机就被卷入其下，同事们竟然也在这里，而且还安然无恙地活着！<br>\
+			但众人见了我之后神色却显露颓丧. <br>其中一个人漠然道：“这里面，你将与我们永世同在.”"),
 	)
 
 	var/finishing = FALSE
@@ -74,11 +74,11 @@
 
 /mob/living/simple_animal/hostile/abnormality/warden/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Warden, A Tank Role Abnormality.</h1><br>\
-		<b>|Soul Guard|: You are immune to all projectiles.<br>\
+	to_chat(src, "<h1>你扮演典狱长——坦克型异想体。</h1><br>\
+		<b>|灵魂守卫|：免疫所有远程攻击。<br>\
 		<br>\
-		|Soul Warden|: If you attack a corpse, you will dust it, heal and gain a stack of “Captured Soul”<br>\
-		For each stack of “Captured Soul”, you become faster, deal 2 less melee damage and take 50% more damage.</b>")
+		|灵魂典狱长|：攻击尸体会将其化为尘埃，同时治疗自身并获得一层「捕获灵魂」<br>\
+		每层「捕获灵魂」提升移速，降低10点近战伤害，并承受50%额外伤害。</b>")
 
 /mob/living/simple_animal/hostile/abnormality/warden/AttackingTarget(atom/attacked_target)
 	. = ..()
@@ -108,7 +108,7 @@
 				new_black_resistance = (base_black_resistance + resistance_decrease * captured_souls)
 				new_pale_resistance = (base_pale_resistance + resistance_decrease * captured_souls)
 				ChangeResistances(list(RED_DAMAGE = new_red_resistance, WHITE_DAMAGE = new_white_resistance, BLACK_DAMAGE = new_black_resistance, PALE_DAMAGE = new_pale_resistance))
-				to_chat(src, span_warning("As you capture a soul, you feel that you are growing more... Fragile."))
+				to_chat(src, span_warning("当你俘获了一个灵魂，你会觉得自己变得更加...易碎."))
 
 			if(move_to_delay>1)
 				ChangeMoveToDelayBy(0.75, TRUE)
@@ -153,6 +153,6 @@
 	..()
 
 /mob/living/simple_animal/hostile/abnormality/warden/bullet_act(obj/projectile/P)
-	visible_message(span_userdanger("[src] is unfazed by \the [P]!"))
+	visible_message(span_userdanger("[src]不受[P]的影响!"))
 	HealingEffect("no_dam")
 	P.Destroy()

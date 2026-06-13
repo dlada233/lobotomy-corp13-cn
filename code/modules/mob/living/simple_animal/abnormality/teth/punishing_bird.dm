@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/punishing_bird
-	name = "Punishing Bird"
-	desc = "A white bird with tiny beak. Looks harmless."
+	name = "惩戒鸟"
+	desc = "一只长着小喙的白色鸟，看起来人畜无害."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pbird_breach"
 	icon_living = "pbird_breach"
@@ -13,8 +13,8 @@
 	response_disarm_continuous = "flails at"
 	response_disarm_simple = "flail at"
 	density = FALSE
-	maxHealth = 120
-	health = 120
+	maxHealth = 200
+	health = 200
 	damage_coeff = list(RED_DAMAGE = 2, WHITE_DAMAGE = 2, BLACK_DAMAGE = 2, PALE_DAMAGE = 2)
 	see_in_dark = 10
 	move_to_delay = 2
@@ -63,10 +63,10 @@
 
 	can_affect_min = FALSE
 
-	observation_prompt = "A bird stares at you. What is the name of this bird?"
+	observation_prompt = "一只鸟盯着你看，这只鸟叫什么名字?"
 	observation_choices = list(
-		"Little bird" = list(TRUE, "The small bird accepts whatever name you decide to give it. Its nature can never change now."),
-		"Punishing bird" = list(TRUE, "The small bird accepts whatever name you decide to give it. Its nature can never change now."),
+		"小鸟" = list(TRUE, "不管你给它取什么名字，它都接受. 它的本质永远不会改变."),
+		"惩戒鸟" = list(TRUE, "不管你给它取什么名字，它都接受. 它的本质永远不会改变."),
 	)
 
 	do_not_possess = TRUE
@@ -94,7 +94,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/punishing_bird/proc/TransformRed()
-	visible_message(span_danger("\The [src] turns its insides out as a giant bloody beak appears!"))
+	visible_message(span_danger("[src]翻出了一个巨大的带血的喙!"))
 	flick("pbird_transition", src)
 	AdjustStun(12, ignore_canstun = TRUE)
 	icon_state = "pbird_red"
@@ -106,12 +106,13 @@
 	obj_damage = 2500
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	stat_attack = DEAD
-	ChangeResistances(list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.5))
+	maxHealth = 1000
+	health = 1000
 	bird_angry = TRUE
 	update_icon()
 
 /mob/living/simple_animal/hostile/abnormality/punishing_bird/proc/TransformBack()
-	visible_message(span_notice("\The [src] turns back into a fuzzy looking bird!"))
+	visible_message(span_notice("[src]变回了一只毛茸茸的鸟!"))
 	icon_state = initial(icon_state)
 	icon_living = initial(icon_living)
 	pixel_x = initial(pixel_x)
@@ -188,10 +189,10 @@
 	if(isliving(attacked_target))
 		var/mob/living/L = attacked_target
 		if(!(L in enemies) && obj_damage > 0) // The target didn't attack us and we've transformed
-			to_chat(src, span_warning("You can't punish innocent people!"))
+			to_chat(src, span_warning("你不能惩戒无辜的人!"))
 			return
 		if(client && obj_damage <= 0 && L.health <= maxHealth*0.45) // User controlled AND not transformed - can't kill things
-			to_chat(src, span_warning("You can't keep punishing them!"))
+			to_chat(src, span_warning("你不能一直惩戒它们!"))
 			return
 		..()
 		if(obj_damage <= 0) // Not transformed
@@ -208,7 +209,7 @@
 					already_punished |= L
 				target = null
 		else if(L.health <= 0)
-			visible_message(span_danger("\The [src] devours [L]!"))
+			visible_message(span_danger("[src]吞噬了[L]!"))
 			L.gib()
 			TransformBack()
 		return
@@ -363,8 +364,8 @@
 
 //Punishing Bird Perch
 /obj/structure/pbird_perch
-	name = "dark tree perch"
-	desc = "A thin tree with wood dark as charcoal that only one bird makes a habit of perching on. Towards the base of the tree hangs a shark toothed necklace. Something prevents you from removing the necklace from the tree."
+	name = "暗栖树"
+	desc = "一棵细树，木头暗如木炭，只有一只鸟习惯栖息在上面，树的底部挂着一条鲨鱼齿项链，有什么东西阻止你从树上摘下项链."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "pbird_perch"
 	pixel_x = -16

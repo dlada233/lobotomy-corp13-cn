@@ -4,8 +4,8 @@
 //He just uses Red buddy as a means to escape but in reality he loves the little guy for it.
 //-Kirie Saito
 /mob/living/simple_animal/hostile/abnormality/blue_shepherd
-	name = "Blue Smocked Shepherd"
-	desc = "A strange humanoid in blue robes."
+	name = "蓝袍牧羊人"
+	desc = "一个穿着蓝袍子的奇怪人形生物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "blueshep"
 	icon_living = "blueshep"
@@ -15,8 +15,8 @@
 	del_on_death = FALSE
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 300
-	health = 300
+	maxHealth = 500
+	health = 500
 	rapid_melee = 2
 	move_force = MOVE_FORCE_NORMAL + 1 //I couldn't make it the same as the normal move_force_strong without shepherd pushing tables which looked weird
 	threat_level = HE_LEVEL
@@ -25,7 +25,7 @@
 		ABNORMALITY_WORK_INSIGHT = 50,
 		ABNORMALITY_WORK_ATTACHMENT = 50,
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Release" = 100,
+		"释放" = 100,
 	)
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 0.6, WHITE_DAMAGE = 1, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.5)
 	melee_damage_lower = 6
@@ -54,13 +54,13 @@
 		/mob/living/simple_animal/hostile/abnormality/red_buddy = 5,
 	)
 
-	observation_prompt = "Got nothing better to do than to watch me? Anyway, while I'm lazing around... <br>\
-		The wolf is coming down the hill. <br>I'm the only one who can stop it, if you let me out I'll save you from the Wolf. <br>\
-		So, how about it?"
+	observation_prompt = "除了监视我就无事可做了? 总之，在我懒散度日时... <br>\
+		恶狼正从山坡袭来. <br>唯有我能阻止它，若你放我出去，我便将你从恶狼爪下解救. <br>\
+		如何，成交吗?"
 	observation_choices = list(
-		"You're a liar" = list(TRUE, "Hmph. Sad ain't it? It only waits for me, I'm free to abandon it all I wish. <br>\
-			Lifeless things like that mutt and I don't deserve love but it'll wait for me all the same. <br>Does anyone wait for you?"),
-		"Release him" = list(FALSE, "Good choice, don't worry about the rest - I won't hurt them, pinky swear."),
+		"你在说谎" = list(TRUE, "哼，可悲不是吗？它只等我一个，我大可随意抛弃这一切。<br>\
+			像我这般无生命的造物与那条野狗本不配被爱，但它仍会永远等我。<br>可有人等你？"),
+		"释放他" = list(FALSE, "明智之选，其他人无需担忧，我以尾指起誓绝不伤他们分毫."),
 	)
 
 	var/death_counter //He won't go off a timer, he'll go off deaths. Takes 8 for him.
@@ -80,46 +80,46 @@
 	var/combat_map = FALSE
 	//lines said during combat
 	var/list/combat_lines = list(
-		"Have at you!",
-		"Take this!",
-		"I'll kill you!",
-		"This is for locking me up!",
-		"Die!",
+		"接招吧！",
+		"看这招！",
+		"我要宰了你！",
+		"这算关押我的代价！",
+		"死吧！",
 	)
 	//lines shepperd say when someone's dead
 	var/list/people_dead_lines = list(
-		" didn't last long huh?",
-		" died, if only I was here to help...",
-		"'s dead? what a shame, I kinda liked them.",
+		" 这么快就完蛋了？",
+		" 死了？要是我在场就能帮上忙了...",
+		" 死了？真可惜，我还挺喜欢他们的。",
 	)
 	//lines shepperd say when someone is still alive
 	var/list/people_alive_lines = list(
-		" is still alive somehow, won't last long though.",
-		" is doing much better than you, but I can take care of them if you want.",
-		"'s abilities are quite phenomenal, and yet I'm stuck with you, tch.",
-		"'s would have released me by now, why can't you do the same?",
+		" 居然还活着，不过也撑不了多久。",
+		" 比你强多了，需要的话我可以解决他们。",
+		" 能力相当出色，可惜摊上你这队友。",
+		" 要是他们早该放我自由了，你怎么就不行？",
 	)
 	//lines shepperd say when something has breached
 	var/list/abno_breach_lines = list(
-		" has breached, I could help you know?",
-		" is out, are you sure you're strong enough to take care of it by yourself?",
-		" is going on a rampage, you guys really can't do your job right huh?",
-		" has breached and you're still wasting your time on me? I'm flattered.",
+		" 突破收容了，知道我能帮忙对吧？",
+		" 跑出来了，你真觉得自己能单独应付？",
+		" 正在大闹特闹，你们连本职工作都做不好？",
+		" 都突破收容了还浪费时间陪我？真荣幸。",
 	)
 	//lines shepperd say when an abno hasn't breached (yet)
 	var/list/abno_safe_lines = list(
-		" is still stuck in their cell like me, but freedom isn't something you can just take away so easily.",
-		" hasn't breached yet, but I wouldn't count on it staying that way.",
-		" hasn't escaped despite your terrible work ethic, I won't be as easy to handle.",
-		"'s doing fine, don't you have a manager to check those things for you?",
+		" 和我一样关在牢里，但自由可不是这么容易剥夺的。",
+		" 还没突破收容，但我可不保证会维持现状。",
+		" 凭你们这工作态度还没逃出来？我可没这么好对付。",
+		" 状态良好，你们没有主管监控这些吗？",
 	)
 	//lines shepherd say about red buddy
 	var/list/red_buddy_lines = list(
-		"The wolf is coming down the hill...",
-		"You'd think I lie when I foretell a wolf showing up and tearing this basement up too? ",
-		"You know what? about that thing connected to me. It has no life, lifeless things always wait.",
-		"That red thing? they miss the love, the cuddles, the happiness of that moment dearly.",
-		"And when that 'buddy' fully realises the situation it's in, it becomes a wolf. That's when it can get my attention and care, what a dummy.",
+		"恶狼正从山坡袭来...",
+		"我说恶狼会出现撕碎地下室时，你还以为在撒谎？",
+		"知道吗？那个与我相连的存在没有生命，而无生命者永远等待。",
+		"那个红色家伙？它们渴望爱、拥抱和幸福的瞬间。",
+		"当那'伙伴'完全认清处境时，就会化为恶狼。只有这样才能引起我的关注和照顾，多傻啊。",
 	)
 	var/no_counter = FALSE
 	var/sidesteping = FALSE
@@ -130,18 +130,17 @@
 
 /mob/living/simple_animal/hostile/abnormality/blue_shepherd/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Blue Shepherd, A Combat Role Abnormality.</h1><br>\
-		<b>|Slayer|: When you attack, if your spin attack is off cooldown you will use it. \
-		Your spin attack is a 5x5 AoE centered around you, which deals medium BLACK damage. \
-		You are able to toggle your spin attack on and off with your ability.<br>\
+	to_chat(src, "<h1>你扮演蓝袍牧羊人，战斗型异想体</h1><br>\
+		<b>|屠戮者|：攻击时若旋转攻击冷却完毕将自动触发。\
+		该攻击是以自身为中心的5x5范围AOE，造成中量黑色伤害。\
+		可通过技能按钮切换旋转攻击开关。<br>\
 		<br>\
-		|Sidestep|: You are able to trigger your 'Dodge' ability using the button on the top left of your screen, \
-		Or you can use a hotkey. (Which is Spacebar by default). When you trigger your 'Dodge' ability you will gain a speed boost and lose density (Bullet will pass through you.) for 1 second. \
-		Once the speed boost ends, you will be slowed down for 1.5 seconds.<br>\
+		|侧移|：点击屏幕左上角按钮或使用快捷键（默认空格键）触发'闪避'能力。\
+		触发后获得1秒加速并无实体化（子弹可穿透），效果结束后减速1.5秒。<br>\
 		<br>\
-		|Counter|: You are able to trigger your 'Counter' ability using the button on the top left of your screen, \
-		Or you can use a hotkey. (Which is E by default). When you trigger your 'Counter' ability, If you take damage within the next second you will trigger a 5x5 AoE which deals BLACK damage. \
-		Also, Anyone hit by this AoE will knockdown all humans who are hit by it.\
+		|反击|：点击屏幕左上角按钮或使用快捷键（默认E键）触发'反击'能力。\
+		若随后1秒内受到伤害，将触发5x5范围AOE造成黑色伤害，\
+		被击中的类人生物将陷入击倒状态。\
 		</b>")
 
 /datum/action/cooldown/evade
@@ -214,13 +213,13 @@
 	if (istype(owner, /mob/living/simple_animal/hostile/abnormality/blue_shepherd))
 		var/mob/living/simple_animal/hostile/abnormality/blue_shepherd/H = owner
 		if(H.no_counter)
-			to_chat(H, "You are curretnly dodging!")
+			to_chat(H, "你正在闪避!")
 			return FALSE
 		else
 			H.ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 			H.countering = TRUE
 			H.slashing = TRUE
-			H.manual_emote("raises their blade...")
+			H.manual_emote("举起它的剑...")
 			H.color = "#26a2d4"
 			playsound(H, 'sound/items/unsheath.ogg', 75, FALSE, 4)
 			addtimer(CALLBACK(src, PROC_REF(endcounter)), counter_duration)
@@ -256,13 +255,13 @@
 		H.ChangeResistances(list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 1, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.5))
 
 /datum/action/innate/abnormality_attack/toggle/sheperd_spin_toggle
-	name = "Toggle Spinning Slash"
+	name = "屠戮者"
 	button_icon_state = "sheperd_toggle0"
 	chosen_attack_num = 2
-	chosen_message = span_colossus("You won't spin anymore.")
+	chosen_message = span_colossus("你不再触发屠戮者.")
 	button_icon_toggle_activated = "sheperd_toggle1"
 	toggle_attack_num = 1
-	toggle_message = span_colossus("You will now execute a spinning slash when ready.")
+	toggle_message = span_colossus("你将会触发屠戮者.")
 	button_icon_toggle_deactivated = "sheperd_toggle0"
 
 
@@ -312,9 +311,9 @@
 		datum_reference.qliphoth_change(-1)
 	if(work_type == ABNORMALITY_WORK_REPRESSION)
 		datum_reference.qliphoth_change(1)
-	else if(work_type == "Release")
+	else if(work_type == "释放")
 		hired = TRUE
-		say("Finally, it was getting stuffy in there!")
+		say("终于，这里面越来越闷了!")
 		datum_reference.qliphoth_change(-4)
 	else
 		datum_reference.qliphoth_change(-1)
@@ -330,7 +329,7 @@
 		break
 
 	if(sighted && hired == FALSE)
-		say("I've had it with you!")
+		say("我受够你了!")
 	else
 		var/turf/T = pick(GLOB.xeno_spawn)
 		forceMove(T)
@@ -498,13 +497,13 @@
 		if(isnull(subject))
 			people_list -= subject
 		else if(subject == user)
-			say("It's only a matter of time until I get out, but you could have me as a friend rather than foe.")
+			say("我出狱只是时间问题，但你可以把我当成朋友而不是敌人.")
 		else if((subject.stat == DEAD && !lie) || (subject.stat != DEAD && lie))
 			say(subject.name + pick(people_dead_lines))
 		else
 			say(subject.name + pick(people_alive_lines))
 	else
-		say("Trust me, you gotta let me out of here!") //if he has somehow nothing to lie about
+		say("相信我，你得放我出去!") //if he has somehow nothing to lie about
 
 ///makes a list of abno datum that can breach and aren't dead/null
 /mob/living/simple_animal/hostile/abnormality/blue_shepherd/proc/AbnoListGen()
@@ -513,7 +512,7 @@
 		for(var/datum/abnormality/A in SSlobotomy_corp.all_abnormality_datums)
 			if(isnull(A.current))
 				continue
-			if(A.name == "Reddened Buddy") //this one is a special case
+			if(A.name == "染红的巴迪") //this one is a special case
 				continue
 			if(A.current.can_breach && A.name != name)
 				abno_list += A
@@ -532,7 +531,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/blue_shepherd/proc/OnAbnoSpawn(datum/source, datum/abnormality/abno)
 	SIGNAL_HANDLER
-	if(abno.name == "Reddened Buddy")
+	if(abno.name == "染红的巴迪")
 		buddy = abno
 		UnregisterSignal(SSdcs, COMSIG_GLOB_ABNORMALITY_SPAWN)
 

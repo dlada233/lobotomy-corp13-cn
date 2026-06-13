@@ -26,7 +26,7 @@
 		return
 	var/obj/machinery/abno_core_extractor/O = over_object//abno core extractor
 	if(istype(O))
-		var/response = alert(usr,"Will you extract [src]?","This cannot be reversed.","Yes","No")
+		var/response = alert(usr,"你想要提取[src]吗?","无法撤销的操作.","Yes","No")
 		if(response == "Yes" && do_after(usr, 10, O))
 			if(extracting)
 				return
@@ -39,7 +39,7 @@
 
 	var/obj/structure/itemselling/I = over_object//item selling machine
 	if(istype(I))
-		var/response = alert(usr,"Will you sell [src]?","This cannot be reversed.","Yes","No")
+		var/response = alert(usr,"你想要出售[src]?","无法撤销的操作.","Yes","No")
 		if(response == "Yes" && do_after(usr, 10, I))
 			if(!contained_abno || !threat_level)//is there no risk level or abnormality inside?
 				qdel(src)
@@ -52,7 +52,7 @@
 
 	var/obj/machinery/abno_core_seller/P = over_object//Abnocore selling machine
 	if(istype(P))
-		var/response = alert(usr,"Will you sell [src]?","This cannot be reversed.","Yes","No")
+		var/response = alert(usr,"你想要出售[src]?","无法撤销的操作.","Yes","No")
 		if(response == "Yes" && do_after(usr, 10, src))
 			if(!contained_abno || !threat_level)//is there no risk level or abnormality inside?
 				qdel(src)
@@ -67,7 +67,7 @@
 				if(B)
 					B.adjust_money(payment_amt)
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				to_chat(H, span_notice("[payment_amt] ahn has been deposited into your account."))
+				to_chat(H, span_notice("[payment_amt]眼 已经存入了你的账户."))
 			sound_to_playing_players('sound/weapons/ego/executive_reload.ogg', 70, FALSE)
 			qdel(src)
 
@@ -79,7 +79,7 @@
 	for(abno_ref in SSlobotomy_corp.all_abnormality_datums) //Check if they're already in the facility
 		if(abno_ref.abno_path == A)
 			for(var/mob/living/carbon/human/H in livinginview(1, src))
-				to_chat(H, span_boldwarning("This abnormality is already contained!"))
+				to_chat(H, span_boldwarning("该异想体已经收容在内了!"))
 			return FALSE//If the abnormality already exists in a cell, the proc returns early here.
 	anchored = TRUE
 	icon_state = ""
@@ -99,8 +99,8 @@
 	qdel(src)
 
 /obj/machinery/abno_core_extractor
-	name = "abnormality core containment unit"
-	desc = "A device used to transfer abnormalities into containment cells."
+	name = "异想体核心收容单元"
+	desc = "一种转移异想体到收容单元的设备."
 	icon = 'ModularTegustation/Teguicons/lc13_structures_64x64.dmi'
 	icon_state = "extraction"
 	pixel_x = -16
@@ -116,8 +116,8 @@
 	animate(pixel_y = initial(pixel_y), time = 1 SECONDS, ANIMATION_RELATIVE)
 
 /obj/machinery/abno_core_seller
-	name = "abnormality core telepad"
-	desc = "A device using W corp technology to bring abnormality cores to the company headquarters."
+	name = "异想体核心平板"
+	desc = "使用W公司技术的设备，用于将异想体核心带回公司总部."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "broadcaster"
 	density = TRUE

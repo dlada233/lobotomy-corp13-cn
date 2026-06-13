@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/space_lady
-	name = "Lady out of Space"
-	desc = "A humanoid abnormality. It looks extremely pale."
+	name = "太空女士"
+	desc = "人形异常，皮肤极度苍白."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "space"
 	icon_living = "space"
@@ -37,16 +37,16 @@
 	retreat_distance = 3
 	ranged_cooldown_time = 3 SECONDS
 
-	observation_prompt = "What touched this place cannot be quantified or understood by human science. <br>It was just a color out of space. <br>\
-		It exists on the border of our waking minds, where darkness and light are one, and time and space do not intersect. <br>She has a message, from another place, another time."
+	observation_prompt = "触及此地之物无法被人类科学量化或理解. <br>那只是来自太空的颜色. <br>\
+		它存在于我们清醒意识的边缘，在那里黑暗与光明合二为一，时间与空间互不相交. <br>她带来了一个信息，来自另一个地方，另一个时间. "
 	observation_choices = list(
-		"Hear the past" = list(TRUE, "What I learned and saw during those two hideous days and nights, it is better not to tell."),
-		"Hear the present" = list(TRUE, "A thousand years compressed into a day, a countably infinite number of people work, die and live in its corridors; <br>\
-			the line between them and the monsters they keep gets blurrier and blurrier. <br>\
-			A seed is about to sprout..."),
-		"Hear the future" = list(TRUE, "The Library is what the Bookhunters call it, a mystical place of life and death. <br>\
-			Should you conquer its trials, they say, you can find the book that will grant the answers to whatever it is you seek. <br>\
-			Black feathers and regret..."),
+		"聆听过去" = list(TRUE, "在那两个可怕昼夜中的所见所闻，最好不说为妙. "),
+		"聆听现在" = list(TRUE, "一千年的时间被压缩成一天，无限多的人在狭小的走廊中工作、死亡与生活；<br>\
+			他们与他们收容的怪物之间的界限越来越模糊. <br>\
+			一颗种子即将破土发芽..."),
+		"聆听未来" = list(TRUE, "书籍猎人称那个地方为图书馆，一个生死交织的神秘地方. <br>\
+			据他们说，若能通过接待，你就能找到那本能给予你所寻求任何答案的书. <br>\
+			黑色的羽毛与悔恨..."),
 	)
 
 	var/explosion_timer = 2 SECONDS
@@ -135,7 +135,7 @@
 
 //Does white damage that scales with range, kills the insane
 /mob/living/simple_animal/hostile/abnormality/space_lady/proc/NegativeField()
-	say("Ashes to ashes...")
+	say("尘归尘...")
 	can_act = FALSE
 	SLEEP_CHECK_DEATH(25)
 	var/turf/orgin = get_turf(src)
@@ -162,7 +162,7 @@
 
 //Time stop
 /mob/living/simple_animal/hostile/abnormality/space_lady/proc/Timestop()
-	say("Stop...")
+	say("停下...")
 	can_act = FALSE
 	SLEEP_CHECK_DEATH(12)
 	new /obj/effect/timestop(get_turf(src), 3, 40, list(src))
@@ -170,7 +170,7 @@
 
 //Bouncing bullets
 /mob/living/simple_animal/hostile/abnormality/space_lady/proc/BulletTime()
-	say("Hold it...")
+	say("接着...")
 	can_act = FALSE
 	SLEEP_CHECK_DEATH(6)
 
@@ -192,7 +192,7 @@
 
 //based off a touhou attack of the same name, I need to actually finish it.
 /mob/living/simple_animal/hostile/abnormality/space_lady/proc/SpellBinder()
-	say("Spellbinding circle...")
+	say("圈...")
 	can_act = FALSE
 	var/turf/orgin = get_turf(src)
 	var/list/all_turfs = RANGE_TURFS(negative_range, orgin)
@@ -267,9 +267,9 @@
 
 //Bullets
 /obj/projectile/white_hole
-	name = "miniature white hole"
+	name = "迷你白洞"
 	icon_state = "antimagic"
-	desc = "A mini white hole."
+	desc = "迷你白洞."
 	nodamage = TRUE
 	hitsound = "sound/effects/footstep/slime1.ogg"
 	speed = 3
@@ -285,9 +285,9 @@
 
 
 /obj/projectile/black_hole
-	name = "miniature black hole"
+	name = "迷你黑洞"
 	icon_state = "antimagic"
-	desc = "A mini black hole."
+	desc = "迷你黑洞."
 	nodamage = TRUE
 	hitsound = "sound/effects/footstep/slime1.ogg"
 	color = COLOR_PURPLE
@@ -303,7 +303,7 @@
 			L.deal_damage(30, BLACK_DAMAGE)
 
 /obj/projectile/loos_bullet
-	name = "white beam"
+	name = "白色射线"
 	icon_state = "whitelaser"
 	desc = "A beam of white light."
 	hitsound = "sound/effects/footstep/slime1.ogg"
@@ -329,7 +329,7 @@
 
 
 /obj/projectile/loos_bullet/black
-	name = "black beam"
+	name = "黑色射线"
 	icon_state = "purplelaser"
 	desc = "A beam of black light."
 	damage_type = BLACK_DAMAGE

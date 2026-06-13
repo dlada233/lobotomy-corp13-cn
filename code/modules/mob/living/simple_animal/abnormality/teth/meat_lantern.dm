@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/meat_lantern
-	name = "Meat Lantern"
-	desc = "All you can see is a small white mound with two eyes and a glowing flower."
+	name = "陆生鮟鱇"
+	desc = "你所能看到的只是一个白色的小丘，上面有两只眼睛和一朵发光的花."
 	icon = 'ModularTegustation/Teguicons/64x32.dmi'
 	icon_state = "lantern"
 	icon_living = "lantern"
 	portrait = "meat_lantern"
-	maxHealth = 250
-	health = 250
+	maxHealth = 330
+	health = 330
 	base_pixel_x = -16
 	pixel_x = -16
 	threat_level = TETH_LEVEL
@@ -21,7 +21,7 @@
 	can_patrol = FALSE
 	can_breach = TRUE
 	del_on_death = FALSE
-	death_message = "explodes in a shower of gore."
+	death_message = "在血淋淋中爆炸."
 	trigger_lights = FALSE
 
 	work_damage_upper = 3
@@ -35,22 +35,22 @@
 	)
 
 	gift_type = /datum/ego_gifts/lantern
-	gift_message = "Not a single employee has seen Meat Lantern's full form."
+	gift_message = "没有任何员工见过陆生鮟鱇的完整形态."
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "It's always the same, dull colours in the facility. Grey walls, grey floors, grey ceilings, even the people were grey. <br>\
-		Every day was grey until, one day, you saw the a small, beautifully green flower growing and glowing from the ground."
+	observation_prompt = "设施里总是单调的色彩，灰墙，灰地，灰顶，连人都是灰色的。<br>\
+		直到某天，你看见一朵美丽的绿色小花从地面长出，散发着微光."
 	observation_choices = list(
-		"Approach the flower" = list(TRUE, "It's the most beautiful thing you've ever seen, you brush your hand against it and the petals tickle your hand. You feel a tremor beneath and..."),
-		"Call for security" = list(FALSE, "Something so beautiful had no right to exist in the City. You called for security and left in a hurry back to your grey workplace."),
+		"触摸花瓣" = list(TRUE, "这是你见过最美的事物，你伸手轻抚花瓣，指尖传来轻痒触感，突然脚下开始震动..."),
+		"呼叫安保" = list(FALSE, "如此美丽之物不应存在于都市. 你呼叫安保后匆忙返回灰色工作岗位."),
 	)
 
 	var/can_act = TRUE
 	var/detect_range = 1
 	var/chop_cooldown
 	var/chop_cooldown_time = 4 SECONDS
-	var/chop_damage = 80
+	var/chop_damage = 500
 
 /mob/living/simple_animal/hostile/abnormality/meat_lantern/PostSpawn()
 	. = ..()

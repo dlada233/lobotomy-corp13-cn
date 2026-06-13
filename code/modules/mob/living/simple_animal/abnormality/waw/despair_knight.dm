@@ -1,8 +1,8 @@
 #define BLESS_COOLDOWN (5 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/despair_knight
-	name = "Knight of Despair"
-	desc = "A tall humanoid abnormality in a blue dress. \
-	Half of her head is black with sharp horn segments protruding out of it."
+	name = "绝望骑士"
+	desc = "一个穿蓝色裙子的高个子人型异想体. \
+	她的头有一半是黑色的，有尖锐的角段突出来."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "despair"
 	icon_living = "despair"
@@ -13,8 +13,8 @@
 	ranged = TRUE
 	ranged_cooldown_time = 3 SECONDS
 	minimum_distance = 2
-	maxHealth = 700
-	health = 700
+	maxHealth = 800
+	health = 800
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 1.0, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 0.5)
 	stat_attack = HARD_CRIT
 	del_on_death = FALSE
@@ -50,12 +50,12 @@
 		/mob/living/simple_animal/hostile/abnormality/nihil = 1.5,
 	)
 
-	observation_prompt = "I once dedicated myself to the justice of this world, to protect my king, the kingdom and the weak. <br>\
-		However in the end nothing was truly upheld on my watch. <br>Even so... I still want to protect someone, anyone..."
+	observation_prompt = "我曾为世间正义献身，守护我的国王、王国与弱者。<br>\
+		然而最终，我未能守护住任何事物。<br>即便如此...我仍想守护某人，任何人..."
 	observation_choices = list(
-		"Refuse it" = list(TRUE, "Am I not needed anymore? <br>\
-			No... <br>You're saying I should move on. <br>I don't know how, or if I can, but, perhaps things could turn out for the better. <br>We need only try."),
-		"Accept her blessing" = list(FALSE, "Thank you, though I am but a pitiful knight, I still yearn to protect, if I can't protect others, I may as well disappear..."),
+		"拒绝" = list(TRUE, "我不再被需要了吗？<br>\
+			不...<br>你是说我该继续前行。<br>不知能否做到，但或许情况会好转。<br>我们只需尝试。"),
+		"接受她的祝福" = list(FALSE, "谢谢你，尽管我只是个可悲的骑士，我仍渴望守护。若无法保护他人，我不如消失..."),
 	)
 
 	var/mob/living/carbon/human/blessed_human = null
@@ -185,7 +185,7 @@
 		blessed_human = user
 		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(BlessedDeath))
 		RegisterSignal(user, COMSIG_HUMAN_INSANE, PROC_REF(BlessedDeath))
-		to_chat(user, span_nicegreen("You feel protected."))
+		to_chat(user, span_nicegreen("你感觉被保护了."))
 		user.physiology.red_mod *= 0.5
 		user.physiology.white_mod *= 0.5
 		user.physiology.black_mod *= 0.5
@@ -213,13 +213,13 @@
 	NihilModeEnable()
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("At last, a worthy foe.")
+	say("终于，一个值得尊敬的敌人.")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("All of my work won't be in vain.")
+	say("我的努力不会白费的.")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("You'll answer for your crimes!")
+	say("你要为你的罪行负责!")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("To protect our people!")
+	say("为了保护我们的人民!")
 	ChangeResistances(list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 1.0, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 0.5))
 
 /mob/living/simple_animal/hostile/abnormality/despair_knight/proc/NihilModeEnable()
@@ -229,8 +229,8 @@
 	faction = list("neutral")
 
 /mob/living/simple_animal/hostile/abnormality/despair_knight/proc/NihilIconUpdate()
-	name = "Magical Girl of Justice"
-	desc = "A real magical girl!"
+	name = "正义魔法少女"
+	desc = "一位真正的魔法少女!"
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "despair_friendly"
 	pixel_x = -8
@@ -247,7 +247,7 @@
 	AIStatus = AI_OFF
 	icon_state = "despair_breach"
 	var/obj/structure/statue/petrified/magicalgirl/S = new(loc, src, statue_timer)
-	S.name = "Ossified Despair"
+	S.name = "石化绝望"
 	ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 	SLEEP_CHECK_DEATH(1)
 	S.icon = src.icon
@@ -278,7 +278,7 @@
 	if(!nihil_present)
 		return ..()
 	adjustBruteLoss(-999999)
-	visible_message(span_boldwarning("Oh no, [src] has been defeated!"))
+	visible_message(span_boldwarning("哦不，[src]被打败了!"))
 	INVOKE_ASYNC(src, PROC_REF(petrify), 500000)
 	return FALSE
 

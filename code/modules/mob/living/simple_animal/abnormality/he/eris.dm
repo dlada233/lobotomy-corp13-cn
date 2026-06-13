@@ -1,13 +1,13 @@
 /mob/living/simple_animal/hostile/abnormality/eris
-	name = "Eris"
-	desc = "A towering, intimidating woman without a mouth."
+	name = "厄里斯"
+	desc = "一个高大的，吓人的没有嘴巴的女人."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "eris"
 	icon_living = "eris"
 	core_icon = "eris_egg"
 	portrait = "eris"
-	maxHealth = 300
-	health = 300
+	maxHealth = 600
+	health = 600
 	ranged = TRUE
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "claw"
@@ -42,34 +42,35 @@
 	gift_type =  /datum/ego_gifts/coiling
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
-	observation_prompt = "I am seated at a banquet. <br>\
-		The tablecloth is of the finest red velvet, and seated across from me is the abnormality Eris.<br>\
-		\"Well, how is it?\" <br>The monster, disguised as a human asks me. <br>\
-		There is a sweet, revolting scent in the air. <br>\
-		Raw meat and organs are piled high on the serving plates, being attacked by the occasional fly. <br>The monster in front of me dines with knife and fork.<br>\
-		A human head is on prominent display on my plate.<br> It belongs to someone who was assigned to work on \"Eris\", not too long ago.<br>\
-		\"Not hungry? Perhaps you'd like to visit my boudoir?\"<br>\
-		Vile, disgusting. <br>I want to get out of here."
+	observation_prompt = "我置身于宴会中。<br>\
+		猩红天鹅绒桌布铺展，异想体厄里斯端坐对面。<br>\
+		\"感觉如何？\"<br>伪装成人类的怪物问道。<br>\
+		空气中弥漫甜腻腐臭。<br>\
+		餐盘堆满生肉脏器，蝇虫不时叮咬。<br>眼前的怪物正优雅持着刀叉进餐。<br>\
+		我的餐盘中央赫然陈列着人头。<br>那是不久前负责厄里斯工作的员工。<br>\
+		\"没胃口？或许该参观我的闺房？\"<br>\
+		恶心，作呕。<br>我只想逃离此地。"
 	observation_choices = list(
-		"Run" = list(TRUE, "I get up from the table, make an excuse, and bolt for the door as fast as I can. <br>\
-			Surprisingly, it's not locked. <br>I hear the imitation of a young woman's voice on my way out. <br>\
-			\"Come back soon, sweetie!\"<br> \"You're always invited to dinner, and i'll be sure to serve you one day!\""),
-		"Accept her proposal" = list(FALSE, "How bad can it be? <br>I follow Eris as she leads me into a room. <br>\
-			Hours later, Eris dines with another stranger. <br>My head is resting on that very same plate."),
+		"逃跑" = list(TRUE, "我起身致歉，冲向房门。<br>\
+			门竟未上锁。<br>逃离时听见少女嗓音的模仿：<br>\
+			\"早点回来呀，亲爱的！\"<br>\"晚餐永远为你准备，终有一天你会成为主菜！\""),
+		"接受提议" = list(FALSE, "能有多糟？<br>我跟随厄里斯进入房间。<br>\
+			数小时后，厄里斯与新的陌生人共进晚餐。<br>我的头颅正置于同样的餐盘中。"),
 	)
 
 	var/girlboss_level = 0
 
 /mob/living/simple_animal/hostile/abnormality/eris/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Eris, A Tank Role Abnormality.</h1><br>\
-		<b>|Humanoid Disguise|: You are only able to attack humans who only have a very low amount of health, or if they are dead.<br>\
-		If they attack a human who fulfills the above conditions, you will devor them, and gain a stack of 'Girl Boss'<br>\
+	to_chat(src, "<h1>你扮演厄里斯，坦克型异想体</h1><br>\
+		<b>|人形伪装|：仅能攻击濒死或已死亡的人类。<br>\
+		吞噬符合条件的猎物可获得'致命魅力'层数。<br>\
 		<br>\
-		|Dine with me...|: Every second, you heal ALL targets that you can see.<br>\
-		Your healing increases depending on the amount of 'Girl Boss' you have.<br>\
+		|共进晚餐|：每秒治疗视野内所有目标。<br>\
+		治疗效果随'致命魅力'层数提升。<br>\
 		<br>\
-		|Elegant Form|: When you are attacked by a human, deal WHITE damage to the attack. This damage is increase depending on your 'Girl Boss' stacks.</b>")
+		|优雅形态|：受人类攻击时，对其造成WHITE伤害。<br>\
+		伤害值随'致命魅力'层数增加。</b>")
 
 //Okay, but here's the breach on death
 /mob/living/simple_animal/hostile/abnormality/eris/Initialize()
@@ -138,7 +139,7 @@
 
 //Okay, but here's the cannibalism
 /mob/living/simple_animal/hostile/abnormality/eris/proc/Dine(mob/living/carbon/human/poorfuck)
-	manual_emote("unhinges her jaw, revealing many rows of teeth!")
+	manual_emote("打开她的下巴，露出许多排牙齿!")
 	playsound(get_turf(src), 'sound/abnormalities/bigbird/bite.ogg', 50, 1, 2)
 	poorfuck.dust(TRUE, TRUE)
 	new /obj/effect/gibspawner/generic/silent(get_turf(poorfuck))
@@ -148,9 +149,9 @@
 		H.deal_damage(girlboss_level*10, WHITE_DAMAGE)
 
 	SLEEP_CHECK_DEATH(10)
-	manual_emote("wipes her mouth with a hankerchief")
+	manual_emote("用手帕擦嘴")
 	SLEEP_CHECK_DEATH(15)
-	say("Thank you for the meal, love.")
+	say("谢谢你请我吃饭，亲爱的.")
 	girlboss_level += 1
 
 //Okay, but here's the Sex work
@@ -162,24 +163,24 @@
 	emote("giggles")
 	current_petter.Stun(30 SECONDS)
 	SLEEP_CHECK_DEATH(20)
-	say("I'm glad you've come for dinner, my dear.")
+	say("我很高兴你来吃晚饭，亲爱的.")
 	SLEEP_CHECK_DEATH(20)
-	say("Oh you look just so... delicious.")
+	say("哦，你看起来如此...美味的.")
 	SLEEP_CHECK_DEATH(20)
 	emote("giggles")
 	SLEEP_CHECK_DEATH(20)
-	say("Here's your reward. You're mine forever.")
+	say("这是你的报酬，你永远属于我.")
 	SLEEP_CHECK_DEATH(20)
-	manual_emote("unhinges her jaw, revealing many rows of teeth!")
+	manual_emote("打开她的下巴，露出许多排牙齿!")
 
 	playsound(get_turf(src), 'sound/abnormalities/bigbird/bite.ogg', 50, 1, 2)
 	new /obj/effect/gibspawner/generic/silent(get_turf(current_petter))
 	current_petter.dust(TRUE, TRUE)
 
 	SLEEP_CHECK_DEATH(20)
-	manual_emote("wipes her mouth with a hankerchief")
+	manual_emote("用手帕擦嘴")
 	SLEEP_CHECK_DEATH(20)
-	say("Thank you for the meal, dear.")
+	say("谢谢你请我吃饭，亲爱的.")
 	girlboss_level += 5
 	datum_reference.qliphoth_change(-3)
 

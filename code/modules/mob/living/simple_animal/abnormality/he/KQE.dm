@@ -1,8 +1,8 @@
 /mob/living/simple_animal/hostile/abnormality/kqe
 	name = "KQE-1J-23"
-	desc = "A mechanical puppet composed of metal plates, lights, and integrated circuits. Bare wires protrude with its every movement."
-	health = 350
-	maxHealth = 350
+	desc = "由金属板、灯和集成电路组成的机械木偶。裸露的电线随着它的每一个动作而突出."
+	health = 500
+	maxHealth = 500
 	attack_verb_continuous = "whips"
 	attack_verb_simple = "whip"
 	attack_sound = 'sound/abnormalities/kqe/hitsound1.ogg'
@@ -32,9 +32,9 @@
 		ABNORMALITY_WORK_INSIGHT = list(30, 30, 50, 55, 55),
 		ABNORMALITY_WORK_ATTACHMENT = 55,
 		ABNORMALITY_WORK_REPRESSION = list(30, 35, 40, 45, 50),
-		"Write HELLO" = 0,
-		"Write GOODBYE" = 0,
-		"Write DUMBASS" = 0,
+		"写下 你好" = 0,
+		"写下 再见" = 0,
+		"写下 笨蛋" = 0,
 	)
 	work_damage_upper = 7
 	work_damage_lower = 4
@@ -46,7 +46,7 @@
 		/datum/ego_datum/armor/regs,
 	)
 	gift_type =  /datum/ego_gifts/replica
-	gift_message = "The abnormality hands you a pendant made from circuits and sinews."
+	gift_message = "异常给你一个由电路和肌腱制成的吊坠."
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
 	grouped_abnos = list(
@@ -54,30 +54,29 @@
 		/mob/living/simple_animal/hostile/abnormality/nobody_is = 1.5,
 	)
 
-	observation_prompt = "This dark place might be a factory. <br>\
-		A sharp mechanical noise zips through the air. <br>\
-		Illuminating eyes are fixed on you. <br>\
-		A robot slowly approaches. <br>\
-		It appears to be incomplete, as suggested by the bare wires protruding with each movement. <br>\
-		Is that leakage antifreeze, or blood? <br>\
-		While you were wondering, the terminal on its chest flashed to life. <br>\
-		Looks like you can write something."
+	observation_prompt = "这个阴暗的地方似乎是座工厂。<br>\
+		尖锐的机械噪音划破空气。<br>\
+		发光的眼睛紧盯着你。<br>\
+		一个机器人缓缓靠近。<br>\
+		它似乎尚未完工，裸露的电线随着每个动作从体内伸出。<br>\
+		渗漏的是防冻液，还是血液？<br>\
+		正当你疑惑时，它胸口的终端突然亮起。<br>\
+		看来你可以在上面输入些什么。"
 	observation_choices = list(
-		"Hello" = list(TRUE, "The robot lifts both arms with some struggle. <br>\
-			The terminal prints out its words: <br>\
-			<Welcome, Dear Guest. Have you enjoyed the town tour? \
-			We’d like you to have a souvenir. :-)> <br>\
-			A smile is displayed on the terminal, <br>\
-			but in the robot’s gestures, you feel a plea for help."),
-		"Goodbye" = list(FALSE, "The terminal’s light goes red, and warnings start to blare. <br>\
-			The robot shakes intensely as if in pain. <br>\
-			<Farewell. <br>Farewell, <br>FarewellFarewellFarewellFarewellFarewellFarewellFarewellFarewellFarewell>"),
+		"你好" = list(TRUE, "机器人有些吃力地抬起双臂。<br>\
+			终端打印出文字：<br>\
+			<欢迎，亲爱的客人。您享受小镇之旅了吗？我们想送您一件纪念品。:-)><br>\
+			终端上显示出一个笑脸，<br>\
+			但从机器人的姿态中，你感受到一种求助的意味。"),
+		"永别" = list(FALSE, "终端的灯光转为红色，警报声开始大作。<br>\
+			机器人剧烈颤抖，仿佛痛苦不堪。<br>\
+			<永别。<br>永别，<br>永别永别永别永别永别永别永别永别永别>"),
 	)
 
 	var/can_act = TRUE
 	var/grab_cooldown
 	var/grab_cooldown_time = 15 SECONDS
-	var/grab_damage = 30
+	var/grab_damage = 20
 	var/work_penalty = FALSE
 	var/question = FALSE
 	var/work_count = 0
@@ -116,7 +115,7 @@
 		return
 	if(!heart)
 		revive(full_heal = TRUE, admin_revive = FALSE)//fully heal and spawn a heart
-		say("Please cooperate! Please Cooperrr... Csdk..ppra...@#@%!%^#$")
+		say("请配合!请配配配... Csdk..ppra...@#@%!%^#$")
 		if(!LAZYLEN(GLOB.department_centers))
 			heart = TRUE
 		else
@@ -126,7 +125,7 @@
 			heart = H
 			H.abno_host = src
 		Stagger()
-		manual_emote("blares random letters on its terminal before turning it off.")
+		manual_emote("在关闭它之前，在它的终端上发出随机的字母.")
 
 /mob/living/simple_animal/hostile/abnormality/kqe/death()
 	if(!heart)
@@ -149,50 +148,50 @@
 	if(work_count < 3)
 		work_penalty = FALSE
 		return
-	manual_emote("turns its terminal on.")
-	to_chat(user, span_notice("A terminal on the chest of the abnormality flashes to life! You should write something on it."))
+	manual_emote("打开终端.")
+	to_chat(user, span_notice("一个终端上的胸部异常闪现光点！你应该在上面写点什么."))
 	question = TRUE
 	return
 
 /mob/living/simple_animal/hostile/abnormality/kqe/AttemptWork(mob/living/carbon/human/user, work_type)
-	if((work_type != "Write HELLO") && (work_type != "Write GOODBYE") && (work_type != "Write DUMBASS") && !question)
+	if((work_type != "写下 你好") && (work_type != "写下 再见") && (work_type != "写下 笨蛋") && !question)
 		return TRUE
-	if(((work_type == "Write HELLO") || (work_type == "Write GOODBYE") || (work_type == "Write DUMBASS")) && !question)
+	if(((work_type == "写下 你好") || (work_type == "写下 再见") || (work_type == "写下 笨蛋")) && !question)
 		to_chat(user, span_notice("The terminal is blank."))
 		return FALSE
-	if((work_type != "Write HELLO") && (work_type != "Write GOODBYE") && (work_type != "Write DUMBASS") && question)
-		to_chat(user, span_notice("Looks like you can write something."))
+	if((work_type != "写下 你好") && (work_type != "写下 再见") && (work_type != "写下 笨蛋") && question)
+		to_chat(user, span_notice("看来你可以在上面输入些什么."))
 		return FALSE
-	if(work_type == "Write HELLO")
+	if(work_type == "写下 你好")
 		if(!GiftUser(user, 18, 100))//always gives a gift
-			say("Then you may not have a souvenir! Please cooperate, or you may be punished according to Rule #A62GBFE1!")
+			say("那么您将无法获得纪念品！请配合，否则将根据规则#A62GBFE1进行处罚!")
 			work_penalty = TRUE
 			datum_reference.qliphoth_change(-1)
 			question = FALSE
 			work_count = 0
 			return FALSE
-		say("Have you enjoyed the town tour? We’d like you to have a souvenir. :-)")
-		to_chat(user, span_notice("A smile is displayed on the terminal, but the abnormality appears to be distressed."))
+		say("您享受小镇之旅了吗？我们想送您一件纪念品. :-)")
+		to_chat(user, span_notice("终端上显示出一个笑脸，但异常存在似乎很痛苦."))
 		question = FALSE
 		datum_reference.max_boxes += 4
 		work_count = 0
-	if(work_type == "Write GOODBYE")
+	if(work_type == "写下 再见")
 		if(get_attribute_level(user, JUSTICE_ATTRIBUTE) < 60)//instant breach if below 3 justice
 			datum_reference.qliphoth_change(-2)//instant breach
-			to_chat(user, span_notice("The terminal’s light goes red, and warnings start to blare."))
-			say("Farewell. Farewell, FarewellFarewellFarewellFarewellFarewellFarewellFarewellFarewellFarewell.")
+			to_chat(user, span_notice("终端的灯光转为红色，警报声开始大作."))
+			say("永别。永别，永别永别永别永别永别永别永别永别永别.")
 			return FALSE
 		work_penalty = TRUE
-		say("Did you not take a tour of the town, Dear Guest?")
+		say("您没有游览小镇吗，亲爱的客人?")
 		question = FALSE
 		work_count = 0
-	if(work_type == "Write DUMBASS")
+	if(work_type == "写下 笨蛋")
 		var/datum/ego_gifts/ups/ego_reward = new
 		ego_reward.datum_reference = datum_reference
 		user.Apply_Gift(ego_reward)
 		datum_reference.qliphoth_change(-2)//instant breach
-		to_chat(user, span_warning("The robot begins wildly flailing its arms."))
-		say("Commencing eviction accordance to rule D63ICRQ1!")
+		to_chat(user, span_warning("机器人开始疯狂挥舞手臂."))
+		say("开始根据规则D63ICRQ1执行驱逐!")
 	return FALSE
 
 /mob/living/simple_animal/hostile/abnormality/kqe/WorkChance(mob/living/carbon/human/user, chance)
@@ -327,8 +326,8 @@
 	pixel_y = 0
 
 /mob/living/simple_animal/hostile/aminion/kqe_heart
-	name = "Heart of The Townsfolk"
-	desc = "A massive protrusion of wires shaped like a human heart. Arcs of electricity pulse on its surface.."
+	name = "乡亲之心"
+	desc = "一个巨大的突出的电线，形状像人类的心脏，电弧在它的表面上脉冲.."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
@@ -336,8 +335,8 @@
 	icon_living = "kqe_heart"
 	icon_dead = "kqe_egg"
 	/*Stats*/
-	health = 200
-	maxHealth = 200
+	health = 700
+	maxHealth = 700
 	obj_damage = 50
 	damage_coeff = list(RED_DAMAGE = 2, WHITE_DAMAGE = 2, BLACK_DAMAGE = 2, PALE_DAMAGE = 2)
 	speed = 5

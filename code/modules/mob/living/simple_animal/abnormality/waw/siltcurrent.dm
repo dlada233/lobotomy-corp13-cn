@@ -2,9 +2,9 @@
 //When out you're on a timer due to everyone on the floor it's on taking oxygen damage.
 //Please don't make an Ikea shark alt skin for this-Crabby.
 /mob/living/simple_animal/hostile/abnormality/siltcurrent
-	name = "\proper Dream-Devouring Siltcurrent"
-	desc = "An abnormality resembling a giant black and teal fish. \
-	There's teal light tubes embedded in its body,"
+	name = "\proper 噬梦的浊流"
+	desc = "一种巨大的黑色蓝绿色相杂的鱼型异想体. \
+	蓝绿色的灯管嵌在它的身体里,"
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "siltcurrent"
 	icon_living = "siltcurrent"
@@ -21,8 +21,8 @@
 	melee_damage_upper = 10
 	melee_damage_type = RED_DAMAGE
 	is_flying_animal = TRUE
-	maxHealth = 800
-	health = 800
+	maxHealth = 1200
+	health = 1200
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.5)
 	stat_attack = HARD_CRIT
 	death_sound = 'sound/abnormalities/dreamingcurrent/dead.ogg'
@@ -62,22 +62,22 @@
 		/mob/living/simple_animal/hostile/abnormality/pisc_mermaid = 1.5//both are aquatic abormalities, do oxygen damage while breaching, have water turf in their chambers, and both of their themes are the inverse of the other.
 	)
 
-	observation_prompt = "\"Yes. The deep sea is a dark place. <br>\
-		But at the end of that dark path is a light. <br>\
-		Because there are things that shine in the dark there. <br>\
-		Let's go there. <br>And we'll shine brighter than anything in that dark place. <br>\
-		We were all abandoned, yes. <br>But we all had dreams, too. <br>Remember? <br>\
-		Well, let's make our dreams come true. <br>Let's sink together into the depths.\" <br>\
-		The dim fluorescent lights impaling the entity's back flicker."
+	observation_prompt = "\"是的，深海是黑暗之地。<br>\
+		但在黑暗之路的尽头有光。<br>\
+		因为那里存在着在黑暗中闪耀之物。<br>\
+		我们前往那里吧。<br>我们将比黑暗中的任何存在都更加闪耀。<br>\
+		我们都被抛弃了，是的。<br>但我们也都曾有过梦想。<br>还记得吗？<br>\
+		那么，就让梦想成真吧。<br>让我们一同沉入深渊。\"<br>\
+		刺穿实体背部的昏暗荧光灯不停闪烁。"
 	observation_choices = list(
-		"Fix the entity's flickering fluorescent lights" = list(TRUE, "\"I remember. <br>I've always wanted to run across a rolling field of grass under the warm sun. <br>\
-			To swim across the vast ocean that I've seen only through pictures. <br>\
-			That was my dream. <br>\
-			My only dream. <br>\
-			Now, if you ever recall a dream in which you wished to twinkle, even as a faint flicker...\""),
-		"Say that you will sink together" = list(FALSE, "You still fear the dark, don't you? <br>\
-			I know that you will miss the surface, forever out of your reach once this fluorescent lamp dies. <br>\
-			So do return once you're ready.\""),
+		"修复闪烁的荧光灯" = list(TRUE, "\"我想起来了。<br>我一直渴望在温暖阳光下奔跑过绵延草地。<br>\
+			游过只在照片中见过的辽阔海洋。<br>\
+			那就是我的梦想。<br>\
+			我唯一的梦想。<br>\
+			现在，若你忆起某个渴望闪烁的梦境，哪怕只是微光...\""),
+		"说你们会一起沉沦" = list(FALSE, "你仍然惧怕黑暗，不是吗？<br>\
+			我知道你会留恋地表——当这盏荧光灯熄灭后将永远无法触及之地。<br>\
+			所以准备好时请务必回来。\""),
 	)
 
 	var/stunned = FALSE
@@ -100,10 +100,10 @@
 	icon_icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	button_icon_state = "_WAW"
 	chosen_attack_num = 2
-	chosen_message = span_colossus("You won't dive anymore.")
+	chosen_message = span_colossus("你不再深潜.")
 	button_icon_toggle_activated = "_WAW"
 	toggle_attack_num = 1
-	toggle_message = span_colossus("You will now dive while you attack.")
+	toggle_message = span_colossus("当你攻击时将会进行深潜.")
 	button_icon_toggle_deactivated = "_WAW"
 
 /mob/living/simple_animal/hostile/abnormality/siltcurrent/Life()
@@ -189,15 +189,15 @@
 						hitflotsam = TRUE
 						Stunned()
 						src.adjustBruteLoss(750)
-						visible_message(span_boldwarning("[src] gets impaled on the Flotsam taking heavy damage!"))
+						visible_message(span_boldwarning("[src]被浮货废料刺穿，受到了严重伤害!"))
 						playsound(F, "sound/effects/hit_on_shattered_glass.ogg", 50, TRUE)
 				for(var/mob/living/L in T)
 					if (ishuman(L))
 						if(hitflotsam)
 							continue
 						playsound(L, "sound/abnormalities/dreamingcurrent/bite.ogg", 50, TRUE)
-						visible_message(span_boldwarning("[src] mauls through [L]!"))
-						to_chat(L, span_userdanger("[src] mauls you!"))
+						visible_message(span_boldwarning("[src]掠过[L]!"))
+						to_chat(L, span_userdanger("[src]掠过你!"))
 						HurtInTurf(T, list(), dive_damage, RED_DAMAGE)
 						if(L.health < 0 || L.stat == DEAD)
 							L.gib()
@@ -236,7 +236,7 @@
 	for(var/mob/living/L in GLOB.player_list)//Spawns Flotsams in the halls and notifies people that it's out.
 		if(L.z != z || L.stat >= HARD_CRIT)
 			continue
-		to_chat(L, span_userdanger("You feel water is entering the facility!"))
+		to_chat(L, span_userdanger("你感到水涌进了设施!"))
 	var/list/spawn_turfs = GLOB.xeno_spawn.Copy()
 	for(var/i = 1 to (tube_spawn_amount))
 		if(!LAZYLEN(spawn_turfs)) //if list empty, recopy xeno spawns
@@ -278,8 +278,8 @@
 		T.TerraformTurf(/turf/open/water/deep/obsessing_water, flags = CHANGETURF_INHERIT_AIR)
 
 /obj/structure/flotsam
-	name = "Flotsam"
-	desc = "A pile of teal light tubes embedded into the floor."
+	name = "浮货废料"
+	desc = "一堆青色的灯管嵌在地板上."
 	icon = 'ModularTegustation/Teguicons/64x32.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
@@ -316,12 +316,12 @@
 	attacker.adjustOxyLoss(-100, updating_health=TRUE, forced=TRUE)
 	if(!silt.target && !(silt.diving || silt.stunned))
 		silt.dive_cooldown = 0
-		to_chat(attacker, span_userdanger("Something is approaching  you!"))
+		to_chat(attacker, span_userdanger("有什么东西在接近你!"))
 		silt.SiltDive(get_turf(attacker),FALSE)
 
 /obj/effect/obsessing_water_effect
-	name = "Obsessing water"
-	desc = "A strange black and teal water"
+	name = "痴迷之水"
+	desc = "一种奇怪的黑色和蓝绿色的水"
 	icon = 'icons/turf/floors/water.dmi'
 	icon_state = "obsessing_water"
 	layer = 1.9//Prevents it from blocking bitter flora

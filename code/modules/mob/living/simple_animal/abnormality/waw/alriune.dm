@@ -1,7 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/alriune
-	name = "Alriune"
-	desc = "A tall, pink abnormality that looks similar to a horse. It has 6 pointed legs, an armless human-like upper \
-	body covered in bright teal leaves, and a head with empty, flower-filled eye sockets and pink flowers coming out of her mouth."
+	name = "爱娜温"
+	desc = "高大的粉红色异想体，形似马匹。有六条尖腿，无臂的上半身覆盖亮青色叶片，眼窝空荡布满花朵，口中伸出粉色花朵。"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "alriune"
 	icon_living = "alriune"
@@ -10,8 +9,8 @@
 	pixel_x = -8
 	base_pixel_x = -8
 
-	maxHealth = 800
-	health = 800
+	maxHealth = 1000
+	health = 1000
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1.2, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1.5)
 
 	threat_level = WAW_LEVEL
@@ -34,13 +33,13 @@
 	light_range = 9
 	light_power = 1
 
-	observation_prompt = "You told me, shedding petals instead of tears. <br>\
-		\"We were all nothing but soil once, so do not speak of an end here.\" <br>\
-		You told me, blossoming flowers from body as if they are your last words. <br>\"Soon...\""
+	observation_prompt = "你告诉我，落下的不是眼泪而是花瓣。<br>\
+		\"我们都曾只是泥土，别在此谈论终结。\"<br>\
+		你告诉我，身体绽放花朵仿佛那是遗言。<br>\"很快...\""
 	observation_choices = list(
-		"Spring will come" = list(TRUE, "Spring is coming. <br>Slowly, rapturously, my end began."),
-		"Winter will come" = list(TRUE, "Winter is coming. <br>\
-			Gradually, my exipation was drawing to an end hectically."),
+		"春天将会到来" = list(TRUE, "春天将至。<br>缓慢而狂喜地，我的终结开始了。"),
+		"冬天将会到来" = list(TRUE, "冬天将至。<br>\
+			在忙乱中，我的消亡渐渐走向终点。"),
 	)
 
 	/// Currently displayed petals. When value is at 3 - reset to 0 and perform attack

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/abnormality/scorched_girl
-	name = "Scorched Girl"
-	desc = "An abnormality resembling a girl burnt to ashes. \
-	Even though there's nothing left to burn, the fire still doesn't extinguish."
+	name = "焦化少女"
+	desc = "像被烧成灰烬的女孩的畸形物. \
+	即使没有任何东西可以燃烧，火仍然没有熄灭."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "scorched"
 	icon_living = "scorched"
@@ -37,17 +37,17 @@
 	gift_type =  /datum/ego_gifts/match
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "I thought it was cold. \
-		It got warm before I even realize it. The match nailed to my heart doesn't stop burning. \
-		The match that never caught a fire before now burns to ash. Maybe is a price for taking my body, to burn so bright and fiery. \
-		Let's run when I can burn. I have been suffering and will suffer. But why you are still happy? \
-		I know the menace I have become. If nothing will change, I at least want to see you suffering."
+	observation_prompt = "我以为很冷。\
+		甚至没意识到就变暖了。钉在心脏上的火柴不停燃烧。\
+		从未点燃过的火柴现在烧成了灰烬。也许这就是占据我身体的代价，如此明亮而炽烈地燃烧。\
+		趁还能燃烧时奔跑吧。我一直在受苦，并将继续受苦。但为何你仍如此快乐？\
+		我知道自己已成威胁。如果一切都不会改变，我至少想看到你受苦."
 	observation_choices = list(
-		"Do not go to her" = list(TRUE, "I stopped. I can see her in the distance. \
-			\"Maybe you are thinking I am some kind of lighthouse.\" \
-			\"At least, I hope you realize my ash is all that remains after this flame consumes the all of me.\""),
-		"Go to her" = list(FALSE, "Come to me. \
-			You who will soon become ashes just like me."),
+		"不要靠近她" = list(TRUE, "我停下了脚步，能看见远处的她. \
+			\"也许你以为我是某种灯塔.\" \
+			\"至少，我希望你能明白，当火焰将我全部吞噬后，留下的只有我的灰烬.\""),
+		"靠近她" = list(FALSE, "来到我身边吧. \
+			你很快也会像我一样化为灰烬."),
 	)
 
 	/// Restrict movement when this is set to TRUE

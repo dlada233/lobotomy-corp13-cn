@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/yang
-	name = "Yang"
-	desc = "A floating white fish that seems to help everyone near it."
+	name = "阳"
+	desc = "一条漂浮的白鱼，似乎能帮助附近的每个人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "yang"
 	icon_living = "yang"
@@ -8,8 +8,8 @@
 	icon_dead = "yang_slain"
 	portrait = "yang"
 	is_flying_animal = TRUE
-	maxHealth = 300	//It is helpful and therefore weak.
-	health = 300
+	maxHealth = 800	//It is helpful and therefore weak.
+	health = 800
 	move_to_delay = 7
 	pixel_x = -16
 	base_pixel_x = -16
@@ -31,7 +31,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(0, 0, 40, 40, 40),
 		ABNORMALITY_WORK_ATTACHMENT = list(0, 0, 55, 55, 55),
 		ABNORMALITY_WORK_REPRESSION = list(0, 0, 40, 40, 40),
-		"Release" = 0,
+		"释放" = 0,
 	)
 	max_boxes = 20
 	success_boxes = 16
@@ -62,18 +62,18 @@
 	projectiletype = /obj/projectile/beam/yang
 	projectilesound = 'sound/weapons/sear.ogg'
 
-	observation_prompt = "The Angel's Pendant was one half of a greater whole, but now they've been cleaved in half, forever wanting to reunite. <br>\
-		The pendant laid upon the podium before you, even being in the same room as it seemed to fortify your body and soul."
+	observation_prompt = "吊坠曾是完整整体的一半，如今被永久劈裂，渴求重聚。<br>\
+		吊坠置于你面前的台座上，仅与其同处一室便能强化你的身心。"
 	observation_choices = list(
-		"Put it on" = list(TRUE, "The moment you put it on, you feel a radiance emanate out and mend pain you didn't even know was there. <br>\
-			It doesn't intend to heal you, it's just the way it is. <br>\
-			If there is darkness and evil in this world, shouldn't there be light and good too? <br>\
-			The world is far more than darkness and cold."),
-		"Don't put it on" = list(FALSE, "It is all that is bright given form, made to gather all the positivity in the world. <br>\
-			If you can't accept the goodness in yourself, you're not ready to accept the goodness of the world."),
+		"佩戴" = list(TRUE, "佩戴瞬间，光芒散发并治愈你未曾察觉的伤痛。<br>\
+			这并非其本意，仅是存在使然。<br>\
+			若世间存有黑暗与邪恶，岂能无光明与良善？<br>\
+			世界远非仅有黑暗与寒冷。"),
+		"不要佩戴" = list(FALSE, "此乃光明本身的化身，为汇聚世间一切积极而生。<br>\
+			若无法接纳自身善念，便无资格接纳世界的良善。"),
 	)
 
-	var/explosion_damage = 50
+	var/explosion_damage = 100
 	var/explosion_timer = 7 SECONDS
 	var/explosion_range = 15
 	var/exploding = FALSE
@@ -81,7 +81,7 @@
 	//slowly heals sanity over time
 	var/heal_cooldown
 	var/heal_cooldown_time = 3 SECONDS
-	var/heal_amount = 5
+	var/heal_amount = 10
 
 
 /mob/living/simple_animal/hostile/abnormality/yang/New(loc, ...)
@@ -205,10 +205,10 @@
 
 
 /obj/projectile/beam/yang
-	name = "yang beam"
+	name = "阳射线"
 	icon_state = "omnilaser"
 	hitscan = TRUE
-	damage = 20
+	damage = 35
 	damage_type = WHITE_DAMAGE
 	muzzle_type = /obj/effect/projectile/muzzle/laser/white
 	tracer_type = /obj/effect/projectile/tracer/laser/white
@@ -238,7 +238,7 @@
 	SSlobotomy_events.yang_downed = FALSE
 
 /mob/living/simple_animal/hostile/abnormality/yang/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
-	if(work_type == "Release")
+	if(work_type == "释放")
 		datum_reference.qliphoth_change(-2)
 	if(work_time >= (30 SECONDS))
 		for(var/datum/abnormality/AD in SSlobotomy_corp.all_abnormality_datums)

@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/funeral
-	name = "Funeral of the Dead Butterflies"
-	desc = "An towering abnormality possessing a white butterfly for a head and a coffin on its back."
+	name = "亡蝶葬仪"
+	desc = "一种高耸的畸形物，头部为白色蝴蝶，背部为棺材."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi' //HOW DO I TURN A PNG INTO THE DMI SPRITES AAAAAAAAAAAAAAA
 	icon_state = "funeral"
 	icon_living = "funeral"
 	icon_dead = "funeral_dead"
 	portrait = "funeral"
 	del_on_death = FALSE
-	maxHealth = 350
-	health = 350
+	maxHealth = 400
+	health = 400
 	blood_volume = 0
 
 	ranged = TRUE
@@ -35,7 +35,7 @@
 	work_damage_type = WHITE_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/gloom
 	max_boxes = 16
-	death_message = "gently descends into its own coffin."
+	death_message = "轻轻地钻进自己的棺材里."
 	base_pixel_x = -16
 	pixel_x = -16
 
@@ -45,22 +45,22 @@
 		/datum/ego_datum/armor/solemnlament,
 	)
 	gift_type =  /datum/ego_gifts/solemnlament
-	gift_message = "The butterflies are waiting for the end of the world."
+	gift_message = "蝶群静候着世界终结。"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "A tall butterfly-faced man stands before, clad in an undertakers's garment. <br>\
-		Between the two of you is a coffin and he gestures you towards it with all 3 of his hands."
+	observation_prompt = "高大的蝶面人矗立面前，身着殡仪服。<br>\
+		你们之间摆放着棺椁，他三只手同时示意你进入。"
 	observation_choices = list(
-		"Enter the coffin" = list(TRUE, "You lie down in the coffin as the butterfly-faced man stands by, his head angled and all 3 hands crossed together over his waist in a solemn gesture. <br>\
-			It's a perfect fit for you. <br>\
-			You feel the weight of innumerable lifetimes and the weariness that came with them. <br>\
-			The butterflies lift you and the coffin as pallbearers, they lament for you in place of the people who cannot."),
-		"Don't enter the coffin" = list(TRUE, "You don't enter because it's not your coffin. <br>\
-			The undertaker reaches out his middle hand to his waiting, insectile audience and one of the butterflies lands upon his fingers. <br>\
-			He offers you the butterfly and you place it into the coffin, gently. <br>\
-			The butterflies are the souls of the dead, waiting to be put to rest, but are still mourning for the living. <br>\
-			You and the butterfly-faced man stand in silent vigil. You both now share a vow; to grieve for the living and dead. <br>\
-			A kaledioscope of butterflies follows you as you leave the containment unit."),
+		"进入棺椁" = list(TRUE, "你躺入棺中，蝶面人肃立一旁，头颅微倾，三手在腰前交叉。<br>\
+			棺椁与你身形完美契合。<br>\
+			你感受无数生命的重负及伴随的倦意。<br>\
+			群蝶如抬棺者托起棺椁，它们代替无法到场者为你哀悼。"),
+		"不入棺椁" = list(TRUE, "你拒绝进入，因这并非为你备下的棺椁。<br>\
+			殡葬师向虫群伸出中掌，一蝶停落指尖。<br>\
+			他将蝴蝶递给你，你轻置入棺。<br>\
+			群蝶乃待安息的亡魂，却仍为生者哀伤。<br>\
+			你与蝶面人默立守灵，立誓同悲生死。<br>\
+			离开收容单元时，有蝶影相随。"),
 	)
 
 	var/gun_cooldown
@@ -78,13 +78,13 @@
 	attack_action_types = list(/datum/action/innate/abnormality_attack/toggle/funeral_butterfly_toggle)
 
 /datum/action/innate/abnormality_attack/toggle/funeral_butterfly_toggle
-	name = "Toggle Casket Swarm"
+	name = "切换棺木蝶群"
 	button_icon_state = "funeral_toggle0"
 	chosen_attack_num = 2
-	chosen_message = span_colossus("You will now unleash a swarm of butterflies.")
+	chosen_message = span_colossus("现在将释放蝶群风暴。")
 	button_icon_toggle_activated = "funeral_toggle1"
 	toggle_attack_num = 1
-	toggle_message = span_colossus("You will now fire butterflies from your hands.")
+	toggle_message = span_colossus("现在将从手中发射蝴蝶。")
 	button_icon_toggle_deactivated = "funeral_toggle0"
 
 /mob/living/simple_animal/hostile/abnormality/funeral/AttackingTarget(atom/attacked_target)
@@ -124,7 +124,7 @@
 		return
 	can_act = FALSE
 	icon_state = "funeral_gun"
-	visible_message(span_danger("[src] levels one of its arms at [cooler_target]!"))
+	visible_message(span_danger("[src]在[cooler_target]处放置一只手臂!"))
 	cooler_target.apply_status_effect(/datum/status_effect/spirit_gun_target) // Re-used for visual indicator
 	dir = get_cardinal_dir(src, target)
 	SLEEP_CHECK_DEATH(1.5 SECONDS)
@@ -138,7 +138,7 @@
 		if(DensityCheck(T))
 			return
 	cooler_target.deal_damage(gun_damage, WHITE_DAMAGE)
-	visible_message(span_danger("[cooler_target] is hit by butterflies!"))
+	visible_message(span_danger("[cooler_target]被蝴蝶击中"))
 	//No longer because fuck you.
 	if(ishuman(target))
 		var/mob/living/carbon/human/kickass_grade1_target = target
@@ -169,7 +169,7 @@
 		return
 	can_act = FALSE
 	dir = dir_to_target
-	visible_message(span_danger("[src] prepares to open its coffin!"))
+	visible_message(span_danger("[src]准备打开它的棺材!"))
 	icon_state = "funeral_coffin_butterfly_less"
 	SLEEP_CHECK_DEATH(1.75 SECONDS)
 	icon_state = "funeral_coffin"
@@ -314,7 +314,7 @@
 	owner.cut_overlay(mutable_appearance('ModularTegustation/Teguicons/32x32.dmi', "funeral_swarm", -MUTATIONS_LAYER))
 
 /obj/effect/temp_visual/funeral_swarm
-	name = "funeral swarm"
+	name = "葬礼群"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "funeral_swarm"
 	layer = BELOW_MOB_LAYER

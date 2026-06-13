@@ -2,11 +2,10 @@
 #define CAMERAFLASH_RANGE 7
 
 /mob/living/simple_animal/hostile/abnormality/better_memories
-	name = "Memories from a Better Time"
-	desc = "A gate of pipes or wires that hold a old TV ontop of it. \
-		Piled on the floor around the gate is birthday cards, old envelopes, \
-		and worn photographs. The inside of the gate is a dark void with a \
-		distant pink light."
+	name = "旧日好时光"
+	desc = "由管道或电线构成的拱门，顶部架着老旧电视。\
+		门周围的地板上散落着生日贺卡、旧信封和磨损的照片。\
+		门内是黑暗的虚空，远处有粉色的微光。"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "better_memories"
 	core_icon = "memories_egg"
@@ -39,12 +38,12 @@
 	//Abnormality Jam Submission
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
-	observation_prompt = "In the pile around the abnormality, you find a old card. <br>You almost forgot about them. <br>\
-		A pink light grows and you feel a tug on your memory."
+	observation_prompt = "在异想体周围的杂物堆中，你发现一张旧贺卡。<br>你几乎已将它遗忘。<br>\
+		粉光渐强，你感到记忆被拉扯。"
 	observation_choices = list(
-		"Let go" = list(TRUE, "You let go of the memory forever. <br>You look forward to the day you can make a memory like that again."),
-		"Hold on" = list(FALSE, "You pull the letter back from the pink light inside the abnormality's gate. <br>\
-			The memory becomes more and more vivid as if its happening now... <br>when you finally break free you cannot recall what you fought so hard for."),
+		"放手" = list(TRUE, "你永远放下了这段记忆。<br>你期待着能再度创造这般回忆的那天。"),
+		"紧握" = list(FALSE, "你从异想体门内的粉光中夺回信件。<br>\
+			记忆愈发鲜明，恍如正在发生...<br>当你最终挣脱时，却记不起自己为何如此拼命。"),
 	)
 
 	var/minions = 0
@@ -53,12 +52,10 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<b>Memories of a Better Time produces a minion when it reaches ZeroQliphoth. \
-		Your mind will be automatically sent to this minion on breach. \
-		The minion is a fast moving entity with a weak red damage stab. Its real power comes \
-		from its ability to apply prudence debuffs to humanoids using its flash ability. \
-		While using your ability your immobilized for 1.5 seconds. It is suggested to use a \
-		hit and run playstyle.</b>")
+	to_chat(src, "<b>当'旧日好时光'的逆卡巴拉计数器归零时，会产生一个仆从。\
+		突破收容时，你的意识将自动附身于此仆从。\
+		该仆从是高速移动实体，拥有造成微弱红色伤害的刺击。其真正能力在于通过闪光对类人生物施加谨慎减益。\
+		使用能力时你会被禁锢1.5秒，建议采用'打了就跑'的战术。</b>")
 
 // Those with low temperance will find a memory in the pile.
 /mob/living/simple_animal/hostile/abnormality/better_memories/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
@@ -108,14 +105,14 @@
 
 //Minion Spawn
 /mob/living/simple_animal/hostile/aminion/better_memories_minion
-	name = "Memories from a Better Time"
-	desc = "A human with a old styled camera for a head and 8 slender spider legs."
+	name = "旧日好时光"
+	desc = "人形躯干上顶着老式相机头颅，延伸出八条细长蛛腿."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "better_memories_a"
 	base_pixel_x = -16
 	pixel_x = -16
-	health = 150
-	maxHealth = 150
+	health = 200
+	maxHealth = 200
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.5)
 	melee_damage_lower = 2
@@ -144,13 +141,12 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<b>You are a minion of Memories from a Better Time. \
-		What you actually are is up for debate, but you do know that \
-		you function best as a hit and run fighter using your camera \
-		flash attack to reduce the work success rate, temperance, and \
-		prudence of any agents caught in its sight. Your natural AI \
-		would seek out those who were working on abnormalities and \
-		snap a picture of them.</b>")
+	to_chat(src, "<b>你是'旧日好时光'的仆从。\
+		你的本质尚无定论，但明确的是：\
+		你最适合充当游击战士，利用相机闪光攻击\
+		降低被照员工的工作成功率、自律性与谨慎值。\
+		原始AI会主动寻找正在执行异想体工作的员工\
+		并拍摄他们。</b>")
 
 /mob/living/simple_animal/hostile/aminion/better_memories_minion/Move()
 	if(!can_act)
@@ -546,7 +542,7 @@
 	L.adjust_attribute_buff(PRUDENCE_ATTRIBUTE, -20)
 	L.adjust_attribute_buff(TEMPERANCE_ATTRIBUTE, -30)
 	L.physiology.work_success_mod *= 0.8
-	to_chat(owner, span_warning("You're distracted by memories of your past."))
+	to_chat(owner, span_warning("你被过去的记忆分散了注意力"))
 
 /datum/status_effect/display/better_memories_curse/tick()
 	. = ..()
@@ -558,11 +554,11 @@
 	L.deal_damage(2, WHITE_DAMAGE)
 	//Unsure if these statements explain what is happening to your character but its enough. -IP
 	to_chat(owner, pick(
-		span_warning("You have trouble recalling your life before this job."),
-		span_warning("You forget your happiest moments."),
-		span_warning("You wonder why your face is wet with tears."),
-		span_warning("You try your best to hold onto the memory of your loved ones."),
-		span_warning("You're forced to reminiscence on a happier time, then its gone."),
+		span_warning("你很难回忆起这份工作之前的生活."),
+		span_warning("你忘记了你最快乐的时刻."),
+		span_warning("你想知道为什么你的脸被泪水打湿了."),
+		span_warning("你尽了最大的努力去记住你爱的人."),
+		span_warning("你被迫回忆起一段更快乐的时光，然后它就消失了."),
 		))
 
 /datum/status_effect/display/better_memories_curse/on_remove()

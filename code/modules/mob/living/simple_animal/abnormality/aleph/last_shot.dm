@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(meat_list)
 
 /mob/living/simple_animal/hostile/abnormality/last_shot
-	name = "Til the Last Shot"
-	desc = "A large ball of flesh, pulsating slowly."
+	name = "直到最后一枪"
+	desc = "一个巨大的肉球，慢慢地跳动着."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "last_shot"
 	core_icon = "last_shot"
@@ -24,8 +24,8 @@ GLOBAL_LIST_EMPTY(meat_list)
 	work_damage_lower = 7
 	work_damage_type = RED_DAMAGE
 	chem_type = /datum/reagent/abnormality/last_shot
-	harvest_phrase = span_notice("You peel off some rotten flesh off the floor surrounding %ABNO and collect it in %VESSEL.")
-	harvest_phrase_third = "%PERSON harvest some rotten flesh surrounding %ABNO."
+	harvest_phrase = span_notice("你从%ABNO 周围的地板上剥下一些腐烂的肉，然后把它们收集在%VESSEL 里.")
+	harvest_phrase_third = "%PERSON 收集了%ABNO 产生的腐烂血肉."
 	max_boxes = 27
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 2)
 	start_qliphoth = 2
@@ -37,20 +37,20 @@ GLOBAL_LIST_EMPTY(meat_list)
 	)
 	gift_type = /datum/ego_gifts/willing
 
-	observation_prompt = "The room reeks of sickly sweet rot and blood. <br>Every moment inside of here makes your head spin. <br>\
-		\"Attention!\" <br>The mass of flesh in the center of the room calls out to you. <br>\
-		\"You won't survive out there. <br>Every single day in this facility is a constant, unending battle.\" <br>\
-		\"The only way you'll survive is if you join me. <br>To serve L-Corp til your last breath.\" <br>\
-		A tendril of rotten meat is held out to you, beckoning for you to join it."
+	observation_prompt = "房间里弥漫这糜烂与血的气味. <br>在这里的每一刻都让你头痛欲裂. <br>\
+		\"注意!\" <br>房间中央的肉团在呼唤你. <br>\
+		\"你活不下来的. <br>在这里每天都是一场无休止的战斗.\" <br>\
+		\"你唯一活下来的方法就是加入我. <br>为L公司奉献至最后一口气.\" <br>\
+		一根腐烂的卷须向你伸出，招手要你加入它."
 	observation_choices = list(
-		"EMBRACE IT" = list(TRUE, "You grab onto the tendril. You can feel your flesh tingling. <br>\
-			\"Good choice.\" <br>\
-			\"Don't worry. <br>You won't regret this, you know? <br>This is the only path you had.\" <br>\
-			\"You're dead meat out there. <br>Might as well accept who you are.\""),
-		"REJECT IT" = list(FALSE, "You slap the tendril away. <br>\
-			\"Feh. <br>So be it. <br>You won't survive out there, you know?\" <br>\
-			\"When there's nothing left of the staff but blood and gore, I'll remain. <br>Do you understand?\" <br>\
-			You can't help but to shudder in disgust as you exit the cell. <br>Was it right? You'll never know."),
+		"握住它" = list(TRUE, "你握住卷须. 你感到手上刺痛. <br>\
+			\"明智的选择.\" <br>\
+			\"别担心. <br>你不会后悔的, 你知道吗? <br>这是你唯一可走的路.\" <br>\
+			\"你在那里将会是一块死肉. <br>还是接受真实的自己吧.\""),
+		"拒绝它" = list(FALSE, "你拍开卷须. <br>\
+			\"好吧. <br>这样是吧. <br>你在那里活不下去的, 你知道的吧?\" <br>\
+			\"所有的员工迟早只会变成一具腐烂的尸体, 只有像我一样才能维系自身. <br>你明白自己放弃了什么吧?\" <br>\
+			当你离开收容单元，禁不住厌恶地打了个寒颤. <br>这样做真的对吗? 你永远也不会知道了."),
 	)
 
 	var/list/gremlins = list()	//For the meatballs
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(meat_list)
 // The MEAT FLOOR
 /obj/structure/meatfloor
 	gender = PLURAL
-	name = "bloodied flesh"
+	name = "血肉"
 	desc = "some seemingly rotten meat."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "meatvine"
@@ -203,10 +203,10 @@ GLOBAL_LIST_EMPTY(meat_list)
 		var/mob/living/carbon/human/H = AM
 		if(prob(25))
 			H.Immobilize(5)
-			to_chat(H, span_warning("Your foot gets caught on the meat vines!"))
+			to_chat(H, span_warning("你的脚被肉须缠住了!"))
 
 /obj/structure/barricade/meatbags
-	name = "meat barricade"
+	name = "肉路障"
 	desc = "Bags of meat. Weird, but self explanatory."
 	icon = 'icons/obj/smooth_structures/sandbags.dmi'
 	icon_state = "meatbags-0"
@@ -244,17 +244,17 @@ GLOBAL_LIST_EMPTY(meat_list)
 //I didn't want to rewrite the entire climbable datum so now climbing is hardcoded
 /obj/structure/barricade/meatbags/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if (!istype(M, /mob/living/carbon/human))
-		to_chat(usr, span_warning("You don't need to do this."))
+		to_chat(usr, span_warning("你不需要这个."))
 		return
 	if(M != user)
-		to_chat(user, span_warning("You start pulling [M] over the wall."))
+		to_chat(user, span_warning("你开始把[M]拉过墙."))
 		if(do_after(user, 1.5 SECONDS)) //If you're going to throw someone else, they have to be dead first.
 			M.forceMove(get_turf(src))
 		return
 
-	to_chat(user, span_warning("You start climbing over the wall."))
+	to_chat(user, span_warning("你开始翻墙."))
 	if(!do_after(user, 1.5 SECONDS))
-		to_chat(user, span_notice("You decide against climbing."))
+		to_chat(user, span_notice("你决定不翻了."))
 		return
 	M.forceMove(get_turf(src))
 	return
@@ -265,14 +265,14 @@ GLOBAL_LIST_EMPTY(meat_list)
 
 //They mostly are supposed to be slow goobers
 /mob/living/simple_animal/hostile/aminion/meatblob
-	name = "flesh ball"
-	desc = "A writhing ball of flesh, vaguely humanoid in shape. This one seems unarmed."
+	name = "肉球"
+	desc = "扭动的肉球，形状有点像人. 这只没有武器."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "meatboi"
 	icon_living = "meatboi"
 	faction = list("hostile")
-	health = 250
-	maxHealth = 250
+	health = 340
+	maxHealth = 340
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 2)
 	melee_damage_lower = 5
@@ -297,8 +297,8 @@ GLOBAL_LIST_EMPTY(meat_list)
 	new /obj/structure/meatfloor(loc)
 
 /mob/living/simple_animal/hostile/aminion/meatblob/gunner
-	name = "suppressing flesh ball"
-	desc = "A writhing ball of flesh, vaguely humanoid in shape. This one has a rifle."
+	name = "抑制肉球"
+	desc = "扭动的肉球，形状有点像人. 这只有把步枪."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "meatboi_rifle"
 	icon_living = "meatboi_rifle"
@@ -360,12 +360,12 @@ GLOBAL_LIST_EMPTY(meat_list)
 
 
 /mob/living/simple_animal/hostile/aminion/meatblob/gunner/shotgun
-	name = "trailblazing flesh ball"
-	desc = "A writhing ball of flesh, vaguely humanoid in shape. This one has a shotgun."
+	name = "开拓肉球"
+	desc = "扭动的肉球，形状有点像人. 这只有把霰弹枪."
 	icon_state = "meatboi_shotgun"
 	icon_living = "meatboi_shotgun"
-	health = 200
-	maxHealth = 200
+	health = 300
+	maxHealth = 300
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 	projectiletype = null
@@ -378,8 +378,8 @@ GLOBAL_LIST_EMPTY(meat_list)
 	reload_sound = 'sound/weapons/gun/shotgun/insert_shell.ogg'
 
 /mob/living/simple_animal/hostile/aminion/meatblob/gunner/sniper
-	name = "cowering flesh ball"
-	desc = "A writhing ball of flesh, vaguely humanoid in shape. This one has a sniper rifle."
+	name = "畏缩肉球"
+	desc = "扭动的肉球，形状有点像人. 这只有把狙击步枪."
 	icon_state = "meatboi_sniper"
 	icon_living = "meatboi_sniper"
 	health = 100
@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(meat_list)
 	return TRUE
 
 /datum/reagent/abnormality/last_shot
-	name = "Meat Moss"
+	name = "肉苔藓"
 	description = "It reeks to high hell. Protects your body and emboldens your Fortitude."
 	metabolization_rate = 0.8 * REAGENTS_METABOLISM
 	color = "#3D0004"

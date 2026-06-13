@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_BABAYAGA /datum/status_effect/babayaga
 /mob/living/simple_animal/hostile/abnormality/babayaga
-	name = "Baba Yaga"
-	desc = "Looks like a palace, the doors are shut tightly.."
+	name = "芭芭雅嘎"
+	desc = "看起来像一座宫殿，大门紧闭.."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "babayaga"
 	icon_living = "babayaga"
@@ -15,8 +15,8 @@
 	melee_damage_upper = 50
 	melee_damage_type = RED_DAMAGE
 	stat_attack = HARD_CRIT
-	health = 1200
-	maxHealth = 1200
+	health = 1300
+	maxHealth = 1300
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1.3, WHITE_DAMAGE = 0.6, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
 	threat_level = WAW_LEVEL
 	can_breach = TRUE
@@ -37,15 +37,15 @@
 	)
 	gift_type =  /datum/ego_gifts/rimeshank
 
-	observation_prompt = "You're freezing to death, the chill bites deep, down to the marrow in your bones. <br>\
-		Through the blizzard, you spy lights leading your way. <br>They're contained in skulls of various creatures, human and animal. <br>\
-		Seeing little recourse, you follow them to a palace made of ice, surrounded by a fence made out of various bones. <br>\
-		The palace stands on the precipice of life and death. <br>You know this palace and who it belongs to. <br>\
-		A terrifying witch lives here."
+	observation_prompt = "你快要冻死了，寒冷刺骨深入骨髓。<br>\
+		穿过暴风雪，你发现引路的灯光。<br>灯光来自各种生物的头骨，有人类的也有动物的。<br>\
+		别无选择，你跟随灯光来到冰筑的宫殿，周围是用各类骨头组成的篱笆。<br>\
+		宫殿矗立在生与死的边缘。<br>你认得这座宫殿及其主人。<br>\
+		一位可怕的女巫居住于此。"
 	observation_choices = list(
-		"Knock on the door" = list(TRUE, "You can't keep shivering in the cold forever. <br>You knock on the door..."),
-		"Keep wandering the blizzard" = list(FALSE, "You keep wandering the blizzard, the cold continuing to sap your strength. <br>\
-			Eventually you collapse in the snow, your whole body frozen. <br>Ahh... <br>There's no more pain..."),
+		"敲门" = list(TRUE, "你不能永远在寒冷中颤抖下去。<br>你敲了敲门..."),
+		"继续在暴风雪中徘徊" = list(FALSE, "你继续在暴风雪中徘徊，寒冷持续消耗你的力气。<br>\
+			最终你倒在雪中，全身冻僵。<br>啊...<br>再也没有痛苦了..."),
 	)
 
 	var/jump_cooldown = 0
@@ -89,7 +89,7 @@
 	pixel_x = -16
 	base_pixel_x = -16
 	update_icon()
-	desc = "A giant house stomping around on an equally large chicken leg."
+	desc = "一个巨大的房子在一只同样大的鸡腿上跺脚."
 	TryJump()
 
 /mob/living/simple_animal/hostile/abnormality/babayaga/CanAttack(atom/the_target)
@@ -146,7 +146,7 @@
 	animate(src, pixel_z = 0, alpha = 255, time = 10)
 	SLEEP_CHECK_DEATH(10)
 	density = TRUE
-	visible_message(span_danger("[src] drops down from the ceiling!"))
+	visible_message(span_danger("[src]从天花板上掉下来!"))
 	playsound(get_turf(src), 'sound/abnormalities/babayaga/land.ogg', 100, FALSE, 20)
 	var/obj/effect/temp_visual/decoy/D = new(get_turf(src), src)
 	animate(D, alpha = 0, transform = matrix()*2, time = 5)
@@ -184,14 +184,14 @@
 
 // Misc Objects and effects
 /mob/living/simple_animal/hostile/aminion/yagaslave
-	name = "frozen slave"
-	desc = "A humanoid figure encased in ice, the pickaxe they're holding looks sharp."
+	name = "冰冻的奴隶"
+	desc = "一个被冰包裹的人形，他们拿着的鹤嘴锄看起来很锋利."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "yagaslave"
 	icon_living = "yagaslave"
 	faction = list("hostile", "babayaga")
-	health = 100
-	maxHealth = 100
+	health = 230
+	maxHealth = 230
 	melee_damage_type = RED_DAMAGE
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1.3, WHITE_DAMAGE = 0.6, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
 	melee_damage_lower = 5
@@ -272,8 +272,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/babayaga
 
 /atom/movable/screen/alert/status_effect/babayaga
-	name = "Baba Yaga is coming!"
-	desc = "If you do not escape in time, you will be crushed, dying instantly."
+	name = "芭芭雅嘎来袭!"
+	desc = "如果你不能及时逃脱，你就会被压扁，当场死亡."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "babayaga"
 

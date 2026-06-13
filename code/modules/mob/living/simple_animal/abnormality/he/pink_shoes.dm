@@ -2,10 +2,10 @@
 #define STATUS_EFFECT_PINKSHOES /datum/status_effect/display/pinkshoes
 GLOBAL_LIST_EMPTY(ribbon_list)
 /mob/living/simple_animal/hostile/abnormality/pink_shoes
-	name = "Pink Shoes"
-	desc = "A pair of girly pink shoes."
-	health = 500
-	maxHealth = 500
+	name = "粉红鞋"
+	desc = "一双可爱的粉色鞋子。"
+	health = 600
+	maxHealth = 600
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pinkshoes"
 	icon_living = "pinkshoes_breach"
@@ -42,14 +42,14 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	gift_type =  /datum/ego_gifts/roseate_desire
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "Strips of pink ribbons float this way. <br>\
-		A voice travels between the fluttering ribbons. <br>\
-		\"What is your desire?\" <br>\"Put me on.\" <br>\
-		\"I'll carry you wherever you wish to go.\" <br>\
-		The suggestions are incredibly suspicious, but for some reason, you are struggling to do decide what do do. <br>What do you say?"
+	observation_prompt = "粉色的缎带向这边飘来. <br>\
+		一个声音在飘动的缎带间响起. <br>\
+		\"你的愿望是什么?\" <br>\"把我戴上.\" <br>\
+		\"我会带你去任何你想去的地方.\" <br>\
+		这些提议极其可疑，但不知为何，你难以决定该怎么做. <br>你会怎么做?"
 	observation_choices = list(
-		"Put on the ribbons" = list(FALSE, "Oh, yeah... This feels good. <br>The ribbons magically turn into shiny pairs of shoes.  <br>Now you can go wherever you want. <br>Probably."),
-		"Refuse" = list(TRUE, "\"Snap out of it! It's all a lie!\" <br>A haggard employee manages to stop you at the last second. <br>Thanks to that warning, you avoided the desire-laden ribbons."),
+		"戴上缎带" = list(FALSE, "哦，是的... 这感觉真好， <br>缎带神奇地变成闪亮的鞋子。  <br>现在你可以去任何你想去的地方。 <br>可能吧。"),
+		"拒绝" = list(TRUE, "\"从幻想中醒来！这都是谎言！\" <br>一个憔悴的员工设法在最后一刻阻止了你。 <br>多亏了那个警告，你避开了充满欲望的缎带。"),
 	)
 
 	ranged = TRUE
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	if(get_attribute_level(user, TEMPERANCE_ATTRIBUTE) < 40 || (user.sanity_lost))
 		Apply_Urge(user)
 		user.adjustSanityLoss(500)
-		user.visible_message(span_userdanger("[user] blankly stumbles towards the Pink Shoes. Now [p_theyre()] reaching out their hand to take the shoes."), span_userdanger("What lovely shoes..."))
+		user.visible_message(span_userdanger("[user]茫然地看着粉红鞋，然后尝试接触粉红鞋."), span_userdanger("多么可爱的鞋子..."))
 
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/proc/Apply_Urge(mob/living/carbon/human/user)
 	user.apply_status_effect(STATUS_EFFECT_URGE)
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		name = user.name
 		appearance = user.appearance
 		gender = user.gender
-		desc = "[user.name] is making obscene gestures, covered in pink ribbons. Does [p_they()] normally wear shoes like those?"
+		desc = "[user.name]被粉红缎带缠绕，脚下穿着不同寻常的粉红鞋子?"
 		add_overlay(breach_icon)
 		cut_overlay(mutable_appearance('icons/effects/32x64.dmi', "panicked", -ABOVE_MOB_LAYER))
 		BreachEffect(user)
@@ -270,7 +270,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	user.melee_damage_lower += 3
 	user.melee_damage_upper += 4
 	user.revive(full_heal = TRUE, admin_revive = FALSE)
-	user.desc += "Wait, are those pink shoes?"
+	user.desc += "等等，那是粉红鞋?"
 	user.faction = faction
 	forceMove(user)
 	playsound(src, 'sound/abnormalities/pinkshoes/Pinkshoes_Breach.ogg', 50, 1)
@@ -334,8 +334,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	var/temp_mod = 0
 
 /atom/movable/screen/alert/status_effect/urge
-	name = "Urge"
-	desc = "The knot of desires must be undone."
+	name = "欲望"
+	desc = "必须解开欲望的结。"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "urge"
 
@@ -346,13 +346,13 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		if(1)
 			return
 		if(2)
-			to_chat(owner, span_userdanger("Put me on."))
+			to_chat(owner, span_userdanger("穿上我."))
 			ApplyBuff()
 		if(3)
-			to_chat(owner, span_userdanger("I'll carry you wherever you wish to go.."))
+			to_chat(owner, span_userdanger("我会带你到任何你想去的地方.."))
 			ApplyBuff()
 		if(4)
-			to_chat(owner, span_userdanger("For some reason, you're struggling to decide what to do...."))
+			to_chat(owner, span_userdanger("不知为何，你难以决定该怎么做...."))
 			ApplyBuff()
 		if(5)
 			duration += 30 SECONDS//die
@@ -376,8 +376,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	if(!ishuman(owner))
 		return
 	ApplyBuff()
-	to_chat(owner, "A voice travels between the fluttering ribbons. \
-	What is your desire?")
+	to_chat(owner, "声音在翻飞的丝带之间穿梭. \
+	你的愿望是什么?")
 	if(status_holder.sanity_lost)
 		qdel(src)
 		return
@@ -423,10 +423,10 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 
 /datum/ai_behavior/say_line/insanity_desirous
 	lines = list(
-				"It feels so good...",
-				"They're in the way...",
-				"I'm getting so close...",
-				"I can't stop...",
+				"它感觉如此美妙...",
+				"他们挡在了路上...",
+				"我越来越接近了...",
+				"我停不下来...",
 				)
 
 /datum/ai_controller/insane/pink_possess/SelectBehaviors(delta_time)//Selects pink shoes as the target
@@ -504,8 +504,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 
 //***Simple Mob Definition***//
 /mob/living/simple_animal/hostile/aminion/pink_zombie
-	name = "Pink Shoes Enchantee"
-	desc = "A humanoid covered in pink ribbons that reeks of decay."
+	name = "粉红鞋的奴仆"
+	desc = "一个被粉红色丝带包裹的人形生物，散发着腐朽的气息."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pinkshoes_zombie"
 	icon_living = "pinkshoes_zombie"
@@ -514,8 +514,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	attack_verb_continuous = "attacks"
 	attack_verb_simple = "attack"
 	attack_sound = 'sound/abnormalities/pinkshoes/Pinkshoes_Attack.ogg'
-	health = 50
-	maxHealth = 50
+	health = 100
+	maxHealth = 100
 	obj_damage = 300
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1.5, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
 	melee_damage_type = WHITE_DAMAGE
@@ -566,8 +566,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 //***Ribbon Definition***//
 /obj/structure/spreading/pink_ribbon
 	gender = PLURAL
-	name = "pink ribbons"
-	desc = "A garish mass of pink ribbons."
+	name = "粉红丝带"
+	desc = "一簇簇鲜艳的粉红色丝带."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "pinkribbons"
 	anchored = TRUE
@@ -683,10 +683,10 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 /obj/structure/spreading/pink_ribbon/proc/Apply_Urge(mob/living/L)
 	var/datum/status_effect/stacking/urge/G = L.has_status_effect(/datum/status_effect/stacking/urge)
 	if(!G)//applying the buff for the first time (it lasts for one minute)
-		to_chat(L, span_warning("The [name] tighten around you."))
+		to_chat(L, span_warning("[name]紧紧缠绕你."))
 		L.apply_status_effect(STATUS_EFFECT_URGE)
 	else//if the employee already has the buff
-		to_chat(L, span_warning("The [name] around your body tighten."))
+		to_chat(L, span_warning("[name]紧紧缠绕你."))
 		G.refresh()
 		G.add_stacks(1)
 
@@ -697,7 +697,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 
 /obj/structure/dense_ribbon
 	gender = PLURAL
-	name = "dense pink ribbons"
+	name = "稠密的粉红缎带"
 	desc = "A massive pile of ribbons."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "pinkribbons2"
@@ -712,7 +712,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		var/mob/living/carbon/human/H = AM
 		if(!H.sanity_lost)
 			H.SetImmobilized(50)
-			to_chat(H, span_warning("The [name] tightly coil around you!"))
+			to_chat(H, span_warning("[name]紧紧地缠绕在你身上!"))
 			return
 	return
 
@@ -760,8 +760,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 
 //*** Cushion ***//
 /obj/structure/pinkshoes_cushion
-	name = "pink cushion"
-	desc = "A dainty little cushion."
+	name = "粉红垫子"
+	desc = "一个精致的小垫子."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pinkshoes_cushion"
 	anchored = TRUE

@@ -2,8 +2,8 @@
 // By yours truely, Mori.
 #define STATUS_EFFECT_FALSEKIND /datum/status_effect/false_kindness
 /mob/living/simple_animal/hostile/abnormality/drifting_fox
-	name = "Drifting Fox"
-	desc = "A large shaggy fox with gleaming yellow eyes; And torn umbrellas lodged into its back."
+	name = "流浪狐狸"
+	desc = "一只毛茸茸的大狐狸，黄色的眼睛闪闪发光；破伞卡在它的背上."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "drifting_fox"
 	icon_living = "drifting_fox"
@@ -17,8 +17,8 @@
 	base_pixel_x = -24
 	base_pixel_y = -26
 	del_on_death = FALSE
-	maxHealth = 200
-	health = 200
+	maxHealth = 350
+	health = 350
 	rapid_melee = 2
 	move_to_delay = 7
 	damage_coeff = list( RED_DAMAGE = 0.9, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 1.5 )
@@ -49,27 +49,27 @@
 		/datum/ego_datum/armor/sunshower,
 	)
 	gift_type = /datum/ego_gifts/sunshower
-	gift_message = "The fox plucks an umbrella from its back and gives it to you, perhaphs as thanks?"
+	gift_message = "狐狸从背上拔下一把伞递给你，或许是在表达谢意？"
 
-	observation_prompt = "An alleyway garbage dump. <br.\
-		Its atmosphere is stuffy and unpleasant thanks to the humidity from the rain. <br.\
-		A pile of old and torn umbrellas sits in a corner. <br.\
-		The umbrellas jiggled. <br.\
-		Looking closer, there’s a large fox underneath. <br.\
-		The umbrellas’ rusted iron blades have firmly rooted themselves in its back."
+	observation_prompt = "小巷垃圾场。<br.\
+		潮湿的雨天让空气闷热难耐。<br.\
+		角落堆积着破旧的雨伞。<br.\
+		伞堆晃动起来。<br.\
+		仔细看去，下面有只大狐狸。<br.\
+		雨伞生锈的铁质伞骨深深扎进它的后背。"
 	observation_choices = list(
-		"Pet the fox" = list(TRUE, "Its growl recedes. <br.\
-			You stroke it once more, <br.\
-			and it closes its eyes, pleased. <br.\
-			You stroke it once more, <br.\
-			and it settles on the ground, comforted. <br.\
-			You stroke it once more, <br.\
-			and it shrinks to become a statue."),
-		"Pull out the umbrellas" = list(FALSE, "Those umbrellas seem to be causing it pain. <br.\
-			When you pull them out with force, bits of its flesh come off with them. <br.\
-			The fox yelped sharply and gave us a glare. <br.\
-			Then, it smacked you with the umbrella in its mouth. <br.\
-			It seemed to reprimand your attitude of pursuing resolution without forethought."),
+		"抚摸狐狸" = list(TRUE, "低吼声逐渐平息。<br.\
+			你再次抚摸它，<br.\
+			它闭目露出愉悦神情。<br.\
+			你再次抚摸它，<br.\
+			它安卧于地，显得舒适。<br.\
+			你再次抚摸它，<br.\
+			它缩小化为雕像。"),
+		"拔出雨伞" = list(FALSE, "那些雨伞似乎让它痛苦不堪。<br.\
+			当你用力拔出时，带出了些许皮肉。<br.\
+			狐狸尖声哀嚎，怒视着你。<br.\
+			接着，它用嘴里的伞拍打你。<br.\
+			似乎是在谴责你这种不计后果的解决态度。"),
 	)
 
 	var/list/pet = list()
@@ -82,14 +82,14 @@
 
 /mob/living/simple_animal/hostile/abnormality/drifting_fox/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Drifting Fox, A Combat Role Abnormality.</h1><br>\
-		<b>|Tattored Shelter|: After losing 10% of your health, you will start spawning Worn Umbrellas around you. \
-		Worn Umbrellas will teleport to you if you move too far away from them. \
-		Also, You will gain a slight speed boost for each Umbrella you have alive.<br>\
+	to_chat(src, "<h1>你扮演流浪狐狸，战斗型异想体</h1><br>\
+		<b>|破旧庇护所|：损失10%生命值后，你将在周围生成破旧雨伞。\
+		破旧雨伞会在你远离时传送至你身边。\
+		此外，每存活一把雨伞，你都会获得小幅速度提升。<br>\
 		<br>\
-		|Worn Umbrellas|: Worn Umbrellas will passively attack humans that they can see by firing a 3x3 AoE on their targets. \
-		If the target gets hit by the AoE, They will gain a debuff which causes them to take more BLACK damage from all sources. \
-		However, if the umbrellas are broken you will lose 5% for each umbrella broken.<br></b>")
+		|破旧雨伞|：破旧雨伞会主动攻击视野内的人类，向目标发射3x3范围AOE。\
+		若目标被击中，将获得一个易伤状态，使其受到的所有BLACK伤害增加。\
+		然而，雨伞被破坏时，每破坏一把你将损失5%生命值。<br></b>")
 
 /mob/living/simple_animal/hostile/abnormality/drifting_fox/funpet(mob/petter)
 	pet |= petter
@@ -98,9 +98,9 @@
 /mob/living/simple_animal/hostile/abnormality/drifting_fox/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(user in pet)
 		if(work_type == ABNORMALITY_WORK_ATTACHMENT)
-			to_chat(user, span_notice("The abnormality seems to like this type of work more than usual!"))
+			to_chat(user, span_notice("异想体似乎比平时更喜欢这类工作!"))
 		else
-			to_chat(user, span_warning("The abnormality does not seem happy with your choice of work."))
+			to_chat(user, span_warning("异想体似乎对你的工作选择感到不满."))
 	. = ..()
 
 /mob/living/simple_animal/hostile/abnormality/drifting_fox/WorkChance(mob/living/carbon/human/user, chance, work_type)
@@ -174,8 +174,8 @@
 
 //Summons
 /mob/living/simple_animal/hostile/aminion/umbrella
-	name = "Umbrella"
-	desc = "A tattered and worn umbrella; The fox seems to have many to spare."
+	name = "雨伞"
+	desc = "一把破旧的伞；狐狸似乎有很多多余的东西."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "foxbrella"
 	icon_living = "foxbrella"
@@ -197,7 +197,7 @@
 
 /// Deal damge to the fox
 /mob/living/simple_animal/hostile/aminion/umbrella/death(gibbed)
-	visible_message(span_notice("[src] falls to the ground as the umbrella closes in on itself!"))
+	visible_message(span_notice("[src]落在地上，伞自己闭合了!"))
 	if(friend)
 		friend.deal_damage(50, BLACK_DAMAGE)
 		friend.move_to_delay = clamp(move_to_delay + 1, 3, 7) //Slowdown
@@ -259,8 +259,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 
 /atom/movable/screen/alert/status_effect/false_kindness
-	name = "False Kindness"
-	desc = "You feel the weight of your mistakes."
+	name = "假仁慈"
+	desc = "你会感受到自己所犯错误的重量."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "false_kindness" //Bit of a placeholder sprite, it works-ish so
 
@@ -269,7 +269,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner //Stolen from Ptear Blade, MAYBE works on people?
-	to_chat(status_holder, span_userdanger("You feel the foxes gaze upon you!"))
+	to_chat(status_holder, span_userdanger("你感到狐狸在注视着你!"))
 	status_holder.physiology.black_mod *= 1.3
 
 /datum/status_effect/false_kindness/on_remove()
@@ -277,7 +277,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_userdanger("You feel as though its gaze has lifted.")) //stolen from PT wep, but I asked so this 100% ok.
+	to_chat(status_holder, span_userdanger("你觉得它的目光已经抬起.")) //stolen from PT wep, but I asked so this 100% ok.
 	status_holder.physiology.black_mod /= 1.3
 
 #undef STATUS_EFFECT_FALSEKIND

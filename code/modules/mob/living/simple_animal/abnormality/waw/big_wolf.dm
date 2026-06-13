@@ -3,8 +3,8 @@
 #define WOLF_HP_PERCENT 100 * (health / maxHealth)
 
 /mob/living/simple_animal/hostile/abnormality/big_wolf
-	name = "Big and Will be Bad Wolf"
-	desc = "An abnormality taking the form of a large wolf."
+	name = "又大又可能很坏的狼"
+	desc = "以大狼的形式出现的异想体."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "big_wolf"
 	icon_living = "big_wolf"
@@ -16,8 +16,8 @@
 	pixel_x = -16
 	base_pixel_x = -16
 
-	maxHealth = 900
-	health = 900
+	maxHealth = 2000
+	health = 2000
 	del_on_death = FALSE
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 0.7, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 1)
 	see_in_dark = 10
@@ -44,7 +44,7 @@
 	chem_type = /datum/reagent/abnormality/sin/gluttony
 	melee_damage_type = RED_DAMAGE
 	melee_damage_lower = 9
-	melee_damage_upper = 12
+	melee_damage_upper = 14
 	attack_sound = 'sound/abnormalities/big_wolf/Wolf_Scratch.ogg'
 
 	attack_action_types = list(
@@ -59,14 +59,14 @@
 	gift_type =  /datum/ego_gifts/cobalt
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "(You see a wolf with patchy fur) <br>\
-		I like it here. <br>At least it's better than where I used to live. <br>There are no pigs or chickens, but I don't have to be Big Bad Wolf, at least. <br>\
-		You didn't immediately kick me out, so I will tell you my name. <br>My name is..."
+	observation_prompt = "（你看见一只皮毛斑驳的狼）<br>\
+		我喜欢这里。<br>至少比从前住的地方好。<br>这里没有猪或鸡，但至少我不必再当大坏狼。<br>\
+		你没有立刻赶我走，所以我要告诉你我的名字。<br>我的名字叫..."
 	observation_choices = list(
-		"Remember the name" = list(TRUE, "It's no use to remember it. <br>Nobody cares about my name. <br>\
-			(Even though the wolf said such a thing, it seems happy.)"),
-		"Forget the name" = list(FALSE, "You better watch out. <br>I can eat you with one bite if I want to. <br>\
-			(The wolf seems unhappy)"),
+		"记住名字" = list(TRUE, "记住也没用。<br>没人在乎我的名字。<br>\
+			（尽管狼这么说，它似乎很开心。）"),
+		"忘记名字" = list(FALSE, "你最好当心。<br>只要我愿意，一口就能吞掉你。<br>\
+			（狼显得很不高兴）"),
 	)
 
 	var/can_act = TRUE
@@ -317,7 +317,7 @@
 				if(isclosedturf(T))
 					continue
 				new /obj/effect/temp_visual/slice(T)
-				hit_mob = HurtInTurf(T, hit_mob, 15, RED_DAMAGE, null, TRUE, FALSE, TRUE, hurt_structure = TRUE)
+				hit_mob = HurtInTurf(T, hit_mob, 19, RED_DAMAGE, null, TRUE, FALSE, TRUE, hurt_structure = TRUE)
 				for(var/mob/living/simple_animal/hostile/abnormality/red_hood/mercenary in hit_mob)
 					mercenary.deal_damage(50, RED_DAMAGE) //triple damge to red
 	can_act = TRUE

@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_HEX /datum/status_effect/hex
 #define STATUS_EFFECT_NAILS /datum/status_effect/nails
 /mob/living/simple_animal/hostile/abnormality/hurting_teddy
-	name = "Hurting Teddy Bear"
-	desc = "A large worn out teddy bear that has been impaled with nails. Its faded grey fur is coated in grime."
+	name = "痛苦泰迪"
+	desc = "被钉子刺穿的又大又旧的泰迪熊，它褪了色的灰色皮毛上沾满了污垢."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_living = "hurting_teddy"
 	icon_state = "hurting_teddy"
@@ -12,8 +12,8 @@
 	del_on_death = FALSE
 	pixel_x = -16
 	base_pixel_x = -16
-	maxHealth = 400
-	health = 400
+	maxHealth = 450
+	health = 450
 	rapid_melee = 1
 	melee_queue_distance = 3
 	move_to_delay = 5 // it's tanky for a TETH. It should be slow.
@@ -53,18 +53,18 @@
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "A teddy bear suffers from having nails lodged into its body. <br>\
-	The bloodstains decorating it are a telling sign of the time it has spent in pain. <br>\
-	The holes where its eyes should be are empty. <br>\
-	In spite of that, it has its arms open wide, endeavouring to fulfill its duty to give hugs."
+	observation_prompt = "一只泰迪熊饱受钉子刺入身体的折磨。<br>\
+		它身上的血渍是它长久以来承受痛苦的明显痕迹。<br>\
+		本该是眼睛的地方只剩下空洞。<br>\
+		尽管如此，它依然张开双臂，努力履行拥抱的职责。"
 	observation_choices = list(
-		"Push it away" = list(FALSE, "You push the gross thing away. <br>\
-			Your hands are punctured deeply by the nails. <br>\
-			You lie there, bleeding, heavily..."),
-		"Hug the teddy" = list(TRUE, "Those nails look extremely painful... <br>\
-			But you muster your courage and embrace the teddy bear. <br>\
-			The hug is warm, and the nails feel soft and spongy. <br>\
-			After a few short moments, the teddy bear seems satisfied."),
+		"把它推开" = list(FALSE, "你把这恶心的东西推开了。<br>\
+			你的双手被钉子深深刺穿。<br>\
+			你躺在那里，血流不止，伤势严重..."),
+		"拥抱泰迪熊" = list(TRUE, "那些钉子看上去极其痛苦……<br>\
+			但你鼓起勇气，拥抱了泰迪熊。<br>\
+			拥抱很温暖，而那些钉子摸起来柔软而有弹性。<br>\
+			片刻之后，泰迪熊似乎满足了。"),
 	)
 
 	var/bearfriended //the one who can work on it safely
@@ -80,7 +80,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/hurting_teddy/AttemptWork(mob/living/carbon/human/user, work_type)
 	if (user == bearfriended) //small reward to the bearfriend. it's a TETH, after all.
-		to_chat(user, span_nicegreen("Hurting Teddy Bear offers you an embrace!"))
+		to_chat(user, span_nicegreen("痛苦泰迪给你一个拥抱!"))
 		user.adjustBruteLoss(-15)
 		user.adjustSanityLoss(-15)
 	return ..()
@@ -89,15 +89,15 @@
 	. = ..()
 	if (bearfriended == null)
 		bearfriended = user
-		to_chat(user, span_nicegreen("Hurting Teddy Bear becomes your friend!"))
+		to_chat(user, span_nicegreen("痛苦泰迪成为了你的朋友!"))
 
 	if (user != bearfriended) //get punished.
-		to_chat(user, span_warning("You feel something sharp being jabbed into you!"))
+		to_chat(user, span_warning("你感到有锋利的东西刺进了你的身体!"))
 		user.apply_status_effect(STATUS_EFFECT_NAILS)
 
 	if(work_type == ABNORMALITY_WORK_REPRESSION && user == bearfriended) //you can use this to swap the bearfriend if you're fine losing the counter on a bad or a neutral
 		bearfriended = null
-		to_chat(user, span_warning("Hurting Teddy Bear isn't your friend anymore! You feel bad for betraying it..."))
+		to_chat(user, span_warning("痛苦泰迪不再是你的朋友了! 你为背叛它而感到内疚..."))
 		user.apply_status_effect(STATUS_EFFECT_HEX)
 	return ..()
 
@@ -165,7 +165,7 @@
 		hug_victim.Stun(10)
 	hug_victim.forceMove(get_turf(src))
 	SLEEP_CHECK_DEATH(5)
-	to_chat(hug_victim, span_userdanger("[src] has grabbed you! Attack [src] to break free!"))
+	to_chat(hug_victim, span_userdanger("[src]抓住你了！攻击[src]来挣脱！"))
 	StrangleHit(1)
 
 /mob/living/simple_animal/hostile/abnormality/hurting_teddy/proc/StrangleHit(count)
@@ -220,8 +220,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/hex
 
 /atom/movable/screen/alert/status_effect/hex
-	name = "Hex"
-	desc = "You take more RED and BLACK damage"
+	name = "魔法"
+	desc = "你承受更多的红色和黑色伤害"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "nail"
 
@@ -252,8 +252,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/nails
 
 /atom/movable/screen/alert/status_effect/nails
-	name = "Nails"
-	desc = "The nails stuck inside you bear a heavy curse. You gain bleed whenever you receive damage."
+	name = "钉子"
+	desc = "钉在你体内的钉子背负着沉重的诅咒，当你受到伤害时，同时会获得流血."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "hex_nail"
 
@@ -262,7 +262,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_userdanger("A cursed nail is stuck inside you!"))
+	to_chat(status_holder, span_userdanger("一颗被诅咒的钉子卡在你体内了!"))
 	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMGE, PROC_REF(DealBleed))
 
 /datum/status_effect/nails/on_remove()
@@ -270,7 +270,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_nicegreen("The nail loosens! You're able to pull it out now!"))
+	to_chat(status_holder, span_nicegreen("钉子松了！你现在可以把它拔出来了！"))
 	UnregisterSignal(owner, COMSIG_MOB_APPLY_DAMGE)
 
 /datum/status_effect/nails/proc/DealBleed(mob/living/carbon/human/owner, damage, damagetype, def_zone)

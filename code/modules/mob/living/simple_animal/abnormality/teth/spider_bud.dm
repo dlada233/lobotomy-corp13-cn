@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/spider
-	name = "Spider Bud"
-	desc = "An abnormality that resembles a massive spider. Tread carefully"
+	name = "蜘蛛巢"
+	desc = "一种类似巨型蜘蛛的畸形物，谨慎行事."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "spider_closed"
 	portrait = "spider_bud"
@@ -36,15 +36,15 @@
 	var/summon_maximum = 0
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "I am a spider. <br>I eat anything my web catches. <br>I am starving. <br>\
-		I haven't eaten anything for days. <br>There is a big prey hanging on my web. <br>\
-		My starvation could kill me if I don't eat something."
+	observation_prompt = "我是一只蜘蛛。<br>我吃掉蛛网捕获的任何东西。<br>我快饿死了。<br>\
+		我已经数日未曾进食。<br>我的蛛网上挂着大型猎物。<br>\
+		如果再不吃东西，饥饿会杀死我。"
 	observation_choices = list(
-		"Do not eat the prey" = list(TRUE, "I could not eat the prey in front of me. <br>\
-			This starvation is slowly tiring me. <br>The prey struggles to get out, to survive. <br>\
-			The struggle did nothing but shaking my web a little bit. <br>And I watch the prey."),
-		"Eat the prey" = list(FALSE, "I devoured the prey. <br>\
-			My body reacted faster than my thoughts. <br>... <br>I am a spider. <br>I eat anything my web catches."),
+		"不吃猎物" = list(TRUE, "我无法吃掉眼前的猎物。<br>\
+			饥饿正慢慢耗尽我的体力。<br>猎物挣扎着想要逃脱求生。<br>\
+			挣扎只是让蛛网微微晃动。<br>而我注视着猎物。"),
+		"吃掉猎物" = list(FALSE, "我吞噬了猎物. <br>\
+			身体行动快于思考. <br>... <br>我是一只蜘蛛. <br>我吃掉蛛网捕获的任何东西."),
 	)
 
 	/// Filled with ckeys of people who broke our cocoons, they need to pay if they dare mess with us
@@ -107,7 +107,7 @@
 		summon_count += 1
 
 /obj/structure/spider/cocoon/spider_bud
-	desc = "Something wrapped in silky spider web. You should probably not destroy this."
+	desc = "被丝状蜘蛛网包裹着的东西，你不应该毁了它."
 
 	/// Whoever controls us, meant for spider bud
 	var/mob/living/simple_animal/hostile/abnormality/spider/spooder
@@ -133,21 +133,21 @@
 
 		spooder.metagame_list[sinner.ckey] += 1
 		sinner.deal_damage(50 * spooder.metagame_list[sinner.ckey], RED_DAMAGE)
-		to_chat(sinner, span_userdanger("As the cocoon breaks tiny spiders swarm you and tear out some of your flesh before returning to [spooder]!"))
+		to_chat(sinner, span_userdanger("当茧破开时，小蜘蛛蜂拥而出，撕下你的一些肉，然后回到[spooder]!"))
 		if(sinner.stat == DEAD) // if they are dead after our attack, burger them
 			spooder.turn_into_burger(sinner, TRUE)
 
 	return ..()
 
 /mob/living/simple_animal/hostile/aminion/bud_spider
-	name = "Spiderling"
-	desc = "The offspring of spider bud."
+	name = "蜘蛛幼体"
+	desc = "蜘蛛巢的后代。"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "spider_minion"
 	icon_living = "spider_minion"
 	base_pixel_x = -8
-	maxHealth = 50
-	health = 50
+	maxHealth = 80
+	health = 80
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 2)

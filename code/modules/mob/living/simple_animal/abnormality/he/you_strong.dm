@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/you_strong
-	name = "You Must Become Strong"
-	desc = "A multicolored factory that smells distinctly of iron... is this thing made of plastic!?"
+	name = "你必须变得更强大"
+	desc = "色彩斑斓的工厂闻起来有一股明显的铁味...这东西是塑料做的吗!?"
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "you_strong_pause"
 	icon_living = "you_strong_pause"
@@ -37,12 +37,12 @@
 	pixel_y = -8
 	layer = OPEN_DOOR_LAYER
 
-	observation_prompt = "I was the weakest person in all the City, even the Rats looked down upon me. <br>\
-		'I would never amount to anything in life or in death', I thought until one day I recieved a curious offer, a pamphlet in my mail. <br>\
-		\"Have you become strong? Strong for your City? Become Strong! Strong for your City!\" The suspicious pamphlet had an address and I followed it, <br>\
-		I detested my weakness and I cared not if I lived or died, I'd take any chance to not be weak. <br>At the address was a most curious machine and an instruction to enter."
+	observation_prompt = "我曾是都市中最弱小的人，连鼠辈都瞧不起我。<br>\
+		'我生时死后都将一事无成'，我这样想着，直到有天收到一份奇怪的信件——邮箱里的宣传册。<br>\
+		\"你变强了吗？为你的都市变强了吗？变强吧！为你的都市变强吧！\"可疑的传单上有个地址，我循迹而去，<br>\
+		我憎恶自己的软弱，生死早已置之度外，只要有机会不再弱小，我什么都愿意尝试。<br>地址处有台最奇特的机器，上面写着进入的指示。"
 	observation_choices = list(
-		"Enter the machine" = list(TRUE, "I did as instructed and entered; now I have become strong, strong for my City. <br>I love the City I live in."),
+		"进入机器" = list(TRUE, "我依言进入；现在我变强了，为我的都市而强大。<br>我爱我居住的都市。"),
 	)
 
 	var/penalize = FALSE
@@ -99,7 +99,7 @@
 	if(work_count < 3)
 		return
 	work_count = 0
-	say("Do you love the City you live in?")
+	say("你喜欢你所居住的都市吗?")
 	question = TRUE
 	return
 
@@ -107,25 +107,25 @@
 	if(src.datum_reference.qliphoth_meter == 0)
 		return FALSE
 	if(operating)
-		to_chat(user, span_notice("Please wait for current operations to cease."))
+		to_chat(user, span_notice("请等待当前操作停止."))
 		return FALSE
 	if(!(work_type in list("YES", "NO")) && !question && ..())
 		icon_state = "you_strong_work"
 		return TRUE
 	if((work_type in list("YES", "NO")) && !question)
-		to_chat(user, span_notice("You have not been prompted."))
+		to_chat(user, span_notice("没有提示."))
 		return FALSE
 	if((work_type in list(ABNORMALITY_WORK_INSTINCT, ABNORMALITY_WORK_INSIGHT, ABNORMALITY_WORK_ATTACHMENT, ABNORMALITY_WORK_REPRESSION) && question))
-		say("Do you love the City you live in?")
+		say("你喜欢你所居住的都市吗?")
 		playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
 		return FALSE
 	if(work_type == "YES")
 		penalize = TRUE
-		say("YES. YOU MUST BECOME STRONG FOR YOUR CITY.")
+		say("YES. 你会为了都市变得更强.")
 		icon_state = "you_strong_yes"
 	else
 		src.datum_reference.qliphoth_change(-1)
-		say("INVALID INPUT.")
+		say("无效输入.")
 		icon_state = "you_strong_no"
 	question = FALSE
 	return FALSE
@@ -138,7 +138,7 @@
 /mob/living/simple_animal/hostile/abnormality/you_strong/ZeroQliphoth(mob/living/carbon/human/user)
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
-	manual_emote("makes a whirling sound.")
+	manual_emote("发出嗡嗡声.")
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	soundloop.start()
 	icon_state = "you_strong_work"
@@ -170,10 +170,10 @@
 	if(!(I.type in taken_parts))
 		return ..()
 	if(I.type in rejected_parts)
-		to_chat(user, span_notice("[src] rejects [I]."))
+		to_chat(user, span_notice("[src]拒绝了[I]."))
 		return
 	if(src.datum_reference.qliphoth_meter == 0 || src.datum_reference.working || operating)
-		to_chat(user, span_notice("Please wait for current operations to cease."))
+		to_chat(user, span_notice("请等待当前操作停止."))
 		return
 	visible_message(span_notice("[user.first_name()] starts feeding [I] into [src]."))
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
@@ -181,7 +181,7 @@
 	icon_state = "you_strong_work"
 	operating = TRUE
 	if(!do_after(user, 2 SECONDS, src))
-		to_chat(user, span_notice("But you changed your mind..."))
+		to_chat(user, span_notice("但你改变了你的想法..."))
 		soundloop.stop()
 		icon_state = "you_strong_pause"
 		operating = FALSE
@@ -190,8 +190,8 @@
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
 	qdel(I)
 	src.datum_reference.stored_boxes += 2
-	visible_message(span_nicegreen("[src] produced 2 PE!"))
-	manual_emote("begins to emit a whirling noise before quieting down.")
+	visible_message(span_nicegreen("[src]产出了 2 PE!"))
+	manual_emote("在安静下来之前开始发出旋转的声音.")
 	icon_state = "you_strong_pause"
 	operating = FALSE
 	return
@@ -201,19 +201,19 @@
 	if(!(selected_part in list(BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_ARM, BODY_ZONE_R_LEG)))
 		return ..()
 	if(src.datum_reference.working || src.datum_reference.qliphoth_meter == 0 || operating)
-		to_chat(M, span_notice("Please wait for current operations to cease."))
+		to_chat(M, span_notice("请等待当前操作停止."))
 		return
 	var/obj/item/bodypart/old_part = M.get_bodypart(selected_part)
 	if(old_part.type in list(/obj/item/bodypart/r_leg/grown_strong, /obj/item/bodypart/l_leg/grown_strong, /obj/item/bodypart/r_arm/grown_strong, /obj/item/bodypart/l_arm/grown_strong))
-		to_chat(M, span_notice("Only original parts are accepted."))
+		to_chat(M, span_notice("只接收原件."))
 		return
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
 	soundloop.start()
-	visible_message(span_notice("[M.first_name()] plunges their [old_part.name] into [src]..."))
+	visible_message(span_notice("[M.first_name()]将它们的[old_part.name]插入到[src]..."))
 	icon_state = "you_strong_work"
 	operating = TRUE
 	if(!do_after(M, 5 SECONDS, src))
-		visible_message(span_notice("[M.first_name()] pulls out their [old_part.name] before [src] engages!"))
+		visible_message(span_notice("[M.first_name()]在[src]接合之前取出了[old_part.name]!"))
 		soundloop.stop()
 		playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
 		icon_state = "you_strong_pause"
@@ -231,13 +231,13 @@
 			prosthetic = new/obj/item/bodypart/r_leg/grown_strong(M)
 		else
 			soundloop.stop()
-			say("ERROR: FOREIGN OBJECT INSERTED. PLEASE CONTACT MAINTENCE STAFF.")
+			say("错误：插入了外部对象，请联系维修人员.")
 			playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 100)
 			icon_state = "you_strong_pause"
 			operating = FALSE
 			return
 	prosthetic.replace_limb(M)
-	manual_emote("makes a grinding noise.")
+	manual_emote("发出磨碎的声音.")
 	M.emote("scream")
 	M.deal_damage(10, BRUTE) // Bro your [X] just got chopped off, no armor's gonna resist that.
 	to_chat(M, span_notice("Your [old_part.name] has been replaced!"))
@@ -251,13 +251,13 @@
 	return
 
 /mob/living/simple_animal/hostile/aminion/grown_strong
-	name = "Grown Strong"
-	desc = "A humanoid figure reeking of blood and made out of... plastic?"
+	name = "变得强大"
+	desc = "一个浑身是血的人形，由...塑料制成?"
 	icon_state = "grown_strong"
 	icon_living = "grown_strong"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
-	maxHealth = 100
-	health = 100
+	maxHealth = 120
+	health = 120
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 0)
 
 	move_to_delay = 5
@@ -303,7 +303,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/aminion/grown_strong/proc/UpdateGear()
-	manual_emote("shifts into [gear]\th gear!")
+	manual_emote("切换到第[gear]档!")
 	melee_damage_lower = 2 * max(1, gear*0.5)
 	melee_damage_upper = 4 * max(1, gear*0.5)
 	//Reset the speed. First proc changes this only with 0.
@@ -327,13 +327,13 @@
 	if(maxHealth > initial(maxHealth) * gear_health)
 		INVOKE_ASYNC(src, PROC_REF(Undie))
 		return FALSE
-	visible_message(span_notice("[src] explodes into a mess of plastic and gore!"))
+	visible_message(span_notice("[src]爆炸成一团塑料和血!"))
 	. = ..()
 	gib(TRUE, TRUE, TRUE)
 	return
 
 /mob/living/simple_animal/hostile/aminion/grown_strong/proc/Undie()
-	manual_emote("shudders to a hault, insides whirling...")
+	manual_emote("颤抖得厉害，内心旋转...")
 	src.maxHealth = min(maxHealth - initial(maxHealth) * 0.2, initial(maxHealth))
 	src.adjustBruteLoss(-9999)
 	status_flags |= GODMODE
@@ -341,7 +341,7 @@
 	status_flags &= ~GODMODE
 	src.adjustBruteLoss(-9999)
 	gear = clamp(gear + 2, 1, 10)
-	manual_emote("shudders back to life!")
+	manual_emote("颤抖着恢复了生命!")
 	switch(gear)
 		if(0 to 6)//gear is set to 2 at initialize, would need to be varedited to go under that
 			playsound(src, 'sound/weapons/ego/strong_uncharged.ogg', 60)
@@ -353,7 +353,7 @@
 
 /mob/living/simple_animal/hostile/aminion/grown_strong/proc/SpinAttack()
 	can_act = FALSE
-	manual_emote("outstretches its arms, upper torso starting to rotate!")
+	manual_emote("伸展双臂，上半身开始旋转!")
 	playsound(src, 'sound/weapons/ego/strong_uncharged.ogg', 60)
 	SLEEP_CHECK_DEATH(20)
 	for(var/i = 0, i <=4, ++i)
@@ -374,8 +374,8 @@
 ////// Parts! //////
 
 /obj/item/bodypart/r_leg/grown_strong
-	name = "grown strong right leg"
-	desc = "a fleshy limb encased in plastic"
+	name = "强大的右腿"
+	desc = "用塑料包裹的肉质肢体"
 	icon = 'icons/mob/human_parts_greyscale.dmi'
 	icon_state = "human_r_leg"
 	var/buff_type
@@ -424,8 +424,8 @@
 	limb.color = src.color // Is this VIOLENTLY incompatible with other races? Yeah. Does that matter for us? No... Right?
 
 /obj/item/bodypart/l_leg/grown_strong
-	name = "grown strong left leg"
-	desc = "a fleshy limb encased in plastic"
+	name = "强大的左腿"
+	desc = "用塑料包裹的肉质肢体"
 	icon = 'icons/mob/human_parts_greyscale.dmi'
 	icon_state = "human_l_leg"
 	var/buff_type
@@ -474,8 +474,8 @@
 	limb.color = src.color // Is this VIOLENTLY incompatible with other races? Yeah. Does that matter for us? No... Right?
 
 /obj/item/bodypart/r_arm/grown_strong
-	name = "grown strong right arm"
-	desc = "a fleshy limb encased in plastic"
+	name = "强大的右臂"
+	desc = "用塑料包裹的肉质肢体"
 	icon = 'icons/mob/human_parts_greyscale.dmi'
 	icon_state = "human_r_arm"
 	var/buff_type
@@ -529,8 +529,8 @@
 		. += aux
 
 /obj/item/bodypart/l_arm/grown_strong
-	name = "grown strong left arm"
-	desc = "a fleshy limb encased in plastic"
+	name = "强大的左臂"
+	desc = "用塑料包裹的肉质肢体"
 	icon = 'icons/mob/human_parts_greyscale.dmi'
 	icon_state = "human_l_arm"
 	var/buff_type

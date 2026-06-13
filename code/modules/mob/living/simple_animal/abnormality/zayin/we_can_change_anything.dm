@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_CHANGE /datum/status_effect/we_can_change_anything
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything
-	name = "We Can Change Anything"
-	desc = "A human sized container with spikes inside it. You shouldn't enter it"
+	name = "我们可以改变一切"
+	desc = "一个人体大小的容器，里面有尖刺，你不应该进去"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "wecanchange"
 	portrait = "we_can_change_anything"
@@ -36,7 +36,7 @@
 	)
 
 	gift_type =  /datum/ego_gifts/change
-	gift_message = "Your heart beats with new vigor."
+	gift_message = "你的心带着新的活力跳动."
 	abnormality_origin = ABNORMALITY_ORIGIN_ALTERED
 
 	grouped_abnos = list(
@@ -44,14 +44,14 @@
 		/mob/living/simple_animal/hostile/abnormality/cleaner = 1.5,
 	)
 
-	observation_prompt = "Is your child a troublemaker who cries all the time? We can change that! <br>\
-		Don’t like how you look? Are you too fat? Too skinny? We can change that! <br>\
-		Is your house suffering from an outage because you don’t have the money to pay for the power bill? <br>\
-		We can change that!<br>\
-		It’s quite simple. Just open up the machine, step inside, and press the button to make it shut."
+	observation_prompt = "您家孩子总是哭闹惹麻烦吗? 我们能改变这一切! <br>\
+		不喜欢自己的外貌？太胖？太瘦？我们能改变这一切! <br>\
+		家里因付不起电费而断电? <br>\
+		我们能改变这一切!<br>\
+		非常简单，只需打开机器门，走进去，按下关闭按钮."
 	observation_choices = list(
-		"Enter the machine" = list(TRUE, "You step inside the machine, it's just as comfortable as advertised. <br>\
-			Now everything will be just fine."),
+		"进入机器" = list(TRUE, "你走进机器内部，舒适度正如广告所言. <br>\
+			现在一切都会好起来的."),
 	)
 
 	var/grinding = FALSE
@@ -59,8 +59,8 @@
 	var/grind_damage = 0.4 // Dealt 100 times
 
 	chem_type = /datum/reagent/abnormality/we_can_change_anything
-	harvest_phrase = span_notice("You scoop up some goo from the inner lip of %ABNO using %VESSEL.")
-	harvest_phrase_third = "%PERSON scoops up some goo from the inner lip of %ABNO with %VESSEL."
+	harvest_phrase = span_notice("你用 %VESSEL 从 %ABNO 的内沿舀取了些粘稠物.")
+	harvest_phrase_third = "%PERSON 用 %VESSEL 从 %ABNO 的内沿舀取了些粘稠物."
 	var/sacrifice = FALSE // are we doing "Enter machine" work?
 	var/ramping_speed = 20 // work speed for sacrifice work, gets subtracted from so we can have faster work ticks.
 	var/total_damage = 0 // stored so we can later convert it into PE
@@ -88,10 +88,10 @@
 		i.forceMove(spew_turf)
 
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type != "Enter machine")
+	if(work_type != "进入机器")
 		return TRUE
 	if(total_energy >= 2000) // Cant just spam the work
-		say("[total_energy] PE Boxes accumulated, processing energy, please stay on standby!")
+		say("[total_energy]PE-Box收集中，处理能量中，请保持等待状态!")
 		return FALSE
 	if(!istype(datum_reference)) // Prevents a runtime
 		return FALSE
@@ -120,7 +120,7 @@
 	return ramping_speed
 
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
-	if(work_type != "Enter machine")
+	if(work_type != "进入机器")
 		user.apply_status_effect(STATUS_EFFECT_CHANGE)
 	else
 		playsound(src, 'sound/abnormalities/we_can_change_anything/change_gas.ogg', 50, TRUE)
@@ -135,7 +135,7 @@
 		datum_reference.stored_boxes += energy_generated // adds PE to the console, only half actually counts towards the goal for balance reasons.
 		SSlobotomy_corp.AdjustGoalBoxes(floor(energy_generated * 0.5))
 		total_energy += energy_generated
-		say("[total_energy] PE Boxes accumulated!")
+		say("[total_energy]PE-Boxe收集中!")
 
 		datum_reference.max_boxes = 10 // resets the max boxes for future works.
 		ramping_speed = 20
@@ -176,7 +176,7 @@
 		return
 	grinding = TRUE
 	var/list/AoE = list()
-	visible_message(span_warning("[src] opens wide!"), span_nicegreen("Time to begin another productive day!"))
+	visible_message(span_warning("[src]大开!"), span_nicegreen("是时候开始新的高速生产的一天了!"))
 	for(var/turf/open/T in view(2, src))
 		AoE += T
 		new /obj/effect/temp_visual/cult/sparks(T)
@@ -230,8 +230,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/we_can_change_anything
 
 /atom/movable/screen/alert/status_effect/we_can_change_anything
-	name = "The desire to change"
-	desc = "Your painful experience has made you more resilient to RED damage."
+	name = "改变的欲望"
+	desc = "你的痛苦经历使你更能适应红色的伤害."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "change"
 
@@ -252,8 +252,8 @@
 #undef STATUS_EFFECT_CHANGE
 
 /datum/reagent/abnormality/we_can_change_anything
-	name = "Dubious Red Goo"
-	description = "You have a strong suspicion about where this came from, but..."
+	name = "可疑的红黏着物"
+	description = "你很怀疑这是怎么来的，但是..."
 	color = "#8f1108"
 	health_restore = -1
 	damage_mods = list(0.9, 1, 1, 1)

@@ -1,7 +1,7 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/pinocchio
-	name = "Pinocchio"
-	desc = "A wooden humanoid puppet, it hums to itself with childlike delight."
+	name = "匹诺曹"
+	desc = "它是一个木制的人形木偶，带着孩子般的喜悦哼着歌."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pinocchio"
 	icon_living = "pinocchio"
@@ -17,7 +17,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(50, 55, 55, 50, 45),
 		ABNORMALITY_WORK_ATTACHMENT = 45,
 		ABNORMALITY_WORK_REPRESSION = list(40, 45, 45, 40, 40),
-		"Lying is Bad!" = 0,
+		"说谎是不对的!" = 0,
 	)
 
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.7, PALE_DAMAGE = 0.9, FIRE = 1.5)
@@ -34,11 +34,11 @@
 	gift_type = /datum/ego_gifts/marionette
 	abnormality_origin = ABNORMALITY_ORIGIN_RUINA
 
-	observation_prompt = "I've been watching people for as long as I've known them, it's not hard to imitate others. <br>\
-		Can I be a human if I mimic humans?"
+	observation_prompt = "自从知晓人类起，我就在观察他们，模仿他人并不困难。<br>\
+		如果我模仿人类，能成为人类吗？"
 	observation_choices = list(
-		"You will never be a human" = list(TRUE, "Can I... not become a human..? <br>You could've let me fool you, you're too cruel."),
-		"You're human" = list(FALSE, "Did I look just like a human? <br>I hope I fooled you, it's other people's fault for falling for my lies."),
+		"你永远无法成为人类" = list(TRUE, "我...不能变成人类吗..？<br>你本可以让我骗过你的，你太残忍了。"),
+		"你是人类" = list(FALSE, "我看起来像人类吗？<br>希望我骗到你了，别人上当可是他们自己的错。"),
 	)
 
 	var/lying = FALSE
@@ -46,32 +46,32 @@
 	var/mob/living/carbon/human/species/pinocchio/realboy = null
 	var/list/modular_work_chance = list(
 		"lie1" = list( //LIES!
-			"Instingt" = 0,
+			"直觉" = 0,
 			ABNORMALITY_WORK_INSIGHT = 0,
 			ABNORMALITY_WORK_ATTACHMENT = 0,
-			"Represion" = 0,
-			"Lying is Bad!" = 100,
+			"压害" = 0,
+			"说谎是不对的!" = 100,
 		),
 		"lie2" = list(
 			ABNORMALITY_WORK_INSTINCT = 0,
 			ABNORMALITY_WORK_INSIGHT = 0,
-			"Atachment" = 0,
-			"Represion" = 0,
-			"Lying is Bad!" = 100,
+			"聊天" = 0,
+			"压倒" = 0,
+			"说谎是不对的!" = 100,
 		),
 		"lie3" = list(
-			"Insignt" = 0,
+			"术能" = 0,
 			ABNORMALITY_WORK_INSIGHT = 0,
-			"Attachnent" = 0,
+			"沟解" = 0,
 			ABNORMALITY_WORK_REPRESSION = 0,
-			"Lying is Bad!" = 100,
+			"说谎是不对的!" = 100,
 		),
 		"normal" = list(
 			ABNORMALITY_WORK_INSTINCT = 35,
 			ABNORMALITY_WORK_INSIGHT = list(50, 55, 55, 50, 45),
 			ABNORMALITY_WORK_ATTACHMENT = 45,
 			ABNORMALITY_WORK_REPRESSION = list(40, 45, 45, 40, 40),
-			"Lying is Bad!" = 0,
+			"说谎是不对的!" = 0,
 		),
 	)
 
@@ -89,9 +89,9 @@
 //Work/Misc
 /mob/living/simple_animal/hostile/abnormality/pinocchio/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(realboy)
-		to_chat(user, span_warning("The Abnormality has breached containment!"))
+		to_chat(user, span_warning("该异想体已经突破了收容!"))
 		return FALSE
-	if(work_type == "Lying is Bad!")
+	if(work_type == "说谎是不对的!")
 		if(lying)
 			playsound(src, 'sound/abnormalities/pinocchio/success.ogg', 40, 0, 1)
 			caught_lie = TRUE
@@ -144,10 +144,10 @@
 	if(istype(datum_reference))
 		deadchat_broadcast(" has breached containment.", "<b>[src.name]</b>", src, get_turf(src))
 	remove_from_mob_list()
-	realboy.name = "Pinocchio the Liar"
-	realboy.real_name = "Pinocchio the Liar"
+	realboy.name = "匹诺曹撒谎者"
+	realboy.real_name = "匹诺曹撒谎者"
 	realboy.adjust_all_attribute_levels(100)
-	realboy.adjust_attribute_bonus(FORTITUDE_ATTRIBUTE, 240) // 340 health
+	realboy.adjust_attribute_bonus(FORTITUDE_ATTRIBUTE, 340) // 440 health
 	realboy.adjust_attribute_bonus(JUSTICE_ATTRIBUTE, -100)
 	realboy.health = realboy.maxHealth
 	realboy.alpha = 0
@@ -196,8 +196,8 @@
 
 //Special item
 /obj/item/ego_weapon/marionette/abnormality
-	name = "liar's lyre"
-	desc = "A wooden axe, somehow wickedly sharp. Looks fragile."
+	name = "说谎者的七弦琴"
+	desc = "一把木斧，不知何故锋利得吓人，看起来很脆弱."
 	damtype = WHITE_DAMAGE
 
 	item_flags = ABSTRACT
@@ -229,7 +229,7 @@
 		deltimer(delete_timer)
 		delete_timer = null
 	if(user.dna.species.id != "puppet")
-		to_chat(user, span_warning("The [src] collapses into splinters in your hands!"))
+		to_chat(user, span_warning("[src]在你的手中崩溃成碎片!"))
 		qdel(src)
 		return
 
@@ -267,10 +267,10 @@
 
 /datum/ai_behavior/say_line/insanity_murder/puppet
 	lines = list(
-		"I'm keen to learn as usual. Would you like to see me learn?",
-		"Lalala... I sing along to the song of lies all the people sing.",
-		"Did I look just like a human? I hope I did...",
-		"It's people's fault for falling for my lies.",
+		"我像往常一样渴望学习，你想看我学习吗?",
+		"啦啦啦...我随众民所唱的谎言之歌而唱.",
+		"我看起来像人类吗? 我希望我是...",
+		"相信我的谎言是人们的错.",
 	)
 
 //Carbon code
@@ -289,7 +289,7 @@
 
 /mob/living/carbon/human/species/pinocchio/UnarmedAttack(atom/A, proximity)
 	if((istype(A, /obj/structure/toolabnormality/touch)) || (istype(A, /obj/structure/bough)))
-		to_chat(src, span_userdanger("YOUR FOOLISHNESS IS IMPRESSIVE."))
+		to_chat(src, span_userdanger("你的愚蠢令人印象深刻."))
 		return
 	. = ..()
 
@@ -300,8 +300,8 @@
 
 /mob/living/carbon/human/species/pinocchio/proc/CreateAbnoCore()//this is at the carbon level
 	var/obj/structure/abno_core/C = new(get_turf(src))
-	C.name = "Pinocchio Core"
-	C.desc = "The core of Pinocchio"
+	C.name = "匹诺曹核心"
+	C.desc = "The core of 匹诺曹"
 	C.icon_state = ""//core icon goes here
 	C.contained_abno = /mob/living/simple_animal/hostile/abnormality/pinocchio//release()ing or extract()ing this core will spawn the abnormality, making it a valid core.
 	C.threat_level = 3
@@ -312,7 +312,7 @@
 	)
 
 /datum/species/puppet
-	name = "Puppet"
+	name = "木偶"
 	id = "puppet"
 	sexes = FALSE
 	hair_color = "352014"
@@ -342,7 +342,7 @@
 	return FALSE //heck no
 
 /obj/item/bodypart/head/puppet
-	name = "puppet abnormality head"
+	name = "木偶异想体头"
 	desc = "a head made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_head"
@@ -350,13 +350,13 @@
 	can_be_disabled = FALSE
 
 /obj/item/bodypart/chest/puppet
-	name = "puppet abnormality torso"
+	name = "木偶异想体躯干"
 	desc = "a torso made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_chest"
 
 /obj/item/bodypart/l_arm/puppet
-	name = "puppet abnormality left arm"
+	name = "木偶异想体左臂"
 	desc = "a limb made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_l_arm"
@@ -364,7 +364,7 @@
 	can_be_disabled = FALSE
 
 /obj/item/bodypart/r_arm/puppet
-	name = "puppet abnormality right arm"
+	name = "木偶异想体右臂"
 	desc = "a limb made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_r_arm"
@@ -372,7 +372,7 @@
 	can_be_disabled = FALSE
 
 /obj/item/bodypart/l_leg/puppet
-	name = "puppet abnormality left leg"
+	name = "木偶异想体左腿"
 	desc = "a limb made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_l_leg"
@@ -380,7 +380,7 @@
 	can_be_disabled = FALSE
 
 /obj/item/bodypart/r_leg/puppet
-	name = "puppet abnormality right leg"
+	name = "木偶异想体右腿"
 	desc = "a limb made of ...wood?"
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "puppet_r_leg"

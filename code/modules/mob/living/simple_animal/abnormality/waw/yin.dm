@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/yin
-	name = "Yin"
-	desc = "A floating black fish that seems to hurt everyone near it."
+	name = "阴"
+	desc = "一条漂浮的黑鱼，似乎会伤害附近的每一个人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "yin"
 	icon_living = "yin"
@@ -46,15 +46,15 @@
 		/mob/living/simple_animal/hostile/abnormality/yang = 5, // TAKE THE FISH. DO IT
 	)
 
-	observation_prompt = "The Devil's Pendant was one half of a greater whole, but now they've been cleaved in half, forever wanting to reunite. <br>\
-		The pendant laid upon the podium before you, even being in the same room as it seemed to suck the life out of you and erodes your very essence."
+	observation_prompt = "吊坠曾是完整整体的一半，如今被永久劈裂，渴求重聚。<br>\
+		吊坠置于你面前的台座上，仅与其同处一室便似在汲取生命，侵蚀你的本质。"
 	observation_choices = list(
-		"Put it on" = list(TRUE, "The moment you put it on, your body is stricken with deepest agony, feeling like thorns racing through your body, puncturing flesh and mind alike but you endure. <br>\
-			It didn't mean to harm you, it's just the way it is. <br>\
-			If there is light and goodness in this world, shouldn't there be darkness and evil too? <br>\
-			The world is far more than brightness and warmth."),
-		"Don't put it on" = list(FALSE, "It is darkness made manifest, made to encapsulate all the negativity in the world. <br>\
-			If you can't accept the darkness of the world, you're not ready to accept the darkness in you."),
+		"佩戴" = list(TRUE, "佩戴瞬间，剧痛贯穿全身，如荆棘刺穿血肉与神智，但你承受住了。<br>\
+			这并非其本意，仅是存在使然。<br>\
+			若世间存有光明与良善，岂能无黑暗与邪恶？<br>\
+			世界远非仅有光明与温暖。"),
+		"不要佩戴" = list(FALSE, "此乃黑暗本身的化身，为凝聚世间一切消极而生。<br>\
+			若无法接纳世界的黑暗，便无资格接纳自身的阴暗面。"),
 	)
 
 	faction = list("neutral", "hostile") // Not fought by anything, typically. But...
@@ -73,7 +73,7 @@
 
 	COOLDOWN_DECLARE(pulse)
 	var/pulse_cooldown = 5 SECONDS
-	var/pulse_damage = 20
+	var/pulse_damage = 26
 	var/pulse_distance = 4
 
 	var/busy = FALSE
@@ -92,12 +92,12 @@
 
 /mob/living/simple_animal/hostile/abnormality/yin/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Yin, A Tank Role Abnormality.</h1><br>\
-		<b>|Ruination|: When you click on a tile which is not right next to you, you will fire a laser towards that tile. \
-		The laser deal BLACK damage, and has a 10 second cooldown.<br>\
+	to_chat(src, "<h1>你扮演阴——坦克型异想体。</h1><br>\
+		<b>|湮灭|：点击非相邻格将向该方向发射黑色伤害激光。<br>\
+		冷却时间10秒。<br>\
 		<br>\
-		|Decay|: Each time you take damage, if your pulse is off cooldown. You will send out a pulse around you, which deals BLACK damage to all humans. \
-		The Pulse has a cooldown of 8 seconds.</b>")
+		|衰变|：受伤时若脉冲就绪，将释放范围黑色伤害冲击波。<br>\
+		冲击波冷却时间8秒。</b>")
 
 /mob/living/simple_animal/hostile/abnormality/yin/New(loc, ...)
 	. = ..()
@@ -307,7 +307,7 @@
 			if(0)
 				DP = new /obj/effect/yinyang_dragon/dragon_head(T)
 				DP.layer += 0.1
-				notify_ghosts("The Dragon has arrived!", source = DP, action = NOTIFY_ORBIT, header="Something Interesting!")
+				notify_ghosts("龙来了!", source = DP, action = NOTIFY_ORBIT, header="有趣的事情!")
 			if(7)
 				DP = new /obj/effect/yinyang_dragon/dragon_tail(T)
 				DP.layer += 0.1
@@ -356,7 +356,7 @@
 			H.adjustSanityLoss(-H.maxSanity)
 			H.adjustSanityLoss(damage)
 		hit_people += L
-		to_chat(L, span_userdanger("All that is shall become all that isn't."))
+		to_chat(L, span_userdanger("所有的存在都将变得不存在."))
 
 /mob/living/simple_animal/hostile/abnormality/yin/proc/YangCheck()
 	for(var/datum/abnormality/AD in SSlobotomy_corp.all_abnormality_datums)
@@ -365,8 +365,8 @@
 	return FALSE
 
 /obj/effect/yinyang_dragon
-	name = "Avatar of Harmony"
-	desc = "All that isn't shall become all that is."
+	name = "合一的化身"
+	desc = "所有的不存在都将变得存在."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "dragon_body"
 

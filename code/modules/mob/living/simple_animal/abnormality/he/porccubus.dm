@@ -1,12 +1,12 @@
 #define STATUS_EFFECT_ADDICTION /datum/status_effect/porccubus_addiction
 /mob/living/simple_animal/hostile/abnormality/porccubus
-	name = "Porccubus"
-	desc = "A long flowerlike creature covered in thorns"
+	name = "棘刺公交"
+	desc = "一种长而像花的长满荆棘的生物"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "porrcubus_inert"
 	portrait = "porccubus"
-	maxHealth = 300
-	health = 300
+	maxHealth = 830
+	health = 830
 	pixel_x = -10
 	base_pixel_x = -10
 	threat_level = HE_LEVEL
@@ -21,7 +21,7 @@
 	ranged = TRUE
 	ranged_cooldown_time = 15 SECONDS //will dash at people if they get out of range but not too often
 	melee_damage_lower = 3
-	melee_damage_upper = 4
+	melee_damage_upper = 8
 	rapid_melee = 3 //you can withdraw out of its range very easily so it needs to be a little harder to melee it
 	melee_reach = 2
 	work_damage_upper = 5
@@ -47,14 +47,14 @@
 	gift_type = /datum/ego_gifts/pleasure
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "The red flower waits expectantly for you as you enter the containment unit, \
-		studying your movements it leans down towards you and bares its thorns to you."
+	observation_prompt = "当你步入收容单元时，赤红花朵期待地注视着你，<br>\
+		它俯身向你，将棘刺展露无遗。"
 	observation_choices = list(
-		"Just observe" = list(TRUE, "The flower pulls back when it realises you make no effort to try and touch it. <br>\
-			You study it and it studies you back, it only ever wanted to make people happy the only way it knew how. <br>\
-			You turn to leave, resolving to chase after happiness with your own power."),
-		"Touch the thorns" = list(FALSE, "The thorns prick your hands and you feel an indescribable rush of pleasure. <br>\
-			Poppy flowers like this one have ruined many lives and now it's ruined yours, but for now - you're happy."),
+		"仅作观察" = list(TRUE, "花朵察觉你无意触碰后缩了回去。<br>\
+			你们相互审视着，它不过是想用唯一知晓的方式取悦他人。<br>\
+			你转身离开，决心凭自身力量追寻幸福。"),
+		"触摸棘刺" = list(FALSE, "尖刺扎入手掌，难以言喻的快感席卷全身。<br>\
+		这朵罂粟花曾摧毁无数人生，如今轮到你了——但此刻，你很快乐。"),
 	)
 
 	//the agent that started work on porccubus
@@ -74,12 +74,12 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<h1>You are Porccubus, A Tank Role Abnormality.</h1><br>\
-		<b>|Fluttering|: You are immune to all projectiles. However you are unable to move. \
-		However, If you click on a tile that is at least 3 tiles away from you. You will spend a leap charge to dash to that tile. \
-		You regain a leap charge every 3 seconds, and you can hold a max of 3 at a time.<br>\
+	to_chat(src, "<h1>你是棘刺公交，担任坦克型异常实体。</h1><br>\
+		<b>|飘动|: 免疫所有远程攻击，但无法移动。<br>\
+		点击至少3格外的地块将消耗1次突进次数进行冲刺。<br>\
+		每3秒恢复1次突进次数，上限为3次。<br>\
 		<br>\
-		|Happiness|: Your melee attack has a range of 2 tiles.</b>")
+		|欢愉|: 近战攻击范围扩大至2格。</b>")
 
 	//PLAYABLE ATTACKS
 
@@ -187,7 +187,7 @@
 		damage_taken = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/porccubus/bullet_act(obj/projectile/P)
-	visible_message(span_warning("Porccubus playfully swat [P] projectile away!"))
+	visible_message(span_warning("棘刺公交把[P]弹开了!"))
 	return FALSE //COME CLOSER AND GET DRUGGED COWARD
 
 //Breach Code Attacks
@@ -269,8 +269,8 @@
 //Drug Item
 //this is only obtainable if someone else dies from the addiction, but it's the only way to get drugged without working on porccubus
 /obj/item/porccubus_drug
-	name = "Porccubus stinger"
-	desc = "A stinger extracted from Porccubus or those affected by it."
+	name = "棘刺公交针刺"
+	desc = "从棘刺公交被影响人员中提取出来的注射器."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "porrcubus_drug"
 
@@ -308,15 +308,15 @@
 	var/mob/living/carbon/human/addict
 
 /atom/movable/screen/alert/status_effect/porccubus_addiction
-	name = "Indescribable pleasure"
-	desc = "YOU FEEL HAPPY, YOU FEEL GREATER THAN YOU EVER DID IN YOUR ENTIRE LIFE! MORE, YOU WANT MORE!"
+	name = "难以形容的欣快"
+	desc = "你好开心, 你这辈子都没有这么好过! 你想要更多!"
 
 /datum/status_effect/porccubus_addiction/on_apply()
 	. = ..()
 	withdrawal_cooldown = withdrawal_cooldown_time + world.time
 	var/datum/abnormality/porc_datum
 	for(var/datum/abnormality/A in SSlobotomy_corp.all_abnormality_datums)
-		if(A.name != "Porccubus")
+		if(A.name != "棘刺公交")
 			continue
 		porc_datum = A
 		break
@@ -373,7 +373,7 @@
 	if(!ishuman(owner))
 		return
 	if(previous_addict)
-		to_chat(addict, span_userdanger("Your body has a sudden allergic reaction to the substance!"))
+		to_chat(addict, span_userdanger("你的身体会突然对这种物质过敏"))
 		addict.vomit()
 		return
 	var/obj/item/bodypart/head/head = addict.get_bodypart("head")

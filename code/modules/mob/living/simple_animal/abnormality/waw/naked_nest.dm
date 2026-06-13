@@ -2,16 +2,16 @@
 #define NAKED_NESTED getorgan(/obj/item/organ/naked_nest)
 
 /mob/living/simple_animal/hostile/abnormality/naked_nest
-	name = "Naked Nest"
-	desc = "A pulsating round object covered with glistening scales. Tan sludge drips from numerous holes, and something appears to be moving beneath the surface."
+	name = "裸巢"
+	desc = "一个跳动的圆形物体，上面覆盖着闪闪发光的鳞片。棕褐色的污泥从无数的洞里滴下来，表面下似乎有什么东西在移动."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "nakednest_inert"
 	icon_living = "nakednest_inert"
 	portrait = "naked_nest"
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 800
-	health = 800
+	maxHealth = 1200
+	health = 1200
 	threat_level = WAW_LEVEL //If Naked Nest escaped from the facility it would result in a mass infestation of several civilians. That is bad.
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = list(40, 45, 50, 50, 55),
@@ -32,7 +32,7 @@
 		/datum/ego_datum/exuviae,
 	)
 	gift_type =  /datum/ego_gifts/exuviae
-	gift_message = "You manage to shave off a patch of scales."
+	gift_message = "你设法刮下一片鳞片。"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
 	can_patrol = FALSE
@@ -42,16 +42,16 @@
 	ranged_cooldown_time = 1
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
-	death_message = "collapses as its residents flee."
+	death_message = "随着居民逃离而崩塌."
 	death_sound = 'sound/effects/dismember.ogg'
 
-	observation_prompt = "In the beginning, a serpent tempted Eve with a bite of the forbidden fruit an act which cast Man out of the Garden of Eden. <br>\
-		Now all that remains of that fruit is a rotten, decayed mass squirming with more evil serpents."
+	observation_prompt = "起初，毒蛇引诱夏娃咬下禁果，导致人类被逐出伊甸园。<br>\
+		如今那果实只剩腐烂溃败的一团，其中蠕动着更多邪恶的毒蛇。"
 	observation_choices = list(
-		"Take a bite" = list(TRUE, "Mankind's sin began long ago but it was never the serpent that was evil, it only followed its nature as did Man. <br>\
-			The serpents within the fruit paused and entered into your mouth with the bite, and evil took root - \
-			it's hard to blame them for mistaking you for being the same as the fruit that has long been their home."),
-		"Cover your mouth" = list(FALSE, "They could infect you at any time through any orifice, you best leave in a hurry."),
+		"咬一口" = list(TRUE, "人类的罪孽始于远古，但毒蛇本非邪恶，它只是遵循本性，人类亦然。<br>\
+			果内的毒蛇稍作停顿，随着咬噬进入你的口腔，邪恶生根——\
+			很难责怪它们将你错认作长久以来栖身的果实。"),
+		"捂住嘴" = list(FALSE, "它们可能随时通过任何孔窍感染你，最好赶紧离开。"),
 	)
 
 	var/serpentsnested = 4
@@ -144,20 +144,20 @@
 /mob/living/simple_animal/hostile/abnormality/naked_nest/proc/RecoverSerpent(mob/living/simple_animal/hostile/aminion/naked_nest_serpent/S) //destination of serpents nest proc
 	if(serpentsnested <= 5)
 		if(S.client)
-			to_chat(src, span_nicegreen("You return to the safety of the nest."))
+			to_chat(src, span_nicegreen("你回到安全的巢穴."))
 		playsound(get_turf(src), 'sound/misc/moist_impact.ogg', 10, 1)
 		qdel(S)
 		serpentsnested = serpentsnested + 1
 	else if(S.client)
-		to_chat(S, span_notice("This nest has no more room."))
+		to_chat(S, span_notice("这个巢没有更多的空间了."))
 
 /mob/living/simple_animal/hostile/abnormality/naked_nest/proc/Nest() //return to the nest
 	for(var/mob/living/simple_animal/hostile/aminion/naked_nest_serpent/M in range(0, src))
 		M.Nest(src)
 
 /mob/living/simple_animal/hostile/aminion/naked_nest_serpent
-	name = "naked serpent"
-	desc = "A sickly looking green-colored worm."
+	name = "裸蛇"
+	desc = "一种病态的绿色蠕虫."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "nakednest_serpent"
 	icon_living = "nakednest_serpent"
@@ -236,8 +236,8 @@
 
 /mob/living/simple_animal/hostile/aminion/naked_nest_serpent/proc/EnterHost(mob/living/carbon/host)
 	if(prob(50 * (host.health / host.maxHealth)))
-		to_chat(host, span_warning("You feel something cold touch the back of your leg!"))
-	to_chat(src, span_nicegreen("You’ve found a new nest!"))
+		to_chat(host, span_warning("你感到有什么冷的东西在摸你的腿后面!"))
+	to_chat(src, span_nicegreen("你找到了一个新巢!"))
 	new /obj/item/organ/naked_nest(host)
 	QDEL_IN(src, 5)
 
@@ -264,18 +264,18 @@
 
 
 /mob/living/simple_animal/hostile/aminion/naked_nested
-	name = "naked nested"
-	desc = "A humanoid form covered in slimy scales. It looks like it is protected by the host’s armor."
+	name = "裸巢"
+	desc = "被黏糊糊的鳞片覆盖的人形形体。看起来它被宿主的盔甲保护着."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "nakednest_minion"
 	icon_living = "nakednest_minion"
 	icon_dead = "nakednest_miniondead"
-	death_message = "collapses into a unrecognizable pile of scales, shredded clothing, and broken serpents."
+	death_message = "坍塌成一堆无法辨认的鳞片、碎衣服和碎蛇."
 	melee_damage_lower = 8
 	melee_damage_upper = 12
 	melee_damage_type = RED_DAMAGE
-	maxHealth = 200
-	health = 200
+	maxHealth = 300
+	health = 300
 	stat_attack = CONSCIOUS //When you are put into crit the nested will continue to transform into a nest. I thought about having the nested infest you if your in crit but that seemed a bit too cruel.
 	damage_coeff = list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 1.5)
 	mob_size = MOB_SIZE_HUMAN
@@ -313,15 +313,15 @@
 	qdel(src)
 
 /mob/living/simple_animal/hostile/aminion/naked_nested/hour_nesting //for dungeon gamemodes
-	name = "festering naked nested"
-	maxHealth = 500
-	health = 500
+	name = "溃烂裸巢"
+	maxHealth = 1200
+	health = 1200
 	wander = FALSE
 	nesting_time = 1 HOURS
 
 	//ORGAN
 /obj/item/organ/naked_nest
-	name = "writhing mass"
+	name = "蠕动团块"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_PARASITE_EGG
 	icon_state = "tonguetied"
@@ -345,7 +345,7 @@
 
 /obj/item/organ/naked_nest/on_find(mob/living/finder)
 	. = ..()
-	to_chat(finder, span_warning("A portion of [owner]'s brain has been converted into a scaly green tumor."))
+	to_chat(finder, span_warning("[owner]大脑的一部分已经变成了一个鳞状的绿色肿瘤."))
 
 /obj/item/organ/naked_nest/on_death()
 	. = ..()
@@ -360,7 +360,7 @@
 /obj/item/organ/naked_nest/Remove(mob/living/carbon/human/M, special = 0)
 	if(M && M.stat != DEAD)
 		SerpentsPoison(M, FALSE)
-		visible_message(span_warning("A green worm leaps out of [M]'s [zone]!"))
+		visible_message(span_warning("一只绿色的虫子跳出了[M]的[zone]!"))
 	. = ..()
 
 /obj/item/organ/naked_nest/on_life()
@@ -375,9 +375,9 @@
 	if((H.drunkenness >= 5 || H.bodytemperature <= INHOSPITABLE_FOR_NESTING) && H.stat != DEAD) //increases duration of infection.
 		grow_process += (0.8 SECONDS)
 		if(prob(30))
-			to_chat(H, span_warning("You feel a gurgling noise inside of you..."))
+			to_chat(H, span_warning("你感到内心有一种汩汩的声音..."))
 		else if(physical_symptoms && prob(20))
-			to_chat(H, span_warning("A sudden spasming headache overtakes you..."))
+			to_chat(H, span_warning("你突然感到一阵痉挛性头痛..."))
 	if(world.time >= (green_skin_time))
 		if(!physical_symptoms)
 			physical_symptoms = TRUE
@@ -405,7 +405,7 @@
 
 /obj/item/organ/naked_nest/proc/TransformOverride(mob/living/carbon/human/H)
 	if(H && H.has_status_effect(/datum/status_effect/display/melting_love_blessing))
-		to_chat(H, span_warning("Something in your head writhes as pink slime starts to pour out of your mouth."))
+		to_chat(H, span_warning("当粉红色的粘液开始从你的嘴里流出时，你的脑袋里有什么东西在扭动."))
 		H.deal_damage(800, BLACK_DAMAGE)
 		H.remove_status_effect(/datum/status_effect/display/melting_love_blessing)
 		if(!H || H.stat == DEAD)
@@ -430,19 +430,19 @@
 
 //Offical Cure
 /obj/item/serpentspoison
-	name = "serpent infestation cure"
-	desc = "A formula that removes O-02-74-1 infestation."
+	name = "蛇患治疗"
+	desc = "消除 O-02-74-1 感染的配方."
 	icon = 'icons/obj/chromosomes.dmi'
 	icon_state = ""
 	color = "gold"
 
 /obj/item/serpentspoison/attack(mob/living/M, mob/user)
-	user.visible_message(span_notice("[user] injects [M] with [src]."))
+	user.visible_message(span_notice("[user]给[M]注入[src]."))
 	Cure(M)
 	qdel(src)
 
 /obj/item/serpentspoison/attack_self(mob/living/carbon/user)
-	user.visible_message(span_notice("[user] injects themselves with [src]."))
+	user.visible_message(span_notice("[user]给自己注入[src]."))
 	Cure(user)
 	qdel(src)
 

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/sirocco
-	name = "Sirocco"
-	desc = "A sentient dust storm. You can see the silhouette of a child-like figure inside."
+	name = "热风"
+	desc = "一场有感知的沙尘暴，你可以看到里面一个孩子般的身影."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "sirocco_chill"
 	icon_living = "sirocco_chill"
@@ -41,28 +41,28 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
 	chem_type = /datum/reagent/abnormality/sirocco
-	harvest_phrase = span_notice("While %ABNO was distracted, you fill up %VESSEL with its sand. The sand continues to move long after being seperated from %ABNO.")
-	harvest_phrase_third = "While %ABNO was distracted, %PERSON fills %VESSEL with the sandstorm's sand."
+	harvest_phrase = span_notice("当%ABNO分心时，你用它的沙子填满了%VESSEL。即使与%ABNO分离后，沙子仍持续移动.")
+	harvest_phrase_third = "当%ABNO分心时，%PERSON用沙暴的沙子填满了%VESSEL."
 
-	observation_prompt = "Why is everyone here such a bore? <br>Why doesn't anyone want to play with me? <br>\
-		A young girl's voice cries out from somewhere within the storm. <br>\
-		\"Everyone keeps staring at the floor like life's a chore...is being an adult really that bad?\" <br.\
-		\"If that's what an adult is like, I don't wanna grow up!\" <br>\
-		What do you say to it?"
+	observation_prompt = "为什么这里每个人都这么无聊？<br>为什么没人想和我玩？<br>\
+		风暴中某处传来一个小女孩的哭喊声。<br>\
+		\"每个人都盯着地板，好像生活是件苦差事...当大人真的那么糟糕吗？\" <br>\
+		\"如果大人就是那样，我才不想长大！\" <br>\
+		你该对它说什么?"
 
 	observation_choices = list(
-		"You have to grow up eventually" = list(TRUE, "The storm begins to slow down. <br>\
-			\"But all of the adults here, don't they regret growing up?\" <br>\
-			Maybe. Maybe not. <br>\
-			It's better to grow and change instead of stagnating, hiding away from the real world. <br>\
-			The storm crawls to a halt. <br>\
-			\"...Maybe you're right. If no one else wants to play, maybe I should just stop playing.\" <br>\
-			You can only hope if it breaches again, it'll be less of a nuisance. <br>\
-			You leave the storm to contemplate your words."),
-		"Don't worry about it" = list(FALSE, "\"Yeah! No point worrying about some boring adults!\" <br>\
-			\"Hehe! When I get out again, you gotta watch how fast I throw that lame friend of yours!\" <br>\
-			Seems like encouraging it is only going to make things worse down the line. <br>\
-			Oh well. Maybe one day it'll tire itself out. <br>Best to leave it alone for now."),
+		"你最终还是会长大" = list(TRUE, "风暴开始减缓. <br>\
+			\"但这里所有的大人，他们不后悔长大吗?\" <br>\
+			也许后悔，也许不后悔. <br>\
+			成长和改变总比停滞不前、逃避现实世界要好. <br>\
+			风暴渐渐停止. <br>\
+			\"...也许你是对的，如果没人想玩，也许我也该停止玩耍了.\" <br>\
+			你只能希望即使它再次突破收容，也不会那么惹麻烦. <br>\
+			你留下风暴独自思考你的话."),
+		"别担心" = list(FALSE, "\"是啊！才不用为那些无聊的大人操心呢!\" <br>\
+			\"嘿嘿! 等我再出来，你可得看我扔你那个无趣的朋友有多快!\" <br>\
+			看来鼓励它只会让以后的情况更糟. <br>\
+			算了，也许有一天它会自己玩累的. <br>现在最好别管它."),
 	)
 
 	// Work Variables
@@ -165,8 +165,8 @@
 	. = ..()
 
 /datum/reagent/abnormality/sirocco
-	name = "Restless Sand"
-	description = "Looks like regular old sand. Tastes sweet going down."
+	name = "不安分的沙子"
+	description = "看起来像普通的老沙子，尝起来很甜."
 	color = "#FDEE73"
 	stat_changes = list(0, 3, 3, 5) //increases justice, prudence and temperance
 	damage_mods = list(1.5, 1, 1, 1) //but makes you weaker to red.

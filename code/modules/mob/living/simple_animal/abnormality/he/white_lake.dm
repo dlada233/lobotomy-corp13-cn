@@ -2,14 +2,14 @@
 //White Lake from wonderlabs, by Kirie saito
 //It's very buggy, and I can't test it alone
 /mob/living/simple_animal/hostile/abnormality/whitelake
-	name = "White Lake"
-	desc = "A ballet dancer, absorbed in her work."
+	name = "白湖"
+	desc = "一个专心于工作的芭蕾舞演员."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "white_lake"
 	icon_living = "white_lake"
 	portrait = "white_lake"
-	maxHealth = 120
-	health = 120
+	maxHealth = 220
+	health = 220
 	threat_level = HE_LEVEL
 	work_chances = list(
 		ABNORMALITY_WORK_INSTINCT = 0,
@@ -33,15 +33,15 @@
 	gift_chance = 0
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "The feathered lady dances in the centre of the containment unit to a tempo that exists only in her world, it's elegant and precise. <br>\
-		\"This domain, my lunar palace, it's mine birdcage gilded with fine gold. <br>Whatever I wish, it is brought for me and all that is expected of me is to dance. <br>\
-		Even if I possessed the fortitude to bend these bars and free myself, I would not - what good comes from change? <br>Fortitude won't avail anyone, wouldn't you agree?\""
+	observation_prompt = "那位身披羽毛的女士在收容单元中心起舞，舞步优雅精准，只遵循她自己的节奏。<br>\
+		\"这是我的宫殿，一个镀金的鸟笼。<br>我想要的都会被送来，而我只需跳舞。<br>\
+		就算我有掰弯栏杆的决心，我也不会这么做——改变有什么好处？<br>决心对任何人都没用，你同意吧？\""
 	observation_choices = list(
-		"Agree" = list(TRUE, "\"Hmm, you'll make for a cute decoration in mine sanctum, bear my circlet and come to your Princess' aid, won't you? <br>\
-			Protect her from witches seeking to bully this poor Lake.\" <br>\
-			She dances towards you, placing the circlet upon your head. \"Sully your hands so mine stay clean and beautiful.\" She turns away, returning to her dance."),
-		"Disagree" = list(FALSE, "\"I don't find heroes cute at all. <br>Leave me to my dancing butcher, before you tarnish my pure-white feathers with your blood-soaked hands.\" <br>\
-			The ballerina turns away from you and continues her dance, ignoring you."),
+		"同意" = list(TRUE, "\"嗯，你会成为我殿堂里可爱的装饰品。戴上我的头环来帮助你的公主，好吗？<br>\
+			保护我免受那些欺负这个可怜湖泊的女巫伤害。\"<br>\
+			她舞步轻移向你，将头环戴在你头上。\"弄脏你的手，让我的手保持干净美丽。\"她转身继续跳舞。"),
+		"反对" = list(FALSE, "\"我根本不觉得英雄可爱。<br>在我纯白羽毛被你沾满血的手弄脏前，让我继续跳舞吧，屠夫。\"<br>\
+			芭蕾舞者转身背对你继续跳舞，不再理会。"),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/whitelake/WorkChance(mob/living/carbon/human/user, chance)
@@ -117,16 +117,16 @@
 	head = /obj/item/clothing/head/ego_gift/whitelake
 
 /obj/item/clothing/head/ego_gift/whitelake
-	name = "waltz of the flowers"
+	name = "花之华尔兹"
 	icon_state = "whitelake"
 	icon = 'icons/obj/clothing/ego_gear/head.dmi'
 	worn_icon = 'icons/mob/clothing/ego_gear/head.dmi'
 
 //WAW Class, you have to sacrifice someone for it
 /obj/item/ego_weapon/flower_waltz
-	name = "waltz of the flowers"
-	desc = "It's awfully fun to write a march for tin soldiers, a waltz of the flowers."
-	special = "Cannot be dropped until moved from your hands. Twice as effective against monsters."
+	name = "花之华尔兹"
+	desc = "为锡兵写进行曲，为花写华尔兹，真是太有趣了."
+	special = "除非从手中移开，否则无法丢弃，对怪物的效果是原来的两倍."
 	icon_state = "flower_waltz"
 	force = 22
 	damtype = PALE_DAMAGE
@@ -162,9 +162,9 @@
 
 /datum/ai_behavior/say_line/insanity_whitelake
 	lines = list(
-		"I will protect her!!",
-		"You're in the way!",
-		"I will dance with her forever!",
+		"我会保护她!!",
+		"你太碍事了!",
+		"我陪她起舞到永远!",
 	)
 //CHAMPION
 //Sets the defenses of the champion
@@ -175,8 +175,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/champion
 
 /atom/movable/screen/alert/status_effect/champion
-	name = "The Champion"
-	desc = "You are White Lake's champion, and she has empowered you temporarily."
+	name = "勇士"
+	desc = "你是她的勇士，她暂时赋予了你力量."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "champion"
 

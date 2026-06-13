@@ -1,15 +1,15 @@
 //ho ho hoe -gail
 /mob/living/simple_animal/hostile/abnormality/rudolta
-	name = "Rudolta of the Sleigh"
-	desc = "An abnormality consisting of three parts: A hornless, disfigured reindeer, \"Santa\" and a sleigh. \
-	Rudolta is a fair creature that will give gifts equally to everyone, whether you like them or not."
+	name = "雪橇鲁道夫"
+	desc = "由三个部分拼成的异想体: 无角、毁容的驼鹿, \"圣诞老人\" 以及雪橇. \
+	鲁道夫是公正的生物，无论你喜欢与否，她都会平等地给每个人送礼物."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "rudolta"
 	icon_living = "rudolta"
 	icon_dead = "rudolta_dead"
 	portrait = "rudolta"
-	maxHealth = 250
-	health = 250
+	maxHealth = 450
+	health = 450
 	pixel_x = -16
 	base_pixel_x = -16
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 2, FIRE = 1.5)
@@ -40,18 +40,18 @@
 	gift_type =  /datum/ego_gifts/christmas
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	//Try not to make other observations this long - This is by PM though so, we have to use it. -Coxswain
-	observation_prompt = "I heard about a man who could give you anything you want once a year. <br>Good kids have a better chance of seeing him. <br>\
-		A man who carries giant sack on his back. <br>A man who can go anywhere in the world with his reindeer-pulled sled. <br>\
-		Alex got a present. <br>Even though he was a naughty kid. <br>It was unfair. <br>I could not accept it. <br>The next Christmas, I went to Alex's. <br>\
-		If that man comes only for Alex this time again, I will ask him why had he not come to me. <br>\
-		That night, when everyone was sleeping. <br>I waited for the man, sitting next to sleeping Alex. <br>\
-		Sometimes, for someone, an absurd fairy tale is a silver lining of hope. <br>When I met Santa, I imagined dismembering him. <br>... <br>\
-		In front of me is Santa. <br>My ideal. <br>People don't call it Santa. <br>Something is twitching inside of that sack. I......"
+	observation_prompt = "传说有个每年实现愿望的男人。<br>好孩子更可能见到他。<br>\
+		背着巨大麻袋的男人。<br>乘驯鹿雪橇周游世界的男人。<br>\
+		Alex收到了礼物。<br>尽管他是个顽劣的孩子。<br>这不公平。<br>我无法接受。<br>次年圣诞我去了Alex家。<br>\
+		若那人此次仍只为Alex而来，我定要质问为何从不眷顾我。<br>\
+		那夜万籁俱寂。<br>我守在沉睡的Alex身旁等待。<br>\
+		有时荒诞童话恰是绝望中仅存的微光。<br>当我见到圣诞老人时，脑中浮现肢解他的画面。<br>...<br>\
+		此刻他就在眼前。<br>我理想中的存在。<br>人们不再称其为圣诞老人。<br>麻袋中有物蠕动。我......"
 	observation_choices = list(
-		"Did not open the sack" = list(TRUE, "Inside of the sack is a desire. <br>\
-			A hope that I've been waiting for since when I was very young. <br>I never opened the sack. <br>Did your wish come true?"),
-		"Opened the sack" = list(FALSE, "There was something that I have been longing for my entire life. <br>\
-			Like Pandora's Box, it will never go back into the sack."),
+		"未打开麻袋" = list(TRUE, "麻袋里承载着欲望。<br>\
+			那是我自幼期盼的希望。<br>我始终未曾开启。<br>你的愿望可曾实现？"),
+		"打开了麻袋" = list(FALSE, "里面盛着我毕生渴求之物。<br>\
+			如潘多拉魔盒，永无归袋之日。"),
 	)
 
 	var/pulse_cooldown

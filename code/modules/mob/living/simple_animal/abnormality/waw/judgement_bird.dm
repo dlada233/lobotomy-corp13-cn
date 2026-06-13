@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/judgement_bird
-	name = "Judgement Bird"
-	desc = "A bird that used to judge the living in the dark forest, carrying around an unbalanced scale."
+	name = "审判鸟"
+	desc = "一只曾经在黑暗的森林里判断生活的鸟，带着一个不平衡的天平."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "judgement_bird"
 	icon_living = "judgement_bird"
@@ -53,12 +53,12 @@
 		/mob/living/simple_animal/hostile/abnormality/punishing_bird = 3,
 	)
 
-	observation_prompt = "\"Long Bird\" who lived in the forest didn't want to let creatures to be eaten by monsters. <br>\
-		His initial goal was pure, at least. <br>The forest began to be saturated by darkness. <br>His long vigil is saturated with memories and regrets."
+	observation_prompt = "居住在森林中的\"高鸟\"不愿让生灵被怪物吞噬。<br>\
+		至少，他的初衷是纯粹的。<br>森林逐渐被黑暗浸染。<br>漫长的守望浸透了回忆与悔恨。"
 	observation_choices = list(
-		"Console the bird" = list(TRUE, "Long Bird put down his scales, that had been with him for a long time. <br>\
-			The long-lasting judgement finally ends. <br>Long Bird slowly realizes the secrets behind the monster, and he waits. <br>For the forest that he will never take back."),
-		"Leave him be" = list(FALSE, "Long Bird sees through you, even though he is blind. <br>He is weighing your sins."),
+		"安慰高鸟" = list(TRUE, "高鸟放下了相伴已久的秤。<br>\
+			漫长的审判终于终结。<br>高鸟逐渐洞悉怪物背后的秘密，它静候着。<br>为了那片永远无法挽回的森林。"),
+		"置之不理" = list(FALSE, "高鸟虽盲，却将你看透。<br>他正在衡量你的罪孽。"),
 	)
 
 	var/judgement_cooldown = 10 SECONDS
@@ -69,10 +69,10 @@
 	var/omw_to_apoc = FALSE
 
 /datum/action/innate/abnormality_attack/judgement
-	name = "Judgement"
+	name = "审判"
 	icon_icon = 'icons/obj/wizard.dmi'
 	button_icon_state = "magicm"
-	chosen_message = span_colossus("You will now damage all enemies around you.")
+	chosen_message = span_colossus("你现在会伤害你周围的所有敌人.")
 	chosen_attack_num = 1
 
 /mob/living/simple_animal/hostile/abnormality/judgement_bird/Move()
@@ -200,8 +200,8 @@
 
 //On-kill visual effect
 /obj/structure/jbird_noose
-	name = "feathery noose"
-	desc = "A structure found in the black forest."
+	name = "失控的乌鸦"
+	desc = "一种具有威胁性外表的乌鸦.."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "noose"
 	pixel_x = -8
@@ -222,10 +222,10 @@
 /obj/structure/jbird_noose/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if(M.buckled)
 		return
-	var/response = alert(user,"Will you really hang [M]?","This looks painful","Yes","No")
+	var/response = alert(user,"你真的要绞死[M]吗?","这看起来很痛苦","Yes","No")
 	if(response == "Yes" && do_after(user, 10, M))
 		return ..(M, user, check_loc = FALSE) //it just works
-	to_chat(user, "You decide not to hang [M].")
+	to_chat(user, "你决定不绞死[M].")
 
 /obj/structure/jbird_noose/buckle_mob(mob/living/M, force, check_loc, buckle_mob_flags)
 	if(M.buckled)
@@ -246,7 +246,7 @@
 	M.pixel_x = M.base_pixel_x
 	unbuckle_mob(M,force=1)
 	M.pixel_z = 0
-	src.visible_message(text("<span class='danger'>[M] falls free of [src]!</span>"))
+	src.visible_message(text("<span class='danger'>[M]脱离[src]!</span>"))
 	M.update_icon()
 
 /obj/structure/jbird_noose/Destroy()

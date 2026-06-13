@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/bald
-	name = "You’re Bald..."
+	name = "你秃了..."
 	desc = "A helpful sphere, you think."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "bald1"
@@ -38,15 +38,15 @@
 	)
 	gift_type =  /datum/ego_gifts/tough
 	gift_chance = 10
-	gift_message = "Now we're feeling awesome!"
+	gift_message = "现在我们感觉棒极了！"
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
-	harvest_phrase = span_notice("You squeeze %ABNO. Some juice drips into %VESSEL.")
-	harvest_phrase_third = "%PERSON squeezes %ABNO. Some juice drips into %VESSEL."
+	harvest_phrase = span_notice("你挤压%ABNO。一些汁液滴入%VESSEL。")
+	harvest_phrase_third = "%PERSON挤压%ABNO。一些汁液滴入%VESSEL。"
 
-	observation_prompt = "This abnormality is filled with dreams of bald people. Are you balding, or already bald?"
+	observation_prompt = "这个异想体充满了秃头之人的梦想。你正在秃顶，还是已经秃了？"
 	observation_choices = list(
-		"Yes" = list(TRUE, "Lobotomy Corporation welcomes you."),
-		"No" = list(FALSE, "Come back after watching the fast and the furious 7 five more times."),
+		"是" = list(TRUE, "脑叶公司欢迎您。"),
+		"否" = list(FALSE, "再把《速度与激情7》看五遍后再来吧。"),
 	)
 
 	var/bald_users = list()
@@ -129,11 +129,11 @@
 	. = ..()
 	if(!.)
 		return
-	to_chat(src, span_userdanger("You do not do damage, your sole mission is to spread the glory of baldness to all."))
+	to_chat(src, span_userdanger("你不会造成伤害，你的唯一任务是将秃头的荣耀传播给所有人。"))
 
 /datum/reagent/abnormality/bald
-	name = "Essence of Baldness"
-	description = "Some weird-looking juice..."
+	name = "秃头精华"
+	description = "一些看起来很奇怪的果汁..."
 	color = "#ffffff"
 	special_properties = list("substance may alter subject physiology")
 	sanity_restore = 1
@@ -156,7 +156,7 @@
 		return
 	var/mob/living/carbon/human/victim = target
 	if(!HAS_TRAIT(victim, TRAIT_BALD))
-		to_chat(victim, span_notice("You feel awesome!"))
+		to_chat(victim, span_notice("你感觉棒极了!"))
 		ADD_TRAIT(victim, TRAIT_BALD, "ABNORMALITY_BALD")
 		victim.hairstyle = "Bald"
 		victim.update_hair()
@@ -170,8 +170,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/bald_heal
 
 /atom/movable/screen/alert/status_effect/bald_heal
-	name = "Bald is Awesome!"
-	desc = "The power of baldness is renerating HP and SP. Having more bald people around helps!"
+	name = "秃头太棒了！"
+	desc = "秃头的力量正在恢复HP和SP。周围有更多秃头的人会有帮助！"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "bald"
 

@@ -1,12 +1,12 @@
 /mob/living/simple_animal/hostile/abnormality/training_rabbit
-	name = "Standard Training-Dummy Rabbit"
-	desc = "A rabbit-like training dummy. Should be completely harmless."
+	name = "教学兔兔Dummy"
+	desc = "像兔子一样的训练假人，应该完全无害."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "training_rabbit"
 	icon_living = "training_rabbit"
 	portrait = "training_rabbit"
-	maxHealth = 20
-	health = 20
+	maxHealth = 100
+	health = 100
 	threat_level = TETH_LEVEL
 	fear_level = 0 //rabbit not scary
 	move_to_delay = 16
@@ -38,16 +38,16 @@
 	secret_horizontal_offset = -16
 	secret_gift = /datum/ego_gifts/bunny
 
-	observation_prompt = "This is the training dummy that Lobotomy Corporation uses for training new agents. <br>\
-		But is that really all there is to it? <br>\
-		Looking closely, you find..."
+	observation_prompt = "这是脑叶公司用于训练新员工的训练假人。<br>\
+		但它真的只是个假人吗？<br>\
+		仔细观察后，你发现..."
 	observation_choices = list(
-		"A dead body?" = list(TRUE, "The facial structure, the torso, arms and legs, not to mention the stench... <br>\
-			There's no doubt that this is just a dead body in a body bag, flipped upside-down. <br>\
-			In spite of all this, it provides a gift to you. It continues moving around as if it were alive. <br>\
-			So this is what they call an abnormality. <br>\
-			Are all abnormalities at Lobotomy Corporation this strange?"),
-		"Nothing" = list(FALSE, "Your imagination must be going haywire due to the stress. <br>There's no way such an out-of-place thing could be there!"),
+		"一具尸体?" = list(TRUE, "面部轮廓、躯干、四肢，更不用说那股恶臭...<br>\
+			毫无疑问，这根本就是个装在裹尸袋里倒置的尸体。<br>\
+			尽管如此，它仍向你提供着礼物，并像活物般持续移动。<br>\
+			原来这就是所谓的异想体。<br>\
+			难道脑叶公司的异想体都这么诡异？"),
+		"什么都没有" = list(FALSE, "肯定是工作压力让你产生了幻觉。<br>这种离谱的东西怎么可能存在!"),
 	)
 
 /mob/living/simple_animal/hostile/abnormality/training_rabbit/BreachEffect(mob/living/carbon/human/user, breach_type)

@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/voiddream
-	name = "Void Dream"
-	desc = "A very fluffy floating sheep.."
+	name = "空虚之梦"
+	desc = "一只毛茸茸的漂浮着的羊.."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "void_dream"
 	icon_living = "void_dream"
 	portrait = "void_dream"
 	del_on_death = TRUE
 	is_flying_animal = TRUE
-	maxHealth = 120
-	health = 120
+	maxHealth = 250
+	health = 250
 	rapid_melee = 2
 	move_to_delay = 6
 	damage_coeff = list(RED_DAMAGE = 1.5, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 2)
@@ -38,13 +38,13 @@
 	gift_type =  /datum/ego_gifts/dream
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "\"There's nothing wrong with dreams. <br>\
-		I go out and bring such sweet dreams to those who've only learned to stop dreaming, <br>\
-		I'm not to blame if their dreams are so entrancing they become hollow people in their waking lives, am I not? <br>\
-		Don't you want such sweet dreams too?\""
+	observation_prompt = "\"梦想本身并无过错. <br>\
+		我外出为那些早已停止做梦的人带去甜美梦境, <br>\
+		若不是他们在现实中变得形同行尸走肉，否则怎么会如此沉迷梦境，这岂能归咎于我? <br>\
+		难道你就不渴望这般甜美的梦吗?\""
 	observation_choices = list(
-		"You're a demon" = list(TRUE, "\"Don't say such scary, complicated things. <br>I just gave them the enrapturing dreams they wanted. <br>They're destined to come back to me.\""),
-		"Please, eat my dreams" = list(FALSE, "It's alright, dreams are harmless but unnecessary things. <br>So, just close your eyes and show me your most delectable dream..."),
+		"你是恶魔" = list(TRUE, "\"别说这么可怕又复杂的话. <br>我只是给了他们渴望的沉醉美梦. <br>他们注定会回到我身边.\""),
+		"请吃掉我的梦" = list(FALSE, "无妨，梦境虽无害却非必需. <br>那么，闭上双眼，向我展示你最可口的梦吧..."),
 	)
 
 	var/punched = FALSE
@@ -167,7 +167,7 @@
 
 // Projectile code
 /obj/projectile/sleepdart
-	name = "void dream"
+	name = "空虚之梦"
 	icon_state = "antimagic"
 	color = "#FCF344"
 	damage = 0

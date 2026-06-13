@@ -1,7 +1,7 @@
 //A tribute to, and Designed mostly by InsightfulParasite, our lovely spriter. Coded by Kirie Saito.
 /mob/living/simple_animal/hostile/abnormality/shrimp_exec
-	name = "Shrimp Association Executive"
-	desc = "A shrimp in a snazzy suit."
+	name = "虾业协会经理"
+	desc = "一只穿着时髦西装的虾."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "executive"
 	icon_living = "executive"
@@ -9,6 +9,9 @@
 	portrait = "shrimp_executive"
 	faction = list("neutral")
 	speak_emote = list("burbles")
+	maxHealth = 1000
+	health = 1000
+
 	threat_level = WAW_LEVEL
 	start_qliphoth = 1
 	work_chances = list(
@@ -32,19 +35,19 @@
 		/mob/living/simple_animal/hostile/abnormality/wellcheers = 1.5, // I... if you ever get a zayin this far in, good luck.
 	)
 
-	observation_prompt = "You sit in an office decorated with shrimp-related memorabilia. <br>\
-		Various trophies and medals and other trinkets with shrimp on them. <br>A PHD in shrimpology printed on printer paper is displayed prominantly on the wall. <br>\
-		\"Enjoying my collection? <br>I played college ball in Shrimp-Corp's nest, you know.\" <br>\
-		A delicious looking shrimp in a snazzy suit sits before you in an immaculate office chair. <br>\
-		\"But where are my manners... <br>Why don't you enjoy some of our finest locally produced champagne?\" <br>\
-		The shrimp offers you a champagne glass full of... Something. <br>\
-		It looks and smells like wellcheers grape soda. It's soda. <br>\
-		You can even see the can's label torn off and stuck on the side. <br>Will you drink it?"
+	observation_prompt = "你坐在一间装饰着虾类纪念品的办公室里。<br>\
+		各种奖杯、勋章和带有虾图案的小摆设。<br>一张用打印纸印着的虾学博士学位证书醒目地挂在墙上。<br>\
+		\"喜欢我的收藏吗？<br>我可是在虾公司的巢打过大学联赛的。\"<br>\
+		一只穿着时髦西装的虾坐在你面前的豪华办公椅上。<br>\
+		\"容我失礼...<br>何不尝尝我们本地特产的顶级香槟？\"<br>\
+		虾递给你一杯装满...某种东西的香槟杯。<br>\
+		看起来闻起来都像韦尔奇乐葡萄汽水，实际上这就是汽水。<br>\
+		你甚至能看到撕下来的易拉罐标签粘在杯侧。<br>你要喝吗？"
 	observation_choices = list(
-		"Drink the soda" = list(TRUE, "Before you can make a choice, two gigantic and heavily armed shrimp guards bust in through the door. <br>\
-			They hold you down and force you to drink the soda, and you fall asleep... <br>... <br>Somewhere in the distance, you hear seagulls."),
-		"Refuse" = list(TRUE, "Before you can make a choice, two gigantic and heavily armed shrimp guards bust in through the door. <br>\
-			They hold you down and force you to drink the soda, and you fall asleep... <br>... <br>Somewhere in the distance, you hear seagulls."),
+		"喝汽水" = list(TRUE, "未及选择，两名全副武装的巨虾守卫破门而入。<br>\
+			他们按着你强灌汽水，随后你陷入昏迷...<br>...<br>遥远某处传来海鸥声。"),
+		"拒绝" = list(TRUE, "未及选择，两名全副武装的巨虾守卫破门而入。<br>\
+			他们按着你强灌汽水，随后你陷入昏迷...<br>...<br>遥远某处传来海鸥声。"),
 	)
 
 	var/liked
@@ -54,36 +57,36 @@
 	var/hint_cooldown
 	var/hint_cooldown_time = 30 SECONDS
 	var/list/cooldown = list(
-		"Stop meandering around and get to work!",
-		"I can be quite patient at times, but you are beginning to test me!",
-		"The service here can be dreadful at times. Why don't you just make yourself useful?",
+		"别闲逛了快去工作！",
+		"我有时相当有耐心，但你正在挑战我的极限！",
+		"这里的服务真够糟糕。你就不能做点有用的事？",
 	)
 
 	var/list/instinct = list(
-		"I am getting quite old, and my back is hurting me. Could you send a chiropractor to my office immediately?",
-		"I am quite peckish, could you send me a charcuterie board?",
-		"Could you get me a glass of pinot noir, please?",
-		"Fetch me a bowl of shrimp fried rice? I'm looking to try this delicacy made by your finest shrimp chefs.",
-		"Ah, I forgot to take my daily medication, could you bring it to me?",
+		"我年事已高，背部疼痛，立即派个脊椎按摩师来我办公室。",
+		"有点饿了，送个冷肉拼盘过来？",
+		"麻烦来杯黑皮诺红酒？",
+		"给我弄碗虾仁炒饭？想尝尝你们顶级虾厨的手艺。",
+		"啊，忘了吃每日药片，能帮我拿来吗？",
 	)
 
 	var/list/insight = list(
-		"Get me my phonograph, I would like to listen to Moonlight Sonata, 1st Movement.",
-		"The plants in my office are dying, could you water them please?",
-		"It is rather dull, with all the negotiations that we have been doing. Could you get me the morning crossword?",
-		"I've noticed some dust collecting on the bookshelves, could you get someone to dust it?",
-		"Ah, I seem to have spilt my wine, could you get it cleaned up?",
-		"I think my suit needs to be dry-cleaned. Take it and go.",
+		"拿我的留声机来，想听《月光奏鸣曲》第一乐章。",
+		"办公室植物快枯死了，浇个水行吗？",
+		"最近谈判太无趣，把早报字谜版拿来。",
+		"书架积灰了，派人打扫下。",
+		"糟了酒洒了，清理下。",
+		"我的西装需要干洗。拿走。",
 
 	)
 
 	var/list/attachment = list(
-		"You know, I had this brand new deal that I am setting up. Care to listen sometime?",
-		"I was wondering if YOU had any good business offers. It would be nice to hear from a fellow intellectual. Stop by and tell me sometime.",
-		"Come, pull up a glass, old friend. Let's drink to a good deal!",
-		"I'm thinking about buying stocks for my portfolio, what do you recommend I invest in?",
-		"Got a moment to chat about something important? Let's catch up over a cup of coffee and discuss some potential business moves. Your insights are always valuable to me.",
-		"I was wondering if you might be available to join me for a brief tête-à-tête over a cup of tea. Come on by when you are available.",
+		"知道吗，我刚谈成个新买卖。有兴趣听听？",
+		"不知你有什么好项目？很乐意听取智者的建议。有空来找我聊聊。",
+		"来，老朋友，满上这杯！为我们的好买卖干杯！",
+		"正考虑买些股票，推荐投资什么？",
+		"有空聊要事吗？一起喝杯咖啡探讨商业动向，你的见解总是很有价值。",
+		"不知你能否抽空来喝杯茶小叙？方便时过来吧。",
 	)
 	var/list/shrimps = list()
 	var/shrimp_cap = 24
@@ -102,7 +105,7 @@
 		pod.explosionSize = list(0,0,0,0)
 		new/obj/structure/lootcrate/s_corp(pod)
 		new /obj/effect/pod_landingzone(dispense_turf, pod)
-		say("Here you are, my dear friend. High-quality items courtesy of shrimpcorp.")
+		say("给你，我亲爱的朋友，由虾公司提供的高质量的火力.")
 		return
 
 /mob/living/simple_animal/hostile/abnormality/shrimp_exec/FailureEffect(mob/living/carbon/human/user, work_type, pe)
@@ -174,8 +177,8 @@
 
 /* Rope */
 /obj/structure/shrimp_rope
-	name = "rope"
-	desc = "A long piece of rope connected to a newfound hole in the celling."
+	name = "绳子"
+	desc = "一根长长的绳子，系在天花板上一个新发现的洞口处."
 	icon = 'icons/effects/32x96.dmi'
 	icon_state = "rope"
 	layer = MOB_LAYER
@@ -227,8 +230,8 @@
 
 /* Shrimpo boys */
 /mob/living/simple_animal/hostile/aminion/shrimp
-	name = "wellcheers corp liquidation intern"
-	desc = "A shrimp that is extremely hostile to you."
+	name = "韦尔奇乐清算实习员工"
+	desc = "一只对你极具敌意的虾."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers"
 	icon_living = "wellcheers"
@@ -308,8 +311,8 @@
 
 //You can put these guys about to guard an area.
 /mob/living/simple_animal/hostile/aminion/shrimp/soldier
-	name = "wellcheers corp hired liquidation officer"
-	desc = "A shrimp that is there to guard an area."
+	name = "韦尔奇乐公司清算长官"
+	desc = "守卫一个区域的虾."
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
 	icon_dead = "wellcheers_bad_dead"
@@ -360,7 +363,7 @@
 
 
 /mob/living/simple_animal/hostile/aminion/shrimp/soldier/friendly
-	name = "wellcheers corp assault officer"
+	name = "韦尔奇乐公司突击员工"
 	icon_state = "wellcheers_soldier"
 	icon_living = "wellcheers_soldier"
 	icon_dead = "wellcheers_soldier_dead"
@@ -371,8 +374,8 @@
 	area_index = MOB_SIMPLEANIMAL_INDEX // Don't trip regenerator threat mode
 
 /obj/item/grenade/spawnergrenade/shrimp
-	name = "instant shrimp task force grenade"
-	desc = "A grenade used to call for a shrimp task force."
+	name = "虾特遣部队召唤手榴弹"
+	desc = "用来召集虾特遣部队的手榴弹."
 	icon_state = "shrimpnade"
 	spawner_type = /mob/living/simple_animal/hostile/aminion/shrimp/soldier/friendly
 	deliveryamt = 3
@@ -386,8 +389,8 @@
 //Crates
 //S Corporation
 /obj/structure/lootcrate/s_corp
-	name = "Shrimp-Corp Loot Crate"
-	desc = "A crate containing some knickknacks from the mysterious Shrimp-Corp. Open with a Crowbar or with your hands."
+	name = "虾公司战利品箱"
+	desc = "一个包含神秘虾公司物品的箱子。用撬棍或用手打开。"
 	icon_state = "crate_shrimp"
 	veryrarechance = 10
 	cosmeticchance = 10
@@ -450,7 +453,7 @@
 		cloot = pick(cosmeticloot)
 		new cloot(get_turf(src))
 
-	to_chat(user, span_notice("You open the crate!"))
+	to_chat(user, span_notice("你打开了箱子!"))
 	if(SSmaptype.maptype in SSmaptype.citymaps)
 		SEND_GLOBAL_SIGNAL(COMSIG_CRATE_LOOTING_ENDED, user, src)
 
@@ -458,8 +461,8 @@
 	qdel(src)
 
 /obj/structure/lootcrate/s_corp/gun
-	name = "Shrimp-Corp Gun Crate"
-	desc = "A crate containing a gun from the mysterious Shrimp-Corp. Open with a Crowbar or with your hands."
+	name = "虾公司武器箱"
+	desc = "一个包含神秘虾公司武器的箱子。用撬棍或用手打开。"
 	icon_state = "crate_weapon_shrimp"
 	rarechance = 80
 	veryrarechance = 15
@@ -482,6 +485,6 @@
 	cosmeticloot = list()
 
 /obj/structure/closet/supplypod/extractionpod/shrimppod
-	name = "shrimp-borp drop pod"
+	name = "虾登陆舱"
 	desc = "A purple pod."
 	style = STYLE_SHRIMP

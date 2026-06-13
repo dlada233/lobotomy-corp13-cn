@@ -1,12 +1,12 @@
 // Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/missed_reaper
-	name = "Missed Reaper"
-	desc = "Appears to be a little girl standing next to a looming shadow. Your instincts tell you to avoid her at all costs."
+	name = "不见死神"
+	desc = "似乎是一个小女孩站在一个若隐若现的影子旁边，你的直觉告诉你要不惜一切代价避开她."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "reaper"
 	portrait = "missed_reaper"
-	maxHealth = 100
-	health = 100
+	maxHealth = 400
+	health = 400
 	melee_damage_lower = 7
 	melee_damage_upper = 9
 	melee_damage_type = PALE_DAMAGE
@@ -37,11 +37,10 @@
 	light_power = 5
 	light_range = 2
 
-	observation_prompt = "She was so pale at the end, she looked more like a porcelain doll than the little girl I knew, \
-		laughing and smiling that bright colourful smile I loved so much. <br>I sat next to her bed, powerless to do anything."
+	observation_prompt = "她最后苍白得像个瓷娃娃，不再是我认识的那个小女孩——那个总绽放着我最爱的明艳笑容的孩子。<br>我坐在她床边，无能为力。"
 	observation_choices = list(
-		"Hold her hand" = list(TRUE, "Her skin was clammy and cool to the touch and not a trace of a pulse to be found, she passed the night before. <br>\
-			It didn't mean anything. <br>In the corner of the room, I saw the reaper bow his head in apology."),
+		"握住她的手" = list(TRUE, "皮肤湿冷没有脉搏，她已在前夜离世。<br>\
+			这毫无意义。<br>房间角落，死神垂首致歉。"),
 	)
 
 	var/meltdown_cooldown //no spamming the meltdown effect
@@ -93,7 +92,7 @@
 	sleep(0.5 SECONDS)
 	if(QDELETED(user))
 		return
-	to_chat(user, span_userdanger("[src] stabs you!"))
+	to_chat(user, span_userdanger("[src]刺伤你!"))
 	user.deal_damage(3000, PALE_DAMAGE)
 	playsound(user, 'sound/weapons/fixer/generic/nail1.ogg', 100, FALSE, 4)
 	return
@@ -133,13 +132,13 @@
 		playsound(get_turf(Y), 'sound/abnormalities/missed_reaper/shadowcast.ogg', 50, FALSE, -1)
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	for(Y in marked)
-		to_chat(Y, span_userdanger("A shadow appears beneath your feet!"))
+		to_chat(Y, span_userdanger("一个影子出现在你的脚下!"))
 		new /obj/effect/malicious_shadow(get_turf(Y))
 
 // Decorations
 /obj/structure/looming_shadow
-	name = "looming shadow"
-	desc = "Looks like some sort of ghost or spirit."
+	name = "迫近的阴影"
+	desc = "看起来像是某种鬼魂或幽灵."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "looming_shadow"
 	anchored = TRUE
@@ -148,8 +147,8 @@
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/effect/gloomy_darkness
-	name = "gloomy darkness"
-	desc = "The kind of darkness that light doesn't penetrate."
+	name = "阴郁的黑暗"
+	desc = "那种光线无法穿透的黑暗."
 	icon = 'icons/effects/weather_effects.dmi'
 	icon_state = "darkness"
 	anchored = TRUE

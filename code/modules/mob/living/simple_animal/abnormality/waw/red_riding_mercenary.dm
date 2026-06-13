@@ -6,8 +6,8 @@ It has now been over four months. Now we get her for real. -Coxswain
 */
 
 /mob/living/simple_animal/hostile/abnormality/red_hood
-	name = "Little Red Riding Hooded Mercenary"
-	desc = "A tall humanoid in ragged red robes."
+	name = "小红帽雇佣兵"
+	desc = "穿着破烂红色袍子的高大人形异想体."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "red_hood"
 	icon_living = "red_hood"
@@ -16,8 +16,8 @@ It has now been over four months. Now we get her for real. -Coxswain
 	del_on_death = TRUE
 	pixel_x = -8
 	base_pixel_x = -8
-	maxHealth = 950 // More health than standard
-	health = 950 // Since she was apparently too easy to suppress
+	maxHealth = 1000 // More health than standard
+	health = 1000 // Since she was apparently too easy to suppress
 	rapid_melee = 2
 	speed = 0.5
 	threat_level = WAW_LEVEL
@@ -56,14 +56,14 @@ It has now been over four months. Now we get her for real. -Coxswain
 	gift_type = /datum/ego_gifts/crimson
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 
-	observation_prompt = "(The chamber is empty, except the Little Red Riding Hooded Mercenary, and her axe and gun. She seems exhausted) <br>\
-		Am I really alive? <br>What if I'm a ghost that doesn't even know it's dead? <br>\
-		The only thing I love in my life is the death of the wolf."
+	observation_prompt = "（房间空荡荡的，只有小红帽雇佣兵，以及她的斧头和枪。她看起来精疲力尽）<br>\
+		我真的还活着吗？<br>万一我是个连自己已经死了都不知道的幽灵呢？<br>\
+		我生命中唯一所爱，就是狼的死亡。"
 	observation_choices = list(
-		"Mourn for her memories" = list(TRUE, "I will swing my axe again tomorrow, still driven by hatred like I have been forever. <br>\
-			But tonight, I think I can sleep peacefully."),
-		"Exit the room" = list(FALSE, "Knock on my door whenever you need my service. <br>\
-			This is my struggle."),
+		"为她的记忆哀悼" = list(TRUE, "明天我将再次挥动斧头，仍被那永恒的仇恨驱使。<br>\
+			但今晚，我想我能安睡了。"),
+		"离开房间" = list(FALSE, "需要我的服务时，随时敲门。<br>\
+			这是我的抗争。"),
 	)
 
 	/*
@@ -120,60 +120,60 @@ It has now been over four months. Now we get her for real. -Coxswain
 	var/gun_cooldown = 5 SECONDS
 	var/gun_multishot_pause = 2.5 // How long to pause between shots in a volley
 	var/bullet_additional = 0 // How many extra times to shoot
-	var/bullet_damage = 12 // How much damage each hollowpoint shell does
+	var/bullet_damage = 18 // How much damage each hollowpoint shell does
 
 	var/throw_timer = 0
 	var/throw_cooldown = 11 SECONDS
 	var/throw_amount = 3 // How many blades to throw at once
 	var/throw_cone = 25 // Total firing angle of all red's projectiles.
-	var/throw_damage = 18 // Damage of each thrown blade
+	var/throw_damage = 13 // Damage of each thrown blade
 	var/leaving = FALSE
 
 	var/list/wolf_encounter_lines = list( // Encountering Big and Will Be Bad Wolf
-		"Found you, you bastard!",
-		"I'll have your head!",
-		"You won't get away this time!"
+		"找到你了，你这畜生！",
+		"我要你的脑袋！",
+		"这次你逃不掉了！"
 	)
 	var/list/denied_kill_lines = list( // After being denied the killing blow on Wolf. Randomly during rage level 3.
-		"HE WAS MINE!!",
-		"YOU BASTARDS!!",
-		"I'LL KILL EVERY LAST ONE OF YOU!!"
+		"他是我的！！",
+		"你们这群混蛋！！",
+		"我要把你们全宰了！！"
 	)
 
 	var/list/buddy_encounter_lines = list( // Encountering Reddened Buddy by surprise (i.e. not requested).
-		"A wolf?! But I didn't...",
-		"Right now?! How did...",
-		"No... I couldn't have..."
+		"狼？！但我没有...",
+		"现在？！怎么会...",
+		"不...我不可能..."
 	)
 
 	var/list/request_locate_lines = list( // Entering combat against a requested target without more specific lines.
-		"Found you...",
-		"The hunt is on.",
-		"You can't run."
+		"找到你了...",
+		"狩猎开始。",
+		"你逃不掉的。"
 	)
 
 	var/list/blue_evade_lines = list( // Evading blue's AOE while fighting something else.
-		"Watch it!",
-		"Idiot!",
-		"What are you aiming at?!"
+		"看着点！",
+		"白痴！",
+		"你在瞄哪儿？！"
 	)
 	var/list/blue_evade_taunt_lines = list( // Evading blue's AOE while hostile to him.
-		"You're slow!",
-		"What's the matter, scared?",
-		"Get your eye checked."
+		"你太慢了！",
+		"怎么了，害怕了？",
+		"去看看眼睛吧。"
 	)
 
 	var/list/weapon_throw_lines = list( // Using the weapon throw attack.
-		"No hesitation!",
-		"You're dead!",
-		"Eat this!"
+		"毫不留情！",
+		"你死定了！",
+		"吃我这招！"
 	)
 
 /datum/action/innate/abnormality_attack/find_target // AI-controlled Red technically doesn't use this one.
-	name = "Locate target"
+	name = "寻找目标"
 	icon_icon = 'ModularTegustation/Teguicons/teguicons.dmi'
 	button_icon_state = "red_target"
-	chosen_message = span_danger("You try to suss out where your target is...")
+	chosen_message = span_danger("你尝试找到目标...")
 	chosen_attack_num = 1
 
 /datum/action/innate/abnormality_attack/find_target/Activate()
@@ -240,7 +240,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 			say(pick(blue_evade_taunt_lines))
 	else
 		if(!client)
-			manual_emote("acrobatically spins out of the way.")
+			manual_emote("耍杂技似地旋转闪避.")
 	SpinAnimation(7, 1)
 	adjustBruteLoss(-50)
 	return
@@ -282,17 +282,17 @@ It has now been over four months. Now we get her for real. -Coxswain
 /mob/living/simple_animal/hostile/abnormality/red_hood/proc/EndEvade()
 	if(evading_attack)
 		evading_attack = FALSE
-		visible_message(span_notice("[src] seems out of breath!"), span_warning("You didn't dodge anything!"))
+		visible_message(span_notice("[src]似乎喘不过气来!"), span_warning("你什么都没躲开!"))
 		evade_timer = world.time + evade_cooldown * 2
 		return
 	SpinAnimation(7, 1)
-	visible_message(span_notice("[src] evades the attack!"), span_nicegreen("You evade the attack!"))
+	visible_message(span_notice("[src]躲开了攻击!"), span_nicegreen("你躲开了攻击!"))
 	adjustBruteLoss(-50) // Recover a little HP for your dodge
 	evade_timer = world.time + evade_cooldown
 	return
 
 /datum/action/innate/abnormality_attack/hollowpoint_shell
-	name = "Hollowpoint Shell"
+	name = "空尖弹"
 	icon_icon = 'ModularTegustation/Teguicons/teguicons.dmi'
 	button_icon_state = "hollowpoint_ability"
 	chosen_message = span_danger("You will now fire at whatever you next click on.")
@@ -306,7 +306,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 	special_attacking = TRUE
 	gun_timer = world.time + gun_cooldown
 	addtimer(CALLBACK(src, PROC_REF(SpecialReset)), 10 + bullet_additional * gun_multishot_pause)
-	manual_emote("raises her gun.")
+	manual_emote("举起她的枪.")
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "redhood_shoot"
 	icon_living = "redhood_shoot"
@@ -336,13 +336,13 @@ It has now been over four months. Now we get her for real. -Coxswain
 	name = "Blade Throw"
 	icon_icon = 'icons/obj/projectiles.dmi'
 	button_icon_state = "hunter_blade"
-	chosen_message = span_danger("You will throw a spread of blades at whatever you next click on.")
+	chosen_message = span_danger("下次攻击将会是飞刀。")
 	chosen_attack_num = 4
 
 /mob/living/simple_animal/hostile/abnormality/red_hood/proc/BladeThrow(atom/target) // Throw a barrage of piercing blades in the direction of the enemy.
 	if(throw_timer > world.time)
 		if(client)
-			to_chat(src, span_danger("You can't do that now!"))
+			to_chat(src, span_danger("你现在不能那样做!"))
 		return FALSE
 	special_attacking = TRUE
 	addtimer(CALLBACK(src, PROC_REF(SpecialReset)), 15)
@@ -411,17 +411,17 @@ It has now been over four months. Now we get her for real. -Coxswain
 		huntable |= H
 	if(!LAZYLEN(huntable))
 		if(client)
-			to_chat(user, span_notice("There's nothing for [src] to hunt."))
+			to_chat(user, span_notice("没什么可为[src]狩猎的."))
 		else
-			say("Nothing to hunt right now...")
+			say("现在没有猎物可以狩猎...")
 		return FALSE
 
-	var/mob/living/simple_animal/hunted = input(user, "What's the target?", "Select hunt target", null) as null|anything in sortNames(huntable)
+	var/mob/living/simple_animal/hunted = input(user, "目标是什么?", "选择狩猎目标", null) as null|anything in sortNames(huntable)
 	if(!hunted)
 		if(client)
-			to_chat(user, span_notice("You decided not to make a request after all."))
+			to_chat(user, span_notice("你决定还是不雇佣了."))
 		else
-			say("Changed your mind? Tch. Call me when you need me.")
+			say("改变想法了? 好吧. 有需要再练习我.")
 		return FALSE
 
 	priority_target = hunted
@@ -438,60 +438,60 @@ It has now been over four months. Now we get her for real. -Coxswain
 
 	if(SSlobotomy_corp.available_box < current_cost)
 		if(client)
-			to_chat(user, span_notice("Not enough personal PE to make a request."))
+			to_chat(user, span_notice("你没有足够的个人PE来雇佣."))
 		else
-			say("Tch. You can't afford my services.")
+			say("啧. 你付不起佣金.")
 		return FALSE
 	SSlobotomy_corp.available_box -= current_cost //Subtract the total from station PE
 
 	if(client)
-		to_chat(src, span_notice("You've been contracted to hunt [priority_target.name]."))
+		to_chat(src, span_notice("你已经被雇佣去狩猎[priority_target.name]."))
 	else
 		if(istype(priority_target, /mob/living/simple_animal/hostile/abnormality/big_wolf))
-			manual_emote("'s grip on her weapon tightens.")
+			manual_emote("握紧她的武器.")
 			SLEEP_CHECK_DEATH(10)
-			say("Is he really here? You don't know how long I have been waiting for this.")
+			say("他真的在这里吗？你不知道这一刻我等了多久.")
 			SLEEP_CHECK_DEATH(20)
-			say("Leave me to handle that dreadful, cunning bastard.")
+			say("让我来对付这个可恶、狡猾的畜生.")
 			SLEEP_CHECK_DEATH(20)
-			say("I'll hang his head over my bed.")
+			say("我会把他的头挂到床前.")
 			SLEEP_CHECK_DEATH(20)
-			say("Only then can I get up in the morning without having a nightmare.")
+			say("只有这样，我才能在早上起床时不做噩梦.")
 			SLEEP_CHECK_DEATH(20)
 			target_priority = 4
 			BreachEffect()
 			RageUpdate(2) //She enrages instantly to go wolf hunting
 			return
 		if(istype(priority_target, /mob/living/simple_animal/hostile/abnormality/red_buddy))
-			manual_emote("'s eye widens slightly.")
+			manual_emote("的眼睛微微睁大.")
 			SLEEP_CHECK_DEATH(10)
-			say("Hm. A wolf? Not MY wolf, but a wolf nonetheless...")
+			say("嗯. 一头狼? 不是我的狼, 但毕竟是狼...")
 			SLEEP_CHECK_DEATH(40)
-			say("Well, then. I guess it's time for a hunt.")
+			say("好吧. 我猜是时候开始狩猎了.")
 			SLEEP_CHECK_DEATH(40)
 			target_priority = 3
 			BreachEffect()
 			return
 		if(istype(priority_target, /mob/living/simple_animal/hostile/abnormality/blue_shepherd))
-			manual_emote("'s eye narrows.")
+			manual_emote("眯起眼睛.")
 			SLEEP_CHECK_DEATH(10)
-			say("That idiot? You're sure?")
+			say("那个白痴? 你确定吗?")
 			SLEEP_CHECK_DEATH(40)
-			manual_emote("chuckles darkly.")
+			manual_emote("阴郁地笑.")
 			SLEEP_CHECK_DEATH(6)
-			say("I've been waiting for a chance to teach him a lesson.")
+			say("我早就在等着教训他的机会了.")
 			SLEEP_CHECK_DEATH(34)
 			target_priority = 1
 			BreachEffect()
 			return
 		else
-			manual_emote(" shrugs.")
+			manual_emote("耸肩.")
 			SLEEP_CHECK_DEATH(10)
-			say("Alright, looks like you're good for it.")
+			say("好吧，看来你挺懂行.")
 			SLEEP_CHECK_DEATH(40)
-			manual_emote("chuckles.")
+			manual_emote("轻声笑.")
 			SLEEP_CHECK_DEATH(6)
-			say("A deal's a deal.")
+			say("一言为定.")
 			SLEEP_CHECK_DEATH(34)
 			target_priority = 2
 			BreachEffect()
@@ -503,31 +503,31 @@ It has now been over four months. Now we get her for real. -Coxswain
 		return
 	if(istype(abno, /mob/living/simple_animal/hostile/abnormality/punishing_bird))
 		if(client)
-			to_chat(src, span_notice("You hear an annoying fluttering, and immediately disregard it."))
+			to_chat(src, span_notice("你听到烦人的扑翅声，随即置之不理。"))
 		else
-			manual_emote("perks up for a moment, then settles back down, looking annoyed.")
+			manual_emote("警觉片刻后又松懈下来，露出恼怒的神情。")
 		return
 	if(istype(abno, /mob/living/simple_animal/hostile/abnormality/training_rabbit))
 		return
 	if(datum_reference.qliphoth_meter > 1)
 		if(client)
-			to_chat(src, span_notice("You hear something..."))
+			to_chat(src, span_notice("你听到了什么动静..."))
 		else
-			manual_emote("perks up slightly, as though she hears something.")
+			manual_emote("微微警觉，仿佛听见了什么。")
 	datum_reference.qliphoth_change(-1) // This is literally the only way her counter goes down.
 
 /mob/living/simple_animal/hostile/abnormality/red_hood/BreachEffect(mob/living/carbon/human/user)
 	..()
 	if(target_priority)
 		if(client)
-			to_chat(src, span_notice("You have a target to hunt."))
+			to_chat(src, span_notice("你有需要猎杀的目标。"))
 		else
-			manual_emote("adopts a fighting stance, eye gleaming with intent.")
+			manual_emote("摆出战斗姿态，眼神闪烁着杀意。")
 	else
 		if(client)
-			to_chat(src, span_warning("You've gotta get out of here!"))
+			to_chat(src, span_warning("必须立刻离开这里！"))
 		else
-			manual_emote("grips her weapons, looking around wildly.")
+			manual_emote("紧握武器，疯狂环视四周。")
 
 /mob/living/simple_animal/hostile/abnormality/red_hood/FindTarget(list/possible_targets, HasTargetsList = 0) //How we aggro the wolf if there is one
 	. = list()
@@ -555,7 +555,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 /mob/living/simple_animal/hostile/abnormality/red_hood/proc/UpdatePriority(target_id = 0, mob/living/new_priority)
 	if(target_id > target_priority)
 		if(client)
-			to_chat(src, span_notice("You've found a higher priority target! Go after [new_priority]!"))
+			to_chat(src, span_notice("你找到了一个更重要的目标! 追踪[new_priority]!"))
 		priority_target = new_priority
 		target_priority = target_id
 	return
@@ -637,15 +637,15 @@ It has now been over four months. Now we get her for real. -Coxswain
 			fear_level = WAW_LEVEL
 			return
 	if(target_priority < 4)
-		say("Work's done. Time to go home.")
+		say("工作完成,该回家了.")
 	else
-		say("Finally, the nightmare is over...")
+		say("终于，噩梦结束了...")
 		for(var/mob/living/carbon/human/survivor in urange(10, src))
 			if(survivor.stat == DEAD || !survivor.ckey)
 				continue
 			survivor.Apply_Gift(new /datum/ego_gifts/sheep)
 			survivor.playsound_local(get_turf(survivor), 'sound/weapons/black_silence/snap.ogg', 50)
-			to_chat(survivor, span_userdanger("The hooded mercenary thanks you - you recieve a gift!"))
+			to_chat(survivor, span_userdanger("兜帽雇佣兵感谢你 - 你收到一份礼物!"))
 	ChangeResistances(list(BRUIT = 0, RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	AIStatus = AI_OFF
 	animate(src, alpha = 0, time = 10)

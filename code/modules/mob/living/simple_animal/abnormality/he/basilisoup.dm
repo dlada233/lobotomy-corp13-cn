@@ -1,22 +1,22 @@
 // Abnormality sprited by Mel Taculo
 /mob/living/simple_animal/hostile/abnormality/basilisoup
-	name = "Basilisoup"
-	desc = "A giant bird or lizard, with a pot for a head and soup seeping out of its skin."
+	name = "一辈子汤"
+	desc = "一种巨大的鸟或蜥蜴，以锅为头，从皮肤里渗出汤."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "basilisoup"
 	icon_living = "basilisoup"
 	portrait = "basilisoup"
 	pixel_x = -32
 	base_pixel_x = -32
-	maxHealth = 300 // Quite high HP
-	health = 300
+	maxHealth = 520 // Quite high HP
+	health = 520
 	move_to_delay = 4 //High range, and thus slow
 	rapid_melee = 1
 	melee_reach = 2 // Long neck = long range
 	ranged = TRUE
 	threat_level = HE_LEVEL
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 0.8, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 1.5, FIRE = 0.6)
-	melee_damage_lower = 7
+	melee_damage_lower = 5
 	melee_damage_upper = 8
 	melee_damage_type = BLACK_DAMAGE
 	stat_attack = HARD_CRIT
@@ -45,10 +45,10 @@
 	gift_type = /datum/ego_gifts/lifestew
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "In front of me is a brass soup cauldron with a wooden ladle, I look inside the pot and see only water and a singular stone, boiling over an open fire."
+	observation_prompt = "我面前是一口铜制汤锅，旁边放着一把木勺。我往锅里一看，只见水和一块孤零零的石头，正从明火上沸腾翻滚."
 	observation_choices = list(
-		"Taste the soup" = list(TRUE, "I take the ladle and sip the contents, the taste is indescribably good. It truly is magic."),
-		"Knock it over" = list(FALSE, "The contents put out the flames as the pot tumbles the floor, water and a singular stone coat the floor. Soup from a stone? Ridiculous."),
+		"尝一口汤" = list(TRUE, "我拿起木勺，喝了一口汤，味道难以形容地好。这确实是一种魔法."),
+		"把它打翻" = list(FALSE, "锅在地板上翻滚，水和一块石头覆盖了整个地面。从石头里煮汤？荒谬至极."),
 	)
 
 	var/spit_cooldown
@@ -63,7 +63,7 @@
 	var/dash_cooldown = 0
 	var/dash_cooldown_time = 8 SECONDS
 	/// Damage dealt with a charge hit, this is intentionally a bit on the low side
-	var/charge_damage = 10
+	var/charge_damage = 15
 	/// Those hit by the charge won't be hit again by the same charge
 	var/list/been_hit = list()
 	/// The soup connected to us
@@ -76,15 +76,15 @@
 
 // Player-Controlled code
 /datum/action/innate/abnormality_attack/Spit
-	name = "Soup Spit"
+	name = "汤吐"
 	button_icon_state = "soupspit"
-	chosen_message = span_colossus("You will now disgorge your stomach contents while attacking.")
+	chosen_message = span_colossus("你现在会在攻击时吐出胃里的东西.")
 	chosen_attack_num = 1
 
 /datum/action/innate/abnormality_attack/Charge
-	name = "Charge"
+	name = "冲锋"
 	button_icon_state = "wrath_dash"
-	chosen_message = span_colossus("You will now charge while attacking.")
+	chosen_message = span_colossus("你现在可以在攻击时冲锋.")
 	chosen_attack_num = 2
 
 /mob/living/simple_animal/hostile/abnormality/basilisoup/Destroy()
@@ -259,7 +259,7 @@
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
 			var/atom/throw_target = get_edge_target_turf(L, get_dir(L, get_step_away(L, get_turf(src))))
-			L.visible_message(span_boldwarning("[src] slams into [L]!"), span_userdanger("[src] rends you with its teeth and claws!"))
+			L.visible_message(span_boldwarning("[src]猛烈撞击[L]!"), span_userdanger("[src]用牙齿和爪子撕碎了你!"))
 			playsound(L, 'sound/weapons/genhit2.ogg', 75, 1)
 			new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 			L.deal_damage(charge_damage, BLACK_DAMAGE)
@@ -287,8 +287,8 @@
 
 // Objects - Structures
 /obj/structure/basilisoup_pot
-	name = "soup pot"
-	desc = "An overflowing pot set in a rather large oven."
+	name = "汤锅"
+	desc = "在一个相当大的热源上盛满的锅."
 	icon = 'icons/obj/fireplace.dmi'
 	icon_state = "basilisoup"
 	pixel_x = -16
@@ -321,8 +321,8 @@
 /obj/structure/basilisoup_pot/examine(mob/user)
 	. = ..()
 	if(soup_level)
-		. += span_notice("It looks [soup_level]% full.")
-		. += span_notice("You can take a serving of soup with a bowl if there is enough, or spill the contents with harm intent.")
+		. += span_notice("看起来[soup_level]%满.")
+		. += span_notice("如果有足够的汤，你可以用碗舀一碗，或者洒出有害的内容.")
 
 /obj/structure/basilisoup_pot/update_overlays()
 	. = ..()
@@ -340,16 +340,16 @@
 
 /obj/structure/basilisoup_pot/proc/add_food(obj/item/wack, mob/user)
 	if(!is_type_in_list(wack, valid_types))
-		to_chat(user, span_notice("You can't put that in soup!"))
+		to_chat(user, span_notice("这不能放进汤里!"))
 		return
 	if(soup_level >= 100)
-		to_chat(user, span_notice("You can't fit any more in the pot!"))
+		to_chat(user, span_notice("汤锅已经装不下了!"))
 		return
 	if(is_type_in_list(wack, verboten_types))
-		to_chat(user, span_notice("You feel uneasy about refilling the pot with old soup. That would be unsanitary!"))
+		to_chat(user, span_notice("把旧汤倒回锅里让你感到不安。这太不卫生了!"))
 		return
 	if(istype(wack, /obj/item/toy/plush))
-		to_chat(user, span_notice("You put [wack] into the lifetime stew. It disappears into the bottom of the pot, never to be seen again."))
+		to_chat(user, span_notice("你将[wack]投入一辈子汤。它沉入锅底，再无踪迹。"))
 		AdjustSoupLevels(1)
 		var/obj/item/toy/plush/deadplushie = wack
 		var/datum/component/squeak/squeaky = deadplushie.GetComponent(/datum/component/squeak)
@@ -377,19 +377,19 @@
 				AdjustSoupLevels(reagent_amount)
 	else
 		AdjustSoupLevels(rand(1, 3))
-	to_chat(user, span_notice("You put [wack] into the lifetime stew."))
+	to_chat(user, span_notice("你将[wack]投入一辈子汤."))
 	qdel(wack)
 	playsound(src, 'sound/effects/bubbles.ogg', 80, TRUE, -3)
 
 
 /obj/structure/basilisoup_pot/proc/dump_soup(obj/item/object, mob/user)
 	if(!object)
-		to_chat(user, span_notice("You'd probably be able to get some soup if you used a bowl."))
+		to_chat(user, span_notice("如果你使用碗应该可以舀起一些汤."))
 		return
 
 	qdel(object)
 	AdjustSoupLevels(-20)
-	to_chat(user, span_notice("You take some soup."))
+	to_chat(user, span_notice("你舀起一些汤."))
 	var/obj/item/food/salad/lifestew/thesoup = new(get_turf(user))
 	if(poisoned) //Poisoned soup has added spewum to make you puke
 		thesoup.reagents.add_reagent(/datum/reagent/toxin/spewium, 5)
@@ -406,14 +406,14 @@
 	if(soup_level == 0)
 		return
 
-	switch(alert("Empty out the pot?","Waste food?","Yes","No"))
-		if("Yes")
+	switch(alert("要清空汤锅吗?","浪费食物?","是","否"))
+		if("是")
 			AdjustSoupLevels(-soup_level)
-			to_chat(usr, span_notice("You dump the soup on the floor!"))
+			to_chat(usr, span_notice("你把汤全倒在地板上!"))
 			playsound(get_turf(src), 'sound/effects/splat.ogg', 50, TRUE)
 
-		if("No")
-			to_chat(usr, span_notice("You decide not to waste food."))
+		if("否")
+			to_chat(usr, span_notice("你决定不浪费食物."))
 
 /obj/structure/basilisoup_pot/attackby(obj/item/object, mob/user, params)
 	if(istype(object, /obj/item/reagent_containers/glass/bowl))
@@ -435,22 +435,22 @@
 		return
 
 	if(!ishostile(M) && !ishuman(M))
-		to_chat(user, span_warning("You're not hungry enough to want to eat [M]."))
+		to_chat(user, span_warning("你还没饿到想吃[M]的程度."))
 		return
 
 	if(soup_level == 100)
-		to_chat(user, span_notice("You can't fit any more in the pot!"))
+		to_chat(user, span_notice("汤锅已经装不下了!"))
 		return
 
 	if(M.stat != DEAD)
-		to_chat(user, span_warning("How could think of something so cruel? [M] is still alive!"))
+		to_chat(user, span_warning("怎能如此残忍？[M]还活着!"))
 		return
 
-	to_chat(user, span_warning("You start pulling [M] into the pot."))
+	to_chat(user, span_warning("你开始将[M]拖向汤锅."))
 	if(!do_after(user, 4 SECONDS, M)) //If you're going to throw someone else, they have to be dead first.
-		to_chat(user, span_warning("You reconsider throwing [M] into the soup."))
+		to_chat(user, span_warning("你放弃了将[M]投入汤锅的念头."))
 
-	to_chat(user, span_notice("You throw [M] in the pot! How barbaric!"))
+	to_chat(user, span_notice("你将[M]抛入汤锅! 何等野蛮!"))
 	buckle_mob(M, check_loc = check_loc)
 
 /obj/structure/basilisoup_pot/post_buckle_mob(mob/living/carbon/human/soup_sacrifice)
@@ -469,8 +469,8 @@
 
 //The stars of the show
 /obj/item/food/lifestew_glob
-	name = "lifetime stew glob"
-	desc = "Soup apparantly cooked for a lifetime. It's rich and dense enough to hold its own shape. Despite questionable ingredients and presentation, it smells delicious."
+	name = "一辈子汤凝块"
+	desc = "据说熬煮终生的浓汤，其稠度足以维持形态。尽管成分存疑，却散发着诱人香气."
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "lifetime_stew_chunk"
 	food_reagents = list(/datum/reagent/consumable/lifestew = 3)
@@ -478,8 +478,8 @@
 	foodtypes = GRAIN | MEAT | VEGETABLES
 
 /obj/item/food/salad/lifestew
-	name = "lifetime stew"
-	desc = "Soup apparantly cooked for a lifetime. There seems to be a rock at the bottom of the bowl. Despite questionable ingredients, it smells delicious."
+	name = "一辈子汤"
+	desc = "据说熬煮终生的汤品，碗底可见一块石头。成分虽可疑，但香气令人垂涎。"
 	icon_state = "lifetime_stew"
 	food_reagents = list(/datum/reagent/consumable/lifestew = 5)
 	tastes = list("the best soup you ever tasted" = 1)
@@ -487,8 +487,8 @@
 
 //The chemical
 /datum/reagent/consumable/lifestew
-	name = "Lifetime Stew"
-	description = "A wholly unidentifiable glob of soupy goodness."
+	name = "一辈子汤"
+	description = "完全无法辨识的浓稠美味汤羹。"
 	nutriment_factor = 20 * REAGENTS_METABOLISM //Hyper fattening
 	var/health_restore = 5 // % of health restored per tick. For reference, Salicylic Acid is 4. Set to negative and it'll hurt!
 	var/sanity_restore = 3 // % of sanity restored per tick. For reference, Mental Stabilizator is 5. Set to negative and it'll hurt!

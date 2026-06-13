@@ -1,7 +1,7 @@
 /obj/item/ego_weapon/justitia
-	name = "justitia"
+	name = "正义裁决者"
 	desc = "A sharp sword covered in bandages. It may be able to not only cut flesh but trace of sins as well."
-	special = "This weapon has a combo system."
+	special = "这把武器有一套连击系统."
 	icon_state = "justitia"
 	force = 14
 	modified_attack_speed = 0.4
@@ -60,7 +60,7 @@
 	name = "da capo"
 	desc = "A scythe that swings silently and with discipline like a conductor's gestures and baton. \
 	If there were a score for this song, it would be one that sings of the apocalypse."
-	special = "This weapon has a combo system, but only on a single enemy."
+	special = "这把武器有一套连击系统，但只能针对单体目标."
 	icon_state = "da_capo"
 	force = 20 // It attacks very fast
 	attack_speed = 0.5
@@ -108,10 +108,10 @@
 	return 40
 
 /obj/item/ego_weapon/mimicry
-	name = "mimicry"
+	name = "拟态"
 	desc = "The yearning to imitate the human form is sloppily reflected on the E.G.O, \
 	as if it were a reminder that it should remain a mere desire."
-	special = "Use this weapon in hand to swap between forms. The sword heals you on hit, the spear has higher reach, the scythe deals extra damage in an area."
+	special = "在手中使用可切换不同形态，大剑能在命中时提供治疗，长矛拥有更远的攻击距离，镰刀则能在一定范围内造成额外伤害."
 	icon_state = "mimicry_sword"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -235,9 +235,9 @@
 		swingstyle = WEAPONSWING_LARGESWEEP
 
 /obj/item/ego_weapon/goldrush
-	name = "gold rush"
+	name = "闪金冲锋"
 	desc = "The weapon of someone who can swing their weight around like a truck"
-	special = "This weapon has a combo system."
+	special = "这把武器在短暂蓄力后造成大量伤害."
 	icon_state = "gold_rush"
 	hitsound = 'sound/weapons/fixer/generic/gen2.ogg'
 	force = 25
@@ -262,13 +262,13 @@
 		combo = 0
 	combo_time = world.time + combo_wait
 	if(combo >= 6)
-		M.visible_message(span_danger("[user] rears up and slams into [M]!"), \
-						span_userdanger("[user] punches you with everything you got!!"), vision_distance = COMBAT_MESSAGE_RANGE, ignored_mobs = user)
-		to_chat(user, span_danger("You throw your entire body into this punch!"))
+		M.visible_message(span_danger("[user]后仰蓄力然后猛击向[M]!"), \
+						span_userdanger("[user]向你使出全力一击!!!"), vision_distance = COMBAT_MESSAGE_RANGE, ignored_mobs = user)
+		to_chat(user, span_danger("你将全身力量贯注于此拳!"))
 		combo = 0
 		user.changeNext_move(CLICK_CD_MELEE * 3)
 		playsound(src, 'sound/weapons/fixer/generic/finisher2.ogg', 50, FALSE, 9)
-		to_chat(user,span_warning("You are offbalance, you take a moment to reset your stance."))
+		to_chat(user,span_warning("你失去了平衡，花点时间调整站姿"))
 		force *= 5
 		knockback = KNOCKBACK_HEAVY
 	else if(combo < 6 && combo >= 3)
@@ -296,15 +296,15 @@
 	if(!istype(I, /obj/item/nihil/diamond))
 		return
 	new /obj/item/ego_weapon/goldrush/nihil(get_turf(src))
-	to_chat(user,span_warning("The [I] seems to drain all of the light away as it is absorbed into [src]!"))
+	to_chat(user,span_warning("[I]在被[src]吸收时，似乎也吸走了所有的光!"))
 	playsound(user, 'sound/abnormalities/nihil/filter.ogg', 15, FALSE, -3)
 	qdel(I)
 	qdel(src)
 
 /obj/item/ego_weapon/smile
-	name = "smile"
+	name = "笑靥"
 	desc = "The monstrous mouth opens wide to devour the target, its hunger insatiable."
-	special = "This weapon instantly consumes targets below 5% health and attacks faster or slower depending on how \"hungry\" is it."	//To make it more unique, if it's too strong
+	special = "这把武器能立刻杀死生命值低于5%的目标，并根据‘饥饿’程度来决定攻速快慢."	//To make it more unique, if it's too strong
 	icon_state = "smile"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -338,11 +338,11 @@
 	. = ..()
 	switch(multiplier)
 		if(0)
-			. += "It seems famished, the user will attack faster but deal less damage."
+			. += "看起来饿坏了，攻击速度会更快，但造成的伤害更少."
 		if(1 to 1.5)
-			. += "It seems hungry, the user's attack speed and damage will be in the middle range."
+			. += "看起来很饥饿，攻击速度和伤害将处于均衡水平."
 		if(1.6)
-			. += "It seems full, the user will attack more slowly but deal more damage per hit."
+			. += "看起来吃饱了，攻击速度会变慢，但每次命中造成的伤害会更高."
 
 
 /obj/item/ego_weapon/smile/attack(mob/living/target, mob/living/carbon/human/user)
@@ -466,9 +466,9 @@
 	deltimer(hunger_timer)
 
 /obj/item/ego_weapon/blooming
-	name = "blooming"
+	name = "盛开"
 	desc = "A rose is a rose, by any other name."
-	special = "Use this weapon to change its damage type between red, white and pale."	//like a different rabbit knife. No black though
+	special = "在手中使用这把武器可以在红色、白色和青色伤害之间切换."	//like a different rabbit knife. No black though
 	icon_state = "rosered"
 	force = 40 //Less damage, can swap damage type
 	damtype = RED_DAMAGE
@@ -501,10 +501,10 @@
 	playsound(src, 'sound/items/screwdriver2.ogg', 50, TRUE)
 
 /obj/item/ego_weapon/censored
-	name = "CENSORED"
-	desc = "(CENSORED) has the ability to (CENSORED), but this is a horrendous sight for those watching. \
+	name = "数据删除"
+	desc = "(数据删除) has the ability to (数据删除), but this is a horrendous sight for those watching. \
 			Looking at the E.G.O for more than 3 seconds will make you sick."
-	special = "Using it in hand will activate its special ability. To perform this attack - click on a distant target."
+	special = "在手中使用将激活特殊能力. 然后点击远处目标即可发动特殊攻击."
 	icon_state = "censored"
 	worn_icon_state = "censored"
 	force = 35	//there's a focus on the ranged attack here.
@@ -533,9 +533,9 @@
 		return
 	special_attack = !special_attack
 	if(special_attack)
-		to_chat(user, span_notice("You prepare special attack."))
+		to_chat(user, span_notice("你准备好发动特殊攻击了."))
 	else
-		to_chat(user, span_notice("You decide to not use special attack."))
+		to_chat(user, span_notice("你决定还是不要发动特殊攻击了."))
 
 /obj/item/ego_weapon/censored/afterattack(atom/A, mob/living/user, proximity_flag, params)
 	if(!CanUseEgo(user))
@@ -577,9 +577,9 @@
 	return 30
 
 /obj/item/ego_weapon/soulmate
-	name = "Soulmate"
+	name = "真爱"
 	desc = "The course of true love never did run smooth."
-	special = "Hitting enemies will mark them. Hitting marked enemies will give different buffs depending on attack type."
+	special = "击中敌人会在他们身上留下标记，击中有标记的敌人会根据攻击类型给予不同的buff."
 	icon_state = "soulmate"
 	force = 20
 	swingstyle = WEAPONSWING_LARGESWEEP
@@ -686,9 +686,9 @@
 	icon_state = "ice_1"
 
 /obj/item/ego_weapon/space
-	name = "out of space"
+	name = "来自天外"
 	desc = "It hails from realms whose mere existence stuns the brain and numbs us with the black extra-cosmic gulfs it throws open before our frenzied eyes."
-	special = "Use this weapon in hand to dash. Attack after a dash for an AOE."
+	special = "手中使用此武器使用可进行冲刺，冲刺后攻击将造成范围伤害."
 	icon_state = "space"
 	force = 22.5	//Half white, half black.
 	damtype = WHITE_DAMAGE
@@ -768,13 +768,13 @@
 
 /obj/item/ego_weapon/space/EgoAttackInfo(mob/user)
 	if(force_multiplier != 1)
-		return span_notice("It deals [round((force * 2) * force_multiplier)] white and black damage combined. (+ [(force_multiplier - 1) * 100]%)")
-	return span_notice("It deals [force * 2] white and black damage combined.")
+		return span_notice("它同时造成[round(force * force_multiplier)]白色和黑色伤害. (+ [(force_multiplier - 1) * 100]%)")
+	return span_notice("它同时造成[force]白色和黑色伤害.")
 
 /obj/item/ego_weapon/seasons
-	name = "Seasons Greetings"
+	name = "春夏秋冬"
 	desc = "If you are reading this let a developer know."
-	special = "This E.G.O. will transform to match the seasons."
+	special = "这件E.G.O.会因季节不同而发生变化."
 	icon_state = "spring"
 	force = 40
 	damtype = RED_DAMAGE
@@ -872,9 +872,9 @@
 	return 40
 
 /obj/item/ego_weapon/farmwatch
-	name = "farmwatch"
+	name = "司田"
 	desc = "What use is technology that cannot change the world?"
-	special = "Activate this weapon in your hand to plant 4 trees of desire. Killing them with this weapon restores HP and sanity."
+	special = "激活手中的武器可以种下4棵欲望之树. 用此武器杀死他们可以恢复HP和SP."
 	icon_state = "farmwatch"
 	force = 50
 	attack_speed = 1.3
@@ -900,7 +900,7 @@
 		playsound(src, 'sound/weapons/ego/farmwatch_tree.ogg', 200, 1)
 		user.adjustBruteLoss(-8)
 		user.adjustSanityLoss(-12)
-		to_chat(user, span_notice("You reap the fruits of your labor!"))
+		to_chat(user, span_notice("你收获了劳动的果实!"))
 		..()
 		return
 	..()
@@ -910,10 +910,10 @@
 	if(!CanUseEgo(user))
 		return
 	if(ability_cooldown > world.time)
-		to_chat(user, span_warning("You have used this ability too recently!"))
+		to_chat(user, span_warning("你使用这个能力太过频繁!"))
 		return
 	playsound(src, 'sound/effects/ordeals/white/white_reflect.ogg', 50, TRUE)
-	to_chat(user, "You cultivate seeds of desires.")
+	to_chat(user, "你栽种欲望之树.")
 	ability_cooldown = world.time + ability_cooldown_time
 	spawn_plant(user, EAST, NORTH)
 	spawn_plant(user, WEST, NORTH)
@@ -928,9 +928,9 @@
 	new /mob/living/simple_animal/hostile/farmwatch_plant(get_turf(T))//mob located at ability_types/realized.dm
 
 /obj/item/ego_weapon/spicebush//TODO: actually code this
-	name = "spicebush"
+	name = "山茶花"
 	desc = "and the scent of the grave was in full bloom."
-	special = "Activate this weapon in your hand to plant 4 soon-to-bloom flowers. While fragile, they will restore the HP and sanity of nearby humans."
+	special = "激活你手中的武器种植4朵即将开花的花，虽然脆弱，他们将恢复附近人类的HP和理智."
 	icon_state = "spicebush"
 	worn_icon = 'icons/obj/clothing/belt_overlays.dmi'
 	worn_icon_state = "spicebush"
@@ -954,11 +954,11 @@
 	if(!CanUseEgo(user))
 		return
 	if(ability_cooldown > world.time)
-		to_chat(user, span_warning("You have used this ability too recently!"))
+		to_chat(user, span_warning("你使用这个能力太过频繁了!"))
 		return
 	if(do_after(user, 20, src))
 		playsound(src, 'sound/weapons/ego/spicebush_special.ogg', 50, FALSE)
-		to_chat(user, "You plant some flower buds.")
+		to_chat(user, "你栽种了一些花蕾.")
 		spawn_plant(user, EAST, NORTH)//spawns one spicebush plant 2 tiles away in each corner
 		spawn_plant(user, WEST, NORTH)
 		spawn_plant(user, EAST, SOUTH)
@@ -1028,7 +1028,7 @@
 	duration = 10
 
 /obj/item/ego_weapon/wield/willing
-	name = "the flesh is willing"
+	name = "血肉本愿"
 	desc = "And really nothing will stop it."
 	icon_state = "willing"
 	force = 40
@@ -1060,10 +1060,10 @@
 
 
 /obj/item/ego_weapon/mockery
-	name = "mockery"
+	name = "嘲笑"
 	desc = "...If I earned a name, will I get to receive love and hate from you? \
 	Will you remember me as that name, as someone whom you cared for?"
-	special = "Use this weapon in hand to swap between forms. The sword heals some sanity on hit, the whip has higher reach, the hammer deals damage in an area, and the bat knocks back enemies."
+	special = "在手中使用此武器可以可以在不同形态间切换，鞭子有更远的射程，锤子可以造成范围攻击，棍棒则能击退敌人."
 	icon_state = "mockery_whip"
 	force = 17
 	attack_speed = 0.5
@@ -1198,9 +1198,9 @@
 		knockback = FALSE
 
 /obj/item/ego_weapon/shield/gasharpoon
-	name = "gasharpoon"
+	name = "燃气捕鲸叉"
 	desc = "As long as I can kill the pallid whale with my own two hands... I care not about what happens next."
-	special = "Activate in your hand while wearing the corresponding suit to change forms. Each form has a unique ability; alt-click or right-click and select 'revert' to change forms again."
+	special = "穿戴相应装备并在手中使用即可改变形态. 每种形态都有独特能力; 按住alt+左键点击或右键点击并选择'revert'可以再次改变形态."
 	icon_state = "gasharpoon"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -1414,17 +1414,17 @@
 	return TRUE
 
 /obj/projectile/ego_bullet/gasharpoon
-	name = "harpoon"
+	name = "鱼叉"
 	icon_state = "gasharpoon"
 	damage = 15
 	damage_type = PALE_DAMAGE
 	hitsound = "sound/weapons/ego/gasharpoon_bullet_impact.ogg"
 
 /obj/item/ego_weapon/wield/darkcarnival
-	name = "dark carnival"
+	name = "黑色狂欢节"
 	desc = "Get ready! I'm comin' to get ya!"
 	icon_state = "dark_carnival"
-	special = "This weapon deals RED damage when wielded and WHITE otherwise."
+	special = "这把武器在挥舞时造成红色伤害，否则造成白色伤害."
 	swingstyle = WEAPONSWING_LARGESWEEP
 	icon_state = "dark_carnival"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
@@ -1473,7 +1473,7 @@
 	if(!isliving(A))
 		return
 	if(dash_cooldown > world.time)
-		to_chat(user, "<span class='warning'>Your dash is still recharging!")
+		to_chat(user, "<span class='warning'>你的突袭仍在充能!")
 		return
 	if((get_dist(user, A) < 2) || (!(can_see(user, A, dash_range))))
 		return
@@ -1484,4 +1484,4 @@
 	if((get_dist(user, A) < 2))
 		A.attackby(src,user)
 	playsound(src, 'sound/abnormalities/clownsmiling/jumpscare.ogg', 50, FALSE, 9)
-	to_chat(user, "<span class='warning'>You dash to [A]!")
+	to_chat(user, "<span class='warning'>你向[A]突袭!")

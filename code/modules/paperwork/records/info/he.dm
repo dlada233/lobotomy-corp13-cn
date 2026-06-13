@@ -3,9 +3,9 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/happyteddybear
 	abno_code = "T-04-06"
 	abno_info = list(
-		"An employee died of asphyxiation after working with Happy Teddy Bear multiple times in a row unless the employee has Fortitude Level 3 or higher.",
-		"An employee was found dead in Happy Teddy Bear’s arms with a broken neck. It is believed that visiting Happy Teddy Bear’s Containment Unit several times in a row is what causes these unfortunate incidents. Please refer to the Old Letter document for more information.",
-		"If the employee has Fortitude level 4 or higher, the employee will eventually break free if they stay conscuious",
+		"除非员工勇气等级达到3或更高，否则连续多次与「快乐泰迪」工作将导致窒息死亡。",
+		"某员工被发现死于「快乐泰迪」怀中且颈部折断。连续多次访问其收容单元是导致此类悲剧的主因。详情参阅《旧信件》文档。",
+		"若员工勇气等级达到4或更高，其在保持清醒状态下最终能挣脱束缚。"
 	)
 
 // Reddit
@@ -13,43 +13,43 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/helper
 	abno_code = "T-05-41"
 	abno_info = list(
-		"When the work result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.")
+		"当工作结果为普通时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器有高概率降低。")
 
 // Scarecrow
 /obj/item/paper/fluff/info/he/scarecrow
 	abno_type = /mob/living/simple_animal/hostile/abnormality/scarecrow
 	abno_code = "F-01-87"
 	abno_info = list(
-		"Employees with Prudence Level 3 or higher had a workrate reduction when working on F-01-87.",
-		"When an employee with Prudence Level 3 or higher finished their work with a neutral work result, the Qliphoth Counter lowered at a normal chance.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When Scarecrow Searching for Wisdom was escaping and killed an employee, it sucked their brain out to recover its HP.")
+		"谨慎等级3或更高的员工工作时成功率下降。",
+		"当此类员工以普通结果完成工作时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器将会降低。",
+		"突破收容期间，「寻找智慧的稻草人」通过吸食员工大脑恢复生命值。")
 
 // White Lake
 /obj/item/paper/fluff/info/he/whitelake
 	abno_type = /mob/living/simple_animal/hostile/abnormality/whitelake
 	abno_code = "F-01-120"
 	abno_info = list(
-		"When an employee with Fortitude Level 2 or lower finished their work with a good result, White Lake appointed them as her champion with a gift.",
-		"When an employee with Fortitude Level 3 or higher worked on White Lake, the work success rate was lowered.",
-		"When the work result was Bad, the Qliphoth Counter lowered. If the employee also had Fortitude Level 3 or higher, the Qliphoth Counter lowered again.",
-		"When the Qliphoth Counter reached 0, the champion panicked and began attacking those around them. If there was no champion, all employees in the facility received heavy WHITE damage.")
+		"当勇气等级2或更低的员工以优级结果完成工作时，「白湖」会授予其\"勇士\"称号并赠予礼物。",
+		"当勇气等级3或更高的员工工作时，成功率下降。",
+		"工作结果为差时，逆卡巴拉计数器将会降低。若该员工勇气等级≥3，计数器额外降低一次。",
+		"当计数器归零时，勇士陷入恐慌并攻击周围人员；若无勇士，则设施内所有员工承受巨额白色伤害。")
 
 // Silent Girl
 /obj/item/paper/fluff/info/he/silent_girl
 	abno_type = /mob/living/simple_animal/hostile/abnormality/silent_girl
 	abno_code = "T-01-01"
 	abno_info = list(
-		"When an employee with Prudence Level 2 or lower worked on Silent Girl, the Qliphoth Counter lowered regardless of the work result.",
-		"When the Work Result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the Work Result was Bad, the Qliphoth Counter lowered.",
-		"When the Qliphoth Counter lowered, the employee was found to have possess significant psychological instability. We have designated this state as \"Guilt\".",
-		"Employees under the effects of Guilt have significantly decreased work success rate with any Abnormality.",
-		"After an employee with Guilt attempted to work on Silent Girl, connection with them was lost and they were later found insane.",
-		"After an afflicted employee completed Attachment Work several times, they were cleansed of Guilt. Then, the Qliphoth Counter raised.",
-		"When the Insight Work Result was Good, the Qliphoth Counter raised with a normal probability.",
-		"When Silent Girl’s Qliphoth Counter reached 0, all agents are afflicted with Guilt. An Agent with Guilt had their affliction prolonged."
+		"谨慎等级≤2的员工工作时，无论结果如何逆卡巴拉计数器均会降低。",
+		"当工作结果为普通时，计数器有常规概率降低。",
+		"当工作结果为差时，计数器将会降低。",
+		"计数器降低时，员工将陷入严重心理不稳定状态（该状态被指定为\"罪恶感\"）。",
+		"处于罪恶感的员工与任何异想体工作时成功率显著下降。",
+		"带罪恶感员工尝试对其工作时会失去联系，事后发现其精神崩溃。",
+		"患者完成多次沟通工作后可清除罪恶感，此时计数器增加。",
+		"洞察工作结果为优时，计数器有常规概率增加。",
+		"当计数器归零时，所有员工染上罪恶感，且患者症状持续时间延长。"
 		)
 
 // Blue Shep
@@ -57,84 +57,84 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/blue_shepherd
 	abno_code = "F-01-117"
 	abno_info = list(
-		"After 2 employees died within the facility, the Qliphoth Counter lowered.",
-		"When Repression work was completed, the Qliphoth Counter increased.",
-		"When Release work was completed, Blue Smocked Shepherd escaped its Containment Unit.",
-		"When any other work was completed, the Qliphoth Counter lowered.",
-		"If Reddened Buddy is in the facility, Blue Smocked Shepherd’s work chances increased proportionally to the amount of pain Reddened Buddy is experiencing.",
-		"However, if Reddened Buddy’s pain was too high, the Qliphoth Counter lowered upon work completion.",
-		"When Blue Smocked Shepherd was escaping, it mercilessly attacked everything in its sight.",
-		"WARNING: No matter what, Blue Smocked Shepherd and Reddened Buddy must not be allowed to meet.")
+		"设施内死亡2名员工后，逆卡巴拉计数器降低。",
+		"完成压迫工作时，计数器增加。",
+		"完成释放工作时，「蓝袍牧羊人」突破收容。",
+		"完成其他工作时，计数器降低。",
+		"若「染红的巴迪」在场，其痛苦程度将按比例提升「蓝袍牧羊人」的工作成功率。",
+		"但巴迪痛苦值过高时，完成工作后计数器反而降低。",
+		"突破收容时，该异想体会无情攻击视线内所有目标。",
+		"警告：无论如何禁止「蓝袍牧羊人」与「染红的巴迪」接触。")
 
 // Reddened Buddy
 /obj/item/paper/fluff/info/he/red_buddy
 	abno_type = /mob/living/simple_animal/hostile/abnormality/red_buddy
 	abno_code = "F-02-127"
 	abno_info = list(
-		"When the work result was Bad, the Qliphoth Counter decreased unless the work was Instinct.",
-		"We have determined that the injuries sustained during work processes was dependent on the pain of Reddened Buddy.",
-		"Whenever an employee was injured during the work process, Reddened Buddy’s pain increased.",
-		"When Reddened Buddy was in too much pain, the Qliphoth Counter decreased after completing any work but Instinct.",
-		"When Repression work was completed, the pain of Reddened Buddy greatly increased.",
-		"When Instinct work was completed, the pain of Reddened Buddy lessened.",
-		"If Blue Smocked Shepherd told a lie and Reddened Buddy was not worked on in the following 90 seconds, the Qliphoth Counter decreased by 2.",
-		"When Blue Smocked Shepherd mentioned Reddened Buddy, the phenomenon observed above also occured.",
-		"When Reddened Buddy escaped, he periodically howled, inflicting WHITE damage to nearby employees. Reddened Buddy was damaged greatly from its own howling.",
-		"WARNING: No matter what, Reddened Buddy and Blue Smocked Shepherd must not be allowed to meet.")
+		"非本能工作结果为差时，逆卡巴拉计数器降低。",
+		"工作伤害强度取决于「染红的巴迪」的痛苦值。",
+		"员工工作受伤时，巴迪痛苦值增加。",
+		"痛苦值过高时，完成非本能工作后计数器降低。",
+		"完成压迫工作大幅增加痛苦值。",
+		"完成本能工作减轻痛苦值。",
+		"若「蓝袍牧羊人」说谎且90秒内未对巴迪工作，计数器减少2点。",
+		"蓝袍牧羊人提及巴迪时同样触发上述现象。",
+		"突破收容时周期性嚎叫，对附近员工造成白色伤害（自身亦承受巨额反噬）。",
+		"警告：无论如何禁止「染红的巴迪」与「蓝袍牧羊人」接触。")
 
 // Rudolta
 /obj/item/paper/fluff/info/he/rudolta
 	abno_type = /mob/living/simple_animal/hostile/abnormality/rudolta
 	abno_code = "F-02-49"
 	abno_info = list(
-		"When the work result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.",
-		"When Rudolta of the Sleigh escaped, it slowly moved throughout the facility, inflicting WHITE damage to employees near it.")
-	abno_breach_damage_type = "White"
-	abno_breach_damage_count = "Moderate"
+		"当工作结果为普通时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器有高概率降低。",
+		"「雪橇鲁道夫」突破收容时会在设施内缓慢移动，对附近员工造成白色伤害。")
+	abno_breach_damage_type = "白色"
+	abno_breach_damage_count = "中等"
 
 // Der Freischutz
 /obj/item/paper/fluff/info/he/derfreishutz
 	abno_type = /mob/living/simple_animal/hostile/abnormality/der_freischutz
 	abno_code = "F-01-69"
 	abno_info = list(
-		"The Qliphoth Counter lowered when an employee, whose Justice was lower than Level 3, completed work with Der Freischütz.",
-		"When the work result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.",
-		"When the Qliphoth Counter hit 0, Der Freischütz willfully fired a bullet towards a random employee.")
+		"正义等级低于3的员工完成工作后，逆卡巴拉计数器将会降低。",
+		"当工作结果为普通时，计数器有常规概率降低。",
+		"当工作结果为差时，计数器有高概率降低。",
+		"当计数器归零时，「魔弹射手」会向随机员工发射子弹。")
 
 // Warm-Hearted Woodsman
 /obj/item/paper/fluff/info/he/woodsman
 	abno_type = /mob/living/simple_animal/hostile/abnormality/woodsman
 	abno_code = "F-05-32"
 	abno_info = list(
-		"Employees with Temperance Level 3 or higher had a workrate reduction when working on F-05-32.",
-		"When an employee with Temperance Level 3 or higher finished their work with a neutral work result, the Qliphoth Counter lowered at a normal chance.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When an employee attempts work while the Qliphoth Counter is at 1, they will immediately die. Then, the Abnormality will escape.",
-		"Whenever a body, living or dead, was placed into the Warm-Hearted Woodsman’s chest while the Qliphoth Counter was at 1, the Qliphoth Counter increased.",
-		"WARNING: When a body was placed into the Warm-Hearted Woodsman’s chest when the Qliphoth Counter was not at 1, it breached immediately.")
+		"自律等级3或更高的员工工作时成功率下降。",
+		"当此类员工以普通结果完成工作时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器将会降低。",
+		"计数器为1时尝试工作会导致员工立即死亡，随后该异想体突破收容。",
+		"计数器为1时将活体或尸体放入「热心的樵夫」胸腔可增加计数器。",
+		"警告：计数器非1时放入尸体会立即引发突破收容。")
 
 // Laetitia
 /obj/item/paper/fluff/info/he/laetitia
 	abno_type = /mob/living/simple_animal/hostile/abnormality/laetitia
 	abno_code = "O-01-67"
 	abno_info = list(
-		"When the work result was Normal, Laetitia gave a heartfelt gift to the working employee at a high chance.",
-		"Laetitia had a normal probability of taking the gift back when the work result was Good. However, the gift had a high probability of becoming active when the work result was Bad.",
-		"Either of the two scenarios had a low probability of happening when the work result was Normal.",
-		"After a few minutes, the employee who had recieved the gift had <strong>REDACTED</strong> burst out from within them, dealing heavy RED damage.",
-		"NOTICE: Employees with higher Prudence are better at identifying signs of Laetitia’s pranks.")
+		"当工作结果为普通时，「蕾蒂希娅」有高概率向工作员工赠送心意礼物。",
+		"优级结果时有常规概率收回礼物；差级结果时礼物有高概率被激活。",
+		"普通结果时上述两种情况发生概率较低。",
+		"收到礼物数分钟后，员工体内会爆发<strong>数据删除</strong>，造成巨额红色伤害。",
+		"注意：谨慎等级高的员工更易识别「蕾蒂希娅」的恶作剧征兆。")
 
 // Funeral
 /obj/item/paper/fluff/info/he/funeral
 	abno_type = /mob/living/simple_animal/hostile/abnormality/funeral
 	abno_code = "T-01-68"
 	abno_info = list(
-		"When employees of Justice Level 2 or lower finished working with Funeral of the Dead Butterflies, the Qliphoth Counter lowered.",
-		"The above phenomenon also occurred when employees of Fortitude Level 4 or higher finished working with Funeral of the Dead Butterflies.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.",
-		"Any employee who panicked from Funeral of the Dead Butterflies’s attacks died instantly.")
+		"当正义等级为2级或以下的员工完成对“亡蝶葬仪”的工作时，逆卡巴拉计数器降低。",
+		"当勇气等级为4级或以上的员工完成对“亡蝶葬仪”的工作时，上述现象也会发生。",
+		"当工作结果为差时，逆卡巴拉计数器有较大概率降低。",
+		"任何因“亡蝶葬仪”的攻击而陷入恐慌的员工会立即死亡。")
 	abno_breach_damage_type = "White"
 	abno_breach_damage_count = "High"
 
@@ -143,81 +143,81 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/scaredy_cat
 	abno_code = "F-02-126"
 	abno_info = list(
-		"Employees with Fortitude Level 3 or higher had a workrate reduction when working on F-02-126.",
-		"When an employee with Fortitude Level 3 or higher finished their work with a neutral work result, the Qliphoth Counter lowered at a normal chance.",
-		"When an employee with Fortitude Level 3 or higher finished their work with a bad work result, the Qliphoth Counter lowered.",
-		"When another Abnormality breached containment, the Qliphoth Counter lowered.",
-		"When another \"Oz\" Abnormality breached containment, the Qliphoth Counter dropped to 0.",
-		"When another Abnormality was suppressed, the Qliphoth Counter increased.",
-		"When the Qliphoth Counter reached 0, Scaredy Cat teleported out of the Containment Unit to protect another breached Abnormality.",
-		"Scaredy Cat could not be fully suppressed as long as the Abnormality it protected was alive.",
-		"Without an Abnormality to protect, Scaredy Cat became harmless, and its resistances to all damage was Fatal. However if another Abnormality breached while Scaredy Cat was in this state, it would protect that Abnormality instead.")
-	abno_breach_damage_type = "Red"
-	abno_breach_damage_count = "Medium"
+		"勇气等级为3级或以上的员工在对 F-02-126 进行工作时，工作效率会降低。",
+		"当勇气等级为3级或以上的员工以普通工作结果完成工作时，逆卡巴拉计数器有普通概率降低。",
+		"当勇气等级为3级或以上的员工以差的工作结果完成工作时，逆卡巴拉计数器降低。",
+		"当其他异想体突破收容时，逆卡巴拉计数器降低。",
+		"当其他“Oz”系列异想体突破收容时，逆卡巴拉计数器直接归零。",
+		"当其他异想体被镇压时，逆卡巴拉计数器增加。",
+		"当逆卡巴拉计数器归零时，「胆小的猫」会传送出收容单元，前去保护另一个突破收容的异想体。",
+		"只要它所保护的异想体仍然存活，「胆小的猫」就无法被完全镇压。",
+		"如果没有需要保护的异想体，「胆小的猫」会变得无害，其对所有伤害的抗性均为致命。但是，如果在此状态下有其他异想体突破收容，它会转而保护那个异想体。")
+	abno_breach_damage_type = "红色"
+	abno_breach_damage_count = "中等"
 
 // Porccubus
 /obj/item/paper/fluff/info/he/porccubus
 	abno_type = /mob/living/simple_animal/hostile/abnormality/porccubus
 	abno_code = "O-02-98"
 	abno_info = list(
-		"When the work result was Bad, the Qliphoth counter lowered.",
-		"When the work result was good, the Qliphoth counter increased.",
-		"When employees with Temperance Level 2 or lower had a Good work result, they were drugged by an unknown chemical with addictive properties.",
-		"Employees were also drugged if they touched the abnormality on purpose regardless of their Temperance.",
-		"Drugged employees could receive another dose of the chemical from Porccubus even if they had Temperance Level 4 or higher.",
-		"The chemical greatly improved all attributes of the employee and healed their sanity periodically. However, withdrawal symptoms included lowered attributes and eventual death.",
-		"Porccubus was unaffected by any attack dealt to it from outside of its reach.",
-		"When an employee panicked during work or from Porccubus's attacks, they were drugged beyond saving.")
+		"当工作结果为差时，逆卡巴拉计数器降低。",
+		"当工作结果为优时，逆卡巴拉计数器增加。",
+		"自律等级≤2员工获优级结果时，会被未知成瘾性化学物质侵蚀。",
+		"主动接触异想体者（无论自律等级）同样会被侵蚀。",
+		"成瘾员工即使自律等级≥4仍可获取更多剂量。",
+		"该物质大幅提升全属性并周期性恢复精神值，但戒断反应会导致属性下降直至死亡。",
+		"「棘刺公交」免疫其攻击范围外的所有伤害。",
+		"工作或战斗中陷入恐慌的员工将遭受不可逆的深度侵蚀。")
 
 // Child of the Galaxy
 /obj/item/paper/fluff/info/he/galaxy_child
 	abno_type = /mob/living/simple_animal/hostile/abnormality/galaxy_child
 	abno_code = "O-01-55"
 	abno_info = list(
-		"Successful work completion will cause a healing (HP/SP) Token of Friendship to be bestowed upon the employee. The amount of healing will vary in relation to the number of employees with the Token.",
-		"The Qliphoth Counter increased by 2 when an employee completed their work with the Token.",
-		"When an employee with Child of the Galaxy’s Token of Friendship died, the Qliphoth Counter lowered by 4.",
-		"When the Qliphoth Counter reached 0, all employees with the Token took BLACK damage proportional to the number of employees with the Token. If at least 2 employees had the Token, Child of the Galaxy will enter a state designated as \"Depressed\".",
-		"When he was Depressed, the work success rate was high, and the first employee who completed work with Child of the Galaxy received his E.G.O. Gift.")
+		"成功完成工作将授予员工友谊徽章（根据徽章持有者数量提供不同强度的生命值/精神值恢复）。",
+		"携带徽章完成工作使逆卡巴拉计数器增加2点。",
+		"徽章持有者死亡时，计数器减少4点。",
+		"计数器归零时：所有徽章持有者承受与人数成比例的黑色伤害；若≥2人持有，则「银河之子」进入\"抑郁\"状态。",
+		"抑郁状态下工作成功率极高，首位完成工作的员工可获得其E.G.O饰品。")
 
 // Piscine Mermaid
 /obj/item/paper/fluff/info/he/pisc_mermaid
 	abno_type = /mob/living/simple_animal/hostile/abnormality/pisc_mermaid
 	abno_code = "O-01-129" //I'll figure out the serial number later,
 	abno_info = list(
-		"When the work result was Normal or Bad, the Qliphoth Counter lowered.",
-		"When the work result was Good, Piscine Mermaid offered a crown if no other copies were present in the facility. (From then on, the employee wearing the crown will be referred to as O-01-129-1).",
-		"O-01-129-1 had greatly increased work success rates with any Abnormality, but the Qliphoth Counter would periodically decrease as long as the crown was worn.",
-		"When O-01-129-1 completed their work on Piscine Mermaid with a Good result, the Qliphoth Counter increased by 2. This would also delay the reduction of the Qlipoth Counter",
-		"The Qliphoth Counter dropped to 0 when O-01-129-1 removed their crown.",
-		"When the Qliphoth Counter reached 0, the crown was destroyed. O-01-129-1 was greatly slowed before Piscine Mermaid teleported to them.",
-		"Piscine Mermaid slowly suffocated everyone within sight. O-01-129-1 could not breath as long as Piscine Mermaid was alive.",
-		"While O-01-129-1 was alive, Piscine Mermaid’s resistances to all damage was Resistant. It was found that Piscine Mermaid was more vulnerable to attacks from O-01-129-1.")
+		"当工作结果为普通或差时，逆卡巴拉计数器将会降低。",
+		"当工作结果为优时，若设施内不存在其他王冠副本，池中人鱼会赠予一顶王冠。（此后佩戴该王冠的员工将被称为 O-01-129-1）",
+		"O-01-129-1 与任何异想体进行工作时成功率大幅提升，但只要佩戴王冠，逆卡巴拉计数器便会周期性下降。",
+		"当 O-01-129-1 对池中人鱼完成优级工作时，逆卡巴拉计数器增加 2 点。此举同时会延缓逆卡巴拉计数器的自然下降速度。",
+		"若 O-01-129-1 摘下王冠，逆卡巴拉计数器将立即归零。",
+		"当逆卡巴拉计数器归零时，王冠会被摧毁。O-01-129-1 将陷入严重减速状态，随后池中人鱼将传送至其身边。",
+		"池中人鱼会令视线范围内的所有人窒息。只要池中人鱼存活，O-01-129-1 便无法呼吸。",
+		"当 O-01-129-1 存活时，池中人鱼对所有伤害类型均具有较高抗性。经观测，池中人鱼对来自 O-01-129-1 的攻击更为脆弱。")
 
 // Singing Machine
 /obj/item/paper/fluff/info/he/singing_machine
 	abno_type = /mob/living/simple_animal/hostile/abnormality/singing_machine
 	abno_code = "O-05-30"
 	abno_info = list(
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When the work result was Normal, the Qliphoth counter lowered with a moderate probability.",
-		"When an employee with Fortitude Level 4 or higher attempted work other than Instinct, Singing Machine’s behavior was more erratic. The same occurred when an employee had Temperance Level 2 or lower.",
-		"When an employee performed Instinct work, Singing Machine continuously dealt low RED damage to them. Employees who heard its song reported greater mental stability.",
-		"When Instinct work was completed, the employee reported hearing Singing Machine more clearly than others. This phenomenon has been termed \"Musical Addiction\".",
-		"When the Qliphoth Counter reached 0, Singing Machine activated and began to emit a grinding noise, dealing constant WHITE damage to those nearby.",
-		"While Singing Machine was in operation, performing Instinct work continuously dealt severe RED damage to the employee and did not confer any benefits.",
-		"When the work result was Normal or Bad while Singing Machine was in operation, the employee dove into Singing Machine, causing the noise to deal more WHITE damage and driving all afflicted by Musical Addiction into a frenzy. The Qliphoth Counter increased by 2 and Singing Machine deactivated shortly afterwards.",
-		"The above situation also occurred when an employee panicked or died during work. However, when the work result was Good, the Qliphoth Counter increased by 2 and Singing Machine deactivated.")
+		"当工作结果为差时，逆卡巴拉计数器将会降低。",
+		"当工作结果为普通时，计数器有中等概率降低。",
+		"勇气等级≥4员工执行非本能工作，或自律等级≤2员工工作时，「歌唱机」行为会变得异常紊乱。",
+		"执行本能工作时，该异想体会持续造成低额红色伤害，但员工报告称其歌声能提升精神稳定性。",
+		"完成本能工作后，员工表示比他人更清晰地听到歌声（该现象称为\"音乐成瘾\"）。",
+		"计数器归零时，「歌唱机」激活并发出刺耳噪音，持续对附近人员造成白色伤害。",
+		"激活状态下执行本能工作会持续承受严重红色伤害且无任何增益效果。",
+		"激活状态下普通/差级结果会导致员工跳入机器：噪音白色伤害提升，所有成瘾者陷入疯狂。随后计数器增加2点并停机。",
+		"恐慌/死亡时同样触发跳入；但优级结果会使计数器增加2点并停机。")
 
 // The Watchman
 /obj/item/paper/fluff/info/he/watchman
 	abno_type = /mob/living/simple_animal/hostile/abnormality/watchman
 	abno_code = "O-01-132"
 	abno_info = list(
-		"When the work was completed after the first trumpet had been declared, The Watchman breached containment.",
-		"When the work result was Neutral, the Qliphoth Counter lowered with a moderate probability.",
-		"When employees with Prudence Level 4 or higher worked on The Watchman, the work rates were reduced.",
-		"While breached, The Watchman flooded the surrounding area with darkness. This darkness had the same propogation characteristics as light.")
+		"当一级警报响起后完成工作时，「守夜人」会突破收容。",
+		"当工作结果为普通时，逆卡巴拉计数器有中等概率降低。",
+		"当谨慎等级≥4的员工对「守夜人」进行工作时，工作效率会降低。",
+		"突破收容期间，「守夜人」会向周边区域释放黑暗。该黑暗的传播特性与光相同。")
 	abno_breach_damage_type = "White"
 	abno_breach_damage_count = "Low"
 
@@ -226,137 +226,135 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/schadenfreude
 	abno_code = "O-05-76"
 	abno_info = list(
-		"Work with Schadenfreude must proceed while the Containment Unit is viewable by only one person.",
-		"When Schadenfreude was in the view of more than 2 people, the work success rate decreased.",
-		"When Schadenfreude was in the view of more than 3 people, the Qliphoth Counter decreased.",
-		"Schadenfreude became completely stationary when it was only viewed by one person. Please take this into account when suppressing it.")
+		"对「幸灾乐祸」工作需在仅一人可见收容单元的环境下进行。",
+		"超过2人注视时，工作成功率下降；超过3人注视时，逆卡巴拉计数器降低。",
+		"仅一人注视时该异想体会完全静止（镇压时请利用此特性）。")
 
 // F.A.N
 /obj/item/paper/fluff/info/he/fan
 	abno_type = /mob/living/simple_animal/hostile/abnormality/fan
 	abno_code = "T-05-134"
 	abno_info = list(
-		"The inital work with F.A.N. is guaranteed to produce the maximum number of PE-boxes, but the chances decrease with each good work result.",
-		"Employees who worked on F.A.N. were observed to sit increasingly closer to F.A.N during subsequent work processes.",
-		"After working on F.A.N. for the fourth time, the employee fell into the fan and was ripped to shreds. Luckily, this does not happen during a Qliphoth Meltdown.",
-		"When the Qliphoth counter became zero, the abnormality turned off and the facility began to heat up. Eventually, employees began taking mild RED damage due to overheating. Things turned back to normal when an employee hit the \"ON\" button.")
+		"首次工作必产出最大PE-Boxes，但后续优级结果成功率递减。",
+		"员工后续工作时会坐得离风扇越来越近。",
+		"第四次工作时员工会跌入扇叶被撕碎（逆卡巴拉熔毁期间豁免此效果）。",
+		"计数器归零时风扇停转，设施温度持续升高致使员工承受轻度红色伤害，按下\"ON\"按钮可恢复正常。")
 
 // 680 KHz
 /obj/item/paper/fluff/info/he/khz
 	abno_type = /mob/living/simple_animal/hostile/abnormality/khz
 	abno_code = "T-06-135"
 	abno_info = list(
-		"After completing work with 680 KHz, a message could be heard through the receiver. Employees were able to send a message back by inputting numbers into the work console.",
-		"After inputting the correct sequence and starting the work process, the work success rate was increased. Upon work completion, the sanity of all employees in the facility was restored.",
-		"However, inputting an incorrect sequence before starting work resulted in a lowered work success rate. The sanity of all employees in the facility was damaged after work was completed.",
-		"Working without inputting any sequence had no effects.")
+		"完成工作后可通过接收器听到信息，员工可在工作台输入数字序列回应。",
+		"输入正确序列后工作：成功率提升，完成时全设施员工精神值恢复。",
+		"输入错误序列后工作：成功率下降，完成时全设施员工精神值受损。",
+		"未输入序列工作无特殊效果。")
 
 // The Road Home
 /obj/item/paper/fluff/info/he/road_home
 	abno_type = /mob/living/simple_animal/hostile/abnormality/road_home
 	abno_code = "F-01-136"
 	abno_info = list(
-		"Employees with Justice Level 3 or higher had a workrate reduction when working on F-01-136.",
-		"When an employee with Justice Level 3 or higher finished their work with a neutral work result, the Qliphoth Counter lowered at a normal chance.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When the Road Home breached containment, a house landed in a random department, dealing massive white damage around it.",
-		"The Road Home also teleported to another department, and tried to make a golden road to the house.",
-		"The Road Home would periodically affect employees around her with a strong desire to join the Road Home on her journey.",
-		"Anyone with this desire would be incapable of leaving the golden road should they step on it, and would be instantly driven insane should The Road Home reach the house.",
-		"Damaging The Road Home will also hurt the attacker with black damage. The damage taken is halved if the attacker is standing on the golden road.",
-		"If The Road Home reaches the house, another house with another path will be made.")
-	abno_breach_damage_type = "Black"
-	abno_breach_damage_count = "Medium"
+		"正义等级≥3的员工工作时成功率下降。",
+		"此类员工以普通结果完成工作时，计数器有常规概率降低；差级结果时必然降低。",
+		"突破收容时：房屋随机砸落部门区域造成巨额白色伤害。",
+		"「回家的路」会传送至其他部门，并铺设通往房屋的金色道路。",
+		"周期性使周围员工产生强烈加入意愿，",
+		"踏入金路者无法离开，若异想体抵达房屋则立即精神崩溃。",
+		"攻击「回家的路」会反噬黑色伤害（金路上伤害减半）。",
+		"异想体抵达房屋会生成新房屋与新路径。")
+	abno_breach_damage_type = "黑色"
+	abno_breach_damage_count = "中等"
 
 // Shock Centipede
 /obj/item/paper/fluff/info/he/shock_centipede
 	abno_type = /mob/living/simple_animal/hostile/abnormality/shock_centipede
 	abno_code = "T-02-198"
 	abno_info = list(
-		"Employees of Justice level 3 or lower suffer greater work damage when working with shock centipede.",
-		"Performing Repression work with shock centipede lowered the Qliphoth Counter by 1.",
-		"In addition, when the work result was bad, the Qliphoth Counter lowered by 1.",
-		"At Qliphoth Counter 2, Shock Centipede enters a state of electrical excitement.",
-		"While in this state, good work results increase the Counter by 1. Normal results have a chance to increase or decrease the Qliphoth Counter at random.",
-		"The success rate when performing Repression work lowered when the Qliphoth Counter reached 2 or below.",
-		"While the Qliphoth counter was 1, damage dealt during work changed to Black Damage.",
-		"When Repression Work was performed while the Qliphoth Counter was 1, the Qliphoth counter increased. If the work result was good, the Qliphoth counter was raised to its maximum.",
-		"If any type of work other than Repression was completed at Qliphoth counter 1, the Qliphoth counter lowered to zero.")
-	abno_breach_damage_type = "Red/Black"
-	abno_breach_damage_count = "Low/Medium"
+		"正义等级≤3的员工工作时承受更高伤害。",
+		"执行压迫工作使逆卡巴拉计数器减少1点。",
+		"工作结果为差时，计数器额外减少1点。",
+		"计数器为2时进入\"电激状态\"。",
+		"电激状态下：优级结果增加计数器；普通结果随机增减计数器。",
+		"计数器≤2时压迫工作成功率下降。",
+		"计数器为1时工作伤害转为黑色伤害。",
+		"计数器为1时执行压迫工作：计数器增加（优级结果则直接回满）。",
+		"计数器为1时完成非压迫工作：计数器直接归零。")
+	abno_breach_damage_type = "红色/黑色"
+	abno_breach_damage_count = "低/中等"
 
 // Siren
 /obj/item/paper/fluff/info/he/siren
 	abno_type = /mob/living/simple_animal/hostile/abnormality/siren
 	abno_code = "O-05-22"
 	abno_info = list(
-		"Over time, the Qliphoth Counter lowered.",
-		"When the Qliphoth Counter reached 0, a strange sound came from the abnormality.",
-		"Other abnormalities became agitated if the sound did not cease.",
-		"When the abnormality was turned off manually, the Qliphoth counter raised.",
-		"When work was performed on the abnormality, the Qliphoth counter was raised to its maximum.",
-		"When insight work was performed on the abnormality while the Qliphoth counter was below 2, a mentally soothing song was played.",
-		"Insight work was ineffective when the Qliphoth counter was high. If the Qliphoth counter was at 5, the employee performing work was turned into dust.",
-		"Some agents have reported relief from certain symptoms after performing insight work.")
+		"逆卡巴拉计数器随时间推移自动降低。",
+		"计数器归零时发出异常音波。",
+		"音波持续期间其他异想体变得躁动不安。",
+		"手动关闭设备可使计数器增加。",
+		"进行工作使计数器直接回满。",
+		"计数器<2时执行洞察工作会播放精神安抚歌曲。",
+		"计数器较高时洞察工作无效（计数器=5时工作员工化为尘埃）。",
+		"部分员工报告称洞察工作能缓解特定症状。")
 
 // Jangsan Tiger
 /obj/item/paper/fluff/info/he/jangsan
 	abno_type = /mob/living/simple_animal/hostile/abnormality/jangsan
 	abno_code = "F-02-10"
 	abno_info = list(
-		"When an employee died within the facility, the Qliphoth Counter decreased.",
-		"When powerful employees performed work, the Qliphoth Counter increased.",
-		"For every stat at or above level 3, the work chance was reduced.",
-		"When all stats were at level 1, the Qliphoth counter decreased upon completion of work.",
-		"This abnormality has a thick hide that only high-impact projectiles or melee attacks can penetrate.",
-		"Agents with all stats below level 2 perish with alarming frequency near this abnormality.")
+		"员工在设施内死亡时，逆卡巴拉计数器降低。",
+		"强力员工工作可使计数器增加。",
+		"每项属性≥3级会降低工作成功率。",
+		"全属性=1级时完成工作直接降低计数器。",
+		"该异想体的厚皮仅能被高冲击弹或近战攻击穿透。",
+		"全属性<2级的员工在其附近有极高死亡率。")
 
 // Golden False Apple
 /obj/item/paper/fluff/info/he/goldapple
 	abno_type = /mob/living/simple_animal/hostile/abnormality/golden_apple
 	abno_code = "O-02-143"//O-02-04-06 in LCB
 	abno_info = list(
-		"When the work result was Good, a restorative aura was applied to the employee.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When the work result was neutral, either of the above effects would occur at an equal chance.",
-		"Employees with two restorative auras were absorbed by the abnormality after working on it again.",
-		"This abnormality must be cored with a knife or sharp object immediately after suppression work.",
-		"Following its metamorphosis, this abnormality will deal BLACK damage.")
+		"优级工作结果为员工施加恢复光环。",
+		"差级工作结果使逆卡巴拉计数器降低。",
+		"普通结果时上述效果各50%概率触发。",
+		"携带两个光环的员工再次工作时会被吸收。",
+		"镇压后必须立即用刀具刺穿核心。",
+		"形态转变后该异想体将造成黑色伤害。")
 
 // You Must Become Strong
 /obj/item/paper/fluff/info/he/you_strong
 	abno_type = /mob/living/simple_animal/hostile/abnormality/you_strong
 	abno_code = "T-09-140"
 	abno_info = list(
-		"When Repression Work was performed, the Qliphoth Counter decreased.",
-		"After 3 works, the employee was prompted: 'Do you love your City?'",
-		"Answering 'Yes' heavily reduced the work success rate of the next work.",
-		"Answering 'No' reduced the Qliphoth Counter by one.",
-		"During an accident, it was discovered that employees can plunge their limbs into the machine to be granted a better performing limb but reducing the Qliphoth Counter by one.",
-		"This effect worked on this with prosthetics as well as their original limbs.",
-		"Should the Qliphoth level reach 0, instead of breaching, the machine will produce a loud whirling sound and produce 3 humanoid creatures dubbed T-09-140-1.",
-		"T-09-140-1 are, despite their poor resilience, very durable and must be handled multiple times.",
-		"T-09-140-1's performance also improved as their 'gear' shifted higher, however doing so damaged them heavily.",
-		"T-09-140-1's stats are listed in the 'Breach Information' section of this document."
+		"执行压迫工作会使逆卡巴拉计数器降低。",
+		"完成3次工作后，员工被质询：'你爱这座城市吗？'",
+		"回答'是'将大幅降低下次工作成功率。",
+		"回答'否'使计数器减少1点。",
+		"事故中发现：将肢体插入机器可获得高性能义肢（代价是计数器减少1点）。",
+		"该效果适用于原生肢体与现有义肢。",
+		"计数器归零时不突破收容，而是发出巨大轰鸣声并生成3个人形实体（编号T-09-140-1）。",
+		"T-09-140-1虽韧性低下但异常耐打，需多次镇压才能消灭。",
+		"其性能随'档位'提升而增强，但会承受严重自损。",
+		"实体属性详见本文档'突破信息'章节。"
 	)
 	abno_can_breach = TRUE
-	abno_breach_damage_type = "RED"
-	abno_breach_damage_count = "Moderate"
-	abno_resistances = list(RED_DAMAGE = "Endured", WHITE_DAMAGE = "Weak", BLACK_DAMAGE = "Weak", PALE_DAMAGE = "Immune")
+	abno_breach_damage_type = "红色"
+	abno_breach_damage_count = "中等"
+	abno_resistances = list(RED_DAMAGE = "较高", WHITE_DAMAGE = "较低", BLACK_DAMAGE = "较低", PALE_DAMAGE = "免疫")
 
 // Nameless Fetus
 /obj/item/paper/fluff/info/he/fetus
 	abno_type = /mob/living/simple_animal/hostile/abnormality/fetus
 	abno_code = "O-01-15"
 	abno_info = list(
-		"When the work result was Normal, the Qliphoth Counter lowered with a low probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.",
-		"When the Qliphoth Counter reached 0, Nameless Fetus began crying. Employees who heard its wails complained of a headache. Furthermore, the Qliphoth Counters of all nearby Abnormalities gradually decreased over time.",
-		"While Nameless Fetus was in a crying state, the designated agent must approach it. After a moment of turmoil, the crying stopped.",
-		"Placing a dead body near Nameless Fetus seemed to have a similar result.",
-		"Nameless Fetus will stop crying after a long period of time. The more employees in the facility, the longer it will cry.",
-		"Whenever a dead body was placed into the Nameless Fetus’s mouth while it wasn't in a crying state, Nameless Fetus would eat the corpse, being satisfied for a few works.",
-		"While satisfied, Nameless Fetus' work rates were improved and it wouldn't try enter a crying state."
+		"当工作结果为普通时，计数器有低概率降低；差级结果时高概率降低。",
+		"计数器归零时，「无名怪婴」开始啼哭。",
+		"听闻哭声的员工出现剧烈头痛，且附近异想体的逆卡巴拉计数器持续衰减。",
+		"当「无名怪婴」处于哭泣状态时，指定的员工必须接近它。经过一阵混乱后，哭泣会停止。",
+		"将一具尸体放在「无名怪婴」附近似乎也能达到类似的效果。",
+		"「无名怪婴」会持续啼哭很长一段时间。设施内的员工越多，它哭泣的时间就越长。",
+		"每当在「无名怪婴」未处于哭泣状态时将一具尸体放入其口中，无名胎儿会吃掉尸体，并在接下来的几次工作中得到满足。",
+		"在满足状态下，「无名怪婴」的工作效率会提高，并且不会试图进入哭泣状态。"
 		)
 
 // Doomsday Calendar
@@ -364,222 +362,218 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/doomsday_calendar
 	abno_code = "M-04-172"//M-04-04-05 in LCB
 	abno_info = list(
-		"When an employee entered the Containment Unit of another Abnormality, Doomsday Calendar’s Qliphoth Counter eventually decreased.",
-		"The lower the Qliphoth Counter, the more PE-Boxes Doomsday Calender produced. Instinct Work also had a higher success rate.",
-		"When an employee performed Instinct Work, the Qliphoth Counter increased by 4.",
-		"While the Qliphoth Counter was below 5, Doomsday Calendar continuously dealt low RED damage to the employee during Instinct Work.",
-		"When the work result was Bad, the Qliphoth Counter lowered unless Instinct Work was performed.",
-		"When the Qliphoth Counter reached 0, Doomsday Calendar appeared at a department center with an entourage of clay dolls, dubbed M-04-145-A.",
-		"Offering the remains of M-04-145-A or employees to Doomsday Calendar aided in suppression. Failing to do so caused Doomsday Calendar to become progressively more dangerous.",
-		"If Doomsday Calender is not suppressed, it will deal BLACK damage to an entire department, and the Qliphoth Counter of all nearby Abnormalities will decrease.")
-	abno_breach_damage_type = "Red/Black"
-	abno_breach_damage_count = "High"
-	abno_resistances = list(RED_DAMAGE = "Normal", WHITE_DAMAGE = "Weak", BLACK_DAMAGE = "Endured", PALE_DAMAGE = "Weak")//for clay dolls
+		"员工进入其他异想体收容单元时，「终末日历」的计数器会逐渐降低。",
+		"计数器越低，产出的PE-Boxes越多，本能工作成功率也越高。",
+		"执行本能工作使计数器增加4点。",
+		"计数器<5时本能工作持续造成低额红色伤害。",
+		"非本能工作结果为差时计数器降低。",
+		"计数器归零时，「终末日历」携黏土人偶（M-04-145-A）出现在部门中心。",
+		"向异想体献祭人偶或员工残骸可辅助镇压，否则其危险性持续提升。",
+		"未镇压时将对该部门造成全范围黑色伤害，并降低附近异想体计数器。")
+	abno_breach_damage_type = "红色/黑色"
+	abno_breach_damage_count = "高"
+	abno_resistances = list(RED_DAMAGE = "普通", WHITE_DAMAGE = "较低", BLACK_DAMAGE = "较高", PALE_DAMAGE = "较低")//for clay dolls
 
 // KQE-1J-23
 /obj/item/paper/fluff/info/he/kqe
 	abno_type = /mob/living/simple_animal/hostile/abnormality/kqe
 	abno_code = "O-06-154"//O-06-20-02 in LCB
 	abno_info = list(
-		"After 3 works, KQE-1J-23 solicited a response on its chest terminal.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"Answering 'HELLO' caused KQE-1J-23 to produce more energy.",
-		"Answering 'HELLO' lowered the Qliphoth Counter by one if the abnormality recognized a gift had already been given.",
-		"Answering 'GOODBYE' slightly lowered success rate of the next work.",
-		"Answering 'GOODBYE' with justice 3 or lower immediately lowered the Qliphoth Counter to 0.",
-		"During suppression work, KQE-1J-23 will lower a robotic amalgam dubbed O-06-154-1 into a random department.",
-		"Suppression of O-06-154-1 will immediately suppress KQE-1J-23.")
-	abno_breach_damage_count = "High"
+		"完成3次工作后，「KQE-1J-23」会在胸屏上请求回应。",
+		"工作结果为差时，逆卡巴拉计数器降低。",
+		"输入'HELLO'可提升能量产出（若已赠送过饰品则计数器减少1点）。",
+		"输入'GOODBYE'会降低下次工作成功率。",
+		"正义等级≤3时输入'GOODBYE'将立即使计数器归零。",
+		"镇压期间会向随机部门投放机械聚合体（O-06-154-1）。",
+		"镇压该聚合体会立即终止「KQE-1J-23」的突破状态。")
+	abno_breach_damage_count = "高"
 
 // Snow Queen
 /obj/item/paper/fluff/info/he/snow_queen
 	abno_type = /mob/living/simple_animal/hostile/abnormality/snow_queen
 	abno_code = "F-01-37"
 	abno_info = list(
-		"When the work result was Normal, the employee was kissed by The Snow Queen with a normal probability.",
-		"When the work result was Bad, the employee was kissed by The Snow Queen with a high probability.",
-		"The employee who received The Snow Queen’s second kiss forgot everything and was trapped inside the Containment Unit.",
-		"To avoid The Snow Queen’s deadly third kiss, and to rescue the trapped employee, a duel with The Snow Queen must be commenced.",
-		"Both employees were considered lost after 10 minutes of continuous combat within the Snow Queens ice palace.",
-		"Attempting to remove the employee from the Snow Queens influence physically resulted in the employees death.",
-		"Employee could not be rescued if the Snow Queen breached containment without a duel.",)
+		"普通工作结果有常规概率触发「冰雪女皇」的亲吻；差级结果时概率更高。",
+		"被吻两次的员工记忆清零并困于收容单元。",
+		"需发起决斗避免第三次致命吻并解救被困者。",
+		"冰宫内持续战斗超10分钟视同员工损失。",
+		"物理移除员工将导致其死亡。",
+		"未决斗状态下突破收容则无法救援。")
 
 // Puss in Boots
 /obj/item/paper/fluff/info/he/puss_in_boots
 	abno_type = /mob/living/simple_animal/hostile/abnormality/puss_in_boots
 	abno_code = "F-02-24"
 	abno_info = list(
-		"When a level one employee comes in close contact with this abnormality, they may recieve a blessing. (From then on, the employee will be referred to as F-02-24-1).",
-		"Thanks to the blessing, F-02-24-1 experienced an increase in attributes as well as a small increase in resistance to all damage types.",
-		"F-02-24-1 found themselves incapable of using certain items that provide an unfair advantage in battle.",
-		"The blessing dissipated when F-02-24-1 died, panicked, or performed work on another abnormality. This also occured when a Qliphoth Meltdown on F-02-24 was ignored.",
-		"After the blessing was gone, a new employee could receive it.",
-		"When the blessing was lost, Puss in boots escaped from its Containment Unit and went on a rampage.",
-		"Puss in boots may appear near F-02-24-1 to offer its assistance when the facility reached the 1st Trumpet.")
+		"等级1员工近距离接触可能获得祝福（此后称为F-02-24-1）。",
+		"祝福提升全属性并提供全伤害类型微量抗性。",
+		"F-02-24-1无法使用破坏战斗公平性的特定物品。",
+		"死亡/恐慌/为其他异想体工作/忽略熔毁时祝福消失。",
+		"祝福消失后「靴子里的猫」突破收容并狂暴化。",
+		"突破事件发生时，该异想体会随机出现在F-02-24-1附近提供协助。")
 
 // Pinocchio
 /obj/item/paper/fluff/info/he/pinocchio
 	abno_type = /mob/living/simple_animal/hostile/abnormality/pinocchio
 	abno_code = "F-04-160"
 	abno_info = list(
-		"When work was completed, the abnormality would attempt to decieve the next employee at a small chance.",
-		"The abnormality's trick involved changing the abnormality console to display invalid types of work.",
-		"When the employee was successfully decieved, the Qliphoth counter was reduced by 1.",
-		"When the abnormality was caught telling lies successfully, the abnormality console returned to normal.",
-		"A baseless accusation will reduce the Qliphoth counter by 1.",
-		"During a breach, the abnormality was capable of stealing and arming itself with E.G.O., potentially becoming incredibly dangerous.")
+		"完成工作后有小概率对下位员工撒谎。",
+		"撒谎：将在工作台显示拼写错误的工作类型。",
+		"员工受骗时逆卡巴拉计数器减少1点。",
+		"成功揭穿谎言则工作台恢复正常。",
+		"无证据指控使计数器减少1点。",
+		"突破收容期间会窃取并装备E.G.O.武器，危险性剧增。")
 
 // Missed Reaper
 /obj/item/paper/fluff/info/he/missed_reaper
 	abno_type = /mob/living/simple_animal/hostile/abnormality/missed_reaper
 	abno_code = "O-01-13"
 	abno_info = list(
-		"When an employee panicked during work or had a Temperance level lower than 3, they were hypnotized and killed by the abnormality.",
-		"When an employee with Justice Level of 4 or higher completed the work, Missed Reaper's Qliphoth Counter lowered by 1.",
-		"When the Qliphoth counter reached 0, shadows covered an area near certain employees, dealing pale damage to those in contact with it.")
+		"当员工工作过程中陷入恐慌或自律等级低于3时，该异想体会催眠并杀死该员工。",
+		"当正义等级达到4或更高的员工完成工作时，「不见死神」的逆卡巴拉计数器会降低1点。",
+		"当逆卡巴拉计数器归零时，阴影将覆盖特定员工周边区域，对接触者造成青色伤害。")
 
 //Headless Ichthys
 /obj/item/paper/fluff/info/he/headless_ichthys
 	abno_type = /mob/living/simple_animal/hostile/abnormality/headless_ichthys
 	abno_code = "O-02-159"
 	abno_info = list(
-		"When the work result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered with a high probability.")
+		"当工作结果为普通时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器有高概率降低。")
 
 // Wayward Passenger
 /obj/item/paper/fluff/info/he/wayward
 	abno_type = /mob/living/simple_animal/hostile/abnormality/wayward
 	abno_code = "T-02-170"// T-02-21-07 in LCB
 	abno_info = list(
-		"When the work result was Neutral, the Qliphoth Counter lowered at a low probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered at a high probability.",
-		"Agents who witnessed the movements of Wayward Passenger reported unusually high levels of mental corruption.",
-		"When Wayward Passenger breached containment, it created spacial anomalies, dubbed T-01-170-1.",
-		"Agent Alex who entered T-01-170-1 found that it aided the suppression process.")
+		"当工作结果为普通时，逆卡巴拉计数器有低概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器有高概率降低。",
+		"目击「迷失的乘客」移动轨迹的员工报告称精神腐蚀异常加剧。",
+		"突破收容时产生空间异常现象（编号T-01-170-1）。",
+		"员工Alex进入该异常区域后发现其能辅助镇压进程。")
 
 // Norinori
 /obj/item/paper/fluff/info/he/norinori
 	abno_type = /mob/living/simple_animal/hostile/abnormality/norinori
 	abno_code = "O-02-25"
 	abno_info = list(
-		"After an employee died within the facility, the Qliphoth Counter decreased.",
-		"When communicating with the abnormality as a part of Attachment Work, the employee was viciously attacked and killed by the abnormality.",
-		"When the employee initiated close physical interaction, such as petting, the Qliphoth counter was reduced by 1.",
-		"If the employee's Temperance Level was below 3, the employee was killed instead.",
-		"When the work result was Bad, the Qliphoth Counter lowered.")
+		"当有员工在设施内死亡时，逆卡巴拉计数器会降低。",
+		"员工作为沟通工作环节与该异想体交流时，会遭到其凶残攻击并被杀害。",
+		"当员工发起亲密肢体互动（例如抚摸）时，逆卡巴拉计数器会减少1点。",
+		"若员工的自律等级低于3，则该员工会被杀死。",
+		"当工作结果为差时，逆卡巴拉计数器将会降低。")
 
 // Red Shoes
 /obj/item/paper/fluff/info/he/red_shoes
 	abno_type = /mob/living/simple_animal/hostile/abnormality/red_shoes
 	abno_code = "O-04-08"
 	abno_info = list(
-		"Employees with Temperance level 2 or lower should not work with Red Shoes. The shoes remember their previous owner.",
-		"When the work result was normal, qliphoth counter reduced with a normal probability.",
-		"When the work result was bad, qliphoth counter reduced with a high probability.",
-		"When the qliphoth counter became zero, employees were allured by the abnormality and recieved WHITE damage.",
-		"Allured employees had their prudence attribute reduced by 50 for two minutes.",
-		"Allured employees recovered quickly after their mental corruption was resolved.",
-		"Allured employees who panicked were coerced into wearing the shoes, no matter how far away they were.")
-	abno_resistances = list(RED_DAMAGE = "Endured", WHITE_DAMAGE = "Weak", BLACK_DAMAGE = "Normal", PALE_DAMAGE = "Weak")// Solo breach
+		"自律等级≤2的员工禁止工作，「红舞鞋」会铭记其前任主人。",
+		"当工作结果为普通时，逆卡巴拉计数器有常规概率降低。",
+		"当工作结果为差时，计数器有高概率降低。",
+		"计数器归零时，所有员工受到诱惑并承受白色伤害。",
+		"受诱惑员工谨慎属性降低50点（持续2分钟）。",
+		"精神腐蚀消除后恢复迅速。",
+		"陷入恐慌的受诱惑员工会被强制穿鞋（无视距离）。")
+	abno_resistances = list(RED_DAMAGE = "较高", WHITE_DAMAGE = "较低", BLACK_DAMAGE = "普通", PALE_DAMAGE = "较低")// Solo breach
 
 // Eris
 /obj/item/paper/fluff/info/he/eris
 	abno_type = /mob/living/simple_animal/hostile/abnormality/eris
 	abno_code = "C-01-184"
 	abno_info = list(
-		"Every death reduced the Qliphoth counter of C-01-184 by 1.",
-		"On a Bad result, the Qliphoth counter lowered by 3.",
-		"After Attachment work, there is a small chance of Eris and the Employee -REDACTED-.",
-		"While breached, C-01-184 healed all entities nearby, and would seek out and consume humans that are dead or near death.",
-		"Attacking C-01-184 while breached resulted in the employee taking white damage.")
+		"每次员工死亡使C-01-184的逆卡巴拉计数器减少1点。",
+		"差级工作结果使计数器减少3点。",
+		"沟通工作后有低概率触发「厄里斯」与员工的数据删除事件。",
+		"突破收容时治愈附近所有实体，并寻找吞噬濒死/死亡人类。",
+		"攻击突破状态的C-01-184会承受白色伤害反噬。")
 
 // Will You Play
 /obj/item/paper/fluff/info/he/willyouplay
 	abno_type = /mob/living/simple_animal/hostile/abnormality/willyouplay
 	abno_code = "T-01-187"
 	abno_info = list(
-		"T-01-187 refused standard work, insisting that the employee play a game of janken.",
-		"T-01-187 seems to prefer scissors work, however on occasion has been shown to use other work types.",
-		"If the employee was the last person to work on T-01-187, the stats gained from work was decreased.",
-		"If the employee won the game, they took severe RED damage, and if their fortitude was under level 3, T-01-187 cut off their arm. The employee also would get some stats under level 4, but not as much as compared to losing.",
-		"If the employee lost the game, T-01-187 presented them with a blessing, increasing all of their stats under level 4. If T-01-187 is going through a meltdown. Stats at level 4 and higher would increase by a smaller amount.")
+		"「来玩吗」拒绝常规工作，要求员工进行猜拳游戏。",
+		"倾向使用剪刀手势，但偶尔会选用其他工作类型。",
+		"若员工连续工作，则属性收益降低。",
+		"员工获胜时：承受严重红色伤害（勇气<3级则断臂），等级<4属性小幅提升。",
+		"员工落败时：获得祝福（等级<4属性大幅提升，熔毁期间等级≥4属性微量提升）。")
 
 // Highway Devotee
 /obj/item/paper/fluff/info/he/highway
 	abno_type = /mob/living/simple_animal/hostile/abnormality/highway_devotee
 	abno_code = "T-01-189"
 	abno_info = list(
-		"When the work result was neutral, the Qliphoth counter lowered.",
-		"When the work result was bad, the Qliphoth counter lowered by 2.")
+		"当工作结果为普通时，逆卡巴拉计数器将会降低。",
+		"当工作结果为差时，计数器减少2点。")
 
 // Memories of a Better Time
 /obj/item/paper/fluff/info/he/better_memories
 	abno_type = /mob/living/simple_animal/hostile/abnormality/better_memories
 	abno_code = "T-05-195"
 	abno_info = list(
-		"Employees with a Temperance level of less than 3 found a sentimental item in the pile around T-05- before suffering \
-			from the same effect that is applied by T-05-195-1.",
-		"When T-05-195 breached it released T-05-195-1 into the facility.",
-		"T-05-195-1 avoided combat but constantly tried to take a photo of employees using its head",
-		"When a employee had their photo taken they suffered a 15 second reduction to their temperance, prudance, and work success rate due to mental anguish.",
-		"When fleeing from combat T-05-195-1 sought out employees who were in the middle of work.",
-		"Clerk Gamma9 reports that they cant recall what memory T-05-195-1 effect made them remember.",
-		"T-05-195-1 is to be considered a pest and suppressed whenever possible to prevent interference.")
+		"自律等级<3的员工会在物品堆中发现纪念品，随后遭受与T-05-195-1相同的效果影响。",
+		"突破收容时向设施释放T-05-195-1实体。",
+		"该实体回避战斗，但持续尝试用头部拍摄员工照片。",
+		"被拍摄者因精神创伤导致自律/谨慎属性及成功率下降15秒。",
+		"逃离战斗时会锁定正在工作的员工。",
+		"文员Gamma9报告称无法回忆起该实体引发的记忆内容。",
+		"T-05-195-1实体应视为有害单位，需及时镇压以防工作干扰。")
 
 // Steam Transport Machine
 /obj/item/paper/fluff/info/he/steam
 	abno_type = /mob/living/simple_animal/hostile/abnormality/steam
 	abno_code = "O-05-197"
 	abno_info = list(
-		"When the work result was Neutral, the Qliphoth counter lowered at a moderate probability.",
-		"When the work result was Bad, the Qliphoth counter lowered.",
-		"When a certain amount of abnormalities have arrived, the abnormality \"activated\". Each activation increased the severity of the activation effects.",
-		"When activated, the abnormality's maximum Qliphoth counter lowered, all work types became less effective, work damage increased, and the abnormality generally became more aggressive.",
-		"When the facility is full, the maximum Qliphoth counter reduced to 1 and the abnormality became extremely dangerous.")
+		"当工作结果为普通时，计数器有中等概率降低。",
+		"当工作结果为差时，计数器必然降低。",
+		"特定数量异想体抵达后，该异想体\"激活\"。每次激活加剧效果强度。",
+		"激活状态：计数器上限降低，工作效率下降，工作伤害增加，攻击性增强。",
+		"设施满载时，计数器上限降至1点且危险性剧增。")
 
 // Drifting Fox
 /obj/item/paper/fluff/info/he/drifting_fox
 	abno_type = /mob/living/simple_animal/hostile/abnormality/drifting_fox
 	abno_code = "T-02-173"
 	abno_info = list(
-		"It was noted that working on T-02-11-03 with a Temperance level of less than 2 lowered the Qliphoth counter.",
-		"Employees who pet T-02-11-03 before attempting work were noted to have remarkably increased success rates with the Abnormality when attempting Attachment work.",
-		"However, the employee who pet T-02-11-03 noted that success rates with the other work types diminished until work was completed.",
-		"When the work result was Bad, the Qliphoth counter lowered.")
+		"自律等级<2的员工对「流浪狐狸」工作时，逆卡巴拉计数器会降低。",
+		"工作前抚摸该异想体可显著提升沟通工作的成功率。",
+		"但抚摸后的员工在完成工作前，其他工作类型成功率下降。",
+		"当工作结果为差时，逆卡巴拉计数器将会降低。")
 
 // Basilisoup
 /obj/item/paper/fluff/info/he/basilisoup
 	abno_type = /mob/living/simple_animal/hostile/abnormality/basilisoup
 	abno_code = "F-02-153"
 	abno_info = list(
-		"There exists a pot within the abnormality's containment unit that must be filled with food.",
-		"Any food item, so long as it is nutritious and not poisonous can be added to the pot until it is full.",
-		"If poisonous food was put into the pot, the abnormality immediately attacked when work began.",
-		"When a work process began, the work success rate increased based on how full the pot was.",
-		"When the work process began while the pot was empty, the Qliphoth counter lowered.",
-		"When the work result was Bad, the Qliphoth counter lowered.",
-		"When work was successfully performed, a certain amount of the raw material was converted into nutritous and healing Lifetime Stew, and ejected from the abnormality.",
-		"Employees who consume too much of the Lifetime Stew, or food in general become easy meals for this abnormality.")
+		"该异想体的收容单元内存在一口必须用食物填满的大锅。",
+		"任何营养丰富且无毒的食物均可投入锅中，直至锅被填满。",
+		"若将有毒食物投入锅中，工作开始时该异想体会立即发起攻击。",
+		"当工作流程开始时，成功率会依据锅中食物的填充程度而提高。",
+		"若工作开始时锅处于空置状态，逆卡巴拉计数器将会降低。",
+		"当工作结果为差时，逆卡巴拉计数器将会降低。",
+		"成功完成工作后，一定量的原料会被转化为具有营养和治疗效果的「一辈子炖汤」，并从该异想体中排出。",
+		"过量食用「一辈子炖汤」或频繁进食的员工，更容易成为该异想体的猎物。")
 
 //Pink Shoes
 /obj/item/paper/fluff/info/he/pink_shoes
 	abno_type = /mob/living/simple_animal/hostile/abnormality/pink_shoes
 	abno_code = "F-04-149"//F-04-10-13 in LCB
 	abno_info = list(
-		"Employees with temperance level 1 immediately panicked after working on Pink Shoes.",
-		"When the qliphoth counter became 0, Pink Shoes escaped and wove ribbons in the surrounding area.",
-		"When Pink Shoes escaped, it attacked indiscriminately, and any hostile entities attacked would wear them.",
-		"Employees who panic while working on Pink Shoes will decide to wear them.",
-		"Agent Acacia who wore Pink Shoes was asphyxiated during suppression.",
-		"Employees who crossed the ribbons were occasionally bound by them, having their prudence and temperance temporarily reduced.",
-		"Employees with a high temperance attribute were unlikely to be bound by ribbons.",
-		"Employees who perished on the ribbons became entities regarded as F-04-147-01.")
+		"自律等级为1级的员工在对“粉红鞋”进行工作后会立即陷入恐慌。",
+		"当逆卡巴拉计数器归零时，“粉红鞋”会逃出收容单元，并在周围区域编织缎带。",
+		"当“粉红鞋”逃出时，它会无差别攻击，任何被其攻击的敌对实体都会穿上它。",
+		"在对“粉红鞋”工作时陷入恐慌的员工会决定穿上它。",
+		"穿上“粉红鞋”的员工Acacia在镇压过程中窒息身亡。",
+		"穿过缎带的员工偶尔会被缎带束缚，其谨慎和自律会暂时降低。",
+		"自律属性高的员工不太可能被缎带束缚。",
+		"在缎带上死亡的员工会变成编号为 F-04-147-01 的实体。")
 
 //Der Fluschutze
 /obj/item/paper/fluff/info/he/der_fluschutze
 	abno_type = /mob/living/simple_animal/hostile/abnormality/der_fluschutze
 	abno_code = "F-01-203"
 	abno_info = list(
-		"When the work result was Normal, the Qliphoth Counter lowered with a normal probability.",
-		"When the work result was Bad, the Qliphoth Counter lowered.",
-		"When attachment work was completed, Der Fluschutze escaped its Containment Unit.",)
+		"当工作结果为普通时，逆卡巴拉计数器以普通概率降低。",
+		"当工作结果为差时，逆卡巴拉计数器降低。",
+		"当沟通工作完成时，魔弹射手 会逃离其收容单元。",)

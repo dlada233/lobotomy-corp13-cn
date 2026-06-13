@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/abnormality/clayman
-	name = "Generic Brand Modelling Clay"
-	desc = "A small, rough humanoid figure made of clay."
+	name = "通用品牌造型黏土"
+	desc = "黏土制成的小而粗糙的人形雕像."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "bluro"
 	icon_living = "bluro"
 	icon_dead = "bluro"
 	portrait = "clayman"
 	del_on_death = TRUE
-	maxHealth = 200
-	health = 200
+	maxHealth = 250
+	health = 250
 	ranged = TRUE
 	rapid_melee = 1
 	melee_queue_distance = 2
@@ -35,7 +35,7 @@
 	work_damage_lower = 2
 	work_damage_type = RED_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/gluttony
-	death_message = "loses form."
+	death_message = "失去形体."
 	ego_list = list(
 		/datum/ego_datum/weapon/clayman,
 		/datum/ego_datum/armor/clayman,
@@ -45,12 +45,12 @@
 	gift_type =  /datum/ego_gifts/clayman
 	abnormality_origin = ABNORMALITY_ORIGIN_ORIGINAL
 
-	observation_prompt = "A soft, clay-like substance. <br>\
-		Rolled, moulded, sculpted, an art form of the highest order. <br>\
-		It looks at you now, with expectation in its eyes. <br>This work, it's not complete. It..."
+	observation_prompt = "一种柔软的、类似黏土的物质。<br>\
+		被揉捏、塑造，是一种最高级的艺术形式。<br>\
+		它现在看着你，眼中充满期待。<br>这件作品还没有完成。它..."
 	observation_choices = list(
-		"It should be destroyed" = list(FALSE, "It is a foul abomination. <br>Such a thing shouldn't exist. <br>It violates the laws of this world and the city."),
-		"It still needs a soul" = list(TRUE, "The price to be paid cannot be measured in time or money. <br>The results speak for themselves."),
+		"它应该被摧毁" = list(FALSE, "这是一个邪恶的亵渎。<br>这样的东西不应该存在。<br>它违反了这个世界和都市的原则。"),
+		"它仍然需要一个灵魂" = list(TRUE, "需要付出的代价无法用时间和金钱来衡量。<br>结果会为自己说话。"),
 	)
 
 	var/dashready = TRUE
@@ -77,15 +77,15 @@
 
 	if(reforming != og_reforming)
 		if(reforming)
-			manual_emote("looks like a mess!")
+			manual_emote("看起来不成形状!")
 		else
-			manual_emote("is taking form once more.")
+			manual_emote("正在重新塑型.")
 
 /mob/living/simple_animal/hostile/abnormality/clayman/examine(mob/user)
 	. = ..()
 	for(var/work in work_chances)
 		if(work_chances[work] >= 90)
-			. += "<span class='warning'>It's about to fall apart, you should avoid doing more [work] work on it.</span>"
+			. += "<span class='warning'>它即将散架，你应该避免对它进行更多的[work]工作。</span>"
 
 /mob/living/simple_animal/hostile/abnormality/clayman/CanAttack(atom/the_target)
 	melee_damage_type = pick(RED_DAMAGE, WHITE_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
@@ -97,7 +97,7 @@
 		datum_reference.qliphoth_change(-1)
 
 /mob/living/simple_animal/hostile/abnormality/clayman/proc/Skitter()
-	visible_message(span_warning("[src] Skitters faster!"), span_notice("you hear the patter of hundreds of clay feet"))
+	visible_message(span_warning("[src]飞掠地更快了!"), span_notice("你听到几百只泥脚的啪嗒声"))
 	var/duration = 3 SECONDS
 	TemporarySpeedChange(-2, duration)
 	dashready = FALSE

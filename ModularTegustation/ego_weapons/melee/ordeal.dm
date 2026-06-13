@@ -3,10 +3,10 @@
 // FOR ADMIN USE ONLY, SHOULD NEVER BE OBTAINED IN GAME
 // Weapon dps is 142.9 at 0 just, 220.9 at 130.
 /obj/item/ego_weapon/the_claw
-	name = "The Claw"
+	name = "爪牙之爪"
 	desc = "A large metal arm with a claw for a hand. Used by the Executioners of the Claw."
-	special = "This weapon can not be removed once equipped by any normal means. Use in hand to inject the selected serum with a cooldown of 30 Seconds. \
-	\nEach serum changes the damage type of the weapon."
+	special = "这种武器一旦装备，就不能以任何正常方式移除，在手中使用以注射选定的血清，冷却时间为30秒. \
+	\n每种血清都会改变武器的伤害类型."
 	icon_state = "claw"
 	force = 60
 	attack_speed = 0.6
@@ -31,7 +31,7 @@
 	var/dash_range = 8
 	var/justicemod
 	var/dash_ignore_walls = FALSE
-	var/serum_desc = "This serum heals you by 25% of max health after injecting for 2 seconds."
+	var/serum_desc = "这个血清在注射2秒后治疗你25%的最大生命值."
 
 /obj/item/ego_weapon/the_claw/Initialize()
 	. = ..()
@@ -39,22 +39,22 @@
 
 /obj/item/ego_weapon/the_claw/examine(mob/user)
 	. = ..()
-	. += span_notice("Current Serum: Serum [serum]")
+	. += span_notice("当前血清: 血清[serum]")
 	. += span_notice("[serum_desc]")
 
 /obj/item/ego_weapon/the_claw/equipped(mob/living/user)
 	. = ..()
-	to_chat(user, span_warning("[src] attaches itself to your body!"))
+	to_chat(user, span_warning("[src]附着在你的身体上!"))
 	justicemod = get_attack_multiplier(user)
 
 /obj/item/ego_weapon/the_claw/dropped()
-	src.visible_message(span_warning("The claw arm disappears, you've violated a crucial law of physics."))
+	src.visible_message(span_warning("爪牙之爪不见了, 你简直违反了物理定律."))
 	playsound(src, 'ModularTegustation/Tegusounds/claw/death.ogg', 50, TRUE)
 	qdel(src)
 	return ..()
 
 /datum/action/item_action/switch_serum
-	name = "Swap Serum"
+	name = "切换血清"
 	desc = "Swaps your currently selected serum."
 	icon_icon = 'icons/obj/ego_weapons.dmi'
 	button_icon_state = "claw"
@@ -68,25 +68,25 @@
 	switch(serum)
 		if("K")
 			serum = "R"
-			serum_desc = "This serum prepares [dash_charges] deadly dashes to the location you choose, dealing massive RED damage to all that stand in your way. This serum's charge time is halved."
+			serum_desc = "这个血清启用[dash_charges]次致命的冲刺到你选择的位置，对所有挡在你路上的人造成巨大的红色伤害. 这种血清的充能时间只有一半."
 			damtype = RED_DAMAGE
 		if("R")
 			serum = "W"
-			serum_desc = "This serum locks on to one target of your choosing, and teleports them through multiple locations dealing massive BLACK damage at the end."
+			serum_desc = "这个血清锁定你选择的一个目标，并传送他们通过多个位置，最后造成巨大的黑色伤害."
 			damtype = BLACK_DAMAGE
 			dash_charges = dash_limit
 		if("W")
 			serum = "Tri"
-			serum_desc = "Will inject all 3 serums at once, providing a heal fo 15% of your max HP and prepares a mass slash attack to all enemies within a 12 tile radius. This however overclocks the injection systems and double the cooldown."
+			serum_desc = "将同时注射所有3种血清，提供你最大生命值的15%的治疗，并准备对半径12地块内的所有敌人进行大规模砍杀攻击，然而，这会使注射系统超频并使冷却时间加倍。"
 			damtype = PALE_DAMAGE
 			force = 40
 		if("Tri")
 			serum = "K"
-			serum_desc = "This serum heals you by 50% of max health after injecting for 2 seconds."
+			serum_desc = "这个血清在注射2秒后治疗你最大生命值的50%."
 			damtype = WHITE_DAMAGE
 			force = initial(force)
 	special_attack = FALSE
-	to_chat(user, span_notice("You prime your serum [serum]."))
+	to_chat(user, span_notice("你准备好了血清[serum]."))
 	playsound(src, 'ModularTegustation/Tegusounds/claw/error.ogg', 50, TRUE)
 
 /obj/item/ego_weapon/the_claw/attack_self(mob/living/user)
@@ -94,11 +94,11 @@
 	if(!CanUseEgo(user))
 		return
 	if(special_cooldown > world.time)
-		to_chat(user, span_warning("Your serum is not ready!"))
+		to_chat(user, span_warning("你的血清还没有准备好!"))
 		return
 	switch(serum)
 		if("K")
-			to_chat(user, span_notice("You inject the serum K."))
+			to_chat(user, span_notice("你注射血清K."))
 			playsound(src, 'ModularTegustation/Tegusounds/claw/prepare.ogg', 50, TRUE)
 			var/obj/effect/serum_energy/heals = new /obj/effect/serum_energy(user.loc)
 			heals.color = "#51e715"
@@ -106,12 +106,12 @@
 				qdel(heals)
 				return
 			animate(heals, alpha = 0, transform = matrix()*2, time = 5)
-			to_chat(user, span_notice("The injection is complete, you feel much better."))
+			to_chat(user, span_notice("注射完毕，你感觉好多了."))
 			user.adjustBruteLoss(-user.maxHealth*0.50) // Heals 50% of max HP, powerful because its admin only.
 			special_cooldown = world.time + special_cooldown_time
 			QDEL_IN(heals, 5)
 		if("R")
-			to_chat(user, span_notice("You prepare the serum R."))
+			to_chat(user, span_notice("你准备好了血清R."))
 			playsound(src, 'ModularTegustation/Tegusounds/claw/r_prep.ogg', 50, TRUE)
 			special_attack = TRUE
 			var/obj/effect/serum_energy/dash = new /obj/effect/serum_energy(user.loc)
@@ -119,7 +119,7 @@
 			dash.orbit(user, 0)
 			QDEL_IN(dash, 10)
 		if("W")
-			to_chat(user, span_notice("You prepare the serum W."))
+			to_chat(user, span_notice("你准备好了血清W."))
 			playsound(src, 'ModularTegustation/Tegusounds/claw/prepare.ogg', 50, TRUE)
 			special_attack = TRUE
 			var/obj/effect/serum_energy/death = new /obj/effect/serum_energy(user.loc)
@@ -127,13 +127,13 @@
 			death.orbit(user, 0)
 			QDEL_IN(death, 10)
 		if("Tri")
-			to_chat(user, span_notice("You prepare all 3 serums"))
+			to_chat(user, span_notice("你准备好了3种血清"))
 			playsound(src, 'ModularTegustation/Tegusounds/claw/prepare.ogg', 50, TRUE)
 			var/obj/effect/serum_energy/omega_death = new /obj/effect/serum_energy(user.loc)
 			omega_death.orbit(user, 0)
 			QDEL_IN(omega_death, 10)
 			if(!do_after(user, 2 SECONDS, src))
-				to_chat(user, span_notice("You disengage the injection sequence."))
+				to_chat(user, span_notice("你脱离注射程序."))
 				return
 			special_cooldown = world.time + special_cooldown_time
 			TriSerum(user)
@@ -176,7 +176,7 @@
 					continue
 				if(L.status_flags & GODMODE)
 					continue
-				visible_message(span_boldwarning("[user] claws through [L]!"))
+				visible_message(span_boldwarning("[user]掠过[L]!"))
 				playsound(L, 'ModularTegustation/Tegusounds/claw/stab.ogg', 25, 1)
 				new /obj/effect/temp_visual/cleave(get_turf(L))
 				L.apply_damage(justicemod*60, RED_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE))
@@ -185,16 +185,16 @@
 				special_attack = FALSE
 				special_cooldown = world.time + (special_cooldown_time * 0.5)
 				dash_charges = dash_limit
-				to_chat(user, span_warning("Your dashes have run out."))
+				to_chat(user, span_warning("你的突袭用完了."))
 		if("W")
 			if(!isliving(A))
 				return
 			var/obj/effect/temp_visual/target_field/uhoh = new /obj/effect/temp_visual/target_field(A.loc)
 			uhoh.orbit(A, 0)
 			playsound(A, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 100, 1)
-			to_chat(A, span_warning("[user] stares you down, running won't help you."))
+			to_chat(A, span_warning("[user]锁定你了，跑也没有用."))
 			if(!do_after(user, 1 SECONDS, src))
-				to_chat(user, span_notice("Whats this, mercy?"))
+				to_chat(user, span_notice("这是什么, 神迹?"))
 				qdel(uhoh)
 				return
 			special_attack = FALSE
@@ -210,16 +210,16 @@
 	playsound(tp_loc, 'ModularTegustation/Tegusounds/claw/move.ogg', 100, 1)
 	user.Stun(60 SECONDS, ignore_canstun = TRUE) // Here we go.
 	target.Stun(60 SECONDS, ignore_canstun = TRUE)
-	to_chat(user, span_notice("You grab [target] by the neck."))
-	to_chat(target, span_warning("Your neck is grabbed by [user]!."))
+	to_chat(user, span_notice("你抓住[target]的脖子."))
+	to_chat(target, span_warning("你的脖子被[user]抓住了!."))
 	playsound(user, 'ModularTegustation/Tegusounds/claw/w_portal.ogg', 50, 1)
 	new /obj/effect/temp_visual/serum_w(target.loc)
 	target.face_atom(user)
 	animate(target, pixel_x = 0, pixel_z = 8, time = 5) // The gripping
 	sleep(10) // Dramatic effect
 	target.visible_message(
-		span_warning("[user] disappears, taking [target] with them!"),
-		span_userdanger("[user] teleports you with them!")
+		span_warning("[user]消失, 将[target]带走了!"),
+		span_userdanger("[user]将你带走了!")
 	)
 	animate(target, pixel_x = 0, pixel_z = 0, time = 1)
 	var/list/teleport_turfs = list()
@@ -248,7 +248,7 @@
 				continue
 			if(AA == target)
 				continue
-			to_chat(AA, span_userdanger("[user] slashes you!"))
+			to_chat(AA, span_userdanger("[user]劈砍你!"))
 			AA.apply_damage(justicemod*50, BLACK_DAMAGE, null, AA.run_armor_check(null, BLACK_DAMAGE))
 			new /obj/effect/temp_visual/cleave(get_turf(AA))
 		for(var/obj/item/I in get_turf(target))
@@ -263,7 +263,7 @@
 	playsound(user, 'ModularTegustation/Tegusounds/claw/w_slashes.ogg', 75, 1)
 	user.face_atom(target)
 	target.visible_message(
-		span_warning("Slashes appear around [target], its unwise to stick around.")
+		span_warning("[target]周围出现劈砍痕迹, 在这里逗留并不明智.")
 	)
 	for(var/turf/T in range(2, target))
 		if(prob(25))
@@ -274,15 +274,15 @@
 			continue
 		if(AA == target)
 			continue
-		to_chat(AA, span_userdanger("You start gushing blood!"))
+		to_chat(AA, span_userdanger("你开始流血!"))
 		AA.apply_damage(justicemod*60, BLACK_DAMAGE, null, AA.run_armor_check(null, BLACK_DAMAGE)) // Shouldn't have gotten close.
 		new /obj/effect/temp_visual/cleave(get_turf(AA))
 	user.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
 	target.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
 	playsound(user, 'ModularTegustation/Tegusounds/claw/w_fin.ogg', 75, 1)
 	target.visible_message(
-		span_warning("[target] suddenly gushes blood!"),
-		span_userdanger("As [user] lets go, you start gushing blood!")
+		span_warning("[target]突然流血!"),
+		span_userdanger("当[user]离开, 你开始流血!")
 	)
 	target.apply_damage(justicemod*150, BLACK_DAMAGE, null, target.run_armor_check(null, BLACK_DAMAGE)) // 150 so that it can scale form justice to about 300
 	for(var/turf/T in range(1, target))
@@ -307,10 +307,10 @@
 		var/obj/effect/temp_visual/target_field/blue/oh_dear = new /obj/effect/temp_visual/target_field/blue(L.loc)
 		oh_dear.orbit(L, 0)
 		playsound(L, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 25, 1)
-		to_chat(L, span_warning("You're being hunted down by [user]!."))
+		to_chat(L, span_warning("你被[user]盯上了!."))
 		QDEL_IN(oh_dear, 10)
 	if(!LAZYLEN(targets))
-		to_chat(user, span_warning("There are no enemies nearby!"))
+		to_chat(user, span_warning("附近没有敌人!"))
 		return
 	new /obj/effect/temp_visual/serum_w(user.loc)
 	playsound(user, 'ModularTegustation/Tegusounds/claw/w_portal.ogg', 50, 1)
@@ -319,7 +319,7 @@
 		var/turf/prev_loc = get_turf(user)
 		var/turf/tp_loc= get_step(L.loc, pick(GetSafeDir(get_turf(L))))
 		user.forceMove(tp_loc)
-		to_chat(L, span_userdanger("[user] decimates you!"))
+		to_chat(L, span_userdanger("[user]屠杀你!"))
 		playsound(L, 'ModularTegustation/Tegusounds/claw/eviscerate2.ogg', 100, 1)
 		L.apply_damage(justicemod*60, PALE_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE))
 		prev_loc.Beam(tp_loc, "bsa_beam", time=25)
@@ -327,7 +327,7 @@
 		sleep(3)
 
 /obj/effect/serum_energy
-	name = "serum energies"
+	name = "血清能量"
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "white_shield"
 	layer = BYOND_LIGHTING_LAYER
@@ -335,7 +335,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/temp_visual/serum_w
-	name = "serum w portal"
+	name = "血清w传送门"
 	desc = "No... Not again..."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blueshatter"

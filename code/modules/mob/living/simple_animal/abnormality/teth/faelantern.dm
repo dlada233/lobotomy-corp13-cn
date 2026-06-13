@@ -1,15 +1,15 @@
 #define STATUS_EFFECT_FAIRYLURE /datum/status_effect/fairy_lure
 /mob/living/simple_animal/hostile/abnormality/faelantern
-	name = "Faelantern"
-	desc = "A small fairy with a green glow sits atop a delicate tree branch."
+	name = "精灵提灯"
+	desc = "一个绿油油的小仙女坐在一根精致的树枝上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "faelantern"
 	icon_living = "faelantern_fairy"
 	icon_dead = "faelantern_egg"
 	core_icon = "faelantern_egg"
 	portrait = "faelantern"
-	maxHealth = 300
-	health = 300
+	maxHealth = 400
+	health = 400
 	blood_volume = 0
 	base_pixel_x = -16
 	pixel_x = -16
@@ -24,7 +24,7 @@
 	can_patrol = FALSE
 	can_breach = TRUE
 	del_on_death = FALSE
-	death_message = "creaks and crumbles into its core."
+	death_message = "嘎吱作响，碎成碎片."
 	ranged = TRUE
 	ranged_cooldown_time = 1.5 SECONDS
 
@@ -44,25 +44,25 @@
 
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 
-	observation_prompt = "In the middle of a quiet and peaceful forest, a delicate tree branch is placed. <br>\
-		A small fairy with a green glow sits atop it. <br>\
-		Saying no words, the fairy waves at you, inviting you to come over and take a break. <br>\
-		It looked like it was smiling, and it might have been dancing."
+	observation_prompt = "在寂静的森林中央，放着一根纤细的树枝。<br>\
+		一个散发绿光的小精灵坐在上面。<br>\
+		它没有说话，只是朝你招手，邀请你过来休息。<br>\
+		它看起来像是在微笑，也可能是在跳舞。"
 	observation_choices = list(
-		"Move on without resting" = list(TRUE, "This is no time to be careless and stop here. <br>\
-			Tree branches came at you to halt you from leaving, but you narrowly dodged them. <br>\
-			You knew the real meaning of the fairy's gesture: <br>\
-			\"There's no such thing as a free gift\"."),
-		"Take a momentary break" = list(FALSE, "The fairy's smile stretches into an eerie grin. You shouldn't have trusted its appearance and now you'll have to pay the price."),
-		"Take a break where you're standing" = list(FALSE, "You ignore the beckoning fairy and take a short break where you stand. <br>\
-			As you gather yourself to continue on the journey, you realize that several branches had grown in the premises, trapping you in."),
+		"不休息就离开" = list(TRUE, "现在不是休息的时候。<br>\
+			树枝突然袭来想拦住你，但你勉强躲开了。<br>\
+			你明白了精灵手势的真实含义：<br>\
+			\"没有免费的礼物\"。"),
+		"休息一下" = list(FALSE, "精灵的微笑变成了诡异的狞笑。你不该相信它的外表，现在必须付出代价."),
+		"原地休息" = list(FALSE, "你无视精灵的召唤，站在原地休息. <br>\
+			当准备继续前进时，发现树枝已经长满周围，把你困在里面了."),
 	)
 
 	var/can_act = FALSE
-	var/break_threshold = 450
+	var/break_threshold = 150
 	var/broken = FALSE
 	var/fairy_enabled
-	var/fairy_health = 1200
+	var/fairy_health = 400
 	var/lure_cooldown
 	var/lure_cooldown_time = 30 SECONDS
 	var/lure_damage = 5
@@ -176,7 +176,7 @@
 	RootWave()//sets can_act to TRUE
 	//if(health > break_threshold) for break-off
 	icon_state = "faelantern_angry"
-	desc = "The abnormality actually consists of a large, underground tree. We've learned the meaning of the fairy's gesture: there are no free gifts."
+	desc = "这个异常实际上是由一棵巨大的地下树组成的,我们已经明白了仙女手势的含义：世上没有免费的礼物."
 
 /mob/living/simple_animal/hostile/abnormality/faelantern/proc/RootBarrage(target) //regular attack
 	can_act = FALSE
@@ -223,7 +223,7 @@
 		victim.cut_overlay(mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "fairy_lure", -HALO_LAYER))
 		if(istype(victim.ai_controller,/datum/ai_controller/insane/faelantern))
 			if(!stunned)
-				to_chat(victim, span_boldwarning("You snap out of your trance!"))
+				to_chat(victim, span_boldwarning("你突然从恍惚中清醒过来!"))
 			qdel(victim.ai_controller)
 
 	//Effects
@@ -235,8 +235,8 @@
 	pixel_x = -16
 
 /obj/effect/root/faelantern
-	name = "root"
-	desc = "A target warning you of incoming pain"
+	name = "树根"
+	desc = "一个警告你即将到来的痛苦的目标"
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "vines"
 	move_force = INFINITY
@@ -273,9 +273,9 @@
 
 /datum/ai_behavior/say_line/insanity_faelantern
 	lines = list(
-		"Please, wait for me...",
-		"Okay, I'm coming.",
-		"Just a moment please.",
+		"请等等我...",
+		"好的，我来了.",
+		"只要一会就好.",
 	)
 
 /datum/ai_controller/insane/faelantern/SelectBehaviors(delta_time)
@@ -373,8 +373,8 @@
 	alert_type = /atom/movable/screen/alert/status_effect/fairy_lure
 
 /atom/movable/screen/alert/status_effect/fairy_lure
-	name = "Fairy Lure"
-	desc = "Your guard is lowered."
+	name = "精灵诱惑"
+	desc = "你的警惕性降低了."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "fairy_lure"
 

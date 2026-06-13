@@ -1,7 +1,7 @@
 //Coded and sprited by Coxswain
 /mob/living/simple_animal/hostile/abnormality/fallen_amurdad
-	name = "Fallen Amurdad"
-	desc = "This person is unresponsive, bleeding, and covered in plants."
+	name = "倒在春天里"
+	desc = "这个人没有反应，流血，浑身都是植物."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "amurdad"
 	icon_living = "amurdad"
@@ -23,14 +23,14 @@
 		/datum/ego_datum/armor/nightshade,
 	)
 	gift_type = /datum/ego_gifts/nightshade
-	gift_message = "The lifeless body of amurdad hands you a flower."
+	gift_message = "无生命的躯体向你递来一朵花."
 	abnormality_origin = ABNORMALITY_ORIGIN_ARTBOOK
 
-	observation_prompt = "The sweet stench of rot and decay hit you before you noticed the source was the bleeding person covered in plants. <br>\
-		His lips gape open and close like a fish's and what little strength he has in his limbs, he uses to beckons you closer..."
+	observation_prompt = "腐坏的甜腻恶臭先于视觉冲击袭来——源头是个浑身覆满植物、血流不止的人形。<br>\
+		他的嘴唇如离水之鱼般开合，用四肢残存的气力召唤你靠近..."
 	observation_choices = list(
-		"Get closer and listen" = list(TRUE, "You bend down and lend your ear to his mouth... <br>You hear the words you've been waiting your whole life to hear."),
-		"Leave" = list(FALSE, "The man clearly needs help, you rush to find a medic."),
+		"靠近倾听" = list(TRUE, "你俯身将耳畔贴近他的嘴唇...<br>听见了穷尽此生等待的话语。"),
+		"离开" = list(FALSE, "此人显然需要救助，你急忙去寻找医师。"),
 	)
 
 	var/seed_list = list(
@@ -200,7 +200,7 @@
 
 /obj/item/food/grown/starthistle
 	seed = /obj/item/seeds/starthistle/amurdad
-	name = "starthistle flower head"
+	name = "三叶草花头"
 	desc = "This spiny cluster of florets reminds you of the backstreets."
 	icon_state = "lily"
 	bite_consumption_mod = 3
@@ -213,7 +213,7 @@
 
 // Custom plants
 /obj/item/seeds/peas/worldpeas
-	name = "pack of world peas"
+	name = "一包世界豌豆"
 	desc = "These seeds look a bit odd, but they should grow into World Peas."
 	icon_state = "seed-worldpeas"
 	species = "worldpeas"
@@ -237,7 +237,7 @@
 
 /obj/item/food/grown/worldpeas
 	seed = /obj/item/seeds/peas/worldpeas
-	name = "pod of world peas"
+	name = "世界豌豆的底部"
 	desc = "They make the world go round. Not sure what sort of effects eating this might have..."
 	icon_state = "worldpeas"
 	bite_consumption_mod = 2
@@ -247,7 +247,7 @@
 	wine_flavor = "a drunken oyster... or maybe a clam?"
 
 /obj/item/seeds/corpseflower
-	name = "pack of corpseflower"
+	name = "一包尸花"
 	desc = "These seeds grow into a big, smelly flower."
 	icon_state = "seed-corpse-flower"
 	species = "corpseflower"
@@ -274,7 +274,7 @@
 
 /obj/item/food/grown/corpseflower
 	seed = /obj/item/seeds/corpseflower
-	name = "corpse flower pedal"
+	name = "尸花踏板"
 	desc = "A gigantic corpse flower pedal, it smells disgusting. Noticably used as a spice in district 23."
 	icon_state = "corpseflower"
 	bite_consumption_mod = 3
@@ -284,7 +284,7 @@
 	wine_flavor = "a corpse, or maybe a pile of them."
 
 /obj/item/seeds/jupitercup
-	name = "pack of jupiter-cup mycelium"
+	name = "木星菇菌丝包"
 	desc = "This mycelium grows into jupiter-cup mushrooms."
 	icon_state = "mycelium-jupitercup"
 	species = "jupitercup"
@@ -308,12 +308,12 @@
 
 /obj/item/food/grown/mushroom/jupitercup
 	seed = /obj/item/seeds/jupitercup
-	name = "jupiter-cup"
+	name = "木星菇"
 	desc = "This has to be eaten carefully."
 	icon_state = "jupitercup"
 
 /obj/structure/amurdad_bomb
-	name = "Rising Amurdad"
+	name = "升起的阿穆尔达"
 	desc = "A mound of soil growing something...\nIt reinforces nearby plants."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "soil"

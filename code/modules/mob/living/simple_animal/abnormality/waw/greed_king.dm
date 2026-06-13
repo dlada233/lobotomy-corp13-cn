@@ -1,15 +1,15 @@
 //This abnormality does more things now! It should be enjoyable enough to play as.
 /mob/living/simple_animal/hostile/abnormality/greed_king
-	name = "King of Greed"
-	desc = "A girl trapped in a magical crystal."
+	name = "贪婪女王"
+	desc = "一个被困在魔法水晶里的女孩."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "kog"
 	icon_living = "kog"
 	portrait = "greed_king"
 	pixel_x = -16
 	base_pixel_x = -16
-	maxHealth = 1000
-	health = 1000
+	maxHealth = 1500
+	health = 1500
 	ranged = TRUE
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomps"
@@ -35,19 +35,19 @@
 	work_damage_type = RED_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/gluttony
 
-	observation_prompt = "Come on, don't be like that. <br>I might look hideous but that's not important to you, right? <br>\
-		I am happy that you can hear me. <br>I once fought for happiness of the world. <br>But soon after, I noticed. <br>\
-		Happiness of the world means happiness for me. <br>I'm trying to stay happy. <br>\
-		I don't care even if it got me to the point where I look like this. <br>Have you met my sisters? <br>We were always one. <br>\
-		We fought together, and shared a common goal. <br>By the way, are you happy now?"
+	observation_prompt = "拜托，别这样。<br>我或许丑陋不堪，但这对你无关紧要，对吧？<br>\
+		你能听见我说话，我很高兴。<br>我曾为世界幸福而战。<br>但很快意识到：<br>\
+		世界幸福即我之幸福。<br>我正竭力保持快乐。<br>\
+		即便沦落至此等模样也不在乎。<br>见过我的姐妹们吗？<br>我们本是一体。<br>\
+		并肩作战，目标一致。<br>话说，你现在幸福吗？"
 	observation_choices = list(
-		"Yes, I'm happy" = list(TRUE, "(The egg shook violently) <br>\
-			Don't lie. <br>Why have we been ruined like this if that's true? <br>\
-			And why have you ended up like that? <br>My greed will not be sated with such flimsy conviction. <br>\
-			But if your answer is a resolve for the future, and not just a statement of fact... <br>Things might change, slowly."),
-		"No, I'm not happy" = list(FALSE, "I knew you were not happy. <br>\
-			You are like me. <br>You trapped yourself inside of an egg, just like me. <br>\
-			The amber-colored sky is beautiful. <br>Oh, I'm getting hungry again."),
+		"是的，我很幸福" = list(TRUE, "（蛋剧烈震动）<br>\
+			别撒谎。<br>若真如此，我们怎会沦落至此？<br>\
+			你又为何变成这样？<br>如此薄弱的信念无法满足我的贪婪。<br>\
+			但若你的答案是对未来的决心，而非陈述现状...<br>事情或许会慢慢改变。"),
+		"不，我不幸福" = list(FALSE, "我早知你不幸福。<br>\
+		你如我一般。<br>将自己困在蛋中，恰似我。<br>\
+		琥珀色天空真美啊。<br>噢，我又饿了。"),
 	)
 
 	//Some Variables cannibalized from helper
@@ -56,7 +56,7 @@
 	var/dash_num = 100000	//Mostly a safeguard
 	var/list/been_hit = list()
 	var/can_act = TRUE
-	var/initial_charge_damage = 200
+	var/initial_charge_damage = 400
 	var/growing_charge_damage = 0
 
 	var/nihil_present = FALSE
@@ -83,24 +83,24 @@
 
 /mob/living/simple_animal/hostile/abnormality/greed_king/Login()
 	. = ..()
-	to_chat(src, "<h1>You are King of Greed, A Tank Role Abnormality.</h1><br>\
-		<b>|Gilded Cage|: Your size is 3 by 3 tiles wide, however you can still fit in 1 by 1 areas.<br>\
+	to_chat(src, "<h1>你是【贪婪女王】，坦克型异想体。</h1><br>\
+		<b>|镀金牢笼|：你的体型为3x3格，但仍可进入1x1区域。<br>\
 		<br>\
-		|Endless Hunger|: When you click on a tile outside your melee range, you will start charging into the direction you clicked.<br>\
-		Once you start charging into a direction you will constantly move in one direction.<br>\
-		Initialy, your charge deal 200 RED damage, but for every tile you move you deal an extra 40 RED damage.<br>\
-		Your charge ends after you move into a wall, or any dense object. (RHINOS/OTHER ABNORMALITIES WILL STOP YOUR CHARGE)</b>")
+		|无尽饥渴|：点击近战范围外的格子时，会朝该方向发起冲锋。<br>\
+		冲锋启动后将沿直线持续移动。<br>\
+		初始冲锋造成200点红色伤害，每移动一格额外增加40点红色伤害。<br>\
+		撞墙或任何致密物体时冲锋终止。（犀牛/其他异想体会阻挡冲锋）</b>")
 
 /datum/action/innate/abnormality_attack/kog_dash
-	name = "Ravenous Charge"
+	name = "无尽饥渴"
 	button_icon_state = "kog_charge"
-	chosen_message = span_colossus("You will now dash in that direction.")
+	chosen_message = span_colossus("你现在要朝那个方向冲去.")
 	chosen_attack_num = 1
 
 /datum/action/innate/abnormality_attack/kog_teleport
-	name = "Teleport"
+	name = "传送"
 	button_icon_state = "kog_teleport"
-	chosen_message = span_warning("You will now teleport to a random area in the facility's halls.")
+	chosen_message = span_warning("你现在将传送到设施大厅的随机区域.")
 	chosen_attack_num = 2
 
 /datum/action/innate/abnormality_attack/kog_teleport/Activate()
@@ -215,7 +215,7 @@
 	//Stop charging
 	if(stop_charge)
 		can_act = FALSE
-		addtimer(CALLBACK(src, PROC_REF(endCharge)), 7 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(endCharge)), 10 SECONDS)
 		been_hit = list()
 		return
 	forceMove(T)
@@ -227,7 +227,7 @@
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
 			if(!nihil_present)
-				L.visible_message(span_boldwarning("[src] crunches [L]!"), span_userdanger("[src] rends you with its teeth!"))
+				L.visible_message(span_boldwarning("[src]碾过[L]!"), span_userdanger("[src]用它的牙齿撕碎了你!"))
 				playsound(L, attack_sound, 75, 1)
 				new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 				if(ishuman(L))
@@ -246,7 +246,7 @@
 				continue
 
 			if(!ishuman(L))
-				L.visible_message(span_boldwarning("[src] smashes [L]!"), span_userdanger("[src] smashes you with her massive fist!"))
+				L.visible_message(span_boldwarning("[src]猛击了[L]!"), span_userdanger("[src]用她巨大的拳头砸你!"))
 				playsound(L, attack_sound, 75, 1)
 				new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 				L.adjustRedLoss(100)
@@ -260,7 +260,7 @@
 		new /obj/effect/temp_visual/small_smoke/halfsecond(R)
 	if (IsCombatMap())
 		charge_damage = charge_damage + growing_charge_damage
-	addtimer(CALLBACK(src, PROC_REF(charge), move_dir, (times_ran + 1), charge_damage), 2)
+	addtimer(CALLBACK(src, PROC_REF(charge), move_dir, (times_ran + 1), charge_damage), 3)
 
 /mob/living/simple_animal/hostile/abnormality/greed_king/proc/endCharge()
 	can_act = TRUE
@@ -286,13 +286,13 @@
 	NihilModeEnable()
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0))
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("So, you've finally shown yourself.")
+	say("所以，你终于展现了自己.")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("With the Jester gone, the world can finally be free of sadness.")
+	say("小丑走了，世界终于可以摆脱悲伤了.")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("We'll defeat you once and for all.")
+	say("我们会彻底打败你的.")
 	SLEEP_CHECK_DEATH(6 SECONDS)
-	say("For happiness!")
+	say("为了幸福!")
 	ChangeResistances(list(RED_DAMAGE = 0, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 1.5))
 
 /mob/living/simple_animal/hostile/abnormality/greed_king/proc/NihilModeEnable()
@@ -302,8 +302,8 @@
 	faction = list("neutral")
 
 /mob/living/simple_animal/hostile/abnormality/greed_king/proc/NihilIconUpdate()
-	name = "Magical Girl of Happiness"
-	desc = "A real magical girl!"
+	name = "幸福魔法少女"
+	desc = "真正的魔法少女!"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "kog"
 	pixel_x = -8
@@ -325,7 +325,7 @@
 	pixel_x = -16
 	base_pixel_x = -16
 	var/obj/structure/statue/petrified/magicalgirl/S = new(loc, src, statue_timer)
-	S.name = "Fossilized Greed"
+	S.name = "石化贪婪"
 	ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 	SLEEP_CHECK_DEATH(1)
 	S.icon = src.icon
@@ -356,7 +356,7 @@
 	if(!nihil_present)
 		return ..()
 	adjustBruteLoss(-999999)
-	visible_message(span_boldwarning("Oh no, [src] has been defeated!"))
+	visible_message(span_boldwarning("哦，不，[src]被打败了!"))
 	INVOKE_ASYNC(src, PROC_REF(petrify), 500000)
 	return FALSE
 
@@ -368,7 +368,7 @@
 
 //TODO: Make this do something
 /obj/structure/blissfragment
-	name = "brilliant bliss"
-	desc = "It looks like a large gemstone. Break it for a special buff."
+	name = "灿烂的幸福"
+	desc = "它看起来像一颗大宝石，打破它得到一个特殊的buff."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "bliss"
