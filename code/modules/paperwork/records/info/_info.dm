@@ -121,7 +121,7 @@ For escape damage you will have to get creative and figure out how dangerous it 
 		var/resist = abno_resistances[damage_type]
 		if(!resist)
 			resist = SimpleResistanceToText(GLOB.cached_abno_resistances[abno_type][damage_type])
-		info += "<h4>[capitalize(line)] Resistance:</h4> [resist]<br>"
+		info += "<h4>[capitalize(line)] 抗性:</h4> [resist]<br>"
 
 /obj/item/paper/fluff/info/AltClick(mob/living/user, obj/item/I)
 	return

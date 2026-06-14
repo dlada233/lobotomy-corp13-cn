@@ -1,8 +1,8 @@
 // Dawn
 /datum/ordeal/simplespawn/indigo_dawn
-	name = "The Dawn of Indigo"
-	flavor_name = "The Scouts"
-	announce_text = "They come searching for what they so desperately need."
+	name = "靛蓝色的黎明"
+	flavor_name = "进餐"
+	announce_text = "他们来寻找他们迫切需要的东西."
 	end_announce_text = "And they search in the dark."
 	announce_sound = 'sound/effects/ordeals/indigo_start.ogg'
 	end_sound = 'sound/effects/ordeals/indigo_end.ogg'
@@ -21,10 +21,9 @@
 
 // Noon
 /datum/ordeal/simplespawn/indigo_noon
-	name = "The Noon of Indigo"
-	flavor_name = "The Sweepers"
-	announce_text = "When night falls in the Backstreets, they will come."
-	end_announce_text = "When the sun rises anew, not a scrap will remain."
+	name = "靛蓝色的正午"
+	flavor_name = "清道夫"
+	announce_text = "夜幕降临之际，他们悄悄地来到后巷..."
 	announce_sound = 'sound/effects/ordeals/indigo_start.ogg'
 	end_sound = 'sound/effects/ordeals/indigo_end.ogg'
 	reward_percent = 0.15
@@ -38,10 +37,10 @@
 
 // Dusk
 /datum/ordeal/specificcommanders/indigo_dusk
-	name = "The Dusk of Indigo"
-	flavor_name = "Night in the Backstreets"
-	announce_text = "We still have some more fuel. The power of family is not a bad thing."
-	end_announce_text = "Dear neighbors, we could not finish the sweeping."
+	name = "靛蓝色的黄昏"
+	flavor_name = "后巷深宵"
+	announce_text = "壹贰玖壹伍柒陆贰叁肆捌."
+	end_announce_text = "陆捌叁零贰肆壹玖叁."
 	announce_sound = 'sound/effects/ordeals/indigo_start.ogg'
 	end_sound = 'sound/effects/ordeals/indigo_end.ogg'
 	level = 3

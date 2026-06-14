@@ -1,19 +1,19 @@
 /// Ego gifts should visually match the slot if possible. Some slots will render underneath others.
 
-#define HAT "Hat Slot" // Hats, above the head sprite.
-#define HELMET "Helmet Slot" // On or above the head. Possibly covering the head.
-#define EYE "Eye Slot" // Eye level, glasses or bandanas
-#define FACE "Face Slot" // Scars or face paint
-#define MOUTH_1 "Mouth Slot 1" // Typically a face mask of some sort
-#define MOUTH_2 "Mouth Slot 2" // Any other mouth accessory
-#define CHEEK "Cheek Slot" // Similar to face, but smaller.
-#define BROOCH "Brooch Slot" // badges, accessories on the torso
-#define NECKWEAR "Neckwear Slot" // Necklaces or similar
-#define LEFTBACK "Left Back Slot"
-#define RIGHTBACK "Right Back Slot"
-#define HAND_1 "Hand Slot 1" // Hand accessories
-#define HAND_2 "Hand Slot 2" // Usually, but not always gloves
-#define SPECIAL "Special/Other Slot"
+#define HAT "帽子" // Hats, above the head sprite.
+#define HELMET "头盔" // On or above the head. Possibly covering the head.
+#define EYE "眼部" // Eye level, glasses or bandanas
+#define FACE "面部" // Scars or face paint
+#define MOUTH_1 "嘴部1" // Typically a face mask of some sort
+#define MOUTH_2 "嘴部2" // Any other mouth accessory
+#define CHEEK "脸颊" // Similar to face, but smaller.
+#define BROOCH "胸针" // badges, accessories on the torso
+#define NECKWEAR "脖颈" // Necklaces or similar
+#define LEFTBACK "左背"
+#define RIGHTBACK "右背"
+#define HAND_1 "手部1" // Hand accessories
+#define HAND_2 "手部2" // Usually, but not always gloves
+#define SPECIAL "特殊/其他"
 
 /// Helper lists
 #define EGO_GIFT_BONUSES list("fortitude_bonus", "prudence_bonus", "temperance_bonus", "justice_bonus", \

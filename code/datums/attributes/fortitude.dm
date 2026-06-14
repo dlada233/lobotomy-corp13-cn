@@ -1,7 +1,7 @@
 /datum/attribute/fortitude
 	name = FORTITUDE_ATTRIBUTE
 	desc = "Attribute responsible for maximum health level."
-	affected_stats = list("Max Health")
+	affected_stats = list("最大HP")
 	initial_stat_value = DEFAULT_HUMAN_MAX_HEALTH
 
 /datum/attribute/fortitude/get_printed_level_bonus()

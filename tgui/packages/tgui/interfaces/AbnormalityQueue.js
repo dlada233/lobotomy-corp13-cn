@@ -14,19 +14,19 @@ export const AbnormalityQueue = (props, context) => {
 
   return (
     <Window
-      title="Abnormality Queue Console"
+      title="异想体提取管理"
       width={360}
       height={400}>
       <Window.Content>
         <Flex direction="column" mb={1}>
           <Section
-            title="Currently queued abnormality"
+            title="当前所选异想体"
             bold
           ><Box as="span" color={data.colorcurrent}>[{threatcurrent}]</Box> {current}
           </Section>
         </Flex>
         <Section
-          title="Available extraction options"
+          title="可用提取选项"
           scrollable>
           <Flex direction="column" mr={7}>
             <Flex
@@ -50,14 +50,13 @@ export const AbnormalityQueue = (props, context) => {
           </Flex>
         </Section>
         <Section
-          title="Dangerous Buttons"
+          title="危险按钮"
           scrollable>
           <Flex direction="column" mr={7}>
             <Flex.Item grow={1} mb={0.3}>
               <Box
                 bold>
-                Lobotomy Corporation is not responsible for any lynching or
-                Manager death as a result of using of the below buttons.
+                L公司对因使用下方按钮而导致的私刑和主管死亡概不负责.
               </Box>
             </Flex.Item>
             <Flex.Item grow={1} mb={0.3}>
@@ -65,7 +64,7 @@ export const AbnormalityQueue = (props, context) => {
                 icon="bomb"
                 fluid
                 bold
-                content={"Lets Roll"}
+                content={"随机"}
                 color="green"
                 onClick={() => act("lets_roll")} />
             </Flex.Item>
@@ -74,7 +73,7 @@ export const AbnormalityQueue = (props, context) => {
                 icon="bomb"
                 fluid
                 bold
-                content={"Fuck It Lets Roll"}
+                content={"不可更改的随机"}
                 color="yellow"
                 onClick={() => act("fuck_it_lets_roll")} />
             </Flex.Item>
@@ -84,7 +83,7 @@ export const AbnormalityQueue = (props, context) => {
                   icon="bomb"
                   fluid
                   bold
-                  content={"Hardcore Fuck It Lets Roll"}
+                  content={"超级随机"}
                   color="red"
                   onClick={() => act("hardcore_fuck_it_lets_roll")} />
               </Flex.Item>

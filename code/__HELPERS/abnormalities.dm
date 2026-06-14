@@ -2,42 +2,42 @@
 /proc/SimpleResistanceToText(resist = 1)
 	switch(resist)
 		if(0 to 0) //Just putting 0 doesn't work.
-			return "Immune"
+			return "免疫"
 		if(1 to 1)
-			return "Normal"
+			return "一般"
 		if(-INFINITY to 0)
-			return "Absorbed"
+			return "吸收"
 		if(0 to 0.5)
-			return "Resistant"
+			return "极高"
 		if(0.5 to 1)
-			return "Endured"
+			return "较高"
 		if(1 to 1.5)
-			return "Weak"
+			return "较低"
 		if(2 to INFINITY)
-			return "Fatal"
+			return "致命弱点"
 		if(1.5 to 2)
-			return "Vulnerable"
+			return "极低"
 	return "Unknown ([resist])"
 
 /// Returns text description for combat damage
 /proc/SimpleDamageToText(damage = 10)
 	switch(damage)
 		if(0 to 0)
-			return "None"
+			return "无"
 		if(-INFINITY to 0)
-			return "Healing"
+			return "治愈性"
 		if(0 to 8)
-			return "Very Low"
+			return "非常低"
 		if(8 to 15)
-			return "Low"
+			return "低"
 		if(15 to 25)
-			return "Moderate"
+			return "中"
 		if(25 to 35)
-			return "High"
+			return "高"
 		if(50 to INFINITY)
-			return "Extreme"
+			return "极高"
 		if(35 to 50)
-			return "Very High"
+			return "非常高"
 
 	return "Unknown ([damage])"
 
@@ -45,21 +45,21 @@
 /proc/SimpleWorkDamageToText(damage = 1)
 	switch(damage)
 		if(0 to 0)
-			return "None"
+			return "无"
 		if(-INFINITY to 0)
-			return "Healing"
+			return "治愈性"
 		if(0 to 2)
-			return "Very Low"
+			return "非常低"
 		if(2 to 4)
-			return "Low"
+			return "低"
 		if(4 to 5)
-			return "Moderate"
+			return "中"
 		if(5 to 6)
-			return "High"
+			return "高"
 		if(8 to INFINITY)
-			return "Extreme"
+			return "极高"
 		if(6 to 7)
-			return "Very High"
+			return "非常高"
 
 	return "Unknown ([damage])"
 
@@ -67,15 +67,15 @@
 /proc/SimpleSuccessRateToText(rate = 50)
 	switch(rate)
 		if(-INFINITY to 10)
-			return "Very Low"
+			return "非常低"
 		if(10 to 30)
-			return "Low"
+			return "低"
 		if(30 to 50)
-			return "Common"
+			return "一般"
 		if(70 to INFINITY)
-			return "Very High"
+			return "非常高"
 		if(50 to 70)
-			return "High"
+			return "高"
 
 	return "Unknown ([rate])"
 

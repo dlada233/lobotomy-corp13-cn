@@ -1,9 +1,9 @@
 // Dawn
 /datum/ordeal/gold_dawn
-	name = "The Dawn of Gold"
-	flavor_name = "Sky, Wind, Star and Poem"
-	announce_text = "Our choice could be hope or despair as the sun comes."
-	end_announce_text = "Only now can you understand the radiance of Dawn."
+	name = "金色的黎明"
+	flavor_name = "天空、晨风、星光、诗歌"
+	announce_text = "当太阳升起，我们可能选择了希望，也可能是绝望."
+	end_announce_text = "只有现在你才能明白黎明的光辉."
 	level = 1
 	reward_percent = 0.1
 	announce_sound = 'sound/effects/ordeals/gold_start.ogg'
@@ -51,10 +51,10 @@
 
 //Noon
 /datum/ordeal/boss/gold_noon
-	name = "The Noon of Gold"
-	flavor_name = "A Single Candle"
-	announce_text = "Our light blazed brightly in the sky, the stars that marked our starting fell away."
-	end_announce_text = "Noon has come to pass. The dream has been shattered; the tower has collapsed."
+	name = "金色的正午"
+	flavor_name = "蜡炬成灰"
+	announce_text = "我们的光芒在天空中闪耀，那些标记着我们起点的星星逐渐消逝."
+	end_announce_text = "正午过去，梦想破灭了，那座塔轰然倒塌."
 	level = 2
 	reward_percent = 0.15
 	announce_sound = 'sound/effects/ordeals/gold_start.ogg'
@@ -83,10 +83,10 @@
 
 //Dusk
 /datum/ordeal/gold_dawn/gold_dusk
-	name = "The Dusk of Gold"
-	flavor_name = "The Life and the Death"
-	announce_text = "Stay vigilant, stay resolved. Let our minds be strong when dusk falls."
-	end_announce_text = "They do not have the time to think about the terror before the setting of the sun."
+	name = "金色的黄昏"
+	flavor_name = "生存还是死亡"
+	announce_text = "保持警惕，保持决心，让我们的心灵在黄昏时坚强起来."
+	end_announce_text = "他们没时间在日落之前去想那些恐怖的事."
 	level = 3
 	reward_percent = 0.2
 	boss_type = list(/mob/living/simple_animal/hostile/ordeal/centipede_corrosion)
@@ -120,10 +120,10 @@
 
 //Midnight TODO: Finish and add the new mobs - Currently uses "old" version
 /datum/ordeal/gold_dawn/gold_midnight
-	name = "The Midnight of Gold"
-	flavor_name = "A Star-Counting Night"
-	announce_text = "The night has come, with our ignorance as its origin. No one shall be redeemed at its end."
-	end_announce_text = "I try calling each star something beautiful."
+	name = "金色的午夜"
+	flavor_name = "数星星"
+	announce_text = "夜幕降临，无知是其根源，无人能在它的终末得到救赎"
+	end_announce_text = "我试着把每颗星星都成为美丽之物."
 	level = 4
 	reward_percent = 0.25
 	end_sound = 'sound/effects/ordeals/gold_end_special.ogg' // I had 3 sound effects so I guess i'll use one here.

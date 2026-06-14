@@ -50,62 +50,62 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	var/list/bullet_types = alist(
 		MANAGER_HP_BULLET = list(
 			"name" = HP_BULLET,
-			"desc" = "These bullets speed up the recovery of an employee.",
+			"desc" = "恢复员工HP.",
 			"icon_state" = "green",
 		),
 
 		MANAGER_SP_BULLET = list(
 			"name" = SP_BULLET,
-			"desc" = "Bullets that inject an employee with diluted Enkephalin.",
+			"desc" = "恢复员工SP.",
 			"icon_state" = "blue",
 		),
 
 
 		MANAGER_RED_BULLET = list(
 			"name" = RED_BULLET,
-			"desc" = "Attach a RED DAMAGE forcefield onto a employee.",
+			"desc" = "给予员工红色伤害护盾.",
 			"icon_state" = "red",
 		),
 
 		MANAGER_WHITE_BULLET = list(
 			"name" = WHITE_BULLET,
-			"desc" = "Attach a WHITE DAMAGE forcefield onto a employee.",
+			"desc" = "给予员工白色伤害护盾.",
 			"icon_state" = "white",
 		),
 
 		MANAGER_BLACK_BULLET = list(
 			"name" = BLACK_BULLET,
-			"desc" = "Attach a BLACK DAMAGE forcefield onto a employee.",
+			"desc" = "给予员工黑色伤害护盾.",
 			"icon_state" = "black",
 		),
 
 		MANAGER_PALE_BULLET = list(
 			"name" = PALE_BULLET,
-			"desc" = "Attach a PALE DAMAGE forcefield onto a employee.",
+			"desc" = "给予员工青色伤害护盾.",
 			"icon_state" = "pale",
 		),
 
 		MANAGER_YELLOW_BULLET = list(
 			"name" = YELLOW_BULLET,
-			"desc" = "Overload a abnormalities Qliphoth Control to reduce their movement speed.",
+			"desc" = "降低异想体的移动速度.",
 			"icon_state" = "yellow",
 		),
 
 		MANAGER_DUAL_BULLET = list(
 			"name" = DUAL_BULLET,
-			"desc" = "These bullets speed up the recovery of an employee's HP and SP.",
+			"desc" = "同时恢复员工的HP与SP.",
 			"icon_state" = "cyan",
 		),
 
 		MANAGER_QUAD_BULLET = list(
 			"name" = QUAD_BULLET,
-			"desc" = "Attach a durable forcefield that blocks all 4 damage types onto a employee.",
+			"desc" = "添加持久且能抵御所有伤害的护盾.",
 			"icon_state" = "rainbow",
 		),
 
 		MANAGER_KILL_BULLET = list(
 			"name" = KILL_BULLET,
-			"desc" = "These bullets disintegrate an employee, leaving only their items behind.",
+			"desc" = "处决员工，只留下物品.",
 			"icon_state" = "kill",
 		),
 
@@ -135,7 +135,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 /obj/machinery/computer/camera_advanced/manager/examine(mob/user)
 	. = ..()
 	if(ammo)
-		. += span_notice("It has [round(ammo)] bullets loaded.")
+		. += span_notice("它装载有[round(ammo)]发子弹.")
 
 /obj/machinery/computer/camera_advanced/manager/GrantActions(mob/living/carbon/user) //sephirah console breaks off from this branch so any edits you want on both must be done manually.
 	..()
@@ -180,7 +180,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 /obj/machinery/computer/camera_advanced/manager/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/managerbullet) && ammo <= GetFacilityUpgradeValue(UPGRADE_BULLET_COUNT))
 		ammo++
-		to_chat(user, span_notice("You load [O] in to the [src]. It now has [ammo] bullets stored."))
+		to_chat(user, span_notice("你装载[O]到[src]. 现在有[ammo]发子弹储存."))
 		playsound(get_turf(src), 'sound/weapons/kenetic_reload.ogg', 10, 0, 3)
 		qdel(O)
 		return
@@ -200,7 +200,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	// No bullets :(
 	if(ammo < bullet_cost[bullet_type])
 		playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-		to_chat(source, span_warning("AMMO RESERVE EMPTY."))
+		to_chat(source, span_warning("子弹用光."))
 		return
 
 	// AOE bullets
@@ -215,87 +215,87 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 				success = TRUE
 		if(success)
 			ammo -= bullet_cost[bullet_type]
-			to_chat(source, span_warning("<b>[ammo]</b> bullets remaining."))
+			to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
 		return
 
 	// Non-AOE
 	if(ishuman(clicked_atom) && ClickedEmployee(source, clicked_atom))
 		ammo -= bullet_cost[bullet_type]
-		to_chat(source, span_warning("<b>[ammo]</b> bullets remaining."))
+		to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
 		return
 	if(ishostile(clicked_atom) && ClickedAbno(source, clicked_atom))
 		ammo -= bullet_cost[bullet_type]
-		to_chat(source, span_warning("<b>[ammo]</b> bullets remaining."))
+		to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
 		return
 
 /obj/machinery/computer/camera_advanced/manager/proc/ClickedEmployee(mob/living/owner, mob/living/carbon/human/H) //contains carbon copy code of fire action
 	if(!istype(H))
-		to_chat(owner, span_warning("NO VALID TARGET."))
+		to_chat(owner, span_warning("无效目标."))
 		return FALSE
 
 	switch(bullet_type)
 		if(MANAGER_HP_BULLET)
 			if(H.health >= H.maxHealth)
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET'S BODY DOESN'T NEED HEALING."))
+				to_chat(owner, span_warning("ERROR: 目标身体无需恢复."))
 				return FALSE
 			H.adjustBruteLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*H.maxHealth)
 		if(MANAGER_SP_BULLET)
 			if(H.sanity_lost)
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET'S MIND IS TOO UNSTABLE."))
+				to_chat(owner, span_warning("ERROR: 目标精神太过不稳定."))
 				return FALSE
 			if(H.sanityhealth >= H.maxSanity)
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET'S MIND DOESN'T NEED HEALING."))
+				to_chat(owner, span_warning("ERROR: 目标精神无需稳定."))
 				return FALSE
 			H.adjustSanityLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*H.maxSanity)
 		if(MANAGER_DUAL_BULLET)
 			if(H.sanity_lost)
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET'S MIND IS TOO UNSTABLE."))
+				to_chat(owner, span_warning("ERROR: 目标精神太过不稳定."))
 				return FALSE
 			if((H.health >= H.maxHealth) && (H.sanityhealth >= H.maxSanity))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET'S BODY DOESN'T NEED HEALING."))
+				to_chat(owner, span_warning("ERROR: 目标身体无需治愈."))
 				return FALSE
 			H.adjustBruteLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*H.maxHealth)
 			H.adjustSanityLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*H.maxSanity)
 		if(MANAGER_RED_BULLET)
 			if (H.has_status_effect(/datum/status_effect/interventionshield))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET HAS THE SAME SHIELD TYPE ALREADY."))
+				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
 				return FALSE
 			H.apply_shield(/datum/status_effect/interventionshield, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
 		if(MANAGER_WHITE_BULLET)
 			if (H.has_status_effect(/datum/status_effect/interventionshield/white))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET HAS THE SAME SHIELD TYPE ALREADY."))
+				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
 				return FALSE
 			H.apply_shield(/datum/status_effect/interventionshield/white, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
 		if(MANAGER_BLACK_BULLET)
 			if (H.has_status_effect(/datum/status_effect/interventionshield/black))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET HAS THE SAME SHIELD TYPE ALREADY."))
+				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
 				return FALSE
 			H.apply_shield(/datum/status_effect/interventionshield/black, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
 		if(MANAGER_PALE_BULLET)
 			if (H.has_status_effect(/datum/status_effect/interventionshield/pale))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET HAS THE SAME SHIELD TYPE ALREADY."))
+				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
 				return FALSE
 			H.apply_shield(/datum/status_effect/interventionshield/pale, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
 		if(MANAGER_QUAD_BULLET)
 			if (H.has_status_effect(/datum/status_effect/interventionshield/quad))
 				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: TARGET HAS THE SAME SHIELD TYPE ALREADY."))
+				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
 				return FALSE
 			H.apply_shield(/datum/status_effect/interventionshield/quad, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH) * 2)
 		if(MANAGER_YELLOW_BULLET)
 			if(!owner.faction_check_mob(H))
 				if (H.has_status_effect(/datum/status_effect/qliphothoverload))
 					playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-					to_chat(owner, span_warning("ERROR: TARGET IS CURRENTLY EFFECTED."))
+					to_chat(owner, span_warning("ERROR: 目标当前正受影响."))
 					return FALSE
 				H.apply_status_effect(/datum/status_effect/qliphothoverload)
 				if (GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
@@ -308,7 +308,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 				return TRUE
 			return FALSE
 		else
-			to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE."))
+			to_chat(owner, span_warning("ERROR: 子弹初始化失败."))
 			return FALSE
 	playsound(get_turf(src), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
 	playsound(get_turf(H), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
@@ -317,19 +317,19 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 /obj/machinery/computer/camera_advanced/manager/proc/Execute(mob/living/owner, mob/living/carbon/human/H)
 	set waitfor = FALSE
 	if(!GLOB.execution_enabled) //Failsafe in case admins turn off the bullets due to a rampaging manager
-		to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE - AUTHORIZATION HAS BEEN REVOKED."))
+		to_chat(owner, span_warning("ERROR: 子弹初始化失败 - 授权已被撤销."))
 		return FALSE
 	if(owner.mind.assigned_role != "Manager") //You aren't the manager!
-		to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE - ONLY AUTHORIZED TO THE MANAGER."))
+		to_chat(owner, span_warning("ERROR: 子弹初始化失败 - 仅主管授权可用."))
 		return FALSE
 	if(H.mind)
 		if(H.mind.assigned_role == "Sephirah" || H.mind.assigned_role == "Main Office Representative") //Too important to execute
-			to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE - TARGET ENTITY EXCEEDS USER AUTHORITY."))
+			to_chat(owner, span_warning("ERROR: 子弹初始化失败 - 目标实体超出用户权限范围."))
 			return FALSE
 	if(SSmaptype.maptype == "skeld")
-		to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE - MALFUNCTION IN EXECUTION BULLET ACTIVATION."))
+		to_chat(owner, span_warning("ERROR: 子弹初始化失败 - 处决弹激活故障."))
 		return FALSE
-	switch(tgui_alert(owner,"Really kill [H]? Admins will be notified of this action and you will be responsible for the consequences.","Execution bullet ready to fire",list("Yes", "No"), 3 SECONDS))
+	switch(tgui_alert(owner,"确定处决[H]? 管理员将受到该操作的通知，你需要为可能的后果负责.","处决单确认开火",list("Yes", "No"), 3 SECONDS))
 		if("Yes")
 			log_admin("[key_name(owner)] has fired an execution bullet at player [key_name(H)] who was playing as [H].")
 			playsound(get_turf(src), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
@@ -339,19 +339,19 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 			QDEL_IN(H, 1)
 			return TRUE
 		if("No")
-			to_chat(owner, span_nicegreen("You decide to allow [H] to live another day..."))
+			to_chat(owner, span_nicegreen("你决定让[H]再多活一会..."))
 			return FALSE
 	return FALSE //prevents bullet loss on indecisiveness
 
 /obj/machinery/computer/camera_advanced/manager/proc/ClickedAbno(mob/living/owner, mob/living/simple_animal/hostile/H)
 	if(!istype(H))
-		to_chat(owner, span_warning("NO VALID TARGET."))
+		to_chat(owner, span_warning("无效目标."))
 		return FALSE
 
 	if(bullet_type == MANAGER_YELLOW_BULLET)
 		if (H.has_status_effect(/datum/status_effect/qliphothoverload))
 			playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-			to_chat(owner, span_warning("ERROR: TARGET IS CURRENTLY EFFECTED."))
+			to_chat(owner, span_warning("ERROR: 目标当前正受影响."))
 			return FALSE
 		H.apply_status_effect(/datum/status_effect/qliphothoverload)
 		if (GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
@@ -360,7 +360,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 		playsound(get_turf(H), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
 		return TRUE
 
-	to_chat(owner, span_warning("ERROR: BULLET INITIALIZATION FAILURE."))
+	to_chat(owner, span_warning("ERROR: 子弹初始化失败."))
 	return FALSE
 
 /obj/machinery/computer/camera_advanced/manager/proc/ManagerExaminate(mob/living/user, atom/clicked_atom)
@@ -370,19 +370,19 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 		var/mob/living/carbon/human/H = clicked_atom
 
 		if (user.mind.assigned_role == "Manager" && GetFacilityUpgradeValue(UPGRADE_ARCHITECT_2))
-			to_chat(user, span_notice("Agent health [H.health]."))
-			to_chat(user, span_notice("Agent sanity [H.sanityhealth]."))
-		to_chat(user, span_notice("Agent level [get_user_level(H)]."))
-		to_chat(user, span_notice("Fortitude level [get_attribute_level(H, FORTITUDE_ATTRIBUTE)]."))
-		to_chat(user, span_notice("Prudence level [get_attribute_level(H, PRUDENCE_ATTRIBUTE)]."))
-		to_chat(user, span_notice("Temperance level [get_attribute_level(H, TEMPERANCE_ATTRIBUTE)]."))
-		to_chat(user, span_notice("Justice level [get_attribute_level(H, JUSTICE_ATTRIBUTE)]."))
+			to_chat(user, span_notice("员工HP [H.health]."))
+			to_chat(user, span_notice("员工SP [H.sanityhealth]."))
+		to_chat(user, span_notice("员工等级 [get_user_level(H)]."))
+		to_chat(user, span_notice("勇气等级 [get_attribute_level(H, FORTITUDE_ATTRIBUTE)]."))
+		to_chat(user, span_notice("谨慎等级 [get_attribute_level(H, PRUDENCE_ATTRIBUTE)]."))
+		to_chat(user, span_notice("自律等级 [get_attribute_level(H, TEMPERANCE_ATTRIBUTE)]."))
+		to_chat(user, span_notice("正义等级 [get_attribute_level(H, JUSTICE_ATTRIBUTE)]."))
 		return
 
 	if(istype(clicked_atom, /mob/living/simple_animal))
 		var/mob/living/simple_animal/monster = clicked_atom
 		if (user.mind.assigned_role == "Manager" && GetFacilityUpgradeValue(UPGRADE_ARCHITECT_2))
-			var/message = "[clicked_atom]'s current health is : [monster.health] \n[clicked_atom]'s resistances are :"
+			var/message = "[clicked_atom]的当前HP为 : [monster.health] \n[clicked_atom]'s resistances are :"
 
 			var/list/damage_types = list(RED_DAMAGE, WHITE_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
 			for(var/i in damage_types)
@@ -394,7 +394,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 			to_chat(user, span_notice(message))
 			return
-		var/message = "[clicked_atom]'s resistances are :"
+		var/message = "[clicked_atom]的抗性为 :"
 
 		var/list/damage_types = list(RED_DAMAGE, WHITE_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
 		for(var/i in damage_types)
@@ -413,7 +413,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 			qdel(V)
 			return
 		if(current_commands >= max_commands)
-			to_chat(C, span_warning("COMMAND CAPACITY REACHED."))
+			to_chat(C, span_warning("到达命令上限."))
 			return
 		playsound(get_turf(src), 'sound/machines/terminal_success.ogg', 8, 3, 3)
 		playsound(get_turf(T), 'sound/machines/terminal_success.ogg', 8, 3, 3)
@@ -423,7 +423,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 			current_commands++
 			RegisterSignal(thing_spawned, COMSIG_PARENT_QDELETING, PROC_REF(ReduceCommandAmount))
 		else
-			to_chat(C, span_warning("ERROR: Calibration Faliure."))
+			to_chat(C, span_warning("ERROR: 校准失败."))
 		CommandTimer()
 
 /obj/machinery/computer/camera_advanced/manager/proc/OnCtrlShiftClick(mob/living/user, atom/target)
@@ -488,26 +488,26 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 //Proc for following a target.
 /obj/machinery/computer/camera_advanced/manager/proc/MobTracking(mob/living/target)
 	if(!istype(target))
-		to_chat(current_user, span_warning("ERROR: Invalid Tracking Target."))
+		to_chat(current_user, span_warning("ERROR: 无效的追踪目标."))
 		return
 
 	if(!target || !target.can_track(current_user))
-		to_chat(current_user, span_warning("Target is not near any active cameras."))
+		to_chat(current_user, span_warning("目标附近没有可用摄像机."))
 		return
 
-	to_chat(current_user, span_notice("Now tracking [target.get_visible_name()] on camera."))
+	to_chat(current_user, span_notice("正在追踪 [target.get_visible_name()]."))
 	if(eyeobj)
 		//Orbit proc is essentially follow.
 		eyeobj.orbit(target)
 	else
-		to_chat(current_user, span_notice("ERROR: Camera Eye Unresponsive."))
+		to_chat(current_user, span_notice("ERROR: 摄像机无响应."))
 
 	/*----------\
 	|Action Code|
 	\----------*/
 /datum/action/innate/cyclemanagerbullet
-	name = "HP-N bullet"
-	desc = "These bullets speed up the recovery of an employee."
+	name = "HP-N 子弹"
+	desc = "能够加快员工的恢复速度."
 	icon_icon = 'icons/obj/manager_bullets.dmi'
 	button_icon_state = "green"
 
@@ -560,7 +560,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	return X.OnHotkeyClick(C, pick(valid_targets))
 
 /datum/action/innate/cyclecommand
-	name = "Cycle Command"
+	name = "切换命令"
 	desc = "Welfare apologizes for any complications with the technology."
 	icon_icon = 'ModularTegustation/Teguicons/lc13icons.dmi'
 	button_icon_state = "Move_here_wagie"
@@ -575,38 +575,38 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	var/obj/machinery/computer/camera_advanced/manager/X = target
 	switch(X.command_type)
 		if(0) //if 0 change to 1
-			to_chat(owner, span_notice("MOVE IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("移动图像已准备."))
 			button_icon_state = button_icon1
 			X.AlterCommandType(1)
 		if(1)
-			to_chat(owner, span_notice("WARN IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("警告图像已准备."))
 			button_icon_state = button_icon2
 			X.AlterCommandType(1)
 		if(2)
-			to_chat(owner, span_notice("GAURD IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("守卫图像已准备."))
 			button_icon_state = button_icon3
 			X.AlterCommandType(1)
 		if(3)
-			to_chat(owner, span_notice("HEAL IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("治疗图像已准备."))
 			button_icon_state = button_icon4
 			X.AlterCommandType(1)
 		if(4)
-			to_chat(owner, span_notice("FIGHT_LIGHT IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("低烈度战斗图像已准备."))
 			button_icon_state = button_icon5
 			X.AlterCommandType(1)
 		if(5)
-			to_chat(owner, span_notice("FIGHT_HEAVY IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("高烈度战斗图像已准备."))
 			button_icon_state = button_icon6
 			X.AlterCommandType(1)
 		else
 			X.AlterCommandType(-5)
-			to_chat(owner, span_notice("MOVE IMAGE INITIALIZED."))
+			to_chat(owner, span_notice("移动图像已准备."))
 			button_icon_state = button_icon1
 	UpdateButtonIcon()
 
 /datum/action/innate/managercommand
-	name = "Deploy Command"
-	desc = "Hotkey = Alt + Click"
+	name = "部署命令"
+	desc = "快捷键 = Alt + 左键"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "deploy_box"
 
@@ -626,8 +626,8 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 // Records core reward
 /datum/action/innate/swap_cells
-	name = "Swap Abnormality Cells"
-	desc = "Hotkey = Ctrl + Shift + Click"
+	name = "交换异想体收容单元"
+	desc = "Hotkey = Ctrl + Shift + 左键"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "vortex_ff_off"
 	/// Currently selected abnormality; Next activation will do the swap
@@ -700,8 +700,8 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 //Manager Camera Tracking Code
 /datum/action/innate/manager_track
-	name = "Follow Creature"
-	desc = "Track a creature."
+	name = "跟随生物"
+	desc = "追踪一个生物."
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "meson"
 
@@ -712,7 +712,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	var/mob/camera/ai_eye/remote/xenobio/E = C.remote_control
 	var/obj/machinery/computer/camera_advanced/manager/X = E.origin
 
-	var/target_name = input(C, "Choose who you want to track", "Tracking") as null|anything in X.TrackableCreatures()
+	var/target_name = input(C, "选择追踪对象", "追踪") as null|anything in X.TrackableCreatures()
 	///Complicated stuff
 	var/list/trackeable = list()
 	trackeable += X.track.humans + X.track.others
@@ -733,7 +733,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 // it was safer to make this downgraded form.
 
 /obj/machinery/computer/camera_advanced/manager/sephirah //crude and lazy but i think it may work.
-	name = "sephirah camera console"
+	name = "sephirah监控终端"
 	icon_screen = "camera2"
 	ammo = 0
 
@@ -789,7 +789,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 #undef MANAGER_KILL_BULLET
 
 /obj/machinery/computer/camera_advanced/manager/representative
-	name = "representative camera console"
+	name = "代表监控终端"
 	desc = "A computer used for remotely monitoring a facility."
 	icon_screen = "camera1"
 	icon_keyboard = "security_key"

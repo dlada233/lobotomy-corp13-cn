@@ -1,5 +1,5 @@
 /datum/ordeal/fixers
-	name = "Fixers"
+	name = "收尾人"
 	announce_text = "This isn't supposed to happen, but they have come for you. Might want to report this to central command."
 	can_run = FALSE
 	delay = 1 // Goes back-to-back
@@ -31,11 +31,10 @@
 
 // Dawn
 /datum/ordeal/fixers/white_dawn
-	name = "The Dawn of White"
-	flavor_name = "A Request"
-	announce_text = "From meaningless errands, to exploration, to contract killing; they will do whatever you wish, \
-	so long as you pay them sufficiently."
-	end_announce_text = "They work in the Offices, Syndicates, and the Wings. Their tasks vary from banal things to something truly sublime."
+	name = "惨白的黎明"
+	flavor_name = "委托"
+	announce_text = "从烦琐的跑腿，勘察，到雇凶杀人。只要付得起钱，他们就会接下任何工作."
+	end_announce_text = "他们受托于“事务所”，“辛迪加”，甚至是“翼”，从微乎其微的琐事，到惨绝人寰的要事，他们，无所不能."
 	can_run = TRUE
 	level = 6
 	reward_percent = 0.1
@@ -51,23 +50,20 @@
 		N.potential_types -= dawn_type
 
 /datum/ordeal/fixers/white_noon
-	name = "The Noon of White"
-	flavor_name = "Armaments"
-	announce_text = "They search constantly, be it for the Backers of the Wings, the Inventions of the Backstreets, \
-	the Reliques of the Outskirts, the Artefacts of the Ruins..."
-	end_announce_text = "As they have always done, they will overcome all that impedes them, weapons in hand."
+	name = "惨白的正午"
+	flavor_name = "武器"
+	announce_text = "他们无休无止地搜罗着精良的武器，无论是“翼”的科技，还是“后巷”的发明，亦或是“郊区”的战利品，乃至“废墟”的遗物..."
+	end_announce_text = "他们的所作所为，无非是紧握手中的武器，一如既往地用暴力解决眼中的一切."
 	can_run = TRUE
 	level = 7
 	reward_percent = 0.15
 	mobs_amount = 2
 
 /datum/ordeal/fixers/white_dusk
-	name = "The Dusk of White"
-	flavor_name = "The Fixers"
-	announce_text = "The colossal tower of light was titled The Library. It is only natural for the Fixers \
-	to be drawn to such a mystic place of life and death."
-	end_announce_text = "Bookhunters… One day they will rummage through The Library reigned over by the Pale Librarian. \
-	They are what shall become of the Fixers."
+	name = "惨白的黄昏"
+	flavor_name = "收尾人"
+	announce_text = "被称作“图书馆”的光之高塔拔地而起，那片承载着生与死的秘境自然会吸引“收尾人”的驻足."
+	end_announce_text = "“收尾人”，书籍猎手的前身，终将葬身于“惨白管理者”统治下的“图书馆”中."
 	can_run = TRUE
 	level = 8
 	reward_percent = 0.2
@@ -81,12 +77,10 @@
 
 // Midnight
 /datum/ordeal/white_midnight
-	name = "The Midnight of White"
-	flavor_name = "The Claw"
-	announce_text = "To know and manipulate all the secrets of the world; that is the \
-	privilege of the Head, the Eye, and the Claws. It is their honor and absolute power."
-	end_announce_text = "No one dares to stand against them. As long as they exist, \
-	the tale of the Nest will never reach its close."
+	name = "惨白的午夜"
+	flavor_name = "爪牙"
+	announce_text = "将世界的奥秘玩弄于股掌之间，乃是“首脑”，“眼线”与“爪牙”至高无上的特权."
+	end_announce_text = "他们无人能挡，“巢”与他们的故事永不落幕."
 	level = 9
 	delay = 1
 	random_delay = FALSE

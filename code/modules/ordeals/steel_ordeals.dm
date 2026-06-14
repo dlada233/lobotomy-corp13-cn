@@ -1,8 +1,8 @@
 /datum/ordeal/simplespawn/steel_dawn
-	name = "The Dawn of Steel"
-	flavor_name = "Metamorphosis"
-	announce_text = "The augmentation... I don’t regret it. One downside, though, is that I won’t ever be able to return to civilian life."
-	end_announce_text = "This... This is what a war is. I was wholly unqualified."
+	name = "钢铁的黎明"
+	flavor_name = "虫化"
+	announce_text = "虫化...我对此毫不后悔. 即便再也没法作为常人."
+	end_announce_text = "这...这就是战争，我完全不够格."
 	announce_sound = 'sound/effects/ordeals/steel_start.ogg'
 	end_sound = 'sound/effects/ordeals/steel_end.ogg'
 	level = 1
@@ -18,10 +18,10 @@
 
 
 /datum/ordeal/simplecommander/steel_noon
-	name = "The Noon of Steel"
-	flavor_name = "War Machine"
-	announce_text = "I’ll fight my enemies without hesitation. I’d made up my mind the day I was honored with an opportunity to get the modification procedure."
-	end_announce_text = "Why are you running? You should raise G Corp’s banner and take the lead on the frontlines!"
+	name = "钢铁的正午"
+	flavor_name = "战争之虫"
+	announce_text = "我将毫不犹豫地与敌人战斗. 在我光荣地得到虫化手术那天起就已下定决心."
+	end_announce_text = "你为什么在逃跑? 你应该抗起G公司的旗帜，在前线冲锋陷阵!"
 	announce_sound = 'sound/effects/ordeals/steel_start.ogg'
 	end_sound = 'sound/effects/ordeals/steel_end.ogg'
 	level = 2
@@ -36,10 +36,10 @@
 
 
 /datum/ordeal/simplecommander/steel_dusk
-	name = "The Dusk of Steel"
-	flavor_name = "The Dogs of War"
-	announce_text = "If we lose this war we would would be cast to the streets, seen as less than human by even the rats."
-	end_announce_text = "In the end... We've become nothing but disgusting pests."
+	name = "钢铁的黄昏"
+	flavor_name = "虫之战争"
+	announce_text = "如果我们输掉了这场战争，就被会扔到街上，被视为连老鼠都不如的非人."
+	end_announce_text = "最后...我们还是变成了讨人厌的害虫."
 	announce_sound = 'sound/effects/ordeals/steel_start.ogg'
 	end_sound = 'sound/effects/ordeals/steel_end.ogg'
 	level = 3

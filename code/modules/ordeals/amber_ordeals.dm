@@ -1,9 +1,9 @@
 // Dawn
 /datum/ordeal/simplespawn/amber_dawn
-	name = "The Dawn of Amber"
-	flavor_name = "The Perfect Meal"
-	announce_text = "A perfect meal, an excellent substitute."
-	end_announce_text = "We ate incessantly to live. The inevitable diminution, the waste..."
+	name = "琥珀色的黎明"
+	flavor_name = "新鲜的食物"
+	announce_text = "食物—新鲜，替代品—很好."
+	end_announce_text = "我们—生存，我们—吃，我们—腐烂，成为—食物..."
 	level = 1
 	reward_percent = 0.1
 	announce_sound = 'sound/effects/ordeals/amber_start.ogg'
@@ -18,10 +18,10 @@
 
 // Dusk
 /datum/ordeal/simplespawn/amber_dusk
-	name = "The Dusk of Amber"
-	flavor_name = "Food Chain"
-	announce_text = "To accustom oneself to the taste was an inevitable process."
-	end_announce_text = "We could live. We could continue eating."
+	name = "琥珀色的黄昏"
+	flavor_name = "食物链"
+	announce_text = "品尝—味道，避免—不能."
+	end_announce_text = "我们—生存. 我们—吃—吃—吃—吃..."
 	level = 3
 	reward_percent = 0.2
 	announce_sound = 'sound/effects/ordeals/amber_start.ogg'
@@ -35,10 +35,10 @@
 
 // Midnight
 /datum/ordeal/amber_midnight
-	name = "The Midnight of Amber"
-	flavor_name = "Eternal Meal"
-	announce_text = "They fought amongst themselves to eat the others."
-	end_announce_text = "And the stronger side survived. That, simply, is the story."
+	name = "琥珀色的午夜"
+	flavor_name = "永恒的盛宴"
+	announce_text = "你—撕扯—我, 我—吃掉—你."
+	end_announce_text = "弱者—被吃, 永远—不变."
 	level = 4
 	reward_percent = 0.25
 	announce_sound = 'sound/effects/ordeals/amber_start.ogg'

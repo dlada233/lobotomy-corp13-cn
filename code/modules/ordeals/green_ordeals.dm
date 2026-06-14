@@ -1,11 +1,10 @@
 // Dawn
 // Once again, amber dawn works for everything
 /datum/ordeal/simplespawn/green_dawn
-	name = "The Dawn of Green"
-	flavor_name = "Doubt"
-	announce_text = "One day, a question crossed through my mind. Where do we come from? \
-	We were given life and left in this world against our own volition."
-	end_announce_text = "To live was a process full of pain."
+	name = "绿色的黎明"
+	flavor_name = "疑问"
+	announce_text = "有一天，我们想到一个问题：我们从何而来？我们被给予了生命，却又被不负责任地抛弃."
+	end_announce_text = "生命，充满了痛苦."
 	announce_sound = 'sound/effects/ordeals/green_start.ogg'
 	end_sound = 'sound/effects/ordeals/green_end.ogg'
 	spawn_places = 6
@@ -22,10 +21,10 @@
 
 // Noon
 /datum/ordeal/simplespawn/green_noon
-	name = "The Noon of Green"
-	flavor_name = "Process of Understanding"
-	announce_text = "In the end, they were bound to life. We existed only to express despair and ire."
-	end_announce_text = "We will understand life and the soul with our own hands."
+	name = "绿色的正午"
+	flavor_name = "理解的过程"
+	announce_text = "他们，终究是被生命束缚着的存在. 而我们，将倾泻绝望与怒火."
+	end_announce_text = "我们会用双手，理解生命与灵魂."
 	announce_sound = 'sound/effects/ordeals/green_start.ogg'
 	end_sound = 'sound/effects/ordeals/green_end.ogg'
 	level = 2
@@ -39,10 +38,10 @@
 
 // Dusk
 /datum/ordeal/simplespawn/green_dusk
-	name = "The Dusk of Green"
-	flavor_name = "Where We Must Reach"
-	announce_text = "We constructed a looming tower to return whence we came."
-	end_announce_text = "There wasn't an answer. We didn't find a single thing we wanted. We only witnessed the death of life itself."
+	name = "绿色的黄昏"
+	flavor_name = "前往何方"
+	announce_text = "为了回到来时的地方，它们筑起了一座高塔."
+	end_announce_text = "它们没能得到答案，只能看到凋零的生命..."
 	level = 3
 	reward_percent = 0.2
 	announce_sound = 'sound/effects/ordeals/green_start.ogg'
@@ -56,10 +55,10 @@
 
 // Midnight
 /datum/ordeal/boss/green_midnight
-	name = "The Midnight of Green"
-	flavor_name = "Last Helix"
-	announce_text = "The tower is touched by the sky, and it will leave nothing on the earth."
-	end_announce_text = "Who pays for the suffering and neglect of the lives given to us?"
+	name = "绿色的午夜"
+	flavor_name = "终末螺旋"
+	announce_text = "高塔直破苍穹，大地荡然无存."
+	end_announce_text = "给予我们生命，却放任我们受苦的人，必将为此付出代价!"
 	level = 4
 	reward_percent = 0.25
 	announce_sound = 'sound/effects/ordeals/green_start.ogg'

@@ -50,7 +50,7 @@
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)
-	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>[TeguTranslate("Setup Character", src)]</a></p>")
+	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>[TeguTranslate("新建角色", src)]</a></p>")
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -61,10 +61,10 @@
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY(TeguTranslate("Ready", src), PLAYER_READY_TO_PLAY)] | [LINKIFY_READY(TeguTranslate("Not Ready", src), PLAYER_NOT_READY)] | <b> [TeguTranslate("Observe", src)] </b> \]</p>"
 	else
-		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[TeguTranslate("View the Crew Manifest", src)]</a></p>"
-		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>[TeguTranslate("Join Game!", src)]</a></p>"
-		output += "<p>[LINKIFY_READY(TeguTranslate("Observe", src), PLAYER_READY_TO_OBSERVE)]</p>"
-		output += "<p><a href='byond://?src=[REF(src)];tutorial=1'>[TeguTranslate("Tutorial", src)]</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[TeguTranslate("浏览员工名单", src)]</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>[TeguTranslate("加入游戏!", src)]</a></p>"
+		output += "<p>[LINKIFY_READY(TeguTranslate("观察者模式", src), PLAYER_READY_TO_OBSERVE)]</p>"
+		output += "<p><a href='byond://?src=[REF(src)];tutorial=1'>[TeguTranslate("教程", src)]</a></p>"
 
 	if(!IsGuestKey(src.key))
 		output += playerpolls()

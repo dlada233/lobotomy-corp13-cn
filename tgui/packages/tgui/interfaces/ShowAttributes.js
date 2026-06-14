@@ -84,7 +84,7 @@ export const ShowAttributes = (props, context) => {
           )}
           <br />
           <Button
-            content="View Gifts"
+            content="浏览礼物"
             textAlign="center"
             width="100%"
             onClick={() => act('show_gifts')}

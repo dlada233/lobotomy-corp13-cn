@@ -67,7 +67,7 @@
 	end_time = ROUNDTIME
 	SSticker.ordeal_info[ordeal_position] = end_time
 	var/total_reward = max(SSlobotomy_corp.box_goal, 3000) * reward_percent
-	priority_announce("The Ordeal has ended. Facility has been rewarded with [reward_percent*100]% PE.", name, sound='sound/vox_fem/..ogg')
+	priority_announce("本次考验结束了. 设施收到 [reward_percent*100]% PE 的奖励.", name, sound='sound/vox_fem/..ogg')
 	SSlobotomy_corp.AdjustAvailableBoxes(total_reward)
 	SSlobotomy_corp.current_ordeals -= src
 	if(SSlobotomy_emergency.should_calc_score)
@@ -80,10 +80,10 @@
 			continue
 
 		person.adjust_all_attribute_levels(5)
-		to_chat(person, span_notice("You feel stronger than before."))
+		to_chat(person, span_notice("你感到比之前更强大了."))
 	//Gives a medal to survivors.
 	RewardSurvivors()
-	SSlobotomy_corp.AddLobPoints(level * 0.5, "Ordeal Reward")
+	SSlobotomy_corp.AddLobPoints(level * 0.5, "考验奖励")
 	if(end_sound)
 		for(var/mob/player in GLOB.player_list)
 			if(player.client)

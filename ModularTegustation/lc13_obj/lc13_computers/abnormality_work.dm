@@ -1,5 +1,5 @@
 /obj/machinery/computer/abnormality
-	name = "abnormality work console"
+	name = "异想体工作终端"
 	desc = "Used to perform various tasks with the abnormalities."
 	icon_screen = "abnormality_work"
 	resistance_flags = INDESTRUCTIBLE
@@ -54,29 +54,29 @@
 	. = ..()
 	if(!datum_reference)
 		return
-	. += span_info("This console is connected to [datum_reference.GetName()]'s containment unit.")
+	. += span_info("这台终端连接到 [datum_reference.GetName()]的收容单元.")
 	var/threat_level = "<span style='color: [THREAT_TO_COLOR[datum_reference.GetRiskLevel()]]'>[THREAT_TO_NAME[datum_reference.GetRiskLevel()]]</span>"
-	. += span_info("Risk Level: ") + "[threat_level]" // Professionals have standards
+	. += span_info("风险等级: ") + "[threat_level]" // Professionals have standards
 	if(datum_reference.qliphoth_meter_max > 0)
-		. += span_info("Current Qliphoth Counter: [datum_reference.qliphoth_meter].")
+		. += span_info("当前逆卡巴拉计数器: [datum_reference.qliphoth_meter].")
 	if(datum_reference.overload_chance[user.ckey])
-		. += span_warning("Current Personal Qliphoth Overload: [datum_reference.overload_chance[user.ckey]]%.")
+		. += span_warning("当前个体逆卡巴拉过载: [datum_reference.overload_chance[user.ckey]]%.")
 	if(meltdown)
 		var/melt_text = ""
 		switch(meltdown)
 			if(MELTDOWN_GRAY)
-				melt_text = " of Dark Fog. Success rates reduced by 10%"
+				melt_text = " 黑雾. 成功率降低 10%"
 			if(MELTDOWN_GOLD)
-				melt_text = " of Gold. Failing to clear it will heal the Arbiter"
+				melt_text = "：金色. 未能处理将治愈调律者"
 			if(MELTDOWN_PURPLE)
-				melt_text = " of Waves. Upon clearing the meltdown the dark waves will disappear"
+				melt_text = "：波浪. 处理后清除黑暗波浪"
 			if(MELTDOWN_CYAN)
-				melt_text = " of Pillars. Success rates reduced by 20%. Failing to clear it will cause Arbiter to perform their deadly attack"
+				melt_text = "：支柱. 成功率降低 20%. 未能处理将导致调律者发动致命攻击"
 			if(MELTDOWN_BLACK)
-				melt_text = " of Lunacy. Failure to clear the meltdown will cause another abnormality to breach"
-		. += span_warning("The containment unit is currently affected by a Qliphoth Meltdown[melt_text]. Time left: [meltdown_time].")
+				melt_text = "：疯狂. 未能处理将导致其他异想体突破收容"
+		. += span_warning("收容单元正处于逆卡巴拉熔毁状态[melt_text]. 时间剩余: [meltdown_time].")
 	//Show what upgrades you have. I dont have visuals for the upgrades yet so for now just exsamine tell them.
-	. += span_info("This console is augmented with the following upgrades:")
+	. += span_info("终端已配备以下升级:")
 	var/upgrade_list = ""
 	for(var/i in mechanical_upgrades)
 		if(mechanical_upgrades[i] == 0)
@@ -89,20 +89,20 @@
 	if(isliving(user))
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 	if(!istype(datum_reference))
-		to_chat(user, span_boldannounce("The console has no information stored!"))
+		to_chat(user, span_boldannounce("终端没有储存任何信息!"))
 		return
 	var/dat
 	dat += "<b><span style='color: [THREAT_TO_COLOR[datum_reference.GetRiskLevel()]]'>\[[THREAT_TO_NAME[datum_reference.GetRiskLevel()]]\]</span> [datum_reference.GetName()]</b><br>"
 	if(datum_reference.overload_chance[user.ckey])
-		dat += "<span style='color: [COLOR_VERY_SOFT_YELLOW]'>Personal Work Success Rates are modified by [datum_reference.overload_chance[user.ckey]]%.</span><br>"
+		dat += "<span style='color: [COLOR_VERY_SOFT_YELLOW]'>个人工作成功率修正为 [datum_reference.overload_chance[user.ckey]]%.</span><br>"
 		if(datum_reference.overload_chance_limit < 0 && datum_reference.overload_chance[user.ckey] <= datum_reference.overload_chance_limit) // How the fuck did you hit the limit..?
-			dat += "<span style='color: [COLOR_MOSTLY_PURE_RED]'>Work on other abnormalities, I beg you...</span><br>"
+			dat += "<span style='color: [COLOR_MOSTLY_PURE_RED]'>处理其他的异想体吧, 我求你了...</span><br>"
 	if(datum_reference.understanding != 0)
-		dat += "<span style='color: [COLOR_BLUE_LIGHT]'>Current Understanding is: [round((datum_reference.understanding/datum_reference.max_understanding)*100, 0.01)]%, granting a [datum_reference.understanding]% Work Success and Speed bonus.</span><br>"
+		dat += "<span style='color: [COLOR_BLUE_LIGHT]'>当前理解进度: [round((datum_reference.understanding/datum_reference.max_understanding)*100, 0.01)]%, 增加 [datum_reference.understanding]% 工作成功率和工作速度.</span><br>"
 		if(datum_reference.observation_ready)
-			dat += "<A href='byond://?src=[REF(src)];final_observation=1'>Final Observation ready</A> <br>"
+			dat += "<A href='byond://?src=[REF(src)];final_observation=1'>最终观察已就绪</A> <br>"
 	if(work_bonus == EXTRACTION_KEY)
-		dat += "<span style='color: [COLOR_VERY_SOFT_YELLOW]'>Work Speed and Success Rates are being positively impacted by low Qliphoth deterrance levels.</span><br>"
+		dat += "<span style='color: [COLOR_VERY_SOFT_YELLOW]'>工作速度和成功率正因低水平的逆卡巴拉抑制而受到积极影响.</span><br>"
 	dat += "<br>"
 
 	//Abnormality portraits
@@ -117,7 +117,7 @@
 	if(!tutorial && istype(SSlobotomy_corp.core_suppression, /datum/suppression/information))
 		work_list = shuffle(work_list) // A minor annoyance, at most
 	for(var/wt in work_list)
-		var/work_display = "[wt] Work"
+		var/work_display = "[wt]工作"
 		if(scramble_list[wt] != null)
 			work_display += "?"
 		var/datum/suppression/information/I = GetCoreSuppression(/datum/suppression/information)
@@ -128,7 +128,7 @@
 		else
 			dat += "<A href='byond://?src=[REF(src)];do_work=[wt]'>[work_display]</A> <br>"
 
-	var/datum/browser/popup = new(user, "abno_work", "Abnormality Work Console", 450, 350)
+	var/datum/browser/popup = new(user, "abno_work", "异想体工作终端", 450, 350)
 	popup.set_content(dat)
 	popup.open()
 	return
@@ -141,13 +141,13 @@
 		usr.set_machine(src)
 		if(href_list["do_work"] in datum_reference.available_work)
 			if(HAS_TRAIT(usr, TRAIT_WORK_FORBIDDEN) && recorded) //let clerks work training rabbit
-				to_chat(usr, span_warning("The console cannot be operated by [prob(0.1) ? "a filthy clerk" : "you"]!"))
+				to_chat(usr, span_warning("这台终端无法被[prob(0.1) ? "一个卑微的文职" : "你"]所使用!"))
 				return
 			if(datum_reference.working)
-				to_chat(usr, span_warning("The console is currently being operated!"))
+				to_chat(usr, span_warning("终端正在运作中!"))
 				return
 			if(!istype(datum_reference.current) || (datum_reference.current.stat == DEAD))
-				to_chat(usr, span_warning("The Abnormality is currently in the process of revival!"))
+				to_chat(usr, span_warning("异想体正在进行复原过程!"))
 				return
 			if(!(datum_reference.current.status_flags & GODMODE))
 				to_chat(usr, span_warning("该异想体已经突破了收容!"))
@@ -155,18 +155,18 @@
 			var/work_attempt = datum_reference.current.AttemptWork(usr, href_list["do_work"])
 			if(!work_attempt)
 				if(work_attempt == FALSE)
-					to_chat(usr, span_warning("This operation is currently unavailable."))
+					to_chat(usr, span_warning("此操作目前不可用."))
 				return
 			start_work(usr, href_list["do_work"])
 		if(href_list["final_observation"])
 			if(HAS_TRAIT(usr, TRAIT_WORK_FORBIDDEN)) //gifts are only for agents
-				to_chat(usr, span_warning("You cannot perform this operation!"))
+				to_chat(usr, span_warning("你无法执行此操作!"))
 				return
 			if(datum_reference.working)
-				to_chat(usr, span_warning("The console is currently being operated!"))
+				to_chat(usr, span_warning("终端正在运作中!"))
 				return
 			if(!istype(datum_reference.current) || (datum_reference.current.stat == DEAD))
-				to_chat(usr, span_warning("The Abnormality is currently in the process of revival!"))
+				to_chat(usr, span_warning("异想体正在进行复原过程!"))
 				return
 			if(!(datum_reference.current.status_flags & GODMODE))
 				to_chat(usr, span_warning("该异想体已经突破了收容!"))
@@ -203,15 +203,15 @@
 		return
 	switch(sanity_result)
 		if(-INFINITY to -1)
-			to_chat(user, span_nicegreen("This assignment is too easy!"))
+			to_chat(user, span_nicegreen("这差事太简单了!"))
 		if(0)
-			to_chat(user, span_notice("I'll handle it as I always do."))
+			to_chat(user, span_notice("我可以一直这么做下去."))
 		if(1)
-			to_chat(user, span_warning("Just follow standard procedures..."))
+			to_chat(user, span_warning("按照标准程序操作就好..."))
 		if(2)
-			to_chat(user, span_danger("Calm down... Calm down..."))
+			to_chat(user, span_danger("冷静... 冷静..."))
 		if(3 to INFINITY)
-			to_chat(user, span_userdanger("I'm not ready for this!"))
+			to_chat(user, span_userdanger("我还没准备好!"))
 	var/was_melting = meltdown //to remember if it was melting down before the work started
 	meltdown = FALSE // Reset meltdown
 	if(was_melting)
@@ -266,7 +266,7 @@
 			for(var/i = 0 to round((work_time - total_boxes)*(1-((work_chance*0.5)/100)), 1)) // Take double of what you'd fail on average as NE box damage.
 				datum_reference.current.WorktickFailure(user)
 			playsound(src, 'sound/machines/synth_no.ogg', 75, FALSE, -4)
-			to_chat(user, span_warning("The Abnormality grows frustrated as you cut your work short!"))
+			to_chat(user, span_warning("当你的工作提前终止，异想体将感到不满!"))
 			success_boxes = 0
 			canceled = TRUE
 			break
@@ -300,17 +300,17 @@
 	if(!work_type)
 		work_type = pick(datum_reference.available_work)
 	if(datum_reference.max_boxes != 0) // All these messages should be visible (on the console) and audible (announced by machine)
-		audible_message(span_notice("[work_type] work finished. [pe]/[datum_reference.max_boxes] PE acquired."),\
-				span_notice("[work_type] work finished. [pe]/[datum_reference.max_boxes] PE acquired."))
+		audible_message(span_notice("[work_type]工作结束了. 得到[pe]/[datum_reference.max_boxes] PE."),\
+				span_notice("[work_type]工作结束了. 得到[pe]/[datum_reference.max_boxes] PE."))
 		if(pe >= datum_reference.success_boxes)
-			audible_message(span_notice("Work Result: Good"),\
-				span_notice("Work Result: Good"))
+			audible_message(span_notice("工作结果: 优"),\
+				span_notice("工作结果: 优"))
 		else if(pe >= datum_reference.neutral_boxes)
-			audible_message(span_notice("Work Result: Normal"),\
-				span_notice("Work Result: Normal"))
+			audible_message(span_notice("工作结果: 一般"),\
+				span_notice("工作结果: 一般"))
 		else
-			audible_message(span_notice("Work Result: Bad"),\
-				span_notice("Work Result: Bad"))
+			audible_message(span_notice("工作结果: 差"),\
+				span_notice("工作结果: 差"))
 	if(istype(user))
 		datum_reference.work_complete(user, work_type, pe, work_speed*datum_reference.max_boxes, was_melting, canceled)
 		if(recorded) //neither rabbit nor tutorial calls this

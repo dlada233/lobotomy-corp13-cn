@@ -1,10 +1,10 @@
 // Dawn
 // So, it works practically the same as amber dawn, so here we go
 /datum/ordeal/simplespawn/violet_dawn
-	name = "The Dawn of Violet"
-	flavor_name = "Fruit of Understanding"
-	announce_text = "To gain an understanding of what is incomprehensible, they dream, staring."
-	end_announce_text = "They complied with nothing in their bid to understand. They simply did so."
+	name = "紫罗兰的黎明"
+	flavor_name = "理解的果实"
+	announce_text = "有朝一日，我们必将理解那些不能理解的东西."
+	end_announce_text = "为了理解，我们只能这么做."
 	announce_sound = 'sound/effects/ordeals/violet_start.ogg'
 	end_sound = 'sound/effects/ordeals/violet_end.ogg'
 	spawn_places = 4
@@ -18,10 +18,10 @@
 
 // Noon
 /datum/ordeal/violet_noon
-	name = "The Noon of Violet"
-	flavor_name = "Grant Us Love"
-	announce_text = "We could only hear the weakest and faintest of their acts. We sought for love and compassion from them."
-	end_announce_text = "We cannot understand them, nor will they understand us."
+	name = "紫罗兰的正午"
+	flavor_name = "请给我们爱！！！"
+	announce_text = "我们听见了弱者的挣扎与悲鸣，向它们乞求爱与慈悲吧."
+	end_announce_text = "我们不能理解它们，它们更不会理解我们."
 	announce_sound = 'sound/effects/ordeals/violet_start.ogg'
 	end_sound = 'sound/effects/ordeals/violet_end.ogg'
 	level = 2
@@ -41,10 +41,10 @@
 		spawned_in += 1
 
 /datum/ordeal/simplespawn/violet_dusk
-	name = "The Dusk of Violet"
-	flavor_name = "Rushing Arms of Rest"
-	announce_text = "Only helpless hand of the weak could reach us, and fled for mercy and love of them."
-	end_announce_text = "A god, an evil, them. They embraced us on the day of rest."
+	name = "紫罗兰的午夜"
+	flavor_name = "神明的迷思"
+	announce_text = "我们一次又一次地试图接纳它们，无论这要付出何等的代价，我们必须理解！！！"
+	end_announce_text = "为了避免自我的崩溃，它们绝不容忍那些不可理解，不可触及的存在..."
 	announce_sound = 'sound/effects/ordeals/violet_start.ogg'
 	end_sound = 'sound/effects/ordeals/violet_end.ogg'
 	level = 3

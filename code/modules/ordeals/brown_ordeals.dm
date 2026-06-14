@@ -1,10 +1,10 @@
 // Dawn
 //Simplespawn but with very slight changes
 /datum/ordeal/brown_dawn
-	name = "The Dawn of Brown"
-	flavor_name = "Peccata Capitalia"
-	announce_text = "Planted within the hearts of all are seeds with ever-present potential to bloom."
-	end_announce_text = "These reflections are merely twisted forms of the soul dreamt by those who are nothing."
+	name = "褐色的黎明"
+	flavor_name = "大罪"
+	announce_text = "每个人的心中都种着一颗种子，它始终蕴含着绽放的潜力."
+	end_announce_text = "这些不过是一无所有之人灵魂的扭曲倒影."
 	level = 1
 	reward_percent = 0.1
 	announce_sound = 'sound/effects/ordeals/brown_start.ogg'
@@ -55,10 +55,10 @@
 			M.ordeal_reference = src
 
 /datum/ordeal/specificcommanders/brown_noon
-	name = "The Noon of Brown"
-	flavor_name = "Pandæmonium"
-	announce_text = "Only those who define their own fate are awakened to their own dream."
-	end_announce_text = "It is pointless to waste your time on those whose path has ended."
+	name = "褐色的正午"
+	flavor_name = "大罪"
+	announce_text = "梦想只会唤醒那些定义了自己命运的人."
+	end_announce_text = "将时间浪费在已经走到尽头的人身上是毫无意义的."
 	level = 2
 	reward_percent = 0.15
 	announce_sound = 'sound/effects/ordeals/brown_start.ogg'

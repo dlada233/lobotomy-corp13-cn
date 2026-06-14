@@ -9,7 +9,7 @@ export const AuxiliaryManagerConsole = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
 
   return (
-    <Window title="Auxiliary Managerial Console" width="850" height="600">
+    <Window title="辅助管理终端" width="850" height="600">
       <Window.Content>
         <Tabs>
           <Tabs.Tab
@@ -17,28 +17,28 @@ export const AuxiliaryManagerConsole = (props, context) => {
             lineHeight="23px"
             selected={tab === 1}
             onClick={() => setTab(1)}>
-            Bullet Upgrade System
+            子弹升级系统
           </Tabs.Tab>
           <Tabs.Tab
             icon="list"
             lineHeight="23px"
             selected={tab === 2}
             onClick={() => setTab(2)}>
-            Facility Upgrade System
+            设施升级系统
           </Tabs.Tab>
           <Tabs.Tab
             icon="list"
             lineHeight="23px"
             selected={tab === 3}
             onClick={() => setTab(3)}>
-            Higher-up Specialization Upgrade System
+            高级升级系统
           </Tabs.Tab>
           <Tabs.Tab
             icon="list"
             lineHeight="23px"
             selected={tab === 4}
             onClick={() => setTab(4)}>
-            Core Suppression system
+            核心抑制系统
           </Tabs.Tab>
         </Tabs>
         {tab === 1 && <BulletFacilityUpgrades />}
@@ -55,7 +55,7 @@ const BulletFacilityUpgrades = (props, context) => {
   const { Upgrade_points, is_admin } = data;
 
   return (
-    <Section title="Master bullet upgrade system">
+    <Section title="设施升级系统">
       {is_admin === 1 && (
         <NoticeBox danger bold textAlign="center">
           !! Due to being adminned,
@@ -125,7 +125,7 @@ const BulletFacilityUpgrades = (props, context) => {
       )}
       <LabeledList>
         <LabeledList.Item
-          label="available LOB points"
+          label="可用LOB点数"
           buttons={
             <Button
               content={'Switch style to UI'}
@@ -155,7 +155,7 @@ const FacilityUpgrades = (props, context) => {
   const { Upgrade_points, is_admin } = data;
 
   return (
-    <Section title="Master facility upgrade system">
+    <Section title="设施升级系统">
       {is_admin === 1 && (
         <NoticeBox danger bold textAlign="center">
           !! Due to being adminned,
@@ -225,7 +225,7 @@ const FacilityUpgrades = (props, context) => {
       )}
       <LabeledList>
         <LabeledList.Item
-          label="available LOB points"
+          label="可用LOB点数"
           buttons={
             <Button
               content={'Switch style to UI'}
@@ -255,7 +255,7 @@ const SpecialUpgrades = (props, context) => {
   const { Upgrade_points, is_admin } = data;
 
   return (
-    <Section title="Master higher-up specialization upgrade system">
+    <Section title="高级升级系统">
       {is_admin === 1 && (
         <NoticeBox danger bold textAlign="center">
           !! Due to being adminned,
@@ -325,7 +325,7 @@ const SpecialUpgrades = (props, context) => {
       )}
       <LabeledList>
         <LabeledList.Item
-          label="available LOB points"
+          label="可用LOB点数"
           buttons={
             <Button
               content={'Switch style to UI'}
@@ -394,7 +394,7 @@ const CoreSuppressionSelector = (props, context) => {
   }
 
   return (
-    <Section title="Master core suppression systems">
+    <Section title="核心抑制系统">
       {is_admin === 1 && (
         <NoticeBox danger bold textAlign="center">
           !! Due to being adminned,
@@ -433,11 +433,11 @@ const CoreSuppressionSelector = (props, context) => {
               label={available_suppressions.name}
               buttons={
                 <Button
-                  content={'Choose core suppression'}
+                  content={'选择核心抑制'}
                   color={'green'}
                   onClick={() =>
                     act('Select Core Suppression', {
-                      selected_core: available_suppressions.ref,
+                      所选核心: available_suppressions.ref,
                     })}
                 />
               }
@@ -447,27 +447,27 @@ const CoreSuppressionSelector = (props, context) => {
       )}
       {available_suppressions.length === 0 && (
         <NoticeBox info bold textAlign="center" fontSize="40px" fontFamily="Baskerville">
-          Core suppressions not available!
+          核心抑制不可用!
         </NoticeBox>
       )}
       {selected_core_name && (
         <LabeledList>
-          <LabeledList.Item label="Selected core name: ">
+          <LabeledList.Item label="所选核心名称: ">
             {selected_core_name}
           </LabeledList.Item>
-          <LabeledList.Item label="Selected core description: ">
+          <LabeledList.Item label="所选核心描述: ">
             {selected_core_description}
           </LabeledList.Item>
-          <LabeledList.Item label="Selected core goal: ">
+          <LabeledList.Item label="所选核心目标: ">
             {selected_core_goal}
           </LabeledList.Item>
-          <LabeledList.Item label="Selected core reward: ">
+          <LabeledList.Item label="所选核心奖励: ">
             {selected_core_reward}
           </LabeledList.Item>
           <Button mt="1em" ml="0.5em"
-            content={'Confirm core selection'}
+            content={'确认所选核心'}
             color={'green'}
-            onClick={() => act('Activate Core Suppression')}
+            onClick={() => act('激活核心抑制')}
           />
         </LabeledList>
       )}
@@ -490,7 +490,7 @@ const BulletUpgrades = (props, context) => {
   return (
     <>
       <Box textColor="blue" mt="1em" fontSize="20px" nowrap>
-        Available unlockable bullets:
+        可用已解锁子弹:
       </Box>
       <LabeledList>
         {bullet_upgrades.map(bullet_upgrades => (
@@ -501,10 +501,10 @@ const BulletUpgrades = (props, context) => {
               <>
                 <Button
                   content={bullet_upgrades.available === 1
-                    ? 'Purchase the bullet for '
+                    ? '购买子弹： '
                     + bullet_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= bullet_upgrades.cost
                     && bullet_upgrades.available === 1
                     ? 'green'
@@ -537,7 +537,7 @@ const MoreBulletUpgrades = (props, context) => {
   return (
     <>
       <Box textColor="blue" mt="1em" fontSize="20px" nowrap>
-        Available bullet upgrades:
+        可用子弹升级:
       </Box>
       <LabeledList>
         {real_bullet_upgrades.map(real_bullet_upgrades => (
@@ -548,10 +548,10 @@ const MoreBulletUpgrades = (props, context) => {
               <>
                 <Button
                   content={real_bullet_upgrades.available === 1
-                    ? 'Purchase the upgrade for '
+                    ? '购买升级： '
                     + real_bullet_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= real_bullet_upgrades.cost
                     && real_bullet_upgrades.available === 1
                     ? 'green'
@@ -560,7 +560,7 @@ const MoreBulletUpgrades = (props, context) => {
                     selected_upgrade: real_bullet_upgrades.ref,
                   })} />
                 <Button
-                  content={"Info"}
+                  content={"信息"}
                   color={"blue"}
                   onClick={() => act('Info', {
                     selected_upgrade: real_bullet_upgrades.ref,
@@ -595,10 +595,10 @@ const AbnormalityUpgrades = (props, context) => {
               <>
                 <Button
                   content={abnormality_upgrades.available === 1
-                    ? 'Purchase the upgrade for '
+                    ? '购买升级： '
                     + abnormality_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= abnormality_upgrades.cost
                     && abnormality_upgrades.available === 1
                     ? 'green'
@@ -631,7 +631,7 @@ const Lvl1Upgrades = (props, context) => {
   return (
     <>
       <Box textColor="blue" mt="1em" fontSize="20px" nowrap>
-        Available tier 1 higher-up specialization upgrades:
+        可用T1高级升级:
       </Box>
       <LabeledList>
         {lvl1_upgrades.map(lvl1_upgrades => (
@@ -642,10 +642,10 @@ const Lvl1Upgrades = (props, context) => {
               <>
                 <Button
                   content={lvl1_upgrades.available === 1
-                    ? 'Purchase the upgrade for '
+                    ? '购买升级： '
                     + lvl1_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= lvl1_upgrades.cost
                     && lvl1_upgrades.available === 1
                     ? 'green'
@@ -654,7 +654,7 @@ const Lvl1Upgrades = (props, context) => {
                     selected_upgrade: lvl1_upgrades.ref,
                   })} />
                 <Button
-                  content={"Info"}
+                  content={"信息"}
                   color={"blue"}
                   onClick={() => act('Info', {
                     selected_upgrade: lvl1_upgrades.ref,
@@ -678,7 +678,7 @@ const Lvl2Upgrades = (props, context) => {
   return (
     <>
       <Box textColor="blue" mt="1em" fontSize="20px" nowrap>
-        Available tier 2 higher-up specialization upgrades:
+        可用T2高级升级:
       </Box>
       <LabeledList>
         {lvl2_upgrades.map(lvl2_upgrades => (
@@ -689,10 +689,10 @@ const Lvl2Upgrades = (props, context) => {
               <>
                 <Button
                   content={lvl2_upgrades.available === 1
-                    ? 'Purchase the upgrade for '
+                    ? '购买升级：'
                     + lvl2_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= lvl2_upgrades.cost
                     && lvl2_upgrades.available === 1
                     ? 'green'
@@ -701,7 +701,7 @@ const Lvl2Upgrades = (props, context) => {
                     selected_upgrade: lvl2_upgrades.ref,
                   })} />
                 <Button
-                  content={"Info"}
+                  content={"信息"}
                   color={"blue"}
                   onClick={() => act('Info', {
                     selected_upgrade: lvl2_upgrades.ref,
@@ -725,7 +725,7 @@ const MiscUpgrades = (props, context) => {
   return (
     <>
       <Box textColor="blue" mt="1em" fontSize="20px" nowrap>
-        Available uncategorized upgrades:
+        可用未分类升级:
       </Box>
       <LabeledList>
         {misc_upgrades.map(misc_upgrades => (
@@ -736,10 +736,10 @@ const MiscUpgrades = (props, context) => {
               <>
                 <Button
                   content={misc_upgrades.available === 1
-                    ? 'Purchase the upgrade for '
+                    ? '购买升级：'
                     + misc_upgrades.cost
-                    + ' LOB points'
-                    : 'UPGRADE PURCHASED'}
+                    + ' LOB点数'
+                    : '升级已购买'}
                   color={Upgrade_points >= misc_upgrades.cost
                     && misc_upgrades.available === 1
                     ? 'green'
@@ -748,7 +748,7 @@ const MiscUpgrades = (props, context) => {
                     selected_upgrade: misc_upgrades.ref,
                   })} />
                 <Button
-                  content={"Info"}
+                  content={"信息"}
                   color={"blue"}
                   onClick={() => act('Info', {
                     selected_upgrade: misc_upgrades.ref,
@@ -777,10 +777,10 @@ const AllCores = (props, context) => {
           label={all_core_suppressions.name}
           buttons={
             <Button
-              content={'Add core suppression to the available cores pool'}
+              content={'添加核心抑制到可用的核心池'}
               color={'purple'}
               onClick={() =>
-                act('Unlock Core Suppressions', {
+                act('解锁核心抑制', {
                   core_unlock: all_core_suppressions.ref,
                 })}
             />

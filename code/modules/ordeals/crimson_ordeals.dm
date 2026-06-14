@@ -1,10 +1,9 @@
 // Dawn
 /datum/ordeal/crimson_dawn
-	name = "The Dawn of Crimson"
-	flavor_name = "Cheers for the Beginning"
-	announce_text = "Let us light a flame yet more radiant in our lives; for life is a candlelight, \
-	destined to snuff out one day."
-	end_announce_text = "To live is to yearn and fight for our desires."
+	name = "血色的黎明"
+	flavor_name = "开始欢呼吧!"
+	announce_text = "让我们在这宛如风中残烛的生命里，纵情放一把大火吧!"
+	end_announce_text = "活着，就是为了满足肉欲."
 	level = 1
 	reward_percent = 0.1
 	announce_sound = 'sound/effects/ordeals/crimson_start.ogg'
@@ -25,10 +24,10 @@
 		sleep(7) // That's so the clowns don't instantly teleport to the same console
 
 /datum/ordeal/simplespawn/crimson_noon
-	name = "The Noon of Crimson"
-	flavor_name = "The Harmony of Skin"
-	announce_text = "We marched from time to time, and we would share our pleasure."
-	end_announce_text = "The collision of one life with another, skin harmonizing, painting a yet more beautiful appearance."
+	name = "血色的正午"
+	flavor_name = "汁水大合唱"
+	announce_text = "我们每时都在游行，每刻都在分享喜悦."
+	end_announce_text = "我们绘出了生命的碰撞...肉体的交融...更美丽的外表..."
 	announce_sound = 'sound/effects/ordeals/crimson_start.ogg'
 	end_sound = 'sound/effects/ordeals/crimson_end.ogg'
 	level = 2
@@ -41,10 +40,10 @@
 	color = "#DC143C"
 
 /datum/ordeal/simplespawn/crimson_dusk
-	name = "The Dusk of Crimson"
-	flavor_name = "The Struggle at the Climax"
-	announce_text = "Throwing away our old bodies, we all become one, infinitely continuing the red march."
-	end_announce_text = "One day we will know, and tomorrow we will march hand in hand."
+	name = "血色的黄昏"
+	flavor_name = "绝顶之战"
+	announce_text = "快扔掉那些破烂的躯干，来和我们融为一体，继续永不落幕的血色狂欢吧!!!"
+	end_announce_text = "迟早有一天所有人都会明白. 我们，终将一同狂欢."
 	announce_sound = 'sound/effects/ordeals/crimson_start.ogg'
 	end_sound = 'sound/effects/ordeals/crimson_end.ogg'
 	level = 3
@@ -57,7 +56,7 @@
 	color = "#DC143C"
 
 /datum/ordeal/simplecommander/crimson_midnight
-	name = "The Midnight of Crimson"
+	name = "血色的午夜"
 	flavor_name = "A Chorus of Saliva"
 	announce_text = "Let us make a performance about what has already come true, and march further on from whence we came."
 	end_announce_text = "Abandon all expectation and march on. Laugh no matter what you see!"

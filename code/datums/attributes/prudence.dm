@@ -1,7 +1,7 @@
 /datum/attribute/prudence
 	name = PRUDENCE_ATTRIBUTE
 	desc = "Attribute responsible for maximum sanity points."
-	affected_stats = list("Max Sanity")
+	affected_stats = list("最大SP")
 	initial_stat_value = DEFAULT_HUMAN_MAX_SANITY
 
 /datum/attribute/prudence/get_printed_level_bonus()

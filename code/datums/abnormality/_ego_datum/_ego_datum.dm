@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(ego_datums)
 
 // Because I'm lazy to type it all
 /datum/ego_datum/weapon
-	item_category = "Weapon"
+	item_category = "武器"
 	packaged = TRUE
 
 /datum/ego_datum/weapon/New(datum/abnormality/DA)
@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(ego_datums)
 		var/datum/damage_type_shuffler/shuffler = GLOB.damage_type_shuffler
 		var/new_damage_type = shuffler.mapping_offense[damage_type]
 		damage_type = new_damage_type
-	information["attack_info"] = "It deals [damage] [damage_type] damage."
+	information["attack_info"] = "它造成 [damage] [damage_type] 伤害."
 	information["throwforce"] = E.throwforce
 	information["special"] = E.special
 	information["attribute_requirements"] = E.attribute_requirements.Copy()
@@ -139,57 +139,57 @@ GLOBAL_LIST_EMPTY(ego_datums)
 	if(E.modified_attack_speed)
 		attack_speed = E.modified_attack_speed
 	if(attack_speed < 0.4)
-		information["attack_speed"] = "Very fast"
+		information["attack_speed"] = "非常快"
 	else if(attack_speed<0.7)
-		information["attack_speed"] = "Fast"
+		information["attack_speed"] = "快"
 	else if(attack_speed<1)
-		information["attack_speed"] = "Somewhat fast"
+		information["attack_speed"] = "略快"
 	else if(attack_speed == 1)
-		information["attack_speed"] = "Normal"
+		information["attack_speed"] = "普通"
 	else if(attack_speed<1.5)
-		information["attack_speed"] = "Somewhat slow"
+		information["attack_speed"] = "略慢"
 	else if(attack_speed<2)
-		information["attack_speed"] = "Slow"
+		information["attack_speed"] = "慢"
 	else if(attack_speed>=2)
-		information["attack_speed"] = "Extremely slow"
+		information["attack_speed"] = "非常慢"
 	if(E.stuntime)
 		switch(E.stuntime)
 			if(1 to 2)
-				information["stun_time"] += "very short"
+				information["stun_time"] += "非常短"
 			if(2 to 4)
-				information["stun_time"] += "short"
+				information["stun_time"] += "短"
 			if(5 to 6)
-				information["stun_time"] += "moderate"
+				information["stun_time"] += "中等"
 			if(6 to 8)
-				information["stun_time"] += "long"
+				information["stun_time"] += "长"
 			if(9 to INFINITY)
-				information["stun_time"] += "very Long"
+				information["stun_time"] += "非常长"
 
 	if(E.knockback)
 		switch(E.knockback)
 			if(KNOCKBACK_LIGHT)
-				information["knockback"] += "This weapon has slight enemy knockback."
+				information["knockback"] += "这把武器有轻微的反冲击能力."
 
 			if(KNOCKBACK_MEDIUM)
-				information["knockback"] += "This weapon has decent enemy knockback."
+				information["knockback"] += "这把武器有不错的反冲击能力."
 
 			if(KNOCKBACK_HEAVY)
-				information["knockback"] += "This weapon has neck-snapping enemy knockback."
+				information["knockback"] += "这把武器拥有强悍的击倒反冲击能力."
 
 			else
-				information["knockback"] += "This weapon has [E.knockback >= 10 ? "neck-snapping": ""] enemy knockback."
+				information["knockback"] += "这把武器拥有 [E.knockback >= 10 ? "击倒反冲击": ""] 反冲击能力."
 	if(E.charge)
-		information["charge"] += "This weapon has charge mechanics[E.attack_charge_gain ? " and gains a charge upon every hit" : ""].<br>"
-		information["charge"] += "This weapon can hold up to [E.charge_cap] charge.<br>"
-		information["charge"] += "Ability cost: [E.charge_cost].<br>"
+		information["charge"] += "这把武器有蓄力计数机制[E.attack_charge_gain ? "，并且每次攻击都会获得蓄力计数" : ""].<br>"
+		information["charge"] += "这把武器可以积蓄 [E.charge_cap] 点蓄力.<br>"
+		information["charge"] += "能力消耗: [E.charge_cost].<br>"
 		if(E.charge_effect)
-			information["charge"] += "Ability: [E.charge_effect]"
+			information["charge"] += "能力: [E.charge_effect]"
 	qdel(E)
 
 /datum/ego_datum/weapon/PrintOutInfo()
 	var/dat = "[capitalize(name)]<br><br>"
 	if(LAZYLEN(information["attribute_requirements"]))
-		dat += "Attribute requirements:<br>"
+		dat += "属性需求:<br>"
 		for(var/attr in information["attribute_requirements"])
 			dat += "- [attr]: [information["attribute_requirements"][attr]]<br>"
 		dat += "<hr>"
@@ -199,40 +199,40 @@ GLOBAL_LIST_EMPTY(ego_datums)
 			dat += "[information["special"]]<br>"
 		if("charge" in information)
 			dat += "[information["charge"]]<br>"
-		dat += "Fire rate: [information["fire_rate"]]<br>"
+		dat += "射速: [information["fire_rate"]]<br>"
 		if("auto_fire" in information)
 			dat += "[information["auto_fire"]].<br>"
 		dat += "[information["reload_speed"]]<br>"
 		if("ammo" in information)
-			dat += "Ammo: [information["ammo"]].<br>"
+			dat += "弹容量: [information["ammo"]].<br>"
 		dat += "[information["weapon_weight"]]<br>"
 		dat += "<br>"
 		dat += "[information["attack_info"]]<br>"
-		dat += "Attack speed: [information["attack_speed"]].<br>"
+		dat += "攻击速度: [information["attack_speed"]].<br>"
 	else
 		dat += "[information["attack_info"]]<br>"
 		if("special" in information)
 			dat += "[information["special"]]<br>"
 		if("charge" in information)
 			dat += "[information["charge"]]<br>"
-		dat += "Attack speed: [information["attack_speed"]].<br>"
+		dat += "攻击速度: [information["attack_speed"]].<br>"
 		if("wield_stats" in information)
 			dat += "[information["wield_stats"]]<br>"
 		if("wield_special" in information)
 			dat += "[information["wield_special"]]<br>"
 		if("armor" in information)
 			dat += "[information["shield"]]<br>"
-			dat += "Deflect values:<br>"
+			dat += "偏转值:<br>"
 			for(var/armor_type in information["armor"])
 				if(!(information["armor"][armor_type])) // Zero armor and such
 					continue
 				dat += "- [capitalize(armor_type)]: [information["armor"][armor_type]].<br>"
 	if(information["throwforce"] > 0)
-		dat += "Throw force: [information["throwforce"]].<br>"
+		dat += "投掷威力: [information["throwforce"]].<br>"
 	if(information["reach"] > 1)
-		dat += "This weapon has a reach of [information["reach"]].<br>"
+		dat += "这把武器射程 [information["reach"]].<br>"
 	if("stun_time" in information)
-		dat += "This weapon stuns you for a [information["stun_time"]] duration on hit.<br>"
+		dat += "这把武器命中时会使你眩晕 [information["stun_time"]] 一段时间.<br>"
 	if("lance" in information)
 		dat += "[information["lance"]]<br>"
 	if("knockback" in information)
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(ego_datums)
 	return dat
 
 /datum/ego_datum/armor
-	item_category = "Armor"
+	item_category = "护甲"
 	packaged = TRUE
 
 /datum/ego_datum/armor/New(datum/abnormality/DA)
@@ -269,11 +269,11 @@ GLOBAL_LIST_EMPTY(ego_datums)
 /datum/ego_datum/armor/PrintOutInfo()
 	var/dat = "[capitalize(name)]<br><br>"
 	if(LAZYLEN(information["attribute_requirements"]))
-		dat += "Attribute requirements:<br>"
+		dat += "所需属性:<br>"
 		for(var/attr in information["attribute_requirements"])
 			dat += "- [attr]: [information["attribute_requirements"][attr]]<br>"
 		dat += "<hr>"
-	dat += "Armor:<br>"
+	dat += "护甲:<br>"
 	for(var/armor_type in information["armor"])
 		if(!(information["armor"][armor_type])) // Zero armor and such
 			continue

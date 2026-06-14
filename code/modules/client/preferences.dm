@@ -195,10 +195,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	update_preview_icon()
 	var/list/dat = list("<center>")
 
-	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a>"
-	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>Game Preferences</a>"
-	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=2' [current_tab == 2 ? "class='linkOn'" : ""]>OOC Preferences</a>"
-	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=3' [current_tab == 3 ? "class='linkOn'" : ""]>Custom Keybindings</a>"
+	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>角色设定</a>"
+	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>游戏设置</a>"
+	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=2' [current_tab == 2 ? "class='linkOn'" : ""]>OOC设置</a>"
+	dat += "<a href='byond://?_src_=prefs;preference=tab;tab=3' [current_tab == 3 ? "class='linkOn'" : ""]>键位设置</a>"
 
 	if(!path)
 		dat += "<div class='notice'>Please create an account to save your preferences</div>"
@@ -227,43 +227,43 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
 					dat += "</center>"
 
-			dat += "<center><h2>Occupation Choices</h2>"
+			dat += "<center><h2>职位选择</h2>"
 			dat += "<a href='byond://?_src_=prefs;preference=job;task=menu'>Set Occupation Preferences</a><br></center>"
 			if(CONFIG_GET(flag/roundstart_traits))
-				dat += "<center><h2>Quirk Setup</h2>"
+				dat += "<center><h2>特质</h2>"
 				dat += "<a href='byond://?_src_=prefs;preference=trait;task=menu'>Configure Quirks</a><br></center>"
-				dat += "<center><b>Current Quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
-			dat += "<h2>Identity</h2>"
+				dat += "<center><b>当前特质:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
+			dat += "<h2>身份信息</h2>"
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 			if(is_banned_from(user.ckey, "Appearance"))
-				dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
-			dat += "<a href='byond://?_src_=prefs;preference=name;task=random'>Random Name</A> "
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
+				dat += "<b>你已经被禁止自定义角色，你可以在此界面继续编辑角色，但进入游戏后仍将强制随机角色设置.</b><br>"
+			dat += "<a href='byond://?_src_=prefs;preference=name;task=random'>随机姓名</A> "
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>总是随机姓名: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
 			if(user.client.get_exp_living(TRUE) >= PLAYTIME_HARDCORE_RANDOM)
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HARDCORE]'>Hardcore Random: [(randomise[RANDOM_HARDCORE]) ? "Yes" : "No"]</a>"
-			dat += "<br><b>[TeguTranslate("Name", src)]:</b> "
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HARDCORE]'>硬核随机: [(randomise[RANDOM_HARDCORE]) ? "Yes" : "No"]</a>"
+			dat += "<br><b>[TeguTranslate("姓名", src)]:</b> "
 			dat += "<a href='byond://?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
 				if(gender == MALE)
-					dispGender = TeguTranslate("Male", src)
+					dispGender = TeguTranslate("男性", src)
 				else if(gender == FEMALE)
-					dispGender = TeguTranslate("Female", src)
+					dispGender = TeguTranslate("女性", src)
 				else
-					dispGender = "Other"
-				dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'>[dispGender]</a>"
+					dispGender = "其他"
+				dat += "<b>性别:</b> <a href='byond://?_src_=prefs;preference=gender'>[dispGender]</a>"
 
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-					dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
-					dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
+					dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>总是随机性别: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
+					dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>仅反派时随机: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
-			dat += "<br><b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'>[age]</a>"
+			dat += "<br><b>年龄:</b> <a href='byond://?_src_=prefs;preference=age;task=input'>[age]</a>"
 			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>Always Random Age: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>总是随机年龄: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>仅反派时随机: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
 
-			dat += "<br><br><b>Special Names:</b><BR>"
+			dat += "<br><br><b>其他姓名:</b><BR>"
 			var/old_group
 			for(var/custom_name_id in GLOB.preferences_custom_names)
 				var/namedata = GLOB.preferences_custom_names[custom_name_id]
@@ -275,88 +275,88 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a href ='byond://?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [custom_names[custom_name_id]]</a> "
 			dat += "<br><br>"
 
-			dat += "<b>Custom Job Preferences:</b><BR>"
-			dat += "<a href='byond://?_src_=prefs;preference=agent_dept;task=input'><b>Preferred Agent Department:</b> [prefered_agent_department]</a><BR>"
-			dat += "<a href='byond://?_src_=prefs;preference=seph_dept;task=input'><b>Preferred Sephirah Department:</b> [prefered_sephirah_department]</a><BR>"
-			dat += "<a href='byond://?_src_=prefs;preference=seph_body;task=input'><b>Preferred Sephirah Body:</b> [prefered_sephirah_bodytype]</a><BR>"
-			dat += "<b>Preferred Sephirah Box Color:</b> <span style='border: 1px solid #161616; background-color: #[prefered_sephirah_boxcolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=seph_boxcolor;task=input'>Change</a><BR>"
+			dat += "<b>自定义工作偏好:</b><BR>"
+			dat += "<a href='byond://?_src_=prefs;preference=agent_dept;task=input'><b>偏好工作部门:</b> [prefered_agent_department]</a><BR>"
+			dat += "<a href='byond://?_src_=prefs;preference=seph_dept;task=input'><b>偏好Sephirah部门:</b> [prefered_sephirah_department]</a><BR>"
+			dat += "<a href='byond://?_src_=prefs;preference=seph_body;task=input'><b>偏好Sephirah身体:</b> [prefered_sephirah_bodytype]</a><BR>"
+			dat += "<b>偏好Sephirah盒体颜色:</b> <span style='border: 1px solid #161616; background-color: #[prefered_sephirah_boxcolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=seph_boxcolor;task=input'>Change</a><BR>"
 			dat += "<br>"
 
-			dat += "<h2>Backstory Information:</h2>"
-			dat += "<a href='byond://?_src_=prefs;preference=district;task=input'><b>Home District:</b> [home_district]</a><BR>"
-			dat += "<a href='byond://?_src_=prefs;preference=wealth;task=input'><b>Economical Status:</b> [home_wealth]</a><BR>"
+			dat += "<h2>背景信息:</h2>"
+			dat += "<a href='byond://?_src_=prefs;preference=district;task=input'><b>家乡地区:</b> [home_district]</a><BR>"
+			dat += "<a href='byond://?_src_=prefs;preference=wealth;task=input'><b>经济状况:</b> [home_wealth]</a><BR>"
 			var/new_output = ""
 			var/wealthcheck = FALSE
 			if(home_wealth == WEALTHY)
 				wealthcheck = TRUE
 			switch(home_district)
 				if(DISTRICT8)
-					new_output += "the [wealthcheck ? "courts underneath the artificial skies" : "sprawling, restructuring backstreets"] of Hongyuan"
+					new_output += "鸿园生命工程公司那[wealthcheck ? "巨大的人造建筑中" : "错综复杂的后巷中"]"
 				if(DISTRICT9)
-					new_output += "[wealthcheck ? "I Corp's Nest" : "the Streets of Music"]"
+					new_output += "[wealthcheck ? "I公司的巢" : "音之巷"]"
 				if(DISTRICT10)
-					new_output += "the Nest of Gambling"
+					new_output += "赌博之巢"
 				if(DISTRICT18)
-					new_output += "a military life within an R Corporation Fortress"
+					new_output += "R公司的军事要塞中"
 				if(DISTRICT21)
-					new_output += "[wealthcheck ? "a boathouse on the artificial shore bordering the Outskirts" : "one of the five Portships upon the Great Lake"]"
+					new_output += "[wealthcheck ? "一座位于边缘地带人工海岸边的船屋" : "大湖上的五艘港口船之一"]"
 				if(DISTRICT23)
-					new_output += "[wealthcheck ? "W Corp's Nest" : "the cannibalism-ridden Streets of Flavor"]"
+					new_output += "[wealthcheck ? "W公司的巢" : "充满新奇料理的美食巷"]"
 				if(DISTRICT24)
-					new_output += "[wealthcheck ? "X Corp's Nest" : "the backstreets of Nest X, near the Alloy Excavation Sites"]"
+					new_output += "[wealthcheck ? "X公司的巢" : "靠近合金挖掘矿场的后巷"]"
 				if(DISTRICT25)
-					new_output += "the Frigid North, under Y Corporation"
+					new_output += "由Y公司管辖极寒之北"
 				if(OUTSKIRTS)
-					new_output += "the barren outskirts"
+					new_output += "荒芜的郊区"
 				else
-					new_output += "the [wealthcheck ? "Nest" : "Backstreets"] of [home_district]"
-			dat += "You originally came from [new_output].<BR></td>"
+					new_output += "[home_district]的[wealthcheck ? "巢" : "后巷"]"
+			dat += "你原本来自于[new_output].<BR></td>"
 
 			dat += "</tr></table>"
 
-			dat += "<h2>Body</h2>"
-			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>Random Body</A> "
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY]'>Always Random Body: [(randomise[RANDOM_BODY]) ? "Yes" : "No"]</A>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY_ANTAG]'>When Antagonist: [(randomise[RANDOM_BODY_ANTAG]) ? "Yes" : "No"]</A><br>"
+			dat += "<h2>身体</h2>"
+			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>随机身体</A> "
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY]'>总是随机身体: [(randomise[RANDOM_BODY]) ? "Yes" : "No"]</A>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY_ANTAG]'>仅反派时随机: [(randomise[RANDOM_BODY_ANTAG]) ? "Yes" : "No"]</A><br>"
 
 			dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
-			dat += "<b>Species:</b><BR><a href='byond://?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
-			dat += "<a href='byond://?_src_=prefs;preference=species;task=random'>Random Species</A> "
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
+			dat += "<b>种族:</b><BR><a href='byond://?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+			dat += "<a href='byond://?_src_=prefs;preference=species;task=random'>随机种族</A> "
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>总是随机种族: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
-			dat += "<b>Underwear:</b><BR><a href ='byond://?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR]'>[(randomise[RANDOM_UNDERWEAR]) ? "Lock" : "Unlock"]</A>"
+			dat += "<b>内衣:</b><BR><a href ='byond://?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR]'>[(randomise[RANDOM_UNDERWEAR]) ? "锁定" : "不锁定"]</A>"
 
-			dat += "<br><b>Underwear Color:</b><BR><span style='border: 1px solid #161616; background-color: #[underwear_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=underwear_color;task=input'>Change</a>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR_COLOR]'>[(randomise[RANDOM_UNDERWEAR_COLOR]) ? "Lock" : "Unlock"]</A>"
+			dat += "<br><b>内衣颜色:</b><BR><span style='border: 1px solid #161616; background-color: #[underwear_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=underwear_color;task=input'>Change</a>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR_COLOR]'>[(randomise[RANDOM_UNDERWEAR_COLOR]) ? "锁定" : "不锁定"]</A>"
 
-			dat += "<BR><b>Undershirt:</b><BR><a href ='byond://?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERSHIRT]'>[(randomise[RANDOM_UNDERSHIRT]) ? "Lock" : "Unlock"]</A>"
+			dat += "<BR><b>内衬:</b><BR><a href ='byond://?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERSHIRT]'>[(randomise[RANDOM_UNDERSHIRT]) ? "锁定" : "不锁定"]</A>"
 
 
-			dat += "<br><b>Socks:</b><BR><a href ='byond://?_src_=prefs;preference=socks;task=input'>[socks]</a>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SOCKS]'>[(randomise[RANDOM_SOCKS]) ? "Lock" : "Unlock"]</A>"
+			dat += "<br><b>袜子:</b><BR><a href ='byond://?_src_=prefs;preference=socks;task=input'>[socks]</a>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SOCKS]'>[(randomise[RANDOM_SOCKS]) ? "锁定" : "不锁定"]</A>"
 
-			dat += "<br><b>Backpack:</b><BR><a href ='byond://?_src_=prefs;preference=bag;task=input'>[backpack]</a>"
-			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BACKPACK]'>[(randomise[RANDOM_BACKPACK]) ? "Lock" : "Unlock"]</A>"
+			dat += "<br><b>背包:</b><BR><a href ='byond://?_src_=prefs;preference=bag;task=input'>[backpack]</a>"
+			dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BACKPACK]'>[(randomise[RANDOM_BACKPACK]) ? "锁定" : "不锁定"]</A>"
 
 			if((HAS_FLESH in pref_species.species_traits) || (HAS_BONE in pref_species.species_traits))
-				dat += "<BR><b>Temporal Scarring:</b><BR><a href='byond://?_src_=prefs;preference=persistent_scars'>[(persistent_scars) ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</A>"
+				dat += "<BR><b>旧伤疤:</b><BR><a href='byond://?_src_=prefs;preference=persistent_scars'>[(persistent_scars) ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</A>"
 				dat += "<a href='byond://?_src_=prefs;preference=clear_scars'>Clear scar slots</A>"
 
-			dat += "<br><b>Uplink Spawn Location:</b><BR><a href ='byond://?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
+			dat += "<br><b>上行链路生成地点:</b><BR><a href ='byond://?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 			if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
-				dat += "<br><b>Don The Ultimate Gamer Cloak?:</b><BR><a href ='byond://?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><BR></td>"
+				dat += "<br><b>终极玩家斗篷?:</b><BR><a href ='byond://?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><BR></td>"
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
 
 				dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Skin Tone</h3>"
+				dat += "<h3>肤色</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=s_tone;task=input'>[skin_tone]</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "锁定" : "不锁定"]</A>"
 				dat += "<br>"
 
 			var/mutant_colors
@@ -365,7 +365,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!use_skintones)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Mutant Color</h3>"
+				dat += "<h3>变异颜色</h3>"
 
 				dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 
@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!use_skintones)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Ethereal Color</h3>"
+				dat += "<h3>光灵颜色</h3>"
 
 				dat += "<span style='border: 1px solid #161616; background-color: #[features["ethcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=color_ethereal;task=input'>Change</a><BR>"
 
@@ -386,9 +386,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!use_skintones && !mutant_colors)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Eye Color</h3>"
+				dat += "<h3>瞳色</h3>"
 				dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=eyes;task=input'>Change</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "Lock" : "Unlock"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "锁定" : "不锁定"]</A>"
 
 				dat += "<br></td>"
 			else if(use_skintones || mutant_colors)
@@ -398,29 +398,29 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Hairstyle</h3>"
+				dat += "<h3>发型</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A><BR>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "锁定" : "不锁定"]</A><BR>"
 
 				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=hair_color;task=input'>Change</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "Lock" : "Unlock"]</A><BR>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "锁定" : "不锁定"]</A><BR>"
 
-				dat += "<h3>Gradient Style</h3>"
+				dat += "<h3>渐变色类型</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=gradient_style;task=input'>[gradient_style]</a>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_gradient_style;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_gradient_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border:1px solid #161616; background-color: #[gradient_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=gradient_color;task=input'>Change</a><BR>"
 
-				dat += "<h3>Facial Hairstyle</h3>"
+				dat += "<h3>面部毛发</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
 				dat += "<a href='byond://?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='byond://?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "锁定" : "不锁定"]</A>"
 
 				dat += "<br><span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=facial;task=input'>Change</a>"
-				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
+				dat += "<a href='byond://?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "锁定" : "不锁定"]</A>"
 				dat += "<br></td>"
 
 			//Mutant stuff
@@ -430,7 +430,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Tail</h3>"
+				dat += "<h3>尾巴</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=tail_lizard;task=input'>[features["tail_lizard"]]</a><BR>"
 
@@ -443,7 +443,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Snout</h3>"
+				dat += "<h3>口鼻</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=snout;task=input'>[features["snout"]]</a><BR>"
 
@@ -456,7 +456,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Horns</h3>"
+				dat += "<h3>犄角</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=horns;task=input'>[features["horns"]]</a><BR>"
 
@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Frills</h3>"
+				dat += "<h3>褶边</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=frills;task=input'>[features["frills"]]</a><BR>"
 
@@ -482,7 +482,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Spines</h3>"
+				dat += "<h3>体刺</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=spines;task=input'>[features["spines"]]</a><BR>"
 
@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Body Markings</h3>"
+				dat += "<h3>身体标记</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=body_markings;task=input'>[features["body_markings"]]</a><BR>"
 
@@ -508,7 +508,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Legs</h3>"
+				dat += "<h3>下肢</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=legs;task=input'>[features["legs"]]</a><BR>"
 
@@ -521,7 +521,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Moth wings</h3>"
+				dat += "<h3>蛾翼</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=moth_wings;task=input'>[features["moth_wings"]]</a><BR>"
 
@@ -534,7 +534,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Moth antennae</h3>"
+				dat += "<h3>蛾触角</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=moth_antennae;task=input'>[features["moth_antennae"]]</a><BR>"
 
@@ -547,7 +547,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Moth markings</h3>"
+				dat += "<h3>蛾标记</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=moth_markings;task=input'>[features["moth_markings"]]</a><BR>"
 
@@ -560,7 +560,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Tail</h3>"
+				dat += "<h3>尾巴</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=tail_human;task=input'>[features["tail_human"]]</a><BR>"
 
@@ -573,7 +573,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Ears</h3>"
+				dat += "<h3>耳朵</h3>"
 
 				dat += "<a href='byond://?_src_=prefs;preference=ears;task=input'>[features["ears"]]</a><BR>"
 
@@ -588,7 +588,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!mutant_category)
 						dat += APPEARANCE_CATEGORY_COLUMN
 
-					dat += "<h3>Wings</h3>"
+					dat += "<h3>翅膀</h3>"
 
 					dat += "<a href='byond://?_src_=prefs;preference=wings;task=input'>[features["wings"]]</a><BR>"
 
@@ -605,93 +605,93 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>General Settings</h2>"
-			dat += "<b>[TeguTranslate("UI Style", src)]:</b> <a href='byond://?_src_=prefs;task=input;preference=ui'>[UI_style]</a><br>"
-			dat += "<b>[TeguTranslate("tgui Window Mode", src)]:</b> <a href='byond://?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</a><br>"
-			dat += "<b>[TeguTranslate("tgui Window Placement", src)]:</b> <a href='byond://?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</a><br>"
-			dat += "<b>Show Runechat Chat Bubbles:</b> <a href='byond://?_src_=prefs;preference=chat_on_map'>[chat_on_map ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>[TeguTranslate("Enable Radio Static", src)]:</b> <a href='byond://?_src_=prefs;preference=radio_static'>[(toggles & SOUND_RADIO_STATIC) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>Runechat message char limit:</b> <a href='byond://?_src_=prefs;preference=max_chat_length;task=input'>[max_chat_length]</a><br>"
-			dat += "<b>See Runechat for non-mobs:</b> <a href='byond://?_src_=prefs;preference=see_chat_non_mob'>[see_chat_non_mob ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>See Runechat emotes:</b> <a href='byond://?_src_=prefs;preference=see_rc_emotes'>[see_rc_emotes ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><br>"
+			dat += "<h2>一般设置</h2>"
+			dat += "<b>[TeguTranslate("UI样式", src)]:</b> <a href='byond://?_src_=prefs;task=input;preference=ui'>[UI_style]</a><br>"
+			dat += "<b>[TeguTranslate("tgui窗口模式", src)]:</b> <a href='byond://?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "美观 (默认)" : "兼容 (运行慢)"]</a><br>"
+			dat += "<b>[TeguTranslate("tgui窗口布局", src)]:</b> <a href='byond://?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "主显示器" : "自由 (默认)"]</a><br>"
+			dat += "<b>显示 Runechat 聊天气泡:</b> <a href='byond://?_src_=prefs;preference=chat_on_map'>[chat_on_map ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>[TeguTranslate("Enable Radio Static", src)]:</b> <a href='byond://?_src_=prefs;preference=radio_static'>[(toggles & SOUND_RADIO_STATIC) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>Runechat 消息字符限制:</b> <a href='byond://?_src_=prefs;preference=max_chat_length;task=input'>[max_chat_length]</a><br>"
+			dat += "<b>Runechat 非MOB消息可见:</b> <a href='byond://?_src_=prefs;preference=see_chat_non_mob'>[see_chat_non_mob ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>Runechat 表情可见:</b> <a href='byond://?_src_=prefs;preference=see_rc_emotes'>[see_rc_emotes ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><br>"
 			dat += "<br>"
-			dat += "<b>Action Buttons:</b> <a href='byond://?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
-			dat += "<b>Hotkey mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
+			dat += "<b>操作按钮:</b> <a href='byond://?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "锁定位置" : "不锁定"]</a><br>"
+			dat += "<b>快捷键模式:</b> <a href='byond://?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "快捷键" : "默认"]</a><br>"
 			dat += "<br>"
-			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
-			dat += "<b>PDA Style:</b> <a href='byond://?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
-			dat += "<br>"
-
-			dat += "<b>Broadcast Login/Logout:</b> <a href='byond://?_src_=prefs;preference=broadcast_login_logout'>[broadcast_login_logout ? "Broadcast" : "Silent"]</a><br>"
-			dat += "<b>See Login/Logout Messages:</b> <a href='byond://?_src_=prefs;preference=hear_login_logout'>[(chat_toggles & CHAT_LOGIN_LOGOUT) ? "Allowed" : "Muted"]</a><br>"
+			dat += "<b>PDA颜色:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=pda_color;task=input'>更改</a><BR>"
+			dat += "<b>PDA样式:</b> <a href='byond://?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
 			dat += "<br>"
 
-			dat += "<b>Income Updates:</b> <a href='byond://?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
+			dat += "<b>登录/登出广播:</b> <a href='byond://?_src_=prefs;preference=broadcast_login_logout'>[broadcast_login_logout ? "广播" : "不广播"]</a><br>"
+			dat += "<b>登录/登出消息可见:</b> <a href='byond://?_src_=prefs;preference=hear_login_logout'>[(chat_toggles & CHAT_LOGIN_LOGOUT) ? "允许" : "屏蔽"]</a><br>"
+			dat += "<br>"
+
+			dat += "<b>工资到账信息:</b> <a href='byond://?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "允许" : "屏蔽"]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>FPS:</b> <a href='byond://?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
 
-			dat += "<b>Parallax (Fancy Space):</b> <a href='byond://?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
+			dat += "<b>视差 (Fancy Space):</b> <a href='byond://?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
 			switch (parallax)
 				if (PARALLAX_LOW)
-					dat += "Low"
+					dat += "低"
 				if (PARALLAX_MED)
-					dat += "Medium"
+					dat += "中"
 				if (PARALLAX_INSANE)
-					dat += "Insane"
+					dat += "极高"
 				if (PARALLAX_DISABLE)
-					dat += "Disabled"
+					dat += "关闭"
 				else
-					dat += "High"
+					dat += "高"
 			dat += "</a><br>"
 
-			dat += "<b>Ambient Occlusion:</b> <a href='byond://?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>Fit Viewport:</b> <a href='byond://?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
+			dat += "<b>环境光遮蔽:</b> <a href='byond://?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>视窗匹配:</b> <a href='byond://?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "自动" : "手动"]</a><br>"
 			if (CONFIG_GET(string/default_view) != CONFIG_GET(string/default_view_square))
-				dat += "<b>[TeguTranslate("Widescreen", src)]:</b> <a href='byond://?_src_=prefs;preference=widescreenpref'>[widescreenpref ? "[TeguTranslate("Enabled", src)] ([CONFIG_GET(string/default_view)])" : "[TeguTranslate("Enabled", src)] ([CONFIG_GET(string/default_view_square)])"]</a><br>"
+				dat += "<b>[TeguTranslate("Widescreen", src)]:</b> <a href='byond://?_src_=prefs;preference=widescreenpref'>[widescreenpref ? "[TeguTranslate("开启", src)] ([CONFIG_GET(string/default_view)])" : "[TeguTranslate("开启", src)] ([CONFIG_GET(string/default_view_square)])"]</a><br>"
 			var/button_name = "If you see this something went wrong."
 			button_name = pixel_size
-			dat += "<b>Pixel Scaling:</b> <a href='byond://?_src_=prefs;preference=pixel_size'>[(button_name) ? "Pixel Perfect [button_name]x" : "Stretch to fit"]</a><br>"
+			dat += "<b>像素拉伸:</b> <a href='byond://?_src_=prefs;preference=pixel_size'>[(button_name) ? "像素完美 [button_name]x" : "拉伸以适应"]</a><br>"
 
 			switch(scaling_method)
 				if(SCALING_METHOD_DISTORT)
-					button_name = "Nearest Neighbor"
+					button_name = "最近邻"
 				if(SCALING_METHOD_NORMAL)
-					button_name = "Point Sampling"
+					button_name = "点采样"
 				if(SCALING_METHOD_BLUR)
-					button_name = "Bilinear"
-			dat += "<b>Scaling Method:</b> <a href='byond://?_src_=prefs;preference=scaling_method'>[button_name]</a><br>"
+					button_name = "双线性"
+			dat += "<b>拉伸方法:</b> <a href='byond://?_src_=prefs;preference=scaling_method'>[button_name]</a><br>"
 
 			if (CONFIG_GET(flag/maprotation))
 				var/p_map = preferred_map
 				if (!p_map)
-					p_map = "Default"
+					p_map = "默认"
 					if (config.defaultmap)
 						p_map += " ([config.defaultmap.map_name])"
 				else
 					if (p_map in config.maplist)
 						var/datum/map_config/VM = config.maplist[p_map]
 						if (!VM)
-							p_map += " (No longer exists)"
+							p_map += " (不存在)"
 						else
 							p_map = VM.map_name
 					else
-						p_map += " (No longer exists)"
+						p_map += " (不存在)"
 				if(CONFIG_GET(flag/preference_map_voting))
-					dat += "<b>Preferred Map:</b> <a href='byond://?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
+					dat += "<b>偏好地图:</b> <a href='byond://?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
 
 			dat += "</td><td width='300px' height='300px' valign='top'>"
-			dat += "<h2>Ghost Settings</h2>"
-			dat += "<b>Ghost Ears:</b> <a href='byond://?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</a><br>"
-			dat += "<b>Ghost Radio:</b> <a href='byond://?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "All Messages":"No Messages"]</a><br>"
-			dat += "<b>Ghost Sight:</b> <a href='byond://?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</a><br>"
-			dat += "<b>Ghost Whispers:</b> <a href='byond://?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "All Speech" : "Nearest Creatures"]</a><br>"
-			dat += "<b>Ghost PDA:</b> <a href='byond://?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "All Messages" : "Nearest Creatures"]</a><br>"
-			dat += "<b>Ghost Law Changes:</b> <a href='byond://?_src_=prefs;preference=ghost_laws'>[(chat_toggles & CHAT_GHOSTLAWS) ? "All Law Changes" : "No Law Changes"]</a><br>"
+			dat += "<h2>鬼魂设置</h2>"
+			dat += "<b>鬼魂听觉:</b> <a href='byond://?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "所有对话" : "附近生物"]</a><br>"
+			dat += "<b>鬼魂无线电:</b> <a href='byond://?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "所有消息":"无消息"]</a><br>"
+			dat += "<b>鬼魂视觉:</b> <a href='byond://?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "所有表情" : "附近生物"]</a><br>"
+			dat += "<b>鬼魂耳语:</b> <a href='byond://?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "所有对话" : "附近生物"]</a><br>"
+			dat += "<b>鬼魂PDA:</b> <a href='byond://?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "所有消息" : "附近生物"]</a><br>"
+			dat += "<b>鬼魂规则变化:</b> <a href='byond://?_src_=prefs;preference=ghost_laws'>[(chat_toggles & CHAT_GHOSTLAWS) ? "所有规则更改" : "无规则更改"]</a><br>"
 
 			if(unlock_content)
-				dat += "<b>Ghost Form:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
-				dat += "<B>Ghost Orbit: </B> <a href='byond://?_src_=prefs;task=input;preference=ghostorbit'>[ghost_orbit]</a><br>"
+				dat += "<b>鬼魂形态:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
+				dat += "<B>鬼魂环绕: </B> <a href='byond://?_src_=prefs;task=input;preference=ghostorbit'>[ghost_orbit]</a><br>"
 
 			switch(ghost_accs)
 				if(GHOST_ACCS_FULL)
@@ -701,7 +701,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(GHOST_ACCS_NONE)
 					button_name = GHOST_ACCS_NONE_NAME
 
-			dat += "<b>Ghost Accessories:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostaccs'>[button_name]</a><br>"
+			dat += "<b>鬼魂附件:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostaccs'>[button_name]</a><br>"
 
 			switch(ghost_others)
 				if(GHOST_OTHERS_THEIR_SETTING)
@@ -711,21 +711,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(GHOST_OTHERS_SIMPLE)
 					button_name = GHOST_OTHERS_SIMPLE_NAME
 
-			dat += "<b>Ghosts of Others:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
+			dat += "<b>其他鬼魂:</b> <a href='byond://?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
 		if(2) //OOC Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>OOC Settings</h2>"
-			dat += "<b>[TeguTranslate("Interface Language", src)]:</b> <a href='byond://?_src_=prefs;preference=clientlanguage;task=input'>[TeguTranslate(client_language, src)]</a><BR>"
+			dat += "<h2>OOC设定</h2>"
+			dat += "<b>[TeguTranslate("界面语言", src)]:</b> <a href='byond://?_src_=prefs;preference=clientlanguage;task=input'>[TeguTranslate(client_language, src)]</a><BR>"
 			dat += "<br>"
-			dat += "<b>Window Flashing:</b> <a href='byond://?_src_=prefs;preference=winflash'>[(windowflashing) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
+			dat += "<b>窗口闪烁:</b> <a href='byond://?_src_=prefs;preference=winflash'>[(windowflashing) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
 			dat += "<br>"
-			dat += "<b>[TeguTranslate("Play Admin MIDIs", src)]:</b> <a href='byond://?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>[TeguTranslate("Play Lobby Music", src)]:</b> <a href='byond://?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>[TeguTranslate("Play End of Round Sounds", src)]:</b> <a href='byond://?_src_=prefs;preference=endofround_sounds'>[(toggles & SOUND_ENDOFROUND) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-			dat += "<b>See Pull Requests:</b> <a href='byond://?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
+			dat += "<b>[TeguTranslate("播放管理员MIDIs", src)]:</b> <a href='byond://?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>[TeguTranslate("播放大厅音乐", src)]:</b> <a href='byond://?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>[TeguTranslate("播放结局音乐", src)]:</b> <a href='byond://?_src_=prefs;preference=endofround_sounds'>[(toggles & SOUND_ENDOFROUND) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+			dat += "<b>请求可见:</b> <a href='byond://?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
 			dat += "<br>"
 
 
@@ -734,20 +734,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>BYOND Membership Publicity:</b> <a href='byond://?_src_=prefs;preference=publicity'>[(toggles & MEMBER_PUBLIC) ? "Public" : "Hidden"]</a><br>"
 
 				if(unlock_content || check_rights_for(user.client, R_ADMIN))
-					dat += "<b>OOC Color:</b> <span style='border: 1px solid #161616; background-color: [ooccolor ? ooccolor : GLOB.normal_ooc_colour];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
+					dat += "<b>OOC颜色:</b> <span style='border: 1px solid #161616; background-color: [ooccolor ? ooccolor : GLOB.normal_ooc_colour];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
 				if(hearted_until)
-					dat += "<a href='byond://?_src_=prefs;preference=clear_heart'>Clear OOC Commend Heart</a><br>"
+					dat += "<a href='byond://?_src_=prefs;preference=clear_heart'>清除OOC推荐爱心</a><br>"
 
 			dat += "</td>"
 
 			if(user.client.holder)
 				dat +="<td width='300px' height='300px' valign='top'>"
 
-				dat += "<h2>Admin Settings</h2>"
+				dat += "<h2>管理员设置</h2>"
 
-				dat += "<b>Adminhelp Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-				dat += "<b>Prayer Sounds:</b> <a href = 'byond://?_src_=prefs;preference=hear_prayers'>[(toggles & SOUND_PRAYERS) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
-				dat += "<b>Announce Login:</b> <a href='byond://?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN) ? TeguTranslate("Enabled", src):TeguTranslate("Disabled", src)]</a><br>"
+				dat += "<b>Adminhelp声音:</b> <a href='byond://?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+				dat += "<b>祈祷声音:</b> <a href = 'byond://?_src_=prefs;preference=hear_prayers'>[(toggles & SOUND_PRAYERS) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
+				dat += "<b>Announce Login:</b> <a href='byond://?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN) ? TeguTranslate("开启", src):TeguTranslate("关闭", src)]</a><br>"
 				dat += "<br>"
 				dat += "<b>Combo HUD Lighting:</b> <a href = 'byond://?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
 				dat += "<br>"
@@ -767,7 +767,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(CONFIG_GET(flag/auto_deadmin_players) && !timegate)
 					dat += "<b>Always Deadmin:</b> FORCED</a><br>"
 				else
-					dat += "<b>Always Deadmin:</b> [timegate ? "(Time Locked) " : ""]<a href = 'byond://?_src_=prefs;preference=toggle_deadmin_always'>[(toggles & DEADMIN_ALWAYS)? TeguTranslate("Enabled", src) : TeguTranslate("Disabled", src)]</a><br>"
+					dat += "<b>Always Deadmin:</b> [timegate ? "(Time Locked) " : ""]<a href = 'byond://?_src_=prefs;preference=toggle_deadmin_always'>[(toggles & DEADMIN_ALWAYS)? TeguTranslate("开启", src) : TeguTranslate("关闭", src)]</a><br>"
 					if(!(toggles & DEADMIN_ALWAYS))
 						dat += "<br>"
 						if(!CONFIG_GET(flag/auto_deadmin_antagonists) || (CONFIG_GET(flag/auto_deadmin_antagonists) && !timegate))
@@ -836,14 +836,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	dat += "<hr><center>"
 
 	if(!IsGuestKey(user.key))
-		dat += "<a href='byond://?_src_=prefs;preference=load'>Undo</a> "
-		dat += "<a href='byond://?_src_=prefs;preference=save'>Save Setup</a> "
+		dat += "<a href='byond://?_src_=prefs;preference=load'>撤销</a> "
+		dat += "<a href='byond://?_src_=prefs;preference=save'>保存设置</a> "
 
-	dat += "<a href='byond://?_src_=prefs;preference=reset_all'>Reset Setup</a>"
+	dat += "<a href='byond://?_src_=prefs;preference=reset_all'>重置设置</a>"
 	dat += "</center>"
 
 	winshow(user, "preferences_window", TRUE)
-	var/datum/browser/popup = new(user, "preferences_browser", "<div align='center'>Character Setup</div>", 640, 770)
+	var/datum/browser/popup = new(user, "preferences_browser", "<div align='center'>角色编辑</div>", 640, 770)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 	onclose(user, "preferences_window", src)
@@ -1077,14 +1077,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		dat += "The quirk subsystem hasn't finished initializing, please hold..."
 		dat += "<center><a href='byond://?_src_=prefs;preference=trait;task=close'>Done</a></center><br>"
 	else
-		dat += "<center><b>Choose quirk setup</b></center><br>"
-		dat += "<div align='center'>Left-click to add or remove quirks. You need negative quirks to have positive ones.<br>\
-		Quirks are applied at roundstart and cannot normally be removed.</div>"
-		dat += "<center><a href='byond://?_src_=prefs;preference=trait;task=close'>Done</a></center>"
+		dat += "<center><b>选择特质</b></center><br>"
+		dat += "<div align='center'>左键添加或减少特质，负面特质和正面特质点数必须相等.<br>\
+		这些特质会在回合开始时应用，游戏内无法通过常规手段移除.</div>"
+		dat += "<center><a href='byond://?_src_=prefs;preference=trait;task=close'>完成</a></center>"
 		dat += "<hr>"
-		dat += "<center><b>Current quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
-		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] max positive quirks<br>\
-		<b>Quirk balance remaining:</b> [GetQuirkBalance()]</center><br>"
+		dat += "<center><b>当前特质:</b> [all_quirks.len ? all_quirks.Join(", ") : "无"]</center>"
+		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] 最大正面特质<br>\
+		<b>特质平衡:</b> [GetQuirkBalance()]</center><br>"
 		for(var/V in SSquirks.quirks)
 			var/datum/quirk/T = SSquirks.quirks[V]
 			var/quirk_name = initial(T.name)
@@ -1800,7 +1800,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					buttons_locked = !buttons_locked
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
-				if("tgui_lock")
+				if("tgui_锁定")
 					tgui_lock = !tgui_lock
 				if("winflash")
 					windowflashing = !windowflashing
@@ -1973,7 +1973,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("clear_heart")
 					hearted = FALSE
 					hearted_until = null
-					to_chat(user, span_notice("OOC Commendation Heart disabled"))
+					to_chat(user, span_notice("OOC Commendation Heart 关闭"))
 					save_preferences()
 
 	ShowChoices(user)

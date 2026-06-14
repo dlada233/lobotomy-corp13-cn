@@ -9,7 +9,7 @@ const STATE_BUYING_SHUTTLE = "buying_shuttle";
 const STATE_CHANGING_STATUS = "changing_status";
 const STATE_MAIN = "main";
 const STATE_MESSAGES = "messages";
-const WARNING = "Changing the emergency level may aggravate certain abnormalities!";
+const WARNING = "更改警报级别可能会使某些异想体更加危险!";
 
 // Used for whether or not you need to swipe to confirm an alert level change
 const SWIPE_NEEDED = "SWIPE_NEEDED";
@@ -222,7 +222,7 @@ const PageChangingStatus = (props, context) => {
           <Flex.Item>
             <Button
               icon="times"
-              content="Clear Alert"
+              content="清除警报"
               color="bad"
               onClick={() => act("setStatusPicture", { picture: "blank" })}
             />
@@ -231,38 +231,38 @@ const PageChangingStatus = (props, context) => {
           <Flex.Item mt={1}>
             <Button
               icon="check-square-o"
-              content="Default"
+              content="默认"
               onClick={() => act("setStatusPicture", { picture: "default" })}
             />
 
             <Button
               icon="bell-o"
-              content="Red Alert"
+              content="红色警报"
               onClick={() => act("setStatusPicture", { picture: "redalert" })}
             />
 
             <Button
               icon="exclamation-triangle"
-              content="Lockdown"
+              content="封锁"
               onClick={() => act("setStatusPicture", { picture: "lockdown" })}
             />
 
             <Button
               icon="exclamation-circle"
-              content="Biohazard"
+              content="生物危害"
               onClick={() => act("setStatusPicture", { picture: "biohazard" })}
             />
 
             <Button
               icon="space-shuttle"
-              content="Shuttle ETA"
+              content="撤离载具ETA"
               onClick={() => act("setStatusPicture", { picture: "shuttle" })}
             />
           </Flex.Item>
         </Flex>
       </Section>
 
-      <Section title="Message">
+      <Section title="消息">
         <Flex direction="column">
           <Flex.Item mb={1}>
             <Input
@@ -285,7 +285,7 @@ const PageChangingStatus = (props, context) => {
           <Flex.Item>
             <Button
               icon="comment-o"
-              content="Message"
+              content="消息"
               onClick={() => act("setStatusMessage", {
                 lineOne,
                 lineTwo,
@@ -348,14 +348,14 @@ const PageMain = (props, context) => {
         {shuttleCalled && (
           <Button.Confirm
             icon="space-shuttle"
-            content="Recall Emergency Shuttle"
+            content="召回应急撤离载具"
             color="bad"
             disabled={!canRecallShuttles || !shuttleRecallable}
             tooltip={(
               canRecallShuttles && (
-                !shuttleRecallable && "It's too late for the emergency shuttle to be recalled."
+                !shuttleRecallable && "召回应急撤离载具太迟了."
               ) || (
-                "You do not have permission to recall the emergency shuttle."
+                "你没有召回应急撤离载具的许可."
               )
             )}
             tooltipPosition="bottom-right"
@@ -364,7 +364,7 @@ const PageMain = (props, context) => {
         ) || (
           <Button
             icon="space-shuttle"
-            content="Call Emergency Shuttle"
+            content="呼叫应急撤离"
             disabled={shuttleCanEvacOrFailReason !== 1}
             tooltip={
               shuttleCanEvacOrFailReason !== 1
@@ -378,24 +378,24 @@ const PageMain = (props, context) => {
         {!!shuttleCalledPreviously && (
           shuttleLastCalled && (
             <Box>
-              Most recent shuttle call/recall traced to:
+              最近的呼叫/召回可追溯至:
               {" "}<b>{shuttleLastCalled}</b>
             </Box>
           ) || (
-            <Box>Unable to trace most recent shuttle/recall signal.</Box>
+            <Box>无法追踪最近的呼叫/召回信号.</Box>
           )
         )}
       </Section>
 
       {!!canSetAlertLevel && (
-        <Section title="Emergency Level">
+        <Section title="紧急等级">
           <Flex.Item>
             <Box>
-              Currently on <b>{capitalize(alertLevel)}</b>.
+              当前位于 <b>{capitalize(alertLevel)}</b>.
             </Box>
             {canChangeEmergency !== 1 && (
               <Box>
-                Cooldown:{" "}<b>{canChangeEmergency}</b>
+                冷却:{" "}<b>{canChangeEmergency}</b>
               </Box>
             )}
           </Flex.Item>
@@ -406,7 +406,7 @@ const PageMain = (props, context) => {
                 alertDisabled={canChangeEmergency!==1||noEmergencyFail===1}
                 alertTooltip={
                   noEmergencyFail === 1
-                    ? "The current threat level cannot be overridden."
+                    ? "当前威胁等级无法被更改."
                     : undefined
                 }
                 showAlertLevelConfirm={showAlertLevelConfirm}
@@ -417,7 +417,7 @@ const PageMain = (props, context) => {
                 alertDisabled={canChangeEmergency!== 1||firstTrumpetFail===1}
                 alertTooltip={
                   firstTrumpetFail === 1
-                    ? "The current threat level cannot be overridden."
+                    ? "当前威胁等级无法被更改."
                     : undefined
                 }
                 showAlertLevelConfirm={showAlertLevelConfirm}
@@ -428,7 +428,7 @@ const PageMain = (props, context) => {
                 alertDisabled={canChangeEmergency !== 1||secondTrumpetFail===1}
                 alertTooltip={
                   secondTrumpetFail === 1
-                    ? "The current threat level cannot be overridden."
+                    ? "当前威胁等级无法被更改."
                     : undefined
                 }
                 showAlertLevelConfirm={showAlertLevelConfirm}
@@ -439,7 +439,7 @@ const PageMain = (props, context) => {
                 alertDisabled={canChangeEmergency!==1||thirdTrumpetFail===1}
                 alertTooltip={
                   thirdTrumpetFail === 1
-                    ? "The current threat level cannot be overridden."
+                    ? "当前威胁等级无法被更改."
                     : undefined
                 }
                 showAlertLevelConfirm={showAlertLevelConfirm}
@@ -450,37 +450,37 @@ const PageMain = (props, context) => {
         </Section>
       )}
 
-      <Section title="Functions">
+      <Section title="功能">
         <Flex
           direction="column">
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"
-            content="Make Priority Announcement"
+            content="进行高优广播"
             onClick={() => act("makePriorityAnnouncement")}
           />}
 
           {!!canToggleEmergencyAccess && <Button.Confirm
             icon="id-card-o"
-            content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
+            content={`${emergencyAccess ? "关闭" : "开启"} 应急维护权限`}
             color={emergencyAccess ? "bad" : undefined}
             onClick={() => act("toggleEmergencyAccess")}
           />}
 
           <Button
             icon="desktop"
-            content="Set Status Display"
+            content="设定状态显示"
             onClick={() => act("setState", { state: STATE_CHANGING_STATUS })}
           />
 
           <Button
             icon="envelope-o"
-            content="Message List"
+            content="消息列表"
             onClick={() => act("setState", { state: STATE_MESSAGES })}
           />
 
           {(canBuyShuttles !== 0) && <Button
             icon="shopping-cart"
-            content="Purchase Shuttle"
+            content="购买撤离载具"
             disabled={canBuyShuttles !== 1}
             // canBuyShuttles is a string detailing the fail reason
             // if one can be given
@@ -491,31 +491,31 @@ const PageMain = (props, context) => {
 
           {!!canMessageAssociates && <Button
             icon="comment-o"
-            content={`Send message to ${emagged ? "[UNKNOWN]" : "CentCom"}`}
+            content={`发送消息至 ${emagged ? "[UNKNOWN]" : "CentCom"}`}
             disabled={!importantActionReady}
             onClick={() => setMessagingAssociates(true)}
           />}
 
           {!!canRequestNuke && <Button
             icon="radiation"
-            content="Request Nuclear Authentication Codes"
+            content="请求核弹授权代码"
             disabled={!importantActionReady}
             onClick={() => setRequestingNukeCodes(true)}
           />}
 
           {!!emagged && <Button
             icon="undo"
-            content="Restore Backup Routing Data"
+            content="回复备份路由数据"
             onClick={() => act("restoreBackupRoutingData")}
           />}
         </Flex>
       </Section>
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal
-        label={`Message to transmit to ${emagged ? "[ABNORMAL ROUTING COORDINATES]" : "CentCom"} via quantum entanglement`}
-        notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
+        label={`消息通过量子设备送至 ${emagged ? "[异常路由坐标]" : "CentCom"} `}
+        notice="请注意，此流程费用较高，滥用将导致...终止，并且传输不保证有回应。"
         icon="bullhorn"
-        buttonText="Send"
+        buttonText="发送"
         onBack={() => setMessagingAssociates(false)}
         onSubmit={message => {
           setMessagingAssociates(false);
@@ -526,10 +526,10 @@ const PageMain = (props, context) => {
       />}
 
       {!!canRequestNuke && requestingNukeCodes && <MessageModal
-        label="Reason for requesting nuclear self-destruct codes"
-        notice="Misuse of the nuclear request system will not be tolerated under any circumstances. Transmission does not guarantee a response."
+        label="请求核自毁代码理由"
+        notice="在任何情况下，均不得滥用核对系统，传输不保证有回应."
         icon="bomb"
-        buttonText="Request Codes"
+        buttonText="请求代码"
         onBack={() => setRequestingNukeCodes(false)}
         onSubmit={reason => {
           setRequestingNukeCodes(false);
@@ -540,9 +540,9 @@ const PageMain = (props, context) => {
       />}
 
       {!!callingShuttle && <MessageModal
-        label="Nature of emergency"
+        label="紧急情况性质"
         icon="space-shuttle"
-        buttonText="Call Shuttle"
+        buttonText="呼叫撤离"
         minLength={callShuttleReasonMinLength}
         onBack={() => setCallingShuttle(false)}
         onSubmit={reason => {
@@ -564,7 +564,7 @@ const PageMain = (props, context) => {
               textAlign="center"
               width="300px">
               <Flex.Item fontSize="16px" mb={2}>
-                Swipe ID to confirm change
+                请使用ID卡确认更改
                 <Box textColor="red">
                   { WARNING }
                 </Box>
@@ -598,7 +598,7 @@ const PageMain = (props, context) => {
         !!canSendToSectors
         && sectors.length > 0
         && (
-          <Section title="Allied Sectors">
+          <Section title="友军部门">
             <Flex
               direction="column">
               {
@@ -663,7 +663,7 @@ const PageMessages = (props, context) => {
     <Section>
       <Button
         icon="chevron-left"
-        content="Back"
+        content="返回"
         onClick={() => act("setState", { state: STATE_MAIN })}
       />
     </Section>
@@ -744,10 +744,10 @@ export const CommunicationsConsole = (props, context) => {
 
         {(canLogOut || !authenticated)
           ? (
-            <Section title="Authentication">
+            <Section title="身份验证">
               <Button
                 icon={authenticated ? "sign-out-alt" : "sign-in-alt"}
-                content={authenticated ? `Log Out${authorizeName ? ` (${authorizeName})` : ""}` : "Log In"}
+                content={authenticated ? `登出${authorizeName ? ` (${authorizeName})` : ""}` : "登录"}
                 color={authenticated ? "bad" : "good"}
                 onClick={() => act("toggleAuthentication")}
               />

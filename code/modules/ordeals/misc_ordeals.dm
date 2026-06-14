@@ -1,9 +1,9 @@
 // A Party Everlasting
 /datum/ordeal/boss/pink_midnight
-	name = "The Midnight of Pink"
-	flavor_name = "A Party Everlasting"
-	announce_text = "Let's have one big jambouree, a party everlasting."
-	end_announce_text = "And thus now, we party. Wonderous and everlasting."
+	name = "粉色的午夜"
+	flavor_name = "永恒派对"
+	announce_text = "让我们来个持续到永远的派对."
+	end_announce_text = "因此，现在，我们相聚，奇妙而永恒."
 	level = 4
 	reward_percent = 0.25
 	announce_sound = 'sound/effects/ordeals/pink_start.ogg'

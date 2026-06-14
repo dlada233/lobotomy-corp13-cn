@@ -69,10 +69,10 @@ export const LC13AbnormalityArchive = (props, context) => {
               scrollable
               title={current_abnormality
                 ? capitalize(current_abnormality.name)
-                : " Lobotomy Corporation Archive"}>
+                : " Lobotomy Corporation 数据库"}>
               {current_abnormality && (
                 <LabeledList>
-                  <LabeledList.Item label="File Info">
+                  <LabeledList.Item label="文件信息">
                     {current_abnormality.name}
                   </LabeledList.Item>
                   <LabeledList.Item>
@@ -84,7 +84,7 @@ export const LC13AbnormalityArchive = (props, context) => {
                       icon="check"
                       color="red"
                       textAlign="center"
-                      content="Print File"
+                      content="打印文件"
                       onClick={() => act('print_file', { ref: current_abnormality.type })} />
                   </LabeledList.Item>
                 </LabeledList>
