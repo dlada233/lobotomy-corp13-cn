@@ -1,6 +1,8 @@
 //Golden Watch
 //Casts Timestop for 11 seconds (jojoke)
 //Making everything that passes into the area freeze in place untill the 10 seconds are up.
+
+/*
 /obj/item/records/timestop
 	name = "records golden watch"
 	desc = "A golden watch the records officer can use to stop time temporarily."
@@ -20,4 +22,4 @@
 			cooldown /= 2
 		addtimer(CALLBACK(src, PROC_REF(reset)), cooldown)
 		usable = FALSE
-
+*/

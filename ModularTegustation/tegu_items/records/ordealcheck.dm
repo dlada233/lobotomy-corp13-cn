@@ -4,11 +4,10 @@
 	name = "records silver watch"
 	desc = "A silver watch the records officer can use to check various information around the facility."
 	icon_state = "watch_silver"
-	//Unlike other watches silver one has no cooldown
-	records_cooldown_timer = 0
+	// Unlike other watches, the silver watch has no cooldown
+	watch_cooldown_time = 0
 
-/obj/item/records/information/watch_action(mob/user)
-	//Convert to seconds
+/obj/item/records/information/WatchAction(mob/user)
 	var/time_to_abno = (SSabnormality_queue.next_abno_spawn - world.time)/10
 	var/mob/living/simple_animal/hostile/abnormality/queued_abno = SSabnormality_queue.queued_abnormality
 
@@ -35,6 +34,4 @@
 	to_chat(user, span_notice("Current qliphoth meter: [SSlobotomy_corp.qliphoth_meter] / [SSlobotomy_corp.qliphoth_max]."))
 	if(SSlobotomy_corp.next_ordeal && (SSlobotomy_corp.qliphoth_state + 1 >= SSlobotomy_corp.next_ordeal_time))
 		to_chat(user, span_notice("[SSlobotomy_corp.next_ordeal.name] will trigger on the next meltdown."))
-
-	//Call back are parrent, for now this is for code constanty. As it doesnt have a cooldown but later on this maybe important.
 	..()
