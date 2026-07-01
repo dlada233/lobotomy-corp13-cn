@@ -584,3 +584,16 @@
 	)
 	abno_breach_damage_type = "火焰/红色"
 	abno_breach_damage_count = "极高"
+
+// The Burrowing Heaven(穿刺乐园)
+/obj/item/paper/fluff/info/waw/burrowing_heaven
+	abno_type = /mob/living/simple_animal/hostile/abnormality/burrowing_heaven
+	abno_code = "O-04-72"
+	abno_info = list(
+		"在对穿刺乐园进行工作时，必须保持主管或两名员工在场并使异想体时刻处于视线范围内.",
+		"在工作过程中，当异想体离开视线范围时，逆卡巴拉计数器会降低. 当穿刺乐园的收容单元在现象发生后仍处于无人监控状态时，计数器会继续降低.",
+		"当工作结果为普通或良好时，逆卡巴拉计数器会增加. 似乎可以根据工作结果一次性增加多达3个计数.",
+		"<警告> 在镇压过程中不要停止观察异想体。",
+	)
+	abno_breach_damage_type = "黑色"
+	abno_breach_damage_count = "极高"

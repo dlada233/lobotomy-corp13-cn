@@ -130,10 +130,10 @@
 				"prudence_bonus" = PRUDENCE_ATTRIBUTE,
 				"temperance_bonus" = TEMPERANCE_ATTRIBUTE,
 				"justice_bonus" = JUSTICE_ATTRIBUTE,
-				"instinct_mod" = "Instinct Work",
-				"insight_mod" = "Insight Work",
-				"attachment_mod" = "Attachment Work",
-				"repression_mod" = "Repression Work",
+				"instinct_mod" = "本能工作",
+				"insight_mod" = "洞察工作",
+				"attachment_mod" = "沟通工作",
+				"repression_mod" = "压迫工作",
 				)
 			for(var/thing in EGO_GIFT_BONUSES)
 				var/thing_num = vars[thing]
@@ -1386,10 +1386,16 @@
 	. = ..()
 	user.physiology.burn_mod *= 0.9
 
-
 /datum/ego_gifts/ardor_moth/Remove(mob/living/carbon/human/user)
 	user.physiology.burn_mod /= 0.9
 	return ..()
+
+/datum/ego_gifts/heaven
+	name = "穿刺极乐"
+	icon_state = "heaven"
+	fortitude_bonus = 4
+	temperance_bonus = 2
+	slot = HAT
 
 /**
  * ALEPH EGO Gifts
