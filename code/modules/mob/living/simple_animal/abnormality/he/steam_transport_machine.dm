@@ -161,6 +161,8 @@
 //Breach
 /mob/living/simple_animal/hostile/abnormality/steam/Life()
 	. = ..()
+	if(stat == DEAD)
+		return
 	if(status_flags & GODMODE)
 		return
 	if(!steam_venting)
@@ -169,10 +171,11 @@
 
 /mob/living/simple_animal/hostile/abnormality/steam/proc/SpawnSteam()
 	playsound(get_turf(src), 'sound/abnormalities/steam/exhale.ogg', 75, 0, 8)
-	var/turf/target_turf = get_turf(src)
-	for(var/turf/T in view(2, target_turf))
-		if(prob(30))
-			continue
+	var/my_turf = get_turf(src)
+	var/target_turf = get_step_rand(my_turf)
+	var/turf/TT = get_ranged_target_turf_direct(my_turf, target_turf, pick(1,2))
+	var/list/target_line = getline(my_turf, TT)
+	for(var/turf/T in target_line)
 		new /obj/effect/temp_visual/palefog(T)
 		for(var/mob/living/H in T)
 			if(faction_check_mob(H))
