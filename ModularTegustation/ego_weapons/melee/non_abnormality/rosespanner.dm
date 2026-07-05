@@ -13,22 +13,22 @@
 	charge = TRUE
 	allow_ability_cancel = FALSE // could break things with overcharge
 	charge_cost = 15
-	charge_effect = "spend charge to deal an AOE in the current damage type."
-	successfull_activation = "You release your charge, dealing a massive burst of damage!"
+	charge_effect = "花费充能在当前伤害类型中释放AOE."
+	successfull_activation = "你释放你的充能，造成巨大的暴击伤害!"
 
 	var/overcharged
 	var/charged
 
 /obj/item/ego_weapon/city/rosespanner/examine(mob/user)
 	. = ..()
-	. += "Overcharging it will result in explosive aftereffects."
+	. += "过量充能将导致爆炸性后果."
 
 /obj/item/ego_weapon/city/rosespanner/attackby(obj/item/I, mob/living/user, params)
 	..()
 	if(!istype(I, /obj/item/rosespanner_gear))
 		return
 
-	to_chat(user, span_notice("You apply a gear to your weapon, changing its damage type."))
+	to_chat(user, span_notice("你将一个齿轮应用到你的武器上，改变了它的伤害类型."))
 	damtype = I.damtype
 	charged = TRUE
 	qdel(I)
@@ -47,7 +47,7 @@
 	target.apply_damage(force, damtype, null, target.run_armor_check(null, damtype), spread_damage = TRUE)
 
 	if(overcharged)
-		to_chat(user, span_danger("You overcharged your weapon!."))
+		to_chat(user, span_danger("你过量充能了你的武器!."))
 
 	var/aoe = force * get_attack_multiplier(user)
 	for(var/turf/T in view(2, target))
@@ -63,8 +63,8 @@
 
 //Grade 5
 /obj/item/ego_weapon/city/rosespanner/minihammer
-	name = "rosespanner mini hammer"
-	desc = "A hammer from the rosespanner workshop. Fits in your EGO belt."
+	name = "玫瑰扳手 迷你锤"
+	desc = "来自玫瑰扳手工坊的锤子，可以放入EGO腰带."
 	icon_state = "rosespanner_minihammer"
 	inhand_icon_state = "rosespanner_minihammer"
 	force = 22
@@ -80,8 +80,8 @@
 
 //Grade 5
 /obj/item/ego_weapon/city/rosespanner/hammer
-	name = "rosespanner hammer"
-	desc = "A hammer from the rosespanner workshop"
+	name = "玫瑰扳手 锤"
+	desc = "来自玫瑰扳手工坊的锤子"
 	icon_state = "rosespanner_hammer"
 	inhand_icon_state = "rosespanner_hammer"
 	force = 44	//Slow but rosespanners a detriment, so
@@ -97,8 +97,8 @@
 
 //Grade 5
 /obj/item/ego_weapon/city/rosespanner/spear
-	name = "rosespanner spear"
-	desc = "A spear from the rosespanner workshop"
+	name = "玫瑰扳手 长矛"
+	desc = "来自玫瑰扳手工坊的长矛"
 	icon_state = "rosespanner_spear"
 	inhand_icon_state = "rosespanner_spear"
 	force = 30	//Slow but rosespanners a detriment, so
@@ -116,8 +116,8 @@
 
 //Gears that give the weapons a damage type
 /obj/item/rosespanner_gear
-	name = "rosespanner red gear"
-	desc = "A gear used by Rosespanner workshop. Use them on a rosespanner weapon to augment the weapon."
+	name = "玫瑰扳手红色齿轮"
+	desc = "由玫瑰扳手工坊使用的齿轮，将其用于玫瑰扳手工坊武器上，可增强武器性能."
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	icon_state = "redgear"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left.dmi'
@@ -126,19 +126,19 @@
 
 
 /obj/item/rosespanner_gear/white
-	name = "rosespanner white gear"
+	name = "玫瑰扳手白色齿轮"
 	icon_state = "whitegear"
 	damtype = WHITE_DAMAGE
 
 
 /obj/item/rosespanner_gear/black
-	name = "rosespanner black gear"
+	name = "玫瑰扳手黑色齿轮"
 	icon_state = "blackgear"
 	damtype = BLACK_DAMAGE
 
 
 /obj/item/rosespanner_gear/pale
-	name = "rosespanner pale gear"
+	name = "玫瑰扳手青色齿轮"
 	icon_state = "palegear"
 	damtype = PALE_DAMAGE
 

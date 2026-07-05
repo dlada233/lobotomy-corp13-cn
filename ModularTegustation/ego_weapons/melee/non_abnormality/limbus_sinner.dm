@@ -1,8 +1,8 @@
 //Sinner weapons - TETH
-/obj/item/ego_weapon/mini/hayong
-	name = "ha yong"
-	desc = "Have you heard of the taxidermied genius?"
-	special = "This weapon attacks very fast. Use this weapon in hand to dodgeroll."
+/obj/item/ego_weapon/mini/hayong //李箱
+	name = "乌瞰刀" //原文: ha yong
+	desc = "你认不认识“化为标本的天才”？"
+	special = "这把武器的攻击速度非常快，在手中使用此武器可进行翻滚闪避."
 	icon_state = "hayong"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -26,8 +26,8 @@
 	user.throw_at(dodgelanding, 3, 2, spin = TRUE)
 
 /obj/item/ego_weapon/shield/walpurgisnacht
-	name = "walpurgisnacht"
-	desc = "Man errs so long as he strives."
+	name = "瓦尔普吉斯之夜"
+	desc = "只要努力，就永远不会犯错." // 原文:Man errs so long as he strives
 	icon_state = "walpurgisnacht"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -45,14 +45,14 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/clash1.ogg'
-	projectile_block_message = "You swat the projectile out of the air!"
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	projectile_block_message = "你将弹丸弹开!"
+	block_message = "你试图格挡攻击!"
+	hit_message = "格挡了攻击!"
+	block_cooldown_message = "你重整了武器."
 
 /obj/item/ego_weapon/lance/suenoimpossible
-	name = "sueno impossible"
-	desc = "To reach the unreachable star!"
+	name = "纯真之梦" //原文: sueno impossible
+	desc = "至那颗遥不可及之星！!"
 	icon_state = "sueno_impossible"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
@@ -70,8 +70,8 @@
 	hitsound = 'sound/weapons/fixer/generic/spear2.ogg'
 
 /obj/item/ego_weapon/shield/sangria
-	name = "S.A.N.G.R.I.A"
-	desc = "Succinct abbreviation naturally germinates rather immaculate art."
+	name = "简.生.至.美" //原文 S.A.N.G.R.I.A
+	desc = "简洁的缩写天然生育出至美的艺术." // 原文 A simple acronym naturally breeds the most beautiful art.
 	icon_state = "sangria"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -89,16 +89,16 @@
 	block_duration = 0.5 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/parry.ogg'
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	block_message = "你试图格挡攻击!"
+	hit_message = "格挡了攻击!"
+	block_cooldown_message = "你重整了武器."
 
 /obj/item/ego_weapon/shield/sangria/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0 //Prevents ranged  parry
 
 /obj/item/ego_weapon/mini/soleil
-	name = "soleil"
-	desc = "Today I killed my mother, or maybe it was yesterday?"
+	name = "烈日" //原文:soleil
+	desc = "今天，我杀了母亲。不，也许是昨天?"
 	icon_state = "soleil"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -109,8 +109,8 @@
 
 
 /obj/item/ego_weapon/taixuhuanjing
-	name = "tai xuhuan jing"
-	desc = "Jade has its flaws, and life its vicissitudes."
+	name = "太虚幻境"
+	desc = "宝玉亦瑕，好事多魔."
 	icon_state = "tai_xuhuan_jing"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -125,8 +125,8 @@
 	hitsound = 'sound/weapons/ego/sword1.ogg'
 
 /obj/item/ego_weapon/revenge
-	name = "revenge"
-	desc = "I have not broken your heart - YOU have; and in breaking it, you have broken mine."
+	name = "复仇" //原文:revenge
+	desc = "我并没有弄碎你的心—— 是你自个儿把心揉碎了；揉碎了你的心，把我的心也揉碎了."
 	icon_state = "revenge"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -148,8 +148,8 @@
 		target.throw_at(throw_target, rand(1, 2), whack_speed, user)
 
 /obj/item/ego_weapon/mini/hearse
-	name = "hearse"
-	desc = "That bastard's still alive out there..."
+	name = "灵棺" //原文:hearse
+	desc = "那个混蛋还活着，就在那边..."// 原文:That bastard is still alive, over there...
 	icon_state = "hearse"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -162,9 +162,9 @@
 	attack_verb_simple = list("smash", "bludgeon", "crush")
 
 /obj/item/ego_weapon/shield/hearse
-	name = "hearse"
-	desc = "Call me Ishmael."
-	special = "This weapon has a slow attack speed and deals atrocious damage."
+	name = "灵棺" //原文:hearse
+	desc = "如果可以的话，管我叫以实玛利吧."
+	special = "这把武器攻击速度较慢，但是造成极高的伤害."
 	icon_state = "hearse_shield"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -182,8 +182,8 @@
 	block_sound_volume = 30
 
 /obj/item/ego_weapon/raskolot //horn but a boomerang
-	name = "raskolot"
-	desc = "If only she could forget everything and begin afresh."
+	name = "分裂" //原文: raskolot
+	desc = "如果她能忘掉一切，重头再来."
 	icon_state = "raskolot"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -206,8 +206,8 @@
 		return ..()
 
 /obj/item/ego_weapon/vogel
-	name = "vogel"
-	desc = "The world of evil had begun there, right in the middle of our house."
+	name = "沃格尔" //原文: vogel
+	desc = "邪恶的世界就从那里开始了，就在我们房子的正中央."// 原文: The evil world began there, right in the middle of our house.
 	icon_state = "vogel"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -222,9 +222,9 @@
 	hitsound = 'sound/weapons/ego/axe2.ogg'
 
 /obj/item/ego_weapon/nobody
-	name = "nobody"
-	desc = "I am nothing at all."
-	special = "This E.G.O. functions as both a gun and a melee weapon."
+	name = "一无是处" //原文: nobody
+	desc = "我一无是处."// 原文: I am nothing at all.
+	special = "这把EGO既可以作为枪械，也可以用作近战."
 	icon_state = "nobody"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'
@@ -274,8 +274,8 @@
 
 
 /obj/item/ego_weapon/ungezifer
-	name = "ungezifer"
-	desc = "As I awoke one morning from uneasy dreams I found myself transformed in my bed into a gigantic insect."
+	name = "突然，某一日" //原文: ungezifer
+	desc = "一天早晨，我从不安的睡梦中醒来，发现自己躺在床上变成了一只巨大的甲虫."
 	icon_state = "ungezifer"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/limbus_lefthand.dmi'

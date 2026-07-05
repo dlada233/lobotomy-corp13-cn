@@ -1,7 +1,7 @@
 //Grade 4-5 Weapons, heal sanity on kill
 /obj/item/ego_weapon/city/molar
-	name = "molar chainsword"
-	desc = "A chainsword used by the Molar Office. It's heavy, and well made."
+	name = "臼齿 链锯剑"
+	desc = "臼齿事务所使用的链锯剑. 它很重而且做工精良."
 	special = "On kill, heal 30 sanity."
 	icon_state = "mika"
 	force = 22
@@ -29,8 +29,8 @@
 		living = FALSE
 
 /obj/item/ego_weapon/city/molar/olga
-	name = "molar chainknife"
-	desc = "A short chainsword used by the Molar Office's leader. Its chain sings with the speed it moves at."
+	name = "臼齿 链锯刀"
+	desc = "一把臼齿事务所所长使用的短链锯刀，它的链条在高速旋转时发出刺耳的声音."
 	icon_state = "olga"
 	force = 18
 	attack_speed = 0.7

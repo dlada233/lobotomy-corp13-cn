@@ -1,7 +1,7 @@
 //Guns that reload on melee. You can reload them, but it's really slow
 /obj/item/ego_weapon/ranged/city/thumb
-	name = "thumb soldato rifle"
-	desc = "A 5 round magazine rifle used by The Thumb."
+	name = "拇指士兵步枪"
+	desc = "拇指所用的5发弹匣容量步枪."
 	icon_state = "thumb_soldato"
 	inhand_icon_state = "thumb_soldato"
 	force = 15
@@ -10,7 +10,7 @@
 	projectile_path = /obj/projectile/ego_bullet/fivedamage	//Does 10 damage
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'sound/weapons/gun/rifle/shot_alt.ogg'
-	special = "Attack an enemy with your bayonet to reload."
+	special = "用刺刀攻击敌人来重新装弹."
 	projectile_damage_multiplier = 3		//30 damage per bullet
 	fire_delay = 7
 	shotsleft = 5		//Based off the Mas 36, That's what my Girlfriend things it looks like. Holds 5 bullets.
@@ -29,8 +29,8 @@
 
 //Capo
 /obj/item/ego_weapon/ranged/city/thumb/capo
-	name = "thumb capo rifle"
-	desc = "A rifle used by thumb Capos. The gun is inlaid with silver."
+	name = "拇指队长步枪"
+	desc = "拇指队长所用步枪，枪身镶嵌有银饰."
 	icon_state = "thumb_capo"
 	inhand_icon_state = "thumb_capo"
 	force = 25
@@ -44,8 +44,8 @@
 
 //Sottoacpo
 /obj/item/ego_weapon/ranged/city/thumb/sottocapo
-	name = "thumb sottocapo shotgun"
-	desc = "A handgun used by thumb sottocapos. While expensive, it's power is rarely matched among syndicates."
+	name = "拇指指挥官霰弹枪"
+	desc = "拇指指挥官所用的霰弹枪，虽然昂贵，但其威力在帮派中很少有能与之匹敌的。"
 	icon_state = "thumb_sottocapo"
 	inhand_icon_state = "thumb_sottocapo"
 	force = 10	//It's a pistol
@@ -62,8 +62,8 @@
 
 //wepaons are kinda uninteresting
 /obj/item/ego_weapon/city/thumbmelee
-	name = "thumb brass knuckles"
-	desc = "An pair of dusters sometimes used by thumb capos."
+	name = "拇指黄铜指虎"
+	desc = "一对黄铜指虎，有时被拇指队长使用."
 	icon_state = "thumb_duster"
 	force = 22
 	damtype = RED_DAMAGE
@@ -73,8 +73,8 @@
 	hitsound = 'sound/weapons/fixer/generic/fist2.ogg'
 
 /obj/item/ego_weapon/city/thumbcane
-	name = "thumb sottocapo cane"
-	desc = "An cane used by thumb sottocapos."
+	name = "拇指指挥官手杖"
+	desc = "一把被拇指指挥官所使用的手杖."
 	icon_state = "thumb_cane"
 	force = 32
 	damtype = RED_DAMAGE

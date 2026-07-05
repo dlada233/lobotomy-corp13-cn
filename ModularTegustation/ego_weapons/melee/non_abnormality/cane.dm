@@ -1,7 +1,7 @@
 //Like this so we can add a charge mechanic to one of them and have it carry down.
 //All of these weapons are grade 4.
 /obj/item/ego_weapon/city/cane
-	name = "cane office template"
+	name = "拐杖事务所 template"
 	desc = "This is a template and should not be seen."
 	force = 9
 	damtype = WHITE_DAMAGE
@@ -19,13 +19,13 @@
 	charge = TRUE
 	ability_type = ABILITY_ON_ACTIVATION
 	charge_cost = 2
-	charge_effect = "deal an extra attack in damage."
-	successfull_activation = "You release your charge, damaging your opponent!"
+	charge_effect = "额外造成一次攻击伤害."
+	successfull_activation = "你释放充能，对对手造成伤害!"
 
 //Actual weapons
 /obj/item/ego_weapon/city/cane/cane
-	name = "cane office - cane"
-	desc = "A white cane that holds electricity."
+	name = "拐杖事务所 - 拐杖"
+	desc = "涌动能量的白色拐杖."
 	icon_state = "cane_cane"
 	inhand_icon_state = "cane_cane"
 	force = 25
@@ -33,8 +33,8 @@
 	attack_verb_simple = list("bash", "crush")
 
 	charge_cost = 8
-	charge_effect = "heal yourself."
-	successfull_activation = "You release your charge, healing yourself!"
+	charge_effect = "治疗自己."
+	successfull_activation = "你释放充能，治疗自己!"
 
 /obj/item/ego_weapon/city/cane/cane/ChargeAttack(target, mob/living/carbon/human/user)
 	..()
@@ -51,8 +51,8 @@
 	new /obj/effect/temp_visual/justitia_effect(T)
 
 /obj/item/ego_weapon/city/cane/claw
-	name = "cane office - claw"
-	desc = "A white claw seen in use by the cane office."
+	name = "拐杖事务所 - 爪"
+	desc = "涌动能量的白色爪子."
 	icon_state = "cane_claw"
 	inhand_icon_state = "cane_claw"
 	force = 10
@@ -61,8 +61,8 @@
 	attack_verb_simple = list("cut", "slice")
 
 	charge_cost = 3
-	charge_effect = "dash a short distance."
-	successfull_activation = "You release your charge, boosting forwards!"
+	charge_effect = "短距离冲刺."
+	successfull_activation = "你释放充能，向前冲刺!"
 
 	var/dodgelanding
 
@@ -80,8 +80,8 @@
 
 
 /obj/item/ego_weapon/city/cane/fist
-	name = "cane office - gauntlet"
-	desc = "A gauntlet seen in use by the cane office."
+	name = "拐杖事务所 - 手甲"
+	desc = "涌动能量的白色手甲."
 	icon_state = "cane_gauntlet"
 	inhand_icon_state = "cane_gauntlet"
 	force = 25
@@ -89,8 +89,8 @@
 	attack_verb_simple = list("smash", "bash")
 
 	charge_cost = 8
-	charge_effect = "boost this weapon's attack."
-	successfull_activation = "You release your energy, powering your gauntlet!"
+	charge_effect = "增强此武器的攻击."
+	successfull_activation = "你释放能量，为你的手甲提供动力!"
 
 /obj/item/ego_weapon/city/cane/fist/ChargeAttack(target, mob/living/carbon/human/user)
 	..()
@@ -101,8 +101,8 @@
 	force = initial(force)
 
 /obj/item/ego_weapon/city/cane/briefcase
-	name = "cane office - briefcase"
-	desc = "A briefcase seen in use by the cane office."
+	name = "拐杖事务所 - 公文包"
+	desc = "被拐杖事务所所使用的公文包."
 	icon_state = "cane_briefcase"
 	inhand_icon_state = "cane_briefcase"
 	force = 15
@@ -110,8 +110,8 @@
 	attack_verb_simple = list("smash", "bash")
 
 	charge_cost = 4
-	charge_effect = "knock others backwards!"
-	successfull_activation = "You release your energy, knocking everyone nearby backwards!"
+	charge_effect = "击退敌人!"
+	successfull_activation = "你释放能量，将附近的所有敌人击退!"
 
 /obj/item/ego_weapon/city/cane/briefcase/ChargeAttack(target, mob/living/user)
 	..()

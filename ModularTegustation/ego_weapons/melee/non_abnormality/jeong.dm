@@ -1,9 +1,9 @@
 //Jeong's Office - Grade 5, use in hand to cut your HP by 10%. Next attack deals 5x damage
 //The brightest stars last half as long
 /obj/item/ego_weapon/city/jeong
-	name = "jeong's office wakizashi"
-	desc = "A small blade, easy to keep with you. It would be nice to have on hand in a casino brawl."
-	special = "Use this weapon in hand to cut your HP by 20%. Next attack within 5 seconds deals 3x damage. This weapon fits in an EGO belt."
+	name = "正事务所胁差"
+	desc = "便于随身携带的短刀，赌场斗殴时能派上用场。"
+	special = "手持使用消耗20%生命值，5秒内下次攻击造成3倍伤害。此武器可收纳于EGO腰带。"
 	icon_state = "jeong_fixer"
 	force = 15
 	attack_speed = 0.7
@@ -30,7 +30,7 @@
 	if(!ready)
 		return
 	ready = FALSE
-	to_chat(user, span_userdanger("Low at Night."))
+	to_chat(user, span_userdanger("夜之低徊."))
 	force*=3
 	user.adjustBruteLoss(user.maxHealth*0.2)
 	addtimer(CALLBACK(src, PROC_REF(Return), user), 5 SECONDS)
@@ -38,18 +38,18 @@
 /obj/item/ego_weapon/city/jeong/attack(mob/living/target, mob/living/carbon/human/user)
 	..()
 	if(force != initial(force))
-		to_chat(user, span_userdanger("High at Day."))
+		to_chat(user, span_userdanger("昼之高昂."))
 		force = initial(force)
 
 /obj/item/ego_weapon/city/jeong/proc/Return(mob/living/carbon/human/user)
 	ready = TRUE
 	force = initial(force)
-	to_chat(user, span_notice("Your blade is ready."))
+	to_chat(user, span_notice("刀刃已就绪."))
 
 //Grade 4
 /obj/item/ego_weapon/city/jeong/large
-	name = "jeong's office katana"
-	desc = "A long blade, lightweight and easy to move with. It would be simple to break up a fight with this."
+	name = "正事务所武士刀"
+	desc = "轻盈易挥的长刀，平息纷争的利器。"
 	icon_state = "jeong_long"
 	force = 35
 	attack_speed = 1.5

@@ -1,9 +1,9 @@
 /obj/item/ego_weapon/city/carnival_spear
-	name = "Carnival Spear"
-	desc = "A spear that the Carnival uses to hunt down their prey."
+	name = "狂欢之矛"
+	desc = "嘉年华用来追捕猎物的长矛."
 	icon_state = "carnival_spear"
 	inhand_icon_state = "carnival_spear"
-	special = "Deal double damage to mobs of the backstreets. This weapon also stuns target humans, if the user and the target human are alone."
+	special = "对后巷生物造成双倍伤害. 如果使用者和目标人类单独在一起，则该武器能击晕人类."
 	force = 17
 	reach = 2
 	attack_speed = 1
@@ -35,7 +35,7 @@
 		return
 	var/initial_force = force
 	if(is_type_in_typecache(target, empowered_targets))
-		to_chat(user, span_nicegreen("Your attack against [target.name] is empowered!"))
+		to_chat(user, span_nicegreen("你对[target.name]的攻击得到了增强!"))
 		force *= 2
 	..()
 	force = initial_force
@@ -51,10 +51,10 @@
 				alone = FALSE
 		if(alone)
 			H.Knockdown(20)
-			to_chat(user, span_nicegreen("You backstab [H.name], dropping them to the ground!"))
-			to_chat(H, span_danger("You are backstabed by [user.name], dropping you to the ground!"))
+			to_chat(user, span_nicegreen("你背刺了 [H.name]，将其击倒在地!"))
+			to_chat(H, span_danger("你被 [user.name] 背刺了，被击倒!"))
 
 /obj/item/ego_weapon/city/carnival_spear/weak
-	name = "Worn-down Carnival Spear"
+	name = "磨损的狂欢之矛"
 	force = 11
 	attribute_requirements = list()

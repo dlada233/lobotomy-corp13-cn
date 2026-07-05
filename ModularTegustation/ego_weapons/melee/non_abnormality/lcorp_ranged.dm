@@ -3,7 +3,7 @@
 //Contains ERA, clerk. and officer (?) weapons
 
 /obj/projectile/ego_bullet/lcorp
-	name = "bullet"
+	name = "子弹"
 	damage = 1.5
 	damage_type = RED_DAMAGE
 	var/list/damage_tier = list(2,4,6,9,18) //These numbers are just for reference
@@ -20,12 +20,12 @@
 	return ..()
 
 /obj/projectile/ego_bullet/lcorp/pistol
-	name = "bullet"
+	name = "子弹"
 	damage = 5
 	damage_tier = list(8,12,17,24,35)
 
 /obj/projectile/ego_bullet/lcorp/automatic
-	name = "bullet"
+	name = "子弹"
 	damage = 2
 	damage_tier = list(3,5,8,12,18)
 
@@ -63,9 +63,9 @@
 	update_projectile_examine()
 	. = ..()
 	if(!installed_shard)
-		. += span_warning("This weapon can be enhanced with an egoshard.")
+		. += span_warning("这把武器可以通过EGO碎片强化.")
 	else
-		. += span_nicegreen("It has a [installed_shard] installed.")
+		. += span_nicegreen("它已有 [installed_shard] 安装.")
 
 /obj/item/ego_weapon/ranged/city/lcorp/equipped(mob/user, slot, initial = FALSE)
 	..()
@@ -80,10 +80,10 @@
 	if(!istype(I, /obj/item/egoshard))
 		return
 	if(equipped)
-		to_chat(user, span_warning("You need to put down [src] before attempting this!"))
+		to_chat(user, span_warning("你必须先放下 [src] 再尝试这个操作!"))
 		return
 	if(installed_shard)
-		to_chat(user, span_warning("[src] already has an egoshard installed!"))
+		to_chat(user, span_warning("[src] 已经安装了EGO碎片!"))
 		return
 	installed_shard = I.name
 	IncreaseAttributes(user, I)
@@ -96,16 +96,16 @@
 	tier = egoshard.tier
 	for(var/atr in attribute_requirements)
 		attribute_requirements[atr] = egoshard.stat_requirement
-	to_chat(user, span_warning("The requirements to equip [src] have increased!"))
-	to_chat(user, span_nicegreen("[src] has been successfully improved!"))
+	to_chat(user, span_warning("[src]的装备需求已经提升了!"))
+	to_chat(user, span_nicegreen("[src]成功的强化了!"))
 	icon_state = "[initial(icon_state)]_[egoshard.damage_type]"
 
 /obj/item/ego_weapon/ranged/city/lcorp/pistol
-	name = "l-corp suppression pistol"
-	desc = "A special pistol issued by L-Corp to those who cannot utilize E.G.O."
+	name = "L公司 镇压手枪"
+	desc = "L公司为无法使用E.G.O的人员特制的手枪."
 	icon_state = "pistol"
 	inhand_icon_state = "pistol"
-	special = "This weapon has pinpoint accuracy when dual wielded."
+	special = "这把武器在双持时具有极高的精准度."
 	projectile_path = /obj/projectile/ego_bullet/lcorp/pistol
 	attack_speed = 0.5
 	force = 3
@@ -122,8 +122,8 @@
 	force = floor(egoshard.base_damage * 0.35) // 2 attacks per attack cycle due to being a pistol
 
 /obj/item/ego_weapon/ranged/city/lcorp/automatic_pistol
-	name = "l-corp automatic pistol"
-	desc = "A rapid-fire pistol issued by L-Corp to those who cannot utilize E.G.O."
+	name = "L公司 自动手枪"
+	desc = "L公司为无法使用E.G.O的人员特制的自动手枪."
 	icon_state = "automatic"
 	inhand_icon_state = "automatic"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -146,8 +146,8 @@
 
 //Standard clerk pistol
 /obj/item/ego_weapon/ranged/clerk
-	name = "clerk pistol"
-	desc = "A shitty pistol, labeled 'Point open end towards enemy'."
+	name = "文职手枪"
+	desc = "一把小手枪, 上面写着 '将枪口指向敌人然后扣动扳机'."
 	icon_state = "clerk"
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
@@ -172,22 +172,22 @@
 		return
 	var/user_target = FALSE
 	if(user == target)
-		target.visible_message("<span class='warning'>[user] sticks [src] in [user.p_their()] mouth, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>You stick [src] in your mouth, ready to pull the trigger...</span>")
+		target.visible_message("<span class='warning'>[user] 将 [src] 塞入自己的嘴里, 准备扣动扳机...</span>", \
+			"<span class='userdanger'>你将 [src] 塞入自己的嘴里, 准备扣动扳机...</span>")
 		user_target = TRUE
 	else
-		target.visible_message("<span class='warning'>[user] points [src] at [target]'s head, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>[user] points [src] at your head, ready to pull the trigger...</span>")
+		target.visible_message("<span class='warning'>[user] 将 [src] 对准 [target] 的头部, 准备扣动扳机...</span>", \
+			"<span class='userdanger'>[user] 将 [src] 对准你的头部, 准备扣动扳机...</span>")
 	semicd = TRUE
 	if(!bypass_timer && (!do_mob(user, target, (user_target ? 3 SECONDS : 12 SECONDS)) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
 		if(user)
 			if(user == target)
-				user.visible_message("<span class='notice'>[user] decided not to shoot.</span>")
+				user.visible_message("<span class='notice'>[user] 决定不射击.</span>")
 			else if(target?.Adjacent(user))
-				target.visible_message("<span class='notice'>[user] has decided to spare [target]</span>", "<span class='notice'>[user] has decided to spare your life!</span>")
+				target.visible_message("<span class='notice'>[user] 决定留下 [target] 的性命.</span>", "<span class='notice'>[user] 决定留下你的性命!</span>")
 		semicd = FALSE
 		return
 	semicd = FALSE
-	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[(user == target) ? "You pull" : "[user] pulls"] the trigger!</span>")
+	target.visible_message("<span class='warning'>[user] 扣动了扳机!</span>", "<span class='userdanger'>[(user == target) ? "你扣动" : "[user] 扣动"]了扳机!</span>")
 
 	process_fire(target, user, TRUE, params, BODY_ZONE_HEAD, temporary_damage_multiplier = (user_target ? 100 : 5))

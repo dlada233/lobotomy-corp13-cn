@@ -1,8 +1,8 @@
 //Cinq Association. Use in hand to backstep for 3 seconds of bonus damage.
 /obj/item/ego_weapon/city/cinq
-	name = "cinq association rapier"
-	desc = "A long rapier."
-	special = "Use this weapon in hand to hop backwards. Your next attack has 2 range, and you deal double damage for 3 seconds."
+	name = "五协会长剑"
+	desc = "一柄锋利的西洋剑."
+	special = "在手中使用武器会进行后跳，使得下一次攻击有两格范围，3秒内有效."
 	icon_state = "cinq"
 	force = 14
 	damtype = RED_DAMAGE
@@ -70,11 +70,11 @@
 /obj/item/ego_weapon/city/cinq/proc/Return(mob/living/carbon/human/user)
 	force = initial(force)
 	reach = 1
-	to_chat(user, span_notice("A tout de souffle."))
+	to_chat(user, span_notice("喘不过气."))
 
 /obj/item/ego_weapon/city/cinq/proc/Reset(mob/living/carbon/human/user)
 	force = initial(force)
 	reach = 1
 	ready = TRUE
-	to_chat(user, span_notice("Pret a nouveau."))
+	to_chat(user, span_notice("准备就绪."))
 

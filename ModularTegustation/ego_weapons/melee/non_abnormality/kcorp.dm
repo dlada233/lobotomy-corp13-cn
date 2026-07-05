@@ -1,6 +1,6 @@
 /obj/item/ego_weapon/city/kcorp
-	name = "K corp baton"
-	desc = "A green baton used by K corp employees."
+	name = "K公司警棍"
+	desc = "K公司员工使用的绿色警棍。"
 	icon_state = "kbatong"
 	inhand_icon_state = "kbatong"
 	force = 11
@@ -9,8 +9,8 @@
 	attack_verb_simple = list("bash", "crush")
 
 /obj/item/ego_weapon/city/kcorp/axe
-	name = "K corp axe"
-	desc = "A green axe used by K corp employees."
+	name = "K公司战斧"
+	desc = "K公司员工使用的绿色战斧。"
 	icon_state = "kaxe"
 	inhand_icon_state = "kaxe"
 	force = 17
@@ -20,8 +20,8 @@
 
 //High level Kcorp weapons are grade 5
 /obj/item/ego_weapon/city/kcorp/spear
-	name = "K corp spear"
-	desc = "A green spear used by K corp Code 3 employees."
+	name = "K公司长矛"
+	desc = "K公司三级员工使用的绿色长矛。"
 	icon_state = "kspear"
 	inhand_icon_state = "kspear"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -44,8 +44,8 @@
 							)
 
 /obj/item/ego_weapon/city/kcorp/dspear
-	name = "K corp blast spear"
-	desc = "A double bladed spear used by K corp Code 3 employees."
+	name = "K公司爆破矛"
+	desc = "K公司三级员工使用的双头矛。"
 	icon_state = "kdualspear"
 	inhand_icon_state = "kdualspear"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -69,8 +69,8 @@
 
 //Slows you to half but has really good defenses. This is Kcorp Bread and butter, because it's really good
 /obj/item/ego_weapon/shield/kcorp
-	name = "K corp riot shield"
-	desc = "A riot shield used by K corp employees."
+	name = "K公司防暴盾"
+	desc = "K公司员工使用的防暴盾。"
 	special = "Slows down the user significantly."
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	icon_state = "kshield"
@@ -91,8 +91,8 @@
 
 // Guns below
 /obj/item/ego_weapon/ranged/pistol/kcorp
-	name = "Kcorp pistol"
-	desc = "A lime green pistol used by Kcorp."
+	name = "K公司手枪"
+	desc = "K公司使用的青绿色手枪。"
 	icon_state = "kpistol"
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	inhand_icon_state = "kpistol"
@@ -109,8 +109,8 @@
 
 // Guns below
 /obj/item/ego_weapon/ranged/pistol/kcorp/smg
-	name = "Kcorp Machinepistole"
-	desc = "A lime green machinepistol used by Kcorp."
+	name = "K公司冲锋手枪"
+	desc = "K公司使用的青绿色冲锋手枪。"
 	icon_state = "ksmg"
 	inhand_icon_state = "ksmg"
 	force = 8
@@ -128,8 +128,8 @@
 
 
 /obj/item/ego_weapon/ranged/pistol/kcorp/nade
-	name = "Kcorp grenade launcher"
-	desc = "A short grenade launcher used by Kcorp."
+	name = "K公司榴弹发射器"
+	desc = "K公司使用的短管榴弹发射器。"
 	icon_state = "kgrenade"
 	inhand_icon_state = "kgrenade"
 	force = 8

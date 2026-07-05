@@ -1,7 +1,7 @@
 //Wedge - Grade 4 with two range.
 /obj/item/ego_weapon/city/wedge
-	name = "wedge office spear"
-	desc = "A black, ornate spear. Some say it pierces any weakness... Though that may just be what the office who used these says."
+	name = "楔子事务所长矛"
+	desc = "一支黑色，装饰华丽的长矛，有人说它能刺穿任何弱点...不过，这或许只是使用者的虚张声势罢了."
 	icon_state = "wedge"
 	force = 37
 	reach = 2		//Has 2 Square Reach.
@@ -20,8 +20,8 @@
 	)
 
 /obj/item/ego_weapon/city/fixerblade
-	name = "fixer blade"
-	desc = "A common fixer blade, mass-produced and easy to use."
+	name = "收尾人砍刀"
+	desc = "一种常见的收尾人砍刀，大批量生产且易于使用."
 	icon_state = "fixer_blade"
 	force = 10
 	damtype = RED_DAMAGE
@@ -32,7 +32,7 @@
 	swingstyle = WEAPONSWING_LARGESWEEP
 
 /obj/item/ego_weapon/city/fixergreatsword
-	name = "fixer greatsword"
+	name = "收尾人大剑"
 	desc = "A heftier variant of the more common fixer blade."
 	icon_state = "fixer_greatsword"
 	force = 18
@@ -45,7 +45,7 @@
 	swingstyle = WEAPONSWING_LARGESWEEP
 
 /obj/item/ego_weapon/city/fixerhammer
-	name = "fixer hammer"
+	name = "收尾人战锤"
 	desc = "A poorly balanced hammer used by many fixers."
 	icon_state = "fixer_hammer"
 	force = 16
@@ -57,8 +57,8 @@
 	hitsound = 'sound/weapons/fixer/generic/club1.ogg'
 
 /obj/item/ego_weapon/city/fixerpen
-	name = "fixer pen"
-	desc = "Mightier than the sword."
+	name = "收尾人钢笔"
+	desc = "比剑更强大."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	force = 0

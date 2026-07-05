@@ -1,9 +1,9 @@
 // The main gimmick is changing weapons while unlocking furioso. Changing weapons has 1 minute cooldown that reduces each time you attack
 // Ping Chiemi for questions, but she's also confused
 /obj/item/ego_weapon/black_silence_gloves
-	name = "Gloves of the Black Silence"
+	name = "漆黑噤默的手套"
 	desc = "Worn out gloves that were originally used by the Black Silence."
-	special = "SHIFT+CLICK to perform Furioso after using all of Black Silences weapons."
+	special = "SHIFT+单击在使用所有漆黑噤默的武器后发动'狂怒'."
 	icon_state = "gloves"
 	icon = 'icons/obj/black_silence_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/black_silence_lefthand.dmi'
@@ -28,7 +28,7 @@
 	var/exchange_cooldown_time = 60 SECONDS
 	var/furioso_time
 	var/furioso_wait = 300 SECONDS
-	var/origin_name = "Gloves of the Black Silence"
+	var/origin_name = "漆黑噤默的手套"
 	var/locked_state = "gloves_unlocked"
 	var/unlocked = FALSE
 	var/list/unlocked_list = list()
@@ -49,8 +49,8 @@
 	UnregisterSignal(user, COMSIG_MOB_SHIFTCLICKON)
 
 /datum/action/item_action/toggle_iff
-	name = "Toggle IFF"
-	desc = "Toggles your ability to hit friendly targets."
+	name = "切换IFF"
+	desc = "切换你的能力是否会攻击到友军."
 	icon_icon = 'icons/obj/black_silence_weapons.dmi'
 	button_icon_state = "gloves"
 
@@ -62,10 +62,10 @@
 /obj/item/ego_weapon/black_silence_gloves/proc/toggle_iff(mob/living/user)
 	if(iff)
 		iff = FALSE
-		to_chat(user,span_warning("You will now attack everything indiscriminately!"))
+		to_chat(user,span_warning("你现在将不分青红皂白地攻击所有人!"))
 	else
 		iff = TRUE
-		to_chat(user,span_warning("You will now only attack enemies!"))
+		to_chat(user,span_warning("你现在只会攻击敌人!"))
 
 /obj/item/ego_weapon/black_silence_gloves/proc/dash(mob/living/user, turf/target_turf)
 	var/list/line_turfs = list(get_turf(user))
@@ -105,7 +105,7 @@
 // Radial menu
 /obj/item/ego_weapon/black_silence_gloves/proc/exchange_armaments(mob/user)
 	if(exchange_cooldown > world.time)
-		to_chat(user, span_notice("Your gloves are still recharging, keep hitting enemies to charge it faster."))
+		to_chat(user, span_notice("你的手套仍然在充能, 继续攻击敌人以加快充能."))
 		return
 
 	var/list/display_names = list()
@@ -145,7 +145,7 @@
 		user.put_in_hands(Y)
 		if(!(unlocked) && Y.unlocked_list.len > 8)
 			playsound(playsound(user, 'sound/weapons/black_silence/unlock.ogg', 100, 1))
-			to_chat(user,span_userdanger("You are ready to unleash Furioso!"))
+			to_chat(user,span_userdanger("你准备好释放狂怒了!"))
 			Y.unlocked = TRUE
 		if(unlocked)
 			Y.unlocked = TRUE
@@ -180,13 +180,13 @@
 		if(unlocked_list.len > 8)
 			furioso(user, target)
 		else
-			to_chat(user,span_userdanger("You haven't used all of Black Silence's Weapons!"))
+			to_chat(user,span_userdanger("你尚未使用全部的漆黑噤默武器!"))
 
 // switching weapon increases damage dealt. Annoying but high damage, you're supposed to keep changing weapons anyway
 /obj/item/ego_weapon/black_silence_gloves/zelkova
-	name = "Zelkova Workshop"
+	name = "榉树工坊"
 	desc = "Mace and Axe once belonged to the Black Silence."
-	special = "SHIFT+CLICK to attack with mace. Simultaneously switching your attacks will increase attack speed. Resets if you fail to do so"
+	special = "SHIFT+单击以锤矛攻击. 同时切换攻击方式则会提升攻击速度. 如果失败则重置攻速."
 	icon_state = "zelkova"
 
 	special_cooldown_time = 12
@@ -237,9 +237,9 @@
 
 // literally unga bunga, loland's 3 dice. Adding dot (bleed) seems meh anyways
 /obj/item/ego_weapon/black_silence_gloves/ranga
-	name = "Ranga Workshop"
+	name = "琅琊工坊"
 	desc = "Shortsword and Gauntlets once belonged to the Black Silence."
-	special = "SHIFT+CLICK to perform 3 consecutive dash attacks on the enemy. Successful attacks reduces the dash cooldown"
+	special = "SHIFT+单击对敌人连续进行3次冲刺攻击. 攻击成功即会减少冷却时间."
 	icon_state = "ranga"
 	attack_speed = 0.3
 	force = 12
@@ -292,9 +292,9 @@
 
 // parry increases attack (block dice)
 /obj/item/ego_weapon/black_silence_gloves/old_boys
-	name = "Old Boys Workshop"
+	name = "老男孩工坊"
 	desc = "Hammer once belonged to the Black Silence."
-	special = "SHIFT+CLICK to parry attacks and reduce damage. Successful parries increases next damage dealt"
+	special = "SHIFT+单击来格挡并减少伤害. 成功的格挡会增加下次攻击的伤害."
 	icon_state = "old_boys"
 	attack_verb_continuous = list("smashes", "smacks", "bashes")
 	attack_verb_simple = list("smash", "smacks", "bashes")
@@ -312,11 +312,11 @@
 	if (block == 0)
 		var/mob/living/carbon/human/shield_user = user
 		if(shield_user.physiology.armor.bomb) //"We have NOTHING that should be modifying this, so I'm using it as an existant parry checker." - Ancientcoders
-			to_chat(shield_user,span_warning("You're still off-balance!"))
+			to_chat(shield_user,span_warning("你尚未恢复架势!"))
 			return FALSE
 		for(var/obj/machinery/computer/abnormality/AC in range(1, shield_user))
 			if(AC.datum_reference.working) // No blocking during work.
-				to_chat(shield_user,span_notice("You cannot defend yourself from responsibility!"))
+				to_chat(shield_user,span_notice("你不能阻挡工作时的伤害!"))
 				return FALSE
 		block = TRUE
 		block_success = FALSE
@@ -327,7 +327,7 @@
 		shield_user.physiology.pale_mod *= max(0.001, (1 - ((reductions[4]) / 100)))
 		RegisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(AnnounceBlock))
 		addtimer(CALLBACK(src, PROC_REF(DisableBlock), shield_user), 1 SECONDS)
-		to_chat(user, span_userdanger("You attempt to parry the attack!"))
+		to_chat(user, span_userdanger("你尝试格挡攻击!"))
 		return TRUE
 
 /obj/item/ego_weapon/black_silence_gloves/old_boys/proc/DisableBlock(mob/living/carbon/human/user)
@@ -344,15 +344,15 @@
 
 /obj/item/ego_weapon/black_silence_gloves/old_boys/proc/BlockCooldown(mob/living/carbon/human/user)
 	block = FALSE
-	to_chat(user,span_nicegreen("You rearm your hammer"))
+	to_chat(user,span_nicegreen("你重整握锤的架势!"))
 
 /obj/item/ego_weapon/black_silence_gloves/old_boys/proc/BlockFail(mob/living/carbon/human/user)
-	to_chat(user,span_warning("Your stance is widened."))
+	to_chat(user,span_warning("你出现了破绽."))
 	force = 25
 	addtimer(CALLBACK(src, PROC_REF(RemoveDebuff), user), 2 SECONDS)
 
 /obj/item/ego_weapon/black_silence_gloves/old_boys/proc/RemoveDebuff(mob/living/carbon/human/user)
-	to_chat(user,span_nicegreen("You recollect your stance."))
+	to_chat(user,span_nicegreen("你收回自身的破绽."))
 	force = 40
 
 /obj/item/ego_weapon/black_silence_gloves/old_boys/proc/AnnounceBlock(mob/living/carbon/human/source, damage, damagetype, def_zone)
@@ -360,7 +360,7 @@
 	block_success = TRUE
 
 	playsound(get_turf(src), 'sound/weapons/black_silence/guard.ogg', 50, 0, 7)
-	source.visible_message(span_userdanger("[source.real_name] parried the attack!"))
+	source.visible_message(span_userdanger("[source.real_name]格挡了攻击!"))
 	exchange_cooldown -= 100
 	if(!(buff_check))
 		parry_buff = TRUE
@@ -384,9 +384,9 @@
 
 // mid ranged support (damage buffer)
 /obj/item/ego_weapon/black_silence_gloves/allas
-	name = "Allas Workshop"
+	name = "阿拉斯工坊"
 	desc = "Spear once belonged to the Black Silence."
-	special = "SHIFT+CLICK to dash to the enemy. The further you are, the higher the dash damage. On hit, increases targets vulnerability to BLACK DAMAGE"
+	special = "SHIFT+单击向敌人冲锋. 冲锋距离越远，伤害越高. 一旦击中，减少目标对黑色伤害的抗性."
 	icon_state = "allas"
 	attack_verb_continuous = list("pokes", "jabs", "pierces", "gores")
 	attack_verb_simple = list("poke", "jab", "pierce", "gore")
@@ -428,9 +428,9 @@
 
 // litrally just vergil, I don't even care
 /obj/item/ego_weapon/black_silence_gloves/mook
-	name = "Mook Workshop"
+	name = "墨工坊"
 	desc = "LongSword once belonged to the Black Silence."
-	special = "SHIFT+CLICK to perform judgm- air slash (has 3 stacks, resets to 3 each cooldown). Performing an attack between 1.8-2.2 seconds greatly increases damage."
+	special = "SHIFT+单击释放多重剑气 (共有3重，每次冷却重置次数为3重). 在1.8-2.2秒内对目标造成伤害大幅提高."
 	icon_state = "mook"
 	force = 37
 	attack_verb_continuous = list("attacks", "slashes", "cuts", "slices")
@@ -478,9 +478,9 @@
 
 // iff guns with shotgun as knockback
 /obj/item/ego_weapon/black_silence_gloves/logic
-	name = "Atelier Logic"
+	name = "逻辑工作室"
 	desc = "Shotgun and dual revolvers once belonged to the Black Silence."
-	special = "SHIFT+CLICK to shoot your shotgun, knocking back nearby enemies. On 2 successful bullet hits, the shotgun is instantly reloaded"
+	special = "SHIFT+单击发射猎枪, 击退附近所有敌人. 每有2颗子弹命中, 猎枪就会立刻填装好."
 	icon_state = "logic"
 	attack_verb_continuous = list("attacks", "smacks")
 	attack_verb_simple = list("attack", "smack")
@@ -646,9 +646,9 @@
 
 // builds up power each hit
 /obj/item/ego_weapon/black_silence_gloves/durandal
-	name = "Durandal"
+	name = "杜兰达尔"
 	desc = "It has been, it still is, faithful to me..."
-	special = "SHIFT+CLICK to perform a finisher attack. Successful attacks increase this weapon's power up to 10 times."
+	special = "SHIFT+单击执行终结攻击. 成功的攻击会提升该武器威力，可达10倍."
 	icon_state = "durandal"
 	attack_verb_continuous = list("attacks", "slashes", "cuts", "slices")
 	attack_verb_simple = list("attack", "slash", "cut", "slice")
@@ -692,9 +692,9 @@
 
 // basically burst hit and run (evade dice lmao)
 /obj/item/ego_weapon/black_silence_gloves/crystal
-	name = "Crystal Atelier"
+	name = "卡莉斯塔工作室"
 	desc = "Dual Swords once belonged to the Black Silence."
-	special = "SHIFT+CLICK to perform 2 consecutive dash attacks on the enemy. Finishing a combo allows you to perform a dodge"
+	special = "SHIFT+单击可以对敌人连续发动两次冲刺攻击. 完成一套连击会允许你进行一次闪避."
 	icon_state = "crystal"
 	attack_verb_continuous = list("attacks", "slashes", "cuts", "slices")
 	attack_verb_simple = list("attack", "slash", "cut", "slice")
@@ -784,9 +784,9 @@
 
 // basic weapon with big damage and aoe
 /obj/item/ego_weapon/black_silence_gloves/wheels
-	name = "Wheels Industry"
+	name = "轮盘重工"
 	desc = "Greatsword once belonged to the Black Silence."
-	special = "SHIFT+CLICK to perform a giant AoE attack."
+	special = "SHIFT+单击以发动范围巨大的攻击."
 	icon_state = "wheels"
 	attack_verb_continuous = list("attacks", "smashes", "cleaves", "slashes")
 	attack_verb_simple = list("attack", "smash", "cleave", "slash")
@@ -895,7 +895,7 @@
 					L.throw_at(throw_target, 2, whack_speed, user)
 				exchange_cooldown -= 50
 	else
-		to_chat(user, "<span class='spider'><b>Your attack was interrupted!</b></span>")
+		to_chat(user, "<span class='spider'><b>你的攻击被打断了!</b></span>")
 		special_cooldown = 0
 		return
 

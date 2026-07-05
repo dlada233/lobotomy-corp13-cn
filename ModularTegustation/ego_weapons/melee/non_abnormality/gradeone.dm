@@ -2,8 +2,8 @@
 //His weapon has 3 different attacks that you can perform, Shoving stab, Critical Moment, and Toughness.
 //Which one is available depends on how close you are to an enemy.
 /obj/item/ego_weapon/city/donghwan
-	name = "Carver of Scars"
-	desc = "A polished, well-kept longsword with a cruel but effective edge, belonging to Dong-hwan. The serrations are to catch the wound and push out."
+	name = "伤残雕刻家"
+	desc = "一把抛光、保养良好的长剑，拥有残酷但有效的刃口，属于一阶收尾人东焕，锯齿状设计用于咬住伤口并放血。"
 	icon_state = "donghwan"
 	force = 30
 	attack_speed = 0.8
@@ -24,16 +24,16 @@
 
 /obj/item/ego_weapon/city/donghwan/examine(mob/user)
 	. = ..()
-	. += "This weapon has 3 separate functions."
-	. += "After being ready, attack a target to activate a shove."
-	. += "After being ready, use in hand to activate a critical strike on your next attack."
-	. += "Attack yourself at any time to lower your sanity if it is high, and heal it slightly if it is low."
-	. += "Critical Strike scales inverse to your current % of sanity."
+	. += "这把武器有3种独立功能."
+	. += "在准备好后，攻击目标可触发推击."
+	. += "在准备好了，在手中使用可再下次攻击触发暴击."
+	. += "攻击自己时，若SP较高则会降低SP，若SP较低则会轻微恢复SP."
+	. += "暴击伤害与你的SP成反比."
 
 /obj/item/ego_weapon/city/donghwan/attack_self(mob/living/carbon/human/user)
 	active = TRUE
 	if(attackchoice == 1)
-		to_chat(user, span_notice("Now's my chance."))
+		to_chat(user, span_notice("现在，我的机会来了."))
 		attackchoice = 2
 
 /obj/item/ego_weapon/city/donghwan/attack(mob/living/target, mob/living/carbon/human/user)
@@ -62,10 +62,10 @@
 			attackchoice = 0
 		else
 			attackchoice = 1
-			to_chat(user, span_notice("Ready to shove."))
+			to_chat(user, span_notice("准备好了推击."))
 
 /obj/item/ego_weapon/city/donghwan/proc/Shove(mob/living/target, mob/living/carbon/human/user)
-	to_chat(user, span_notice("Fuck off."))
+	to_chat(user, span_notice("滚开."))
 
 	playsound(src, 'sound/weapons/fixer/generic/nail2.ogg', 100, FALSE, 4)
 	var/atom/throw_target = get_edge_target_turf(target, user.dir)
@@ -75,7 +75,7 @@
 	attackchoice = 5
 
 /obj/item/ego_weapon/city/donghwan/proc/CriticalMoment(mob/living/target, mob/living/carbon/human/user)
-	to_chat(user, span_notice("Gotcha."))
+	to_chat(user, span_notice("得手了."))
 	playsound(src, 'sound/weapons/fixer/generic/nail1.ogg', 100, FALSE, 4)
 	//Deals half of % of your sanity, inverted.
 	force += force*((user.sanityhealth/user.maxSanity)-1)*-0.5
@@ -84,9 +84,9 @@
 /obj/item/ego_weapon/city/donghwan/proc/Toughness(mob/living/target, mob/living/carbon/human/user)
 	if(user.sanityhealth>= user.maxSanity*0.3)
 		user.adjustSanityLoss(user.sanityhealth*0.71)
-		to_chat(user, span_notice("Feels good."))
+		to_chat(user, span_notice("感觉不赖."))
 	else
-		to_chat(user, span_notice("Shouldn't push it."))
+		to_chat(user, span_notice("不该这么做的."))
 		user.adjustSanityLoss(-user.sanityhealth*0.2)
 	attackchoice = 0
 

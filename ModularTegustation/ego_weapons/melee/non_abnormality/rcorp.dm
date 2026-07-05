@@ -1,6 +1,6 @@
 /obj/item/ego_weapon/city/rabbit_blade
-	name = "high-frequency combat blade"
-	desc = "A high-frequency combat blade made for use against abnormalities and other threats in Lobotomy Corporation and the outskirts."
+	name = "高频振动匕首"
+	desc = "专为对抗脑叶公司以及外围地区的异想体威胁而设计的高频战斗匕首."
 	icon_state = "rabbitblade"
 	inhand_icon_state = "rabbit_katana"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -27,14 +27,14 @@
 /obj/item/ego_weapon/city/rabbit_blade/attack(mob/living/target, mob/living/user)
 	if(user.mind)
 		if(user.mind.has_antag_datum(/datum/antagonist/wizard/arbiter/rcorp))
-			to_chat(user, span_notice("You wouldn't stoop so low as to use the weapons of those below you.")) //You are a arbiter not a homeless man with a knife
+			to_chat(user, span_notice("你还不屑使用下级部队的武器.")) //You are a arbiter not a homeless man with a knife
 			return FALSE
 	..()
 
 /obj/item/ego_weapon/city/rabbit_blade/attack_obj(obj/target, mob/living/user)
 	if(user.mind)
 		if(user.mind.has_antag_datum(/datum/antagonist/wizard/arbiter/rcorp))
-			to_chat(user, span_notice("You wouldn't stoop so low as to use the weapons of those below you.")) //You are a arbiter not a homeless man with a knife
+			to_chat(user, span_notice("你还不屑使用下级部队的武器.")) //You are a arbiter not a homeless man with a knife
 			return FALSE
 	..()
 
@@ -56,8 +56,8 @@
 
 //Command Sabre
 /obj/item/ego_weapon/city/rabbit_blade/command
-	name = "R-corp command sabre"
-	desc = "A stronger rcorp blade made for the ground commander."
+	name = "R-公司军刀"
+	desc = "为地面指挥官设计的更强力的R-公司军刀."
 	icon_state = "rcorp_sabre"
 	inhand_icon_state = "multiverse"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -80,14 +80,14 @@
 			damtype = PALE_DAMAGE
 		if(PALE_DAMAGE)
 			damtype = RED_DAMAGE
-	to_chat(user, span_notice("\The [src] will now deal [damtype] damage."))
+	to_chat(user, span_notice("[src] 现在将造成 [damtype] 伤害."))
 	playsound(src, 'sound/items/screwdriver2.ogg', 50, TRUE)
 
 
 //Reindeer staves
 /obj/item/ego_weapon/city/reindeer
-	name = "R-corp reindeer staff"
-	desc = "A staff used by the reindeer team. The ranged attack does black damage."
+	name = "R-公司驯鹿杖"
+	desc = "R-公司驯鹿小队使用的法杖, 远程攻击造成黑色伤害."
 	icon_state = "rcorp_staff"
 	inhand_icon_state = "staffofstorms"
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
@@ -123,7 +123,7 @@
 		return
 	if(user.mind)
 		if(user.mind.has_antag_datum(/datum/antagonist/wizard/arbiter/rcorp))
-			to_chat(user, span_notice("You wouldn't stoop so low as to use the weapons of those below you.")) //You are a arbiter not a mentally unstable supersoldier
+			to_chat(user, span_notice("你还不屑使用下级部队的武器.")) //You are a arbiter not a mentally unstable supersoldier
 			return FALSE
 	var/turf/target_turf = get_turf(A)
 	if(!istype(target_turf))
@@ -138,7 +138,7 @@
 		user.HurtInTurf(T, list(), force, BLACK_DAMAGE)
 
 /obj/item/ego_weapon/city/reindeer/captain
-	name = "R-corp reindeer captain staff"
+	name = "R-公司驯鹿队长杖"
 	icon_state = "rcorp_captainstaff"
 	force = 30
 	attribute_requirements = list(
@@ -151,7 +151,7 @@
 
 //Shitty Raven Dagger
 /obj/item/ego_weapon/city/rabbit_blade/raven
-	name = "R-corp raven dagger"
+	name = "R-公司鸦匕首"
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 40,
 							PRUDENCE_ATTRIBUTE = 40,
@@ -163,8 +163,8 @@
 //Rcorp Guns
 
 /obj/item/gun/energy/e_gun/rabbit
-	name = "R-Corporation R-3000 'Mark 2'"
-	desc = "An energy gun produced specifically to suppress threats within Lobotomy Corporation, it has four firing modes to switch between."
+	name = "R-公司 R-3000 'Mark 2'"
+	desc = "专为抑制脑叶公司内部威胁而设计的能量枪，它有四种射击模式可供切换."
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	icon_state = "rabbit"
 	inhand_icon_state = "rabbit4"
@@ -191,16 +191,16 @@
 /obj/item/gun/energy/e_gun/rabbit/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
 	if(user.mind)
 		if(user.mind.assigned_role in banned_roles)
-			to_chat(user, span_notice("You are not trained to use Rcorp firearms!"))
+			to_chat(user, span_notice("你没有接受过使用R-公司武器的训练!"))
 			return FALSE
 		if(user.mind.has_antag_datum(/datum/antagonist/wizard/arbiter/rcorp))
-			to_chat(user, span_notice("You wouldn't stoop so low as to use the weapons of those below you.")) //You are a arbiter not a crazed gunman
+			to_chat(user, span_notice("你还不屑使用下级部队的武器.")) //You are a arbiter not a crazed gunman
 			return FALSE
 	..()
 
 /obj/item/gun/energy/e_gun/rabbit/captain
-	name = "R-Corporation R-4000 'Mark 3'"
-	desc = "An energy gun produced especially for the rabbit captain. This weapon can be fired with one hand."
+	name = "R-公司 R-4000 'Mark 3'"
+	desc = "为驯鹿队长特别生产的能量枪，这把武器可以用一只手射击."
 	icon_state = "rabbitcaptain"
 	inhand_icon_state = "rabbith1"
 	weapon_weight = WEAPON_LIGHT
@@ -208,8 +208,8 @@
 
 //you really shouldn't be having this as a spawned in rabbit
 /obj/item/gun/energy/e_gun/rabbit/nopin
-	name = "R-Corporation R-2800 'Mark 1'"
-	desc = "An energy gun produced specifically to suppress threats with a variety of damage types. This one is an older model, and only has 3 modes."
+	name = "R-公司 R-2800 'Mark 1'"
+	desc = "专为抑制威胁而设计的能量枪，它有多种伤害类型可供选择. 这是较旧的型号，只有3种模式."
 	ammo_type = list(
 		/obj/item/ammo_casing/energy/laser/red,
 		/obj/item/ammo_casing/energy/laser/white,
@@ -218,8 +218,8 @@
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/energy/e_gun/rabbit/minigun
-	name = "R-Corporation X-15 Minigun"
-	desc = "An energy machinegun that is extremely heavy, and fires bullets extremely quickly."
+	name = "R-公司 X-15 机枪"
+	desc = "一把极为沉重的能量机枪，能以极快的速度发射子弹."
 	icon_state = "rabbitmachinegun"
 	ammo_type = list(
 		/obj/item/ammo_casing/energy/laser/red,
@@ -236,8 +236,8 @@
 	AddComponent(/datum/component/automatic_fire, 0.05 SECONDS)
 
 /obj/item/gun/energy/e_gun/rabbit/minigun/tricolor
-	name = "R-Corporation R-3500 Minigun"
-	desc = "An energy machinegun that is extremely heavy, and fires bullets extremely quickly."
+	name = "R-公司 R-3500 机枪"
+	desc = "一把极为沉重的能量机枪，能以极快的速度发射子弹."
 	icon_state = "rabbitmachinegun"
 	projectile_damage_multiplier = 0.7
 	ammo_type = list(
@@ -247,9 +247,9 @@
 		)
 
 /obj/item/ego_weapon/city/rabbit_rush
-	name = "rush dagger"
-	desc = "A high-frequency combat blade made for use against abnormalities and other threats in Lobotomy Corporation and the outskirts. This only has one mode"
-	special = "Use in hand to activate teleport mode. Click on a target in teleport mode to do a teleport attack."
+	name = "突击匕首"
+	desc = "专为对抗脑叶公司以及外围地区的异想体威胁而设计的高频战斗匕首. 这把仅有一种模式."
+	special = "手中使用开启传送模式，然后点击目标进行传送."
 	icon_state = "rabbitdash"
 	inhand_icon_state = "rabbit_katana"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -295,16 +295,16 @@
 		return
 	if(teleporting)
 		teleporting = FALSE
-		to_chat(user,span_warning("You disable teleport."))
+		to_chat(user,span_warning("你关闭了传送."))
 	else
 		teleporting = TRUE
-		to_chat(user,span_warning("You prepare to teleport."))
+		to_chat(user,span_warning("你开启了传送."))
 
 /obj/item/ego_weapon/city/rabbit_rush/afterattack(atom/A, mob/living/user, proximity_flag, params)
 	var/turf/target_turf = get_turf(A)
 	if(user.mind)
 		if(user.mind.has_antag_datum(/datum/antagonist/wizard/arbiter/rcorp))
-			to_chat(user, span_notice("You wouldn't stoop so low as to use the weapons of those below you.")) //You are a arbiter not a methed up knife freak
+			to_chat(user, span_notice("你还不屑使用下级部队的武器.")) //You are a arbiter not a methed up knife freak
 			return FALSE
 	if(!istype(target_turf))
 		return
@@ -322,7 +322,7 @@
 		targetfound = TRUE
 	//So you can't fucking teleport into a place where you are immune to all damage
 	if(!targetfound)
-		to_chat(user,span_warning("No target found!"))
+		to_chat(user,span_warning("没有找到目标!"))
 		return
 
 	new /obj/effect/temp_visual/kinetic_blast(target_turf)
@@ -332,7 +332,7 @@
 	for(var/turf/open/Y in orange(1, target_turf))
 		teleport_targets+=Y
 	if(!LAZYLEN(teleport_targets))
-		to_chat(user,span_warning("Failed to Teleport!"))
+		to_chat(user,span_warning("传送失败!"))
 		return
 
 	new /obj/effect/temp_visual/guardian/phase (get_turf(user))

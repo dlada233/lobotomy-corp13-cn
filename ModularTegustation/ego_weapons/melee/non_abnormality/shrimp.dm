@@ -1,7 +1,7 @@
 // All of these are usably by clerks
 /obj/item/ego_weapon/ranged/rambominigun
-	name = "Shrimp Rambo's Minigun"
-	desc = "A gun used by THE shrimp rambo."
+	name = "虾之兰博机枪"
+	desc = "虾兰博所用的机枪."
 	icon_state = "sodaminigun"
 	inhand_icon_state = "sodaminigun"
 	force = 52

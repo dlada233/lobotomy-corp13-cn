@@ -9,12 +9,12 @@
 
 // Punishing bird - Beak & Beak MK2
 /datum/ego_datum/weapon/beak
-	item_category = "Weapon (SMG)"
+	item_category = "武器(SMG)"
 	item_path = /obj/item/ego_weapon/ranged/beak
 	cost = 20
 
 /datum/ego_datum/weapon/beakmagnum
-	item_category = "Weapon (Pistol)"
+	item_category = "武器(手枪)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/beakmagnum
 	cost = 20
 
@@ -177,7 +177,7 @@
 	cost = 20
 
 /datum/ego_datum/weapon/bean
-	item_category = "Weapon (Sword)"
+	item_category = "武器(剑)"
 	item_path = /obj/item/ego_weapon/mini/bean
 	cost = 20
 

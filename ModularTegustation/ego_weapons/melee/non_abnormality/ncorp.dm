@@ -1,9 +1,9 @@
 //Marks - These augment the hammers.
 /obj/item/ego_weapon/city/ncorp_mark
-	name = "n-corp red seal"
-	desc = "A red seal used by Ncorp."
-	special = "Use on an N corp hammer to change its damage. \
-		This weapon is single use."
+	name = "N公司红印"
+	desc = "N公司使用的红色印记。"
+	special = "用于N公司锤类武器可改变其伤害类型。\
+		此物品为一次性使用。"
 	icon_state = "mark"
 	force = 20
 	damtype = RED_DAMAGE
@@ -16,29 +16,29 @@
 	qdel(src)
 
 /obj/item/ego_weapon/city/ncorp_mark/white
-	name = "n-corp white seal"
+	name = "N公司白印"
 	icon_state = "wmark"
 	damtype = WHITE_DAMAGE
 
 
 /obj/item/ego_weapon/city/ncorp_mark/black
-	name = "n-corp black seal"
+	name = "N公司黑印"
 	icon_state = "bmark"
 	damtype = BLACK_DAMAGE
 
 
 /obj/item/ego_weapon/city/ncorp_mark/pale
-	name = "n-corp pale seal"
+	name = "N公司青印"
 	icon_state = "pmark"
 	damtype = PALE_DAMAGE
 
 
 //Nails - These mark enemies to enable the hammer
 /obj/item/ego_weapon/city/ncorp_nail
-	name = "KleinNagel"
-	desc = "A small nail used by junior Ncorp inquisitors."
-	special = "Hit an enemy with this weapon to mark it. \
-		Hit this weapon with an N-Corp hammer to hurt all marked enemies."
+	name = "克莱因尖钉"
+	desc = "N公司初级审判官使用的小型钉子。"
+	special = "击中敌人可施加标记。\
+		用N公司锤攻击此武器可伤害所有被标记敌人。"
 	icon_state = "kleinnagel"
 	force = 9
 	damtype = RED_DAMAGE
@@ -65,8 +65,8 @@
 		marked -= M
 
 /obj/item/ego_weapon/city/ncorp_nail/big
-	name = "MittleNagel"
-	desc = "A large nail used by senior Ncorp inquisitors."
+	name = "米特尔尖钉"
+	desc = "N公司高级审判官使用的大型钉子。"
 	icon_state = "mittlenagel"
 	force = 18
 	attribute_requirements = list(
@@ -77,8 +77,8 @@
 							)
 
 /obj/item/ego_weapon/city/ncorp_nail/huge
-	name = "GrossNagel"
-	desc = "A huge nail used by Ncorp captains."
+	name = "格罗斯尖钉"
+	desc = "N公司队长级使用的巨型钉子。"
 	icon_state = "grossnagel"
 	force = 25
 	attribute_requirements = list(
@@ -89,8 +89,8 @@
 							)
 
 /obj/item/ego_weapon/city/ncorp_nail/grip
-	name = "Nagel der Gerechten"
-	desc = "A huge nail used by The One Who Grips."
+	name = "正义之钉"
+	desc = "执柄者使用的巨型钉子。"
 	icon_state = "gripnagel"
 	force = 25
 	damtype = WHITE_DAMAGE
@@ -105,10 +105,10 @@
 
 //Hammers - This is your bread and butter attacking weapon.
 /obj/item/ego_weapon/city/ncorp_hammer
-	name = "KleinHammer"
-	desc = "A small hammer used by junior Ncorp inquisitors."
-	special = "Use a mark on this weapon to change its damage type. \
-		This weapon doubles as an N-Corp hammer"
+	name = "克莱因锤"
+	desc = "N公司初级审判官使用的小型锤。"
+	special = "使用印记可改变伤害类型。\
+		此武器同时具备N公司锤特性"
 	icon_state = "kleinhammer"
 	force = 15
 	attack_speed = 1.5
@@ -126,7 +126,7 @@
 		charges-=1
 	if(charges <= 0 && charged)
 		damtype = initial(damtype)
-		to_chat(user, span_notice("Your hammer has run out of charges."))
+		to_chat(user, span_notice("锤击充能耗尽。"))
 		charged = FALSE
 	force = initial(force)
 
@@ -134,7 +134,7 @@
 	..()
 	if(!istype(I, /obj/item/ego_weapon/city/ncorp_mark))
 		return
-	to_chat(user, span_notice("You apply a mark to your hammer, changing its damage type."))
+	to_chat(user, span_notice("印记生效，伤害类型已变更。"))
 	damtype = I.damtype
 	charges = 10
 	charged = TRUE
@@ -142,8 +142,8 @@
 
 //Big hammer
 /obj/item/ego_weapon/city/ncorp_hammer/big
-	name = "MittelHammer"
-	desc = "A large hammer used by senior Ncorp inquisitors."
+	name = "米特尔锤"
+	desc = "N公司高级审判官使用的大型锤。"
 	icon_state = "mittlehammer"
 	force = 30
 	hitsound = 'sound/weapons/ego/shield1.ogg'
@@ -155,8 +155,8 @@
 							)
 
 /obj/item/ego_weapon/city/ncorp_hammer/hand
-	name = "GrossHand"
-	desc = "A metal fist used by Ncorp captains."
+	name = "格罗斯拳甲"
+	desc = "N公司队长级使用的金属拳套。"
 	icon_state = "grosshand"
 	force = 30
 	attack_speed = 1
@@ -170,8 +170,8 @@
 
 //SHE WHO GRIPS
 /obj/item/ego_weapon/city/ncorp_hammer/grippy
-	name = "Hand der Gerechten"
-	desc = "A steel fist used by Ncorp captains, to bring the light of justice to heretics in need of it."
+	name = "正义之手"
+	desc = "N公司队长级使用的钢拳，为异端带去正义之光。"
 	icon_state = "grip"
 	force = 30
 	attack_speed = 1
@@ -188,10 +188,10 @@
 
 //Brass Nail set
 /obj/item/ego_weapon/city/ncorp_brassnail
-	name = "MessingNagel"
-	desc = "A small brass nail used by junior Ncorp inquisitors."
-	special = "Hit an enemy with this weapon to gain nails. \
-		Hit this weapon with an N-Corp hammer to increase the damage of it's next attack by 10% for each nail on this weapon."
+	name = "梅辛尖钉"
+	desc = "N公司初级审判官使用的黄铜钉。"
+	special = "击中敌人可积累钉子。\
+		用N公司锤攻击此武器可使下次攻击伤害每钉提升10%。"
 	icon_state = "messingnagel"
 	force = 9
 	damtype = RED_DAMAGE
@@ -214,18 +214,18 @@
 	if(!istype(I, /obj/item/ego_weapon/city/ncorp_hammer))
 		return
 	if(I.force >= nail_limit)
-		to_chat(user, span_warning("You cannot add any more nails to this weapon!"))
+		to_chat(user, span_warning("你无法再添加更多尖钉了!"))
 		return
 
 	I.force += I.force* nails *0.1
 	if(I.force > nail_limit)
 		I.force = nail_limit
-	to_chat(user, span_notice("You transfer [nails] nails to your hammer, increasing it's damage to [I.force]."))
+	to_chat(user, span_notice("转移[nails]根钉子，锤击伤害提升至[I.force]。"))
 	nails = 0
 
 /obj/item/ego_weapon/city/ncorp_brassnail/big
-	name = "Elektrumnagel"
-	desc = "A large electrum nail used by senior Ncorp inquisitors."
+	name = "埃列克特姆尖钉"
+	desc = "N公司高级审判官使用的尖钉。"
 	icon_state = "elektrumnagel"
 	force = 18
 	attribute_requirements = list(
@@ -236,8 +236,8 @@
 							)
 
 /obj/item/ego_weapon/city/ncorp_brassnail/huge
-	name = "GoldNagel"
-	desc = "A huge nail used by Ncorp captains."
+	name = "黄金尖钉"
+	desc = "N公司队长级使用的巨钉。"
 	icon_state = "goldnagel"
 	force = 25
 	attribute_requirements = list(
@@ -249,8 +249,8 @@
 
 
 /obj/item/ego_weapon/city/ncorp_brassnail/rose
-	name = "RoseNagel"
-	desc = "A huge nail used by Ncorp grand inquisitors."
+	name = "玫瑰尖钉"
+	desc = "N公司大审判官使用的巨钉。"
 	icon_state = "rosenagel"
 	force = 25
 	attribute_requirements = list(

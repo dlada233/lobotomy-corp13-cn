@@ -1,7 +1,7 @@
 //Like this so we can add a charge mechanic to one of them and have it carry down.
 /obj/item/ego_weapon/city/wcorp
-	name = "W corp baton"
-	desc = "A glowing blue baton used by W corp employees."
+	name = "W-公司警棍"
+	desc = "W-公司员工所使用的蓝色发光警棍."
 	icon_state = "wbatong"
 	inhand_icon_state = "wbatong"
 	force = 9
@@ -11,8 +11,8 @@
 
 	charge = TRUE
 	charge_cost = 2
-	charge_effect = "deal an extra attack in damage."
-	successfull_activation = "You release your charge, damaging your opponent!"
+	charge_effect = "造成额外一次攻击伤害."
+	successfull_activation = "你释放了你的充能，对对手造成伤害!"
 
 /obj/item/ego_weapon/city/wcorp/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -20,8 +20,8 @@
 
 //Non-baton Wcorp is Grade 5
 /obj/item/ego_weapon/city/wcorp/fist
-	name = "w-corp gauntlet"
-	desc = "A glowing blue fist used by senior W corp staff."
+	name = "W-公司拳套"
+	desc = "W-公司高级员工使用的蓝色发光拳套."
 	icon_state = "wcorp_fist"
 	inhand_icon_state = "wcorp_fist"
 	force = 20
@@ -35,8 +35,8 @@
 							)
 
 	charge_cost = 3
-	charge_effect = "knock your opponent backwards."
-	successfull_activation = "You release your charge, slamming your whole weight into your opponent!"
+	charge_effect = "将对手打倒在地."
+	successfull_activation = "你释放了你的充能，用尽全力撞击你的对手!"
 
 /obj/item/ego_weapon/city/wcorp/fist/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -46,8 +46,8 @@
 		target.throw_at(throw_target, rand(2, 5), whack_speed, user)
 
 /obj/item/ego_weapon/city/wcorp/axe
-	name = "w-corp axe"
-	desc = "A glowing blue axe used by senior W corp staff."
+	name = "W-公司战斧"
+	desc = "W-公司高级员工使用的蓝色发光战斧."
 	icon_state = "wcorp_axe"
 	inhand_icon_state = "wcorp_axe"
 	force = 33
@@ -62,8 +62,8 @@
 							)
 
 	charge_cost = 4
-	charge_effect = "deal 3x damage and slow your next attack down."
-	successfull_activation = "You release your charge, attempting to execute your opponent!"
+	charge_effect = "造成3倍伤害，但减缓你下一次的攻击."
+	successfull_activation = "你释放了你的充能，试图处决你的对手!"
 	swingstyle = WEAPONSWING_LARGESWEEP
 
 /obj/item/ego_weapon/city/wcorp/axe/ChargeAttack(mob/living/target, mob/living/user)
@@ -73,8 +73,8 @@
 	user.changeNext_move(CLICK_CD_MELEE * 6)
 
 /obj/item/ego_weapon/city/wcorp/spear
-	name = "w-corp spear"
-	desc = "A glowing blue spear used by senior W corp staff."
+	name = "W-公司长矛"
+	desc = "W-公司高级员工使用的蓝色发光长矛."
 	icon_state = "wcorp_spear"
 	inhand_icon_state = "wcorp_spear"
 	force = 30
@@ -91,8 +91,8 @@
 							)
 
 	charge_cost = 3
-	charge_effect = "deal damage in an area around you."
-	successfull_activation = "You release your charge, resulting in a massive discharge!"
+	charge_effect = "造成范围伤害."
+	successfull_activation = "你释放了你的充能，导致大范围伤害!"
 
 /obj/item/ego_weapon/city/wcorp/spear/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -109,8 +109,8 @@
 	user.changeNext_move(CLICK_CD_MELEE * 3)
 
 /obj/item/ego_weapon/city/wcorp/dagger
-	name = "w-corp dagger"
-	desc = "A glowing blue dagger used by senior W corp staff."
+	name = "W-公司匕首"
+	desc = "W-公司高级员工使用的蓝色发光匕首."
 	icon_state = "wcorp_dagger"
 	inhand_icon_state = "wcorp_dagger"
 	force = 11
@@ -127,8 +127,8 @@
 	swingstyle = WEAPONSWING_LARGESWEEP
 
 	charge_cost = 8
-	charge_effect = "rip the space itself!"
-	successfull_activation = "You release your charge, and a flurry of strikes!"
+	charge_effect = "撕裂空间本身!"
+	successfull_activation = "你释放了你的充能，引发了一连串的打击!"
 
 /obj/item/ego_weapon/city/wcorp/dagger/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -145,9 +145,9 @@
 
 //Kirie Note: don't really want to you know, add a very rare part to the Wcorp banner, so I'm gonna keep these at Grade 5.
 /obj/item/ego_weapon/city/wcorp/hatchet
-	name = "w-corp hatchet"
-	desc = "A glowing blue W-Corp handaxe once used by senior W-Corp staff. This one's seen some after-market modifications."
-	special = "This weapon fits in an EGO belt."
+	name = "W-公司单手斧"
+	desc = "W-公司高级员工使用的蓝色发光战斧. 这把经过了一些后期改装."
+	special = "这把武器可以放进EGO腰带里."
 	icon_state = "wcorp_hatchet"
 	inhand_icon_state = "wcorp_hatchet"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -167,8 +167,8 @@
 							)
 
 	charge_cost = 5
-	charge_effect = "deliver a crippling blow, slowing your target."
-	successfull_activation = "You release your charge, attempting to cripple your enemy!"
+	charge_effect = "造成致残打击，减缓你的目标."
+	successfull_activation = "你释放了你的充能，试图致残你的敌人!"
 
 /obj/item/ego_weapon/city/wcorp/hatchet/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -177,8 +177,8 @@
 	target.apply_status_effect(/datum/status_effect/qliphothoverload)
 
 /obj/item/ego_weapon/city/wcorp/hammer
-	name = "w-corp warhammer"
-	desc = "A glowing blue W-Corp warhammer once used by senior W-Corp staff. This one's seen some after-market modifications."
+	name = "W-公司战锤"
+	desc = "W-公司高级员工使用的蓝色发光战锤. 这把经过了一些后期改装."
 	icon_state = "wcorp_hammer"
 	inhand_icon_state = "wcorp_hammer"
 	force = 40
@@ -193,8 +193,8 @@
 							)
 
 	charge_cost = 8
-	charge_effect = "increase the BLACK damage your target takes for a short time."
-	successfull_activation = "You release your charge, shattering the will of your foe!"
+	charge_effect = "短时间内增加目标受到的黑色伤害."
+	successfull_activation = "你释放了你的充能，粉碎了你的敌人的意志!"
 
 /obj/item/ego_weapon/city/wcorp/hammer/ChargeAttack(mob/living/target, mob/living/user)
 	. = ..()
@@ -214,8 +214,8 @@
 	damtype = list(RED_DAMAGE, WHITE_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
 
 /obj/item/ego_weapon/city/wcorp/shield
-	name = "w-corp type-C shieldblade"
-	desc = "A glowing blue W-Corp blade used to project barriers. The glowing end is dangerous, and can slice through about anything"
+	name = "W-公司Type-C护盾刀"
+	desc = "W-公司使用的蓝色发光刀刃，用于投射护盾。发光的末端很危险，可以切穿任何东西"
 	icon_state = "wcorp_sword"
 	inhand_icon_state = "wcorp_sword"
 	force = 17 //Meant originally as a support device, used as a mace in a pinch.
@@ -229,8 +229,8 @@
 							)
 
 	charge_cost = 16
-	charge_effect = "grant shields to nearby allies on hit."
-	successfull_activation = "You release your charge, projecting shields upon your allies!"
+	charge_effect = "在攻击中向周围盟友投射护盾."
+	successfull_activation = "你释放了你的充能，向你的盟友投射护盾!"
 	var/shield_time = 15 SECONDS
 
 /obj/item/ego_weapon/city/wcorp/shield/ChargeAttack(mob/living/target, mob/living/user)
@@ -244,8 +244,8 @@
 
 //Type C Spear
 /obj/item/ego_weapon/city/wcorp/shield/spear
-	name = "w-corp type-C shieldglaive"
-	desc = "A glowing blue W-Corp glaive used to project barriers."
+	name = "W-公司Type-C护盾长矛"
+	desc = "W-公司使用的蓝色发光长矛，用于投射护盾."
 	icon_state = "wcorp_glaive"
 	inhand_icon_state = "wcorp_glaive"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -258,8 +258,8 @@
 
 //Type C club
 /obj/item/ego_weapon/city/wcorp/shield/club
-	name = "w-corp type-C shieldclub"
-	desc = "A glowing blue W-Corp club used to project barriers."
+	name = "W-公司Type-C护盾棍"
+	desc = "W-公司使用的蓝色发光棍棒，用于投射护盾."
 	icon_state = "wcorp_club"
 	inhand_icon_state = "wcorp_club"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -279,8 +279,8 @@
 
 //Type C axe
 /obj/item/ego_weapon/city/wcorp/shield/axe
-	name = "w-corp type-C shieldaxe"
-	desc = "A glowing blue W-Corp battleaxe used to project barriers."
+	name = "W-公司Type-C护盾斧"
+	desc = "W-公司使用的蓝色发光战斧，用于投射护盾."
 	icon_state = "wcorp_battleaxe"
 	inhand_icon_state = "wcorp_battleaxe"
 	force = 22

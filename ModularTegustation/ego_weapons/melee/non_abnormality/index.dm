@@ -2,8 +2,8 @@
 //Proxy is Grade 3,
 //Messenger is Grade 2.
 /obj/item/ego_weapon/city/index
-	name = "index recruit sword"
-	desc = "A sheathed sword used by index recruits."
+	name = "食指 新兵剑"
+	desc = "苦行者使用的新兵剑."
 	icon_state = "index"
 	inhand_icon_state = "index"
 	force = 18
@@ -24,7 +24,7 @@
 /obj/item/ego_weapon/city/index/attack_self(mob/user)
 	..()
 	if(force != initial(force))
-		to_chat(user, span_notice("The prescript buff is still active."))
+		to_chat(user, span_notice("指令状态仍然有效."))
 		return
 
 	//Okay, check if you have a prescript
@@ -32,9 +32,9 @@
 		var/mob/living/simple_animal/hostile/abnormality/Y = prescript_target
 		if(Y.stat == DEAD)
 			prescript_target = null
-			to_chat(user, span_notice("Your prescript has died. Use it in hand to recieve a prescript."))
+			to_chat(user, span_notice("你的指令已经过期. 在手中使用以接收新的指令."))
 		else
-			to_chat(user, span_notice("Your prescript target is [prescript_target]."))
+			to_chat(user, span_notice("你的指令目标是 [prescript_target]."))
 
 	//If you don't have one, pick a breached mob if available.
 	else if(!prescript_target && user == weapon_owner)
@@ -44,17 +44,17 @@
 				breached+=B
 		if(LAZYLEN(breached))
 			prescript_target = pick(breached)
-			to_chat(user, span_userdanger("Your prescript target is [prescript_target]. Slay them, and deal the killing blow with this weapon."))
+			to_chat(user, span_userdanger("你的指令目标是 [prescript_target]. 杀死他们，并用这把武器给予致命一击."))
 		else
-			to_chat(user, span_notice("There are no prescripts available."))
+			to_chat(user, span_notice("没有可用的指令."))
 
 	//If this weapon has no owner, than make you it.
 	else if(!weapon_owner)
-		to_chat(user, span_notice("This weapon is now yours. Use it in hand to recieve a prescript."))
+		to_chat(user, span_notice("这把武器现在属于你了，在手中使用来接收新的指令."))
 		weapon_owner = user
 
 	else
-		to_chat(user, span_warning("This is not your weapon!"))
+		to_chat(user, span_warning("这不是你的武器!"))
 
 
 /obj/item/ego_weapon/city/index/attack(mob/living/target, mob/living/user)
@@ -70,19 +70,19 @@
 //Make this do something
 /obj/item/ego_weapon/city/index/proc/prescript_complete(mob/living/user)
 	prescript_target = null
-	to_chat(user, span_userdanger("You have completed your prescript, and you have been graced."))
+	to_chat(user, span_userdanger("你已经完成了你的指令，你获得了恩赐。"))
 	force *= 1.45	//BEEG BONUS
 	addtimer(CALLBACK(src, PROC_REF(Return), user), 5 MINUTES)
 
 /obj/item/ego_weapon/city/index/proc/Return(mob/living/carbon/human/user)
 	force /= 1.45	//BEEG BONUS
-	to_chat(user, span_notice("The power from your prescript is now gone."))
+	to_chat(user, span_notice("来自指令之中的力量现已消失."))
 
 
 //Just gonna set this to the big proxy weapon for requirement reasons
 /obj/item/ego_weapon/city/index/proxy
-	name = "index longsword"
-	desc = "A long sword used by index proxies."
+	name = "食指 长剑"
+	desc = "代行者所使用的长剑."
 	icon_state = "indexlongsword"
 	inhand_icon_state = "indexlongsword"
 	attack_verb_continuous = list("slices", "slashes", "stabs")
@@ -98,8 +98,8 @@
 
 //Just gonna set this to the big proxy weapon for requirement reasons
 /obj/item/ego_weapon/city/index/proxy/spear
-	name = "index spear"
-	desc = "A spear used by index proxies."
+	name = "食指 长矛"
+	desc = "代行者所使用的长矛."
 	icon_state = "indexspear"
 	inhand_icon_state = "indexspear"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -114,8 +114,8 @@
 
 //Fockin massive sword
 /obj/item/ego_weapon/city/index/yan
-	name = "index greatsword"
-	desc = "A greatsword sword used by a specific index messenger."
+	name = "食指 大剑"
+	desc = "传令员所使用的大型剑."
 	icon_state = "indexgreatsword"
 	inhand_icon_state = "indexgreatsword"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'

@@ -1,9 +1,9 @@
 //Ting-Tang, weapons are quite gimmicky, and leaves up to chance. Thus does a bit more damage than their tier allows.
 //All weapons, but leader are grade 7, they are all quite the jobber anyways.
 /obj/item/ego_weapon/city/ting_tang
-	name = "ting tang shank"
-	desc = "A twisted piece of metal. The shape makes very open wounds."
-	special = "This deals a random damage amount between 50% and 100% of max damage. Untreated sanity damage will lower the minimum down to 10% depending on severity."
+	name = "叮当帮刺刀"
+	desc = "扭曲的金属片，造成的伤口难以愈合。"
+	special = "造成50%至100%最大伤害的随机伤害，如有未治疗的精神损伤将根据严重程度使最小伤害降至最低10%。"
 	icon_state = "tingtang_shank"
 	inhand_icon_state = "tingtang_shank"
 	force = 13
@@ -23,8 +23,8 @@
 	force = initial(force)
 
 /obj/item/ego_weapon/city/ting_tang/cleaver
-	name = "ting tang cleaver"
-	desc = "It's quite heavy, clearly made for throwing your weight around."
+	name = "叮当帮砍刀"
+	desc = "相当沉重，显然是为全力挥砍设计的。"
 	icon_state = "tingtang_cleaver"
 	inhand_icon_state = "tingtang_cleaver"
 	force = 20
@@ -32,8 +32,8 @@
 	hitsound = 'sound/weapons/fixer/generic/blade5.ogg'
 
 /obj/item/ego_weapon/city/ting_tang/pipe
-	name = "ting tang pipe"
-	desc = "A heavy pipe that you're pretty sure used to belong in a car."
+	name = "叮当帮管棍"
+	desc = "沉重的金属管，你确信它曾属于某辆汽车。"
 	icon_state = "tingtang_pipe"
 	inhand_icon_state = "tingtang_pipe"
 	force = 27
@@ -43,8 +43,8 @@
 	hitsound = 'sound/weapons/fixer/generic/baton1.ogg'
 
 /obj/item/ego_weapon/city/ting_tang/knife //Leader, Grade 6
-	name = "ting tang knife"
-	desc = "The finger hook at the end lets you pull off some sick tricks. If you had the skill."
+	name = "叮当帮匕首"
+	desc = "末端的指钩让你能玩些花式技巧——假如你有那技术的话。"
 	icon_state = "tingtang_knife"
 	inhand_icon_state = "tingtang_knife"
 	force = 18
@@ -60,9 +60,9 @@
 
 //Los Mariachis - Grade 7 with poise crits, white version of Kurokumo.
 /obj/item/ego_weapon/city/mariachi
-	name = "maraca"
-	desc = "A single maraca used by Los Mariachis."
-	special = "This weapon gains 1 poise for every attack. 1 poise gives you a 2% chance to crit at 3x damage, stacking linearly. Critical hits reduce poise to 0."
+	name = "沙槌"
+	desc = "马利亚奇乐队使用的单只沙槌。"
+	special = "每次攻击获得1点架势。每点架势提供2%的暴击率（3倍伤害），效果线性叠加。暴击后架势归零。"
 	icon_state = "maracas"
 	inhand_icon_state = "maracas"
 	force = 11
@@ -75,7 +75,7 @@
 
 /obj/item/ego_weapon/city/mariachi/examine(mob/user)
 	. = ..()
-	. += "Current Poise: [poise]/20."
+	. += "当前架势: [poise]/20."
 
 /obj/item/ego_weapon/city/mariachi/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!CanUseEgo(user))
@@ -95,16 +95,16 @@
 /obj/item/ego_weapon/city/mariachi/attack_self(mob/user)
 	var/obj/item/clothing/suit/armor/ego_gear/city/mariachi/aida/Y = user.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 	if(istype(Y))
-		to_chat(user,span_notice("You shake the maracas. Your performance is beautiful."))
+		to_chat(user,span_notice("你摇动沙槌，演奏出美妙旋律。"))
 		playsound(src, 'sound/weapons/fixer/generic/maracas_shake.ogg', 50, TRUE)
 	else
-		to_chat(user,span_warning("Someone as uninspiring as you? You are not worthy to shake the maracas."))
+		to_chat(user,span_warning("像你这般无趣之人？不配摇动这沙槌。"))
 
 //Sp healing for jobbers
 /obj/item/ego_weapon/city/mariachi_blades
-	name = "dual machetes"
-	desc = "A pair of machetes used by the Los Mariachis."
-	special = "On kill, heal 15 sanity."
+	name = "双砍刀"
+	desc = "马利亚奇乐队使用的砍刀对。"
+	special = "击杀时恢复15点精神值。"
 	icon_state = "mariachi_blades"
 	inhand_icon_state = "mariachi_blades"
 	force = 11
@@ -127,8 +127,8 @@
 
 //Leader, Grade 6 (She's pretty weak)
 /obj/item/ego_weapon/city/mariachi/dual
-	name = "maracas"
-	desc = "A pair of maracas used by the leader of Los Mariachis."
+	name = "对击沙槌"
+	desc = "马利亚奇乐队首领使用的沙槌对。"
 	icon_state = "dualmaracas"
 	inhand_icon_state = "dualmaracas"
 	force = 9		//Double the maracas twice the attack speed.
@@ -142,8 +142,8 @@
 
 //Pre-nerf Aida, the real prize of J-corp. Grade 5
 /obj/item/ego_weapon/city/mariachi/dual/boss
-	name = "glowing maracas"
-	desc = "A pair of glowing maracas used by the leader of Los Mariachis. Only seen by the no longer living."
+	name = "发光沙槌"
+	desc = "马利亚奇乐队首领使用的发光沙槌，唯亡者得见。"
 	icon_state = "dualmaracas_boss"
 	inhand_icon_state = "dualmaracas_boss"
 	force = 12

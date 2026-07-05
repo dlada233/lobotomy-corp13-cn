@@ -1,6 +1,6 @@
 //Pistol
 /obj/item/ego_weapon/ranged/city/limbuspistol
-	name = "LCCB pistol"
+	name = "LCCB 手枪"
 	desc = "A pistol often found in the hands of LCCB staff."
 	icon_state = "lccb_pistol"
 	inhand_icon_state = "lccb_pistol"
@@ -16,7 +16,7 @@
 
 //Auto Pistol
 /obj/item/ego_weapon/ranged/city/limbusautopistol
-	name = "LCCB auto pistol"
+	name = "LCCB 自动手枪"
 	desc = "A pistol often found in the hands of LCCB staff. This one is fully automatic"
 	icon_state = "lccb_burstpistol"
 	inhand_icon_state = "lccb_pistol"
@@ -33,7 +33,7 @@
 
 //Magnum
 /obj/item/ego_weapon/ranged/city/limbusmagnum
-	name = "LCCB magnum"
+	name = "LCCB 马格南"
 	desc = "A pistol often found in the hands of LCCB combat officers."
 	icon_state = "lccb_magnum"
 	inhand_icon_state = "lccb_magnum"
@@ -50,7 +50,7 @@
 
 //SMG
 /obj/item/ego_weapon/ranged/city/limbussmg
-	name = "LCCB submachine gun"
+	name = "LCCB 冲锋枪"
 	desc = "An SMG often found in the hands of LCCB staff. This one is fully automatic, but requires two hands."
 	icon_state = "lccb_smg"
 	inhand_icon_state = "lccb_smg"
@@ -65,7 +65,7 @@
 
 //Shottie
 /obj/item/ego_weapon/ranged/city/limbusshottie
-	name = "LCCB shotgun"
+	name = "LCCB 霰弹枪"
 	desc = "A shotgun found in the hands of LCCB staff. Has limited ammo and a long reload."
 	icon_state = "lccb_shotgun"
 	inhand_icon_state = "lccb_shotgun"
@@ -95,7 +95,7 @@
 
 //LCCB Defensive Equipment
 /obj/item/ego_weapon/shield/lccb
-	name = "LCCB riot shield"
+	name = "LCCB 防爆盾"
 	desc = "A riot shield used by lccb staff."
 	special = "Slows down the user significantly."
 	icon = 'icons/obj/limbus_weapons.dmi'
@@ -127,7 +127,7 @@
 
 //Bats for the bat people
 /obj/item/ego_weapon/city/lccb_bat
-	name = "LCCB bat"
+	name = "LCCB 棍棒"
 	desc = "A baton used by LCCB staff."
 	special = "This weapon has knockback."
 	icon_state = "lccb_baton"

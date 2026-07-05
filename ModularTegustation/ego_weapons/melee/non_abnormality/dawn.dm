@@ -1,7 +1,7 @@
-//Dawn Office uses an AOE flame after hitting two different things. Grade 5
+//黎明事务所 uses an AOE flame after hitting two different things. Grade 5
 /obj/item/ego_weapon/city/dawn
-	name = "dawn office template"
-	desc = "A template for dawn office weapons."
+	name = "黎明事务所 template"
+	desc = "A template for 黎明事务所 weapons."
 	special = "Hit one enemy, then the other to unleash a weak aoe attack."
 	icon_state = "philip"
 	inhand_icon_state = "philip"
@@ -39,8 +39,8 @@
 
 //Philip's Sword
 /obj/item/ego_weapon/city/dawn/sword
-	name = "dawn office sword"
-	desc = "A plain sword. Oddly enough, there's a broken heating mechanism in the hilt."
+	name = "黎明事务所 阔剑"
+	desc = "一柄普通的剑，但剑柄里有一个损坏的加热装置."
 	icon_state = "philip"
 	inhand_icon_state = "philip"
 	force = 17
@@ -51,8 +51,8 @@
 
 //Yuna's Cello Case
 /obj/item/ego_weapon/city/dawn/cello
-	name = "dawn office cello case"
-	desc = "A cello case custom-made for a fixer of the Dawn Office. The inside is filled with extendable blades..."
+	name = "黎明事务所 大提琴箱"
+	desc = "为黎明事务所的收尾人定制的大提琴箱，内部装满了可伸缩的刀刃..."
 	icon_state = "yuna"
 	inhand_icon_state = "yuna"
 	force = 20		//Bigger range, less force
@@ -62,8 +62,8 @@
 
 //Salvador's Zweihander
 /obj/item/ego_weapon/city/dawn/zwei
-	name = "dawn office zweihander"
-	desc = "A zweihander fitted with a heating mechanism. The blade burns your enemy."
+	name = "黎明事务所 双手大剑"
+	desc = "一把装有加热装置的双手大剑，刀刃会灼烧你的敌人."
 	icon_state = "salvador"
 	inhand_icon_state = "salvador"
 	force = 25		//Bigger range, less force

@@ -1,8 +1,8 @@
 //Grade 3. They're pretty strong
 /obj/item/ego_weapon/city/mirae
-	name = "mirae cane"
-	desc = "An elegant cane. There's the logo of a life insurance company on the top."
-	special = "On kill, heal yourself and get a small payday. 20% of the force is done as pale."
+	name = "未来拐杖"
+	desc = "一根优雅的拐杖，顶部印有未来人寿保险的标志."
+	special = "击杀敌人，然后治疗自己，并获得一笔收入. 该武器20%的伤害是青色伤害."
 	icon_state = "miraecane"
 	force = 25
 	damtype = WHITE_DAMAGE	//Also does a small bit of pale, because lawyers hurt your mind and soul.
@@ -39,8 +39,8 @@
 
 //Grade 3, but does less damage with a way better payout
 /obj/item/ego_weapon/city/mirae/page
-	name = "mirae life insurance package"
-	desc = "Life insurance papers that are extremely hefty, should get you a good payout."
+	name = "未来人寿保险文件"
+	desc = "人寿保险文件，非常昂贵，应该能给你带来不错的回报。"
 	icon_state = "insurance"
 	force = 22
 	damtype = WHITE_DAMAGE	//Also does a small bit of pale, because lawyers eat your soul.

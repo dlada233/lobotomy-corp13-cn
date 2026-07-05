@@ -65,7 +65,7 @@
 /obj/item/ego_weapon/shield/eria
 	name = "eria"
 	desc = "It has been quite a while since I last used you two. I missed the feeling."
-	special = "This weapon restores health on a successful block."
+	special = "格挡成功时恢复生命."
 	icon_state = "eria"
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left.dmi'

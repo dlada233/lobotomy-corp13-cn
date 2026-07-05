@@ -1,10 +1,10 @@
 /obj/item/ego_weapon/city/devyat_trunk
-	name = "devyat courier trunk"
-	desc = "A devyat association-issued delivery trunks."
-	special = "This weapon also functions as a backpack. \
-	When you attack, you enter combat mode; and attacking in combat mode will deal increasing damage to both the user and the target. \
-	It cannot be dropped while in combat mode. Combat mode can be turned off by using it in hand.\
-	Alt click the trunk to lock or unlock it."
+	name = "九协会 派送箱"
+	desc = "一件九协会派送箱."
+	special = "这把武器同时具备储物功能. \
+	攻击时自动进入作战模式，该模式下连续攻击将对使用者和目标造成递增的伤害. \
+	且作战期间无法丢弃武器. 手持使用可关闭作战模式.\
+	Alt+左键点击箱体可上锁/解锁."
 	worn_icon = 'icons/obj/clothing/ego_gear/devyat_armor.dmi'
 	worn_icon_state = "s_polu"
 	icon = 'icons/obj/clothing/ego_gear/devyat_icon.dmi'
@@ -56,8 +56,8 @@
 	var/RR_armor = 0.5
 
 /obj/item/devyat_unlocker
-	name = "devyat trunk unlocker"
-	desc = "A small tool which is able to unlock DNA locked devyat trunks."
+	name = "九协会 派送箱解锁器"
+	desc = "一种能解除九协会派送箱DNA锁的小型工具."
 	icon = 'ModularTegustation/Teguicons/refiner.dmi'
 	icon_state = "green"
 
@@ -70,18 +70,18 @@
 				if(istype(I, /obj/item/ego_weapon/city/devyat_trunk))
 					var/obj/item/ego_weapon/city/devyat_trunk/user_trunk = I
 					user_trunk.owner = null
-					to_chat(user, "<span class='spider'><b>You disable the DNA lock on [src].</b></span>")
+					to_chat(user, "<span class='spider'><b>你已禁用 [src]上的DNA锁.</b></span>")
 
 //Storage Stuff
 /obj/item/ego_weapon/city/devyat_trunk/equip_to_best_slot(mob/M, check_hand = TRUE)
 	if(combat_mode)
-		to_chat(M, span_warning("You are unable to equip the devyat bag during combat mode!"))
+		to_chat(M, span_warning("你无法在战斗模式下装备九协会派送箱!"))
 		return FALSE
 	. = ..()
 
 /obj/item/ego_weapon/city/devyat_trunk/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	if(combat_mode)
-		to_chat(M, span_warning("You are unable to equip the devyat bag during combat mode!"))
+		to_chat(M, span_warning("你无法在战斗模式下装备九协会派送箱!"))
 		return FALSE
 	. = ..()
 
@@ -89,7 +89,7 @@
 	if(owner && (user != owner))
 		if(ishuman(user))
 			var/mob/living/carbon/human/theif = user
-			say("You are touching a devyat trunk without the correct access, please step away.")
+			say("你正在触摸一个没有正确权限的九协会派送箱，请后退.")
 			playsound(get_turf(src), 'sound/weapons/ego/devyat_overclock.ogg', 25, 0, 4)
 			theif.apply_damage(theif_damage, BLACK_DAMAGE)
 		return FALSE
@@ -99,7 +99,7 @@
 	. = ..()
 	if(owner && istype(I, /obj/item/devyat_unlocker))
 		owner = null
-		to_chat(user, "<span class='spider'><b>You disable the DNA lock on [src].</b></span>")
+		to_chat(user, "<span class='spider'><b>你已禁用 [src]上的DNA锁.</b></span>")
 
 /obj/item/ego_weapon/city/devyat_trunk/AltClick(mob/user)
 	if(!CanUseEgo(user))
@@ -107,10 +107,10 @@
 	if(owner)
 		if(user == owner)
 			owner = null
-			to_chat(user, "<span class='spider'><b>You disable the DNA lock on [src].</b></span>")
+			to_chat(user, "<span class='spider'><b>你已禁用 [src]上的DNA锁.</b></span>")
 	else
 		owner = user
-		to_chat(user, "<span class='spider'><b>[src] gathers your DNA, it is now DNA locked.</b></span>")
+		to_chat(user, "<span class='spider'><b>[src]收集你的DNA，现在已经进入DNA锁定状态.</b></span>")
 	. = ..()
 
 /obj/item/ego_weapon/city/devyat_trunk/get_dumping_location(obj/item/storage/source,mob/user)
@@ -149,7 +149,7 @@
 	if(owner && (who != owner))
 		if(ishuman(who))
 			var/mob/living/carbon/human/theif = who
-			say("You are touching a devyat trunk without the correct access, please step away.")
+			say("你正在触摸一个没有正确权限的九协会派送箱，请后退.")
 			playsound(get_turf(src), 'sound/weapons/ego/devyat_overclock.ogg', 25, 0, 4)
 			theif.apply_damage(theif_damage, BLACK_DAMAGE)
 		return FALSE
@@ -171,7 +171,7 @@
 //Combat Stuff
 /obj/item/ego_weapon/city/devyat_trunk/examine(mob/user)
 	. = ..()
-	. += span_notice("This weapon currently has [courier_trunk] stacks of courier trunk.")
+	. += span_notice("该武器目前有 [courier_trunk] 个堆叠.")
 
 /obj/item/ego_weapon/city/devyat_trunk/attack_self(mob/living/carbon/human/user)
 	..()
@@ -179,7 +179,7 @@
 		return
 	update_icon_state()
 	if(combat_mode)
-		to_chat(user, span_nicegreen("Activating Strategic R&R mode..."))
+		to_chat(user, span_nicegreen("激活战略R&R模式..."))
 		can_attack = FALSE
 		user.physiology.red_mod -= RR_armor
 		user.physiology.white_mod -= RR_armor
@@ -187,9 +187,9 @@
 		user.physiology.pale_mod -= RR_armor
 		if(do_after(user, 50, user))
 			end_combat()
-			to_chat(user, "<span class='spider'><b>Combat mode deactivated!</b></span>")
+			to_chat(user, "<span class='spider'><b>战斗模式关闭!</b></span>")
 		else
-			to_chat(user, "<span class='spider'><b>Strategic R&R mode interrupted!</b></span>")
+			to_chat(user, "<span class='spider'><b>战略R&R模式被中断!</b></span>")
 		user.physiology.red_mod += RR_armor
 		user.physiology.white_mod += RR_armor
 		user.physiology.black_mod += RR_armor
@@ -231,7 +231,7 @@
 	addtimer(CALLBACK(src, PROC_REF(entering_combat), user), 1)
 	icon_state = tier1_icon
 	inhand_icon_state = tier1_icon
-	to_chat(user, "<span class='spider'><b>Combat mode activated!</b></span>")
+	to_chat(user, "<span class='spider'><b>战斗模式已激活!</b></span>")
 	update_icon_state()
 
 /obj/item/ego_weapon/city/devyat_trunk/proc/passive_courier_trunk(mob/living/user)
@@ -252,7 +252,7 @@
 			playsound(get_turf(user), 'sound/weapons/ego/devyat_overclock.ogg', 25, 0, 4)
 
 	courier_trunk += amount
-	to_chat(user, span_nicegreen("[src] gains [amount] stacks of courier trunk!"))
+	to_chat(user, span_nicegreen("[src]获得[amount]个堆叠!"))
 	if(courier_trunk >= tier3_threshold)
 		force_multiplier = tier3_damage_multiplier
 		if(!tier3_vc_trigger)
@@ -289,31 +289,31 @@
 
 /obj/item/ego_weapon/city/devyat_trunk/proc/entering_combat(mob/living/user)
 	playsound(get_turf(user), 'sound/weapons/ego/devyat_combat_start.ogg', 50, 0, 4)
-	say("Hostile forces detected.")
+	say("检测到敌对势力.")
 	sleep(20)
-	say("Activating Poludnitsa high-power delivery mode maneuvers.")
+	say("波鲁德尼察，强力派送模式启动.")
 
 /obj/item/ego_weapon/city/devyat_trunk/proc/entering_stage_1(mob/living/user)
 	playsound(get_turf(user), 'sound/weapons/ego/devyat_stage_1.ogg', 50, 0, 4)
-	say("Phase 1. Delivery assistant and control sequence initiated.")
+	say("阶段1，开始派送辅助及管理流程.")
 	sleep(30)
-	say("Calmly forge a path.")
+	say("请沉着地开拓生路.")
 
 /obj/item/ego_weapon/city/devyat_trunk/proc/entering_stage_2(mob/living/user)
 	playsound(get_turf(user), 'sound/weapons/ego/devyat_stage_2.ogg', 50, 0, 4)
-	say("Phase 2. Delivery carrier output increased.")
+	say("阶段2，派送单元功率提升.")
 	sleep(30)
-	say("Quick pioneering is recommended.")
+	say("建议迅速开拓.")
 
 /obj/item/ego_weapon/city/devyat_trunk/proc/entering_stage_3(mob/living/user)
 	playsound(get_turf(user), 'sound/weapons/ego/devyat_stage_3.ogg', 50, 0, 4)
-	say("Phase 3, Warning. Time-over delivery acceleration entering final phase.")
+	say("阶段3，警告，任务超时，进入派送加速最终阶段.")
 	sleep(30)
-	say("Futher delays do not guarantee personal safety.")
+	say("进一步的时间延误将无法保障您的安全.")
 
 /obj/item/ego_weapon/city/devyat_trunk/demo
-	name = "heavy devyat courier trunk"
-	desc = "A heavier devyat association-issued delivery trunks."
+	name = "重型九协会派送箱"
+	desc = "一件非常重的九协会派送箱."
 	worn_icon_state = "b_polu"
 	icon_state = "b_polu"
 	inhand_icon_state = "b_polu"

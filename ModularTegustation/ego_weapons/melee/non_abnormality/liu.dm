@@ -6,7 +6,7 @@
 
 /obj/item/ego_weapon/city/liu/examine(mob/user)
 	. = ..()
-	. += span_notice("This weapon kills insane people.")
+	. += span_notice("此武器可击杀精神崩溃者。")
 
 /obj/item/ego_weapon/city/liu/attack(mob/living/target, mob/living/user)
 	//Happens before the attack so you need to do another attack.
@@ -18,8 +18,8 @@
 
 //Section 1&2, 6-5-4-2 as the grades
 /obj/item/ego_weapon/city/liu/fire
-	name = "liu blade"
-	desc = "A blade used by junior fixers of Liu Section 1 and Section 2."
+	name = "六协会制式刀"
+	desc = "六协会1科和2科的初级收尾人成员使用的武器."
 	icon_state = "liublade"
 	force = 14
 	attribute_requirements = list(
@@ -32,7 +32,7 @@
 
 /obj/item/ego_weapon/city/liu/fire/examine(mob/user)
 	. = ..()
-	. +="This weapon gains +10% damage for each person in sight."
+	. +="视野内每多一人伤害提升10%。"
 
 /obj/item/ego_weapon/city/liu/fire/attack(mob/living/target, mob/living/user)
 	if(!CanUseEgo(user))
@@ -46,8 +46,8 @@
 
 
 /obj/item/ego_weapon/city/liu/fire/fist
-	name = "liu flaming glove"
-	desc = "A fiery fist used by some veteran fixers of Liu Section 1 and Section 2."
+	name = "六协会炎拳套"
+	desc = "六协会1科和2科的资深收尾人成员使用的武器."
 	icon_state = "liuglove"
 	force = 17
 	attribute_requirements = list(
@@ -59,8 +59,8 @@
 	swingstyle = WEAPONSWING_SMALLSWEEP
 
 /obj/item/ego_weapon/city/liu/fire/spear
-	name = "liu spear"
-	desc = "A spear used by veteran fixers of Liu Section 1 and Section 2, and is used by the director of Liu Section 2."
+	name = "六协会长矛"
+	desc = "六协会1科和2科的资深收尾人成员使用的武器，也被六协会2科的科长使用。"
 	icon_state = "liuspear"
 	force = 30
 	reach = 2
@@ -76,8 +76,8 @@
 
 
 /obj/item/ego_weapon/city/liu/fire/sword
-	name = "liu director sword"
-	desc = "The personal sword found in the hands of the director of Liu Section 1."
+	name = "六协会科长佩剑"
+	desc = "六协会1科的科长所使用的个人佩剑。"
 	icon_state = "liusword"
 	force = 33
 	attribute_requirements = list(
@@ -92,9 +92,9 @@
 
 //Section 4/5/6, 6-4
 /obj/item/ego_weapon/city/liu/fist
-	name = "liu combat gloves"
+	name = "六协会格斗拳套"
 	icon_state = "liufist"
-	desc = "A gauntlet used by Liu Sections 4,5 and 6. Requires martial arts training to make use of."
+	desc = "六协会4、5、6科成员使用的拳套，需要武术训练才能有效使用。"
 	force = 10
 	attack_speed = 0.7
 	attribute_requirements = list(
@@ -113,21 +113,21 @@
 
 /obj/item/ego_weapon/city/liu/fist/examine(mob/user)
 	. = ..()
-	. += span_notice("This weapon has light and heavy attacks. Use in hand to activate a heavy attack. Combos are as follows:")
-	. += span_notice("LLLLL - 5 Hit fast combo, ending in a knockback attack.")
-	. += span_notice("H 	 - Windup fist attack for 1.5x damage and deals massive stamina damage to humans.")
-	. += span_notice("LH 	 - AOE Fire fist attack. This does not kill insane people.")
-	. += span_notice("LLH 	 - High Damage Combo, last attack has a windup and deals 2x damage.")
-	. += span_notice("LLLH  - Deals good damage. Last hit backsteps you 2 tiles.")
-	. += span_notice("LLLLH - High Damage combo, last hit ends in a 2x damage boost with no windup.")
+	. += span_notice("此武器具备轻攻击与重攻击。手持使用激活重攻击。连招如下：")
+	. += span_notice("LLLLL - 5段速攻连击，以击退攻击收尾。")
+	. += span_notice("H 	 - 蓄力拳击造成1.5倍伤害，对人类造成巨额耐力伤害。")
+	. += span_notice("LH 	 - 范围火焰拳击。此攻击不击杀精神崩溃者。")
+	. += span_notice("LLH 	 - 高伤连段，末段蓄力造成2倍伤害。")
+	. += span_notice("LLLH  - 造成可观伤害。末段后撤2格。")
+	. += span_notice("LLLLH - 高伤连段，末段无蓄力造成2倍伤害。")
 
 /obj/item/ego_weapon/city/liu/fist/attack_self(mob/living/carbon/user)
 	if(activated)
 		activated = FALSE
-		to_chat(user, span_danger("You revoke your preparation of a heavy attack."))
+		to_chat(user, span_danger("你取消了重攻击准备。"))
 	else
 		activated = TRUE
-		to_chat(user, span_danger("You prep a heavy attack!"))
+		to_chat(user, span_danger("你预备发动重攻击！"))
 
 
 /obj/item/ego_weapon/city/liu/fist/attack(mob/living/target, mob/living/user)
@@ -151,7 +151,7 @@
 	switch(chain)
 		if(1)
 			if(activated) //H - Solar Plexus attack
-				to_chat(user, span_danger("You prepare to strike the solar plexus."))
+				to_chat(user, span_danger("你准备好猛击对手的腹腔神经丛."))
 				during_windup = TRUE
 				if(do_after(user, 5, target))
 					during_windup = FALSE
@@ -165,13 +165,13 @@
 
 		if(2)
 			if(activated) //LH - Fire AOE
-				to_chat(user, span_danger("You release a wave of fire."))
+				to_chat(user, span_danger("你释放出一阵火焰."))
 				hitsound = 'sound/weapons/fixer/generic/gen2.ogg'
 				aoe(target, user)
 
 		if(3)
 			if(activated) //LLH - Higher damage windup attack
-				to_chat(user, span_danger("You prepare a strong punch."))
+				to_chat(user, span_danger("你准备强力拳击."))
 				during_windup = TRUE
 				if(do_after(user, 5, target))
 					during_windup = FALSE
@@ -183,7 +183,7 @@
 
 		if(4)
 			if(activated) //LLLH - Fast hit and jump back
-				to_chat(user, span_danger("You hit them and hop back."))
+				to_chat(user, span_danger("你击中目标并后跳。"))
 				force *= 1.5
 				hitsound = 'sound/weapons/fixer/generic/gen2.ogg'
 				hopback(user)
@@ -194,7 +194,7 @@
 				hitsound = 'sound/weapons/fixer/generic/finisher2.ogg'
 			else
 				force*=2
-				to_chat(user, span_danger("You hit them with all you got!."))
+				to_chat(user, span_danger("你全力击中目标！"))
 				hitsound = 'sound/weapons/fixer/generic/finisher2.ogg'
 			chain=0
 
@@ -206,7 +206,7 @@
 	//Reset Everything
 	if(activated)
 		chain=0
-		to_chat(user, span_danger("Your chain is reset."))
+		to_chat(user, span_danger("连段已重置。"))
 		activated = FALSE
 	force = initial(force)
 	hitsound = initial(hitsound)
@@ -241,7 +241,7 @@
 
 
 /obj/item/ego_weapon/city/liu/fist/vet
-	name = "liu veteran combat gloves"
+	name = "六协会资深格斗拳套"
 	icon_state = "liufist_vet"
 	force = 16
 	attribute_requirements = list(

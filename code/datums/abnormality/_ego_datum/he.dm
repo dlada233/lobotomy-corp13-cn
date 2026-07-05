@@ -137,12 +137,12 @@
 	cost = 35
 
 /datum/ego_datum/weapon/harmony
-	item_category = "Weapon (LMG)"
+	item_category = "武器(LMG)"
 	item_path = /obj/item/ego_weapon/ranged/harmony
 	cost = 35
 
 /datum/ego_datum/weapon/rhythm
-	item_category = "Weapon (Guitar)"
+	item_category = "武器(吉他)"
 	item_path = /obj/item/ego_weapon/rhythm
 	cost = 35
 
@@ -184,7 +184,7 @@
 
 //Beanstalk without Jack - Giant
 /datum/ego_datum/weapon/giant
-	item_category = "Weapon (Shield)"
+	item_category = "武器(盾)"
 	item_path = /obj/item/ego_weapon/shield/giant
 	cost = 35
 
@@ -337,12 +337,12 @@
 	cost = 35
 
 /datum/ego_datum/weapon/warp
-	item_category = "Weapon (Knife)"
+	item_category = "武器(小刀)"
 	item_path = /obj/item/ego_weapon/warp/knife
 	cost = 35
 
 /datum/ego_datum/weapon/warp/spear
-	item_category = "Weapon (Spear)"
+	item_category = "武器(矛)"
 	item_path = /obj/item/ego_weapon/warp
 	cost = 35
 
@@ -393,12 +393,12 @@
 	cost = 35
 
 /datum/ego_datum/weapon/lifestew_lance
-	item_category = "Weapon (Lance)"
+	item_category = "武器(长枪)"
 	item_path = /obj/item/ego_weapon/lance/lifestew_lance
 	cost = 35
 
 /datum/ego_datum/weapon/lifestew
-	item_category = "Weapon (Mace)"
+	item_category = "武器(钉锤)"
 	item_path = /obj/item/ego_weapon/lifestew
 	cost = 35
 

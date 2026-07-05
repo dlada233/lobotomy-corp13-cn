@@ -19,7 +19,7 @@
 	var/current_level = 1
 	var/max_level = 5
 	var/list/level_to_force = list(6, 12, 18, 26, 35)
-	var/extra_text = "This weapon can only be wielded by any Officer. This weapon also increases in power the more ordeals are defeated."
+	var/extra_text = "这把武器只能由部长使用，击败的考验越多，这把武器的力量也会随之增强."
 
 /obj/item/ego_weapon/officer/examine(mob/user)
 	. = ..()
@@ -44,7 +44,7 @@
 		return
 	current_level++
 	if(current_holder)
-		to_chat(current_holder, span_nicegreen("[src]'s damage has been increased!"))
+		to_chat(current_holder, span_nicegreen("[src]的伤害已提升!"))
 	refresh_stats()
 
 /obj/item/ego_weapon/officer/proc/refresh_stats()
@@ -77,7 +77,7 @@
 	var/max_level = 5
 	var/list/level_to_force = list(20, 32, 46, 52, 70)
 	var/list/initial_reductions = list(20,20,20,20)
-	var/extra_text = "This weapon can only be wielded by any Officer. This weapon also increases in power the more ordeals are defeated."
+	var/extra_text = "这把武器只能由部长使用，击败的考验越多，这把武器的力量也会随之增强."
 	var/armor_increase = 10
 
 /obj/item/ego_weapon/shield/officer/examine(mob/user)
@@ -103,7 +103,7 @@
 		return
 	current_level++
 	if(current_holder)
-		to_chat(current_holder, span_nicegreen("[src]'s damage has been increased!"))
+		to_chat(current_holder, span_nicegreen("[src]的伤害已提升!"))
 	refresh_stats()
 
 /obj/item/ego_weapon/shield/officer/proc/refresh_stats()
@@ -132,11 +132,11 @@
 	current_holder = null
 
 /obj/item/ego_weapon/officer/blade
-	name = "officer blade"
-	desc = "A basic sword for the higher-ups of L-Corp to use incase they need to get their hands dirty. Used by all Officers "
+	name = "部长刃兵"
+	desc = "供L-corp部长们使用的武器，以防不时之需，所有的部长都可以使用这把武器. "
 	swingstyle = WEAPONSWING_LARGESWEEP
 	hitsound = 'sound/weapons/fixer/generic/blade4.ogg'
-	special = "Use this weapon in hand to swap between swing styles. Blunt attacks very slow but does more damage and has knockback and Pierce attacks slower but has more reach.."
+	special = "在手中使用这把武器可切换不同的挥砍风格，钝击攻击速度极慢，但是伤害更高并伴随击倒，刺击攻击速度较慢但是距离更远.."
 	attack_verb_continuous = list("slashes", "slices", "rips", "cuts")
 	attack_verb_simple = list("slash", "slice", "rip", "cut")
 	var/swing_style = "slash"
@@ -157,7 +157,7 @@
 	. = ..()
 	var/message = ""
 	if(swing_style == "slash")
-		message = "This weapon is now in blunt mode, and does more damage per hit and has knockback, at the cost of having lower attack speed."
+		message = "这把武器现在处于钝击模式，每次攻击造成更多伤害并具有击倒效果，但攻击速度极慢."
 		swing_style = "blunt"
 		swingstyle = WEAPONSWING_SMALLSWEEP
 		attack_speed = 1.6
@@ -165,7 +165,7 @@
 		attack_verb_simple = list("bashes", "clubs")
 		hitsound = 'sound/weapons/fixer/generic/club1.ogg'
 	else if(swing_style == "blunt")
-		message = "This weapon is now in peirce mode, and has extra reach at the cost of having lower attack speed."
+		message = "这把武器现在处于刺击模式，具有额外的射程，但攻击速度较慢."
 		swingstyle = WEAPONSWING_THRUST
 		swing_style = "pierce"
 		reach = 2
@@ -175,7 +175,7 @@
 		attack_verb_simple = list("poke", "jab", "tear", "lacerate", "gore")
 		hitsound = 'sound/weapons/ego/spear1.ogg'
 	else if(swing_style == "pierce")
-		message = "This weapon is now in slash mode, and has a faster attack speed."
+		message = "这把武器现在处于挥砍模式，攻击速度更快."
 		swing_style = "slash"
 		attack_speed = 1
 		stuntime = 0
@@ -189,11 +189,11 @@
 	to_chat(user, span_notice("[message]"))
 
 /obj/item/ego_weapon/officer/discipline
-	name = "officer buster sword"
+	name = "部长破坏剑"
 	icon_state = "officer_buster"
-	desc = "A bulky sword that could leave a large dent into most things. Used by the Disciplinary Officer "
+	desc = "一把巨大的剑，能够对大多数物体造成有效破坏，由惩戒部长使用."
 
-	special = "Use in hand to make your next attack deal more damage."
+	special = "在手中使用以在下次攻击中造成更大伤害."
 	force = 18
 	attack_speed = 2
 	attack_verb_continuous = list("cleaves", "cuts")
@@ -201,7 +201,7 @@
 	hitsound = 'sound/weapons/fixer/generic/finisher1.ogg'
 	level_to_force = list(18, 26, 42, 56, 80)
 	allowed_roles = list("Disciplinary Officer")
-	extra_text = "This weapon can only be wielded by the Disciplinary Officer. This weapon also increases in power the more ordeals are defeated."
+	extra_text = "这把武器只能由惩戒部长使用，击败的考验越多，这把武器的力量也会随之增强."
 	swingstyle = WEAPONSWING_LARGESWEEP
 	var/charged = FALSE
 
@@ -214,7 +214,7 @@
 		var/obj/effect/temp_visual/dir_setting/slash/s = new(get_turf(M))
 		s.dir = 0
 		s.layer = M.layer + 0.1
-		to_chat(user, "You cleave through [M]!")
+		to_chat(user, "你撕裂了[M]!")
 		hitsound = initial(hitsound)
 		refresh_stats()
 		charged = FALSE
@@ -224,15 +224,15 @@
 	if(!charged)
 		if(do_after(user, 12, src))
 			charged = TRUE
-			to_chat(user,span_warning("You put your strength behind this attack."))
+			to_chat(user,span_warning("你将力量集中在了这次攻击上。"))
 
 /obj/item/ego_weapon/officer/discipline/get_clamped_volume()
 	return 50
 
 /obj/item/ego_weapon/officer/extraction //To do Actually do something
-	name = "officer ring"
+	name = "部长戒指"
 	icon_state = "officer_ring"
-	desc = "A black ring that can tap into a small bit of a singularity from a former G-Corp. Used by the Extraction Officer "
+	desc = "一枚黑色的戒指，能够探测到来自前G-Corp的奇点的一小部分能量，由提取官使用."
 	force = 5
 	attack_speed = 1.2
 	damtype = BLACK_DAMAGE
@@ -241,8 +241,8 @@
 	attack_verb_simple = list("punts", "bash")
 	level_to_force = list(5, 8, 12, 18, 28)
 	allowed_roles = list("Extraction Officer")
-	special = "This weapon has a ranged attack that will jump from targets to target.\nUse in hand to cast a shockwave that pushes back anything damaged by it."
-	extra_text = "This weapon can only be wielded by the Extraction Officer. This weapon also increases in power the more ordeals are defeated."
+	special = "这把武器具有远程攻击能力，攻击射线可从一个目标跳转到另一个目标.\n在手中使用时，可释放冲击波，将被击中的任何物体推开."
+	extra_text = "这把武器只能由研发部长使用，击败的考验越多，这把武器的力量也会随之增强."
 	var/fairy_cooldown
 	var/shockwave_cooldown
 	var/fairy_cooldown_time = 3 SECONDS
@@ -370,9 +370,9 @@
 	qdel(src)
 
 /obj/item/ego_weapon/shield/officer/records
-	name = "officer sabre"
-	desc = "An old sabre that also functions as a walking cane. Used by the Records Officer "
-	special = "This weapon gives the user a speed boost while held in hand."
+	name = "部长军刀"
+	desc = "一把古老的军刀，也可用作拐杖，由记录部长使用. "
+	special = "这把武器拿在手中即可提供额外的速度加成."
 	force = 2
 	attack_speed = 0.5
 	damtype = WHITE_DAMAGE
@@ -384,13 +384,13 @@
 	projectile_block_duration = 0.75 SECONDS
 	block_duration = 1.25 SECONDS
 	block_cooldown = 3 SECONDS
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	block_message = "你尝试格挡攻击!"
+	hit_message = "格挡攻击!"
+	block_cooldown_message = "你重整了刀刃."
 	slowdown = -0.3//its a walking cane
 	item_flags = SLOWS_WHILE_IN_HAND
 	allowed_roles = list("Records Officer")
-	extra_text = "This weapon can only be wielded by the Records Officer. This weapon also increases in power the more ordeals are defeated."
+	extra_text = "这把武器只能由记录部长使用. 这把武器在击败的考验越多时，力量也会随之增强."
 
 ///////////////////////
 ////AGENT EQUIPMENT////
@@ -424,10 +424,10 @@
 	if(!istype(I, /obj/item/egoshard))
 		return
 	if(equipped)
-		to_chat(user, span_warning("You need to put down [src] before attempting this!"))
+		to_chat(user, span_warning("需放下[src]才能执行此操作!"))
 		return
 	if(installed_shard)
-		to_chat(user, span_warning("[src] already has an egoshard installed!"))
+		to_chat(user, span_warning("[src]已安装ego碎片!"))
 		return
 	installed_shard = I.name
 	IncreaseAttributes(user, I)
@@ -439,21 +439,21 @@
 	force = egoshard.base_damage //base damage
 	for(var/atr in attribute_requirements)
 		attribute_requirements[atr] = egoshard.stat_requirement
-	to_chat(user, span_warning("The requirements to equip [src] have increased!"))
-	to_chat(user, span_nicegreen("[src] has been successfully improved!"))
+	to_chat(user, span_warning("装备[src]所需属性已提升!"))
+	to_chat(user, span_nicegreen("[src]强化成功!"))
 	icon_state = "[initial(icon_state)]_[egoshard.damage_type]"
 
 /obj/item/ego_weapon/city/lcorp/examine(mob/user)
 	. = ..()
 	if(!installed_shard)
-		. += span_warning("This weapon can be enhanced with an egoshard.")
+		. += span_warning("此武器可通过ego碎片强化.")
 	else
-		. += span_nicegreen("It has a [installed_shard] installed.")
+		. += span_nicegreen("已安装[installed_shard].")
 
 /obj/item/ego_weapon/city/lcorp/baton
-	name = "l-corp combat baton"
+	name = "L公司战术警棍"
 	icon_state = "baton"
-	desc = "A baton issued by L-Corp to those who cannot utilize E.G.O."
+	desc = "L公司配发给无法使用E.G.O.人员的战斗警棍。"
 	swingstyle = WEAPONSWING_LARGESWEEP
 	hitsound = 'sound/weapons/fixer/generic/baton1.ogg'
 	force = 10
@@ -461,9 +461,9 @@
 
 
 /obj/item/ego_weapon/city/lcorp/machete
-	name = "l-corp machete"
+	name = "L公司砍刀"
 	icon_state = "machete"
-	desc = "A sharp machete issued by L-Corp to those who cannot utilize E.G.O."
+	desc = "L公司配发给无法使用E.G.O.人员的开山砍刀。"
 	hitsound = 'sound/weapons/fixer/generic/sword2.ogg'
 	force = 6
 	attack_speed = 0.5
@@ -475,9 +475,9 @@
 	force = floor(egoshard.base_damage * 0.6)
 
 /obj/item/ego_weapon/city/lcorp/club
-	name = "l-corp club"
+	name = "L公司重棍"
 	icon_state = "club"
-	desc = "A heavy club issued by L-Corp to those who cannot utilize E.G.O."
+	desc = "L公司配发给无法使用E.G.O.人员的重型棍棒。"
 	swingstyle = WEAPONSWING_LARGESWEEP
 	hitsound = 'sound/weapons/fixer/generic/club2.ogg'
 	force = 14 //Still less DPS, replaces baseball bat
@@ -495,9 +495,9 @@
 		knockback = KNOCKBACK_HEAVY
 
 /obj/item/ego_weapon/shield/lcorp_shield
-	name = "l-corp shield"
-	desc = "A heavy shield issued by L-Corp to those who cannot utilize E.G.O."
-	special = "This weapon deals atrocious damage."
+	name = "L公司防暴盾"
+	desc = "L公司配发给无法使用E.G.O.人员的重型盾牌。"
+	special = "此武器伤害极低。"
 	icon_state = "shield"
 	icon = 'ModularTegustation/Teguicons/lcorp_weapons.dmi'
 	lefthand_file = 'ModularTegustation/Teguicons/lcorp_left.dmi'
@@ -535,10 +535,10 @@
 	if(!istype(I, /obj/item/egoshard))
 		return
 	if(equipped)
-		to_chat(user, span_warning("You need to put down [src] before attempting this!"))
+		to_chat(user, span_warning("需放下[src]才能执行此操作!"))
 		return
 	if(installed_shard)
-		to_chat(user, span_warning("[src] already has an egoshard installed!"))
+		to_chat(user, span_warning("[src]已安装ego碎片！"))
 		return
 	installed_shard = I.name
 	IncreaseAttributes(user, I)
@@ -550,7 +550,7 @@
 	force = floor(egoshard.base_damage * 2) //2* base damage, 3 attack speed for shields
 	for(var/atr in attribute_requirements)
 		attribute_requirements[atr] = egoshard.stat_requirement
-	to_chat(user, span_warning("The requirements to equip [src] have increased!"))
+	to_chat(user, span_warning("[src]的装备需求已经提升!"))
 	var/list/new_armor_values = list( //Same as armor, +20 from armor's base 2 in red
 		egoshard.red_bonus + 20,
 		egoshard.white_bonus,
@@ -568,20 +568,20 @@
 		resistances_list += list("BLACK" = reductions[3])
 	if(reductions[4] != 0)
 		resistances_list += list("PALE" = reductions[4])
-	to_chat(user, span_nicegreen("[src] has been successfully improved!"))
+	to_chat(user, span_nicegreen("[src]成功的强化了!"))
 	icon_state = "shield_[egoshard.damage_type]"
 
 /obj/item/ego_weapon/shield/lcorp_shield/examine(mob/user)
 	. = ..()
 	if(!installed_shard)
-		. += span_warning("This weapon can be enhanced with an egoshard.")
+		. += span_warning("这把武器可以通过EGO碎片强化.")
 	else
-		. += span_nicegreen("It has a [installed_shard] installed.")
+		. += span_nicegreen("它已有 [installed_shard] 安装.")
 
 /obj/item/ego_weapon/shield/lcorp_shield/Topic(href, href_list) //An override to make the attribute tag only show up when upgraded
 	. = ..()
 	if(!installed_shard)
-		to_chat(usr, span_nicegreen("This weapon can be used by anyone."))
+		to_chat(usr, span_nicegreen("这把武器可以被任何人使用."))
 
 /////////////////////
 //OFFICER EQUIPMENT//
@@ -595,8 +595,8 @@
 
 //Agent baton
 /obj/item/melee/classic_baton
-	name = "agent baton"
-	desc = "A cheap weapon for beating Abnormalities or Clerks."
+	name = "镇暴棍"
+	desc = "一根廉价的武器，用于攻击异想体或者文职."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "classic_baton"
 	inhand_icon_state = "classic_baton"
@@ -633,15 +633,15 @@
 /obj/item/melee/classic_baton/examine(mob/user)
 	. = ..()
 
-	. += span_notice("This weapon works differently from most weapons and can be used to disarm other players.")
+	. += span_notice("此武器运作方式与多数武器不同，可用于解除其他玩家的武装.")
 
-	. += span_notice("It has a <a href='byond://?src=[REF(src)];'>tag</a> explaining how to use [src].")
+	. += span_notice("其附有<a href='byond://?src=[REF(src)];'>说明标签</a>解释[src]的使用方法.")
 
 /obj/item/melee/classic_baton/Topic(href, href_list)
 	. = ..()
-	var/list/readout = list("<u><b>Attacks that are not on harm intent deal nonlethal stamina damage, which will eventually cause humans to collapse from exhaustion.</u></b>")
-	readout += "\nAim for a leg to attempt to trip someone over when attacking."
-	readout += "\nAim for an arm to attempt to force the target to drop the item they are holding in that hand."
+	var/list/readout = list("<u><b>非伤害意图的攻击将造成非致命耐力伤害，最终使目标因力竭倒地.</u></b>")
+	readout += "\n瞄准腿部攻击可尝试绊倒目标."
+	readout += "\n瞄准手臂攻击可迫使目标掉落该手持物。"
 	to_chat(usr, "[span_notice(readout.Join())]")
 
 // Description for trying to stun when still on cooldown.
@@ -652,8 +652,8 @@
 /obj/item/melee/classic_baton/proc/get_on_description()
 	. = list()
 
-	.["local_on"] = "<span class ='warning'>You extend the baton.</span>"
-	.["local_off"] = "<span class ='notice'>You collapse the baton.</span>"
+	.["local_on"] = "<span class ='warning'>你展开了警棍。</span>"
+	.["local_off"] = "<span class ='notice'>你收起了警棍。</span>"
 
 	return .
 
@@ -661,12 +661,12 @@
 /obj/item/melee/classic_baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visibletrip"] =  "<span class ='danger'>[user] has knocked [target]'s legs out from under them with [src]!</span>"
-	.["localtrip"] = "<span class ='danger'>[user]  has knocked your legs out from under you [src]!</span>"
-	.["visibledisarm"] =  "<span class ='danger'>[user] has disarmed [target] with [src]!</span>"
-	.["localdisarm"] = "<span class ='danger'>[user] whacks your arm with [src], causing a coursing pain!</span>"
-	.["visiblestun"] =  "<span class ='danger'>[user] beat [target] with [src]!</span>"
-	.["localstun"] = "<span class ='danger'>[user] has beat you with [src]!</span>"
+	.["visibletrip"] =  "<span class ='danger'>[user]用[src]扫倒了[target]的双腿！</span>"
+	.["localtrip"] = "<span class ='danger'>[user]用[src]扫倒了你的双腿！</span>"
+	.["visibledisarm"] =  "<span class ='danger'>[user]用[src]解除了[target]的武装！</span>"
+	.["localdisarm"] = "<span class ='danger'>[user]用[src]重击你的手臂，引发剧痛！</span>"
+	.["visiblestun"] =  "<span class ='danger'>[user]用[src]痛击[target]！</span>"
+	.["localstun"] = "<span class ='danger'>[user]用[src]痛击了你！</span>"
 
 	return .
 
@@ -674,8 +674,8 @@
 /obj/item/melee/classic_baton/proc/get_silicon_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = "<span class='danger'>[user] pulses [target]'s sensors with the baton!</span>"
-	.["local"] = "<span class='danger'>You pulse [target]'s sensors with the baton!</span>"
+	.["visible"] = "<span class='danger'>[user]用警棍脉冲冲击了[target]的传感器！</span>"
+	.["local"] = "<span class='danger'>你用警棍脉冲冲击了[target]的传感器！</span>"
 
 	return .
 
@@ -693,7 +693,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, "<span class ='userdanger'>You hit yourself over the head!</span>")
+		to_chat(user, "<span class ='userdanger'>你打中了自己的头！</span>")
 
 		user.Paralyze(knockdown_time_carbon * force)
 		user.apply_damage(stamina_damage, STAMINA, BODY_ZONE_HEAD)

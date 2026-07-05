@@ -1,8 +1,8 @@
 //Streetlight stuff, this is all Grade 7 teth stuff, leader is grade 6.
 //They're generic weapons for the refinery, which is fine
 /obj/item/ego_weapon/city/streetlight_greatsword
-	name = "streetlight greatsword"
-	desc = "A greatsword used by a fixer with big shoes to fill.'Maybe... I should have told her how I felt.'"
+	name = "街灯事务所大剑"
+	desc = "一把由身材高大的收尾人所使用的大剑.'早知道会这样...我应该，告诉...她...'"
 	icon_state = "streetlight_greatsword"
 	force = 18
 	attack_speed = 2
@@ -17,8 +17,8 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/ego_weapon/city/streetlight_bat
-	name = "streetlight office bat"
-	desc = "A yellow and black bat, its metal is warm to the touch. Is it with the warmth of friends, or the hatred of those who've had something taken from them?"
+	name = "街灯事务所棍棒"
+	desc = "黄黑条纹配色的棍棒, 虽是金属材质但是触感温暖，这是因为朋友之间的温情，还是那些失去一切之人的仇恨？"
 	icon_state = "streetlight_bat"
 	force = 15
 	attack_speed = 1.5
@@ -37,8 +37,8 @@
 
 //He has zwei moves in his 2nd iteration, give it to him here.
 /obj/item/ego_weapon/city/zweihander/streetlight_baton
-	name = "streetlight office baton"
-	desc = "A  baton compatible with Zwei techniques. It carries a sense of regret..."
+	name = "街灯事务所手杖"
+	desc = "一把与双剑技巧兼容的手杖，它承载着一种悔恨的感觉..."
 	icon_state = "streetlight_founder"
 	inhand_icon_state = "streetlight_founder"
 	force = 16

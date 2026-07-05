@@ -1,8 +1,8 @@
 //Bottom tier of the syndicate workshop, still very good.
 
 /obj/item/ego_weapon/city/district23
-	name = "district 23 butcher knife"
-	desc = "A cleaver found in the backstreets of district 23. This one is rusted, but still performs it's functions."
+	name = "23号巷 屠宰刀"
+	desc = "在23号巷找到的屠宰刀，这把刀锈迹斑斑，但仍能发挥作用."
 	special = "This weapon heals you on hit."
 	icon_state = "jack"
 	force = 14
@@ -29,8 +29,8 @@
 	..()
 
 /obj/item/ego_weapon/city/district23/pierre
-	name = "district 23 carving knife"
-	desc = "A carving knife found in the backstreets of district 23. This one is rusted, and seems to require a bit of skill to wield.."
+	name = "23号巷 切肉刀"
+	desc = "在23号巷找到的切肉刀，这把刀锈迹斑斑，似乎需要一些技巧来使用。"
 	icon_state = "pierre"
 	force = 12
 	attack_speed = 1

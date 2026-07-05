@@ -1,8 +1,8 @@
 //Color fixer stuff is all Grade 1
 /obj/item/ego_weapon/city/vermillion
-	name = "Vermillion Cross"
-	desc = "Ashes to ashes, dust to dust."
-	special = "Use in hand to cut HP in half. Each kill for the next 15 seconds increases damage by 1.5x, and heals you 10%."
+	name = "朱红十字"
+	desc = "尘归尘，土归土."
+	special = "在手中使用会减少一半的生命值，但在接下来的15秒内每次击杀都会使伤害提升1.5倍，并治疗你10%的生命."
 	icon_state = "vermillion"
 	inhand_icon_state = "vermillion"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -61,10 +61,10 @@
 		return
 
 	user.adjustBruteLoss(-user.maxHealth*0.1)
-	to_chat(user, span_userdanger("ANOTHER."))
+	to_chat(user, span_userdanger("又一个."))
 	force *= 1.5
 
 /obj/item/ego_weapon/city/vermillion/proc/Return(mob/living/carbon/human/user)
 	force = initial(force)
 	using_ability = FALSE
-	to_chat(user, span_notice("I AM NOT SATED."))
+	to_chat(user, span_notice("我还没吃饱呢."))

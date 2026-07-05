@@ -3,9 +3,9 @@
 //Base Zwei is Grade 6, Vet is Grade 5.
 
 /obj/item/ego_weapon/city/zweihander
-	name = "zweihander"
-	desc = "A zweihander used by the zwei association."
-	special = "Use in hand to buff your defense, and those of everyone around you."
+	name = "双手大剑"
+	desc = "二协会所用双手大剑."
+	special = "在手中使用以强化自身及周围所有人的防御力."
 	icon_state = "zwei"
 	force = 27
 	attack_speed = 2
@@ -40,7 +40,7 @@
 	user.physiology.white_mod *= defense_buff_self
 	user.physiology.black_mod *= defense_buff_self
 	user.physiology.pale_mod *= defense_buff_self
-	to_chat(user, span_userdanger("HOLD THE LINE!"))
+	to_chat(user, span_userdanger("坚守阵地!"))
 
 	buffed_people = list()
 
@@ -52,7 +52,7 @@
 		buffed_people += L
 
 		//Visible message just didn't work here. No clue why.
-		to_chat(L, span_userdanger("HOLD THE LINE!"))
+		to_chat(L, span_userdanger("坚守阵地!"))
 
 	playsound(src, 'sound/misc/whistle.ogg', 50, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(Return), user), 3 SECONDS)
@@ -62,25 +62,25 @@
 	user.physiology.white_mod /= defense_buff_self
 	user.physiology.black_mod /= defense_buff_self
 	user.physiology.pale_mod /= defense_buff_self
-	to_chat(user, span_notice("Your defense buff has expired!"))
+	to_chat(user, span_notice("你的防御buff已经失效!"))
 
 	for(var/mob/living/carbon/human/L in buffed_people)
 		L.physiology.red_mod /= defense_buff_others
 		L.physiology.white_mod /= defense_buff_others
 		L.physiology.black_mod /= defense_buff_others
 		L.physiology.pale_mod /= defense_buff_others
-		to_chat(L, span_notice("Your defense buff has expired!"))
+		to_chat(L, span_notice("你的防御buff已经失效!"))
 
 	addtimer(CALLBACK(src, PROC_REF(Cooldown), user), 15 SECONDS)
 
 /obj/item/ego_weapon/city/zweihander/proc/Cooldown(mob/living/carbon/human/user)
 	ready = TRUE
-	to_chat(user, span_notice("You can use your defense buff again."))
+	to_chat(user, span_notice("你可以再次使用你的防御buff。"))
 
 //Vet Zwei
 /obj/item/ego_weapon/city/zweihander/vet
-	name = "veteran zweihander"
-	desc = "A zweihander used by veterans of the zwei association."
+	name = "资深双手大剑"
+	desc = "二协会资深成员使用的双手大剑."
 	icon_state = "zwei_vet"
 	force = 40
 	defense_buff_self = 0.3
@@ -93,8 +93,8 @@
 
 //Mini Zwei
 /obj/item/ego_weapon/city/zweihander/knife
-	name = "einhander"
-	desc = "A shortsword used by some zwei personnel."
+	name = "单手剑"
+	desc = "二协会某些成员使用的单手剑."
 	icon_state = "zwei_mini"
 	force = 16
 	attack_speed = 1
@@ -108,9 +108,9 @@
 
 //the funny zwei baton
 /obj/item/ego_weapon/city/zweibaton
-	name = "zwei association baton"
-	desc = "A riot club used by the zwei association."
-	special = "Attack a human to stun them after a period of time."
+	name = "二协镇暴棍"
+	desc = "二协会使用的镇暴棍."
+	special = "攻击一个人以在一段时间后使他们昏迷."
 	icon_state = "zwei_baton"
 	inhand_icon_state = "zwei_baton"
 	force = 20
@@ -142,9 +142,9 @@
 	playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
 
 /obj/item/ego_weapon/city/zweiwest
-	name = "zwei knight greatsword"
-	desc = "A bulky rectangular greatsword used by the zwei of the west."
-	special = "If used at 2 range you will lunge fowards then block, if you fail to lunge you will hesitate."
+	name = "二协骑士大剑"
+	desc = "二协会西部成员使用的大剑."
+	special = "当对两格距离外使用，将进行冲刺然后阻断，如果未能冲刺，将导致犹豫不决."
 	icon_state = "zweiwest"
 	inhand_icon_state = "zweiwest"
 	force = 25
@@ -191,7 +191,7 @@
 			user.Knockdown(2 SECONDS)
 			var/obj/item/held = user.get_active_held_item()
 			user.dropItemToGround(held)
-			to_chat(user, span_userdanger("Your swing is too wide leading you to lose your balance!"))
+			to_chat(user, span_userdanger("你的挥砍过于大开大合，导致你失去平衡!"))
 			return
 
 	if(!isliving(target))
@@ -203,8 +203,8 @@
 	user.physiology.black_mod *= defense_buff
 	user.physiology.pale_mod *= defense_buff
 	user.changeNext_move(CLICK_CD_MELEE * 0.15)
-	to_chat(user, span_userdanger("You slam your greatsword onto the ground!"))
-	user.say("Greatsword Guard!")
+	to_chat(user, span_userdanger("你将大剑砸向地面!"))
+	user.say("大剑守护!")
 
 	playsound(src, 'sound/weapons/ego/shield1.ogg', 50, TRUE)
 
@@ -215,11 +215,11 @@
 	user.physiology.white_mod /= defense_buff
 	user.physiology.black_mod /= defense_buff
 	user.physiology.pale_mod /= defense_buff
-	to_chat(user, span_notice("You raise your greatsword once more!"))
+	to_chat(user, span_notice("你再次举起你的大剑!"))
 
 /obj/item/ego_weapon/city/zweiwest/vet
-	name = "veteran zwei knight greatsword"
-	desc = "A bulky rectangular greatsword used by the veterans of the zwei of the west."
+	name = "二协资深骑士大剑"
+	desc = "二协会资深成员使用的大剑."
 	icon_state = "zweiwest_fat"
 	inhand_icon_state = "zweiwest_fat"
 	force = 36

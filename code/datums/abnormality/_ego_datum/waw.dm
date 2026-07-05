@@ -9,12 +9,12 @@
 
 // Queen bee - Hornet
 /datum/ego_datum/weapon/hornet
-	item_category = "Weapon (Rifle)"
+	item_category = "武器(步枪)"
 	item_path = /obj/item/ego_weapon/ranged/hornet
 	cost = 50
 
 /datum/ego_datum/weapon/tattered_kingdom
-	item_category = "Weapon (Lance)"
+	item_category = "武器(长枪)"
 	item_path = /obj/item/ego_weapon/lance/tattered_kingdom
 	cost = 50
 
@@ -56,12 +56,12 @@
 
 // Der Freischutz - Magic Bullet & Magic Pistol
 /datum/ego_datum/weapon/magicbullet
-	item_category = "Weapon (Rifle)"
+	item_category = "武器(步枪)"
 	item_path = /obj/item/ego_weapon/ranged/magicbullet
 	cost = 50
 
 /datum/ego_datum/weapon/magicpistol
-	item_category = "Weapon (Hand Cannon)"
+	item_category = "武器(手炮)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/magic_pistol
 	cost = 50
 
@@ -85,23 +85,23 @@
 
 // Funeral of the Dead Butterflies - Solemn Vow and Solemn Lament
 /datum/ego_datum/weapon/solemnvow
-	item_category = "Weapon (Black Pistol)"
+	item_category = "武器(黑色手枪)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/solemnvow
 	cost = 50
 
 /datum/ego_datum/weapon/solemnlament
-	item_category = "Weapon (White Pistol)"
+	item_category = "武器(白色手枪)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/solemnlament
 	cost = 50
 
 // General Bee - Loyalty & Praetorian
 /datum/ego_datum/weapon/loyalty
-	item_category = "Weapon (Rifle)"
+	item_category = "武器(步枪)"
 	item_path = /obj/item/ego_weapon/ranged/loyalty
 	cost = 50
 
 /datum/ego_datum/weapon/praetorian
-	item_category = "Weapon (Pistol)"
+	item_category = "武器(手枪)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/praetorian
 	cost = 50
 
@@ -124,7 +124,7 @@
 	cost = 100
 
 /datum/ego_datum/executive_gun
-	item_category = "Gun Crate"
+	item_category = "枪箱"
 	item_path = /obj/structure/lootcrate/s_corp/gun
 	cost = 40
 
@@ -185,12 +185,12 @@
 	cost = 50
 
 /datum/ego_datum/weapon/intentions
-	item_category = "Weapon (SMG)"
+	item_category = "武器(SMG)"
 	item_path = /obj/item/ego_weapon/ranged/intentions
 	cost = 50
 
 /datum/ego_datum/weapon/laststop
-	item_category = "Weapon (Hand Cannon)"
+	item_category = "武器(手炮)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/laststop
 	cost = 50
 
@@ -222,8 +222,8 @@
 	cost = 50
 
 /datum/ego_datum/exuviae
-	name = "Naked Nest Cure"
-	item_category = "Extract"
+	name = "裸巢解药"
+	item_category = "提取物"
 	item_path = /obj/item/serpentspoison
 	cost = 20
 
@@ -252,12 +252,12 @@
 	cost = 50
 
 /datum/ego_datum/weapon/warring
-	item_category = "Weapon (Bow)"
+	item_category = "武器(弓)"
 	item_path = /obj/item/ego_weapon/ranged/warring
 	cost = 50
 
 /datum/ego_datum/weapon/warring2
-	item_category = "Weapon (Axe)"
+	item_category = "武器(斧)"
 	item_path = /obj/item/ego_weapon/warring
 	cost = 50
 
@@ -289,12 +289,12 @@
 	cost = 50
 
 /datum/ego_datum/weapon/dipsia
-	item_category = "Weapon (Sword)"
+	item_category = "武器(剑)"
 	item_path = /obj/item/ego_weapon/dipsia
 	cost = 50
 
 /datum/ego_datum/weapon/banquet
-	item_category = "Weapon (Cannon)"
+	item_category = "武器(加农炮)"
 	item_path = /obj/item/ego_weapon/ranged/banquet
 	cost = 50
 
@@ -389,12 +389,12 @@
 	cost = 50
 
 /datum/ego_datum/weapon/crimson
-	item_category = "Weapon (Sword)"
+	item_category = "武器(剑)"
 	item_path = /obj/item/ego_weapon/mini/crimson
 	cost = 50
 
 /datum/ego_datum/weapon/crimson/gun
-	item_category = "Weapon (Hand Cannon)"
+	item_category = "武器(手炮)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/crimson
 	cost = 50
 
@@ -404,12 +404,12 @@
 	cost = 50
 
 /datum/ego_datum/weapon/innocence
-	item_category = "Weapon (Shield)"
+	item_category = "武器(盾)"
 	item_path = /obj/item/ego_weapon/shield/innocence
 	cost = 50
 
 /datum/ego_datum/weapon/innocence/gun
-	item_category = "Weapon (Pistol)"
+	item_category = "武器(手枪)"
 	item_path = /obj/item/ego_weapon/ranged/pistol/innocence
 	cost = 50
 
@@ -531,7 +531,7 @@
 	cost = 50
 
 // Hookah Caterpillar - Havana
-//Weapon is aleph
+//武器is aleph
 /datum/ego_datum/armor/havana
 	item_path = /obj/item/clothing/suit/armor/ego_gear/waw/havana
 	cost = 50
@@ -548,12 +548,12 @@
 
 // Der Fluchutze - Fell Bullet & Shotgun
 /datum/ego_datum/weapon/fellbullet
-	item_category = "Weapon (Rifle)"
+	item_category = "武器(步枪)"
 	item_path = /obj/item/ego_weapon/ranged/fellbullet
 	cost = 50
 
 /datum/ego_datum/weapon/fellscatter
-	item_category = "Weapon (Shotgun)"
+	item_category = "武器(霰弹枪)"
 	item_path = /obj/item/ego_weapon/ranged/fellscatter
 	cost = 50
 

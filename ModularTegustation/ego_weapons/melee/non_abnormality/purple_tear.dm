@@ -1,7 +1,7 @@
 // Entire code ripped from Black Silence file tbh, don't murder me for theivery please
 // Main gimmick is that each weapon deals a different damage, switching between stances is pretty fast and can Sheathe your current weapon for a special attack.
 /obj/item/ego_weapon/city/pt //This shouldn't be obtainable, like at all
-	name = "A Purple Tear"
+	name = "堇紫泪滴"
 	desc = "You really shouldn't be seeing this."
 	icon_state = "Jeong"
 	damtype = RED_DAMAGE
@@ -44,7 +44,7 @@
 	if(user.get_active_held_item() != src)
 		return
 	if(special_cooldown > world.time)
-		to_chat(user, span_warning("You can't sheathe your blade yet!"))
+		to_chat(user, span_warning("纳刀冷却中!"))
 		return
 	else
 		if(target == user)
@@ -53,10 +53,10 @@
 
 /obj/item/ego_weapon/city/pt/proc/Special(mob/living/user, atom/target)
 	if(sheathed)
-		to_chat(user, span_warning("Your blade is already sheathed!"))
+		to_chat(user, span_warning("武器已纳刀!"))
 		return
 	sheathed = TRUE
-	to_chat(user, span_notice("You prepare your blade."))
+	to_chat(user, span_notice("摆出纳刀架势."))
 
 /obj/item/ego_weapon/city/pt/attack(mob/living/target, mob/living/user)
 	if(!CanUseEgo(user))
@@ -64,7 +64,7 @@
 	..()
 	if(target.stat != DEAD)
 		if(mirage_charge == mirage_charge_max)
-			to_chat(user,span_userdanger("Your storm is ready.")) //If i cant figure out how to update the action icon, heres the notif
+			to_chat(user,span_userdanger("幻·舞准备好了.")) //If i cant figure out how to update the action icon, heres the notif
 		mirage_charge += 1
 	if(boost)
 		boost = FALSE
@@ -77,10 +77,10 @@
 		if(istype(trimming, H))
 			H.MirageStorm(owner)
 		else
-			to_chat(owner,span_warning("You must hold the weapon to unleash Mirage Storm!"))
+			to_chat(owner,span_warning("需手持武器释放幻·舞!"))
 			return
 	else
-		to_chat(owner,span_warning("You're not ready to unleash Mirage Storm!"))
+		to_chat(owner,span_warning("幻·舞充能不足!"))
 		return
 
 /obj/item/ego_weapon/city/pt/attack_self(mob/user)
@@ -92,7 +92,7 @@
 // currently causes a runtime everytime a switch occurs, killing myself
 /obj/item/ego_weapon/city/pt/proc/exchange_armaments(mob/user)
 	if(exchange_cooldown > world.time)
-		to_chat(user, span_notice("You can't change stances yet."))
+		to_chat(user, span_notice("姿态切换冷却中."))
 		return
 
 	var/list/display_names = list()
@@ -100,7 +100,7 @@
 	for(var/arms in typesof(/obj/item/ego_weapon/city/pt))
 		var/obj/item/ego_weapon/city/pt/armstype = arms
 		if(initial(armstype))
-			if(initial(armstype.name) == "A Purple Tear")
+			if(initial(armstype.name) == "堇紫泪滴")
 				continue
 			display_names[initial(armstype.name)] = armstype
 			armament_icons += list(initial(armstype.name) = image(icon = initial(armstype.icon), icon_state = initial(armstype.icon_state)))
@@ -137,9 +137,9 @@
 
 // Fast red damage with mega attack
 /obj/item/ego_weapon/city/pt/slash
-	name = "Vipers Blade" //All weapon names are placeholders at the moment, I don't really have better names
-	desc = "An extremely sharp blade used by the Purple Tear."
-	special = "SHIFT + CLICK to sheathe the blade and prepare a powered up strike." //Violet Blade Card
+	name = "灵蛇剑" //All weapon names are placeholders at the moment, I don't really have better names
+	desc = "堇紫泪滴所用的极为锋利的刀."
+	special = "SHIFT + 左键以进行纳刀，随后发动强力斩击." //Violet Blade Card
 	icon_state = "ptslash"
 	inhand_icon_state = "ptslash"
 	force = 22
@@ -173,9 +173,9 @@
 
 // Normal white damage with a debuff attack
 /obj/item/ego_weapon/city/pt/pierce
-	name = "Serpents Fang"
-	desc = "A deadly rapier used by the Purple Tear."
-	special = "SHIFT + CLICK to sheathe the blade and prepare a devestating blow that weakens your enemy." //Laceration Card
+	name = "尖牙剑"
+	desc = "堇紫泪滴所用的极为锋利的细剑."
+	special = "SHIFT + 左键以进行纳刀，随后将准备发动毁灭性的攻击，同时削弱你的敌人." //Laceration Card
 	icon_state = "ptpierce"
 	inhand_icon_state = "ptpierce"
 	force = 45
@@ -214,8 +214,8 @@
 	status_type = STATUS_EFFECT_UNIQUE
 
 /atom/movable/screen/alert/status_effect/pt_lacerate
-	name = "Lacerated"
-	desc = "Is that... A hole in your chest? You feel awful..."
+	name = "撕裂伤"
+	desc = "你...你的胸口处被开了一个洞? 你感觉糟透了..."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "lacerate" //Bit of a placeholder sprite, it works-ish so
 
@@ -235,7 +235,7 @@
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/L = owner
-		to_chat(L, span_userdanger("The hole in your chest heals.")) //fluff text
+		to_chat(L, span_userdanger("你胸口的洞愈合了.")) //fluff text
 		L.physiology.red_mod /= 2
 		L.physiology.white_mod /= 2
 		L.physiology.black_mod /= 2
@@ -246,9 +246,9 @@
 
 // Slow black damage with a buff attack
 /obj/item/ego_weapon/city/pt/blunt
-	name = "Serpentine Greatsword"
-	desc = "A heavy greatsword used by the Purple Tear."
-	special = "SHIFT + CLICK to sheathe the blade and prepare a defensive strike which will decrease all damage taken for a few seconds." //Duel Card
+	name = "巨蟒大剑"
+	desc = "堇紫泪滴所用的重型大剑."
+	special = "SHIFT + 左键以进行纳刀，随后发动防御性打击，减少几秒内受到的全部伤害." //Duel Card
 	icon_state = "ptblunt"
 	inhand_icon_state = "ptblunt"
 	lefthand_file = 'ModularTegustation/Teguicons/lc13_left_64x64.dmi'
@@ -286,8 +286,8 @@
 	status_type = STATUS_EFFECT_UNIQUE
 
 /atom/movable/screen/alert/status_effect/pt_defense
-	name = "Serpents Poise"
-	desc = "You're poised to take more damage, reducing all taken by half."
+	name = "蛇之形"
+	desc = "减少所受伤害一半，你将能承受更多伤害."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "pt_defense"
 
@@ -305,7 +305,7 @@
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/L = owner
-		to_chat(L, span_userdanger("You return to a normal posture."))
+		to_chat(L, span_userdanger("你恢复到正常架势."))
 		L.physiology.red_mod *= 2
 		L.physiology.white_mod *= 2
 		L.physiology.black_mod *= 2
@@ -315,9 +315,9 @@
 // Weak ahh red damage with a powerful block
 //Currently special cooldown also applies to the block here, causes some jank when switching stances. Could fix with either an exception in special code or just reset cooldown when switiching to this stance
 /obj/item/ego_weapon/city/pt/guard
-	name = "Sheathed Serpentine Greatsword"
-	desc = "A heavy greatsword used by the Purple Tear. The sheathe gives more defnese."
-	special = "SHIFT + CLICK to parry an incoming attack. A successful parry will make your next hit in this stnace do 1.5x in True Damage." //ID weakpoint card
+	name = "未出鞘的蛇形大剑"
+	desc = "堇紫泪滴所用的重型大剑. 纳刀后能提供更多的防御."
+	special = "SHIFT + 左键以进行格挡，成功格挡后，你下一次在此姿态下的攻击将造成1.5倍的真实伤害." //ID weakpoint card
 	icon_state = "ptguard"
 	inhand_icon_state = "ptguard"
 	icon = 'ModularTegustation/Teguicons/lc13_weapons.dmi'
@@ -340,11 +340,11 @@
 	if (block == 0)
 		var/mob/living/carbon/human/shield_user = user
 		if(shield_user.physiology.armor.bomb) //"We have NOTHING that should be modifying this, so I'm using it as an existant parry checker." - Ancientcoders
-			to_chat(shield_user,span_warning("You're still off-balance!"))
+			to_chat(shield_user,span_warning("你未恢复平衡!"))
 			return FALSE
 		for(var/obj/machinery/computer/abnormality/AC in range(1, shield_user))
 			if(AC.datum_reference.working) // No blocking during work.
-				to_chat(shield_user,span_notice("You cannot defend yourself from responsibility!"))
+				to_chat(shield_user,span_notice("你无法以此方法逃避工作责任!"))
 				return FALSE
 		block = TRUE
 		block_success = FALSE
@@ -355,7 +355,7 @@
 		shield_user.physiology.pale_mod *= max(0.001, (1 - ((reductions[4]) / 100)))
 		RegisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(AnnounceBlock))
 		addtimer(CALLBACK(src, PROC_REF(DisableBlock), shield_user), 1 SECONDS)
-		to_chat(user,span_userdanger("You attempt to parry the attack!"))
+		to_chat(user,span_userdanger("你试图格挡攻击!"))
 		return TRUE
 
 /obj/item/ego_weapon/city/pt/guard/proc/DisableBlock(mob/living/carbon/human/user)
@@ -372,15 +372,15 @@
 
 /obj/item/ego_weapon/city/pt/guard/proc/BlockCooldown(mob/living/carbon/human/user)
 	block = FALSE
-	to_chat(user,span_nicegreen("You rearm your greatsword"))
+	to_chat(user,span_nicegreen("你重整了大剑"))
 
 /obj/item/ego_weapon/city/pt/guard/proc/BlockFail(mob/living/carbon/human/user)
-	to_chat(user,span_warning("Your stance is widened."))
+	to_chat(user,span_warning("你的姿态更加大开大合."))
 	force = 25
 	addtimer(CALLBACK(src, PROC_REF(RemoveDebuff), user), 2 SECONDS)
 
 /obj/item/ego_weapon/city/pt/guard/proc/RemoveDebuff(mob/living/carbon/human/user)
-	to_chat(user,span_nicegreen("You recollect your stance."))
+	to_chat(user,span_nicegreen("你收紧了你的姿态."))
 	force = 45
 
 /obj/item/ego_weapon/city/pt/guard/proc/AnnounceBlock(mob/living/carbon/human/source, damage, damagetype, def_zone)
@@ -388,7 +388,7 @@
 	block_success = TRUE
 
 	playsound(get_turf(src), 'sound/weapons/purple_tear/guard.ogg', 50, 0, 7)
-	source.visible_message(span_userdanger("[source.real_name] parried the attack!"))
+	source.visible_message(span_userdanger("[source.real_name] 格挡了攻击!"))
 	if(!(buff_check))
 		parry_buff = TRUE
 
@@ -418,7 +418,7 @@
 			continue
 		targets += L
 	if(!LAZYLEN(targets))
-		to_chat(user, span_warning("There are no enemies nearby!")) //so you dont fuck up i guess
+		to_chat(user, span_warning("附近没有敌人!")) //so you dont fuck up i guess
 		active = FALSE
 		return
 
@@ -508,7 +508,7 @@
 		sleep(4)
 
 /datum/action/item_action/miragestorm
-	name = "Mirage Storm"
-	desc = "Unleash a flurry of blows upon any enemies around you utilizing the 3 offensive stances."
+	name = "幻·舞"
+	desc = "利用三种姿态对附近敌人发动连番猛攻."
 	icon_icon = 'icons/mob/actions/actions_ability.dmi'
 	button_icon_state = "mirage"

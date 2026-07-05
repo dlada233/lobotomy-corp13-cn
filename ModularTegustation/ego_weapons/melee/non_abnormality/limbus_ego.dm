@@ -1,6 +1,6 @@
 //Sinner EGO - WAW
 /obj/item/ego_weapon/lance/sangre
-	name = "le sangre de sancho"
+	name = "桑丘之血"
 	desc = "Ride on, Rocinante!"
 	icon_state = "sangre"
 	icon = 'icons/obj/limbus_weapons.dmi'
@@ -46,9 +46,9 @@
 		..()
 
 /obj/item/ego_weapon/mini/crow
-	name = "Crow's Eye View"
+	name = "乌瞰刀"
 	desc = "Now, break this birdcage... and fly free."
-	special = "This weapon attacks very fast. Attacking with this weapon from a distance will make you rush towards your target."
+	special = "此武器攻速极快。远距离攻击将使你向目标冲刺."
 	icon_state = "crow"
 	icon = 'icons/obj/limbus_weapons.dmi'
 	inhand_icon_state = "shiv"
@@ -74,7 +74,7 @@
 	if(!isliving(A))
 		return
 	if((!(can_see(user, A, dash_range))))
-		to_chat(user, span_warning("You cannot see your target."))
+		to_chat(user, span_warning("无法看到目标."))
 		return
 	if(get_dist(user, A) < 2)
 		return
@@ -84,4 +84,4 @@
 	if((get_dist(user, A) < 2))
 		A.attackby(src,user)
 	playsound(get_turf(src), 'sound/weapons/fwoosh.ogg', 300, FALSE, 9)
-	to_chat(user, span_warning("You dash to [A]!"))
+	to_chat(user, span_warning("你向[A]冲刺!"))
