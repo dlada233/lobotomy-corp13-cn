@@ -1,5 +1,5 @@
 /datum/job/reindeer
-	title = "R-Corp Medical Reindeer"
+	title = "R-Corp Medical Reindeer - R-公司医疗驯鹿"
 	faction = "Station"
 	department_head = list("Reindeer Team Captain", "Commander")
 	total_positions = 3
@@ -24,8 +24,8 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "SPC"
-	job_important = "You take the role of defensive medical support. DO NOT CROSS THE BEAMS."
-	job_notice = "You are a mostly support role. Gather your supplies in the medical tent to the SW of the base. Split up for maximum effectiveness."
+	job_important = "你扮演防御性医疗支援角色，千万不要使光束交叉."
+	job_notice = "你主要是支援角色。在基地西南部的医疗帐篷中收集你的物资，分散行动以达到最大效果."
 
 /datum/job/reindeer/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -36,19 +36,19 @@
 	medsensor.add_hud_to(H)
 
 /datum/job/reindeer/berserker
-	title = "R-Corp Berserker Reindeer"
+	title = "R-Corp Berserker Reindeer - R-公司狂战士驯鹿"
 	total_positions = 2
 	spawn_positions = 2
 	outfit = /datum/outfit/job/reindeer/berserker
 	display_order = 7.1
 
 	rank_title = "SGT"
-	job_important = "You take the role of offensive medical. DO NOT CROSS THE BEAMS."
-	job_notice = "You are an offensive support role. Your staff heals the sanity of those around you while linked to an enemy. Split up for maximum effectiveness."
+	job_important = "你扮演进攻性医疗角色，千万不要使光束交叉."
+	job_notice = "你是一个进攻性支援角色，当你与敌人相连时，你的手杖会治愈周围人的理智，分散行动以达到最大效果."
 
 
 /datum/job/rcorp_captain/reindeer
-	title = "Reindeer Squad Captain"
+	title = "Reindeer Squad Captain-驯鹿队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -74,12 +74,12 @@
 								JUSTICE_ATTRIBUTE = 80
 								)
 	rank_title = "CPT"
-	job_important = "You are the captain of the welfare division."
-	job_notice = "Visit your bunks in the command tent to gather your medical supplies, and split your units into small groups."
+	job_important = "你是医疗部队的队长。"
+	job_notice = "前往指挥帐篷中的你的床位，收集你的医疗物资，并将你的单位分散成小队."
 
 
 /datum/outfit/job/reindeer
-	name = "R-Corp Medical Reindeer"
+	name = "R-Corp Medical Reindeer - R-公司医疗驯鹿"
 	jobtype = /datum/job/reindeer
 
 	ears = /obj/item/radio/headset/headset_welfare
@@ -97,7 +97,7 @@
 
 
 /datum/outfit/job/reindeer/berserker
-	name = "R-Corp Berserker Reindeer"
+	name = "R-Corp Berserker Reindeer - R-公司狂战士驯鹿"
 	jobtype = /datum/job/reindeer/berserker
 
 	implants = list(/obj/item/organ/cyberimp/eyes/hud/security)
@@ -106,7 +106,7 @@
 
 
 /datum/outfit/job/reindeer/captain
-	name = "Reindeer Squad Captain"
+	name = "Reindeer Squad Captain-驯鹿队队长"
 	jobtype = /datum/job/rcorp_captain/reindeer
 	glasses = /obj/item/clothing/glasses/hud/health/night/rabbit
 	suit = /obj/item/clothing/suit/armor/ego_gear/rabbit/reindeercap

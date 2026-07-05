@@ -1,6 +1,6 @@
-//Index Messenger
+//Index Messenger-食指传令员
 /datum/job/messenger
-	title = "Index Messenger"
+	title = "Index Messenger-食指传令员"
 	outfit = /datum/outfit/job/messenger
 	department_head = list("the will of the prescript")
 	faction = "Station"
@@ -41,7 +41,7 @@
 
 
 /datum/outfit/job/messenger
-	name = "Index Messenger"
+	name = "Index Messenger-食指传令员"
 	jobtype = /datum/job/messenger
 
 	belt = /obj/item/pda/security

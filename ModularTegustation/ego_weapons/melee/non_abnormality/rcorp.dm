@@ -179,9 +179,9 @@
 	weapon_weight = WEAPON_HEAVY // No dual wielding
 	pin = /obj/item/firing_pin/implant/mindshield
 	//None of these fucking guys can use Rcorp guns
-	var/list/banned_roles = list("Raven Squad Captain", "Reindeer Squad Captain","Rhino Squad Captain",
-		"R-Corp Berserker Reindeer","R-Corp Medical Reindeer","R-Corp Gunner Rhino","R-Corp Hammer Rhino","R-Corp Scout Raven","R-Corp Support Raven",
-		"R-Corp Roadrunner", "Roadrunner Squad Leader")
+	var/list/banned_roles = list("Rhino Squad Captain-乌鸦队队长", "Reindeer Squad Captain-驯鹿队队长","Rhino Squad Captain-犀牛队队长",
+		"R-Corp Berserker Reindeer - R-公司狂战士驯鹿","R-Corp Medical Reindeer - R-公司医疗驯鹿","R-Corp Gunner Rhino - R-公司机枪手犀牛","R-Corp Hammer Rhino - R-公司重锤犀牛","R-Corp Scout Raven - R-公司侦查渡鸦","R-Corp Support Raven - R-公司支援渡鸦",
+		"R-Corp Roadrunner - R-公司走鹃", "Roadrunner Squad Leader-走鹃队队长")
 
 /obj/item/gun/energy/e_gun/rabbit/Initialize()
 	. = ..()

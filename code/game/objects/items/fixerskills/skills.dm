@@ -4,7 +4,7 @@
 	var/level = 0
 	var/mob/living/carbon/human/user
 	var/list/usable_roles = list("Civilian", "Office Director", "Office Fixer",
-		"Subsidary Office Director", "Fixer")
+		"Subsidary Office Director-分事务所主管", "Fixer - 收尾人")
 
 	//To do: Refactor.
 	var/static/list/datum/action/actions_levels = list(

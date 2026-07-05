@@ -56,7 +56,7 @@
 	LoseTarget()
 
 /obj/item/gun/medbeam/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	var/list/banned_roles = list("R-Corp Scout Raven", "R-Corp Support Raven", "Raven Squad Captain", "R-Corp Suppressive Rabbit", "R-Corp Assault Rabbit", "R-Corp Suppressive Rabbit", "R-Corp Berserker Reindeer")
+	var/list/banned_roles = list("R-Corp Scout Raven - R-公司侦查渡鸦", "R-Corp Support Raven - R-公司支援渡鸦", "Rhino Squad Captain-乌鸦队队长", "R-Corp Suppressive Rabbit - R-公司抑制兔子", "R-Corp Assault Rabbit - R-公司突击兔子", "R-Corp Suppressive Rabbit - R-公司抑制兔子", "R-Corp Berserker Reindeer - R-公司狂战士驯鹿")
 	if(istype(user) && (user?.mind?.assigned_role in banned_roles))
 		to_chat(user, "<span class='notice'>You don't know how to use this.</span>")
 		return

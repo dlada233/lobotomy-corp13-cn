@@ -244,7 +244,7 @@
 	anchored = TRUE
 	density = FALSE
 	resistance_flags = INDESTRUCTIBLE
-	var/list/hanaroles = list("Hana Representative", "Hana Administrator")
+	var/list/hanaroles = list("Hana Representative - 一协会代表", "Hana Administrator-一协会管理员")
 	var/inflation
 
 /obj/structure/moneymachine/attack_hand(mob/living/user)

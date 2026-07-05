@@ -1,6 +1,6 @@
 //Kurokumo Recipes
 /datum/crafting_recipe/kurokumo
-	name = "Kurokumo Wakashu Dress Jacket"
+	name = "Kurokumo Wakashu - 黑云会若衆 Dress Jacket"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/kurokumo
 	reqs = list(
 		/obj/item/stack/sheet/silk/steel_simple = 3,

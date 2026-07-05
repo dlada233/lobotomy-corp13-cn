@@ -1,6 +1,6 @@
-//Kurokumo Wakashu
+//Kurokumo Wakashu - 黑云会若衆
 /datum/job/kurowakashu
-	title = "Kurokumo Wakashu"
+	title = "Kurokumo Wakashu - 黑云会若衆"
 	outfit = /datum/outfit/job/kurowakashu
 	department_head = list("the kashira.")
 	faction = "Station"
@@ -26,7 +26,7 @@
 
 
 /datum/outfit/job/kurowakashu
-	name = "Kurokumo Wakashu"
+	name = "Kurokumo Wakashu - 黑云会若衆"
 	jobtype = /datum/job/kurowakashu
 
 	belt = /obj/item/pda/security

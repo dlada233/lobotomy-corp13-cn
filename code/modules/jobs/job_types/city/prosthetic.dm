@@ -1,5 +1,5 @@
 /datum/job/prosdoctor
-	title = "Prosthetics Surgeon"
+	title = "Prosthetics Surgeon-义体医生"
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -33,7 +33,7 @@
 	..()
 
 /datum/outfit/job/prosdoctor
-	name = "Prosthetics Surgeon"
+	name = "Prosthetics Surgeon-义体医生"
 	jobtype = /datum/job/prosdoctor
 
 	belt = /obj/item/pda/medical

@@ -346,7 +346,7 @@
 	icon_state = "corpsecook"
 
 /obj/effect/mob_spawn/human/doctor
-	name = "Doctor"
+	name = "Doctor-医生"
 	outfit = /datum/outfit/job/doctor
 	icon_state = "corpsedoctor"
 

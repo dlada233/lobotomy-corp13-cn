@@ -2,7 +2,7 @@
 
 //Director
 /datum/job/fixer/northdirector
-	title = "North Office Director"
+	title = "North Office Director - 北部事务所主管"
 	outfit = /datum/outfit/job/ndirector
 	selection_color = "#8f6791"
 	total_positions = 1
@@ -38,7 +38,7 @@
 			processing.total_positions = 2
 
 /datum/outfit/job/ndirector
-	name = "North Office Director"
+	name = "North Office Director - 北部事务所主管"
 	jobtype = /datum/job/fixer/northdirector
 
 	belt = /obj/item/pda/security
@@ -51,7 +51,7 @@
 
 //Associate fixer, Not whitelisted
 /datum/job/fixer/north
-	title = "North Office Fixer"
+	title = "North Office Fixer - 北部事务所收尾人"
 	outfit = /datum/outfit/job/nfixer
 	department_head = list("office director")
 	supervisors = "your office director"
@@ -82,7 +82,7 @@
 
 
 /datum/outfit/job/nfixer
-	name = "North Office Fixer"
+	name = "North Office Fixer - 北部事务所收尾人"
 	jobtype = /datum/job/fixer/north
 
 	belt = /obj/item/pda/security

@@ -19,8 +19,8 @@
 	qdel(src)
 
 /obj/item/assoc_skill_granter/liu/veteran
-	name = "Liu Association Veteran Skill Book"
-	allowedjob = list("Association Veteran")
+	name = "Liu Association Veteran - 协会资深收尾人 Skill Book"
+	allowedjob = list("Association Veteran - 协会资深收尾人")
 
 /obj/item/assoc_skill_granter/liu/veteran/attack_self(mob/living/carbon/human/user)
 	if(!(user?.mind?.assigned_role in allowedjob))
@@ -44,7 +44,7 @@
 
 /obj/item/assoc_skill_granter/liu/director
 	name = "Liu Association Director Skill Book"
-	allowedjob = list("Association Section Director")
+	allowedjob = list("Association Section Director-协会科室主管")
 
 /obj/item/assoc_skill_granter/liu/director/attack_self(mob/living/carbon/human/user)
 	if(!(user?.mind?.assigned_role in allowedjob))

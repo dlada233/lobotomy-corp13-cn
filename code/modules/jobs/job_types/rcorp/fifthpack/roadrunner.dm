@@ -1,7 +1,7 @@
 /datum/job/roadrunner
-	title = "R-Corp Roadrunner"
+	title = "R-Corp Roadrunner - R-公司走鹃"
 	faction = "Station"
-	department_head = list("Roadrunner Squad Leader", "Commander")
+	department_head = list("Roadrunner Squad Leader-走鹃队队长", "Commander")
 	total_positions = 4
 	spawn_positions = 3
 	exp_requirements = 120
@@ -23,12 +23,12 @@
 								JUSTICE_ATTRIBUTE = 130
 								)
 	rank_title = "SGT"
-	job_important = "You take the role of skirmishers."
-	job_notice = "You are a Roadrunner armed with a multiphase gun and shield. You harass the enemy and give them no time to recover between assaults."
+	job_important = "你扮演一名游击角色."
+	job_notice = "你是一名配备多相枪和护盾的走鹃，你持续骚扰敌人并使他们没有时间休息整备."
 
 
 /datum/job/rcorp_captain/roadrunner
-	title = "Roadrunner Squad Leader"
+	title = "Roadrunner Squad Leader-走鹃队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -54,13 +54,13 @@
 								JUSTICE_ATTRIBUTE = 130
 								)
 	rank_title = "LT"
-	job_important = "You are the squad leader of the skirmishing division."
+	job_important = "你是游击部队的指挥官."
 	//job_notice = "Visit your bunks in the command tent to gather your one-handed rabbit gun and multiphase blade."
 
 
 // Mostly uneditted outfit datums for gear that doesn't exist yet.
 /datum/outfit/job/roadrunner
-	name = "R-Corp Roadrunner"
+	name = "R-Corp Roadrunner - R-公司走鹃"
 	jobtype = /datum/job/roadrunner
 
 	ears = /obj/item/radio/headset/headset_information
@@ -75,7 +75,7 @@
 	r_pocket = /obj/item/pinpointer/nuke/rcorp
 
 /datum/outfit/job/roadrunner/leader
-	name = "Roadrunner Squad Leader"
+	name = "Roadrunner Squad Leader-走鹃队队长"
 	jobtype = /datum/job/rcorp_captain/roadrunner
 
 	belt = /obj/item/ego_weapon/city/rabbit_blade/raven

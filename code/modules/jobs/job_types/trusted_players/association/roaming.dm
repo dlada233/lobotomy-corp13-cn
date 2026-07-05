@@ -1,6 +1,6 @@
 //Associate fixer
 /datum/job/associateroaming
-	title = "Roaming Association Fixer"
+	title = "Roaming Association Fixer - 自由协会收尾人"
 	outfit = /datum/outfit/job/associate
 	department_head = list("Hana association")
 	faction = "Station"
@@ -24,9 +24,9 @@
 								JUSTICE_ATTRIBUTE = 100
 								)
 	mind_traits = list(TRAIT_WORK_FORBIDDEN)
-	job_important = "This is a role to assist existing offices in getting a foothold in the city. You are not to enter the ruins alone."
-	job_notice = "You are to assist the offices in their backstreet endeavors. Cryoing to re-roll your association is not allowed and will result in a de-trusting. \
-		You are a fixer that recently blew into town to assist the local offices in their endeavors."
+	job_important = "你是一个协助现有事务所在都市中立足的角色. 你不能独自进入废墟."
+	job_notice = "你将协助事务所在后巷的活动中发挥作用. 不允许通过Respwan来重随机协会，这可能导致封禁. \
+		你是一个最近来这里协助当地事务所的收尾人."
 
 	var/list/associations = list("zwei","shi5", "liu5", "seven")
 	var/list/uncommon_associations = list("shi2", "cinq", "liu1", "zweiw", "devyat")

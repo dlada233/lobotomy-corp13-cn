@@ -1,5 +1,5 @@
 /datum/job/fixer/mixed_smalldirector
-	title = "Subsidary Office Director"
+	title = "Subsidary Office Director-分事务所主管"
 	outfit = /datum/outfit/job/mixed_smalldirector
 	department_head = list("The local association")
 	selection_color = "#8f6791"
@@ -32,7 +32,7 @@
 			processing.total_positions = -1
 
 /datum/outfit/job/mixed_smalldirector
-	name = "Subsidary Office Director"
+	name = "Subsidary Office Director-分事务所主管"
 	jobtype = /datum/job/fixer/mixed_smalldirector
 
 	uniform = /obj/item/clothing/under/suit/charcoal
@@ -45,7 +45,7 @@
 
 
 /datum/job/fixer/mixed_fixer
-	title = "Fixer"
+	title = "Fixer - 收尾人"
 	outfit = /datum/outfit/job/mixedfixer
 	department_head = list("office director")
 	supervisors = "your office director"
@@ -69,7 +69,7 @@
 
 
 /datum/outfit/job/mixedfixer
-	name = "Fixer"
+	name = "Fixer - 收尾人"
 	jobtype = /datum/job/fixer/mixed_fixer
 
 	uniform = /obj/item/clothing/under/suit/charcoal

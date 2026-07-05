@@ -1,7 +1,7 @@
 /datum/job/rooster
-	title = "R-Corp Rooster"
+	title = "R-Corp Rooster - R-公司公鸡"
 	faction = "Station"
-	department_head = list("Rooster Squad Leader", "Commander")
+	department_head = list("Rooster Squad Leader-公鸡队队长", "Commander")
 	total_positions = 4
 	spawn_positions = 3
 	exp_requirements = 120
@@ -23,12 +23,12 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "SGT" // Keep SGT becaues they're akin to Rhinos, but without mechs.
-	job_important = "You take the role of heavy ranged infantry."
-	job_notice = "You are a Rooster armed with a fully automatic light machinegun. You push forward and help define the frontline."
+	job_important = "你扮演重型远程步兵的角色."
+	job_notice = "你是一名配备全自动轻机枪的公鸡，你负责向前推进，协助划定前线."
 
 
 /datum/job/rcorp_captain/rooster
-	title = "Rooster Squad Leader"
+	title = "Rooster Squad Leader-公鸡队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -54,13 +54,13 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "LT"
-	job_important = "You are the squad leader of the heavy ranged infantry division."
+	job_important = "你是重型远程步兵部队的队长."
 	//job_notice = "Visit your bunks in the command tent to gather your one-handed rabbit gun and multiphase blade."
 
 
 // Mostly uneditted outfit datums for gear that doesn't exist yet. Both need Multiphase LMG.
 /datum/outfit/job/rooster
-	name = "R-Corp Rooster"
+	name = "R-Corp Rooster - R-公司公鸡"
 	jobtype = /datum/job/rooster
 
 	ears = /obj/item/radio/headset/headset_discipline
@@ -77,7 +77,7 @@
 	r_pocket = /obj/item/pinpointer/nuke/rcorp
 
 /datum/outfit/job/rooster/leader
-	name = "Rooster Squad Leader"
+	name = "Rooster Squad Leader-公鸡队队长"
 	jobtype = /datum/job/rcorp_captain/rooster
 	suit = /obj/item/clothing/suit/armor/ego_gear/rabbit/reindeerberserk
 	belt = /obj/item/ego_weapon/city/rabbit_blade

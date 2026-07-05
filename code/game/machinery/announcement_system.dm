@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system
 	density = TRUE
-	name = "\improper Automated Announcement System"
+	name = "自动公告系统"
 	desc = "An automated announcement system that handles minor announcements over the radio."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
@@ -17,11 +17,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	circuit = /obj/item/circuitboard/machine/announcement_system
 
 	var/obj/item/radio/headset/radio
-	var/arrival = "%PERSON has signed up as %RANK"
+	var/arrival = "%PERSON 已经注册为 %RANK"
 	var/arrivalToggle = 1
-	var/newhead = "%PERSON, %RANK, is the department head."
+	var/newhead = "%PERSON, %RANK, 是部门领导."
 	var/newheadToggle = 1
-	var/newabno = "Abnormality '%PERSON' has been delivered to %RANK department."
+	var/newabno = "异想体 '%PERSON' 已被送至 %RANK 部门."
 	var/newabnoToggle = 1
 
 	var/greenlight = "Light_Green"

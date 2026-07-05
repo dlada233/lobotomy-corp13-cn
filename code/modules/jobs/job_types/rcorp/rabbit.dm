@@ -1,5 +1,5 @@
 /datum/job/rabbit
-	title = "R-Corp Suppressive Rabbit"
+	title = "R-Corp Suppressive Rabbit - R-公司抑制兔子"
 	faction = "Station"
 	department_head = list("Rabbit Team Captain", "Commander")
 	total_positions = 4
@@ -24,21 +24,21 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "SGT"
-	job_important = "You take the role of mobile ranged infantry."
-	job_notice = "You are a Senior rabbit armed with a fully automatic rifle and multiphase blade. You are highly mobile and pack a punch."
+	job_important = "你扮演机动远程步兵角色."
+	job_notice = "你是一名高级兔子，手持全自动步枪和多相刀刃，行动灵活，攻击力强大."
 
 /datum/job/rabbit/assault
-	title = "R-Corp Assault Rabbit"
+	title = "R-Corp Assault Rabbit - R-公司突击兔子"
 	total_positions = 10
 	spawn_positions = 8
 	outfit = /datum/outfit/job/rabbit/assault
 	rank_title = "RAF"
-	job_important = "You take the role of mobile ranged infantry."
-	job_notice = "You are a rabbit armed with a semi automatic, single phase rifle and blade with rush capabilities. You form the meat of the 4th pack."
+	job_important = "你扮演机动远程步兵角色."
+	job_notice = "你是一名兔子，手持半自动、单相步枪和具有冲刺能力的刀刃，你是第四集团军的中坚力量."
 
 
 /datum/job/rcorp_captain/rabbit
-	title = "Rabbit Squad Captain"
+	title = "Rabbit Squad Captain-兔子队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -64,13 +64,13 @@
 								JUSTICE_ATTRIBUTE = 80
 								)
 	rank_title = "CPT"
-	job_important = "You are the captain of the mobile ranged infantry division."
-	job_notice = "Visit your bunks in the command tent to gather your one-handed rabbit gun and multiphase blade."
+	job_important = "你是一名高级兔子，手持全自动步枪和多相刀刃，行动灵活，攻击力强大."
+	job_notice = "访问你在指挥帐篷中的床位，收集你的单手兔子枪和多相刀刃."
 
 
 
 /datum/outfit/job/rabbit
-	name = "R-Corp Suppressive Rabbit"
+	name = "R-Corp Suppressive Rabbit - R-公司抑制兔子"
 	jobtype = /datum/job/rabbit
 
 	ears = /obj/item/radio/headset/headset_control
@@ -87,7 +87,7 @@
 	r_pocket = /obj/item/pinpointer/nuke/rcorp
 
 /datum/outfit/job/rabbit/assault
-	name = "R-Corp Assault Rabbit"
+	name = "R-Corp Assault Rabbit - R-公司突击兔子"
 	jobtype = /datum/job/rabbit/assault
 
 	suit_store = /obj/item/ego_weapon/city/rabbit_rush
@@ -109,7 +109,7 @@
 
 
 /datum/outfit/job/rabbit/captain
-	name = "Rabbit Squad Captain"
+	name = "Rabbit Squad Captain-兔子队队长"
 	jobtype = /datum/job/rcorp_captain/rabbit
 	glasses = /obj/item/clothing/glasses/hud/health/night/rabbit
 	suit = /obj/item/clothing/suit/armor/ego_gear/rabbit

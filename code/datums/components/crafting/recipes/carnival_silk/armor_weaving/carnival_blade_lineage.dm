@@ -1,6 +1,6 @@
 //Blade Lineage Recipes
 /datum/crafting_recipe/blade_lineage_salsu
-	name = "Blade Lineage Salsu Robe"
+	name = "Blade Lineage Salsu - 剑契组杀手 Robe"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/blade_lineage_salsu
 	reqs = list(
 		/obj/item/stack/sheet/silk/steel_simple = 3,
@@ -14,7 +14,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/blade_lineage_cutthroat
-	name = "Blade Lineage Cutthroat"
+	name = "Blade Lineage Cutthroat-剑契组首领"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/blade_lineage_cutthroat
 	reqs = list(
 		/obj/item/stack/sheet/silk/steel_simple = 6,

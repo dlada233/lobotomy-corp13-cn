@@ -4,4 +4,4 @@
 	desc = "A book carrying countless knowledge on association skills, this book will be destroyed after reading for confidentiality."
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
-	var/list/allowedjob = list("Association Fixer")
+	var/list/allowedjob = list("Association Fixer - 协会收尾人")

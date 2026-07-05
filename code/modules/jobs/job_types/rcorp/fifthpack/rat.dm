@@ -1,7 +1,7 @@
 /datum/job/rat
-	title = "R-Corp Rat"
+	title = "R-Corp Rat - R-公司老鼠"
 	faction = "Station"
-	department_head = list("Rat Squad Leader", "Commander")
+	department_head = list("Rat Squad Leader-老鼠队队长", "Commander")
 	total_positions = 15
 	spawn_positions = 15
 	supervisors = "the rat squad leader and the commander"
@@ -22,8 +22,8 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "RAF"
-	job_important = "You take the role of a diverse operations unit. You also take the role of a healer. No one else has medical equipment aside from you."
-	job_notice = "You are a Rat armed with a shotgun, multiphase-knife, and micro-healthkit. Your role is whatever the mission needs at the moment."
+	job_important = "你扮演一个多样化的作战单位，你也是唯一的医疗人员，除你之外，没人拥有医疗设备."
+	job_notice = "你是一名携带霰弹枪，多相刀和微型医疗包的老鼠，你的职责取决于当前任务的需求."
 
 /datum/job/rat/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -34,7 +34,7 @@
 	medsensor.add_hud_to(H)
 
 /datum/job/rcorp_captain/rat
-	title = "Rat Squad Leader"
+	title = "Rat Squad Leader-老鼠队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -60,7 +60,7 @@
 								JUSTICE_ATTRIBUTE = 80,
 								)
 	rank_title = "LT"
-	job_important = "You are the squad leader of the diverse operations division."
+	job_important = "你是一只多样化的作战部队的队长."
 	//job_notice = "Visit your bunks in the command tent to gather your one-handed rabbit gun and multiphase blade."
 
 /datum/job/rcorp_captain/rat/after_spawn(mob/living/carbon/human/H, mob/M)
@@ -72,7 +72,7 @@
 
 // Mostly uneditted outfit datums for gear that doesn't exist yet.
 /datum/outfit/job/rat
-	name = "R-Corp Rat"
+	name = "R-Corp Rat - R-公司老鼠"
 	jobtype = /datum/job/rat
 
 	ears = /obj/item/radio/headset/headset_welfare
@@ -94,7 +94,7 @@
 
 
 /datum/outfit/job/rat/leader
-	name = "Rat Squad Leader"
+	name = "Rat Squad Leader-老鼠队队长"
 	jobtype = /datum/job/rcorp_captain/rat
 
 	belt = /obj/item/ego_weapon/city/rabbit_blade

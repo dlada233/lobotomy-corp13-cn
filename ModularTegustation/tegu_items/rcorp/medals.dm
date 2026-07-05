@@ -23,7 +23,7 @@
 	new /obj/item/clothing/accessory/medal/rcorp(src)
 
 /obj/item/storage/lockbox/medal/lcdr
-	name = "Lieutenant Commander's medal box"
+	name = "Lieutenant Commander-中尉副指挥官 medal box"
 	desc = "A locked box used to store medals to be given to those exhibiting excellence in the field."
 	req_access = list(ACCESS_COMMAND)
 

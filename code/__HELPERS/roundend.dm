@@ -195,15 +195,15 @@
 		if(SSmaptype.maptype == "standard")
 			//Standard LC13 Gamemode Achivements.
 			var/list/valid_roles = list(
-				"Manager",
-				"Clerk",
-				"Agent Captain",
-				"Agent",
-				"Agent Intern",
-				"Disciplinary Officer",
-				"Extraction Officer",
-				"Records Officer",
-				"Training Officer",
+				"Manager-主管",
+				"Clerk-文职人员",
+				"Agent Captain-员工队长",
+				"Agent-员工",
+				"Agent Intern-员工实习生",
+				"Disciplinary Officer-惩戒部长",
+				"Extraction Officer-研发部长",
+				"Records Officer-记录部长",
+				"Training Officer-培训部长",
 				)
 			if(M.assigned_role in valid_roles)
 				player_client.give_award(/datum/award/achievement/lc13/lcorpworld, human_mob)

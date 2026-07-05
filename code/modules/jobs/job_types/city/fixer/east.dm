@@ -2,7 +2,7 @@
 
 //Director
 /datum/job/fixer/eastdirector
-	title = "East Office Director"
+	title = "East Office Director - 东部事务所主管"
 	outfit = /datum/outfit/job/edirector
 	selection_color = "#8f6791"
 	total_positions = 1
@@ -38,7 +38,7 @@
 			processing.total_positions = 2
 
 /datum/outfit/job/edirector
-	name = "East Office Director"
+	name = "East Office Director - 东部事务所主管"
 	jobtype = /datum/job/fixer/eastdirector
 
 	belt = /obj/item/pda/security
@@ -51,7 +51,7 @@
 
 //Associate fixer, Not whitelisted
 /datum/job/fixer/east
-	title = "East Office Fixer"
+	title = "East Office Fixer - 东部事务所收尾人"
 	outfit = /datum/outfit/job/efixer
 	department_head = list("office director")
 	faction = "Station"
@@ -85,7 +85,7 @@
 
 
 /datum/outfit/job/efixer
-	name = "East Office Fixer"
+	name = "East Office Fixer - 东部事务所收尾人"
 	jobtype = /datum/job/fixer/east
 
 	belt = /obj/item/pda/security

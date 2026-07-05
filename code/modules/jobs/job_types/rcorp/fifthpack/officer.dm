@@ -1,7 +1,7 @@
 /datum/job/supportofficer
-	title = "Support Officer"
+	title = "Support Officer-支援军官"
 	faction = "Station"
-	department_head = list("Lieutenant Commander", "Ground Commander")
+	department_head = list("Lieutenant Commander-中尉副指挥官", "Ground Commander-地面指挥官")
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "your senior officers"
@@ -23,8 +23,8 @@
 	minimal_access = (ACCESS_COMMAND)
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_R_CORP
 	rank_title = "LT"
-	job_important = "You are a support and command role in Rcorp. Advise the Commander, Run requisitions and then deploy."
-	job_notice = "Run the Requisitions, assist Rcorp personnel on the base. After deployment, use your beacon to select which class you'd like."
+	job_important = "你担任R-公司的支援与指挥角色. 向指挥官汇报和提出建议，执行物资调配与部署."
+	job_notice = "运行补给请求，协助R-公司人员在基地工作，部署后，使用你的信标选择你想要的类型."
 
 /datum/job/supportofficer/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -36,7 +36,7 @@
 
 
 /datum/outfit/job/supportofficer
-	name = "Support Officer"
+	name = "Support Officer-支援军官"
 	jobtype = /datum/job/supportofficer
 	uniform = /obj/item/clothing/under/suit/lobotomy/rabbit/officer
 	belt = /obj/item/ego_weapon/city/rabbit_blade

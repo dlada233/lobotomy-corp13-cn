@@ -15,7 +15,7 @@
 	paycheck = 10
 	maptype = list("city")
 	job_important = "You are an NCorp kleinhammer. Your main goal is to kill and maim all prosthetic users. \
-			Follow the orders of the Grand Inquisitor, as they will lead you to battle."
+			Follow the orders of the Grand Inquisitor-大审判官, as they will lead you to battle."
 	job_notice = "You may kill anyone with prosthetics, or anyone sympathetic to prosthetics."
 	mind_traits = list(TRAIT_WORK_FORBIDDEN, TRAIT_COMBATFEAR_IMMUNE)
 	roundstart_attributes = list(

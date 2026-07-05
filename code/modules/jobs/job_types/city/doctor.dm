@@ -1,5 +1,5 @@
 /datum/job/doctor
-	title = "Doctor"
+	title = "Doctor-医生"
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -53,7 +53,7 @@
 
 
 /datum/outfit/job/doctor
-	name = "Doctor"
+	name = "Doctor-医生"
 	jobtype = /datum/job/doctor
 
 	belt = /obj/item/pda/medical
@@ -73,9 +73,9 @@
 
 //Doctor assistants
 /datum/job/doctor/nurse
-	title = "Nurse"
+	title = "Nurse-护士"
 	selection_color = "#ccddee"
-	department_head = list("Doctor")
+	department_head = list("Doctor-医生")
 	supervisors = "the doctor"
 
 	outfit = /datum/outfit/job/doctor/nurse
@@ -89,7 +89,7 @@
 	job_important = "You are an assistant to the town doctor, visit your clinic to the east of town and start healing people who come in. You must charge money for your services."
 
 /datum/outfit/job/doctor/nurse
-	name = "Nurse"
+	name = "Nurse-护士"
 	jobtype = /datum/job/doctor/nurse
 
 	uniform = /obj/item/clothing/under/rank/medical/doctor/blue
@@ -98,9 +98,9 @@
 
 //Paramed
 /datum/job/doctor/medic
-	title = "Paramedic"
+	title = "Paramedic-急救员"
 	selection_color = "#ccddee"
-	department_head = list("Doctor")
+	department_head = list("Doctor-医生")
 	supervisors = "the doctor"
 
 	outfit = /datum/outfit/job/doctor/medic
@@ -115,7 +115,7 @@
 
 
 /datum/outfit/job/doctor/medic
-	name = "Paramedic"
+	name = "Paramedic-急救员"
 	jobtype = /datum/job/doctor/medic
 
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
@@ -126,9 +126,9 @@
 
 //Paramedic but with a gun
 /datum/job/doctor/fixer
-	title = "Medical Fixer Assistant"
+	title = "Medical Fixer Assistant-医疗收尾人助手"
 	selection_color = "#ccddee"
-	department_head = list("Doctor")
+	department_head = list("Doctor-医生")
 	supervisors = "the doctor"
 
 	outfit = /datum/outfit/job/doctor/medic
@@ -144,7 +144,7 @@
 
 
 /datum/outfit/job/doctor/fixer
-	name = "Medical Fixer Assistant"
+	name = "Medical Fixer Assistant-医疗收尾人助手"
 	jobtype = /datum/job/doctor/medic
 
 	uniform = /obj/item/clothing/under/rank/medical/paramedic

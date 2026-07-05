@@ -1,6 +1,6 @@
 //Kurokumo Captain
 /datum/job/kurocaptain
-	title = "Kurokumo Kashira"
+	title = "Kurokumo Kashira-黑云会甲头"
 	outfit = /datum/outfit/job/kurocaptain
 	department_head = list("money and order.")
 	faction = "Station"
@@ -45,7 +45,7 @@
 
 
 /datum/outfit/job/kurocaptain
-	name = "Kurokumo Kashira"
+	name = "Kurokumo Kashira-黑云会甲头"
 	jobtype = /datum/job/kurocaptain
 
 	belt = /obj/item/pda/security

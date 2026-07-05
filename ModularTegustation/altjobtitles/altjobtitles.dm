@@ -49,7 +49,7 @@
 	senior_title = "Surgeon-General"
 
 /datum/job/doctor
-	alt_titles = list("Nurse", "Surgeon")
+	alt_titles = list("Nurse-护士", "Surgeon")
 	senior_title = "Physician"
 
 /datum/job/paramedic

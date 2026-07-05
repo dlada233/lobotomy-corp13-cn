@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(association_jobs, list(
 
 //Director
 /datum/job/director
-	title = "Association Section Director"
+	title = "Association Section Director-协会科室主管"
 	outfit = /datum/outfit/job/director
 	department_head = list("your association")
 	faction = "Station"
@@ -41,11 +41,11 @@ GLOBAL_LIST_INIT(association_jobs, list(
 	var/antag_chosen
 
 /datum/job/director/after_spawn(mob/living/carbon/human/outfit_owner, mob/M)
-	to_chat(M, span_userdanger("This is a roleplay role. You are not affiliated with L Corporation. \
-	Do not enter the lower levels of the facility without the manager's permission. Please use the beacon in your office to choose your association. \
-	Do not fight unless in self defense. You are not a combat role; you take an administrative role. \
-	Do not assist L Corporation without significant payment."))
-	to_chat(M, span_danger("Avoid killing other players without a reason."))
+	to_chat(M, span_userdanger("这是一个RP向角色，你与L公司无任何关联， \
+	未经设施主管许可，不要进入设施下层区域. 请使用事务所信标来选择你的协会. \
+	除非自卫，否则不要参与战斗，你不是战斗角色，而是行政角色. \
+	若无重要报酬，不得协助L-公司."))
+	to_chat(M, span_danger("避免无故杀死其他玩家."))
 	var/antagspawn = pick(antagroles)
 	outfit_owner.set_attribute_limit(120)
 
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(association_jobs, list(
 
 //Veteran
 /datum/job/veteran
-	title = "Association Veteran"
+	title = "Association Veteran - 协会资深收尾人"
 	outfit = /datum/outfit/job/veteran
 	department_head = list("your association")
 	faction = "Station"
@@ -104,10 +104,10 @@ GLOBAL_LIST_INIT(association_jobs, list(
 	)
 
 /datum/job/veteran/after_spawn(mob/living/carbon/human/outfit_owner, mob/M)
-	to_chat(M, span_userdanger("This is a roleplay role. You are not affiliated with L Corporation. \
-	Do not enter the lower levels of the facility without the manager's permission. You are the second in command of the local association, \
-	and can offer frontline command."))
-	to_chat(M, span_danger("Avoid killing other players without a reason."))
+	to_chat(M, span_userdanger("这是一个RP向角色，你与L公司无任何关联， \
+	未经设施主管许可，不要进入设施下层区域. 你在职位上是仅次于协会主管的协会第二把手， \
+	可以提供前线指挥."))
+	to_chat(M, span_danger("避免无故杀死其他玩家."))
 	outfit_owner.set_attribute_limit(100)
 	return ..()
 
@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(association_jobs, list(
 
 //Associate fixer
 /datum/job/associate
-	title = "Association Fixer"
+	title = "Association Fixer - 协会收尾人"
 	outfit = /datum/outfit/job/associate
 	department_head = list("your association")
 	faction = "Station"
@@ -152,9 +152,9 @@ GLOBAL_LIST_INIT(association_jobs, list(
 	)
 
 /datum/job/associate/after_spawn(mob/living/carbon/human/outfit_owner, mob/M)
-	to_chat(M, span_userdanger("This is a roleplay role. You are not affiliated with L Corporation. \
-	Do not enter the lower levels of the facility without the manager's permission."))
-	to_chat(M, span_danger("Avoid killing other players without a reason."))
+	to_chat(M, span_userdanger("这是一个RP向角色，你与L公司无任何关联， \
+	未经设施主管许可，不要进入设施下层区域."))
+	to_chat(M, span_danger("避免无故杀死其他玩家."))
 	outfit_owner.set_attribute_limit(80)
 	return ..()
 

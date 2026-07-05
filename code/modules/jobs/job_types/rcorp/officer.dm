@@ -1,7 +1,7 @@
 /datum/job/juniorofficer
-	title = "Operations Officer"
+	title = "Operations Officer-作战军官"
 	faction = "Station"
-	department_head = list("Lieutenant Commander", "Ground Commander")
+	department_head = list("Lieutenant Commander-中尉副指挥官", "Ground Commander-地面指挥官")
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "your senior officers"
@@ -23,8 +23,8 @@
 	minimal_access = (ACCESS_COMMAND)
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_R_CORP
 	rank_title = "LT"
-	job_important = "You are a support and command role in Rcorp. Advise the Commander, Run requisitions and then deploy."
-	job_notice = "Run the Requisitions, assist Rcorp personnel on the base. After deployment, use your beacon to select which class you'd like."
+	job_important = "你在R-公司中担任支援和指挥角色. 为指挥官提供建议, 管理补给并部署部队."
+	job_notice = "运行补给请求，协助R-公司人员在基地工作，部署后，使用你的信标选择你想要的类型."
 
 	alt_titles = list("Staff Officer", "Field Officer",	"Command Officer",	"Junior Officer")
 
@@ -37,7 +37,7 @@
 	G.Grant(H)
 
 /datum/outfit/job/officer
-	name = "Operations Officer"
+	name = "Operations Officer-作战军官"
 	jobtype = /datum/job/juniorofficer
 	uniform = /obj/item/clothing/under/suit/lobotomy/rabbit/officer
 	belt = /obj/item/ego_weapon/city/rabbit_blade
@@ -58,8 +58,8 @@
 
 //Officer beacon
 /obj/item/choice_beacon/officer
-	name = "officer beacon"
-	desc = "A beacon officers can use to select their role."
+	name = "军官信标"
+	desc = "可以用来选择你的角色."
 
 /obj/item/choice_beacon/officer/generate_display_names()
 	var/static/list/officer_item_list
@@ -73,17 +73,17 @@
 
 /obj/item/choice_beacon/officer/spawn_option(obj/choice,mob/living/M)
 	new choice(get_turf(M))
-	to_chat(M, "<span class='hear'>Thank you for your service..</span>")
+	to_chat(M, "<span class='hear'>感谢你的服务..</span>")
 
 /obj/item/storage/box/officer/gunner
-	name = "Gunner Officer"
+	name = "枪手军官"
 	desc = "Includes the Rcorp machine gun."
 
 /obj/item/storage/box/officer/gunner/PopulateContents()
 	new /obj/item/gun/energy/e_gun/rabbit/minigun(src)
 
 /obj/item/storage/box/officer/medic
-	name = "Medic Officer"
+	name = "医疗军官"
 	desc = "Includes medical supplies."
 
 /obj/item/storage/box/officer/medic/PopulateContents()
@@ -91,7 +91,7 @@
 	new /obj/item/clothing/glasses/hud/health(src)
 
 /obj/item/storage/box/officer/command
-	name = "Command Officer"
+	name = "指挥军官"
 	desc = "Includes various command gear for assisting a captain."
 
 /obj/item/storage/box/officer/command/PopulateContents()
@@ -101,7 +101,7 @@
 	new /obj/item/survivalcapsule/rcorpsmallcommand(src)
 
 /obj/item/storage/box/officer/engineer
-	name = "Engineering Officer"
+	name = "工程军官"
 	desc = "Includes various engineering gear for repairing rhinos and setting up defenses."
 
 /obj/item/storage/box/officer/engineer/PopulateContents()
@@ -111,7 +111,7 @@
 
 
 /obj/item/storage/box/officer/delivery
-	name = "Requisitions Officer"
+	name = "补给军官"
 	desc = "Includes a set of wheelies and night vision for going to and from the front quickly."
 
 /obj/item/storage/box/officer/delivery/PopulateContents()

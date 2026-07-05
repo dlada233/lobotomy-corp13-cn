@@ -1,5 +1,5 @@
 /datum/job/rcorp_captain/commander/assault
-	title = "Assault Commander"
+	title = "Assault Commander-突击指挥官"
 	faction = "Station"
 	exp_requirements = 3000
 	maptype = "rcorp_fifth"
@@ -12,12 +12,12 @@
 	minimal_access = list(ACCESS_ARMORY, ACCESS_RND, ACCESS_COMMAND, ACCESS_MEDICAL, ACCESS_MANAGER)
 
 	rank_title = "LCDR"
-	job_important = "You are the Assault Commander, and lead the charge from the front. You MUST first brief the pack, to make sure that you have a basic plan, and then you may lead the charge."
-	job_notice = " Give a briefing and then open the doors to the outside via a button in the officer's room, and then lead the charge."
+	job_important = "你是 Assault Commander-突击指挥官, 带领部队向前方发起攻击，你必须先向集团军做简报，确保自己有基本的计划，然后才能带领队伍前进."
+	job_notice = " 先进行战前简报，然后通过军官房间的按钮打开通往外面的门，接着带领队伍发起冲锋."
 
 
 /datum/outfit/job/commander/assault
-	name = "Assault Commander"
+	name = "Assault Commander-突击指挥官"
 	jobtype = /datum/job/rcorp_captain/commander/assault
 
 	belt = /obj/item/ego_weapon/city/rabbit_blade/command
@@ -35,7 +35,7 @@
 
 
 /datum/job/rcorp_captain/commander/base
-	title = "Base Commander"
+	title = "Base Commander-基地指挥官"
 	trusted_only = FALSE
 	outfit = /datum/outfit/job/commander/base
 	display_order = 1.1
@@ -49,15 +49,15 @@
 								)
 	access = list(ACCESS_ARMORY, ACCESS_RND, ACCESS_COMMAND, ACCESS_MEDICAL)
 	minimal_access = list(ACCESS_ARMORY, ACCESS_RND, ACCESS_COMMAND, ACCESS_MEDICAL)
-	alt_titles = list("Base Commander", "Senior Officer")
+	alt_titles = list("Base Commander-基地指挥官", "Senior Officer")
 	rank_title = "CPT"
-	job_important = "You are the right hand man to the Assault Commander. Take care of the base, and protect it from hostiles. \
-		If you are caught on the frontline, and the comms get ."
-	job_notice = "Manage the Junior Officers at your disposal"
+	job_important = "你是 Assault Commander-突击指挥官的得力助手，照顾好基地，并保护它免受敌人的侵害.  \
+		如果你在前线被抓住，通讯就会中断. "
+	job_notice = "管理你手下的初级军官"
 
 
 /datum/outfit/job/commander/base
-	name = "Base Commander"
+	name = "Base Commander-基地指挥官"
 	jobtype = /datum/job/rcorp_captain/commander/lieutenant
 	uniform = /obj/item/clothing/under/suit/lobotomy/rabbit/lcdr
 	belt = /obj/item/ego_weapon/city/rabbit_blade

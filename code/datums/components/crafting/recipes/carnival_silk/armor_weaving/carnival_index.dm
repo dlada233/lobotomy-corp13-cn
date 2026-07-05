@@ -1,6 +1,6 @@
 //Index Recipes
 /datum/crafting_recipe/index_proselyte
-	name = "Index Proselyte Armor"
+	name = "Index Proselyte - 食指传教士 Armor"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/index
 	reqs = list(
 		/obj/item/stack/sheet/silk/violet_simple = 2,
@@ -14,7 +14,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/index_proxy
-	name = "Index Proxy Armor"
+	name = "Index Proxy - 食指代行者 Armor"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/index_proxy
 	reqs = list(
 		/obj/item/stack/sheet/silk/violet_simple = 4,
@@ -28,7 +28,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/index_mess
-	name = "Index Messenger Armor"
+	name = "Index Messenger-食指传令员 Armor"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/index_mess
 	reqs = list(
 		/obj/item/stack/sheet/silk/violet_simple = 8,

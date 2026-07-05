@@ -2,7 +2,7 @@
 Scavenger
 */
 /datum/job/scavenger
-	title = "Rat"
+	title = "Rat - 耗子"
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
@@ -32,7 +32,7 @@ Scavenger
 	..()
 
 /datum/outfit/job/scavenger
-	name = "Rat"
+	name = "Rat - 耗子"
 	jobtype = /datum/job/scavenger
 	uniform = null
 	belt = null

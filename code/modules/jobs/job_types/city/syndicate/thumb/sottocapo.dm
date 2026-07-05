@@ -1,6 +1,6 @@
 //thumb sottocapo
 /datum/job/sottocapo
-	title = "Thumb Sottocapo"
+	title = "Thumb Sottocapo-拇指指挥官"
 	outfit = /datum/outfit/job/sottocapo
 	department_head = list("money and order.")
 	faction = "Station"
@@ -42,7 +42,7 @@
 
 
 /datum/outfit/job/sottocapo
-	name = "Thumb Sottocapo"
+	name = "Thumb Sottocapo-拇指指挥官"
 	jobtype = /datum/job/sottocapo
 
 	belt = /obj/item/pda/security

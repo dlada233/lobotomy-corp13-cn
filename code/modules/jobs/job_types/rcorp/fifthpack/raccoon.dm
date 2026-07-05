@@ -1,7 +1,7 @@
 /datum/job/raccoon
-	title = "R-Corp Raccoon Spy"
+	title = "R-Corp Raccoon Spy - R-公司浣熊间谍"
 	faction = "Station"
-	department_head = list("Raccoon Squad Leader", "Commander")
+	department_head = list("Raccoon Squad Leader-浣熊队队长", "Commander")
 	total_positions = 3
 	spawn_positions = 3
 	exp_requirements = 120
@@ -23,24 +23,24 @@
 								JUSTICE_ATTRIBUTE = 60
 								)
 	rank_title = "SPC"
-	job_important = "You take the role of a stealth recon unit."
-	job_notice = "You are a Raccoon armed with camouflage technology. You report on enemy positions and find opportune moments to take advantage of."
+	job_important = "你扮演一个隐蔽侦查小组的角色."
+	job_notice = "你是一只配备伪装技术的浣熊，你负责侦查敌方位置，并在合适时机利用这些机会."
 
 
 /datum/job/raccoon/sniper
-	title = "R-Corp Raccoon Sniper"
+	title = "R-Corp Raccoon Sniper - R-公司浣熊狙击手"
 	total_positions = 2
 	spawn_positions = 2
 	exp_requirements = 120
 	outfit = /datum/outfit/job/raccoon/sniper
 	display_order = 11.5
 	rank_title = "SGT"
-	job_important = "You take the role of a long range marksman."
-	job_notice = "You are a Raccoon armed with a long range rifle. You report on enemy positions and fire from the backlines with your IFF-enabled rifle."
+	job_important = "你扮演一个远程狙击手的角色."
+	job_notice = "你是一只配备远程步枪的浣熊。你负责报告敌方位置，并使用你的‘智能敌我识别步枪’从后方开火。"
 
 
 /datum/job/rcorp_captain/raccoon
-	title = "Raccoon Squad Leader"
+	title = "Raccoon Squad Leader-浣熊队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -66,12 +66,12 @@
 								JUSTICE_ATTRIBUTE = 80,
 								)
 	rank_title = "LT"
-	job_important = "You are the squad leader of the stealth recon division."
+	job_important = "你是潜行浣熊部队的队长."
 	//job_notice = "Visit your bunks in the command tent to gather your one-handed rabbit gun and multiphase blade."
 
 
 /datum/outfit/job/raccoon
-	name = "R-Corp Raccoon Spy"
+	name = "R-Corp Raccoon Spy - R-公司浣熊间谍"
 	jobtype = /datum/job/raccoon
 
 	ears = /obj/item/radio/headset/headset_information
@@ -91,7 +91,7 @@
 
 
 /datum/outfit/job/raccoon/sniper
-	name = "R-Corp Raccoon Sniper"
+	name = "R-Corp Raccoon Sniper - R-公司浣熊狙击手"
 	jobtype = /datum/job/raccoon/sniper
 
 	head = /obj/item/clothing/head/rabbit_helmet/raccoonsniper
@@ -100,7 +100,7 @@
 
 
 /datum/outfit/job/raccoon/leader
-	name = "Raccoon Squad Leader"
+	name = "Raccoon Squad Leader-浣熊队队长"
 	jobtype = /datum/job/rcorp_captain/raccoon
 
 	head = /obj/item/clothing/head/rabbit_helmet/raccooncap

@@ -1,6 +1,6 @@
 //Hana
 /datum/job/hana
-	title = "Hana Representative"
+	title = "Hana Representative - 一协会代表"
 	outfit = /datum/outfit/job/hana
 	department_head = list("your association")
 	faction = "Station"
@@ -16,12 +16,12 @@
 	paycheck = 0
 	mind_traits = list(TRAIT_WORK_FORBIDDEN, TRAIT_COMBATFEAR_IMMUNE)
 	maptype = list("city", "fixers")
-	job_important = "You are the city's administrator, and have a small sort of power over the local association. \
-		You MUST assist new fixer offices in getting set up, as well as issuing fixer licenses. \
-		All new fixer offices MUST be announced upon creation, including office name and director name."
-	job_notice = "Along with this, you may announce new taboos (which must be announced), and issue the association to enforce them. \
-		You may also grade fixers, administer quests, and perform office inspections at your leisure. \
-		For more information, see https://wiki.lc13.net/view/Hana_Association"
+	job_important = "你是都市的管理者, 对当地的协会拥有一定的管理权力. \
+		你必须帮助设立新的收尾人事务所，并颁发收尾人证书. \
+		所有新设立的收尾人事务所必须在创建时进行申报，包括事务所名称和主管姓名."
+	job_notice = "同时，你可以宣布新的禁忌事项(必须公开颁布)，并授权协会帮助执行这些规定. \
+		你也可以在空闲时执行评级修订，发布任务和事务所检查. \
+		更多信息，参阅 https://wiki.lc13.net/view/Hana_Association"
 
 
 	//Mostly for armor.
@@ -48,7 +48,7 @@
 	return ..()
 
 /datum/outfit/job/hana
-	name = "Hana Representative"
+	name = "Hana Representative - 一协会代表"
 	jobtype = /datum/job/hana
 
 	id = /obj/item/card/id/silver/plastic
@@ -64,7 +64,7 @@
 
 //Hana
 /datum/job/hana/boss
-	title = "Hana Administrator"
+	title = "Hana Administrator-一协会管理员"
 	outfit = /datum/outfit/job/hana/admin
 	total_positions = 1
 	spawn_positions = 1
@@ -83,7 +83,7 @@
 
 
 /datum/outfit/job/hana/admin
-	name = "Hana Administrator"
+	name = "Hana Administrator-一协会管理员"
 	jobtype = /datum/job/hana/boss
 
 	ears = /obj/item/radio/headset/heads/headset_association
@@ -91,7 +91,7 @@
 
 //Hana
 /datum/job/hana/intern
-	title = "Hana Intern"
+	title = "Hana Intern - 一协会实习生"
 	outfit = /datum/outfit/job/hana/intern
 	total_positions = 2
 	spawn_positions = 2
@@ -108,32 +108,32 @@
 		JUSTICE_ATTRIBUTE = 60,
 	)
 
-	job_important = "You are a Intern for the Hana association, Your only job is to assist the higher ups with their duities. \
-		You MUST assist new fixer offices in getting set up, as well as issuing fixer licenses. \
-		All new fixer offices MUST be announced upon creation, including office name and director name. "
-	job_notice = "For more information, see https://wiki.lc13.net/view/Hana_Association"
+	job_important = "你是Hana协会的实习生，你的唯一工作是协助上级处理他们的事务. \
+		你必须帮助设立新的收尾人事务所，并颁发收尾人证书. \
+		所有新设立的收尾人事务所必须在创建时进行申报，包括事务所名称和主管姓名. "
+	job_notice = "更多信息，参阅 https://wiki.lc13.net/view/Hana_Association"
 
 
 /datum/outfit/job/hana/intern
-	name = "Hana Intern"
+	name = "Hana Intern - 一协会实习生"
 	jobtype = /datum/job/hana/intern
 	l_hand = null
 
 
 /client/proc/hanafetchquest()
-	set name = "Issue Fetch Quest"
-	set category = "Hana Quests"
+	set name = "发出收集任务"
+	set category = "一协会任务"
 
-	minor_announce("Hana has issued a request for a diamond coin. Payment will be given upon quest completion", "Hana Assignment:", TRUE)
+	minor_announce("一协会已发出收集钻石硬币的任务，报酬将在完成任务后支付", "Hana Assignment:", TRUE)
 	var/T = pick(SScityevents.distortion)
 	var/Y = /obj/item/coin/diamond
 	new Y (get_turf(T))
 
 /client/proc/hanaslayquest()
-	set name = "Issue Slay Quest"
-	set category = "Hana Quests"
+	set name = "发出击杀任务"
+	set category = "一协会任务"
 
-	minor_announce("Hana has issued a kill request on an unknown distortion. Payment will be given upon quest completion", "Hana Assignment:", TRUE)
+	minor_announce("一协会已发出击杀未知扭曲的任务，报酬将在任务完成后支付", "Hana Assignment:", TRUE)
 	var/T = pick(SScityevents.distortion)
 	if(T)
 		minor_announce("Found location", "Hana Assignment:", TRUE)

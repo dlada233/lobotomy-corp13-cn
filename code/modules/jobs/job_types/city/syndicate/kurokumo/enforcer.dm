@@ -1,6 +1,6 @@
-//Kurokumo Hosa
+//Kurokumo Hosa - 黑云会辅佐
 /datum/job/kuroenforcer
-	title = "Kurokumo Hosa"
+	title = "Kurokumo Hosa - 黑云会辅佐"
 	outfit = /datum/outfit/job/kuroenforcer
 	department_head = list("the kashira.")
 	faction = "Station"
@@ -28,7 +28,7 @@
 
 
 /datum/outfit/job/kuroenforcer
-	name = "Kurokumo Hosa"
+	name = "Kurokumo Hosa - 黑云会辅佐"
 	jobtype = /datum/job/kuroenforcer
 
 	belt = /obj/item/pda/security

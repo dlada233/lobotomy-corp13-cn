@@ -4,7 +4,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "delivery"
 	inhand_icon_state = "flashbang"
-	var/list/usable_roles = list("Hana Representative", "Hana Administrator", "Hana Intern")
+	var/list/usable_roles = list("Hana Representative - 一协会代表", "Hana Administrator-一协会管理员", "Hana Intern - 一协会实习生")
 	var/current_office
 
 /obj/item/office_marker/examine(mob/user)
@@ -42,7 +42,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "delivery"
 	inhand_icon_state = "flashbang"
-	usable_roles = list("Blade Lineage Cutthroat", "Index Messenger", "Kurokumo Kashira", "Grand Inquisitor", "Thumb Sottocapo")
+	usable_roles = list("Blade Lineage Cutthroat-剑契组首领", "Index Messenger-食指传令员", "Kurokumo Kashira-黑云会甲头", "Grand Inquisitor-大审判官", "Thumb Sottocapo-拇指指挥官")
 
 /obj/item/office_marker/syndicate/attack_self(mob/living/carbon/human/user)
 	return
@@ -113,7 +113,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/list/check_times = list()
 	var/list/usable_roles = list("Civilian", "Office Director", "Office Fixer",
-		"Subsidary Office Director", "Fixer")
+		"Subsidary Office Director-分事务所主管", "Fixer - 收尾人")
 
 /obj/machinery/scanner_gate/officescanner/auto_scan(atom/movable/AM)
 	return

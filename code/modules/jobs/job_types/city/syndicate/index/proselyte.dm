@@ -1,6 +1,6 @@
 //Index Proselytes
 /datum/job/proselyte
-	title = "Index Proselyte"
+	title = "Index Proselyte - 食指传教士"
 	outfit = /datum/outfit/job/proselyte
 	department_head = list("the will of the prescript")
 	faction = "Station"
@@ -29,7 +29,7 @@
 
 
 /datum/outfit/job/proselyte
-	name = "Index Proselyte"
+	name = "Index Proselyte - 食指传教士"
 	jobtype = /datum/job/proselyte
 
 	belt = /obj/item/pda/security

@@ -103,7 +103,7 @@
 	suit = /obj/item/clothing/suit/armor/ego_gear/city/misc/lone
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id
-	id_job = "Fixer"
+	id_job = "Fixer - 收尾人"
 
 /obj/effect/mob_spawn/human/fixer/equip(mob/living/carbon/human/H)
 //Be very careful, sometimes these guys don't like to initialize
@@ -136,7 +136,7 @@
 	suit = /obj/item/clothing/suit/armor/ego_gear/city/thumb
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id
-	id_job = "Thumb Soldato"
+	id_job = "Thumb Soldato - 拇指士兵"
 
 /obj/effect/mob_spawn/human/thumb/equip(mob/living/carbon/human/H)
 //Ditto

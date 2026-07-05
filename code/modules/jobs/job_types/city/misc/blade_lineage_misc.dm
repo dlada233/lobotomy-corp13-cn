@@ -1,6 +1,6 @@
 //Randomspawn Salsus
 /datum/job/roamingsalsu
-	title = "Blade Lineage Roaming Salsu"
+	title = "Blade Lineage Roaming Salsu - 剑契组流浪杀手"
 	outfit = /datum/outfit/job/roamingsalsu
 	department_head = list("the code of honor")
 	faction = "Station"
@@ -32,7 +32,7 @@
 
 
 /datum/outfit/job/roamingsalsu
-	name = "Blade Lineage Salsu"
+	name = "Blade Lineage Salsu - 剑契组杀手"
 	jobtype = /datum/job/salsu
 
 	belt = /obj/item/pda/security

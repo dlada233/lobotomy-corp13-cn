@@ -1,5 +1,5 @@
 /datum/job/rhino
-	title = "R-Corp Gunner Rhino"
+	title = "R-Corp Gunner Rhino - R-公司机枪手犀牛"
 	faction = "Station"
 	department_head = list("Rhino Team Captain", "Commander")
 	total_positions = 2
@@ -24,12 +24,12 @@
 								JUSTICE_ATTRIBUTE = 40
 								)
 	rank_title = "SGT"
-	job_important = "You take the role of ranged armored unit."
-	job_notice = "Equip your mecha in the supply tent to the northwest. Take point, and cover for the rabbits. \
-		You can heal your mech with the welder. Keep in mind that certain attacks can pierce your mecha"
+	job_important = "你扮演远程装甲单位的角色."
+	job_notice = "在西北部的补给帐篷中装备你的机甲，占据前排，并为兔子们提供掩护. \
+		你可以用焊枪修复你的机甲。记住，某些攻击可以穿透你的机甲"
 
 /datum/job/rhino/hammer
-	title = "R-Corp Hammer Rhino"
+	title = "R-Corp Hammer Rhino - R-公司重锤犀牛"
 	total_positions = 1
 	spawn_positions = 1
 	display_order = 6.1
@@ -38,10 +38,10 @@
 	access = list(ACCESS_ARMORY, ACCESS_CENT_THUNDER)
 	minimal_access = list(ACCESS_ARMORY, ACCESS_CENT_THUNDER)
 
-	job_important = "You take the role of melee armored unit."
+	job_important = "你扮演近战装甲单位的角色."
 
 /datum/job/rcorp_captain/rhino
-	title = "Rhino Squad Captain"
+	title = "Rhino Squad Captain-犀牛队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -67,13 +67,13 @@
 								JUSTICE_ATTRIBUTE = 80
 								)
 	rank_title = "CPT"
-	job_important = "You are the captain of the armored division."
-	job_notice = "Visit your bunks in the command tent to gather your mecha, and lead the Rhinos at the point."
+	job_important = "你是装甲部队的队长。"
+	job_notice = "前往指挥帐篷中的你的床位，收集你的机甲，并在前线带领犀牛队."
 
 
 
 /datum/outfit/job/rhino
-	name = "R-Corp Gunner Rhino"
+	name = "R-Corp Gunner Rhino - R-公司机枪手犀牛"
 	jobtype = /datum/job/rhino
 
 	ears = /obj/item/radio/headset/headset_discipline
@@ -85,13 +85,13 @@
 	belt = /obj/item/storage/belt/rhino/full
 
 /datum/outfit/job/rhino/melee
-	name = "R-Corp Hammer Rhino"
+	name = "R-Corp Hammer Rhino - R-公司重锤犀牛"
 	jobtype = /datum/job/rhino/hammer
 
 
 
 /datum/outfit/job/rhino/captain
-	name = "Rhino Squad Captain"
+	name = "Rhino Squad Captain-犀牛队队长"
 	jobtype = /datum/job/rcorp_captain/rhino
 	glasses = /obj/item/clothing/glasses/hud/diagnostic/sunglasses
 	ears = /obj/item/radio/headset/heads/headset_discipline

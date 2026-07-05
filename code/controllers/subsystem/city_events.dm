@@ -196,7 +196,7 @@ SUBSYSTEM_DEF(cityevents)
 		if(jobpicked == 4)
 			if(istype(processing, /datum/job/roamingsalsu))
 				processing.total_positions += 1
-				deadchat_broadcast("A Blade Lineage Salsu job slot has just opened, respawn to play.", message_type=DEADCHAT_ANNOUNCEMENT)
+				deadchat_broadcast("A Blade Lineage Salsu - 剑契组杀手 job slot has just opened, respawn to play.", message_type=DEADCHAT_ANNOUNCEMENT)
 
 		if(jobpicked == 5)
 			if(istype(processing, /datum/job/butcher))

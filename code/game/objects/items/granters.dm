@@ -581,7 +581,7 @@
 	name = "Weaving Armor: Kurokumo Edition"
 	desc = "A weaving book that teaches you how to weave kurokumo armor. Carnival approved!<br>\
 	On the back, it says that reading this book will teach how to make: <br>\
-	-Kurokumo Wakashu Dress Jacket: RED = 20%, WHITE = 20%, BLACK = 20%, PALE = 20%, Makes you 20% faster.<br>\
+	-Kurokumo Wakashu - 黑云会若衆 Dress Jacket: RED = 20%, WHITE = 20%, BLACK = 20%, PALE = 20%, Makes you 20% faster.<br>\
 	-Kurokumo Enforcer Dress Shirt: RED = 30%, WHITE = 30%, BLACK = 30%, PALE = 30%, Makes you 30% faster.<br>\
 	-Kurokumo Captain Kimono: RED = 30%, WHITE = 30%, BLACK = 30%, PALE = 20%, Makes you 50% faster."
 	crafting_recipe_types = list(

@@ -1,6 +1,6 @@
 //Thumb capo
 /datum/job/capo
-	title = "Thumb Capo"
+	title = "Thumb Capo - 拇指队长"
 	outfit = /datum/outfit/job/capo
 	department_head = list("the sottocapo.")
 	faction = "Station"

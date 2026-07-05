@@ -1,6 +1,6 @@
-//Grand Inquisitor
+//Grand Inquisitor-大审判官
 /datum/job/grandinquis
-	title = "Grand Inquisitor"
+	title = "Grand Inquisitor-大审判官"
 	outfit = /datum/outfit/job/grandinquis
 	department_head = list("the glory of righteousness.")
 	faction = "Station"
@@ -42,7 +42,7 @@
 
 
 /datum/outfit/job/grandinquis
-	name = "Grand Inquisitor"
+	name = "Grand Inquisitor-大审判官"
 	jobtype = /datum/job/grandinquis
 
 	belt = /obj/item/pda/security

@@ -1,6 +1,6 @@
-//Thumb Soldato
+//Thumb Soldato - 拇指士兵
 /datum/job/soldato
-	title = "Thumb Soldato"
+	title = "Thumb Soldato - 拇指士兵"
 	outfit = /datum/outfit/job/soldato
 	department_head = list("the capos and sottocapo.")
 	faction = "Station"
@@ -26,7 +26,7 @@
 
 
 /datum/outfit/job/soldato
-	name = "Thumb Soldato"
+	name = "Thumb Soldato - 拇指士兵"
 	jobtype = /datum/job/soldato
 
 	belt = /obj/item/pda/security

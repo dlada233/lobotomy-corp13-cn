@@ -56,7 +56,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Chemist" = 21,
 		"Virologist" = 22,
 		"Medical Doctor" = 23,
-		"Paramedic" = 24,
+		"Paramedic-急救员" = 24,
 		// 30-39: Science
 		"Research Director" = 30,
 		"Scientist" = 31,
@@ -117,25 +117,25 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Medical Response Officer" = 223,
 
 		// 350-410 : R-Corp
-		"Ground Commander" = 350,
-		"Lieutenant Commander" = 360,
-		"Operations Officer" = 361,
+		"Ground Commander-地面指挥官" = 350,
+		"Lieutenant Commander-中尉副指挥官" = 360,
+		"Operations Officer-作战军官" = 361,
 		//Ravens
 		"Raven Team Captain" = 370,
-		"R-Corp Scout Raven" = 371,
-		"R-Corp Support Raven" = 372,
+		"R-Corp Scout Raven - R-公司侦查渡鸦" = 371,
+		"R-Corp Support Raven - R-公司支援渡鸦" = 372,
 		//Reindeer
 		"Reindeer Team Captain" = 380,
-		"R-Corp Berserker Reindeer" = 381,
-		"R-Corp Medical Reindeer" = 382,
+		"R-Corp Berserker Reindeer - R-公司狂战士驯鹿" = 381,
+		"R-Corp Medical Reindeer - R-公司医疗驯鹿" = 382,
 		//Rabbits
 		"Rhino Team Captain" = 390,
-		"R-Corp Gunner Rhino" = 391,
-		"R-Corp Hammer Rhino" = 392,
+		"R-Corp Gunner Rhino - R-公司机枪手犀牛" = 391,
+		"R-Corp Hammer Rhino - R-公司重锤犀牛" = 392,
 		//Rabbits
 		"Rabbit Team Captain" = 400,
-		"R-Corp Suppressive Rabbit" = 401,
-		"R-Corp Assault Rabbit" = 402
+		"R-Corp Suppressive Rabbit - R-公司抑制兔子" = 401,
+		"R-Corp Assault Rabbit - R-公司突击兔子" = 402
 	)
 
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)

@@ -1,6 +1,6 @@
 //BL Cutthroat
 /datum/job/cutthroat
-	title = "Blade Lineage Cutthroat"
+	title = "Blade Lineage Cutthroat-剑契组首领"
 	outfit = /datum/outfit/job/cutthroat
 	department_head = list("the code of honor")
 	faction = "Station"
@@ -46,7 +46,7 @@
 
 
 /datum/outfit/job/cutthroat
-	name = "Blade Lineage Cutthroat"
+	name = "Blade Lineage Cutthroat-剑契组首领"
 	jobtype = /datum/job/cutthroat
 
 	belt = /obj/item/pda/security

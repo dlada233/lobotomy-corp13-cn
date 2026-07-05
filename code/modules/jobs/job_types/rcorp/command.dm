@@ -1,5 +1,5 @@
 /datum/job/rcorp_captain/commander
-	title = "Ground Commander"
+	title = "Ground Commander-地面指挥官"
 	faction = "Station"
 	department_head = list()
 	total_positions = 1
@@ -27,8 +27,8 @@
 								)
 	alt_titles = list("Commander")
 	rank_title = "CDR"
-	job_important = "Lead the Rcorp 4th Pack to victory using your command and organizational skills. You are among the highest ranked combatant in the R-Corp mercenary force."
-	job_notice = " Give a briefing and then open the doors to the outside via a button in the officer's room."
+	job_important = "运用你的指挥艺术，带领R-公司第四集团军走向胜利. 你是R-公司雇佣军中最高级别的战斗人员之一."
+	job_notice = " 先进行战前简报，然后通过军官房间的按钮打开通往室外的门."
 
 /datum/job/rcorp_captain/commander/New()
 	..()
@@ -50,13 +50,13 @@
 	..()
 	switch(rank_title)
 		if("CDR")
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "All rise for commander [H.real_name]."))
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "全体注意，向指挥官[H.real_name] 致敬."))
 		if("JCDR")
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "Junior Commander [H.real_name] is in command of this operation."))
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "初级指挥官 [H.real_name] 已经到达指挥位置."))
 		if("LCDR")
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "Lieutenant commander [H.real_name] has arrived."))
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "中尉指挥官 [H.real_name] 已经到达."))
 		if("CPT")
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "Captain [H.real_name] has arrived."))
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), "队长 [H.real_name] 已经到达."))
 
 /datum/outfit/job/commander
 	name = "Ground Commander"
@@ -75,7 +75,7 @@
 
 
 /datum/job/rcorp_captain/commander/lieutenant
-	title = "Lieutenant Commander"
+	title = "Lieutenant Commander-中尉副指挥官"
 	trusted_only = FALSE
 	outfit = /datum/outfit/job/commander/lieutenant
 	display_order = 1.1
@@ -88,14 +88,14 @@
 								)
 	access = list(ACCESS_ARMORY, ACCESS_RND, ACCESS_COMMAND, ACCESS_MEDICAL)
 	minimal_access = list(ACCESS_ARMORY, ACCESS_RND, ACCESS_COMMAND, ACCESS_MEDICAL)
-	alt_titles = list("Base Commander", "Senior Officer")
+	alt_titles = list("Base Commander-基地指挥官", "Senior Officer")
 	rank_title = "LCDR"
-	job_important = "You are the right hand man to the Commander. Assist them in any way you can. If there is no commander, you are next in line for Acting Commander."
-	job_notice = "Manage the Junior Officers at your disposal"
+	job_important = "你是指挥官的得力助手. 尽你所能协助他. 如果没有指挥官, 你将接替成为代理指挥官."
+	job_notice = "管理你手下的初级军官"
 
 
 /datum/outfit/job/commander/lieutenant
-	name = "Lieutenant Commander"
+	name = "Lieutenant Commander-中尉副指挥官"
 	jobtype = /datum/job/rcorp_captain/commander/lieutenant
 	uniform = /obj/item/clothing/under/suit/lobotomy/rabbit/lcdr
 	belt = /obj/item/ego_weapon/city/rabbit_blade

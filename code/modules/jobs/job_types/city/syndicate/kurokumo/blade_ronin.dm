@@ -1,6 +1,6 @@
 //BL Ronin, a job to hunt down Kurokumo
 /datum/job/ronin
-	title = "Blade Lineage Ronin"
+	title = "Blade Lineage Ronin - 剑契组浪人"
 	outfit = /datum/outfit/job/ronin
 	department_head = list("the code of honor")
 	faction = "Station"
@@ -31,7 +31,7 @@
 
 
 /datum/outfit/job/ronin
-	name = "Blade Lineage Ronin"
+	name = "Blade Lineage Ronin - 剑契组浪人"
 	jobtype = /datum/job/ronin
 
 	belt = /obj/item/ego_weapon/city/bladelineage

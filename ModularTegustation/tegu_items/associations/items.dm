@@ -62,7 +62,7 @@
 	var/total_adjust = 0
 	var/max_attributes = 130
 	var/list/usable_roles = list("Civilian", "Office Director", "Office Fixer",
-		"Subsidary Office Director", "Fixer")
+		"Subsidary Office Director-分事务所主管", "Fixer - 收尾人")
 	var/adjusting = FALSE
 
 /obj/item/attribute_increase/fixer/attack_self(mob/living/carbon/human/user)

@@ -11,34 +11,34 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Agent Captain",
 
 	// City heads
-	"Doctor",
-	"Hana Administrator",
-	"Association Section Director",
-	"Association Assistant Director",
-	"Subsidary Office Director",
-	"Index Messenger",
-	"Blade Lineage Cutthroat",
-	"Grand Inquisitor",
-	"Thumb Sottocapo",
-	"Kurokumo Kashira",
+	"Doctor-医生",
+	"Hana Administrator-一协会管理员",
+	"Association Section Director-协会科室主管",
+	"Association Assistant Director-协会科室副管",
+	"Subsidary Office Director-分事务所主管",
+	"Index Messenger-食指传令员",
+	"Blade Lineage Cutthroat-剑契组首领",
+	"Grand Inquisitor-大审判官",
+	"Thumb Sottocapo-拇指指挥官",
+	"Kurokumo Kashira-黑云会甲头",
 
 	// R-corp Fourth Pack
-	"Ground Commander",
-	"Lieutenant Commander",
-	"Operations Officer",
-	"Rabbit Squad Captain",
-	"Reindeer Squad Captain",
-	"Rhino Squad Captain",
-	"Raven Squad Captain",
+	"Ground Commander-地面指挥官",
+	"Lieutenant Commander-中尉副指挥官",
+	"Operations Officer-作战军官",
+	"Rabbit Squad Captain-兔子队队长",
+	"Reindeer Squad Captain-驯鹿队队长",
+	"Rhino Squad Captain-犀牛队队长",
+	"Rhino Squad Captain-乌鸦队队长",
 
 	// R-corp Fifth Pack
-	"Assault Commander",
-	"Base Commander",
-	"Support Officer",
-	"Rat Squad Leader",
-	"Rooster Squad Leader",
-	"Raccoon Squad Leader",
-	"Roadrunner Squad Leader",
+	"Assault Commander-突击指挥官",
+	"Base Commander-基地指挥官",
+	"Support Officer-支援军官",
+	"Rat Squad Leader-老鼠队队长",
+	"Rooster Squad Leader-公鸡队队长",
+	"Raccoon Squad Leader-浣熊队队长",
+	"Roadrunner Squad Leader-走鹃队队长",
 
 	// W-corp stuff
 	"W-Corp Representative",
@@ -70,11 +70,11 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Emergency Medical Technician",
 
 	// City
-	"Doctor",
-	"Nurse",
-	"Paramedic",
-	"Medical Fixer Assistant",
-	"Prosthetics Surgeon",
+	"Doctor-医生",
+	"Nurse-护士",
+	"Paramedic-急救员",
+	"Medical Fixer Assistant-医疗收尾人助手",
+	"Prosthetics Surgeon-义体医生",
 	))
 
 
@@ -180,94 +180,94 @@ GLOBAL_LIST_INIT(fighter_positions, list(
 
 GLOBAL_LIST_INIT(r_corp_positions, list(
 	// 4th Pack Command
-	"Ground Commander",
-	"Lieutenant Commander",
-	"Operations Officer",
-	"Rabbit Squad Captain",
-	"Reindeer Squad Captain",
-	"Rhino Squad Captain",
-	"Raven Squad Captain",
+	"Ground Commander-地面指挥官",
+	"Lieutenant Commander-中尉副指挥官",
+	"Operations Officer-作战军官",
+	"Rabbit Squad Captain-兔子队队长",
+	"Reindeer Squad Captain-驯鹿队队长",
+	"Rhino Squad Captain-犀牛队队长",
+	"Rhino Squad Captain-乌鸦队队长",
 
 	// 5th Pack Command
-	"Assault Commander",
-	"Base Commander",
-	"Support Officer",
-	"Rat Squad Leader",
-	"Rooster Squad Leader",
-	"Raccoon Squad Leader",
-	"Roadrunner Squad Leader",
+	"Assault Commander-突击指挥官",
+	"Base Commander-基地指挥官",
+	"Support Officer-支援军官",
+	"Rat Squad Leader-老鼠队队长",
+	"Rooster Squad Leader-公鸡队队长",
+	"Raccoon Squad Leader-浣熊队队长",
+	"Roadrunner Squad Leader-走鹃队队长",
 
 	// 4th Pack troops
-	"R-Corp Suppressive Rabbit",
-	"R-Corp Assault Rabbit",
-	"R-Corp Medical Reindeer",
-	"R-Corp Berserker Reindeer",
-	"R-Corp Gunner Rhino",
-	"R-Corp Hammer Rhino",
-	"R-Corp Scout Raven",
-	"R-Corp Support Raven",
+	"R-Corp Suppressive Rabbit - R-公司抑制兔子",
+	"R-Corp Assault Rabbit - R-公司突击兔子",
+	"R-Corp Medical Reindeer - R-公司医疗驯鹿",
+	"R-Corp Berserker Reindeer - R-公司狂战士驯鹿",
+	"R-Corp Gunner Rhino - R-公司机枪手犀牛",
+	"R-Corp Hammer Rhino - R-公司重锤犀牛",
+	"R-Corp Scout Raven - R-公司侦查渡鸦",
+	"R-Corp Support Raven - R-公司支援渡鸦",
 
 	// 5th Pack troops
-	"R-Corp Rat",
-	"R-Corp Rooster",
-	"R-Corp Raccoon Spy",
-	"R-Corp Raccoon Sniper",
-	"R-Corp Roadrunner",
+	"R-Corp Rat - R-公司老鼠",
+	"R-Corp Rooster - R-公司公鸡",
+	"R-Corp Raccoon Spy - R-公司浣熊间谍",
+	"R-Corp Raccoon Sniper - R-公司浣熊狙击手",
+	"R-Corp Roadrunner - R-公司走鹃",
 ))
 
 GLOBAL_LIST_INIT(hana_positions, list(
-	"Hana Administrator",
-	"Hana Representative",
-	"Hana Intern",
+	"Hana Administrator-一协会管理员",
+	"Hana Representative - 一协会代表",
+	"Hana Intern - 一协会实习生",
 ))
 
 GLOBAL_LIST_INIT(fixer_positions, list(
-	"East Office Director",
-	"East Office Fixer",
-	"North Office Director",
-	"North Office Fixer",
+	"East Office Director - 东部事务所主管",
+	"East Office Fixer - 东部事务所收尾人",
+	"North Office Director - 北部事务所主管",
+	"North Office Fixer - 北部事务所收尾人",
 
-	"Association Section Director",
-	"Association Veteran",
-	"Association Fixer",
-	"Roaming Association Fixer",
+	"Association Section Director-协会科室主管",
+	"Association Veteran - 协会资深收尾人",
+	"Association Fixer - 协会收尾人",
+	"Roaming Association Fixer - 自由协会收尾人",
 
-	"Medical Fixer Assistant",
-	"Fixer",
-	"Rat", // most fitting, somehow
+	"Medical Fixer Assistant-医疗收尾人助手",
+	"Fixer - 收尾人",
+	"Rat - 耗子", // most fitting, somehow
 
 	"Office Fixer",
 ))
 
 GLOBAL_LIST_INIT(association_positions, list(
-	"Association Section Director",
-	"Association Veteran",
-	"Association Fixer",
-	"Roaming Association Fixer",
+	"Association Section Director-协会科室主管",
+	"Association Veteran - 协会资深收尾人",
+	"Association Fixer - 协会收尾人",
+	"Roaming Association Fixer - 自由协会收尾人",
 ))
 
 GLOBAL_LIST_INIT(city_antagonist_positions, list(
-	"Index Messenger",
-	"Index Proxy",
-	"Index Proselyte",
+	"Index Messenger-食指传令员",
+	"Index Proxy - 食指代行者",
+	"Index Proselyte - 食指传教士",
 
-	"Blade Lineage Cutthroat",
-	"Blade Lineage Salsu",
-	"Blade Lineage Ronin",
-	"Blade Lineage Roaming Salsu",
+	"Blade Lineage Cutthroat-剑契组首领",
+	"Blade Lineage Salsu - 剑契组杀手",
+	"Blade Lineage Ronin - 剑契组浪人",
+	"Blade Lineage Roaming Salsu - 剑契组流浪杀手",
 
-	"Grand Inquisitor",
+	"Grand Inquisitor-大审判官",
 	"N Corp Grosshammer",
 	"N Corp Mittlehammer",
 	"N Corp Kleinhammer",
 
-	"Thumb Sottocapo",
-	"Thumb Capo",
-	"Thumb Soldato",
+	"Thumb Sottocapo-拇指指挥官",
+	"Thumb Capo - 拇指队长",
+	"Thumb Soldato - 拇指士兵",
 
-	"Kurokumo Kashira",
-	"Kurokumo Hosa",
-	"Kurokumo Wakashu",
+	"Kurokumo Kashira-黑云会甲头",
+	"Kurokumo Hosa - 黑云会辅佐",
+	"Kurokumo Wakashu - 黑云会若衆",
 ))
 
 

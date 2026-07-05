@@ -1,5 +1,5 @@
 /datum/job/raven
-	title = "R-Corp Scout Raven"
+	title = "R-Corp Scout Raven - R-公司侦查渡鸦"
 	faction = "Station"
 	department_head = list("Raven Team Captain", "Commander")
 	total_positions = 3
@@ -24,13 +24,13 @@
 								JUSTICE_ATTRIBUTE = 100
 								)
 	rank_title = "SPC"
-	job_important = "You take the role of a scout support unit."
-	job_notice = "You cannot use guns, but are fast, and have access to night vision. Scout ahead and relay information to the group. \
-		You are also capable of striking with surgical precision and high speed."
+	job_important = "你扮演侦查支援类角色."
+	job_notice = "你不能使用枪支，但行动迅速，并且拥有夜视能力，在队伍前方侦察并传递信息. \
+		你也能以手术般的精确度和高速度进行近战攻击."
 
 
 /datum/job/raven/support
-	title = "R-Corp Support Raven"
+	title = "R-Corp Support Raven - R-公司支援渡鸦"
 	total_positions = 2
 	spawn_positions = 2
 	display_order = 8.1
@@ -41,12 +41,12 @@
 								JUSTICE_ATTRIBUTE = 80
 								)
 	outfit = /datum/outfit/job/raven/support
-	job_important = "You take the role of an intelligence support unit."
-	job_notice = "You cannot use guns, but have access to night vision. In your backpack you have a variety of tools to supply information to, and support your teammates. \
-		You are not as fast as scout ravens, try to stay with the group."
+	job_important = "你扮演情报支援类角色."
+	job_notice = "你不能使用枪支，但拥有夜视能力，在你的背包里有各种工具可以提供信息并支援队友. \
+		你不如侦查渡鸦速度快，尽量与队伍保持在一起."
 
 /datum/job/rcorp_captain/raven
-	title = "Raven Squad Captain"
+	title = "Rhino Squad Captain-乌鸦队队长"
 	faction = "Station"
 	department_head = list("Commander")
 	total_positions = 1
@@ -72,13 +72,13 @@
 								JUSTICE_ATTRIBUTE = 130
 								)
 	rank_title = "CPT"
-	job_important = "You are the captain of the intelligence division."
-	job_notice = "Visit your bunks in the command tent to gather your intel tools. \
-	Gather and disseminate information among command. \
-	You are the fastest unit in the 4th pack, and can strike with the speed of which no one else can"
+	job_important = "你是情报支援部队的队长."
+	job_notice = "前往指挥帐篷中的你的床位，收集情报支援工具. \
+	收集并传递指挥部门之间的信息. \
+	你是第四集团军中速度最快的单位，能以无人可及的速度发起攻击."
 
 /datum/outfit/job/raven
-	name = "R-Corp Scout Raven"
+	name = "R-Corp Scout Raven - R-公司侦查渡鸦"
 	jobtype = /datum/job/raven
 
 	ears = /obj/item/radio/headset/headset_information
@@ -95,7 +95,7 @@
 		/obj/item/grenade/smokebomb = 1)
 
 /datum/outfit/job/raven/support
-	name = "R-Corp Support Raven"
+	name = "R-Corp Support Raven - R-公司支援渡鸦"
 	jobtype = /datum/job/raven/support
 	suit = /obj/item/clothing/suit/armor/ego_gear/rabbit/ravensup
 	backpack_contents = list(
@@ -106,7 +106,7 @@
 		/obj/item/grenade/smokebomb = 1)
 
 /datum/outfit/job/raven/captain
-	name = "Raven Squad Captain"
+	name = "Rhino Squad Captain-乌鸦队队长"
 	jobtype = /datum/job/rcorp_captain/raven
 	glasses = /obj/item/clothing/glasses/hud/health/night/rabbit
 	head = /obj/item/clothing/head/rabbit_helmet/raven

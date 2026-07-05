@@ -1,6 +1,6 @@
-//Index Proxy
+//Index Proxy - 食指代行者
 /datum/job/proxy
-	title = "Index Proxy"
+	title = "Index Proxy - 食指代行者"
 	outfit = /datum/outfit/job/proxy
 	department_head = list("the will of the prescript")
 	faction = "Station"
@@ -30,7 +30,7 @@
 
 
 /datum/outfit/job/proxy
-	name = "Index Proxy"
+	name = "Index Proxy - 食指代行者"
 	jobtype = /datum/job/proxy
 
 	belt = /obj/item/pda/security

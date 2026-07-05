@@ -1,6 +1,6 @@
 //Index salsus
 /datum/job/salsu
-	title = "Blade Lineage Salsu"
+	title = "Blade Lineage Salsu - 剑契组杀手"
 	outfit = /datum/outfit/job/salsu
 	department_head = list("the code of honor")
 	faction = "Station"
@@ -35,7 +35,7 @@
 
 
 /datum/outfit/job/salsu
-	name = "Blade Lineage Salsu"
+	name = "Blade Lineage Salsu - 剑契组杀手"
 	jobtype = /datum/job/salsu
 
 	belt = /obj/item/pda/security

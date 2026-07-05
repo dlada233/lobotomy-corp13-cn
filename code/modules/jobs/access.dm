@@ -377,12 +377,12 @@
 		"Rabbit Team", "Rabbit Team Leader", "Disciplinary Officer", "Training Officer",
 
 		//R Corp Assault
-		"Ground Commander",	"Lieutenant Commander",	"Operations Officer", "Rabbit Squad Captain", "Reindeer Squad Captain", "Rhino Squad Captain", "Raven Squad Captain",
-		"R-Corp Suppressive Rabbit","R-Corp Assault Rabbit", "R-Corp Medical Reindeer",	"R-Corp Berserker Reindeer","R-Corp Gunner Rhino","R-Corp Hammer Rhino","R-Corp Scout Raven","R-Corp Support Raven",
+		"Ground Commander-地面指挥官",	"Lieutenant Commander-中尉副指挥官",	"Operations Officer-作战军官", "Rabbit Squad Captain-兔子队队长", "Reindeer Squad Captain-驯鹿队队长", "Rhino Squad Captain-犀牛队队长", "Rhino Squad Captain-乌鸦队队长",
+		"R-Corp Suppressive Rabbit - R-公司抑制兔子","R-Corp Assault Rabbit - R-公司突击兔子", "R-Corp Medical Reindeer - R-公司医疗驯鹿",	"R-Corp Berserker Reindeer - R-公司狂战士驯鹿","R-Corp Gunner Rhino - R-公司机枪手犀牛","R-Corp Hammer Rhino - R-公司重锤犀牛","R-Corp Scout Raven - R-公司侦查渡鸦","R-Corp Support Raven - R-公司支援渡鸦",
 
 		//5th Pack
-		"Assault Commander", "Base Commander", "Support Officer", "Rat Squad Leader", "Rooster Squad Leader", "Raccoon Squad Leader", "Roadrunner Squad Leader",
-		"R-Corp Rat", "R-Corp Rooster", "R-Corp Raccoon Spy", "R-Corp Raccoon Sniper", "R-Corp Roadrunner",
+		"Assault Commander-突击指挥官", "Base Commander-基地指挥官", "Support Officer-支援军官", "Rat Squad Leader-老鼠队队长", "Rooster Squad Leader-公鸡队队长", "Raccoon Squad Leader-浣熊队队长", "Roadrunner Squad Leader-走鹃队队长",
+		"R-Corp Rat - R-公司老鼠", "R-Corp Rooster - R-公司公鸡", "R-Corp Raccoon Spy - R-公司浣熊间谍", "R-Corp Raccoon Sniper - R-公司浣熊狙击手", "R-Corp Roadrunner - R-公司走鹃",
 
 		//LC Labs
 		"Chief Medical Officer", "Surgeon", "Nurse Practitioner", "Pharmacist", "Emergency Medical Technician", "Lead Researcher", "Senior Researcher", "Information Systems Tech",
