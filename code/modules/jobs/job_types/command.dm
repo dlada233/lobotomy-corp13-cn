@@ -153,7 +153,6 @@
 	backpack_contents = list(
 		/obj/item/melee/classic_baton,
 		/obj/item/powered_gadget/enkephalin_injector,
-		/obj/item/reagent_containers/hypospray/emais/combat,
 		/obj/item/restraints/handcuffs,
 		/obj/item/restraints/legcuffs/bola,
 	)
