@@ -324,6 +324,9 @@
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]
 		if(client.prefs.real_name == name)
+					if(client?.holder) // Admins can bypass this.
+				alert(src, "You normally cannot join again under the same name, but this has been bypassed because you are an admin.")
+				return FALSE
 			return TRUE
 	return FALSE
 

@@ -8,7 +8,7 @@
 	head = /obj/item/clothing/head/hos/beret
 	shoes = /obj/item/clothing/shoes/laceup
 	gloves = /obj/item/clothing/gloves/color/black
-	r_pocket = /obj/item/modular_computer/tablet/preset/advanced/command
+	r_pocket = /obj/item/announcementmaker/lcorp
 	implants = list(/obj/item/organ/cyberimp/eyes/hud/security)
 	accessory = /obj/item/clothing/accessory/armband/lobotomy/extraction
 
@@ -91,12 +91,10 @@
 	jobtype = /datum/job/command
 	suit =  /obj/item/clothing/suit/armor/ego_gear/officer
 	weapon = /obj/item/ego_weapon/officer/extraction
+	l_pocket = /obj/item/extraction/upgrade_tool
 
 	backpack_contents = list(
-		/obj/item/announcementmaker/lcorp,
-		/obj/item/price_tagger,
 		/obj/item/extraction/delivery,
-		/obj/item/extraction/upgrade_tool,
 		/obj/item/extraction/key,
 		/obj/item/extraction/lock,
 		/obj/item/extraction/tool_extractor,
@@ -126,7 +124,6 @@
 	accessory = /obj/item/clothing/accessory/armband/lobotomy/records
 	weapon = /obj/item/ego_weapon/shield/officer/records
 	backpack_contents = list(
-		/obj/item/announcementmaker/lcorp,
 		/obj/item/info_printer/records,
 		/obj/item/records/abnodelay,
 		/obj/item/records/meltdown_extend,
@@ -155,7 +152,6 @@
 	weapon = /obj/item/ego_weapon/officer/discipline
 	backpack_contents = list(
 		/obj/item/melee/classic_baton,
-		/obj/item/announcementmaker/lcorp,
 		/obj/item/powered_gadget/enkephalin_injector,
 		/obj/item/reagent_containers/hypospray/emais/combat,
 		/obj/item/restraints/handcuffs,

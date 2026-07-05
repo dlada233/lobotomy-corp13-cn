@@ -1,4 +1,3 @@
-#define EXP_ASSIGN_WAYFINDER 1200
 //Used to process and handle roundstart quirks
 // - Quirk strings are used for faster checking in code
 // - Quirk datums are stored and hold different effects, as well as being a vector for applying trait string
@@ -69,7 +68,3 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human = user
 		human.hardcore_survival_score = cli.prefs.hardcore_survival_score //Only do this if we actually asign quirks, to prevent sillicons etc from getting the points.
-
-	// Assign wayfinding pinpointer granting quirk if they're new
-	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/needswayfinder))
-		user.add_quirk(/datum/quirk/needswayfinder, TRUE)

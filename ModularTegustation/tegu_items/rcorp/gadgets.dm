@@ -40,6 +40,7 @@
 	desc = "A special tablet used by R-Corp Ground Commanders to make rapid announcements during pack deployments."
 	icon = 'icons/obj/modular_tablet.dmi'
 	icon_state = "tablet-red"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/announcementmaker/attack_self(mob/living/user)
 	..()

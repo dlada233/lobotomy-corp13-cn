@@ -36,7 +36,6 @@
 	backpack_contents = list(
 		/obj/item/melee/classic_baton,
 		/obj/item/info_printer,
-		/obj/item/announcementmaker/lcorp,
 		/obj/item/stat_equalizer,
 		/obj/item/sensor_device,
 	)
