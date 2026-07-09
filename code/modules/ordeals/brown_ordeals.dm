@@ -1,7 +1,7 @@
 // Dawn
 //Simplespawn but with very slight changes
 /datum/ordeal/brown_dawn
-	name = "褐色的黎明"
+	name = "酒色的黎明"
 	flavor_name = "大罪"
 	announce_text = "每个人的心中都种着一颗种子，它始终蕴含着绽放的潜力."
 	end_announce_text = "这些不过是一无所有之人灵魂的扭曲倒影."
@@ -9,7 +9,7 @@
 	reward_percent = 0.1
 	announce_sound = 'sound/effects/ordeals/brown_start.ogg'
 	end_sound = 'sound/effects/ordeals/brown_end.ogg'
-	color = "#69350b"
+	color = "#800020"
 	var/spawn_places = 6
 	var/spawn_amount = 2
 	var/list/mob_spawn_type = list(
@@ -55,7 +55,7 @@
 			M.ordeal_reference = src
 
 /datum/ordeal/specificcommanders/brown_noon
-	name = "褐色的正午"
+	name = "酒色的正午"
 	flavor_name = "大罪"
 	announce_text = "梦想只会唤醒那些定义了自己命运的人."
 	end_announce_text = "将时间浪费在已经走到尽头的人身上是毫无意义的."
@@ -63,7 +63,7 @@
 	reward_percent = 0.15
 	announce_sound = 'sound/effects/ordeals/brown_start.ogg'
 	end_sound = 'sound/effects/ordeals/brown_end.ogg'
-	color = "#69350b"
+	color = "#800020"
 	potential_types = list(
 		/mob/living/simple_animal/hostile/ordeal/sin_gluttony/noon,
 		/mob/living/simple_animal/hostile/ordeal/sin_sloth/noon,
