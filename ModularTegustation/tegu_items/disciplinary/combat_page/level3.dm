@@ -1,7 +1,7 @@
 /obj/item/combat_page/level3
 	combat_level = 3
-	name = "combat page L3"
-	desc = "A page that contains a level 3 combat page"
+	name = "战斗书页-L3"
+	desc = "一份等级3的战斗书页"
 	reward_pe = 1500
 	spawn_enemies = list(/mob/living/simple_animal/hostile/kcorp/drone)
 	spawn_type = "random"

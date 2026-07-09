@@ -54,7 +54,7 @@
 		new /datum/data/extraction_cargo("SP安瓿 ",				/obj/item/reagent_containers/hypospray/medipen/safety/lcorp,		50, CAT_MEDICAL) = 1,
 		new /datum/data/extraction_cargo("HP绷带 ",				/obj/item/safety_bandage/kcorp,										150, CAT_MEDICAL) = 1,
 		new /datum/data/extraction_cargo("SP月长石 ",			/obj/item/safety_bandage/mcorp,										150, CAT_MEDICAL) = 1,
-		new /datum/data/extraction_cargo("H公司绷带 ",		/obj/item/safety_bandage/hcorp,										150, CAT_MEDICAL) = 1,
+		new /datum/data/extraction_cargo("H公司浸药绷带 ",		/obj/item/safety_bandage/hcorp,										150, CAT_MEDICAL) = 1,
 		new /datum/data/extraction_cargo("标准急救包 ",		/obj/item/storage/firstaid/regular,									250, CAT_MEDICAL) = 1,
 		new /datum/data/extraction_cargo("裸巢治愈血清 ",		/obj/item/serpentspoison,											400, CAT_MEDICAL) = 1,
 		new /datum/data/extraction_cargo("橙子树喷火器 ",			/obj/item/ego_weapon/ranged/flammenwerfer,							500, CAT_MEDICAL) = 1,

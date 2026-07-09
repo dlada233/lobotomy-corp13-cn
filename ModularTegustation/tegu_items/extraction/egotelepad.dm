@@ -1,6 +1,6 @@
 /obj/structure/return_pad
-	name = "E.G.O. return pad"
-	desc = "A device developed in a partnership with W-Corp for safe and insant transportation of E.G.O. to the extraction department."
+	name = "E.G.O.返回面板"
+	desc = "与W-公司合作开发的设备，用于快速安全地将E.G.O.运输至研发部门."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "qpad-idle"
 	var/obj/structure/extraction_belt/linked_structure
@@ -27,11 +27,11 @@
 
 /obj/structure/return_pad/proc/TryTeleport(obj/item/I)
 	if(!linked_structure)
-		visible_message(span_warning("ERROR - NO LINKED STRUCTURE!"))
+		visible_message(span_warning("ERROR - 未连接结构!"))
 		qdel(src)
 		return
 	if(!ready)
-		visible_message(span_warning("ERROR - Warming up. Please wait one second."))
+		visible_message(span_warning("ERROR - 准备中. 请等待一秒."))
 		return
 	flick("qpad-beam", src)
 	playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 25, TRUE)
@@ -39,5 +39,5 @@
 	do_teleport(I, get_turf(linked_structure),null,TRUE,null,null,null,null,TRUE, channel = TELEPORT_CHANNEL_FREE) // Don't want anything interrupting it
 	available_teleports -= 1
 	if(!available_teleports)
-		visible_message(span_warning("[src] fizzles out and disappears!"))
+		visible_message(span_warning("[src] 突然消失!"))
 		qdel(src)

@@ -1,7 +1,7 @@
 //EO Key
 /obj/item/extraction/key
-	name = "Suppression Level Control Key"
-	desc = "Use on a work console to lower the qliphoth suppression field of the abnormality cell, speeding up work."
+	name = "抑制等级控制匙"
+	desc = "对工作终端使用可以降低收容单元的逆卡巴拉抑制场，从而加快工作速度."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_SMALL
@@ -9,12 +9,12 @@
 	var/stored_user
 	var/passed_variable = EXTRACTION_KEY
 	var/itemname = "Key"
-	var/howtouse = "This tool can only be used on a containment cell that has not reached 50% understanding, and will expire when understanding reaches 50%. This does NOT affect Qliphoth Counter."
+	var/howtouse = "这件工具只能在异想体未达到50%理解度时使用，当理解度达到50%时会失效. 这不会影响逆卡巴拉计数器."
 
 /obj/item/extraction/key/examine(mob/user)
 	. = ..()
 	if (GetFacilityUpgradeValue(UPGRADE_EXTRACTION_1))
-		. += span_notice("This tool seems to be upgraded, increases work speed even more.")
+		. += span_notice("这件工具看起来已经得到了升级, 能提升更多的工作效率.")
 
 /obj/item/extraction/key/proc/UserDeath()
 	if(archived_console)
@@ -35,27 +35,27 @@
 	if(istype(A, /obj/machinery/computer/abnormality))
 		if(archived_console)
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
-			to_chat(user, span_warning("Remove the current link first!"))
+			to_chat(user, span_warning("需要先移除当前连接!"))
 			return TRUE
 		var/obj/machinery/computer/abnormality/target = A
 		if(target.ApplyEOTool(passed_variable, FALSE, src))
 			archived_console = A
 			user.playsound_local(user, 'sound/machines/terminal_processing.ogg', 50, FALSE)
-			to_chat(user, span_nicegreen("[itemname] succesfully applied!"))
+			to_chat(user, span_nicegreen("[itemname] 成功应用!"))
 			if(!stored_user)
 				RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(UserDeath))
 				stored_user = user
 			update_icon()
 			return TRUE
 		user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
-		to_chat(user, span_warning("ERROR : [itemname] application failed!"))
+		to_chat(user, span_warning("ERROR : [itemname] 应用失败!"))
 		return TRUE
 	return FALSE  //Not a console - just hit the thing
 
 /obj/item/extraction/key/tool_action(mob/user)
 	if(archived_console)
 		user.playsound_local(user, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
-		switch(tgui_alert(user,"Remove [itemname] from containment cell?","Extraction Officer [itemname] Prompt",list("Yes", "No")))
+		switch(tgui_alert(user,"移除[itemname]从当前收容单元?","研发部长 [itemname] 程序",list("Yes", "No")))
 			if("Yes")
 				user.playsound_local(user, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 				archived_console.ApplyEOTool(passed_variable, TRUE, src)
@@ -63,13 +63,13 @@
 				user.playsound_local(user, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return
 	user.playsound_local(user, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
-	to_chat(user, span_warning("No linked console detected!"))
+	to_chat(user, span_warning("未检测到连接的工作终端!"))
 	return
 
 /obj/item/extraction/key/proc/Deactivate()
 	playsound(src, 'sound/machines/twobeep.ogg', 25, FALSE)
 	archived_console = null
-	visible_message(span_notice("The [src] buzzes quietly, and the golden lights fade away."))
+	visible_message(span_notice("[src]低声嗡鸣, 金色的指示灯逐渐熄灭."))
 	update_icon()
 
 /obj/item/extraction/key/update_icon()
@@ -81,5 +81,5 @@
 /obj/item/extraction/key/examine(mob/user)
 	. = ..()
 	if(archived_console)
-		. += "It is actively working on a containment cell."
+		. += "正在一个收容单元内发挥作用."
 	. += howtouse

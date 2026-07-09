@@ -1,9 +1,9 @@
 GLOBAL_VAR_INIT(rcorp_objective, "button") //what objective Rcorp has
 
 /*This is the setup for the win system
-R-Corp Supreme Victory - Win against Arbiter
-R-Corp Major - Win without reinforcements
-R-Corp Minor - Win with reinforcements
+R-公司 Supreme Victory - Win against Arbiter
+R-公司 Major - Win without reinforcements
+R-公司 Minor - Win with reinforcements
 Draw - 40 minutes pass.
 Abnormality Minor - Win with arbiter
 Abnormality Major - Win without arbiter
@@ -40,7 +40,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	return ..()
 
 /obj/effect/landmark/objectivespawn/proc/reinforce()
-	minor_announce("R-Corp reinforcements are on the way. Hang on tight, commander." , "R-Corp Intelligence Office")
+	minor_announce("R-公司增援正在赶来. 坚持住, 指挥官." , "R-公司 情报部门")
 	CONFIG_SET(flag/norespawn, 0)
 	GLOB.rcorp_wincondition = 1
 	addtimer(CALLBACK(src, PROC_REF(reinforce_end)), 2 MINUTES)
@@ -51,7 +51,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 //Delay the fucker by 20 minutes. Someone waltzed into briefing one Rcorp round with this.
 /obj/effect/landmark/objectivespawn/proc/arbspawn()
 	new /obj/effect/mob_spawn/human/arbiter/rcorp(get_turf(src))
-	minor_announce("DANGER - HOSTILE ARBITER IN THE AREA. NEUTRALIZE IMMEDIATELY." , "R-Corp Intelligence Office")
+	minor_announce("危险 - 敌对调律者在本区域. 摧毁目标." , "R-公司 情报部门")
 	GLOB.rcorp_wincondition = 2
 
 /obj/effect/landmark/abno_objectivespawn
@@ -80,8 +80,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 //Golden Bough Objective
 /obj/structure/bough
-	name = "Golden Bough"
-	desc = "You need this."
+	name = "金枝"
+	desc = "你需要这个."
 	icon_state = "bough_pedestal"
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	anchored = TRUE
@@ -139,15 +139,15 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 /obj/structure/bough/attack_hand(mob/living/carbon/human/user)
 	if(cooldown > world.time)
-		to_chat(user, span_notice("You're having a hard time grabbing this."))
+		to_chat(user, span_notice("你艰难抓住金枝."))
 		return
 	if(user.ckey in bastards)
-		to_chat(user, span_userdanger("You already tried to grab this."))
+		to_chat(user, span_userdanger("你已经尝试抓住金枝了."))
 		return
 
 	cooldown = world.time + 45 SECONDS // Spam prevention
 	for(var/mob/M in GLOB.player_list)
-		to_chat(M, span_userdanger("[uppertext(user.real_name)] is collecting the golden bough!"))
+		to_chat(M, span_userdanger("[uppertext(user.real_name)]正在回收金枝!"))
 
 	RoundEndEffect(user)
 
@@ -167,15 +167,15 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 			SSticker.SetRoundEndSound('sound/abnormalities/donttouch/end.ogg')
 			SSticker.force_ending = 1
 			for(var/mob/M in GLOB.player_list)
-				to_chat(M, span_userdanger("[uppertext(user.real_name)] has collected the bough!"))
+				to_chat(M, span_userdanger("[uppertext(user.real_name)]成功回收金枝!"))
 
 				switch(GLOB.rcorp_wincondition)
 					if(0)
-						to_chat(M, span_userdanger("R-CORP MAJOR VICTORY."))
+						to_chat(M, span_userdanger("R-公司 大胜."))
 					if(1)
-						to_chat(M, span_userdanger("R-CORP MINOR VICTORY."))
+						to_chat(M, span_userdanger("R-公司 小胜."))
 					if(2)
-						to_chat(M, span_userdanger("R-CORP SUPREME VICTORY."))
+						to_chat(M, span_userdanger("R-公司 完胜."))
 		else
 			var/turf/turf = get_turf(src)
 			new /obj/effect/decal/cleanable/confetti(turf)
@@ -186,8 +186,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 //VIP objective
 /mob/living/simple_animal/hostile/shrimp_vip
-	name = "Shrimp VIP"
-	desc = "A shrimp in a snazzy suit. Protect at all costs."
+	name = "虾 VIP"
+	desc = "穿着时髦西装的虾，不惜一切代价保护他."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "executive"
 	icon_living = "executive"
@@ -227,18 +227,18 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 /mob/living/simple_animal/hostile/shrimp_vip/Login()
 	. = ..()
-	to_chat(src, "<h1>You are Shimp VIP, A Objective Role Abnormality.</h1><br>\
-		<b>|Supportive Barrier|: For each ally you are able to see, you take 25% less damage. For a max of 90% less damage from all attacks.<br>\
+	to_chat(src, "<h1>你是虾 VIP，一个目标角色异想体.</h1><br>\
+		<b>|支援屏障|: 你每看到一个友军，你承受的伤害就会减少25%，最多可以减少90%的伤害.<br>\
 		<br>\
-		|Sniper Target|: There is an R-Corp Sniper who is aiming at you. As long as you are able to see 2 allies, they will not be able to fire at you.<br>\
+		|狙击目标|: 有一个R-公司狙击手正瞄准着你. 但只要你能看到2名友军, 他们就无法向你开火.<br>\
 		<br>\
-		|Airstrike Call|: After you click on your 'Airstrike' ability, The next turf you click on will call in a Airstrike on that location.<br>\
-		There is a 3 second delay before a missile hits the ground, and they deal 200 RED damage in a 5x5 AoE when they land. In total you will fire 5 missiles.<br>\
+		|呼叫空袭|: 当点击'呼叫空袭'能力后, 你点击的下一个地块将会遭到空袭.<br>\
+		第一枚导弹将在3秒后到达, 它们将造成 200 点红色伤害在 5x5 的AoE范围内. 总共将发射 5 枚导弹.<br>\
 		<br>\
-		|Barricade Call|: After you click on your 'Barricade' ability, The next turf you click on will call in a Barricade to that location.<br>\
-		You are able to have 6 barricades up at once, but you can still send down the pod to block damage.<br>\
+		|呼叫封锁|: 当点击'呼叫封锁'能力后, 你点击的下一个地块将会空投路障.<br>\
+		你能一次性投放 6 个路障.<br>\
 		<br>\
-		|Healing Call|: After you click on your 'Healing' ability, The next target you click on will have a HP bullet fired at them.<br>\
+		|呼叫医疗|: 当点击'呼叫医疗'能力后, 你点击的下一个地块将会有HP子弹击中.<br>\
 		Your HP bullets are not able to target yourself, and you are able to miss them if you don't click on an ally.</b>")
 
 /mob/living/simple_animal/hostile/shrimp_vip/Life()
@@ -293,7 +293,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	if(!SSticker.force_ending)
 		for(var/mob/M in GLOB.player_list)
 			to_chat(M, span_userdanger("THE VIP HAS BEEN SLAIN."))
-			to_chat(M, span_userdanger("R-CORP MAJOR VICTORY."))
+			to_chat(M, span_userdanger("R-公司 MAJOR VICTORY."))
 		SSticker.force_ending = 1
 	else
 		var/turf/turf = get_turf(src)
@@ -438,7 +438,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 //R Corp Comms
 /obj/structure/rcorpcomms
 	name = "rcorp outside communications"
-	desc = "A machine R-Corp needs to communicate with the outside."
+	desc = "A machine R-公司 needs to communicate with the outside."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "hivebot_fab_on"
 	density = 1

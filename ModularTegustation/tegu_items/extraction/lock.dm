@@ -1,12 +1,12 @@
 //EO Lock -- Making it a subtype saves on copypaste
 /obj/item/extraction/lock
-	name = "Qliphoth Locking Mechanism"
-	desc = "Use on a work console to raise the qliphoth suppression field of the abnormality cell."
+	name = "逆卡巴拉锁定机"
+	desc = "对工作终端使用可以提升收容单元的逆卡巴拉抑制场."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "lock_active"
 	w_class = WEIGHT_CLASS_SMALL
-	var/howtouse = "This tool can only be used on a containment cell that has reached 100% understanding. <br>This tool forcibly raises the target abnormality's Qliphoth Counter to by one. <br>\
-	WARNING : This tool may not work on abnormalities with specific needs. <br>Additionally, this device has a longer cooldown when used on more powerful abnormalities."
+	var/howtouse = "这件工具只能在异想体达到100%理解度时使用. <br>这件工具会强制提升目标异想体的逆卡巴拉计数器. <br>\
+	WARNING : 这件工具可能无法在有特殊需求的异想体上工作. <br>此外, 这个设备在用于更强大的异想体时会有更长的冷却时间."
 	var/recharging = FALSE
 	var/cooldown_time
 
@@ -19,10 +19,10 @@
 /obj/item/extraction/lock/examine(mob/user)
 	. = ..()
 	if (GetFacilityUpgradeValue(UPGRADE_EXTRACTION_1))
-		. += span_notice("This tool seems to be upgraded, decreasing cooldown by 20%.")
+		. += span_notice("这件工具看起来已经得到了升级, 减少20%的冷却时间.")
 	if(recharging)
 		var/time_left = round(timeleft(cooldown_time))
-		. +=  span_redtext("This device is on cooldown. It will be ready in [DisplayTimeText(time_left)].")
+		. +=  span_redtext("设备冷却中. 将在 [DisplayTimeText(time_left)] 后准备好.")
 	. += howtouse
 
 /obj/item/extraction/lock/pre_attack(atom/A, mob/living/user, params)
@@ -32,30 +32,30 @@
 	if(istype(A, /obj/machinery/computer/abnormality))
 		var/obj/machinery/computer/abnormality/target = A
 		if(!target.datum_reference) // Probably bugged if this happens
-			to_chat(user, span_warning("If you are seeing this message, this console is not linked to an abnormality. This is likely a bug, so please report it!"))
+			to_chat(user, span_warning("如果看到这条消息，说明这个终端没有连接到任何异常体。这很可能是bug，请报告！"))
 			return TRUE
 		if(!target.datum_reference.current) // Not a contained abno
-			to_chat(user, span_warning("This abnormality is currently absent or respawning. Try again later."))
+			to_chat(user, span_warning("这个异想体当前不在或正在重新生成. 请稍后重试."))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return TRUE
 		if(!target.datum_reference.current.IsContained()) // Already breached
-			to_chat(user, span_warning("Too late! This abnormality has already breached!"))
+			to_chat(user, span_warning("太晚了！这个异想体已经突破收容了！"))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return TRUE
 		if(target.datum_reference.understanding < (target.datum_reference.max_understanding)) // Understanding under 100%
-			to_chat(user, span_warning("This device does not work on an abnormality that is not fully understood."))
+			to_chat(user, span_warning("设备无法运行在理解度未满的异想体上."))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return TRUE
 		if(target.datum_reference.qliphoth_meter >= (target.datum_reference.qliphoth_meter_max)) // Not missing any Qliphoth
-			to_chat(user, span_warning("This abnormality is already at its maximum Qliphoth counter."))
+			to_chat(user, span_warning("这个异想体已经达到了其逆卡巴拉计数器最大上限."))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return TRUE
 		if(recharging) // Device is on cooldown
-			to_chat(user, span_warning("This tool is still recharging!"))
+			to_chat(user, span_warning("设备充能中!"))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return FALSE
 		if(istype(target.datum_reference.current, /mob/living/simple_animal/hostile/abnormality/black_swan)) // Stops certain abnos from bricking themselves.
-			to_chat(user, span_warning("ERROR : Not compatiable with this abnormality!"))
+			to_chat(user, span_warning("ERROR : 设备不兼容这个异想体!"))
 			user.playsound_local(user, 'sound/machines/terminal_error.ogg', 50, FALSE)
 			return TRUE
 		var/multiplier = target.datum_reference.current.threat_level
@@ -66,10 +66,10 @@
 		target.datum_reference.qliphoth_change(1)
 		recharging = TRUE
 		user.playsound_local(user, 'sound/magic/arbiter/pin.ogg', 35, FALSE)
-		to_chat(user, span_nicegreen("Qliphoth Counter has been raised successfully!"))
+		to_chat(user, span_nicegreen("逆卡巴拉计数器已成功提升!"))
 		update_icon()
 		return TRUE
-	to_chat(user, span_warning("ERROR : Device application failure - Invalid Target!"))
+	to_chat(user, span_warning("ERROR : 设备应用失败 - 无效目标!"))
 	return FALSE  // Not a console - just hit the thing
 
 /obj/item/extraction/lock/proc/Recharge()

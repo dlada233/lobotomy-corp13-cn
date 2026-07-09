@@ -1,8 +1,8 @@
 GLOBAL_VAR_INIT(combat_points, 0)
 //Basic combat page
 /obj/item/combat_page
-	name = "combat page"
-	desc = "A sort of storage that invites hostiles to the facility, and releases a few goodies and PE."
+	name = "战斗书页"
+	desc = "一种储存物品，可以做到邀请敌人进入设施，并带来战利品和PE."
 	icon = 'ModularTegustation/Teguicons/teguitems.dmi'
 	icon_state = "darkbible"
 	slot_flags = ITEM_SLOT_POCKETS
@@ -23,20 +23,20 @@ GLOBAL_VAR_INIT(combat_points, 0)
 	..()
 	if(!LAZYLEN(allowedroles))
 		if(!istype(user) || !(user?.mind?.assigned_role in allowedroles))
-			to_chat(user, span_notice("The page glows red. It is unable to be used by you. Only Departmental officers can use this page."))
+			to_chat(user, span_notice("书页发出红色光芒. 你无法使用书页，只有部门部长可以使用."))
 			return
 
 	if(being_used)
-		to_chat(user, span_notice("You are already using this page."))
+		to_chat(user, span_notice("你已经在使用书页了."))
 		return
 	being_used = TRUE
-	var/start_page = alert("Start this combat page?", "Combat Page", "Yes", "No")
+	var/start_page = alert("开启这份战斗书页?", "战斗书页", "Yes", "No")
 	if(start_page == "No")
 		being_used = FALSE
 		return
 	Spawn_Reward(user)
 	Spawn_Combat(user)
-	minor_announce("A combat page has been started by [user.name]." , "[name]")
+	minor_announce("一份战斗书页已被[user.name]翻开." , "[name]")
 	being_used = FALSE
 	qdel(src)
 
@@ -44,11 +44,11 @@ GLOBAL_VAR_INIT(combat_points, 0)
 	. = ..()
 	if(special)
 		. += span_notice("[special]")
-	. += span_notice("This is a level [combat_level] combat page")
+	. += span_notice("这是等级为[combat_level]的战斗书页")
 
 	if(LAZYLEN(reward_items))
-		. += span_notice("You will recieve an item from this page")
-	. += span_notice("You will recieve [reward_pe] PE from this page")
+		. += span_notice("你将得到一件物品从这份书页中")
+	. += span_notice("你将得到 [reward_pe] PE 从这份书页中")
 
 /obj/item/combat_page/proc/Spawn_Combat(mob/living/user)
 	if(!LAZYLEN(GLOB.xeno_spawn))
