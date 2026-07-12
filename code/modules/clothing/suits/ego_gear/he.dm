@@ -321,7 +321,7 @@
 							JUSTICE_ATTRIBUTE = 40
 							)
 
-/obj/item/clothing/suit/armor/ego_gear/he/warp
+/obj/item/clothing/suit/armor/ego_gear/he/dimension_shredder
 	name = "维度粉碎机"
 	desc = "I thought WARP trains were supposed to arrive in just ten seconds?"
 	icon_state = "warp"

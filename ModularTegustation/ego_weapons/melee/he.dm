@@ -1044,23 +1044,22 @@
 		T.throw_at(throw_target, range, whack_speed, firer, spin = FALSE)
 	return TRUE
 
-/obj/item/ego_weapon/warp
+/obj/item/ego_weapon/dimension_shredder
 	name = "次元撕裂者"
-	desc = "They should've died after bleeding so much. You usually don't quarantine a corpse...."
+	desc = "The path is intent on thwarting all attempts to memorize it...."
 	special = "这个武器每走10步就会充能."
-	icon_state = "warp2"
-	force = 16 		//Spears get increased damage, but this one has an ability
-	lefthand_file = 'icons/mob/inhands/weapons/ego_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/ego_righthand.dmi'
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
-	hitsound = 'sound/abnormalities/wayward_passenger/attack1.ogg'
-	reach = 2
-	stuntime = 5	//Longer reach, gives you a short stun.
+	icon_state = "dimension_shredder"
+	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	force = 13
+	hitsound = 'sound/abnormalities/wayward_passenger/attack2.ogg'
 	damtype = RED_DAMAGE
+	swingstyle = WEAPONSWING_LARGESWEEP
+	attack_speed = 0.8
 	attack_verb_continuous = list("stabs", "slashes", "attacks")
 	attack_verb_simple = list("stab", "slash", "attack")
-	hitsound = 'sound/abnormalities/wayward_passenger/attack2.ogg'
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 40
 							)
@@ -1070,35 +1069,40 @@
 	charge_cost = 10
 	var/accumulated_charge = 0
 	charge_effect = "传送并创建一个临时的双向传送门."
+	ability_type = ABILITY_UNIQUE
+	successfull_activation = "你将在目标位置创造次元裂痕!"
+	cancel_activation = "你将不再通过裂痕传送."
+	failed_activation = "你无法产生次元裂痕."
+
 
 	var/current_holder
 
-/obj/item/ego_weapon/warp/equipped(mob/living/carbon/human/user, slot)
+/obj/item/ego_weapon/dimension_shredder/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!user)
 		return
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(UserMoved))
 	current_holder = user
 
-/obj/item/ego_weapon/warp/Destroy(mob/user)
+/obj/item/ego_weapon/dimension_shredder/Destroy(mob/user)
 	if(!user)
 		return ..()
 	UnregisterSignal(current_holder, COMSIG_MOVABLE_MOVED)
 	current_holder = null
 	return ..()
 
-/obj/item/ego_weapon/warp/dropped(mob/user)
+/obj/item/ego_weapon/dimension_shredder/dropped(mob/user)
 	. = ..()
 	if(!user)
 		return
-	UnregisterSignal(current_holder, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(current_holder, COMSIG_MOVABLE_MOVED)//these cause runtimes
 	current_holder = null
 
-/obj/item/ego_weapon/warp/proc/UserMoved()
+/obj/item/ego_weapon/dimension_shredder/proc/UserMoved()
 	SIGNAL_HANDLER
 	HandleCharge(0.1)
 
-/obj/item/ego_weapon/warp/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
+/obj/item/ego_weapon/dimension_shredder/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	if(!CanUseEgo(user))
 		to_chat(user, span_notice("你无法使用这个!"))
 		return
@@ -1124,7 +1128,7 @@
 		P2.link_portal(P1)
 		P1.teleport(user)
 
-/obj/item/ego_weapon/warp/HandleCharge(added_charge) // Proc override so that charge icon appears every 1 charge gained
+/obj/item/ego_weapon/dimension_shredder/HandleCharge(added_charge) // Proc override so that charge icon appears every 1 charge gained
 	if(charge_amount < 0) // ???
 		charge_amount = initial(charge_amount)
 		CRASH("[src] has somehow aquired a negative charge amount, automatically reset it to the initial charge amount")
@@ -1144,26 +1148,59 @@
 	teleport_channel = TELEPORT_CHANNEL_FREE
 
 /obj/effect/portal/warp/Crossed(atom/movable/AM, oldloc, force_stop = 0)
-	playsound(src, 'sound/abnormalities/wayward_passenger/teleport2.ogg', 50, TRUE)//doesn't work
+	playsound(src, 'sound/abnormalities/wayward_passenger/teleport2.ogg', 50, TRUE)
 	..()
 
 /obj/effect/portal/warp/Initialize()
 	QDEL_IN(src, 3 SECONDS)
 	return ..()
 
-/obj/item/ego_weapon/warp/knife	// knife subtype of the above. knife has to be the subtype because it fits in a belt
-	name = "次元撕裂者"
-	desc = "The path is intent on thwarting all attempts to memorize it."
-	icon_state = "warp"
-	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	force = 13
-	swingstyle = WEAPONSWING_LARGESWEEP
-	attack_speed = 0.8
-	reach = 1
-	stuntime = 0
+/obj/item/ego_weapon/dimension_spear
+	name = "次元撕裂者 MK II"
+	desc = "They should've died after bleeding so much. You usually don't quarantine a corpse...."
+	icon_state = "warp2"
+	force = 20
+	reach = 2
+	stuntime = 5	//Longer reach, gives you a short stun.
+	attack_verb_continuous = list("stabs", "slashes", "attacks")
+	attack_verb_simple = list("stab", "slash", "attack")
+	hitsound = 'sound/abnormalities/wayward_passenger/ripspace_hit.ogg'
+	attribute_requirements = list(
+							JUSTICE_ATTRIBUTE = 40
+							)
+
+	charge = TRUE
+	charge_cost = 0
+	charge_effect = "释放所有充能发动一串连续的远程攻击，每有2点充能，就额外增加1次攻击次数."
+	ability_type = ABILITY_UNIQUE
+	successfull_activation = "你将在目标身上切开裂隙!"
+	cancel_activation = "你将不再通过裂隙攻击你的目标."
+	failed_activation = "你无法产生一个次元裂隙."
+
+/obj/item/ego_weapon/dimension_spear/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
+	if(!CanUseEgo(user))
+		to_chat(user, span_notice("你无法使用这个！"))
+		return
+	if(!currently_charging)
+		return
+	if(!proximity_flag)
+		currently_charging = FALSE
+		ChargeAttack(target, user)
+
+/obj/item/ego_weapon/dimension_spear/ChargeAttack(mob/living/target, mob/living/user)
+	if(!isliving(target))
+		return
+	var/mob/living/carbon/human/H = user
+	var/justice_mod = 1 + (get_modified_attribute_level(H, JUSTICE_ATTRIBUTE)/100)
+	var/hit_damage = ((force * justice_mod)/2)
+	for(charge_amount, charge_amount >= 0, charge_amount -= 2)
+		var/turf/T = get_turf(target)
+		playsound(src, 'sound/abnormalities/wayward_passenger/attack2.ogg', 50, TRUE)
+		new /obj/effect/temp_visual/dimshredder_in(get_turf(src))
+		new /obj/effect/temp_visual/dimshredder_out(T)
+		user.HurtInTurf(T, list(), hit_damage, RED_DAMAGE, check_faction = TRUE)
+		sleep(0.1 SECONDS)
+	charge_amount = 0
 
 /obj/item/ego_weapon/marionette
 	name = "长鼻子木偶"
