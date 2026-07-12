@@ -1,11 +1,11 @@
 /obj/item/disk/nuclear/rcorp
-	name = "r-corp command tracker"
-	desc = "Hold this on your person to let any rabbits know your precise location."
+	name = "R-公司指挥追踪信标"
+	desc = "持有这个物品让兔子们知道你在哪."
 	icon_state = "servo"
 
 /obj/item/pinpointer/nuke/rcorp
-	name = "r-corp command tracker"
-	desc = "This tracks the current holder of the command tracker."
+	name = "R-公司指挥追踪"
+	desc = "能追踪持有指挥追踪信标的人."
 
 /obj/item/pinpointer/nuke/rcorp/Initialize()
 	..()
@@ -36,24 +36,24 @@
 
 //Announcement machines
 /obj/item/announcementmaker
-	name = "r-corp announcement tablet"
-	desc = "A special tablet used by R-Corp Ground Commanders to make rapid announcements during pack deployments."
+	name = "R-公司公告平板"
+	desc = "R公司地面指挥官在部队部署期间用于快速发布公告的专用平板电脑."
 	icon = 'icons/obj/modular_tablet.dmi'
 	icon_state = "tablet-red"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/announcementmaker/attack_self(mob/living/user)
 	..()
-	var/input = stripped_input(user,"What do you want announce?", ,"Test Announcement")
-	minor_announce("[input]" , "Announcement from: [user.name]")
+	var/input = stripped_input(user,"发布什么样的公告?", ,"测试公告")
+	minor_announce("[input]" , "公告来自: [user.name]")
 
 //Tablet variants
 /obj/item/announcementmaker/wcorp
-	name = "w-corp announcement tablet"
-	desc = "A special tablet used by WARP Clean up L2-LT agents to make rapid announcements on the battlefield."
+	name = "W-公司公告平板"
+	desc = "WARP清洁L2-LT人员用于在战场上快速发布公告的专用平板电脑."
 	icon_state = "tablet-blue"
 
 /obj/item/announcementmaker/lcorp
-	name = "l-corp announcement tablet"
-	desc = "A special tablet used by L-Corp Agent Captains to make rapid announcements during ongoing breaches and meltdowns."
+	name = "L-公司公告平板"
+	desc = "L-Corp员工队长在持续发生熔毁以及出逃时用于发布快速公告的专用平板电脑."
 	icon_state = "tablet-brown"

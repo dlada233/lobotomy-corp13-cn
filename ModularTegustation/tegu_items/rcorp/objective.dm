@@ -239,7 +239,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 		你能一次性投放 6 个路障.<br>\
 		<br>\
 		|呼叫医疗|: 当点击'呼叫医疗'能力后, 你点击的下一个地块将会有HP子弹击中.<br>\
-		Your HP bullets are not able to target yourself, and you are able to miss them if you don't click on an ally.</b>")
+		你的HP子弹无法以自身为目标, 如果没有点击到友军，你可能将会无效射击.</b>")
 
 /mob/living/simple_animal/hostile/shrimp_vip/Life()
 	. = ..()
@@ -274,17 +274,17 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 			deltimer(warning)
 			warning = null
 			if (danger == TRUE)
-				to_chat(src, span_nicegreen("You start to feel safer... Looks like that sniper can't get a good shot on you."))
+				to_chat(src, span_nicegreen("你开始感觉更加安全...看起来狙击手找不到好的射击机会了."))
 				danger = FALSE
 
 /mob/living/simple_animal/hostile/shrimp_vip/proc/SniperShoot()
-	to_chat(src, span_userdanger("You are hit by a sniper bullet from an unknown sniper..."))
+	to_chat(src, span_userdanger("你被某处的未知狙击手击中了..."))
 	deal_damage(300, RED_DAMAGE)
 	playsound_local(src, 'sound/weapons/gun/sniper/shot.ogg', 75)
 	sniper = null
 
 /mob/living/simple_animal/hostile/shrimp_vip/proc/SniperWarning()
-	to_chat(src, span_userdanger("You feel a shiver down your spine... Someone is aiming towards you, Get back to your allies to be safer!"))
+	to_chat(src, span_userdanger("你感到脊背发凉... 有人正在瞄准你，回到友军身边会更安全！"))
 	playsound_local(src, 'sound/weapons/gun/sniper/rack.ogg', 75)
 	danger = TRUE
 	warning = null
@@ -292,8 +292,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 /mob/living/simple_animal/hostile/shrimp_vip/death(gibbed)
 	if(!SSticker.force_ending)
 		for(var/mob/M in GLOB.player_list)
-			to_chat(M, span_userdanger("THE VIP HAS BEEN SLAIN."))
-			to_chat(M, span_userdanger("R-公司 MAJOR VICTORY."))
+			to_chat(M, span_userdanger("VIP已被消灭."))
+			to_chat(M, span_userdanger("R-公司 大胜."))
 		SSticker.force_ending = 1
 	else
 		var/turf/turf = get_turf(src)
@@ -302,8 +302,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	return ..()
 
 /obj/effect/proc_holder/spell/pointed/shrimp_airstrike
-	name = "Airstrike Call"
-	desc = "Call in your off field support to send in a airstrike on your foes!"
+	name = "呼叫空袭"
+	desc = "呼叫你的战场支援部队，对敌人发动空袭!"
 	panel = "Shrimp"
 	has_action = TRUE
 	action_icon = 'icons/mob/actions/actions_shrimp.dmi'
@@ -311,8 +311,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	clothes_req = FALSE
 	charge_max = 600
 	selection_type = "range"
-	active_msg = "You prepare your airstrike call..."
-	deactive_msg = "You put away your airstrike call..."
+	active_msg = "你准备呼叫空袭..."
+	deactive_msg = "你放弃呼叫空袭..."
 
 /obj/structure/closet/supplypod/shrimpmissle
 	style = STYLE_RED_MISSILE
@@ -321,7 +321,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 /obj/effect/proc_holder/spell/pointed/shrimp_airstrike/cast(list/targets, mob/user)
 	var/target = targets[1]
-	user.visible_message(span_danger("[user] called an airstrike."), span_alert("You targeted [target]"))
+	user.visible_message(span_danger("[user]呼叫了一次空袭."), span_alert("你瞄准了[target]"))
 	addtimer(CALLBACK(src, PROC_REF(Airstrike), target), 1)
 
 /obj/effect/proc_holder/spell/pointed/shrimp_airstrike/proc/Airstrike(target)
@@ -335,7 +335,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 			new /obj/effect/pod_landingzone(T, pod)
 		var/mob/dummy = new(landingzone)
 		dummy.faction = list("hostile")
-		dummy.visible_message("<span class='danger'>A MISSILE IS FALLING NEAR YOUR LOCATION!</span>")
+		dummy.visible_message("<span class='danger'>一枚导弹落到你所在位置的附近!</span>")
 		sleep(34)
 		for(var/turf/AT in range(2, landingzone))
 			new /obj/effect/temp_visual/smash_effect(AT)
@@ -345,8 +345,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 		sleep(rand()*2)
 
 /obj/effect/proc_holder/spell/pointed/shrimp_barricade
-	name = "Barricade Call"
-	desc = "Call in your off field support to send in a barricade!"
+	name = "呼叫封锁"
+	desc = "呼叫你的战场支援部队，对目标投放路障!"
 	panel = "Shrimp"
 	has_action = TRUE
 	action_icon = 'icons/mob/actions/actions_shrimp.dmi'
@@ -354,16 +354,16 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	clothes_req = FALSE
 	charge_max = 100
 	selection_type = "range"
-	active_msg = "You prepare your barricade call ..."
-	deactive_msg = "You put away your barricade call ..."
+	active_msg = "你准备呼叫封锁..."
+	deactive_msg = "你放弃呼叫封锁..."
 
 /obj/effect/proc_holder/spell/pointed/shrimp_barricade/cast(list/targets, mob/user)
 	var/target = targets[1]
 	if (istype(target, /obj/structure/barricade/security))
-		to_chat(user, span_warning("There is a barricade there already!"))
+		to_chat(user, span_warning("那里已经有一个路障了!"))
 		return
 	else
-		user.visible_message(span_danger("[user] calls in a barricade."), span_alert("You targeted [target]"))
+		user.visible_message(span_danger("[user]呼叫了一次路障."), span_alert("你瞄准了[target]"))
 		addtimer(CALLBACK(src, PROC_REF(Airstrike), target, user), 1)
 
 /obj/effect/proc_holder/spell/pointed/shrimp_barricade/proc/Airstrike(target, user)
@@ -377,7 +377,7 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 			barrier.shrimp = shrimp
 			shrimp.barrier_count += 1
 		else
-			to_chat(shrimp, "You have created too many barriers, Break some!")
+			to_chat(shrimp, "你创建了太多路障, 摧毁一些!")
 		new /obj/effect/pod_landingzone(T, pod)
 		stoplag(2)
 
@@ -389,8 +389,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	. = ..()
 
 /obj/effect/proc_holder/spell/pointed/shrimp_heal
-	name = "Shrimp Reinforce"
-	desc = "Reinforce one of your allies by having your off field support shot them with a HP bullet!"
+	name = "呼叫治疗"
+	desc = "通过使用HP子弹对你的队友进行治疗!"
 	panel = "Shrimp"
 	has_action = TRUE
 	action_icon = 'icons/hud/screen_skills.dmi'
@@ -398,28 +398,28 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 	clothes_req = FALSE
 	charge_max = 100
 	selection_type = "range"
-	active_msg = "You prepare your heal call ..."
-	deactive_msg = "You put away your heal call ..."
+	active_msg = "你准备呼叫治疗..."
+	deactive_msg = "你放弃呼叫治疗..."
 	var/healamount = 50
 
 /obj/effect/proc_holder/spell/pointed/shrimp_heal/cast(list/targets, mob/user)
 	var/target = targets[1]
 	if (istype(target, /mob/living/simple_animal/hostile/shrimp_vip))
-		to_chat(user, span_warning("You can't target yourself!"))
+		to_chat(user, span_warning("你无法瞄准你自己!"))
 		return
 	else
 		if (istype(target, /mob/living/simple_animal))
 			var/mob/living/simple_animal/S = target
 			S.adjustBruteLoss(-healamount)
-			user.visible_message(span_danger("[user] calls in a HP bullet on [target]."), span_alert("You targeted [target]"))
+			user.visible_message(span_danger("[user]呼叫了一次HP子弹在[target]上."), span_alert("你瞄准了[target]"))
 			playsound(get_turf(S), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
 			new /obj/effect/temp_visual/heal(get_turf(S), "#FF4444")
 		else
-			to_chat(user, span_warning("You can't target a non-simple animal!"))
+			to_chat(user, span_warning("你无法瞄准非简单MOB!"))
 
 //Arbiter
 /obj/effect/mob_spawn/human/arbiter/rcorp
-	important_info = "You are hostile to R-Corp. Assist abnormalities in killing them all."
+	important_info = "你与R-公司是敌对的. 帮助异想体杀死他们."
 
 
 /obj/effect/mob_spawn/human/arbiter/rcorp/special(mob/living/new_spawn)
@@ -437,8 +437,8 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 
 //R Corp Comms
 /obj/structure/rcorpcomms
-	name = "rcorp outside communications"
-	desc = "A machine R-公司 needs to communicate with the outside."
+	name = "R-公司外部通信设备"
+	desc = "R-公司需要与外界通信的机器."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "hivebot_fab_on"
 	density = 1
@@ -454,21 +454,21 @@ GLOBAL_VAR_INIT(rcorp_payload, null)
 			addtimer(CALLBACK(src, PROC_REF(vulnerable)), 15 MINUTES)
 
 /obj/structure/rcorpcomms/proc/vulnerable()
-	minor_announce("Warning: The communications shields are now disabled. Communications are now vulnerable" , "R-Corporation Command Update")
+	minor_announce("警告: 通信设备护盾已经关闭. 通信设备易受攻击" , "R-公司 指挥通报")
 	icon_state = "hivebot_fab"
 	resistance_flags &= ~INDESTRUCTIBLE
 
 /obj/structure/rcorpcomms/deconstruct(disassembled = TRUE)
 	if(!SSticker.force_ending)
 		for(var/mob/M in GLOB.player_list)
-			to_chat(M, span_userdanger("RCORP'S COMMUNICATIONS HAVE BEEN DESTROYED."))
+			to_chat(M, span_userdanger("R-公司的通信设备已被摧毁."))
 			switch(GLOB.rcorp_wincondition)
 				if(0)
-					to_chat(M, span_userdanger("ABNORMALITY MAJOR VICTORY."))
+					to_chat(M, span_userdanger("异想体 大胜."))
 				if(1)
-					to_chat(M, span_userdanger("ABNORMALITY SUPREME VICTORY."))
+					to_chat(M, span_userdanger("异想体 完胜."))
 				if(2)
-					to_chat(M, span_userdanger("ABNORMALITY MINOR VICTORY."))
+					to_chat(M, span_userdanger("异想体 小胜."))
 		SSticker.force_ending = 1
 	else
 		var/turf/turf = get_turf(src)

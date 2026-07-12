@@ -1,6 +1,6 @@
 //These are mostly like basic zombies, something for R-Corp to cut through like butter.
 /mob/living/simple_animal/hostile/sweeper
-	name = "Sweeper"
+	name = "清道夫"
 	desc = "When night comes in the backstreets..."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "sweeper_1"

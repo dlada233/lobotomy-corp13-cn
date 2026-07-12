@@ -1,5 +1,5 @@
 /obj/machinery/button/door/indestructible/rcorp
-	name = "rcorp button"
+	name = "R公司按钮"
 	id = "inside"
 
 /obj/machinery/button/door/indestructible/rcorp/setup_device()
@@ -13,7 +13,7 @@
 	return ..()
 
 /obj/item/assembly/control/rcorp
-	name = "rcorp door controller"
+	name = "R公司大门控制"
 
 /obj/item/assembly/control/rcorp/activate()
 	if(cooldown)
@@ -32,6 +32,6 @@
 		if (count > 2)
 			break
 	if (count > 2)
-		to_chat(usr, "<span class='notice'>There are still enemies around!</span>")
+		to_chat(usr, "<span class='notice'>附近仍有敌人!</span>")
 		return
 	..()

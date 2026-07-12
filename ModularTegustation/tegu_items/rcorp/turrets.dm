@@ -1,6 +1,6 @@
 //Moving turret
 /obj/machinery/manned_turret/rcorp
-	name = "rcorp portable manned turret"
+	name = "R公司便携有人炮塔"
 	desc = "While the trigger is held down, this gun will redistribute recoil to allow its user to easily shift targets."
 	icon_state = "protoemitter_+u"
 	view_range = 1
@@ -14,7 +14,7 @@
 	 ..()
 
 /obj/machinery/manned_turret/rcorp/stationary
-	name = "rcorp manned turret"
+	name = "R公司有人炮塔"
 	icon_state = "protoemitter_+a"
 	anchored = TRUE
 	projectile_type = /obj/projectile/beam/laser/heavylaser/pale	//Nothing is immune nor absorbs pale
