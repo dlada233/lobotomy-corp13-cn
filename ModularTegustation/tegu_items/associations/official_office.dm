@@ -4,7 +4,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "delivery"
 	inhand_icon_state = "flashbang"
-	var/list/usable_roles = list("Hana Representative - 一协会代表", "Hana Administrator-一协会管理员", "Hana Intern - 一协会实习生")
+	var/list/usable_roles = list("Hana Representative - 하나协会代表", "Hana Administrator-하나协会管理员", "Hana Intern - 하나协会实习生")
 	var/current_office
 
 /obj/item/office_marker/examine(mob/user)

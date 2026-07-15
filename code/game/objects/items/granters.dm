@@ -636,12 +636,12 @@
 	name = "Weaving Armor: Liu Edition"
 	desc = "A weaving book that teaches you how to weave liu armor. Carnival approved!<br>\
 	On the back, it says that reading this book will teach how to make: <br>\
-	-Liu Association combat suit: RED = 20%, WHITE = 40%, BLACK = 20%, PALE = 0%<br>\
-	-Liu Association combat jacket: RED = 20%, WHITE = 40%, BLACK = 20%, PALE = 0%<br>\
-	-Liu Association combat coat (Vet):  RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
-	-Liu Association section 2 combat coat (Vet): RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
-	-Liu Association veteran combat jacket: RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
-	-Liu Association heavy combat coat: RED = 40%, WHITE = 70%, BLACK = 40%, PALE = 20%."
+	-六协会 combat suit: RED = 20%, WHITE = 40%, BLACK = 20%, PALE = 0%<br>\
+	-六协会 combat jacket: RED = 20%, WHITE = 40%, BLACK = 20%, PALE = 0%<br>\
+	-六协会 combat coat (Vet):  RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
+	-六协会 section 2 combat coat (Vet): RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
+	-六协会 veteran combat jacket: RED = 30%, WHITE = 50%, BLACK = 30%, PALE = 20%<br>\
+	-六协会 heavy combat coat: RED = 40%, WHITE = 70%, BLACK = 40%, PALE = 20%."
 	crafting_recipe_types = list(
 		/datum/crafting_recipe/liu_suit,
 		/datum/crafting_recipe/liu_jacket,

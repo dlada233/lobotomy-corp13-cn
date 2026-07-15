@@ -43,8 +43,8 @@
 
 //Liu Asso
 /obj/item/storage/box/association/liu
-	name = "Liu Association Section 5"
-	desc = "A kit from Section 1 containing Liu association gear."
+	name = "六协会 Section 5"
+	desc = "A kit from Section 1 containing 六协会 gear."
 
 /obj/item/storage/box/association/liu/PopulateContents()
 	new /obj/item/ego_weapon/city/liu/fist(src)

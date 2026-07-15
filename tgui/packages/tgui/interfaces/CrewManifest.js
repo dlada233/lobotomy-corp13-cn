@@ -8,7 +8,7 @@ const highcommandjobs = [
   "W-Corp L3 Squad Captain",
   "Ground Commander-地面指挥官",
   "Assault Commander-突击指挥官",
-  "Hana Administrator-一协会管理员",
+  "Hana Administrator-하나协会管理员",
   "Association Section Director-协会科室主管",
   "Index Messenger-食指传令员",
   "Blade Lineage Cutthroat-剑契组首领",
@@ -20,7 +20,7 @@ const highcommandjobs = [
 
 const commandJobs = [
 // LOBOTOMYCORPORATION ADDITION START
-  "Hana Representative - 一协会代表",
+  "Hana Representative - 하나协会代表",
   "Index Proxy - 食指代行者",
   "Blade Lineage Salsu - 剑契组杀手",
   "N Corp Grosshammer",

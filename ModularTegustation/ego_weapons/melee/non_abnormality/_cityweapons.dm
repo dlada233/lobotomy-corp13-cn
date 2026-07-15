@@ -56,10 +56,10 @@ Shi Association
 Dashtype - Expend HP to dash to a target and attack
 Assassin type - Spend HP and lock self in place to deal big pale damage.
 
-Cinq Association
+Cinq协会
 Rapier - Backstep and then get a 2 range dash attack
 
-Liu Association
+六协会
 Section 1/2 - Courage - More people around you the stronger it is. Use in hand for an AOE DOT that scales with number of people that are around you, and does not hurt them
 Section 5/6 - Combo string system, I > II > III. At each part of the string you can choose between one of two attacks
 All these weapons kill at 0 sanity.

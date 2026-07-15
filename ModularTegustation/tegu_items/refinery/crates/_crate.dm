@@ -1,6 +1,6 @@
 /obj/structure/lootcrate
-	name = "Crate"
-	desc = "A crate recieved from a company"
+	name = "货箱"
+	desc = "从公司收到的货箱."
 	icon = 'ModularTegustation/Teguicons/refiner.dmi'
 	icon_state = "crate_lcb"
 	anchored = FALSE
@@ -76,7 +76,7 @@
 		cloot = pick(cosmeticloot)
 		new cloot(get_turf(src))
 
-	to_chat(user, span_notice("You open the crate!"))
+	to_chat(user, span_notice("你打开了货箱!"))
 	if(SSmaptype.maptype in SSmaptype.citymaps)
 		SEND_GLOBAL_SIGNAL(COMSIG_CRATE_LOOTING_ENDED, user, src)
 

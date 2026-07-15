@@ -2,7 +2,7 @@
 //Shi Assassin (Current one being used right now) uses Boundary of death.
 
 /obj/item/ego_weapon/city/shi_knife
-	name = "四协会刀"
+	name = "し协会刀"
 	desc = "四协二科刺客所用武器."
 	special = "用这把武器攻击自己能瞬间杀死自己."
 	icon_state = "shi_dagger"
@@ -40,7 +40,7 @@
 //Boundary of death users
 //Grade 5
 /obj/item/ego_weapon/city/shi_assassin
-	name = "四协会手杖"
+	name = "し协会手杖"
 	desc = "四协二科使用的武器."
 	special = "在手中使用此武器使自己停滞1秒，扣除25%的HP，并造成2倍青色伤害."
 	icon_state = "shiassassin"
@@ -99,7 +99,7 @@
 
 //Grade 4
 /obj/item/ego_weapon/city/shi_assassin/vet
-	name = "四协会资深刺客刀"
+	name = "し协会资深刺客刀"
 	desc = "四协二科资深成员使用的武器. 它极其锋利."
 	icon_state = "shiassassin_vet"
 	force = 25
@@ -112,8 +112,8 @@
 
 //Grade 3
 /obj/item/ego_weapon/city/shi_assassin/director
-	name = "四协会科长刺客刀"
-	desc = "四协会二科科长使用的武器. 它极其锋利."
+	name = "し协会科长刺客刀"
+	desc = "し协会二科科长使用的武器. 它极其锋利."
 	icon_state = "shiassassin_director"
 	force = 31
 	attribute_requirements = list(
@@ -125,21 +125,21 @@
 
 //Specialist Shi Blades (I had the sprites.)
 /obj/item/ego_weapon/city/shi_assassin/sakura
-	name = "四协会樱花刀"
+	name = "し协会樱花刀"
 	desc = "专为四协二科设计的特种刺客刀刃，用于刺杀高装甲目标，造成白色伤害."
 	icon_state = "shi_sakura"
 	damtype = WHITE_DAMAGE
 
 
 /obj/item/ego_weapon/city/shi_assassin/serpent
-	name = "四协会毒蛇刀"
+	name = "し协会毒蛇刀"
 	desc = "专为四协二科设计的特种刺客刀刃，用于刺杀高装甲目标，造成黑色伤害."
 	icon_state = "shi_serpent"
 	damtype = BLACK_DAMAGE
 
 
 /obj/item/ego_weapon/city/shi_assassin/yokai
-	name = "四协会妖怪刀"
+	name = "し协会妖怪刀"
 	desc = "专为四协二科设计的特种刺客刀刃，用于刺杀高装甲目标，造成青色伤害."
 	force = 9
 	icon_state = "shi_yokai"

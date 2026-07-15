@@ -1,6 +1,6 @@
-//Cinq Association. Use in hand to backstep for 3 seconds of bonus damage.
+//Cinq协会. Use in hand to backstep for 3 seconds of bonus damage.
 /obj/item/ego_weapon/city/cinq
-	name = "五协会长剑"
+	name = "Cinq协会长剑"
 	desc = "一柄锋利的西洋剑."
 	special = "在手中使用武器会进行后跳，使得下一次攻击有两格范围，3秒内有效."
 	icon_state = "cinq"

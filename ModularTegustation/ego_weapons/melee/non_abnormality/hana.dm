@@ -1,7 +1,7 @@
 //Grade 3, the only hana weapon right now.
 /obj/item/ego_weapon/city/hana
-	name = "一协会武器系统"
-	desc = "一协会的武器系统，永远三种不同的形态，分别是长矛，剑与手甲."
+	name = "하나协会武器系统"
+	desc = "하나协会的武器系统，永远三种不同的形态，分别是长矛，剑与手甲."
 	special = "在手中使用来改变武器形态."	//like a different rabbit knife. No black though
 	icon_state = "hana_sword"
 	force = 25

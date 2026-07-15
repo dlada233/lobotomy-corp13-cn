@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(command_positions, list(
 
 	// City heads
 	"Doctor-医生",
-	"Hana Administrator-一协会管理员",
+	"Hana Administrator-하나协会管理员",
 	"Association Section Director-协会科室主管",
 	"Association Assistant Director-协会科室副管",
 	"Subsidary Office Director-分事务所主管",
@@ -216,9 +216,9 @@ GLOBAL_LIST_INIT(r_corp_positions, list(
 ))
 
 GLOBAL_LIST_INIT(hana_positions, list(
-	"Hana Administrator-一协会管理员",
-	"Hana Representative - 一协会代表",
-	"Hana Intern - 一协会实习生",
+	"Hana Administrator-하나协会管理员",
+	"Hana Representative - 하나协会代表",
+	"Hana Intern - 하나协会实习生",
 ))
 
 GLOBAL_LIST_INIT(fixer_positions, list(

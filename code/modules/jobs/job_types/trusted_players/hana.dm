@@ -1,6 +1,6 @@
 //Hana
 /datum/job/hana
-	title = "Hana Representative - 一协会代表"
+	title = "Hana Representative - 하나协会代表"
 	outfit = /datum/outfit/job/hana
 	department_head = list("your association")
 	faction = "Station"
@@ -48,7 +48,7 @@
 	return ..()
 
 /datum/outfit/job/hana
-	name = "Hana Representative - 一协会代表"
+	name = "Hana Representative - 하나协会代表"
 	jobtype = /datum/job/hana
 
 	id = /obj/item/card/id/silver/plastic
@@ -64,7 +64,7 @@
 
 //Hana
 /datum/job/hana/boss
-	title = "Hana Administrator-一协会管理员"
+	title = "Hana Administrator-하나协会管理员"
 	outfit = /datum/outfit/job/hana/admin
 	total_positions = 1
 	spawn_positions = 1
@@ -83,7 +83,7 @@
 
 
 /datum/outfit/job/hana/admin
-	name = "Hana Administrator-一协会管理员"
+	name = "Hana Administrator-하나协会管理员"
 	jobtype = /datum/job/hana/boss
 
 	ears = /obj/item/radio/headset/heads/headset_association
@@ -91,7 +91,7 @@
 
 //Hana
 /datum/job/hana/intern
-	title = "Hana Intern - 一协会实习生"
+	title = "Hana Intern - 하나协会实习生"
 	outfit = /datum/outfit/job/hana/intern
 	total_positions = 2
 	spawn_positions = 2
@@ -115,25 +115,25 @@
 
 
 /datum/outfit/job/hana/intern
-	name = "Hana Intern - 一协会实习生"
+	name = "Hana Intern - 하나协会实习生"
 	jobtype = /datum/job/hana/intern
 	l_hand = null
 
 
 /client/proc/hanafetchquest()
 	set name = "发出收集任务"
-	set category = "一协会任务"
+	set category = "하나协会任务"
 
-	minor_announce("一协会已发出收集钻石硬币的任务，报酬将在完成任务后支付", "Hana Assignment:", TRUE)
+	minor_announce("하나协会已发出收集钻石硬币的任务，报酬将在完成任务后支付", "Hana Assignment:", TRUE)
 	var/T = pick(SScityevents.distortion)
 	var/Y = /obj/item/coin/diamond
 	new Y (get_turf(T))
 
 /client/proc/hanaslayquest()
 	set name = "发出击杀任务"
-	set category = "一协会任务"
+	set category = "하나协会任务"
 
-	minor_announce("一协会已发出击杀未知扭曲的任务，报酬将在任务完成后支付", "Hana Assignment:", TRUE)
+	minor_announce("하나协会已发出击杀未知扭曲的任务，报酬将在任务完成后支付", "Hana Assignment:", TRUE)
 	var/T = pick(SScityevents.distortion)
 	if(T)
 		minor_announce("Found location", "Hana Assignment:", TRUE)

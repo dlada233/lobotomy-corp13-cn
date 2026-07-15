@@ -1,7 +1,7 @@
 //Hana - ALL Associations, Hana gear at a 10%
 /obj/structure/lootcrate/hana
-	name = "Hana Association Crate"
-	desc = "A crate recieved from the hana association. Contains a variety of Association gear. Open with a Crowbar."
+	name = "하나协会货箱"
+	desc = "一个货箱来自于하나协会，内含各种协会装备. 用撬棍来打开货箱."
 	icon_state = "crate_hana"
 	rarechance = 30
 	veryrarechance = 10
@@ -67,8 +67,8 @@
 
 //Zwei - Zwei Association
 /obj/structure/lootcrate/zwei
-	name = "Zwei Association Crate"
-	desc = "A crate recieved from the zwei association. Open with a Crowbar."
+	name = "Zwei协会货箱"
+	desc = "一个货箱来自于Zwei协会. 用撬棍来打开货箱."
 	icon_state = "crate_zwei"
 	rarechance = 30
 	lootlist =	list(
@@ -93,8 +93,8 @@
 
 //Tres - Tres Association (Not really accessible)
 /obj/structure/lootcrate/tres
-	name = "Tres Association Crate"
-	desc = "A crate recieved from the tres association. Open with a Crowbar."
+	name = "Tres协会货箱货箱"
+	desc = "一个货箱来自于Tres协会. 用撬棍来打开货箱."
 	icon_state = "crate_tres"
 	rarechance = 40
 	veryrarechance = 10
@@ -150,10 +150,10 @@
 		/obj/item/workshop_mod/split/whiteblack,
 	)
 
-//Shi - Shi Association
+//Shi - し协会货箱
 /obj/structure/lootcrate/shi
-	name = "Shi Association Crate"
-	desc = "A crate recieved from the shi association. Open with a Crowbar."
+	name = "し协会货箱"
+	desc = "一个货箱来自于し协会. 用撬棍来打开货箱."
 	icon_state = "crate_shi"
 	lootlist =	list(
 		/obj/item/ego_weapon/city/shi_assassin,
@@ -174,10 +174,10 @@
 		/obj/item/clothing/suit/armor/ego_gear/city/shilimbus/director,
 	)
 
-//Cinq - Cinq Association
+//Cinq - Cinq协会
 /obj/structure/lootcrate/cinq
-	name = "Cinq Association Crate"
-	desc = "A crate recieved from the cinq association. Open with a Crowbar."
+	name = "Cinq协会货箱"
+	desc = "一个货箱来自于Cinq协会. 用撬棍来打开货箱."
 	icon_state = "crate_cinq"
 	lootlist =	list(
 		/obj/item/ego_weapon/city/shi_assassin,
@@ -198,10 +198,10 @@
 		/obj/item/clothing/suit/armor/ego_gear/city/shilimbus/director,
 	)
 
-//Liu - Liu Association
+//Liu - Liu协会
 /obj/structure/lootcrate/liu
-	name = "Liu Association Crate"
-	desc = "A crate recieved from the liu association. Open with a Crowbar."
+	name = "六协会货箱"
+	desc = "一个货箱来自于六协会. 用撬棍来打开货箱."
 	icon_state = "crate_liu"
 	rarechance = 20
 	lootlist =	list(
@@ -224,10 +224,10 @@
 		/obj/item/clothing/suit/armor/ego_gear/city/liuleader/section5,
 	)
 
-//Seven - Seven and its associates
+//Seven - Seven协会
 /obj/structure/lootcrate/seven
-	name = "Seven Association Crate"
-	desc = "A crate recieved from seven association. Open with a Crowbar."
+	name = "Seven协会货箱"
+	desc = "一个货箱来自Seven协会. 用撬棍来打开货箱."
 	icon_state = "crate_seven"
 	rarechance = 30
 	veryrarechance = 10

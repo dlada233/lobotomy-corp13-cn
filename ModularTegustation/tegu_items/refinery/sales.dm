@@ -186,8 +186,8 @@
 	crate_timer = 240	//Two boxes per
 
 /obj/structure/pe_sales/liu
-	name = "Liu Association Power Input"
-	desc = "A machine used to send PE to the liu association."
+	name = "六协会 Power Input"
+	desc = "A machine used to send PE to the 六协会."
 	icon_state = "machineliu"
 	crate = /obj/structure/lootcrate/liu
 

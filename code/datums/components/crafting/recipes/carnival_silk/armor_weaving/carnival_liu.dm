@@ -1,6 +1,6 @@
 //Liu Recipes
 /datum/crafting_recipe/liu_suit
-	name = "Liu Association combat suit"
+	name = "六协会 combat suit"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liu
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_simple = 2,
@@ -14,7 +14,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_jacket
-	name = "Liu Association combat jacket"
+	name = "六协会 combat jacket"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liu/section5
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_simple = 2,
@@ -28,7 +28,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_coat
-	name = "Liu Association combat coat"
+	name = "六协会 combat coat"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liuvet
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_simple = 6,
@@ -42,7 +42,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_combat_coat
-	name = "Liu Association section 2 combat coat"
+	name = "六协会 section 2 combat coat"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liuvet/section2
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_simple = 6,
@@ -56,7 +56,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_combat_jacket
-	name = "Liu Association veteran combat jacket"
+	name = "六协会 veteran combat jacket"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liuvet/section5
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_simple = 6,
@@ -70,7 +70,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_heavy_coat
-	name = "Liu Association heavy combat coat"
+	name = "六协会 heavy combat coat"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liuleader
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_advanced = 10,
@@ -83,7 +83,7 @@
 	subcategory = CAT_ARMOR
 
 /datum/crafting_recipe/liu_officer_coat
-	name = "Liu Association officer coat"
+	name = "六协会 officer coat"
 	result = /obj/item/clothing/suit/armor/ego_gear/city/liuleader/section5
 	reqs = list(
 		/obj/item/stack/sheet/silk/amber_advanced = 10,

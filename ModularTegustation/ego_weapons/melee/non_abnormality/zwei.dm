@@ -4,7 +4,7 @@
 
 /obj/item/ego_weapon/city/zweihander
 	name = "双手大剑"
-	desc = "二协会所用双手大剑."
+	desc = "Zwei协会所用双手大剑."
 	special = "在手中使用以强化自身及周围所有人的防御力."
 	icon_state = "zwei"
 	force = 27
@@ -80,7 +80,7 @@
 //Vet Zwei
 /obj/item/ego_weapon/city/zweihander/vet
 	name = "资深双手大剑"
-	desc = "二协会资深成员使用的双手大剑."
+	desc = "Zwei协会资深成员使用的双手大剑."
 	icon_state = "zwei_vet"
 	force = 40
 	defense_buff_self = 0.3
@@ -94,7 +94,7 @@
 //Mini Zwei
 /obj/item/ego_weapon/city/zweihander/knife
 	name = "单手剑"
-	desc = "二协会某些成员使用的单手剑."
+	desc = "Zwei协会某些成员使用的单手剑."
 	icon_state = "zwei_mini"
 	force = 16
 	attack_speed = 1
@@ -109,7 +109,7 @@
 //the funny zwei baton
 /obj/item/ego_weapon/city/zweibaton
 	name = "二协镇暴棍"
-	desc = "二协会使用的镇暴棍."
+	desc = "Zwei协会使用的镇暴棍."
 	special = "攻击一个人以在一段时间后使他们昏迷."
 	icon_state = "zwei_baton"
 	inhand_icon_state = "zwei_baton"
@@ -143,7 +143,7 @@
 
 /obj/item/ego_weapon/city/zweiwest
 	name = "二协骑士大剑"
-	desc = "二协会西部成员使用的大剑."
+	desc = "Zwei协会西部成员使用的大剑."
 	special = "当对两格距离外使用，将进行冲刺然后阻断，如果未能冲刺，将导致犹豫不决."
 	icon_state = "zweiwest"
 	inhand_icon_state = "zweiwest"
@@ -219,7 +219,7 @@
 
 /obj/item/ego_weapon/city/zweiwest/vet
 	name = "二协资深骑士大剑"
-	desc = "二协会资深成员使用的大剑."
+	desc = "Zwei协会资深成员使用的大剑."
 	icon_state = "zweiwest_fat"
 	inhand_icon_state = "zweiwest_fat"
 	force = 36
