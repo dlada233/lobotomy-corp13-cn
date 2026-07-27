@@ -1,10 +1,9 @@
-## DOWNLOADING
-There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at https://www.tgstation13.org/wiki/Downloading_the_source_code
+## 下载
+当前lobotomy-corp 13汉化版本源代码仅上传在github，允许所有人下载。
+注意，如果您只是想加入他人服务器游玩，您不需要下载源代码。
 
-Option 1:
-Follow this: https://www.tgstation13.org/wiki/Setting_up_git
+第一步：
+打开在github上的代码仓库：https://github.com/dlada233/lobotomy-corp13-cn/tree/CN-%E6%B1%89%E5%8C%96
 
-Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/vlggms/lobotomy-corp13
-(note: this will use a lot of bandwidth if you wish to update and is a lot of
-hassle if you want to make any changes at all, so it's not recommended.)
+第二步：
+在仓库页面下载ZIP压缩文件。
