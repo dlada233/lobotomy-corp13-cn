@@ -213,10 +213,10 @@
 							JUSTICE_ATTRIBUTE = 80
 							)
 
-/obj/item/clothing/suit/armor/ego_gear/waw/assonance
-	name = "相合"
-	desc = "What is good if there is no evil?"
-	icon_state = "assonance"
+/obj/item/clothing/suit/armor/ego_gear/waw/accord
+	name = "相和"
+	desc = "若无邪恶，何为善？"
+	icon_state = "accord"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 60, BLACK_DAMAGE = 20, PALE_DAMAGE = 30) // 140
 	attribute_requirements = list(
 							PRUDENCE_ATTRIBUTE = 80
@@ -371,7 +371,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/waw/innocence
-	name = "童年回忆"
+	name = "童年的回忆"
 	desc = "In my dreams as child, Peter Pan would reach out a hand for me to hold and take me to Neverland. I had forgotten all of that, until I went into that room."
 	icon_state = "innocence"
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 70, BLACK_DAMAGE = 40, PALE_DAMAGE = 30) //140
@@ -398,7 +398,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/waw/my_own_bride
-	name = "我的新娘"
+	name = "我的挚爱"
 	desc = "May your life work, Come back for you."
 	icon_state = "wife"
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 60, BLACK_DAMAGE = 30, PALE_DAMAGE = 20) // 140

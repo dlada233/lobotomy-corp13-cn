@@ -1,44 +1,74 @@
 /obj/projectile/ego_bullet/star
-	name = "star"
+	name = "新星"
 	icon_state = "star"
-	damage = 14 // Multiplied by 1.5x when at high SP
+	damage = 27
 	damage_type = WHITE_DAMAGE
+	speed = 0.15
+	ff_multiplier = 0
+	projectile_piercing = PASSMOB
+	hit_nondense_targets = TRUE
 
 /obj/projectile/ego_bullet/adoration
-	name = "slime projectile"
+	name = "史莱姆投射物"
 	icon_state = "slime"
-	desc = "A glob of infectious slime. It's going for your heart."
-	damage = 20	//Fires 3
+	desc = "一团具有传染性的黏性物质，正在向你的心脏袭来."
+	damage = 27	//Fires 3
 	speed = 0.8
+	spread = 5
 	damage_type = BLACK_DAMAGE
 	hitsound = "sound/effects/footstep/slime1.ogg"
 
-/obj/projectile/ego_bullet/adoration/dot
-	color = "#111111"
+/obj/projectile/ego_bullet/adoration/super
+	damage = 120
 	speed = 1.3
+	var/aoe = 60
+	spread = 0
 
-/obj/projectile/ego_bullet/adoration/dot/on_hit(target)
+/obj/projectile/ego_bullet/adoration/super/on_hit(target)
 	. = ..()
-	var/mob/living/H = target
-	if(!isbot(H) && isliving(H) && !QDELETED(H))
-		H.visible_message("<span class='warning'>[target] is hit by [src], they seem to wither away!</span>")
-		for(var/i = 1 to 14)
-			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living, apply_damage), rand(4,8), BLACK_DAMAGE, null, H.run_armor_check(null, BLACK_DAMAGE)), 2 SECONDS * i)
-
-/obj/projectile/ego_bullet/adoration/aoe
-	color = "#6666BB"
-
-/obj/projectile/ego_bullet/adoration/aoe/on_hit(target)
-	. = ..()
+	var/mob/living/user = firer
+	if(isliving(target))
+		var/mob/living/L = target
+		L.apply_status_effect(/datum/status_effect/gooped)
+		L.visible_message(span_warning("[target]被[src]击中了, 似乎身体开始萎缩!"))
+	for(var/turf/T in view(2, target))
+		var/obj/effect/temp_visual/small_smoke/halfsecond/S = new(T)
+		S.color = "#FF0081"
 	for(var/mob/living/L in view(2, target))
-		new /obj/effect/temp_visual/revenant/cracks(get_turf(L))
-		L.apply_damage(25, BLACK_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
-	return BULLET_ACT_HIT
+		if(user.faction_check_mob(L) || L == target)//player faction
+			continue
+		L.apply_damage(aoe * damage_multiplier, BLACK_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
+		L.apply_status_effect(/datum/status_effect/gooped)
+		L.visible_message(span_warning("[target]被[src]击中了, 似乎身体开始萎缩!"))
+
+/datum/status_effect/gooped
+	id = "gooped"
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 5 SECONDS
+	tick_interval = 10 //One tick every second
+	on_remove_on_mob_delete = TRUE
+	alert_type = null
+	var/damage_amount = 5
+
+/datum/status_effect/gooped/on_apply()
+	owner.apply_damage(damage_amount, BLACK_DAMAGE, null, owner.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+	playsound(owner, 'sound/effects/wounds/sizzle2.ogg', 25, TRUE)
+	return ..()
+
+/datum/status_effect/gooped/tick()
+	if(QDELETED(owner) || owner.stat == DEAD)
+		qdel(src)
+		return
+
+	owner.apply_damage(damage_amount, BLACK_DAMAGE, null, owner.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+	playsound(owner, 'sound/effects/wounds/sizzle2.ogg', 25, TRUE)
+
+
 
 /obj/projectile/ego_bullet/nihil
-	name = "dark energy"
+	name = "黑暗能量"
 	icon_state = "nihil"
-	desc = "Just looking at it seems to suck the life out of you..."
+	desc = "光是看着它，就仿佛把你的生命力全部抽走了..."
 	damage = 18 //Fires 4 +10 damage per upgrade, up to 75
 	speed = 0.7
 	damage_type = WHITE_DAMAGE
@@ -58,7 +88,7 @@
 			return BULLET_ACT_BLOCK
 		if(user.faction_check_mob(H)) // Our faction
 			if(H.is_working)
-				H.visible_message("<span class='warning'>[src] vanishes on contact with [H]... but nothing happens!</span>")
+				H.visible_message("<span class='warning'>[src] 接触到 [H] 后消失了... 什么都没有发生!</span>")
 				qdel(src)
 				return BULLET_ACT_BLOCK
 			switch(damage_type)
@@ -69,7 +99,7 @@
 					H.adjustSanityLoss(-damage*0.1)
 				else // Red or pale
 					H.adjustBruteLoss(-damage*0.2)
-			H.visible_message("<span class='warning'>[src] vanishes on contact with [H]!</span>")
+			H.visible_message("<span class='warning'>[src] 接触到了 [H]!</span>")
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	return ..()
@@ -104,38 +134,57 @@
 	damage_type = pick(damage_list)
 
 /obj/projectile/ego_bullet/pink
-	name = "heart-piercing bullet"
-	damage = 65
+	name = "穿心弹"
+	damage = 72
 	damage_type = WHITE_DAMAGE
-
+	impact_effect_type = null
 	hitscan = TRUE
-	damage_falloff_tile = 2.5//the damage ramps up; 2.5 extra damage per tile. Maximum range is about 32 tiles, dealing 145 damage
+	ff_multiplier = 0
+	damage_falloff_tile = 4//the damage ramps up; 4 extra damage per tile. Maximum range is about 32 tiles, dealing 200 damage
 
 /obj/projectile/ego_bullet/pink/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	new /obj/effect/temp_visual/friend_hearts(get_turf(target))//looks better than impact_effect_type and works
 	return ..()
 
 /obj/projectile/ego_bullet/arcadia
-	name = "arcadia"
+	name = "阿卡迪亚亦有我"
 	damage = 70 // VERY high damage
 	damage_type = RED_DAMAGE
 
+/obj/projectile/ego_bullet/judge
+	name = "审判"
+	damage = 45
+	damage_type = WHITE_DAMAGE
+
 /obj/projectile/ego_bullet/ego_hookah
-	name = "havana"
+	name = "哈瓦那"
 	icon_state = "smoke"
-	damage = 3
+	damage = 2
 	damage_type = PALE_DAMAGE
 	speed = 2
 	range = 6
+	projectile_piercing = PASSMOB
+	hit_nondense_targets = TRUE
+	ff_multiplier = 0 //It'll be too annoying to use with other people if I didn't do this
+	var/damage_decay = 0.9
+	var/iframes = 1
+
+/obj/projectile/ego_bullet/ego_hookah/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	damage *= damage_decay
+	if(damage < 0.1)
+		qdel(src)
+		return
 
 /obj/projectile/ego_bullet/ego_executive
-	name = "executive"
-	damage = 30
+	name = "虾之秩序"
+	damage = 12
 	spread = 0
 	damage_type = PALE_DAMAGE	//hehe
 
 /obj/projectile/ego_bullet/ego_executive/kill_shot
-	damage = 150
+	damage = 60
+	var/stat = null
 
 /obj/projectile/ego_bullet/ego_executive/kill_shot/process()
 	. = ..()
@@ -146,6 +195,12 @@
 			S.dir = pick(NORTH, SOUTH, EAST, WEST)
 			S.pixel_y = pixel_y + rand(-8,8)
 
+/obj/projectile/ego_bullet/ego_executive/kill_shot/process_hit(turf/T, atom/target, atom/bumped, hit_something = FALSE)
+	if(isliving(target))
+		var/mob/living/L = target
+		stat = L.stat
+	return ..()
+
 /obj/projectile/ego_bullet/ego_executive/kill_shot/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/mob/living/T = target
@@ -154,7 +209,7 @@
 	if(!isliving(firer))
 		return
 	var/mob/living/user = firer
-	if(T.stat == DEAD)
+	if(T.stat == DEAD && stat != DEAD)
 		var/obj/item/ego_weapon/ranged/pistol/executive/gun = fired_from
 		gun.AutoReload(user)
 	return

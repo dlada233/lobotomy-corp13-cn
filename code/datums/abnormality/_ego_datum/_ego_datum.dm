@@ -57,54 +57,89 @@ GLOBAL_LIST_EMPTY(ego_datums)
 			var/datum/damage_type_shuffler/shuffler = GLOB.damage_type_shuffler
 			var/new_damage_type = shuffler.mapping_offense[bullet_damage_type]
 			bullet_damage_type = new_damage_type
-		information["projectile_info"] = "Its bullets deal [bullet_damage] [bullet_damage_type] damage."
+		information["projectile_info"] = "子弹将造成 [bullet_damage] [bullet_damage_type] 伤害."
 		if(G.pellets > 1)
-			information["projectile_info"] = "Its bullets deal [bullet_damage] x [G.pellets] [bullet_damage_type] damage."
+			information["projectile_info"] = "子弹将造成 [bullet_damage] x [G.pellets] [bullet_damage_type] 伤害."
 		var/fire_delay = G.fire_delay
 		if(G.autofire)
 			fire_delay = G.autofire * 0.75
-			information["auto_fire"] = "This weapon fires automatically."
+			information["auto_fire"] = "这把武器会自动开火."
 		switch(fire_delay)
 			if(0 to 5)
-				information["fire_rate"] = "Fast"
+				information["fire_rate"] = "快"
 			if(6 to 10)
-				information["fire_rate"] = "Normal"
+				information["fire_rate"] = "普通"
 			if(11 to 15)
-				information["fire_rate"] = "Somewhat slow"
+				information["fire_rate"] = "略慢"
 			if(16 to 20)
-				information["fire_rate"] = "Slow"
+				information["fire_rate"] = "慢"
 			else
-				information["fire_rate"] = "Extremely slow"
+				information["fire_rate"] = "极慢"
+		if(G.chargetime)
+			switch(G.chargetime)
+				if(0 to 5)
+					information["charge_time"] = "快"
+				if(6 to 10)
+					information["charge_time"] = "普通"
+				if(11 to 15)
+					information["charge_time"] = "略慢"
+				if(16 to 20)
+					information["charge_time"] = "慢"
+				else
+					information["charge_time"] = "极慢"
+		if(G.alternate_fire_name)
+			information["alt_fire"] += "这把武器有副开火模式: [G.alternate_fire_name]."
+			if(G.alternate_info)
+				information["alt_info"] += "副开火模式 - [G.alternate_info]"
 		if(!G.reloadtime)
-			information["reload_speed"] += "This weapon has unlimited ammo."
+			information["reload_speed"] += "这把武器的拥有无限的弹药数量."
 		else
-			information["ammo"] += G.shotsleft
+			information["ammo"] += G.max_shots
+			if(G.ammo_on_reload)
+				information["ammo_gain"] += G.ammo_on_reload
+			else
+				information["ammo_gain"] += "全部"
+			if(G.ammo_on_melee)
+				information["melee_ammo"] += G.ammo_on_melee
+			if(G.mobile_reload)
+				information["mobile_reload"] += "这把武器可以在移动中换弹，但会降低些许移速."
 			switch(G.reloadtime)
 				if(0 to 0.71 SECONDS)
-					information["reload_speed"] += "Reload speed: Very fast."
+					information["reload_speed"] += "装弹速度: 非常快."
 				if(0.71 SECONDS to 1.21 SECONDS)
-					information["reload_speed"] += "Reload speed: Fast."
+					information["reload_speed"] += "装弹速度: 快."
 				if(1.21 SECONDS to 1.71 SECONDS)
-					information["reload_speed"] += "Reload speed: Average."
+					information["reload_speed"] += "装弹速度: 一般."
 				if(1.71 SECONDS to 2.51 SECONDS)
-					information["reload_speed"] += "Reload speed: Slow."
+					information["reload_speed"] += "装弹速度: 慢."
 				if(2.51 to INFINITY)
-					information["reload_speed"] += "Reload speed: Extremely slow."
-
+					information["reload_speed"] += "装弹速度: 极慢."
+			if(G.passive_reload)
+				switch(G.passive_reload)
+					if(0 to 2.01 SECONDS)
+						information["passive_reload"] += "被动换弹延迟: 非常快."
+					if(2.01 SECONDS to 4.01 SECONDS)
+						information["passive_reload"] += "被动换弹延迟: 快."
+					if(4.01 SECONDS to 6.01 SECONDS)
+						information["passive_reload"] += "被动换弹延迟: 一般."
+					if(6.01 SECONDS to 9.01 SECONDS)
+						information["passive_reload"] += "被动换弹延迟: 慢."
+					if(9.01 to INFINITY)
+						information["passive_reload"] += "被动换弹延迟: 极慢."
 		switch(G.weapon_weight)
 			if(WEAPON_HEAVY)
-				information["weapon_weight"] += "This weapon requires both hands to fire."
+				information["weapon_weight"] += "这把武器需要双手使用."
 			if(WEAPON_MEDIUM)
-				information["weapon_weight"] += "This weapon can be fired with one hand."
+				information["weapon_weight"] += "这把武器可以单手使用."
 			if(WEAPON_LIGHT)
-				information["weapon_weight"] += "This weapon can be dual wielded."
+				information["weapon_weight"] += "这把武器可以双手各持使用."
 		qdel(G)
 	if(ispath(item_path, /obj/item/ego_weapon/shield))
 		var/obj/item/ego_weapon/shield/S = new item_path(src)
 		if(S.projectile_block_duration)
-			information["shield"] += "This weapon blocks ranged attacks while attacking and can block on command."
+			information["shield"] += "这把武器在攻击时可以格挡远程攻击，并且可以按指令主动格挡."
 		else
-			information["shield"] += "This weapon can block on command."
+			information["shield"] += "这把武器可以按指令主动格挡."
 		information["armor"] = list()
 		information["armor"][RED_DAMAGE] = 1 - round(S.reductions[1], 10) / 100
 		information["armor"][WHITE_DAMAGE] = 1 - round(S.reductions[2], 10) / 100
@@ -112,7 +147,7 @@ GLOBAL_LIST_EMPTY(ego_datums)
 		information["armor"][PALE_DAMAGE] = 1 - round(S.reductions[4], 10) / 100
 		qdel(S)
 	else if(ispath(item_path, /obj/item/ego_weapon/lance))
-		information["lance"] += "This weapon can be used to perform a running charge by using it in hand. Charge into an enemy at high speeds for massive damage!"
+		information["lance"] += "这把武器可以在手中使用来进行高速冲锋，对撞击到的敌人造成巨大伤害!"
 	else if(ispath(item_path, /obj/item/ego_weapon/wield))
 		var/obj/item/ego_weapon/wield/W = new item_path(src)
 		if(W.two_hands_required)
@@ -168,16 +203,16 @@ GLOBAL_LIST_EMPTY(ego_datums)
 	if(E.knockback)
 		switch(E.knockback)
 			if(KNOCKBACK_LIGHT)
-				information["knockback"] += "这把武器有轻微的反冲击能力."
+				information["knockback"] += "这把武器有轻微的击退能力."
 
 			if(KNOCKBACK_MEDIUM)
-				information["knockback"] += "这把武器有不错的反冲击能力."
+				information["knockback"] += "这把武器有不错的击退能力."
 
 			if(KNOCKBACK_HEAVY)
-				information["knockback"] += "这把武器拥有强悍的击倒反冲击能力."
+				information["knockback"] += "这把武器拥有强悍的击退能力."
 
 			else
-				information["knockback"] += "这把武器拥有 [E.knockback >= 10 ? "击倒反冲击": ""] 反冲击能力."
+				information["knockback"] += "这把武器拥有 [E.knockback >= 10 ? "强悍的": ""] 击退能力."
 	if(E.charge)
 		information["charge"] += "这把武器有蓄力计数机制[E.attack_charge_gain ? "，并且每次攻击都会获得蓄力计数" : ""].<br>"
 		information["charge"] += "这把武器可以积蓄 [E.charge_cap] 点蓄力.<br>"
@@ -202,9 +237,25 @@ GLOBAL_LIST_EMPTY(ego_datums)
 		dat += "射速: [information["fire_rate"]]<br>"
 		if("auto_fire" in information)
 			dat += "[information["auto_fire"]].<br>"
+		if("charge_time" in information)
+			dat += "充能时间: [information["charge_time"]]<br>"
+		if("alt_fire" in information)
+			dat += "[information["alt_fire"]]<br>"
+		if("alt_info" in information)
+			dat += "[information["alt_info"]]<br>"
+		dat += "<br>"
+		if("mobile_reload" in information)
+			dat += "[information["mobile_reload"]]<br>"
+		if("passive_reload" in information)
+			dat += "这把武器只能通过被动方式换弹，而非主动换弹.<br>"
+			dat += "[information["passive_reload"]]<br>"
 		dat += "[information["reload_speed"]]<br>"
 		if("ammo" in information)
 			dat += "弹容量: [information["ammo"]].<br>"
+		if("ammo_gain" in information)
+			dat += "装填所得弹药量: [information["ammo_gain"]].<br>"
+		if("melee_ammo" in information)
+			dat += "近战所得弹药量: [information["melee_ammo"]].<br>"
 		dat += "[information["weapon_weight"]]<br>"
 		dat += "<br>"
 		dat += "[information["attack_info"]]<br>"

@@ -2,14 +2,14 @@
 	damage = 4
 
 /obj/projectile/ego_bullet/shrimp_red
-	name = "9mm soda bullet R"
+	name = "9mm 苏打子弹 R"
 	damage = 3
 	range = 12
 	spread = 20
 	damage_type = RED_DAMAGE
 
 /obj/projectile/ego_bullet/shrimp_white
-	name = "9mm soda bullet W"
+	name = "9mm 苏打子弹 W"
 	damage = 30
 	speed = 0.1
 	damage_type = WHITE_DAMAGE
@@ -27,7 +27,7 @@
 				return
 			head.dismember()
 			H.regenerate_icons()
-			visible_message(span_danger("[H]'s head blew right off!"))
+			visible_message(span_danger("[H]头被打飞了!"))
 
 /obj/projectile/ego_bullet/shrimp_pale
 	name = "9mm soda bullet P"
@@ -71,12 +71,12 @@
 	return BULLET_ACT_HIT
 
 /obj/projectile/ego_bullet/fivedamage
-	name = "bullet"
+	name = "子弹"
 	damage = 5
 
 //feather of honor
 /obj/projectile/ego_bullet/ego_feather
-	name = "feather"
+	name = "羽毛"
 	icon_state = "lava"
 	damage = 15
 	damage_type = WHITE_DAMAGE
@@ -94,8 +94,3 @@
 /obj/projectile/ego_bullet/ego_feather/fire()
 	playsound(loc, "sound/abnormalities/seasons/summer_change.ogg", 5, TRUE, -1)
 	. = ..()
-
-/obj/projectile/ego_bullet/ego_feather/Impact()
-	if(!fired)
-		return FALSE
-	return ..()

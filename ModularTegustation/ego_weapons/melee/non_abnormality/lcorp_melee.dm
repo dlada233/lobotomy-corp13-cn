@@ -439,7 +439,7 @@
 	force = egoshard.base_damage //base damage
 	for(var/atr in attribute_requirements)
 		attribute_requirements[atr] = egoshard.stat_requirement
-	to_chat(user, span_warning("装备[src]所需属性已提升!"))
+	to_chat(user, span_warning("[src]的装备需求已提升!"))
 	to_chat(user, span_nicegreen("[src]强化成功!"))
 	icon_state = "[initial(icon_state)]_[egoshard.damage_type]"
 
@@ -550,7 +550,7 @@
 	force = floor(egoshard.base_damage * 2) //2* base damage, 3 attack speed for shields
 	for(var/atr in attribute_requirements)
 		attribute_requirements[atr] = egoshard.stat_requirement
-	to_chat(user, span_warning("[src]的装备需求已经提升!"))
+	to_chat(user, span_warning("[src]的装备需求已提升!"))
 	var/list/new_armor_values = list( //Same as armor, +20 from armor's base 2 in red
 		egoshard.red_bonus + 20,
 		egoshard.white_bonus,

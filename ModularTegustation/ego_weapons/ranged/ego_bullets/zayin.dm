@@ -1,20 +1,21 @@
 /obj/projectile/ego_bullet/ego_soda
-	name = "9mm soda bullet"
+	name = "9mm 苏打子弹"
 	damage = 3
 	damage_type = RED_DAMAGE
 
 /obj/projectile/ego_bullet/ego_clerk
-	name = "9mm bullet"
+	name = "9mm 子弹"
 	damage = 2
 	damage_type = RED_DAMAGE
 
 /obj/projectile/ego_bullet/ego_nostalgia
-	name = "nostalgia"
-	damage = 8
+	name = "怀旧"
+	damage = 7
 	damage_type = RED_DAMAGE
 
 /obj/projectile/ego_bullet/ego_nightshade
-	name = "nightshade dart"
+	name = "茄属植物镖"
+	icon_state = "nightshade"
 	damage = 6
 	damage_type = BLACK_DAMAGE
 
@@ -30,26 +31,26 @@
 			if(ishuman(victim))
 				var/mob/living/carbon/human/H = victim
 				if(H.is_working)
-					H.visible_message("<span class='warning'>[src] embeds itself in [H]... but nothing happens!</span>")
+					H.visible_message("<span class='warning'>[src]嵌入自己到[H]... 但什么都没发生!</span>")
 					qdel(src)
-				H.adjustSanityLoss(-damage*0.15)
-				H.adjustBruteLoss(-damage*0.15)
+				H.adjustSanityLoss(-damage*0.25)
+				H.adjustBruteLoss(-damage*0.25)
 				return BULLET_ACT_BLOCK
 			else
-				victim.adjustBruteLoss(-damage*0.3)
-			victim.visible_message("<span class='warning'>[src] embeds itself in [victim]!</span>")
+				victim.adjustBruteLoss(-damage*0.5)
+			victim.visible_message("<span class='warning'>[src]嵌入自己到[victim]!</span>")
 			qdel(src)
 			return BULLET_ACT_BLOCK
 	..()
 
 /obj/projectile/ego_bullet/ego_bucket
-	name = "stone"
+	name = "石头"
 	icon_state = "wishing_rock"
 	damage = 10
 	damage_type = RED_DAMAGE
 
 /obj/projectile/ego_bullet/ego_oceanic
-	name = "oceanic"
-	damage = 6		//Worse than tough lol
+	name = "海之味"
+	damage = 3		//Worse than tough lol
 	damage_type = WHITE_DAMAGE
 

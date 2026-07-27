@@ -43,7 +43,7 @@
 		/obj/item/clothing/suit/armor/ego_gear/waw/oppression 		= /obj/item/clothing/suit/armor/ego_gear/realization/cruelty,
 		/obj/item/clothing/suit/armor/ego_gear/waw/thirteen 		= /obj/item/clothing/suit/armor/ego_gear/realization/bell_tolls,
 		/obj/item/clothing/suit/armor/ego_gear/waw/executive 		= /obj/item/clothing/suit/armor/ego_gear/realization/capitalism,
-		/obj/item/clothing/suit/armor/ego_gear/waw/assonance		= /obj/item/clothing/suit/armor/ego_gear/realization/duality_yang,
+		/obj/item/clothing/suit/armor/ego_gear/waw/accord		= /obj/item/clothing/suit/armor/ego_gear/realization/duality_yang,
 		/obj/item/clothing/suit/armor/ego_gear/waw/discord			= /obj/item/clothing/suit/armor/ego_gear/realization/duality_yin,
 		/obj/item/clothing/suit/armor/ego_gear/waw/heart			= /obj/item/clothing/suit/armor/ego_gear/realization/repentance,
 		/obj/item/clothing/suit/armor/ego_gear/waw/exuviae			= /obj/item/clothing/suit/armor/ego_gear/realization/nest,
@@ -118,15 +118,15 @@
 		return
 
 	if(!(I.type in output))
-		to_chat(user, span_warning("The true potential of [I] cannot be realized."))
+		to_chat(user, span_warning("[I]的真正潜力还无法觉醒."))
 		return
 
-	if((istype(I, /obj/item/clothing/suit/armor/ego_gear/waw/discord) || istype(I, /obj/item/clothing/suit/armor/ego_gear/waw/assonance)) && !YinYangCheck())
-		to_chat(user, span_warning("The true potential of [I] cannot be realized without the other half."))
+	if((istype(I, /obj/item/clothing/suit/armor/ego_gear/waw/discord) || istype(I, /obj/item/clothing/suit/armor/ego_gear/waw/accord)) && !YinYangCheck())
+		to_chat(user, span_warning("缺少了另一半，[I]的真正潜力就无法觉醒."))
 		return
 
 	if(user.ckey in realized_users)
-		to_chat(user, span_warning("You have realized your full potential already."))
+		to_chat(user, span_warning("你已经觉醒了全部潜力."))
 		return
 
 	var/stat_total = 0
@@ -134,11 +134,11 @@
 		stat_total += get_raw_level(user, attribute)
 
 	if(stat_total < 520) // ~130 in all stats required
-		to_chat(user, span_warning("You are too weak to use this machine."))
+		to_chat(user, span_warning("你还太弱，无法使用这台机器."))
 		return
 
 	var/atom/item_out = output[I.type]
-	to_chat(user, span_notice("The machine is slowly turning [I] into [initial(item_out.name)]..."))
+	to_chat(user, span_notice("这台机器正缓缓将 [I] 塑造成 [initial(item_out.name)]..."))
 	if(!do_after(user, 5 SECONDS))
 		return
 
@@ -147,5 +147,5 @@
 	realized_users |= user.ckey
 	var/atom/new_item = new item_out(get_turf(user))
 	user.put_in_hands(new_item)
-	to_chat(user, span_nicegreen("You retrieve [new_item] from the [src]!"))
+	to_chat(user, span_nicegreen("你得到了 [new_item] 从 [src]!"))
 	playsound(get_turf(src), 'sound/magic/clockwork/ratvar_attack.ogg', 50, TRUE)

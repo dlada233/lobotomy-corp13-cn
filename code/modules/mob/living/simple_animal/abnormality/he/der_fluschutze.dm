@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/der_fluschutze
-	name = "魔弹猎手"
+	name = "凶弹射手"
 	desc = "一个穿着灰色、金色和帝王蓝配色衣服的高个子男人，他的目标无可挑剔."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "DrFluShots"

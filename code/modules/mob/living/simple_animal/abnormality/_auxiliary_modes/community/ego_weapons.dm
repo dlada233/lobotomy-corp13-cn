@@ -581,7 +581,7 @@
 	name = "limos"
 	desc = "Food? Does it have to be human? Does it have to be mine? How am I supposed to get it?"
 	special = "This weapon has a combo system. To turn off this combo system, use in hand. \
-			This weapon has a fast attack speed, is capable of closing short gaps when attacking, and heals a small amount on a combo finsiher."
+			这把武器的攻击速度快, is capable of closing short gaps when attacking, and heals a small amount on a combo finsiher."
 	icon_state = "limos"
 	icon = 'code/modules/mob/living/simple_animal/abnormality/_auxiliary_modes/community/!icons/ego_weapons.dmi'
 	lefthand_file = 'code/modules/mob/living/simple_animal/abnormality/_auxiliary_modes/community/!icons/ego_lefthand.dmi'
@@ -757,16 +757,16 @@
 				new /obj/effect/nightmares_vis/curse_clock(target_turf)
 
 /obj/item/ego_weapon/ranged/nightmares/attack_self(mob/user)
-	shotsleft = initial(shotsleft)
+	shotsleft = max_shots
 	if(cursing)
 		cursing = FALSE
-		to_chat(user,span_notice("You will no longer attack your cursor."))
+		to_chat(user,span_notice("你将不再攻击你鼠标所指位置."))
 		return
 	if(curse_cooldown > world.time)
-		to_chat(user,span_warning("You cannot prepare a curse yet!"))
+		to_chat(user,span_warning("你目前还无法准备咒术!"))
 		return
 	cursing = TRUE
-	to_chat(user,span_notice("You will now create a 5x5 curse at your cursor."))
+	to_chat(user,span_notice("你将在鼠标所指位置创建一个5x5的诅咒."))
 
 /obj/item/ego_weapon/ranged/nightmares/proc/AdjustCircle(mob/living/carbon/human/user)
 	playsound(user, 'sound/abnormalities/hatredqueen/attack.ogg', 100)

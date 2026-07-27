@@ -122,3 +122,12 @@
 	rename_team = "Zwei Shield Unit"
 	mission = "Preserve the lives of the client employees, remove all clear and evident threats to their safety."
 	polldesc = "Zwei Shieldbearers, swordsmen with squad tactics and professional attitude."
+
+/datum/ert/magical_girl
+	roles = list(/datum/antagonist/ert/magical_girl/wrath, /datum/antagonist/ert/magical_girl/despair, /datum/antagonist/ert/magical_girl/greed)
+	leader_role = /datum/antagonist/ert/magical_girl/hatred
+	opendoors = TRUE
+	teamsize = 4
+	rename_team = "魔法少女战队"
+	mission = "使用魔法力量拯救大家！"
+	polldesc = "魔法少女"

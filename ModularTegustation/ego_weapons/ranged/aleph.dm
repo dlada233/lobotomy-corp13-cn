@@ -1,30 +1,30 @@
-#define SHOT_MODE 0
-#define DOT_MODE 1
-#define AOE_MODE 2
-
 /obj/item/ego_weapon/ranged/star
-	name = "sound of a star"
-	desc = "The star shines brighter as our despair gathers. The weapon's small, evocative sphere fires a warm ray."
+	name = "新星之声"
+	desc = "新星自我们的绝望中闪耀，一小团怀恋正散发着温暖的明光."
 	icon_state = "star"
 	inhand_icon_state = "star"
-	special = "This gun scales with remaining SP."
+	special = "这把武器根据使用者的SP值会进行一定数量的额外射击.\n这把武器具有敌我识别功能，无视友方并能穿透所有敌方目标."
 
-	force = 15
+	force = 18
 	damtype = WHITE_DAMAGE
 	attack_speed = 0.5
 
 	projectile_path = /obj/projectile/ego_bullet/star
-	weapon_weight = WEAPON_HEAVY
-	spread = 5
-
-	autofire = 0.25 SECONDS
-	shotsleft = 333
-	reloadtime = 2.1 SECONDS
+	weapon_weight = WEAPON_MEDIUM
+	spread = 0
+	burst_size = 3
+	burst_delay = 1.5
+	fire_delay = 15
+	max_shots = 60
+	ammo_on_reload = 1
+	reloadtime = 0.1 SECONDS
+	passive_reload = 3 SECONDS
+	reload_start_sound = 'sound/weapons/pulse.ogg'
+	reload_text = "新星之声重新充能中."
 
 	fire_sound = 'sound/weapons/ego/star.ogg'
 	vary_fire_sound = TRUE
 	fire_sound_volume = 25
-
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
 							PRUDENCE_ATTRIBUTE = 100,
@@ -32,80 +32,84 @@
 							JUSTICE_ATTRIBUTE = 80
 							)
 
-/obj/item/ego_weapon/ranged/star/fire_projectile(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from, temporary_damage_multiplier)
-	if(!ishuman(user))
-		return ..()
-
-	var/mob/living/carbon/human/H = user
-	temporary_damage_multiplier = 1 + (H.sanityhealth / H.maxSanity * 0.5) // Maximum SP will add 50% to the damage
+/obj/item/ego_weapon/ranged/star/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0, temporary_damage_multiplier = 1)
+	if(!CanUseEgo(user))
+		return
+	burst_size = 1
+	if(user.sanityhealth >= (user.maxSanity * 0.3))
+		burst_size = 2
+	if(user.sanityhealth >= (user.maxSanity * 0.6))
+		burst_size = 3
 	return ..()
 
 /obj/item/ego_weapon/ranged/star/suicide_act(mob/living/carbon/user)
 	. = ..()
-	user.visible_message(span_suicide("[user]'s legs distort and face opposite directions, as [user.p_their()] torso seems to pulsate! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]双腿扭曲并朝着相反方向延伸! 这是一种自杀行为!"))
 	playsound(src, 'sound/abnormalities/bluestar/pulse.ogg', 50, FALSE, 40, falloff_distance = 10)
 	user.unequip_everything()
 	QDEL_IN(user, 1)
 	return MANUAL_SUICIDE
 
 /obj/item/ego_weapon/ranged/adoration
-	name = "adoration"
-	desc = "A big mug filled with mysterious slime that never runs out. \
-	It’s the byproduct of some horrid experiment in a certain laboratory that eventually failed."
+	name = "爱慕"
+	desc = "这是一个装有神秘黏液的大杯子. \
+	这些粘液是一场骇人实验的残留物. 触碰粘液的人会抱怨皮肤上那股怪异的感觉，然而它绝不会止步于此."
 	icon_state = "adoration"
 	inhand_icon_state = "adoration"
-	special = "Use in hand to swap between AOE, DOT and shotgun modes."
 
-	force = 28
+	force = 40
 	damtype = BLACK_DAMAGE
 
 	projectile_path = /obj/projectile/ego_bullet/adoration
-	weapon_weight = WEAPON_HEAVY
-	fire_delay = 10
+	weapon_weight = WEAPON_MEDIUM
+	fire_delay = 15
 	pellets = 3
-	variance = 20
+	variance = 15
+	randomspread = FALSE
+	max_shots = 16
+	ammo_on_reload = 1
+	passive_reload = 3 SECONDS
+	reloadtime = 0.3 SECONDS
+	reload_start_sound = 'sound/abnormalities/meltinglove/ranged_hit.ogg'
+	reload_text = "杯中的黏液正在再生."
 
 	fire_sound = 'sound/effects/attackblob.ogg'
 	fire_sound_volume = 50
-
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
 							PRUDENCE_ATTRIBUTE = 80,
 							TEMPERANCE_ATTRIBUTE = 100,
 							JUSTICE_ATTRIBUTE = 80
 							)
-	var/mode = 0
+	alternate_reload_time = 5
+	alternate_fire_name = "具有感染力的爱"
+	alternate_projectile_path = /obj/projectile/ego_bullet/adoration/super
+	alternate_info = "这把武器会发射一个巨大而缓慢的黏液球，发射所需弹药量是常规射击的两倍，且需要先蓄力充能再发射. \
+	黏液球造成范围伤害并施加DOT效果."
+	alternate_reload_type = RELOADTYPE_SHARED_MAGAZINE
+	alternate_fire_sound = 'sound/abnormalities/meltinglove/ranged.ogg'
+	alternate_pellets = 1
+	alternate_variance  = 0
+	alternate_toggle_sound = 'sound/effects/attackblob.ogg'
+	alternate_toggle_sound_volume = 50
+	alternate_toggle_enabled_message = span_notice("你保持专注，准备开始进行蓄力充能射击.")
+	alternate_toggle_disabled_message = span_notice("你保持专注，准备开始进行常规射击.")
 
-/obj/item/ego_weapon/ranged/adoration/attack_self(mob/user)
+/obj/item/ego_weapon/ranged/adoration/EnableAltfire(mob/user, silent = TRUE)
 	. = ..()
-	switch(mode)
-		if(SHOT_MODE)
-			to_chat(user,"<span class='warning'>You focus, changing for a DOT blast</span>")
-			projectile_path = /obj/projectile/ego_bullet/adoration/dot
-			pellets = 1
-			variance = 0
-			mode = DOT_MODE
-			return
-		if(DOT_MODE)
-			to_chat(user,"<span class='warning'>You focus, changing for an AOE blast</span>")
-			projectile_path = /obj/projectile/ego_bullet/adoration/aoe
-			mode = AOE_MODE
-			return
-		if(AOE_MODE)
-			to_chat(user,"<span class='warning'>You focus, changing for a shotgun blast</span>")
-			projectile_path = /obj/projectile/ego_bullet/adoration
-			pellets = initial(pellets)
-			variance = initial(variance)
-			mode = SHOT_MODE
-			return
+	variance = 0
+	ammo_per_shot = 2
+	chargetime = 5
 
-#undef SHOT_MODE
-#undef DOT_MODE
-#undef AOE_MODE
+/obj/item/ego_weapon/ranged/adoration/DisableAltfire(mob/user, silent = TRUE)
+	. = ..()
+	variance = initial(variance)
+	ammo_per_shot = 1
+	chargetime = 0
 
 /obj/item/ego_weapon/ranged/nihil
-	name = "nihil"
-	desc = "Having decided to trust its own intuition, the jester spake the names of everyone it had met on that path with each step it took."
+	name = "虚无"
+	desc = "决定相信自己的直觉后，弄臣每走一步，都会说出自己在那条路上遇到的每一个人的名字."
 	icon_state = "nihil"
 	inhand_icon_state = "nihil"
 	force = 28
@@ -151,7 +155,7 @@
 		IncreaseAttributes(user, powers[4])
 		qdel(I)
 	else
-		to_chat(user,"<span class='warning'>You have already used this upgrade!</span>")
+		to_chat(user,"<span class='warning'>你已经使用过此升级了!</span>")
 
 /obj/item/ego_weapon/ranged/nihil/proc/IncreaseAttributes(user, current_suit)
 	for(var/atr in attribute_requirements)
@@ -159,40 +163,40 @@
 			attribute_requirements[atr] += 5
 		else
 			attribute_requirements[atr] += 10
-	to_chat(user,"<span class='warning'>The requirements to use [src] have increased!</span>")
+	to_chat(user,"<span class='warning'>[src]的装备需求已提升!</span>")
 
 	switch(current_suit)
 		if("hearts")
-			to_chat(user,"<span class='nicegreen'>The ace of [current_suit] has removed friendly fire from [src]!</span>")
+			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌移除了友军火力!</span>")
 
 		if("spades")
-			to_chat(user,"<span class='nicegreen'>The ace of [current_suit] granted [src] the capability of dealing pale damage!</span>")
+			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成青色伤害的能力!</span>")
 
 		if("diamonds")
-			to_chat(user,"<span class='nicegreen'>The ace of [current_suit] granted [src] the capability of dealing red damage!</span>")
+			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成红色伤害的能力!</span>")
 
 		if("clubs")
-			to_chat(user,"<span class='nicegreen'>The ace of [current_suit] granted [src] the capability of dealing black damage!</span>")
-	to_chat(user,"<span class='nicegreen'>The ace of [current_suit] fades away as it makes [src] become even more powerful!</span>")
+			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成黑色伤害的能力!</span>")
+	to_chat(user,"<span class='nicegreen'>[current_suit]的Ace牌逐渐消散，但是[src]同时也变得更加强大!</span>")
 	return
 
 /obj/item/ego_weapon/ranged/pink
-	name = "pink"
-	desc = "Pink is considered to be the color of warmth and love, but is that true? \
-			Can guns really bring peace and love?"
+	name = "粉红军备"
+	desc = "粉红色象征着温暖与爱. \
+			但这把粉红涂装的枪真的能够代表爱吗？伤害他人的工具又该如何传递爱与和平？"
 	icon_state = "pink"
 	inhand_icon_state = "pink"
-	special = "This weapon has a scope, and fires projectiles with zero travel time. Damage dealt is increased when hitting targets further away. Middle mouse button click/alt click to zoom in that direction."
-	force = 28
+	special = "这把武器具有瞄准镜，按住鼠标中键或者ALT键可以向该方向扩大视野. 发射出的子弹飞行时间为零，并且具有敌我识别功能. 当命中更远处的目标时，造成的伤害会增加."
+	force = 40
 	damtype = WHITE_DAMAGE
 	projectile_path = /obj/projectile/ego_bullet/pink
 	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'sound/abnormalities/armyinblack/pink.ogg'
-	fire_delay = 9
+	fire_delay = 20
 	zoomable = TRUE
 	zoom_amt = 10
 	zoom_out_amt = 13
-	shotsleft = 5
+	max_shots = 5
 	reloadtime = 2.1 SECONDS
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
@@ -256,12 +260,11 @@
 		current_holder = null
 
 /obj/item/ego_weapon/ranged/arcadia
-	name = "Et in Arcadia Ego"
-	desc = "With the waxing of the sun, humanity wanes."
+	name = "阿卡迪亚亦有我" //Et in Arcadia Ego （拉丁语 名画《阿卡迪亚的牧人》）
+	desc = "日中则昃，人亦衰亡."
 	icon_state = "arcadia"
 	inhand_icon_state = "arcadia"
-	special = "Use in hand to load bullets."
-	force = 28
+	force = 40
 	projectile_path = /obj/projectile/ego_bullet/arcadia
 	weapon_weight = WEAPON_HEAVY
 	spread = 5
@@ -279,46 +282,40 @@
 							)
 
 
-	shotsleft = 16	//Based off a henry .44
+	max_shots = 16	//Based off a henry .44
 	reloadtime = 0.5 SECONDS
-
-/obj/item/ego_weapon/ranged/arcadia/reload_ego(mob/user)
-	if(shotsleft == initial(shotsleft))
-		return
-	is_reloading = TRUE
-	to_chat(user,"<span class='notice'>You start loading a bullet.</span>")
-	if(do_after(user, reloadtime, src)) //gotta reload
-		playsound(src, 'sound/weapons/gun/general/slide_lock_1.ogg', 50, TRUE)
-		shotsleft +=1
-	is_reloading = FALSE
+	ammo_on_reload = 1
 
 /obj/item/ego_weapon/ranged/arcadia/judge
-	name = "Judge"
-	desc = "You will be judged; as I have."
+	name = "评判"
+	desc = "你将受到评判；正如我一样." // You will be judged; as I have （可能是圣经）
 	icon_state = "judge"
 	inhand_icon_state = "judge"
-	force = 28
+	force = 40
 	damtype = WHITE_DAMAGE
+	projectile_path = /obj/projectile/ego_bullet/judge
 	weapon_weight = WEAPON_MEDIUM	//Cannot be dual wielded
-	recoil = 2
+	recoil = 1
 	fire_sound_volume = 30
 	fire_delay = 3	//FAN THE HAMMER
+	click_cooldown_override = 3
 
-	shotsleft = 6	//Based off a colt Single Action Navy
+	max_shots = 6	//Based off a colt Single Action Navy
 	reloadtime = 1 SECONDS
 
 
 /obj/item/ego_weapon/ranged/havana
-	name = "havana"
-	desc = "Within it's simple design lies a lot of struggle"
+	name = "哈瓦那"
+	desc = "它简单的外表背后，隐藏着许多挣扎."
+	special = "这把武器发射短程火焰，可穿透目标，但击中目标越多，造成的伤害越低."
 	icon_state = "havana"
 	inhand_icon_state = "havana"
-	force = 20
+	force = 30
 	damtype = PALE_DAMAGE
 	projectile_path = /obj/projectile/ego_bullet/ego_hookah
 	weapon_weight = WEAPON_HEAVY
 	spread = 20
-	fire_sound = 'sound/effects/smoke.ogg'
+	fire_sound = 'sound/effects/burn.ogg'
 	autofire = 0.04 SECONDS
 	fire_sound_volume = 5
 	attribute_requirements = list(
@@ -327,20 +324,21 @@
 							TEMPERANCE_ATTRIBUTE = 80,
 							JUSTICE_ATTRIBUTE = 100
 	)
-	shotsleft = 200
+	reloadtime = 3 SECONDS
+	max_shots = 150
 
 //Just a funny gold soda pistol. It was originally meant to just be a golden meme weapon, now it is the only pale gun, lol
 /obj/item/ego_weapon/ranged/pistol/executive
-	name = "executive"
-	desc = "A pistol painted in black with a gold finish. Whenever this EGO is used, a faint scent of fillet mignon wafts through the air."
+	name = "虾之秩序"
+	desc = "一把漆成黑色，表面镀金的手枪. 每当使用这把EGO时，空气中便弥漫着一丝嫩煎牛里脊的淡淡香气."
 	icon_state = "executive"
 	inhand_icon_state = "executive"
-	special = "This weapon has pinpoint accuracy. \nThe final bullet of the clip does heavy damage. When the final bullet kills something, this weapon will automatically reload."
+	special = "这把武器具有极高的精准度. \n弹仓内的最后一发子弹将造成大量伤害. 若最后一发子弹直接击杀目标，这把武器将自动装填."
 	force = 15
 	damtype = PALE_DAMAGE
 	burst_size = 1
 	fire_delay = 5
-	shotsleft = 12
+	max_shots = 12
 	reloadtime = 1.2 SECONDS
 	fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
 	vary_fire_sound = FALSE
@@ -357,26 +355,27 @@
 	)
 
 /obj/item/ego_weapon/ranged/pistol/executive/proc/AutoReload(mob/user)
-	if(shotsleft == initial(shotsleft))
+	if(shotsleft == max_shots)
 		return
 	playsound(src, 'sound/weapons/ego/executive_reload.ogg', 70, FALSE)
-	shotsleft = initial(shotsleft)
-	to_chat(user, span_nicegreen("A new magazine materialized within [src]!"))
+	shotsleft = max_shots
+	to_chat(user, span_nicegreen("一个新的弹匣出现在[src]里!"))
 	// Might as well reload the other gun
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		for(var/obj/item/ego_weapon/ranged/pistol/executive/G in H.held_items)
-			if(G == src || G.shotsleft == initial(G.shotsleft))
+			if(G == src || G.shotsleft == G.max_shots)
 				continue
-			G.shotsleft = initial(G.shotsleft)
+			G.shotsleft = G.max_shots
 			playsound(G, 'sound/weapons/ego/executive_reload.ogg', 70, FALSE)
-			to_chat(user, span_nicegreen("A new magazine materialized within the other [G]!"))
+			to_chat(user, span_nicegreen("一个新的弹匣出现在[G]里!"))
 
 /obj/item/ego_weapon/ranged/pistol/executive/afterattack(atom/target, mob/user)
 	if(shotsleft == 1)
 		projectile_path = /obj/projectile/ego_bullet/ego_executive/kill_shot
 		fire_sound = 'sound/weapons/ego/executive_shot.ogg'
 	. = ..()
-	projectile_path = initial(projectile_path)
-	fire_sound = initial(fire_sound)
-	update_projectile_examine()
+	if(!shotsleft)
+		projectile_path = initial(projectile_path)
+		fire_sound = initial(fire_sound)
+		update_projectile_examine()

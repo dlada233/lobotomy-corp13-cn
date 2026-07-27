@@ -91,92 +91,94 @@
 	. = ..()
 	if(!is_ranged)
 		. += EgoAttackInfo(user)
+	else
+		. += GunAttackInfo()
 	if(special)
 		. += span_notice("[special]")
 	if(tool_behaviour == TOOL_MINING)
-		. += span_notice("This weapon can be used to mine at a [(100/toolspeed)]% efficiency.")
+		. += span_notice("这把武器可用于采掘，效率为 [(100/toolspeed)]% .")
 
 	if(LAZYLEN(attribute_requirements))
 		if(!ishuman(user))	//You get a notice if you are a ghost or otherwise
-			. += span_notice("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
+			. += span_notice("它有<a href='byond://?src=[REF(src)];list_attributes=1'>特定的</a>穿戴需求.")
 		else if(CanUseEgo(user))	//It's green if you can use it
-			. += span_nicegreen("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
-		else				//and red if you cannot use it
-			. += span_danger("You cannot use this EGO!")
-			. += span_danger("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
+			. += span_nicegreen("它有<a href='byond://?src=[REF(src)];list_attributes=1'>特定的</a>穿戴需求.")
+		else				//and red if 你无法使用it
+			. += span_danger("你无法使用该EGO!")
+			. += span_danger("它有<a href='byond://?src=[REF(src)];list_attributes=1'>特定的</a>穿戴需求.")
 	var/list/typecache_small = typecacheof(GLOB.small_ego)
 	if(is_type_in_typecache(src, typecache_small))
-		. += span_nicegreen("This weapon fits in an EGO belt.")
+		. += span_nicegreen("这把武器无法放进EGO腰带里.")
 
 	//Melee stuff is NOT shown on ranged lol
 	if(is_ranged)
 		return
 	if(reach>1)
-		. += span_notice("This weapon has a reach of [reach].")
+		. += span_notice("这把武器的射程为[reach].")
 
 	if(throwforce>force)
-		. += span_notice("This weapon deals [throwforce] [damtype] damage when thrown.")
+		. += span_notice("这把武器在投掷中造成 [throwforce] [damtype] 伤害.")
 
 	var/text_attack_speed = attack_speed
 	if(modified_attack_speed)
 		text_attack_speed = modified_attack_speed
 	switch(text_attack_speed)
 		if(-INFINITY to 0.39)
-			. += span_notice("This weapon has a very fast attack speed.")
+			. += span_notice("这把武器的攻击速度非常快.")
 
 		if(0.4 to 0.69) // nice
-			. += span_notice("This weapon has a fast attack speed.")
+			. += span_notice("这把武器的攻击速度快.")
 
 		if(0.7 to 0.99)
-			. += span_notice("This weapon attacks slightly faster than normal.")
+			. += span_notice("这把武器的攻击速度比较快.")
 
 		if(1.01 to 1.49)
-			. += span_notice("This weapon attacks slightly slower than normal.")
+			. += span_notice("这把武器的攻击速度比较慢.")
 
 		if(1.5 to 1.99)
-			. += span_notice("This weapon has a slow attack speed.")
+			. += span_notice("这把武器的攻击速度慢.")
 
 		if(2 to INFINITY)
-			. += span_notice("This weapon attacks extremely slow.")
+			. += span_notice("这把武器的攻击速度极慢.")
 
 	switch(swingstyle)
 		if(WEAPONSWING_LARGESWEEP)
-			. += span_notice("This weapon can be swung in an arc instead of at a specific target.")
+			. += span_notice("这把武器以大范围挥舞来攻击，可对范围内的所有敌人造成伤害.")
 
 		if(WEAPONSWING_THRUST)
-			. += span_notice("This weapon can be thrust at tiles up to [reach] tiles away instead of a specific target.")
+			. += span_notice("这把武器以 [reach] 格的长距离突刺来攻击，可对范围内的所有敌人造成伤害.")
 
 	switch(stuntime)
 		if(1 to 2)
-			. += span_notice("This weapon stuns you for a very short duration on hit.")
+			. += span_notice("这把武器在命中时将会使你短暂硬直.")
 		if(2 to 4)
-			. += span_notice("This weapon stuns you for a short duration on hit.")
+			. += span_notice("这把武器在命中时将会使你短时间硬直.")
 		if(5 to 6)
-			. += span_notice("This weapon stuns you for a moderate duration on hit.")
+			. += span_notice("这把武器在命中时将会使你硬直.")
 		if(6 to 8)
-			. += span_danger("CAUTION: This weapon stuns you for a long duration on hit.")
+			. += span_danger("注意：这把武器在命中时将会使你长时间硬直.")
 		if(9 to INFINITY)
-			. += span_danger("WARNING: This weapon stuns you for a very long duration on hit.")
+			. += span_danger("警告：这把武器在命中时将会使你陷入很长时间的硬直.")
 
 
 	switch(knockback)
 		if(KNOCKBACK_LIGHT)
-			. += span_notice("This weapon has slight enemy knockback.")
+			. += span_notice("这把武器有轻微的击退效果.")
 
 		if(KNOCKBACK_MEDIUM)
-			. += span_notice("This weapon has decent enemy knockback.")
+			. += span_notice("这把武器有不错的击退效果.")
 
 		if(KNOCKBACK_HEAVY)
-			. += span_notice("This weapon has neck-snapping enemy knockback.")
+			. += span_notice("这把武器有强悍的击退效果..")
 
 		else if(knockback)
-			. += span_notice("This weapon has [knockback >= 10 ? "neck-snapping": ""] enemy knockback.")
+			. += span_notice("这把武器有[knockback >= 10 ? "强悍的": ""]击退效果.")
 
 
 /obj/item/ego_weapon/Topic(href, href_list)
 	. = ..()
 	if(href_list["list_attributes"])
-		var/display_text = span_danger("<b>It requires the following attributes:</b>")
+		var/display_text = span_danger("<b>它所需的属性如下:</b>")
 		for(var/atr in attribute_requirements)
 			if(attribute_requirements[atr] > 0)
 				display_text += "\n <span class='danger'>[atr]: [attribute_requirements[atr]].</span>"
@@ -191,7 +193,7 @@
 		return TRUE
 
 	if(HAS_TRAIT(user, TRAIT_NOEGOWEAPONS))
-		to_chat(user, span_notice("You cannot use [src]!"))
+		to_chat(user, span_notice("你无法使用[src]!"))
 		return FALSE
 
 	if(!ishuman(user))
@@ -204,7 +206,7 @@
 	var/mob/living/carbon/human/H = user
 	for(var/atr in attribute_requirements)
 		if(attribute_requirements[atr] > get_attribute_level(H, atr) + equip_bonus)
-			to_chat(H, span_notice("You cannot use [src]!"))
+			to_chat(H, span_notice("你无法使用[src]!"))
 			return FALSE
 	if(!SpecialEgoCheck(H))
 		return FALSE
@@ -224,8 +226,11 @@
 		var/new_damage_type = shuffler.mapping_offense[damage_type]
 		damage_type = new_damage_type
 	if(force_multiplier != 1)
-		return span_notice("It deals [round(damage * force_multiplier, 0.1)] [damage_type] damage. (+ [(force_multiplier - 1) * 100]%)")
-	return span_notice("It deals [damage] [damage_type] damage.")
+		return span_notice("它造成 [round(damage * force_multiplier, 0.1)] [damage_type] 伤害. (+ [(force_multiplier - 1) * 100]%)")
+	return span_notice("它造成 [damage] [damage_type] 伤害.")
+
+/obj/item/ego_weapon/proc/GunAttackInfo()
+	return
 
 /obj/item/ego_weapon/GetTarget(mob/user, list/potential_targets = list())
 	if(damtype != WHITE_DAMAGE)

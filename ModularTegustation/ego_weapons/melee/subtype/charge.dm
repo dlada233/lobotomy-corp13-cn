@@ -76,11 +76,14 @@
 /obj/item/ego_weapon/examine(mob/user)
 	. = ..()
 	if(charge)
-		. += span_notice("This weapon has charge mechanics[attack_charge_gain ? " and gains a charge upon every hit" : ""].")
-		. += span_notice("This weapon currently has [charge_amount] charge out of [charge_cap] maximum charge.")
-		. += span_notice("You can activate this weapons special ability with [charge_cost] charge by clicking on it.")
+		if(is_ranged)
+			. += span_notice("这把武器具有充能机制，常规射击每次命中时都会获得一次充能.")
+		else
+			. += span_notice("这把武器具有充能机制[attack_charge_gain ? "，每次命中都会获得一次充能" : ""].")
+		. += span_notice("这把武器当前蓄力充能值为 [charge_amount] ，最大蓄力充能值为 [charge_cap] .")
+		. += span_notice("你可以通过点击该武器来激活其特殊能力，需要消耗 [charge_cost] 点蓄力充能.")
 		if(charge_effect)
-			. += span_notice("ability: [charge_effect]")
+			. += span_notice("能力: [charge_effect]")
 
 /obj/item/ego_weapon/proc/HandleCharge(added_charge, mob/target)
 	if(target)

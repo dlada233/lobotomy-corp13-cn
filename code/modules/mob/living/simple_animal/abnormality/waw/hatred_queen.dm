@@ -718,7 +718,7 @@
 	pixel_x = -24
 	base_pixel_x = -24
 	var/obj/structure/statue/petrified/magicalgirl/S = new(loc, src, statue_timer)
-	S.name = "石化憎恨"
+	S.name = "石化憎恶"
 	ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 	SLEEP_CHECK_DEATH(1)
 	S.icon = src.icon

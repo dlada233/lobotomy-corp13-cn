@@ -1,7 +1,7 @@
 //Coded by Coxswain sprites by mel and Sky_
 /mob/living/simple_animal/hostile/abnormality/ebony_queen
 	name = "黑檀女王的苹果"
-	desc = "一个畸形人，身材高大，头戴腐烂的苹果，身穿帝王长袍."
+	desc = "一个畸形人形，身材高大，头戴腐烂的苹果，身穿帝王长袍."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "ebonyqueen"
 	icon_living = "ebonyqueen"
@@ -74,8 +74,8 @@
 	var/can_act = TRUE
 
 	ego_list = list(
-		/datum/ego_datum/weapon/ebony_stem,
 		/datum/ego_datum/armor/ebony_stem,
+		/obj/item/ego_weapon/ranged/ebony_stem
 	)
 	gift_type =  /datum/ego_gifts/ebony_stem
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS

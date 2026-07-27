@@ -4,7 +4,7 @@
 //You wouldn't forget about them would you Anon? - Caluan
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid
 	name = "池中人鱼"
-	desc = "像美人鱼的无肢畸形物他们心形的眼睛带着爱和嫉妒看着你."
+	desc = "像美人鱼的无肢畸形物她们心形的眼睛带着爱和嫉妒看着你."
 	icon = 'ModularTegustation/Teguicons/48x32.dmi'
 	icon_state = "pmermaid_standing"
 	icon_living = "pmermaid_standing"

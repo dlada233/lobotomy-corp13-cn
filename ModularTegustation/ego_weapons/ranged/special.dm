@@ -1,8 +1,8 @@
 //My sweet orange tree - The cure
 /obj/item/ego_weapon/ranged/flammenwerfer
-	name = "flamethrower"
-	desc = "A shitty flamethrower, great for clearing out infested areas and people."
-	special = "Use this in-hand to cover yourself in flames. To prevent infection, of course."
+	name = "喷火器"
+	desc = "一把很烂的火焰喷射器，但非常适合清理被感染的区域和人员."
+	special = "在手中使用来对自己喷火，这是为了阻止你自己的感染."
 	icon = 'icons/obj/flamethrower.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/flamethrower_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/flamethrower_righthand.dmi'
@@ -20,7 +20,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(do_after(H, 12, src))
-		to_chat(H,"<span class='warning'>You cover yourself in flames!</span>")
+		to_chat(H,"<span class='warning'>你将自己点燃!</span>")
 		H.playsound_local(get_turf(H), 'sound/effects/burn.ogg', 100, 0)
 		H.apply_damage(10, RED_DAMAGE, null, H.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
 		H.adjust_fire_stacks(1)
@@ -28,13 +28,13 @@
 
 //Nihil Upgrade
 /obj/item/ego_weapon/ranged/hatred_nihil
-	name = "pointless hate"
-	desc = "If I am on the side of good, then someone has to be on the side of evil. Without someone to play the villain, I can’t exist."
+	name = "漫无目的的憎恶"
+	desc = "如果我站在善的一边，那么就必然有人站在恶的一边. 倘若无人扮演邪恶，我的憎恶将腐烂于心."
 	icon_state = "hate"
 	inhand_icon_state = "hate"
 	fire_delay = 1
 	autofire = 0.5 SECONDS
-	special = "This weapon heals humans that it hits."
+	special = "这把武器会治疗它所击中的人类."
 	force = 35
 	damtype = BLACK_DAMAGE
 	weapon_weight = WEAPON_HEAVY
@@ -52,13 +52,13 @@
 
 /obj/item/ego_weapon/ranged/hatred_nihil/proc/Recharge(mob/user)
 	can_blast = TRUE
-	to_chat(user,"<span class='nicegreen'>Arcana beats is ready to fire again.</span>")
+	to_chat(user,"<span class='nicegreen'>阿尔卡纳之力已准备好发射.</span>")
 
 /obj/item/ego_weapon/ranged/hatred_nihil/attack_self(mob/user)
 	if(!CanUseEgo(user))
 		return
 	if(!can_blast)
-		to_chat(user,"<span class='warning'>You attacked too recently.</span>")
+		to_chat(user,"<span class='warning'>你发射的太过频繁了.</span>")
 		return
 	can_blast = FALSE
 	var/obj/effect/qoh_sygil/S = new(get_turf(src))
