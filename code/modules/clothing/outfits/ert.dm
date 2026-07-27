@@ -623,3 +623,32 @@
 	head = /obj/item/clothing/head/zwei
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	l_hand = /obj/item/ego_weapon/city/zweihander/vet/noreq
+
+/datum/outfit/magical_girl
+	name = "平凡少女"
+	uniform = /obj/item/clothing/under/rank/civilian/bartender/skirt
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	ears = /obj/item/radio/headset/headset_cent/alt
+	l_pocket = /obj/item/reagent_containers/hypospray/medipen/safety/kcorp
+	r_pocket = /obj/item/reagent_containers/hypospray/medipen/safety/lcorp
+	back =  /obj/item/storage/backpack/satchel/leather
+
+/datum/outfit/magical_girl/hatred
+	name = "红色魔法少女"
+	r_hand = /obj/item/clothing/suit/armor/ego_gear/waw/hatred
+	l_hand = /obj/item/ego_weapon/ranged/hatred
+
+/datum/outfit/magical_girl/warth
+	name = "绿色魔法少女"
+	r_hand = /obj/item/clothing/suit/armor/ego_gear/waw/blind_rage
+	l_hand = /obj/item/ego_weapon/blind_rage
+
+/datum/outfit/magical_girl/despair
+	name = "蓝色魔法少女"
+	r_hand = /obj/item/clothing/suit/armor/ego_gear/waw/despair
+	l_hand = /obj/item/ego_weapon/despair
+
+/datum/outfit/magical_girl/greed
+	name = "黄色魔法少女"
+	r_hand = /obj/item/clothing/suit/armor/ego_gear/waw/goldrush
+	l_hand = /obj/item/ego_weapon/goldrush

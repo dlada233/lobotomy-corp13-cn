@@ -243,6 +243,28 @@
 	role = "Shield Captain"
 	outfit = /datum/outfit/zwei_shield/captain
 
+/datum/antagonist/ert/magical_girl
+	role = "魔法少女"
+	outfit = /datum/outfit/magical_girl
+	antag_attributes = list(
+		FORTITUDE_ATTRIBUTE = 90,
+		PRUDENCE_ATTRIBUTE = 90,
+		TEMPERANCE_ATTRIBUTE = 90,
+		JUSTICE_ATTRIBUTE = 90
+		)
+
+/datum/antagonist/ert/magical_girl/hatred
+	outfit = /datum/outfit/magical_girl/hatred
+
+/datum/antagonist/ert/magical_girl/wrath
+	outfit = /datum/outfit/magical_girl/warth
+
+/datum/antagonist/ert/magical_girl/despair
+	outfit = /datum/outfit/magical_girl/despair
+
+/datum/antagonist/ert/magical_girl/greed
+	outfit = /datum/outfit/magical_girl/greed
+
 /datum/antagonist/ert/create_team(datum/team/ert/new_team)
 	if(istype(new_team))
 		ert_team = new_team
