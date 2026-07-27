@@ -20,24 +20,24 @@
 /obj/structure/altrefiner/examine(mob/user)
 	. = ..()
 	if(requires_item)
-		. += span_notice("Use an object on this machine to start the extraction process[officer_only ? " if you are an extraction officer" : ""].")
+		. += span_notice("[officer_only ? "如果你是研发部长，" : ""]对这台机器使用某物来运行提取程序.")
 	else
-		. += span_notice("Click on this machine to start the extraction process[officer_only ? " if you are an extraction officer" : ""].")
+		. += span_notice("[officer_only ? "如果你是研发部长，" : ""]点击这台机器来运行提取程序.")
 
 /obj/structure/altrefiner/attack_hand(mob/living/carbon/M)
 	. = ..()
 	if(requires_item)
-		to_chat(M, span_warning("This machine needs an object for proper operation."))
+		to_chat(M, span_warning("这台机器需要某个物体才能正常运行."))
 		playsound(get_turf(src), 'sound/machines/terminal_prompt_deny.ogg', 50, TRUE)
 		return FALSE
 
 	if(officer_only && M?.mind?.assigned_role != "Extraction Officer")
-		to_chat(M, span_warning("Only the Extraction Officer can use this machine."))
+		to_chat(M, span_warning("只有研发部长才能使用这台机器."))
 		playsound(get_turf(src), 'sound/machines/terminal_prompt_deny.ogg', 50, TRUE)
 		return FALSE
 
 	if(SSlobotomy_corp.available_box < extraction_cost)
-		to_chat(M, span_warning("Not enough PE boxes stored for this operation. [extraction_cost] PE is necessary for this operation. Current PE: [SSlobotomy_corp.available_box]."))
+		to_chat(M, span_warning("PE-box不足. 共需要[extraction_cost]PE来运行. 当前PE: [SSlobotomy_corp.available_box]."))
 		playsound(get_turf(src), 'sound/machines/terminal_prompt_deny.ogg', 50, TRUE)
 		return FALSE
 
@@ -47,17 +47,17 @@
 /obj/structure/altrefiner/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(!requires_item)
-		to_chat(user, span_notice("This machine does not accept objects, so instead you touched it"))
+		to_chat(user, span_notice("这台机器现在不接收物体, 所以你只是触摸了一番"))
 		attack_hand(user)
 		return FALSE
 
 	if(officer_only && user?.mind?.assigned_role != "Extraction Officer")
-		to_chat(user, span_warning("Only the Extraction Officer can use this machine."))
+		to_chat(user, span_warning("只有研发部长才能使用这台机器."))
 		playsound(get_turf(src), 'sound/machines/terminal_prompt_deny.ogg', 50, TRUE)
 		return FALSE
 
 	if(SSlobotomy_corp.available_box < extraction_cost)
-		to_chat(user, span_warning("Not enough PE boxes stored for this operation. \n[extraction_cost] PE is necessary for this operation. Current PE: [SSlobotomy_corp.available_box]."))
+		to_chat(user, span_warning("PE-box不足. \n共需要[extraction_cost]PE来运行. 当前PE: [SSlobotomy_corp.available_box]."))
 		playsound(get_turf(src), 'sound/machines/terminal_prompt_deny.ogg', 50, TRUE)
 		return FALSE
 
