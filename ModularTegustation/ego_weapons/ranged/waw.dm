@@ -220,11 +220,13 @@
 	for(var/obj/item/ego_weapon/ranged/pistol/solemnvow/Vow in myman.held_items)
 		to_chat(user,span_notice("你同时为[Vow]换弹."))
 		Vow.shotsleft = Vow.max_shots
+		Vow.UpdateAmmoCounter()
 		break
 	for(var/obj/item/ego_weapon/ranged/pistol/solemnlament/Lament in myman.held_items)
 		if(Lament != src)
 			to_chat(user,span_notice("你同时为另一把[Lament]换弹."))
 			Lament.shotsleft = Lament.max_shots
+			Lament.UpdateAmmoCounter()
 			break
 
 /obj/item/ego_weapon/ranged/pistol/solemnlament/before_firing(atom/target, mob/user)
@@ -337,11 +339,13 @@
 	for(var/obj/item/ego_weapon/ranged/pistol/solemnlament/Lament in myman.held_items)
 		to_chat(user,span_notice("你同时为[Lament]换弹."))
 		Lament.shotsleft = Lament.max_shots
+		Lament.UpdateAmmoCounter()
 		break
 	for(var/obj/item/ego_weapon/ranged/pistol/solemnvow/Vow in myman.held_items)
 		if(Vow != src)
 			to_chat(user,span_notice("你同时为另一个把[Vow]换弹."))
 			Vow.shotsleft = Vow.max_shots
+			Vow.UpdateAmmoCounter()
 			break
 
 /obj/item/ego_weapon/ranged/pistol/solemnvow/before_firing(atom/target, mob/user)
@@ -1235,7 +1239,6 @@
 	reloadtime = 6 SECONDS
 	item_flags = SLOWS_WHILE_IN_HAND
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
-	burst_size = 4
 	autofire = 0.05 SECONDS
 
 /obj/item/ego_weapon/ranged/sodaassault
