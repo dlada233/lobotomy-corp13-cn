@@ -149,7 +149,7 @@
 			if(!istype(datum_reference.current) || (datum_reference.current.stat == DEAD))
 				to_chat(usr, span_warning("异想体正在进行复原过程!"))
 				return
-			if(!(datum_reference.current.status_flags & GODMODE))
+			if(!datum_reference.current.IsContained())
 				to_chat(usr, span_warning("该异想体已经突破了收容!"))
 				return
 			var/work_attempt = datum_reference.current.AttemptWork(usr, href_list["do_work"])
@@ -168,7 +168,7 @@
 			if(!istype(datum_reference.current) || (datum_reference.current.stat == DEAD))
 				to_chat(usr, span_warning("异想体正在进行复原过程!"))
 				return
-			if(!(datum_reference.current.status_flags & GODMODE))
+			if(!datum_reference.current.IsContained())
 				to_chat(usr, span_warning("该异想体已经突破了收容!"))
 				return
 			datum_reference.current.FinalObservation(usr)
@@ -282,7 +282,7 @@
 		return FALSE // Lost sanity
 	if(user.health < 0)
 		return FALSE // Dying
-	if(!(datum_reference.current.status_flags & GODMODE))
+	if(!datum_reference.current.IsContained())
 		return FALSE // Somehow it escaped
 	return TRUE
 

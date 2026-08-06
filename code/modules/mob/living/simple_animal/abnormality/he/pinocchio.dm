@@ -88,9 +88,6 @@
 
 //Work/Misc
 /mob/living/simple_animal/hostile/abnormality/pinocchio/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(realboy)
-		to_chat(user, span_warning("该异想体已经突破了收容!"))
-		return FALSE
 	if(work_type == "说谎是不对的!")
 		if(lying)
 			playsound(src, 'sound/abnormalities/pinocchio/success.ogg', 40, 0, 1)
