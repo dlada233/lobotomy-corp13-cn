@@ -302,7 +302,9 @@
 
 	playsound(get_turf(src), 'sound/magic/arbiter/pillar_start.ogg', 75, FALSE, 12)
 
-	var/obj/projectile/P = new projectile_type(start_loc)
+	var/obj/effect/projectile_delayed/projectile_handler = new(start_loc) // We use a projectile handler here because fire() is called after a delay
+	var/obj/projectile/P = new projectile_type(projectile_handler)
+	projectile_handler.projectile = P
 	P.starting = start_loc
 	P.firer = src
 	P.fired_from = src
@@ -310,7 +312,7 @@
 	P.xo = target_loc.x - start_loc.x
 	P.original = target
 	P.preparePixelProjectile(target_loc, src)
-	addtimer(CALLBACK (P, TYPE_PROC_REF(/obj/projectile, fire)), 0.8 SECONDS)
+	projectile_handler.StartFiring(0.8 SECONDS)
 
 	SLEEP_CHECK_DEATH(0.8 SECONDS)
 
@@ -579,7 +581,7 @@
 			continue
 		if(L.stat == DEAD)
 			continue
-		L.apply_damage(damage, BLACK_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+		L.deal_damage(damage, BLACK_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL))
 		L.visible_message("<span class='danger'>[L] has been hit by [name]!</span>",
 						"<span class='userdanger'>You've been hit by [name]!</span>")
 	sleep(6)
@@ -707,7 +709,7 @@
 			if(!faction_check(faction, L.faction, FALSE))
 				L.visible_message(span_boldwarning("[src] crashes into [L]!"), span_userdanger("[src] crashes into you!"))
 				new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
-				L.deal_damage(charge_damage, BLACK_DAMAGE)
+				L.deal_damage(charge_damage, BLACK_DAMAGE, attack_type = (ATTACK_TYPE_ENVIRONMENT))
 				if(L.stat >= HARD_CRIT)
 					L.gib()
 				playsound(L, 'sound/abnormalities/kog/GreedHit1.ogg', 20, 1)

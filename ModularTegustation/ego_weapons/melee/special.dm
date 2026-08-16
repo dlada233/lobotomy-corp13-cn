@@ -126,7 +126,7 @@
 		if(get_open_turf_in_dir(target_turf, dir))
 			new /obj/effect/temp_visual/paradise_attack_large/right(get_step(target_turf,dir))
 	for(var/turf/open/T in range(target_turf, 1))
-		for(var/mob/living/L in user.HurtInTurf(T, been_hit, modified_damage, PALE_DAMAGE, hurt_mechs = TRUE))
+		for(var/mob/living/L in user.HurtInTurf(T, been_hit, modified_damage, PALE_DAMAGE, hurt_mechs = TRUE, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL)))
 			been_hit += L
 			if((L.stat < DEAD) && !(L.status_flags & GODMODE))
 				healing_amount += healing
@@ -142,7 +142,7 @@
 		enemies += 1
 		if((L.stat < DEAD) && !(L.status_flags & GODMODE))
 			healing_amount += healing
-			L.apply_damage(modified_damage, PALE_DAMAGE, null, L.run_armor_check(null, PALE_DAMAGE), spread_damage = TRUE)
+			L.deal_damage(modified_damage, PALE_DAMAGE, user, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL))
 			new /obj/effect/temp_visual/paradise_attack(get_turf(L))
 	if(healing_amount > 0)
 		var/mob/living/carbon/human/H = user
@@ -259,11 +259,16 @@
 	var/newdamage = (force * 1.2)
 	newdamage *= justicemod
 	newdamage *= force_multiplier
+	listclearnulls(candidates)
 	for(var/i = 1 to 3 * length(candidates))
 		var/atom/PT
 		PT = pick(candidates)
+		if(!PT || QDELETED(PT))
+			continue
 		var/turf/T = get_step(get_turf(PT), pick(GLOB.alldirs))
-		var/obj/projectile/ego_twilight/P = new(T)
+		var/obj/effect/projectile_delayed/projectile_handler = new(T) // We use a projectile handler here because fire() is called after a delay
+		var/obj/projectile/ego_twilight/P = new(projectile_handler)
+		projectile_handler.projectile = P
 		P.damage = newdamage
 		P.starting = T
 		P.firer = user
@@ -273,7 +278,7 @@
 		P.original = PT
 		P.preparePixelProjectile(PT, T)
 		P.set_homing_target(PT)
-		addtimer(CALLBACK (P, TYPE_PROC_REF(/obj/projectile, fire)), 0.5 SECONDS)
+		projectile_handler.StartFiring(5)
 	playsound(user, 'sound/abnormalities/apocalypse/fire.ogg', 50, FALSE, 12)
 
 /obj/projectile/ego_twilight
@@ -456,7 +461,7 @@
 		if("sword")
 			var/red = force
 			red*=justicemod
-			target.apply_damage(red * force_multiplier, RED_DAMAGE, null, target.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
+			target.deal_damage(red * force_multiplier, RED_DAMAGE, user, attack_type = (ATTACK_TYPE_MELEE))
 
 		if("whip")
 			var/multihit = force
@@ -475,13 +480,11 @@
 				aoe*=justicemod
 				if(user.faction_check_mob(L))
 					continue
-				L.apply_damage(aoe * force_multiplier, BLACK_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+				L.deal_damage(aoe * force_multiplier, BLACK_DAMAGE, user, attack_type = (ATTACK_TYPE_MELEE))
 				new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(L))
 				if(!ishuman(L))
-					if(!L.has_status_effect(/datum/status_effect/display/rend/black))
-						L.apply_status_effect(/datum/status_effect/display/rend/black)
-					if(!L.has_status_effect(/datum/status_effect/display/rend))
-						L.apply_status_effect(/datum/status_effect/display/rend)
+					L.apply_status_effect(/datum/status_effect/display/rend/black)
+					L.apply_status_effect(/datum/status_effect/display/rend)
 
 /obj/item/ego_weapon/oberon/melee_attack_chain(mob/user, atom/target, params)
 	..()
@@ -513,7 +516,7 @@
 			for(var/mob/living/L in T)
 				if(user.faction_check_mob(L))
 					continue
-				L.apply_damage(smash_damage * force_multiplier, BLACK_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+				L.deal_damage(smash_damage * force_multiplier, BLACK_DAMAGE, user, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		playsound(user, 'sound/abnormalities/fairy_longlegs/attack.ogg', 75, 0, 3)
 		sleep(0.5 SECONDS)
 	smashing = FALSE
@@ -874,7 +877,7 @@
 				if(L in been_hit)
 					continue
 				been_hit += L
-				L.apply_damage(aoe, RED_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE), spread_damage = TRUE)
+				L.deal_damage(aoe, RED_DAMAGE, user, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 				var/throw_target = get_edge_target_turf(L, dir)
 				var/whack_speed = (prob(60) ? 2 : 4)
 				L.throw_at(throw_target, rand(2, 4), whack_speed, user)

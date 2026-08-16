@@ -198,7 +198,7 @@
 	for(var/mob/living/L in livinginview(8, src))
 		if(faction_check_mob(L))
 			continue
-		L.apply_damage(slam_damage, BLACK_DAMAGE, null, L.run_armor_check(null, BLACK_DAMAGE), spread_damage = TRUE)
+		L.deal_damage(slam_damage, BLACK_DAMAGE, null, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 	SLEEP_CHECK_DEATH(2 SECONDS)
 	attacking = FALSE
 	slam_cooldown = world.time + slam_cooldown_time
@@ -286,7 +286,7 @@
 	var/list/been_hit = list()
 	for(var/turf/TF in area_of_effect)
 		new /obj/effect/temp_visual/beakbite(TF)
-		var/list/new_hits = HurtInTurf(TF, been_hit, bite_damage, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE) - been_hit
+		var/list/new_hits = HurtInTurf(TF, been_hit, bite_damage, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL)) - been_hit
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
 			if(L.health < 0)
@@ -315,7 +315,7 @@
 		if(L.stat == DEAD)
 			continue
 		new /obj/effect/temp_visual/judgement(get_turf(L))
-		L.apply_damage(judge_damage, PALE_DAMAGE, null, L.run_armor_check(null, PALE_DAMAGE), spread_damage = TRUE)
+		L.deal_damage(judge_damage, PALE_DAMAGE, null, src, attack_type = (ATTACK_TYPE_SPECIAL))
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	icon_state = icon_living
 	SLEEP_CHECK_DEATH(1 SECONDS)
@@ -390,8 +390,12 @@
 		var/atom/PT = src // Shoot it somewhere, idk
 		if(LAZYLEN(candidates))
 			PT = pick(candidates)
+		if(!PT || QDELETED(PT))
+			continue
 		var/turf/T = get_step(get_turf(src), pick(GLOB.alldirs))
-		var/obj/projectile/apocalypse/P = new(T)
+		var/obj/effect/projectile_delayed/projectile_handler = new(T) // We use a projectile handler here because fire() is called after a delay
+		var/obj/projectile/apocalypse/P = new(projectile_handler)
+		projectile_handler.projectile = P
 		P.starting = T
 		P.firer = src
 		P.fired_from = T
@@ -399,7 +403,7 @@
 		P.xo = PT.x - T.x
 		P.original = PT
 		P.preparePixelProjectile(PT, T)
-		addtimer(CALLBACK (P, TYPE_PROC_REF(/obj/projectile, fire)), 6.5 SECONDS)
+		projectile_handler.StartFiring(6.5 SECONDS)
 
 	SLEEP_CHECK_DEATH(6.5 SECONDS)
 	playsound(src, 'sound/abnormalities/apocalypse/fire.ogg', 75, FALSE, 12)

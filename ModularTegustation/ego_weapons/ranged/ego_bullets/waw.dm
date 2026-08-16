@@ -143,7 +143,7 @@
 			// Damage
 			var/distance_from_epicenter = clamp(get_dist(M, impact_turf), 0, 3)
 			var/final_damage = (damage - (distance_from_epicenter * falloff_per_dist)) * damage_multiplier
-			M.deal_damage(final_damage, damage_type)
+			M.deal_damage(final_damage, damage_type, source = nadeslinger, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL))
 
 			// Knockback
 			var/throw_comparison = get_turf(M) == impact_turf ? null : impact_turf // If they're standing directly in the epicenter we need to take special measures
@@ -285,8 +285,7 @@
 	. = ..()
 	if(isliving(target))
 		var/mob/living/simple_animal/M = target
-		if(!ishuman(M) && !M.has_status_effect(/datum/status_effect/display/rend))
-			new /obj/effect/temp_visual/cult/sparks(get_turf(M))
+		if(!ishuman(M))
 			M.apply_status_effect(/datum/status_effect/display/rend)
 
 //feather of valor
