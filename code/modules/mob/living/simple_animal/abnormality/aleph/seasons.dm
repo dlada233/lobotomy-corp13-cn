@@ -913,8 +913,8 @@
 			continue
 		target_list += L
 	var/projectile_number = (length(target_list) + 3)
-	for(var/i = 1 to projectile_number)
 	listclearnulls(target_list)
+	for(var/i = 1 to projectile_number)
 		if(LAZYLEN(target_list))
 			FindTarget(target_list, TRUE)
 		if(!target || QDELETED(target))
