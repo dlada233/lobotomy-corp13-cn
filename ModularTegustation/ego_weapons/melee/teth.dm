@@ -420,7 +420,7 @@
 		++hit_count
 		if(hit_count >= 4)
 			var/mob/living/simple_animal/M = target
-			if(!ishuman(M) && !M.has_status_effect(/datum/status_effect/display/rend/black))
+			if(!ishuman(M))
 				playsound(src, 'sound/abnormalities/so_that_no_cry/curse_talisman.ogg', 100, 1)
 				to_chat(user, "一张来自[src]的符咒贴到了[target]!")
 				new /obj/effect/temp_visual/talisman(get_turf(M))
