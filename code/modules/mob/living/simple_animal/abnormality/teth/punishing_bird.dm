@@ -207,7 +207,7 @@
 				if(L in pecking_targets)
 					pecking_targets -= L
 					already_punished |= L
-				target = null
+				LoseTarget(FALSE)
 		else if(L.health <= 0)
 			visible_message(span_danger("[src]吞噬了[L]!"))
 			L.gib()

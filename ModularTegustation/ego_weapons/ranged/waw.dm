@@ -993,7 +993,7 @@
 		var/mob/living/L = AM
 		if(!faction_check(faction, L.faction))
 			playsound(get_turf(src), 'sound/machines/clockcult/steam_whoosh.ogg', 10, 1)
-			L.apply_damage(damage * multiplier, RED_DAMAGE, null, L.run_armor_check(null, RED_DAMAGE), spread_damage = FALSE)
+			L.deal_damage(damage * multiplier, RED_DAMAGE, creator, flags = (DAMAGE_UNTRACKABLE), attack_type = (ATTACK_TYPE_ENVIRONMENT))
 			new /obj/effect/temp_visual/cloud_swirl(get_turf(L)) //placeholder
 			to_chat(creator, span_warning("你朝向[get_area(L)]的身体有瘙痒感."))
 			qdel(src)
@@ -1353,7 +1353,7 @@
 	playsound(target_turf, 'sound/abnormalities/ebonyqueen/attack.ogg', 50, TRUE)
 	for(var/turf/open/T in RANGE_TURFS(1, target_turf))
 		new /obj/effect/temp_visual/thornspike(T)
-		user.HurtInTurf(T, list(), damage_dealt, BLACK_DAMAGE, hurt_mechs = TRUE, check_faction = TRUE)
+		user.HurtInTurf(T, list(), damage_dealt, BLACK_DAMAGE, hurt_mechs = TRUE, attack_type = (ATTACK_TYPE_RANGED))
 
 
 /obj/effect/rootline
@@ -1366,6 +1366,7 @@
 	var/barrage_range = 12
 	var/broken = 0
 	var/hit_list = list()
+	var/mob/living/caster
 	layer = POINT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
@@ -1373,6 +1374,8 @@
 	. = ..()
 	if(args[2])
 		faction = args[2]
+	if(args[3])
+		caster = args[3]
 
 /obj/effect/rootline/Destroy()
 	. = ..()
@@ -1402,6 +1405,6 @@
 		else
 			hit_list[L] = min(4, hit_list[L] + 0.5) // 66% damage then 50% ect to 25%
 		var/damage_done = damage/hit_list[L]
-		L.deal_damage(damage_done, BLACK_DAMAGE)
+		L.deal_damage(damage_done, BLACK_DAMAGE, source = caster, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL))
 	if(count == barrage_range || count == broken)
 		qdel(src)

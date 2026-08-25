@@ -166,7 +166,7 @@
 		if(faction_check_mob(L))
 			continue
 		to_chat(L, span_userdanger("可怕的未来在你眼前闪过!"))
-		L.deal_damage((50 - get_dist(src, L)), WHITE_DAMAGE)
+		L.deal_damage((50 - get_dist(src, L)), WHITE_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL))
 	qdel(src)
 
 /mob/living/simple_animal/hostile/abnormality/oracle/proc/SpecialDreams(datum/oracle_dream/chosen_dream, mob/living/carbon/human/dreamer)

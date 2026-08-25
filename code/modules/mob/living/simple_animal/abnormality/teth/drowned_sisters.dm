@@ -73,7 +73,7 @@
 		return
 	to_chat(user, span_userdanger("你被一个看不见的攻击者攻击了!"))
 	playsound(get_turf(src), 'sound/abnormalities/jangsan/tigerbite.ogg', 75, 0)
-	user.deal_damage(50, RED_DAMAGE, null)
+	user.deal_damage(50, RED_DAMAGE)
 	if(user.health < 0 || user.stat == DEAD)
 		user.gib()
 	return

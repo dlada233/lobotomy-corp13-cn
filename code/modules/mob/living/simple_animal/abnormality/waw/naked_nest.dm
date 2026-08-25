@@ -406,7 +406,7 @@
 /obj/item/organ/naked_nest/proc/TransformOverride(mob/living/carbon/human/H)
 	if(H && H.has_status_effect(/datum/status_effect/display/melting_love_blessing))
 		to_chat(H, span_warning("当粉红色的粘液开始从你的嘴里流出时，你的脑袋里有什么东西在扭动."))
-		H.deal_damage(800, BLACK_DAMAGE)
+		H.deal_damage(270, BLACK_DAMAGE)
 		H.remove_status_effect(/datum/status_effect/display/melting_love_blessing)
 		if(!H || H.stat == DEAD)
 			return TRUE

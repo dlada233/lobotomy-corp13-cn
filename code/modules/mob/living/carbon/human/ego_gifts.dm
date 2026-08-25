@@ -1,19 +1,19 @@
 /// Ego gifts should visually match the slot if possible. Some slots will render underneath others.
 
-#define HAT "帽子" // Hats, above the head sprite.
-#define HELMET "头盔" // On or above the head. Possibly covering the head.
-#define EYE "眼部" // Eye level, glasses or bandanas
-#define FACE "面部" // Scars or face paint
-#define MOUTH_1 "嘴部1" // Typically a face mask of some sort
-#define MOUTH_2 "嘴部2" // Any other mouth accessory
-#define CHEEK "脸颊" // Similar to face, but smaller.
-#define BROOCH "胸针" // badges, accessories on the torso
-#define NECKWEAR "脖颈" // Necklaces or similar
-#define LEFTBACK "左背"
-#define RIGHTBACK "右背"
-#define HAND_1 "手部1" // Hand accessories
-#define HAND_2 "手部2" // Usually, but not always gloves
-#define SPECIAL "特殊/其他"
+#define HAT "Hat Slot" // Hats, above the head sprite.
+#define HELMET "Helmet Slot" // On or above the head. Possibly covering the head.
+#define EYE "Eye Slot" // Eye level, glasses or bandanas
+#define FACE "Face Slot" // Scars or face paint
+#define MOUTH_1 "Mouth Slot 1" // Typically a face mask of some sort
+#define MOUTH_2 "Mouth Slot 2" // Any other mouth accessory
+#define CHEEK "Cheek Slot" // Similar to face, but smaller.
+#define BROOCH "Brooch Slot" // badges, accessories on the torso
+#define NECKWEAR "Neckwear Slot" // Necklaces or similar
+#define LEFTBACK "Left Back Slot"
+#define RIGHTBACK "Right Back Slot"
+#define HAND_1 "Hand Slot 1" // Hand accessories
+#define HAND_2 "Hand Slot 2" // Usually, but not always gloves
+#define SPECIAL "Special/Other Slot"
 
 /// Helper lists
 #define EGO_GIFT_BONUSES list("fortitude_bonus", "prudence_bonus", "temperance_bonus", "justice_bonus", \
@@ -130,10 +130,10 @@
 				"prudence_bonus" = PRUDENCE_ATTRIBUTE,
 				"temperance_bonus" = TEMPERANCE_ATTRIBUTE,
 				"justice_bonus" = JUSTICE_ATTRIBUTE,
-				"instinct_mod" = "本能工作",
-				"insight_mod" = "洞察工作",
-				"attachment_mod" = "沟通工作",
-				"repression_mod" = "压迫工作",
+				"instinct_mod" = "Instinct Work",
+				"insight_mod" = "Insight Work",
+				"attachment_mod" = "Attachment Work",
+				"repression_mod" = "Repression Work",
 				)
 			for(var/thing in EGO_GIFT_BONUSES)
 				var/thing_num = vars[thing]
@@ -1042,7 +1042,7 @@
 	owner.adjustBruteLoss(-damage*0.1)
 
 /datum/ego_gifts/accord
-	name = "相和"
+	name = "Accord"
 	icon_state = "assonance"
 	prudence_bonus = 2
 	temperance_bonus = 2
@@ -1391,7 +1391,7 @@
 	return ..()
 
 /datum/ego_gifts/heaven
-	name = "穿刺极乐"
+	name = "Heaven"
 	icon_state = "heaven"
 	fortitude_bonus = 4
 	temperance_bonus = 2

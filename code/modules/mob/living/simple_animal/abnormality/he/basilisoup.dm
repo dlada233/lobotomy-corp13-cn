@@ -1,6 +1,6 @@
 // Abnormality sprited by Mel Taculo
 /mob/living/simple_animal/hostile/abnormality/basilisoup
-	name = "一辈子汤"
+	name = "一生炖菜"
 	desc = "一种巨大的鸟或蜥蜴，以锅为头，从皮肤里渗出汤."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "basilisoup"
@@ -255,14 +255,14 @@
 	forceMove(T)
 
 	for(var/turf/U in range(1, T))
-		var/list/new_hits = HurtInTurf(U, been_hit, 0, BLACK_DAMAGE, hurt_mechs = TRUE) - been_hit
+		var/list/new_hits = HurtInTurf(U, been_hit, 0, BLACK_DAMAGE, hurt_mechs = TRUE, flags = (DAMAGE_UNTRACKABLE)) - been_hit
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
 			var/atom/throw_target = get_edge_target_turf(L, get_dir(L, get_step_away(L, get_turf(src))))
 			L.visible_message(span_boldwarning("[src]猛烈撞击[L]!"), span_userdanger("[src]用牙齿和爪子撕碎了你!"))
 			playsound(L, 'sound/weapons/genhit2.ogg', 75, 1)
 			new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
-			L.deal_damage(charge_damage, BLACK_DAMAGE)
+			L.deal_damage(charge_damage, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 			L.throw_at(throw_target, 3, 2)
 			for(var/obj/vehicle/V in new_hits)
 				V.take_damage(charge_damage, BLACK_DAMAGE, attack_sound)
@@ -349,7 +349,7 @@
 		to_chat(user, span_notice("把旧汤倒回锅里让你感到不安。这太不卫生了!"))
 		return
 	if(istype(wack, /obj/item/toy/plush))
-		to_chat(user, span_notice("你将[wack]投入一辈子汤。它沉入锅底，再无踪迹。"))
+		to_chat(user, span_notice("你将[wack]投入一生炖菜。它沉入锅底，再无踪迹。"))
 		AdjustSoupLevels(1)
 		var/obj/item/toy/plush/deadplushie = wack
 		var/datum/component/squeak/squeaky = deadplushie.GetComponent(/datum/component/squeak)
@@ -377,7 +377,7 @@
 				AdjustSoupLevels(reagent_amount)
 	else
 		AdjustSoupLevels(rand(1, 3))
-	to_chat(user, span_notice("你将[wack]投入一辈子汤."))
+	to_chat(user, span_notice("你将[wack]投入一生炖菜."))
 	qdel(wack)
 	playsound(src, 'sound/effects/bubbles.ogg', 80, TRUE, -3)
 
@@ -469,7 +469,7 @@
 
 //The stars of the show
 /obj/item/food/lifestew_glob
-	name = "一辈子汤凝块"
+	name = "一生炖菜凝块"
 	desc = "据说熬煮终生的浓汤，其稠度足以维持形态。尽管成分存疑，却散发着诱人香气."
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "lifetime_stew_chunk"
@@ -478,7 +478,7 @@
 	foodtypes = GRAIN | MEAT | VEGETABLES
 
 /obj/item/food/salad/lifestew
-	name = "一辈子汤"
+	name = "一生炖菜"
 	desc = "据说熬煮终生的汤品，碗底可见一块石头。成分虽可疑，但香气令人垂涎。"
 	icon_state = "lifetime_stew"
 	food_reagents = list(/datum/reagent/consumable/lifestew = 5)
@@ -487,7 +487,7 @@
 
 //The chemical
 /datum/reagent/consumable/lifestew
-	name = "一辈子汤"
+	name = "一生炖菜"
 	description = "完全无法辨识的浓稠美味汤羹。"
 	nutriment_factor = 20 * REAGENTS_METABOLISM //Hyper fattening
 	var/health_restore = 5 // % of health restored per tick. For reference, Salicylic Acid is 4. Set to negative and it'll hurt!
