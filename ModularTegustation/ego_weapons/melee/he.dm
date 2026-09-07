@@ -133,9 +133,9 @@
 
 /obj/item/ego_weapon/shield/daredevil
 	name = "决死之心"
-	desc = "An ancient sword surrounded in death, yet it's having it in your grasp that makes you feel the most alive."
+	desc = "一把古老的武士刀，被死亡所环绕，但正是握在手中时，才让你感受到最强烈的生机."
 	icon_state = "daredevil"
-	force = 8
+	force = 6
 	attack_speed = 0.5
 	swingstyle = WEAPONSWING_LARGESWEEP
 	damtype = PALE_DAMAGE
@@ -150,7 +150,7 @@
 	projectile_block_message ="神是不怕死的!"
 	block_message = "你尝试抵挡攻击!"
 	hit_message = "抵挡攻击!"
-	block_cooldown_message = "你重整架势."
+	block_cooldown_message = "你重整格挡架势."
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 40
 							)
@@ -529,10 +529,10 @@
 
 /obj/item/ego_weapon/shield/giant
 	name = "巨人"
-	desc = "I'll grind your bones to make my bread!"
+	desc = "我要把你骨头磨成粉，做成面包!"
 	special = "这种武器造成可怕的伤害."
 	icon_state = "giant"
-	force = 44
+	force = 40
 	damtype = RED_DAMAGE
 	attack_verb_continuous = list("shoves", "bashes")
 	attack_verb_simple = list("shove", "bash")
@@ -593,9 +593,9 @@
 
 /obj/item/ego_weapon/shield/maneater
 	name = "吃干抹净"
-	desc = "If friends were flowers, I'd pick you!"
+	desc = "朋友如花朵, 我将枝折下!"
 	icon_state = "maneater"
-	force = 12
+	force = 14
 	attack_speed = 1
 	damtype = BLACK_DAMAGE
 	attack_verb_continuous = list("cuts", "smacks", "bashes")
@@ -606,21 +606,21 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/clash1.ogg'
-	projectile_block_message = "You swat the projectile out of the air!"
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your E.G.O."
+	projectile_block_message = "你在空中将投射物击飞!"
+	block_message = "你尝试格挡攻击!"
+	hit_message = "格挡攻击!"
+	block_cooldown_message = "E.G.O.格挡已重新就绪"
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 40
 							)
 
 /obj/item/ego_weapon/revelation
 	name = "启示"
-	desc = "Death, where is thy sting?"
+	desc = "死啊！你的毒钩在哪里?" // 《圣经·哥林多前书》15:55  死啊！你得胜的权势在哪里？ 死啊！你的毒钩在哪里？(Death, where is thy sting?)
 	special = "当击中生命值低于50%的目标时，该武器的攻击速度更快."
 	icon_state = "revelation"
-	force = 22
-	attack_speed = 1.5
+	force = 19
+	attack_speed = 1.3
 	swingstyle = WEAPONSWING_LARGESWEEP
 	damtype = PALE_DAMAGE
 	attack_verb_continuous = list("slashes", "slices", "rips", "cuts")
@@ -636,7 +636,7 @@
 	if(target.health <= (target.maxHealth * 0.5))
 		attack_speed = 1
 	else
-		attack_speed = 1.5
+		attack_speed = 1.3
 	..()
 
 /obj/item/ego_weapon/inheritance
@@ -693,10 +693,10 @@
 
 /obj/item/ego_weapon/shield/legerdemain
 	name = "障眼把戏"
-	desc = "Together, we are in rot."
+	desc = "我们在一起，然后走向腐烂."
 	special = "这把武器在格挡成功时恢复HP."
 	icon_state = "legerdemain"
-	force = 36
+	force = 26
 	attack_speed = 1.8
 	damtype = RED_DAMAGE
 	attack_verb_continuous = list("bashes", "hammers", "smacks")
@@ -707,10 +707,10 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/abnormalities/goldenapple/Gold_Attack2.ogg'
-	projectile_block_message ="你的E.G.O将弹丸弹开!"
+	projectile_block_message ="你的E.G.O将投射物弹开了!"
 	block_message = "你尝试格挡攻击!"
 	hit_message = "格挡攻击!"
-	block_cooldown_message = "你重新架起E.G.O."
+	block_cooldown_message = "E.G.O.格挡准备就绪"
 	attribute_requirements = list(
 							PRUDENCE_ATTRIBUTE = 40
 							)
@@ -1329,20 +1329,20 @@
 /obj/item/ego_weapon/rhythm/attack_self(mob/living/carbon/human/user)
 	if(do_after(user, 10, src))	//Just a second to heal people around you, but it also harms you
 		playsound(src, 'sound/abnormalities/singingmachine/music.ogg', 100, FALSE, 9)
+		new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(user), pick(GLOB.alldirs))
+		user.adjustBruteLoss(user.maxHealth*0.15)
 		for(var/mob/living/carbon/human/L in range(3, get_turf(user)))
-			user.adjustBruteLoss(user.maxHealth*0.15)
 			L.adjustSanityLoss(-20)
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(L), pick(GLOB.alldirs))
 
 /obj/item/ego_weapon/rhythm/get_clamped_volume()
 	return 40
 
 /obj/item/ego_weapon/shield/trachea
 	name = "气管"
-	desc = "As if everything else were hollow and pointless, the wailing numbs even the brain, making it impossible to think."
+	desc = "仿佛其他一切皆空洞无意义，那悲鸣甚至麻木了大脑，使人无法思考."
 	special = "这把武器造成可怕的伤害."
 	icon_state = "trachea"
-	force = 44
+	force = 40
 	attack_speed = 3
 	damtype = WHITE_DAMAGE
 	attack_verb_continuous = list("shoves", "bashes")

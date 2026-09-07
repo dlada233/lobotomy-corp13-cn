@@ -246,9 +246,9 @@
 
 /obj/item/ego_weapon/shield/hearth
 	name = "灶炉"
-	desc = "Home sweet home. Warmth and safety aplenty."
+	desc = "家，甜蜜的家. 温暖与安全，一应俱全."
 	icon_state = "hearth"
-	force = 10
+	force = 9
 	attack_speed = 1
 	damtype = WHITE_DAMAGE
 	attack_verb_continuous = list("pokes", "jabs", "tears", "lacerates", "gores")
@@ -259,9 +259,9 @@
 	block_duration = 1 SECONDS
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/parry.ogg'
-	block_message = "You attempt to parry the attack!"
-	hit_message = "parries the attack!"
-	block_cooldown_message = "You rearm your blade."
+	block_message = "你尝试格挡攻击!"
+	hit_message = "格挡攻击!"
+	block_cooldown_message = "格挡架势准备就绪."
 
 /obj/item/ego_weapon/shield/hearth/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0 //Prevents ranged  parry
@@ -429,11 +429,11 @@
 
 /obj/item/ego_weapon/shield/capote
 	name = "斗牛披风"
-	desc = "Charge me with all your strength! Your horns cannot pierce my soul!"//yes this is a SMT quote
+	desc = "全力冲过来吧！你的角贯穿不了我的灵魂！"//yes this is a SMT quote
 	icon_state = "capote"
 	worn_icon = 'icons/obj/clothing/belt_overlays.dmi'
 	worn_icon_state = "capote"
-	force = 10
+	force = 9
 	attack_speed = 1
 	damtype = RED_DAMAGE
 	attack_verb_continuous = list("pokes", "jabs", "tears", "lacerates", "gores")

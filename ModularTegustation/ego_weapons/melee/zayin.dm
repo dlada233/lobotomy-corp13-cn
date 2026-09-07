@@ -406,6 +406,7 @@
 	special = "偏转攻击后，能显示附近所有生物位置一秒."
 	icon_state = "dead_dream"
 	damtype = WHITE_DAMAGE
+	reductions = list(30, 20, 10, 0)
 	var/glimpse_cooldown = 0
 	var/glimpse_cooldown_delay = 3 SECONDS
 
