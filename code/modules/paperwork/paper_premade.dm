@@ -178,20 +178,20 @@
 /////Zayin Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/zayin
-	name = "ZAYIN Instruction Manual - Malkuth"
-	info = {"For those handling ZAYIN grade abnormalities, you can be happy to hear you've been assigned what the company regards as our safest category of company assets!<br>
+	name = "ZAYIN 工作手册 - Malkuth"
+	info = {"对于那些处理 ZAYIN 级异想体的人，你应该感到庆幸，你被分配到了公司认为最安全的公司资产类别！<br>
 	<br>
-	Almost none of them are capable of breaching containment, and any harm they could do is easily avoidable if you follow your instructions for the assigned abnormality.<br>
+	它们几乎都不能突破收容，只要你遵循异想体的工作规范，它们可能造成的任何伤害都很容易避免。<br>
 	<br>
-	Welcome, newbie, to the Lobotomy Corporation. See the captain of your department for your first ZAYIN duty assignment.<br>
+	欢迎你，新人。去见你所在部门的队长，领取你的第一个 ZAYIN 任务。<br>
 	<br>
 	-Malkuth"}
 
 ///Zayin Guide Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/zayin/guide
-	name = "ZAYIN Safety Guide - Netzach"
-	info = {"I can't believe they have me writing this... just follow the instructions for your assignment and you're safe, alright?<br>
+	name = "ZAYIN 安全指南 - Netzach"
+	info = {"我真不敢相信他们让我写这个...只要遵循你的工作规范，你就安全了，行吗？<br>
 	<br>
 	- Netzach"}
 
@@ -205,14 +205,14 @@
 ///Zayin Lore Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/zayin/lore
-	name = "Classification Code - Hod"
-	info = {"Subject details are encoded in their classification, following the given:<br>
+	name = "分类代码 - Hod"
+	info = {"对象的详细信息编码在其分类中，规则如下：<br>
 	<br>
-	The first letter classifies its origin (Fairy Tale, Trauma, Original, Donated) with the company.<br>
+	第一个字母分类其来源（童话、创伤、原创、捐赠）与公司的关系。<br>
 	<br>
-	The following number classifies its type (1 for humanoid, 2 for animal, 3 for religious, 4 for inanimate, 5 for artifact/machine, 6 for abstraction/amalgamation, 7 for breaching tool, 9 for tool).<br>
+	接下来的数字分类其类型（1 为人形，2 为动物，3 为宗教，4 为无生命，5 为人工制品/机器，6 为抽象/融合，7 为突破工具，9 为工具）。<br>
 	<br>
-	The final number acts as a unique code for the Abnormality, which doesn't repeat between them. Keep these in mind, and you'll be on your way to shared safety!<br>
+	最后的数字作为该异想体的唯一代码，在它们之间不会重复。记住这些，你就能走向安全！<br>
 	<br>
 	-Hod"}
 
@@ -229,20 +229,20 @@
 /////Teth Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/teth
-	name = "TETH Instruction Manual - Malkuth"
-	info = {"For those handling TETH grade abnormalities, you have graduated from the beginner duties, you are now considered a proper asset ready for serious assignments. Welcome to the real world, agent.<br>
+	name = "TETH 工作手册 - Malkuth"
+	info = {"对于那些处理 TETH 级异想体的人，你已经从新手任务中毕业，现在被认为是一个正式资产，准备好接受严肃的任务。欢迎来到现实世界，员工。<br>
 	<br>
-	Most of the subjects in this classification can and will breach if mishandled, and all can kill you either in engagement or immediately and without sanctuary if you approach them unprepared.<br>
+	这个分类中的大多数对象如果处理不当，能够并且将会突破收容，而且如果你毫无准备地接近它们，它们都能通过战斗杀死你，或者立刻运用某种方法毫不留情地直接杀死你。<br>
 	<br>
-	Before attending to the needs of a Teth subject, read the relevant materials, speak to your captain, and ensure you have the appropriate equipment to protect you and the training to withstand the strange.<br>
+	在处理 Teth 对象的需求之前，阅读相关材料，与你的队长交谈，并确保你有适当的装备来保护自己，以及接受过承受异想体的训练。<br>
 	<br>
 	-Malkuth"}
 
 ///Teth Guide Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/teth/guide
-	name = "TETH Safety Guide - Netzach"
-	info = {"Read this carefully, alright, company boy? These things can actually <em>kill</em> you if you're not prepared. Put on some ego equipment. That neat suit and baton aren't going to cut it anymore.<br>
+	name = "TETH 安全指南 - Netzach"
+	info = {"仔细读这个，行吗，公司小子？如果你没准备好，这些东西真的会<em>杀死</em>你。穿上一些EGO装备。那套整洁的西装和警棍已经不够用了。<br>
 	<br>
 	- Netzach"}
 
@@ -259,20 +259,20 @@
 ///Teth Lore Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/teth/lore
-	name = "Attribute System - Hod"
-	info = {"You may have been wondering: Fortitude, prudence, temperance, justice; what are these and why are people yelling about them?<br>
+	name = "属性系统 - Hod"
+	info = {"你可能一直在想：勇气、谨慎、自律、正义；这些是什么，为什么人们总在嚷嚷它们？<br>
 	<br>
-	These are ways the company has simplified measurements of the body, mind, and soul to help you stay safe and efficient!<br>
+	这些是公司为了帮助你保持安全和高效，对身体、心智和灵魂的简化衡量方式！<br>
 	<br>
-	Fortitude is how strong and durable you are physically: your physique! You can train this by doing instinct work with abnormalities.<br>
+	勇气是你身体上的强壮和耐力：也就是你的体格！你可以通过和异想体进行本能工作来锻炼它。<br>
 	<br>
-	Prudence is mental durability and intelligence: it's your physique of smarts! Make your brain strong by doing insightful work.<br>
+	谨慎是精神上的智力和耐心：它是你智慧上的体格！通过进行洞察工作来让你的大脑变强。<br>
 	<br>
-	Temperance is the strength of your heart: your empathy and kindness! It helps you avoid bending to the will of abnormalities, and general temptation. Attachment work is good training for temperance.<br>
+	自律是你心灵的力量：你的同理心和善良！它帮助你避免屈从于异想体的意志，以及一般的诱惑。沟通工作是锻炼自律的好方法。<br>
 	<br>
-	Now if temperance is the strength of your soul, justice is the strength of your spirit. It's quite literally your sense of justice, courage to fight even when you know you face death. Repression work is how one gets a sense of justice.<br>
+	那么如果自律是心灵的力量，正义就是灵魂的力量。它字面意义上就是你的正义感，即使知道自己面对死亡也勇于战斗的决心。压迫工作就是获得正义感的方式。<br>
 	<br>
-	And that is all the attributes and what they ACTUALLY mean! Hopefully the context makes you less confused!<br>
+	以上就是所有属性以及它们<strong>真正</strong>的含义！希望这些背景能让你少一些困惑！<br>
 	<br>
 	-Hod"}
 
@@ -289,37 +289,37 @@
 /////He Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/he
-	name = "HE Instruction Manual - Malkuth"
-	info = {"These abnormalities can easily kill a number of employees, including veteran agents of the company. You have to pay twice as much attention as with ZAYIN or TETH subjects.<br>
-	As long as you pay close attention, you can avoid serious casualties.<br>
+	name = "HE 工作手册 - Malkuth"
+	info = {"这些异想体可以轻易杀死多名员工，包括公司的资深员工。你必须比对待ZAYIN或TETH对象时多付出两倍的注意力。<br>
+	只要你密切关注，就能避免严重伤亡。<br>
 	<br>
-	Ensure you are properly armed and armored if they do breach. These are serious threats that require coordinated teams to contain. Double-check your safety guides so you don't immediately get terminated by a very stupid mistake.<br>
+	如果它们突破收容，确保你装备了适当的武器和护甲。这些是严重的威胁，需要协调的团队才能镇压。仔细检查你的安全指南，以免因为一个非常愚蠢的错误而立刻丧命。<br>
 	<br>
-	Remember that not only the company relies on you, but also your fellow agents. Do not let them down.<br>
+	记住，不仅公司依赖你，你的员工同伴也依赖你。不要让他们失望。<br>
 	<br>
 	-Malkuth"}
 
 /////Waw Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/waw
-	name = "WAW Instruction Manual - Malkuth"
-	info = {"Either you have successfully worked with HE subjects before, or you are reading far ahead of your paygrade. In either case what I have to say still applies to you.<br>
+	name = "WAW 工作手册 - Malkuth"
+	info = {"要么你之前已经成功与HE对象工作过，要么你读到了远超你薪资等级的内容。无论哪种情况，我要说的话仍然适用于你。<br>
 	<br>
-	These are high risk abnormalities that carry devastating force. Death tolls within the facility could reach dozens of employees if they get loose.<br>
+	这些是高风险异想体，携带着毁灭性的力量。如果它们逃脱，设施内的死亡人数可能达到数十名员工。<br>
 	<br>
-	Most are hostile, agitated, and waiting for an excuse to break containment. Make absolutely sure you know what you're doing here.<br>
+	大多数具有敌意、躁动不安，并等待着突破收容的借口。绝对确保你知道自己在这里做什么。<br>
 	<br>
 	-Malkuth"}
 
 /////Aleph Documentation - Written by Guymallory
 
 /obj/item/paper/guides/jobs/aleph
-	name = "ALEPH Instruction Manual - Malkuth"
-	info = {"These are the most dangerous abnormalities we know of, from within the city and our scouting missions in the outskirts. There is no exaggeration when I say they threaten the survival of your species.<br>
+	name = "ALEPH 工作手册 - Malkuth"
+	info = {"这些是我们所知最危险的异想体，来自都市内部以及我们在郊区的侦察任务。说它们威胁到我们物种的存续，绝非夸大其词。<br>
 	<br>
-	If you do everything as you should, and work with your team, consider yourself blessed if only half the facility is dead when you finish suppression.<br>
+	如果你按部就班地工作，并与团队协作，那么当完成镇压时只有半个设施的人死亡，你应该感到庆幸。<br>
 	<br>
-	If these subjects escape into the city, we face a paradigm shift, even total extinction. Needless to say your employment and life will be terminated should you allow or facilitate this event.<br>
+	如果这些对象逃入都市，我们的生存方式将面临根本性改变，甚至彻底灭绝。不用说，如果你允许或促成这一事件，你的雇佣关系和生命都将被终止。<br>
 	<br>
 	-Malkuth"}
 

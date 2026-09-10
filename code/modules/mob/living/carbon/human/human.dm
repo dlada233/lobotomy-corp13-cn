@@ -48,7 +48,7 @@
 
 /mob/living/carbon/human/verb/show_attributes_self()
 	set category = "IC"
-	set name = "View Attributes"
+	set name = "查看属性"
 	if(SSmaptype.maptype in SSmaptype.citymaps)
 		to_chat(src, "<span class='notice'>You have no clue what your potential is.</span>")
 		return

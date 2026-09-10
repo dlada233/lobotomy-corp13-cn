@@ -302,7 +302,7 @@
 	screen_loc = ui_borg_intents
 
 /atom/movable/screen/stats
-	name = "view attributes"
+	name = "查看属性"
 	icon_state = "attributes"
 	screen_loc = ui_internal
 

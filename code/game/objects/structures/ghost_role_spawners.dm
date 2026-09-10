@@ -989,12 +989,12 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	outfit = /datum/outfit/tutorial
-	short_desc = "Welcome to Lobotomy Corporation! In the onboarding process you will get to see exactly how our company works."
-	flavour_text = "Be sure to read the tutorial sheets, \
-	experiment, and have fun. When you are done, Cryo and Respawn to join the game. \
-	Try out the mechanics, and maybe breach some abnormalities to get a feel for the combat."
+	short_desc = "欢迎来到脑叶公司! 你将在这里清楚地了解到我们公司的运作方式."
+	flavour_text = "请务必阅读教程说明，\
+	大胆尝试，玩得开心。完成后，冷冻并重生即可加入游戏. \
+	试试各种机制，或许还可以让一些异常体突破收容，感受一下战斗."
 	assignedrole = "Lobotomy Corporation Intern"
-	important_info = "Use MHELP in the Mentor tab to ask any questions you have."
+	important_info = "在导师标签页中使用 MHELP 来提出你的任何问题."
 
 //Tutorial agent
 /datum/outfit/tutorial
