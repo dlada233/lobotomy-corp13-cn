@@ -42,7 +42,6 @@
 		/datum/ego_datum/armor/skinprophet,
 	)
 	gift_type = /datum/ego_gifts/visions
-	can_spawn = FALSE // Normally doesn't appear
 	abnormality_origin = ABNORMALITY_ORIGIN_LIMBUS
 	chem_type = /datum/reagent/abnormality/sin/wrath
 
@@ -65,11 +64,10 @@
 			@$*@)$ ? <br> @#$!!@#* ! <br> @*()!%&$(^!!!!@&(@)"),
 	)
 
-	work_start_lines = list("") // This doesn't spawn currently, so we'll add work quotes later.
-	early_work_lines = list("")
-	middle_work_lines = list("")
-	late_work_lines = list("")
-	work_end_lines = list("")
+	work_start_lines = list("羽毛笔在纸上刮擦的声音充盈空气，%ABNO的手不停书写.", "当%PERSON进入收容单元时，%ABNO的注意力仍集中在它面前的典籍上.")
+	early_work_lines = list("没有什么能让%ABNO从它的任务上分心，预言必须被记录下来.", "@$*@)$ ?", "在黑暗中行走的人们看见了大光.", "死亡、毁灭、荒芜——厄运的凶兆等待着我们所有人.")
+	late_work_lines = list("@#$!!@#* !", "如果%PERSON知道预言预示着什么，一种难以言喻的恐惧将充满其内心.", "即使灯光熄灭，蜡烛被掐灭，%ABNO也不会从其自我赋予的任务中分心.")
+	work_end_lines = list("对于住在死荫之地的人，有光已经照耀.")
 
 	var/list/speak_list = list(
 		"!@)(!@&)&*%(%@!@#*(#)*(%&!@#$",
