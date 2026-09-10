@@ -64,7 +64,7 @@
 //the 2800 is an autorifle, and is found in /rcorp
 /obj/item/gun/energy/e_gun/rabbitdash/pale
 	name = "R公司 R-2900 '终极方案'"
-	desc = "R公司为基层部队量产的升级型号，仅能发射青色子弹。"
+	desc = "R公司为基层部队量产的升级型号，仅能发射蓝色子弹。"
 	ammo_type = list(
 		/obj/item/ammo_casing/energy/laser/pale,
 		)

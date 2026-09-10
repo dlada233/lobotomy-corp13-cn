@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/pygmalion
-	name = "皮格马利翁"
+	name = "皮格马利翁"//（出自漫画）
 	desc = "一个高大的异形人形雕像，穿着粉红色的裙子，手里拿着一束浅蓝色的花."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "pygmalion"
@@ -45,6 +45,11 @@
 		"伽拉忒亚" = list(TRUE, "或许他们互相塑造了彼此。"),
 		"皮格马利翁" = list(TRUE, "或许他们互相塑造了彼此。"),
 	)
+
+	work_start_lines = list("正如雕塑家雕刻石头，雕塑也在消除怀疑.")
+	early_work_lines = list("我试图在没有人类之心的情况下去爱某物.", "%PERSON会欣赏%ABNO上的细节.")
+	late_work_lines = list("我无心却试图去爱一个人.", "伽拉忒亚，愿她成为她的名字.")
+	work_end_lines = list("也许他们彼此雕刻了对方.")
 
 	var/last_worker = null
 	var/teleport_cooldown

@@ -70,6 +70,9 @@
 			它们展翅飞向雾霭之上的高空，留下黑天鹅。伊利亚握紧胸针，她只需再努力一点..."),
 	)
 
+	work_start_lines = list("伊利亚的哥哥们只是眨着眼，就好像他们在收容单元内能做的事情只有这一件似的.")
+	middle_work_lines = list("当伊利亚的哥哥们受到伤害，感到痛苦时，纵使已经成为了黑天鹅，伊利亚也只得拖着她疲惫的身躯前去寻找她的哥哥们.")
+
 	//family breach conditions
 	var/insane_humans = 0
 	var/dead_humans = 0

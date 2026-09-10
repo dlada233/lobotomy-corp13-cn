@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/bill
 	name = "Bill"
-	desc = "That's Bill from accounting. He agreed to do this job for us. He gets paid extra for it."
+	desc = "这是会计部门的Bill. 他同意来当教学对象. 它会得到额外的奖金."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "bill"
 	icon_living = "bill"
@@ -25,6 +25,10 @@
 	can_breach = TRUE
 	start_qliphoth = 1
 	can_spawn = FALSE // Normally doesn't appear
+
+	// Tutorial abnormality - doesn't really need a final observation.
+	work_start_lines = list("%ABNO 向 %PERSON 挥手")
+	middle_work_lines = list("\"公司的第一天过得还愉快吗?\"")
 
 /mob/living/simple_animal/hostile/abnormality/bill/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()

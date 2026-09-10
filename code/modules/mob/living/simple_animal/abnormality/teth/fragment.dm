@@ -1,7 +1,7 @@
 #define FRAGMENT_SONG_COOLDOWN (14 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/fragment
-	name = "宇宙碎片"
+	name = "宇宙碎片"//（出自脑叶）
 	desc = "一种由不同颜色的“心”覆盖的黑色球体的异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "fragment"
@@ -48,6 +48,11 @@
 			宇宙在耳中萦绕。你看见歌声。华美地，它向你靠近。"),
 		"捂住耳朵" = list(FALSE, "你尚未准备好。当你捂住耳朵时，歌声停止了。"),
 	)
+
+	work_start_lines = list("只有踏入%ABNO的领域，我们才能一览宇宙的秘密.",
+	"%ABNO和发疯的员工一同歌唱时的样子，就像是在举行一项神秘的仪式，它们似乎在吸引着什么.")
+	middle_work_lines = list("有一次，%ABNO告诉我们，\"宇宙中没有巧合.\"", "有时，%ABNO会试图微笑，但这只会让员工感到恐惧.")
+	work_end_lines = list("虽然不知道%ABNO的触角能起到什么样的作用，但肯定会对我们的大脑造成永久性的损伤.", "%ABNO的触角模糊了现实与未知的界限.")
 
 	var/song_cooldown
 	var/song_cooldown_time = 10 SECONDS

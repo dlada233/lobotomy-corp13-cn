@@ -35,6 +35,11 @@
 		"撕掉那些愿望" = list(FALSE, "你将愿望一页页撕碎。书页却未见减少。你的愿望实现了吗？"),
 	)
 
+	work_start_lines = list("传闻说，如果%ABNO最终被填满，它就会实现一个愿望")
+	middle_work_lines = list("那些也曾写在这本书里的愿望填满了每一页.",
+	"无论%ABNO被写入了多少次，总还有一页等着被填满...")
+	work_end_lines = list("你的愿望实现了吗？")
+
 	var/wordcount = 0
 	var/list/oddities = list() //List gets populated with friendly animals
 	var/list/nasties = list( //Todo: Eventually make a list of custom threats possibly

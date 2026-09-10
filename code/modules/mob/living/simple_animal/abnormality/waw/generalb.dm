@@ -59,6 +59,12 @@
 			除了保持毫无质疑的忠诚之外别无选择."),
 	)
 
+	work_start_lines = list("对蜜蜂来说，蜂群失去秩序是无法容忍的.")
+	early_work_lines = list("蜂群通常不需要士兵，然而...", "蜂群的首要任务是确保蜂巢的安全.")
+	middle_work_lines = list("如果%ABNO某天收到统治者的命令，将会发生可怕的事情.", "蜂群无需言语，所有信息都通过视觉和嗅觉传递.")
+	late_work_lines = list("士兵最大的渴望本不该被需要。%ABNO害怕那一天的到来.", "如果%PERSON不小心将%ABNO的命令带了回来...")
+	work_end_lines = list("%ABNO等待王国的建立，因为一个王国永远需要士兵.")
+
 	var/fire_cooldown_time = 3 SECONDS	//She has 4 cannons, fires 4 times faster than the artillery bees
 	var/fire_cooldown
 	var/fireball_range = 30

@@ -2,7 +2,7 @@
 //When out you're on a timer due to everyone on the floor it's on taking oxygen damage.
 //Please don't make an Ikea shark alt skin for this-Crabby.
 /mob/living/simple_animal/hostile/abnormality/siltcurrent
-	name = "\proper 噬梦的浊流"
+	name = "\proper 噬梦的浊流"//（出自巴士）
 	desc = "一种巨大的黑色蓝绿色相杂的鱼型异想体. \
 	蓝绿色的灯管嵌在它的身体里,"
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
@@ -79,6 +79,12 @@
 			我知道你会留恋地表——当这盏荧光灯熄灭后将永远无法触及之地。<br>\
 			所以准备好时请务必回来。\""),
 	)
+
+	work_start_lines = list("%ABNO永远追逐着道路尽头的那道光。",
+	"收容单元里的告示提醒%PERSON，若收容单元被水淹没，不要惊慌，继续工作。")
+	middle_work_lines = list("尽管%ABNO永远朝着那道光游去，它却记不起自己最初为何要出发。", "%PERSON想起自己曾经也有过梦想。")
+	late_work_lines = list("当执念蒙蔽了你，让你看不见所有其他道路时，你唯一能去的方向就是向前，哪怕这会要了你的命。",
+	"游过那片我只在图片中见过的浩瀚海洋。那曾是我的梦想。我唯一的梦想。")
 
 	var/stunned = FALSE
 	//Stuff relating to the dive attack
@@ -219,6 +225,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/siltcurrent/Worktick(mob/living/carbon/human/user)
 	user.adjustOxyLoss(1.5, updating_health=TRUE, forced=TRUE)//haha drown.
+	..()
 
 /mob/living/simple_animal/hostile/abnormality/siltcurrent/FailureEffect(mob/living/carbon/human/user, work_type, pe)
 	datum_reference.qliphoth_change(-1)
@@ -279,7 +286,7 @@
 
 /obj/structure/flotsam
 	name = "浮货废料"
-	desc = "一堆青色的灯管嵌在地板上."
+	desc = "一堆蓝色的灯管嵌在地板上."
 	icon = 'ModularTegustation/Teguicons/64x32.dmi'
 	pixel_x = -16
 	base_pixel_x = -16

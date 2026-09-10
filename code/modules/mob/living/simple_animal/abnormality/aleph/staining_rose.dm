@@ -1,6 +1,6 @@
 // Re-coded by Coxswain, finally off fraud watch. The flower that kills you.
 /mob/living/simple_animal/hostile/abnormality/staining_rose
-	name = "色染玫瑰"
+	name = "色染玫瑰" //(出自漫画)
 	desc = "一朵小小的、枯萎的玫瑰."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "rose_inactive"
@@ -31,12 +31,16 @@
 	gift_type = /datum/ego_gifts/blossoming
 	abnormality_origin = ABNORMALITY_ORIGIN_WONDERLAB
 
-	observation_prompt = "这甚至不值得被称为牺牲，对吧? <br>我一直想成为英雄，但是... <br>即使被命令去无谓地送死... <br>\
-		我发现自己仍然决定这么做，真是可笑. <br>我加入这家公司是为了拯救他人. <br>若能拯救所爱之人的生命，我便无悔."
+	observation_prompt = "这甚至不值得被称为牺牲，对吧? <br>我一直想成为英雄，但是... <br>即使已经收到了会白白死去的工作命令... <br>\
+		我发现自己仍然决定这么做，真是可笑啊. <br>我...是为了拯救他人才进的这家公司. <br>若能拯救我所爱之人的生命，我便无悔."
 	observation_choices = list(
-		"一百朵纸玫瑰" = list(TRUE, "我是唯一能做到的人... <br>\
-			... <br>仅此而已."),
+		"一百朵纸玫瑰" = list(TRUE, "只有我可以办得到... <br>\
+			... <br>这就够了."),
 	)
+
+	work_start_lines = list("%ABNO渴望有个满足其\'条件\'的人来管理它. 它希望这个人能与之产生 \'共鸣\'.")
+	middle_work_lines = list("%PERSON在的%ABNO的收容单元中折纸玫瑰.", "涂满红色斑点的%ABNO，宛如染血的花朵.")
+	work_end_lines = list("一旦完全满足，%ABNO 会变成鲜红色.")
 
 	var/mob/living/carbon/human/chosen = null
 	var/safe = FALSE //work on it and you're safe for 15 minutes

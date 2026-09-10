@@ -2,7 +2,7 @@
 #define SERVANT_SMASH_COOLDOWN (30 SECONDS)
 #define SERVANT_DASH_COOLDOWN (15 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/wrath_servant
-	name = "\proper 愤怒侍从"
+	name = "\proper 愤怒侍从"//（出自脑叶废案）（出自图书馆）
 	desc = "穿着绿色魔法少女服装的小女孩. \
 		她看起来很孤独."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
@@ -71,6 +71,15 @@
 			也是我失败的原因；我败给了心爱的同伴...<br>\
 			我本该在有机会时杀了他们！<br>罪人！！<br>邪恶的化身...！"),
 	)
+
+	work_start_lines = list("%ABNO沉湎于过去，就像她的姐妹们一样。", "你好，%PERSON，你想听听这个世界的平衡吗？")
+	early_work_lines = list("%ABNO绝非失明，眼罩只是象征性的。",
+	"%PERSON与%ABNO一同享受这份寂静。", "%PERSON问起正义，%ABNO很乐意回答。")
+	middle_work_lines = list("%ABNO现在看似平静，但是...", "%ABNO向%PERSON讲述了她必须坚守的职责。",
+	"如果她不记得，对大家都好。", "%ABNO的衣裙一尘不染、光洁如新，向%PERSON暗示他们也应遵循同样的标准。")
+	late_work_lines = list("被我们所信任之人造成的伤口更深，留下的毒也永远无法完全清除。",
+	"%ABNO回想起一个恶人意识到自己造成的伤害后改过自新的时刻。", "%ABNO曾经有一个朋友，对她而言比任何东西都珍贵。")
+	work_end_lines = list("%ABNO看似平静顺从，但仍应保持谨慎。", "最好不要让她想起友谊之类的事。")
 
 	var/friendly = TRUE
 	var/list/friend_ship = list()

@@ -1,6 +1,6 @@
 //This abnormality does more things now! It should be enjoyable enough to play as.
 /mob/living/simple_animal/hostile/abnormality/greed_king
-	name = "贪婪女王"
+	name = "贪婪国王"//（出自脑叶）
 	desc = "一个被困在魔法水晶里的女孩."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "kog"
@@ -50,6 +50,13 @@
 		琥珀色天空真美啊。<br>噢，我又饿了。"),
 	)
 
+	work_start_lines = list("当%ABNO收成卵形时，你可以在里面看到一个微笑着的女孩.",
+	"一些员工认为这个女孩被困在了卵中。但实际上，是她把自己关在了里面.")
+	early_work_lines = list("%ABNO那诱人的琥珀色花纹吸引了不少员工.", "%ABNO的颜色就如同闪烁的黄金.")
+	middle_work_lines = list("%ABNO曾经深爱着的世界，早已被她吞噬殆尽.",
+	"%ABNO的双眸曾经美如夕阳，然而贪婪吞噬了一切，一无所剩.")
+	work_end_lines = list("%ABNO屈服于饥饿，开始吞噬自己.", "当%ABNO不再饥饿时，那便意味着一切都已终结.")
+
 	//Some Variables cannibalized from helper
 	var/charge_check_time = 1 SECONDS
 	var/teleport_cooldown
@@ -83,7 +90,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/greed_king/Login()
 	. = ..()
-	to_chat(src, "<h1>你是【贪婪女王】，坦克型异想体。</h1><br>\
+	to_chat(src, "<h1>你是【贪婪国王】，坦克型异想体。</h1><br>\
 		<b>|镀金牢笼|：你的体型为3x3格，但仍可进入1x1区域。<br>\
 		<br>\
 		|无尽饥渴|：点击近战范围外的格子时，会朝该方向发起冲锋。<br>\

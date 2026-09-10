@@ -1,6 +1,6 @@
 //Brain go brrrr.
 /mob/living/simple_animal/hostile/abnormality/my_sweet_home
-	name = "甜蜜之家"
+	name = "甜蜜之家"//（出自漫画）
 	desc = "这个舒适的小房子是专为你建造的安全巢穴，一切都为你准备好了..."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "sweet_home"
@@ -60,6 +60,9 @@
 			你准备开门.<br>\
 			但在最后一刻，你被另一名员工拉到安全地带."),
 	)
+
+	work_start_lines = list("当看到%ABNO时，%PERSON内心涌起一种忧郁的情绪——上一次回家是什么时候？")
+	middle_work_lines = list("可怜的%PERSON不得不在这家屠宰场般的公司里工作，太可悲了...%PERSON.", "因为我是家。一个属于%PERSON的幸福小家，在自己的家里总是很安全的，对吧？")
 
 	var/ranged_damage = 10
 	var/damage_dealt = 0

@@ -1,6 +1,6 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/clown
-	name = "对我微笑的小丑"
+	name = "对我微笑的小丑"//(出自脑叶废案)
 	desc = "令人不安的小丑."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "clown_smiling"
@@ -73,6 +73,11 @@
 		离开时听见咯咯的笑声。<br>但这远不止是个残酷的恶作剧。"),
 		"那只是工具" = list(FALSE, "我以为那是件工具。<br>就在那一刻。"),
 	)
+
+	work_start_lines = list("%PERSON在看到%ABNO时，感到一种难以言喻的恐惧.")
+	early_work_lines = list("%PERSON希望尽快逃离收容单元.", "见我毫无反应，它又拿出了一件工具.")
+	late_work_lines = list("我以为那是个工具，只在这一刻.", "%PERSON想不起来具体在哪里，但确信自己小时候曾见过%ABNO.")
+	work_end_lines = list("它刚才动了吗?")
 
 	del_on_death = FALSE //for explosions
 	var/finishing = FALSE

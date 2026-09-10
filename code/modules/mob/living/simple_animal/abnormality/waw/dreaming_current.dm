@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/dreaming_current
-	name = "\proper 梦中的洋流"
+	name = "\proper 梦中的洋流"//（出自脑叶）
 	desc = "有腿的类似钴蓝色鲨鱼的异想体. \
 	它身体的一侧嵌入了一个注射器，下半身有多个注射孔."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
@@ -53,6 +53,9 @@
 			吃着糖时，我幻想自己在色彩海洋里游泳。<br>今天，我觉得自己要去那片海了..."),
 		"不吃糖" = list(FALSE, "我没吃那颗糖。<br>爸妈什么时候才来？<br>为什么他们还不来？<br>疼痛持续着，<br>我好害怕..."),
 	)
+
+	work_start_lines = list("%ABNO梦想着有一天能开心地离开这家公司.")
+	middle_work_lines = list("就像大家都希望的那样，%ABNO可以永远生活在这里.")
 
 	var/list/movement_path = list()
 	var/list/been_hit = list()

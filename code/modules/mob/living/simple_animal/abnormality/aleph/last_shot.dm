@@ -53,6 +53,11 @@ GLOBAL_LIST_EMPTY(meat_list)
 			当你离开收容单元，禁不住厌恶地打了个寒颤. <br>这样做真的对吗? 你永远也不会知道了."),
 	)
 
+	work_start_lines = list("腐烂的肉味令人难以忍受.")
+	early_work_lines = list("尽管没有眼睛，%PERSON 感觉 %ABNO 正在监视他们的每一个动作。","%PERSON 必须时刻保持警惕.")
+	middle_work_lines = list("覆盖着血肉的墙壁在 %PERSON 的眼前扭曲和变形。", "%ABNO 的血肉挠着 %PERSON 的腿，寻找突破口.")
+	work_end_lines = list("即使是最微小的弱点暗示也会招致 %ABNO 的愤怒.")
+
 	var/list/gremlins = list()	//For the meatballs
 	var/list/meat = list()		//For the floors
 

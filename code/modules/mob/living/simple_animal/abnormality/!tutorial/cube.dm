@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/cube
 	name = "THE CUBE"
-	desc = "A strange floating cube."
+	desc = "奇怪的悬浮方块."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "cube"
 	icon_living = "cube"
@@ -26,6 +26,10 @@
 	var/pulse_cooldown
 	var/pulse_cooldown_time = 3 SECONDS
 	var/pulse_damage = 6
+
+	// Tutorial abnormality - doesn't really need a final observation.
+	work_start_lines = list("%ABNO 每个面都是完美的.")
+	middle_work_lines = list("你可以说 %ABNO 是完美的通用对象.")
 
 /mob/living/simple_animal/hostile/abnormality/cube/BreachEffect(mob/living/carbon/human/user, breach_type)
 	. = ..()

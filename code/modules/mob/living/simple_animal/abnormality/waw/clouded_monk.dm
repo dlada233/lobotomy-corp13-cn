@@ -1,6 +1,6 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/clouded_monk
-	name = "风云法师"
+	name = "风云法师"//（出自脑叶）
 	desc = "一个戴着袈裟的高个和尚的异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "cloudedmonk"
@@ -50,6 +50,12 @@
 	observation_choices = list(
 		"我不再是僧侣了" = list(TRUE, "恶魔永远进不了天堂."),
 	)
+
+	work_start_lines = list("%PERSON正在前往%ABNO的收容单元并准备执行任务.")
+	early_work_lines = list("修行永无止境，%ABNO寻求着遥不可及的安宁，并渴望着重返旧日岁月.")
+	middle_work_lines = list("%ABNO无法控制住自己，克制带来的痛苦笼罩在整个收容单元之中.")
+	late_work_lines = list("%ABNO紧攥住手中破碎的念珠，如今它所剩下的，只有绝望.")
+	work_end_lines = list("我这失而复得又得而复失的东西究竟是什么...?")
 
 	var/datum/looping_sound/cloudedmonk_ambience/soundloop
 	var/charging = FALSE

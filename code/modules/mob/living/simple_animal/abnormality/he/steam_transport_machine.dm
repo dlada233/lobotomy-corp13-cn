@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/steam
-	name = "蒸汽运输机"
+	name = "蒸汽运输机"//（出自巴士）
 	desc = "一种两足蒸汽动力的自动机，由棕色的似木的材料制成，边缘是黄铜的."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "steam"
@@ -69,6 +69,14 @@
 			伴随沸腾巨响，机体开始发热喷出蒸汽。<br>\
 			眼见它泛起危险红光，你迅速逃离房间。"),
 	)
+
+	work_start_lines = list("%ABNO伴随着%PERSON的靠近开始缓缓苏醒.")
+	early_work_lines = list("%ABNO的真空管计数器会随着%PERSON的指令下达而加一.", "蒸汽的味道令人难以忍受.",
+	"机器存在有其明确目的.", "人类存在也有其明确目的，只是大多数人从未意识到.")
+	late_work_lines = list("机器永远也只能是机器.", "%PERSON感到不满，因为%ABNO只会按照命令行使，从不做内心真正想要的事情.", //%PERSON feels discontentment as %ABNO only ever does as it tells it to do, never what they want. 原文可能存在歧义
+	"一个没有目的的机器注定会失去其存在的意义，即使它运转正常.")
+	work_end_lines = list("在遥远的过去，像这样的机器曾随处可见.", "%PERSON快速逃离，因为%ABNO正排出大量危险的蒸汽.",
+	"一台目的是什么都不做的机器，会不惜一切代价去完成它的命令.")
 
 	var/gear = 0
 	var/steam_damage = 2

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/funeral
-	name = "亡蝶葬仪"
+	name = "亡蝶葬仪"//（出自脑叶）
 	desc = "一种高耸的畸形物，头部为白色蝴蝶，背部为棺材."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi' //HOW DO I TURN A PNG INTO THE DMI SPRITES AAAAAAAAAAAAAAA
 	icon_state = "funeral"
@@ -62,6 +62,18 @@
 			你与蝶面人默立守灵，立誓同悲生死。<br>\
 			离开收容单元时，有蝶影相随。"),
 	)
+
+	work_start_lines = list("自己的死亡若能被人铭记乃一大幸事.",
+	"这里的人们没有时间去铭记死者，只是麻木地等待下一场死亡.", "%ABNO一声不响地凝视着%PERSON.")
+	early_work_lines = list("%ABNO幻想着那镜花水月的希望以及锐挫望绝的终末.",
+	"巨大的棺材无法取代成百上千座坟墓.", "%PERSON看到一长列由白色蝴蝶组成的送葬者.",
+	"蝴蝶拍打着翅膀，以一种熟悉却又陌生的方式向我们靠近")
+	middle_work_lines = list("这里寸草不生，所以那些蝴蝶是从哪里来的?",
+	"员工们别无选择，他们无路可回，只能继续工作.", "如同一场永无止境的葬礼，%PERSON依然平静地哀悼着.",
+	"%PERSON最后一次思虑着自己的人生.")
+	late_work_lines = list("想要摆脱公司回到家中？真是无稽之谈.", "在最好的时刻，以最好的面貌死去，乃是令人难以想象的幸福.",
+	"实际上，死于此地的员工大多都希望尽可能久得活下去.")
+	work_end_lines = list("有些人认为，死亡意味着全新的开始，然而死后只剩下一片空无.")
 
 	var/gun_cooldown
 	var/gun_cooldown_time = 4 SECONDS

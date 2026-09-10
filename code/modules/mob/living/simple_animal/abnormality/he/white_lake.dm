@@ -2,7 +2,7 @@
 //White Lake from wonderlabs, by Kirie saito
 //It's very buggy, and I can't test it alone
 /mob/living/simple_animal/hostile/abnormality/whitelake
-	name = "白湖"
+	name = "白湖"//(来自漫画)（芭蕾舞剧 天鹅湖）
 	desc = "一个专心于工作的芭蕾舞演员."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "white_lake"
@@ -43,6 +43,11 @@
 		"反对" = list(FALSE, "\"我根本不觉得英雄可爱。<br>在我纯白羽毛被你沾满血的手弄脏前，让我继续跳舞吧，屠夫。\"<br>\
 			芭蕾舞者转身背对你继续跳舞，不再理会。"),
 	)
+
+	work_start_lines = list("%ABNO正独自跳着芭蕾舞，只有她自己能听到节奏.", "%ABNO无视着%PERSON.", "%ABNO只瞥了一眼%PERSON，便不再多管.")
+	early_work_lines = list("%ABNO看起来对%PERSON做的一切都不满意.", "%ABNO指名问起另一名员工什么时候来，谈到那位员工时，她似乎显得更开心.")
+	middle_work_lines = list("勇气是一种不切实际而又鲁莽的美德，你并不需要这种东西.", "%ABNO投出鄙夷的目光向%PERSON的双手，尽管它们已经干净得一尘不染.")
+	late_work_lines = list("%ABNO正好是她想要成为的样子.")
 
 /mob/living/simple_animal/hostile/abnormality/whitelake/WorkChance(mob/living/carbon/human/user, chance)
 	if(get_attribute_level(user, FORTITUDE_ATTRIBUTE) >= 60)

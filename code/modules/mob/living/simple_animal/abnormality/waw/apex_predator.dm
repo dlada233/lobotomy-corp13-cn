@@ -63,6 +63,11 @@
 			你冷笑着抽出警棍。"),
 	)
 
+	work_start_lines = list("%ABNO没有移动一英寸，感觉没有任何欲望.")
+	early_work_lines = list("%PERSON感觉如果眨一下眼，就会发生非常糟糕的事情.")
+	middle_work_lines = list("无论房间被清理多少次，血腥味都会一直残留")
+	work_end_lines = list("%PERSON希望尽快离开%ABNO的收容单元.")
+
 	var/revealed = TRUE
 	var/can_act = TRUE
 	var/backstab_damage = 60
@@ -106,7 +111,7 @@
 	if(user.health != user.maxHealth)
 		work_damage_upper = 8
 		work_damage_lower = 6
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/apex_predator/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(user.health < 0)

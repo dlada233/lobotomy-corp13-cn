@@ -1,7 +1,7 @@
 #define FLORAL_BARRIER_COOLDOWN 10 SECONDS
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple
-	name = "白雪公主的苹果"
+	name = "白雪公主的苹果"//（出自脑叶）
 	desc = "一种反常现象，以一个个头像苹果的高个子人形生物的形式出现."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "snowwhitesapple_inert"
@@ -71,6 +71,19 @@
 		"我会找到的" = list(FALSE, "自某刻起，我发觉自己能行走。<br>\
 			我望见光。<br>我听见人声。<br>我将挣脱此般折磨。<br>因我将遇见我的救赎"),
 	)
+
+	work_start_lines = list("在无人知晓的密室中，那个女巫问到：\"魔镜啊魔镜，谁是这个世界上最美丽的女人？\".",
+	"镜子自然不会作出回应，可女巫心里早已有了答案.","那一天，随着被诅咒的苹果遗落在公主与王子的花园里，那个女巫的内心也随之崩溃.",
+	"女巫不顾死活，在苹果上施下了最恶毒的咒语.")
+	early_work_lines = list("%PERSON看到了铺满整个收容单元的藤蔓.", "一些藤蔓和枝叶仍然在%ABNO的收容单元里缓慢生长着.",
+	"藤蔓正缠绕在%ABNO附近.", "枝叶沙沙作响.")
+	middle_work_lines = list("如果你走近观察，你会意识到这些藤蔓早已枯萎. ",
+	"茎叶已经完全干透了，只要轻轻一碰就能把它们变回尘土。如此恐怖的东西很难被称作是\"植物\".",
+	"尽管茎叶已经枯萎了，可它们仍然在生长.")
+	late_work_lines = list("%ABNO的眼睛是在很久很久以前被小鸟和昆虫咬出来的. %ABNO靠吃小鸟和昆虫的死尸而生长.",
+	"%ABNO孤独了很久很久...它的四周遍布小鸟和昆虫的残骸.")
+	work_end_lines = list("%ABNO想起了在众人的祝福声中迈过鲜花之道的公主与王子.",
+	"无辜的苹果被女巫降下最恶毒的诅咒，可那个因苹果而陷入沉睡的公主，最终却过上了幸福快乐的生活.", "随着可怕的嫉妒、愤怒、孤独...%ABNO将愈发强大.")
 
 	initial_language_holder = /datum/language_holder/plant //essentially flavor
 	var/togglemovement = FALSE

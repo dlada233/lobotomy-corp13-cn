@@ -232,11 +232,11 @@
 	switch(current_suit)
 		if("hearts")
 			armor = armor.modifyRating(white = 10, pale = 5)
-			to_chat(user, span_nicegreen("[src]获得了对白色和青色伤害的额外抗性!"))
+			to_chat(user, span_nicegreen("[src]获得了对白色和蓝色伤害的额外抗性!"))
 
 		if("spades")
 			armor = armor.modifyRating(pale = 15)
-			to_chat(user, span_nicegreen("[src]获得了对青色伤害的额外抗性!"))
+			to_chat(user, span_nicegreen("[src]获得了对蓝色伤害的额外抗性!"))
 
 		if("diamonds")
 			armor = armor.modifyRating(red = 10, pale = 5, fire = 5)
@@ -244,7 +244,7 @@
 
 		if("clubs")
 			armor = armor.modifyRating(black = 10, pale = 5)
-			to_chat(user, span_nicegreen("[src]获得了对青色和黑色伤害的额外抗性!"))
+			to_chat(user, span_nicegreen("[src]获得了对蓝色和黑色伤害的额外抗性!"))
 
 /obj/item/clothing/suit/armor/ego_gear/aleph/seasons
 	name = "春夏秋冬"

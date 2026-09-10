@@ -6,7 +6,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 */
 
 /mob/living/simple_animal/hostile/abnormality/red_hood
-	name = "小红帽雇佣兵"
+	name = "小红帽雇佣兵"//（出自脑叶）
 	desc = "穿着破烂红色袍子的高大人形异想体."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "red_hood"
@@ -65,6 +65,15 @@ It has now been over four months. Now we get her for real. -Coxswain
 		"离开房间" = list(FALSE, "需要我的服务时，随时敲门。<br>\
 			这是我的抗争。"),
 	)
+
+	work_start_lines = list("%ABNO一如既往地等待着委托，等待着血的味道.",
+	"\"如果你看见那个长毛的杂种，一定要告诉我。等我哪天把那混蛋的脑袋砍下之后，不收你的钱也没问题.\"",
+	"实际上，%ABNO比员工更有能力镇压异想体.")
+	early_work_lines = list("大多数的时间，%ABNO都在那里磨她的斧头.",
+	"%ABNO想找个能够练习射击的场地，但被员工们坚定地驳回了.")
+	middle_work_lines = list("当%ABNO加入战斗时，你能从那扬起的斗篷下，看到她的皮肤上布满了大大小小的伤疤.",
+	"许多员工都很好奇%ABNO的伤疤是从何而来的，可是没人够胆去问她.")
+	late_work_lines = list("当她找到那匹狼后，一切都将结束.", "这场斗争已经持续了很长时间，她的愤恨随着时间的流逝一点点加深着.")
 
 	/*
 	Red's targeting logic

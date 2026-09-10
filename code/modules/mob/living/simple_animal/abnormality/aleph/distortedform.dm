@@ -4,7 +4,7 @@
 	roughly as dangerous as white night and as rewarding.
 */
 /mob/living/simple_animal/hostile/abnormality/distortedform
-	name = "扭曲形体"
+	name = "扭曲形体"//（原创内容）
 	desc = "一种无法形容的人为恐怖."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	maxHealth = 10000
@@ -71,6 +71,10 @@
 			我成为了一只怪物. <br>"),
 	)
 
+	work_start_lines = list("%ABNO的真正形态难以理解.", "%PERSON 从未能将 %ABNO 认识为人类同胞，但仍然对其产生一种陌生的亲缘感.")
+	middle_work_lines = list("%ABNO反映了人类深层而压抑的欲望.", "%PERSON 听到远处传来一阵响声，但选择忽略.")
+	work_end_lines = list("%ABNO似乎凭空出现，吓到了%PERSON。", "%PERSON 因长时间盯着 %ABNO 而出现晕动病的症状.")
+
 //Work vars
 	var/transform_timer
 	var/list/transform_blacklist = list(
@@ -113,7 +117,7 @@
 		"一无所有",
 		"天启鸟",
 		"靴子里的猫",
-		"破裂铠甲",
+		"破裂盔甲",
 		"光之锤",
 		"Halberd Apostle",
 		"红皇后",
@@ -462,7 +466,7 @@
 			ChangeNT()
 		if("靴子里的猫")
 			ChangeCat()
-		if("破裂铠甲")
+		if("破裂盔甲")
 			ChangeArmor()
 		if("光之锤")
 			ChangeHammer()
@@ -962,7 +966,7 @@
 //Crumbling Armor
 /mob/living/simple_animal/hostile/abnormality/distortedform/proc/ChangeArmor()
 	transform_cooldown = transform_cooldown_time_short + world.time
-	name = "破裂铠甲"
+	name = "破裂盔甲"
 	desc = "一套完全老化的武士式盔甲，头盔上有一个V形的纹章，它看起来很破旧."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "crumbling"

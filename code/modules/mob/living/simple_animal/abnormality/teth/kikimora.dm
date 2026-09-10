@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/kikimora
-	name = "奇奇莫拉"
+	name = "奇奇莫拉"//（斯拉夫神话 家庭精灵）
 	desc = "一个长着喙、一条腿的女人懒洋洋地拿着扫帚扫地."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "kikimora"
@@ -41,6 +41,12 @@
 	observation_choices = list(
 		"奇奇莫拉?" = list(TRUE, "奇奇莫拉."),
 	)
+
+	work_start_lines = list("") // Unimplemeneted
+	early_work_lines = list("")
+	middle_work_lines = list("")
+	late_work_lines = list("")
+	work_end_lines = list("")
 
 /mob/living/simple_animal/hostile/abnormality/kikimora/ZeroQliphoth(mob/living/carbon/human/user)
 	. = ..()

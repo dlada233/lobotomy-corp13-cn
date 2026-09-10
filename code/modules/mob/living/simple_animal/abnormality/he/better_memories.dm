@@ -46,6 +46,10 @@
 			记忆愈发鲜明，恍如正在发生...<br>当你最终挣脱时，却记不起自己为何如此拼命。"),
 	)
 
+	work_start_lines = list("%PERSON对%ABNO的闪光镜头感到惊讶.", "公司通常不允许使用闪光灯拍摄。.")
+	middle_work_lines = list("%PERSON几乎要往%ABNO里面看，但最后一刻又犹豫了.")
+	work_end_lines = list("%ABNO将永远铭记这一历史时刻，永世长存.")
+
 	var/minions = 0
 
 /mob/living/simple_animal/hostile/abnormality/better_memories/Login()

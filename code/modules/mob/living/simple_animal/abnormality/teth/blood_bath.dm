@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/bloodbath
-	name = "血浴缸"
+	name = "血浴缸"//（出自脑叶）
 	desc = "不断滴血的浴池"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "bloodbath"
@@ -48,6 +48,13 @@
 		"抓住一只手" = list(TRUE, "冰冷与僵硬渗入骨髓. <br>我认得这些手. <br>它们属于我曾爱过的人们."),
 		"没有伸手" = list(FALSE, "你移开视线. <br>这不是你第一次漠视它们. <br>往后也将如此循环."),
 	)
+
+	work_start_lines = list("\"你知道的，在我进入脑叶公司之后我觉得我的生活回到了正轨.\"", "%PERSON从%ABNO那儿感受到了悲伤.",
+	"当看着%ABNO时，%PERSON的手腕隐隐作痛.")
+	middle_work_lines = list("\"抑郁是一种心理疾病，我们是第一个发现如何能变得快乐的医生.\"", "%PERSON凝视着漂浮在浴缸中的绝望.",
+	"%PERSON感觉自己被压抑和悲伤淹没了.")
+	work_end_lines = list("\"用于治疗肉体的药物以无法想象的速度发展着，但用于治疗心理的药物却停滞不前.\"",
+	"%PERSON看见了即将到来的困难和失败.", "%PERSON看见了未来的艰辛与磨难. 无论自己如何挣扎，结局只剩下失败.")
 
 	var/hands = 0
 	var/can_act = TRUE

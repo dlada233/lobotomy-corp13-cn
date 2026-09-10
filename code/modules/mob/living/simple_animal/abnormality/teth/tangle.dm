@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/tangle
-	name = "长发缠节"
+	name = "长发缠节"//（出自漫画）
 	desc = "一堆头发里好像有一颗被砍下来的头."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "tangle"
@@ -50,6 +50,10 @@
 			四千九百九十八……<br>\
 			四千九百九十九……"),
 	)
+
+	work_start_lines = list("%PERSON拿起一把看起来很可爱的粉色刷子，开始梳理%ABNO的金色长发.")
+	middle_work_lines = list("四千八百九十九...四千八百九十九", "让头发垂下来吧，这样我才能逃离这个地狱.")
+	late_work_lines = list("四千九百五十二，四千九百五十二...", "头发，让它垂下来. 让头发垂下来.")
 
 	var/chosen
 	var/instinct_count

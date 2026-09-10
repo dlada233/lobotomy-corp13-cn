@@ -51,6 +51,12 @@
 			若真有人身陷险境，他们也只能靠自己了。"),
 	)
 
+	work_start_lines = list("") // Doesn't currently spawn, will do these later.
+	early_work_lines = list("")
+	middle_work_lines = list("")
+	late_work_lines = list("")
+	work_end_lines = list("")
+
 	var/input
 	var/bitposition = 4	//You write in bits. You need to successfully write a string of 5 to sucessfully work
 	var/bitcalculator = 0
@@ -70,7 +76,7 @@
 	else if(work_type == "输入零" || work_type == "输入零" && !isopen)
 		to_chat(user, span_notice("你没有收到输入."))
 		return FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/khz/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
 	if(!isopen)	//Can't input the first time

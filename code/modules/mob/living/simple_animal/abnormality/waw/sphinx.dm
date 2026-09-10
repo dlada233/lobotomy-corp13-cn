@@ -69,6 +69,10 @@
 			不久心脏也被夺走。<br>最终空无一物。"),
 	)
 
+	work_start_lines = list("有传言说%ABNO喜欢讲谜语，但至今尚未尝试过交流.")
+	middle_work_lines = list("只要%ABNO仍待在收容单元里，它的眼睛就一直闭着.")
+	work_end_lines = list("%PERSON的头突然感到疼痛，仅仅和%ABNO一起待在身边就会造成巨大的精神压力.")
+
 	//work-related
 	var/list/workloot = list(
 		/obj/item/golden_needle,

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/flesh_idol
-	name = "血肉偶像"
+	name = "血肉偶像"//（出自脑叶）
 	desc = "中间钉着肉的十字架."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "flesh_idol"
@@ -37,6 +37,11 @@
 		"停止祈祷" = list(TRUE, "那里空无一人，上帝不在此处。"),
 		"继续祈祷" = list(FALSE, "若上帝真爱世人，自会显现征兆。"),
 	)
+
+	work_start_lines = list("过去，有些人通过宗教寻求答案.", "这是一块由血肉与废铁所构成的异想体实体.")
+	early_work_lines = list("当%PERSON向它祷告时，废铁上的血肉会开始蠕动，就好像是在对祷告做出回应.", "这个异想体是从洪灾区被回收的，一些人推测它是一个神秘的宗教物件.")
+	late_work_lines = list("%PERSON会遭受各种各样的折磨，如同在接受残酷的试炼.")
+	work_end_lines = list("同时周围的人会如获救赎一般恢复精神，治愈肉体.")
 
 	var/counter_interval = 5 MINUTES
 	var/next_counter_gain //What was the next time you gain Qlip?
@@ -83,6 +88,7 @@
 	work_damage_type = damage
 	user.deal_damage(damage_amount, damage) // take 5 random damage each time
 	WorkDamageEffect()
+	..()
 
 //Prevents red work damage effecs from appearing
 /mob/living/simple_animal/hostile/abnormality/flesh_idol/WorktickFailure(mob/living/carbon/human/user)

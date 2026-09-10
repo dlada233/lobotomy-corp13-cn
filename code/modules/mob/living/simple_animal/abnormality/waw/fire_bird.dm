@@ -56,6 +56,10 @@
 		"射出箭矢" = list(FALSE, "你朝光源射箭却完全落空。<br>如无数前人般空手而归。"),
 	)
 
+	work_start_lines = list("曾有这么一个传说：得到%ABNO羽毛的人会获得荣华富贵，也会付出代价.")
+	middle_work_lines = list("有时，%ABNO会治愈受伤的员工.")
+	work_end_lines = list("如果员工表现出想要狩猎%ABNO的样子，%ABNO会很高兴的.")
+
 	var/pulse_cooldown
 	var/pulse_cooldown_time = 1 SECONDS
 	var/pulse_damage = 2

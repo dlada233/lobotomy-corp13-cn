@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/der_fluschutze
-	name = "凶弹射手"
+	name = "凶弹射手"//（出自巴士）
 	desc = "一个穿着灰色、金色和帝王蓝配色衣服的高个子男人，他的目标无可挑剔."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "DrFluShots"
@@ -47,6 +47,10 @@
 			它将永无止境地贯穿更多头颅。"),
 		"拒绝支付" = list(FALSE, "男人面露愠色。<br>\"信念如此摇摆就别浪费我时间。\""),
 	)
+
+	work_start_lines = list("%ABNO 对自己的过去毫无记忆，它只活在那种令人兴奋的感觉中，将人们吹向烟花的瞬间.")
+	middle_work_lines = list("很久以前，%ABNO为了他们深爱的人参战了.")
+	work_end_lines = list("正如与魔鬼达成的所有协议一样，%ABNO的契约将不会和平结束.")
 
 	var/can_act = TRUE
 	var/bullet_cooldown

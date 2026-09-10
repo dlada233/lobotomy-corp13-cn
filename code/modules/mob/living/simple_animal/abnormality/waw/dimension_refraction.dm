@@ -51,6 +51,9 @@
 		"离开收容单元" = list(FALSE, "手册要求若水杯出现剧烈变化需立即撤离。<br>离开时，水面恢复了平静。"),
 	)
 
+	work_start_lines = list("很多员工死在了%ABNO的工作过程中.")
+	middle_work_lines = list("%PERSON工作得越久，情况就有可能变得越糟.")
+
 	var/cooldown_time = 2
 	var/aoe_damage = 10
 

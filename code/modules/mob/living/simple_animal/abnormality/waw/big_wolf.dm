@@ -3,7 +3,7 @@
 #define WOLF_HP_PERCENT 100 * (health / maxHealth)
 
 /mob/living/simple_animal/hostile/abnormality/big_wolf
-	name = "又大又可能很坏的狼"
+	name = "又大又可能很坏的狼"//（出自脑叶）
 	desc = "以大狼的形式出现的异想体."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "big_wolf"
@@ -68,6 +68,17 @@
 		"忘记名字" = list(FALSE, "你最好当心。<br>只要我愿意，一口就能吞掉你。<br>\
 			（狼显得很不高兴）"),
 	)
+
+	work_start_lines = list("Hey，%PERSON. 这里有没有三只胖乎乎的小猪呀？噢~没什么. 它们是我的朋友，我只是想看看它们现在过得怎么样...", "小%PERSON，可以请你打开这扇门吗？我不会伤害别人的，我只是有点儿肚肚饿了..",
+	"%PERSON，如果你能放我出去的话，我会给你很多好处的!")
+	early_work_lines = list("%ABNO生动地记得自己被开膛破肚，内脏流了一地的场景.",
+	"%ABNO喜欢吃肉，它曾经一直饿着肚子。而现在，它想永远饱饱儿的.")
+	middle_work_lines = list("%ABNO患有慢性消化不良。这要追溯到非常遥远的过去...",
+	"曾被%ABNO吞进肚子里的员工说，那里是一个黑暗，空虚，且孤独的地方.")
+	late_work_lines = list("我的牙齿好大呀~", "\"我一口气就能把这个房间吹开!\"",
+	"\"开门嘛~小甜心！我从森林里给你带礼物来咯~.\"")
+	work_end_lines = list("我是一只又大又坏的狼，我会把你们统统吃光然后逃出这个鬼地方!", "%PERSON，我只告诉你一个人.\
+	如果你想盖房子，一定要盖座坚固的砖房哦.")
 
 	var/can_act = TRUE
 	//For when the wolf becomes incorporal and flees.

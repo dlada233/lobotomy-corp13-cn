@@ -1,6 +1,6 @@
 #define BIGBIRD_HYPNOSIS_COOLDOWN (20 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/big_bird
-	name = "大鸟"
+	name = "大鸟"//（出自脑叶）
 	desc = "一只巨大的，多眼的鸟，带着一盏永恒的灯在黑暗的森林里巡逻. \
 	与普通鸟类不同，它没有翅膀，而是有长长的手臂，可以用来捡东西."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
@@ -73,6 +73,20 @@
 			随着抚摸，眼睛开始闭合。<br>大鸟在漫长岁月后第一次安然入睡。"),
 		"不抚摸它" = list(FALSE, "大鸟可能发怒噬咬你。<br>你惊恐地逃出房间。"),
 	)
+
+	work_start_lines = list("%ABNO最引人注意的特点就是全身上下无数的眼睛以及手中那盏永不熄灭的明灯.",
+	"事实上，我们并不知道%ABNO究竟为何而杀戮.",
+	"%ABNO并不能飞对我们而言是件值得庆幸的事. 如果它能飞的话，公司里半数员工的脑袋都会被它给咬下来.",
+	"%ABNO突然灵光一闪: \"如果我先杀死这些动物，它们就不会被那些怪物杀死了呀!\" 从此，森林又回归了平静.")
+	early_work_lines = list("无数眼睛眨动时发出的怪声和明灯燃烧的声响在整个收容单元内回荡着.",
+	"%ABNO的眼睛和那盏灯在黑暗的收容单元里像星星一样闪闪发光.", "%ABNO的眼睛突然间全部指向%PERSON.",
+	"面对%ABNO时，%PERSON开始控制不住地发抖.")
+	middle_work_lines = list("在%PERSON的背后，那只毛绒绒的黑鸟正发出咕噜噜的声音.", "偶尔，我们可以听到那只鸟所发出的鸣叫声.", "%ABNO正在%PERSON背后低吼，它看起来很焦虑.", "%ABNO在%PERSON身边徘徊着，低吼着.")
+	late_work_lines = list("为了避免眼神接触，%PERSON转开了头，随后看到了那盏熊熊燃烧的明灯.",
+	"%PERSON看向别处，避免看向%ABNO，然后眼前出现了那盏耀眼的明灯.","%PERSON看到%ABNO拿着那盏燃烧的明灯.",
+	"%PERSON决定不直视%ABNO，这是个非常明智的选择.")
+	work_end_lines = list("%ABNO开始向%PERSON走来", "%ABNO用牙齿发出声响",
+	"%ABNO发出具有威胁性的声音，慢慢靠近%PERSON.", "%ABNO的眼睛渐渐变红.")
 
 	var/bite_cooldown
 	var/bite_cooldown_time = 5 SECONDS

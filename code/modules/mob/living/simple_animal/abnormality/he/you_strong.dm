@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/you_strong
-	name = "你必须变得更强大"
-	desc = "色彩斑斓的工厂闻起来有一股明显的铁味...这东西是塑料做的吗!?"
+	name = "你必须变得更强大"//(来自巴士)（电影 发条橙）
+	desc = "色彩斑斓的工厂闻起来有一股明显的铁味...但这东西不是塑料做的吗!?"
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "you_strong_pause"
 	icon_living = "you_strong_pause"
@@ -44,6 +44,9 @@
 	observation_choices = list(
 		"进入机器" = list(TRUE, "我依言进入；现在我变强了，为我的都市而强大。<br>我爱我居住的都市。"),
 	)
+
+	work_start_lines = list("一台神秘而老旧的机器，就像一个工厂的塑料玩具模型.")
+	middle_work_lines = list("一台神秘而老旧的机器，就像一个工厂的塑料玩具模型. \"你爱你的都市吗？\".")
 
 	var/penalize = FALSE
 	var/work_count = 0

@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_THORNS /datum/status_effect/stacking/crownthorns
 /mob/living/simple_animal/hostile/abnormality/rose_sign
-	name = "玫瑰标牌"
+	name = "玫瑰标牌"//（出自巴士）
 	desc = "一个没有手臂的人形被绑在带有玫瑰藤蔓的招牌上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "rose_sign"
@@ -53,6 +53,16 @@
 			随着血肉分崩离析，躯体不断扭动。<br>\
 			散落遍地的花朵代替了它的尖叫声。"),
 	)
+
+	work_start_lines = list("%ABNO的许多只眼睛紧盯着%PERSON。")
+	early_work_lines = list("%ABNO对%PERSON的罪孽评头论足，盼望着那些种子绽放出最可怕的恶果。", "%ABNO询问%PERSON的欲望。")
+	middle_work_lines = list("你是否曾感到一股吞噬一切的暴怒席卷而来，待它消散时，只余下灰烬？",
+	"你是否曾因怠惰而彻底沉沦，在懒散中任凭人生完全从身边流逝？",
+	"嫉妒的荆棘是否曾如此紧紧地缠绕你的心脏，将你的爱意扼杀殆尽？", "你是否曾陷入如此深重的阴郁，仿佛正在溺水？")
+	late_work_lines = list("你是否曾感到一股强烈的色欲，想要如此热切地留下自己的痕迹，以至于用自己的色彩覆盖了别人的颜色？",
+	"你是否曾感到傲慢如此膨胀，以至于为了攀上更高的地方而践踏他人的手？",
+	"是否有那么一刻，你的暴食如此强烈，为了让自己感觉更完整一点，你夺走了别人的一切？")
+	work_end_lines = list("许愿吧，向它许愿。明知那是罪孽。唯有如此，你才能绽放出如此绚烂的玫瑰。", "每个人都有愿望。否认它们，就是否认你自己。")
 
 	var/list/work_roses = list()
 	var/list/work_damages = list()

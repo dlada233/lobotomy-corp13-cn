@@ -44,6 +44,12 @@
 			\"...你又是谁？\""),
 	)
 
+	work_start_lines = list("%ABNO唱响着过去的歌.")
+	middle_work_lines = list("为什么不是同一首歌？", "%PERSON听过%ABNO唱过的那首歌，但似乎想不起来是哪一首了...",
+	"当歌曲结束时，%PERSON 就会忘记他们曾经听过这首歌.")
+	late_work_lines = list("你越是试图回忆某个记忆，它就越变得扭曲和失真.",
+	"音乐能从过去打捞起记忆，自然也能将记忆重新淹没.")
+
 //meltdown effects
 	var/meltdown_cooldown_time = 144 SECONDS
 	var/meltdown_cooldown

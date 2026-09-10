@@ -3,7 +3,7 @@
 #define STATUS_EFFECT_DAYBREAK /datum/status_effect/daybreak
 
 /mob/living/simple_animal/hostile/abnormality/hammer_light
-	name = "光之锤"
+	name = "光之锤"//（出自脑叶废案）
 	desc = "刻有金色符文的白色锤子."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "hammer_pedestal"
@@ -41,6 +41,12 @@
 	observation_choices = list(
 		"接受提议" = list(TRUE, "我接受了提议并付出代价. <br>光之锤熠熠生辉.")
 	)
+
+	work_start_lines = list("有一把锤子，像很久没见过阳光的囚犯一样被锁链锁着。")
+	early_work_lines = list("锤子和锁链并未分离。它们是一个异想体。", "它看起来安全，因为它被锁链锁着。",
+	"锁链将锤子紧紧束缚，以确保无人能举起它。")
+	middle_work_lines = list("%PERSON对束缚%ABNO的锁链感到好奇。", "员工%PERSON在管理%ABNO的同时也为这家公司工作，员工因此感到羞愧。")
+	work_end_lines = list("%ABNO等待着挣脱这些锁链的那一天。")
 
 	pet_bonus = "hums" // saves a few lines of code by allowing funpet() to be called by attack_hand()
 	var/sealed = TRUE
@@ -201,7 +207,7 @@
 // Item version
 /obj/item/ego_weapon/hammer_light
 	name = "光之锤"
-	desc = "$0 \[光之锤\] 是一种简单的异想体，它给予你多少力量，你就要需要付出多少代价，你愿意支付什么代价呢?"
+	desc = "\"光之锤\" 是一种简单的异想体，它给予你多少力量，你就要需要付出多少代价，你愿意支付什么代价呢?"
 	special = "手持使用，召唤一支幽灵战士大军到你的位置."
 	icon_state = "hammer_light"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'

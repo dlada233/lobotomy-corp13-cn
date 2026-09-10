@@ -1,7 +1,7 @@
 #define NT_GOODBYE_COOLDOWN (20 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/nothing_there
-	name = "一无所有"
+	name = "一无所有"//（出自脑叶）
 	desc = "由各种人体部位和器官组成的邪恶生物."
 	health = 2000
 	maxHealth = 2000
@@ -63,6 +63,19 @@
 			这些眼睛, 肩膀, 还有每一快肌肉都属于别人. <br>\
 			它微笑着. <br>不，它在假装微笑. <br>会是谁呢?"),
 	)
+
+	work_start_lines = list("尽管%ABNO有着酷似人类的外表，然而，目光敏锐的员工会察觉到一丝不对劲.",
+	"%ABNO和其他异想体有所不同，最大的差异就是，%ABNO从来没有表现出真正的本质.",
+	"你知道\"皮\"和\"壳\"的区别吗?")
+	early_work_lines = list("%ABNO一边紧盯着%PERSON，一边毫无意义地磨着牙.", "%ABNO的碎骨正在嘎吱作响.",
+	"%ABNO呆呆地望着%PERSON，它的外皮破裂了，正发出不自然的声音.",
+	"%ABNO那嘴一样的器官中偶尔会流出一些人体内脏.")
+	middle_work_lines = list("%PERSON小心翼翼地走着，不想踩到这异想体流到地上的分泌物.",
+	"虽然这个异想体没有做出任何威胁到%PERSON的举动，可%PERSON依然不由自主地浑身打颤.",
+	"虽然%PERSON知道这个异想体不会立刻攻击自己，但是在这收容单元所发生的一切本身就会让人感到极度的恐惧.")
+	late_work_lines = list("进行工作时，%PERSON发现%ABNO的某些部位看上去有点眼熟.", "%PERSON在%ABNO的体内发现了些什么.")
+	work_end_lines = list("\"她\"是%PERSON的上司. 尽管从未彼此交谈，但或许曾经是优秀的同事.",
+	"%PERSON 见过 \"她\" 的员工资料. 之所以能记住 \"她\"，是因为她脸上有一块明显的痣.")
 
 	var/shelled
 	var/mob/living/disguise_ref
@@ -390,7 +403,7 @@
 	var/growl_prob = (work_type in list(ABNORMALITY_WORK_REPRESSION, ABNORMALITY_WORK_INSIGHT)) ? 100 : 25
 	if(prob(growl_prob)) // Spooky
 		playsound(get_turf(src), 'sound/abnormalities/nothingthere/growl.ogg', 25, 0)
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/nothing_there/WorkChance(mob/living/carbon/human/user, chance)
 	var/adjusted_chance = chance

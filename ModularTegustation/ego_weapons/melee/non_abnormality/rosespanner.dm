@@ -138,7 +138,7 @@
 
 
 /obj/item/rosespanner_gear/pale
-	name = "玫瑰扳手青色齿轮"
+	name = "玫瑰扳手蓝色齿轮"
 	icon_state = "palegear"
 	damtype = PALE_DAMAGE
 

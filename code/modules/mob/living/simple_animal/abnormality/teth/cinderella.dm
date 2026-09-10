@@ -1,6 +1,6 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/cinderella
-	name = "灰姑娘的南瓜马车"
+	name = "灰姑娘的南瓜马车"//（出自脑叶废案）（格林童话 灰姑娘）
 	desc = "一辆装饰着金色装饰的漂亮南瓜马车."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "cinderella_1"
@@ -47,6 +47,10 @@
 		"你坐着等待" = list(FALSE, "她可能还需要我，我要等到被召唤为止。<br>\
 			(你的身躯化为灰暗，没人会需要如此可憎的马车。)"),
 	)
+
+	work_start_lines = list("%PERSON闻到从%ABNO身上散发出的腐烂气息，鼻子微微抽动.", "%ABNO正回忆着自己人生中最幸福的一夜.")
+	early_work_lines = list("%ABNO已经完成了它的使命，再没有人需要它了.", "没人会需要这样一辆看起来如此恐怖的马车.")
+	work_end_lines = list("让我们回到那个奇妙而神奇的夜晚吧....")
 
 	var/freshness = 0
 	//Breach stuff

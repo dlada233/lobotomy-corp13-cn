@@ -1,6 +1,6 @@
 //Code by Coxswain, sprites by Kojka Kill and "Multiwonder"
 /mob/living/simple_animal/hostile/abnormality/norinori //Not li'l helper
-	name = "Norinori"
+	name = "Norinori"//（出自脑叶废案）
 	desc = "它长得像一只卡通狐狸，但仔细一看，它实际上是一只猫."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "norinori"
@@ -64,6 +64,11 @@
 			它张开身体，露出连接着数把锋利切割工具的核心。<br>\
 			你离得太近，无法逃脱。"),
 	)
+
+	work_start_lines = list("这个世界上有许多我们无法理解的事物，%ABNO就是其中之一.",
+	"%ABNO看起来很软萌，但是...", "它看起来像狐狸或猫，具体是什么取决于观察者.")
+	middle_work_lines = list("如果%PERSON是个温和的人，那么对%ABNO就没什么好担心的.",
+	"%ABNO的声音听起来有点机械感.", "异想体不能成为你的朋友，尤其是那些声称自己是你的朋友的.")
 
 //breach related
 	var/can_act = TRUE

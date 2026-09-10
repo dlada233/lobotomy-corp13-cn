@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/someones_portrait
-	name = "某人的肖像"
+	name = "某人的肖像"//（出自脑叶废案）
 	desc = "一个简单的肖像，有一个头，红色的眼睛，盯着某处或某人."
 	pixel_y = 64
 	base_pixel_y = 64
@@ -37,6 +37,11 @@
 			事实证明我是对的——它一直伺机攻击，而我在无人时进入了它的攻击范围..."),
 	)
 
+	work_start_lines = list("%PERSON确保自己与%ABNO之间保持足够距离，以防它发动攻击.")
+	late_work_lines = list("画中人物的身份从未被确认，然而许多人声称似曾相识，却始终无法说出一个名字.",
+	"%ABNO从未造成过员工死亡，也未造成过任何伤害——尽管如此，%PERSON仍确信它在等待时机发动攻击.", "%ABNO收容单元里的灯总是出故障.")
+	work_end_lines = list("它只是在等待时机——为什么别人都看不出来?")
+
 //Initialize
 /mob/living/simple_animal/hostile/abnormality/someones_portrait/PostSpawn()
 	..()
@@ -54,6 +59,7 @@
 		PanicUser(user, TRUE)
 
 /mob/living/simple_animal/hostile/abnormality/someones_portrait/Worktick(mob/living/carbon/human/user) //We apply hallucination every worktick due to varying work time
+	..()
 	if(!user.hallucination)
 		user.hallucination += 3 //Attempt to get them to cancel work out of paranoia.
 

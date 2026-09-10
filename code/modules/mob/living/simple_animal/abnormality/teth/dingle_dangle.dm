@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 	))
 
 /mob/living/simple_animal/hostile/abnormality/dingledangle
-	name = "叮当响"
+	name = "叮当悬摆"//（出自漫画）
 	desc = "一个顶在天花板上的圆锥体，上面系着丝带，尸体被绑在它周围，似乎被绑在天花板上."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "dangle"
@@ -49,6 +49,10 @@ GLOBAL_LIST_INIT(dingle_hallucination_list, list(
 			\"让我们共坠吧，让你的悲苦垂落，让一切垂落...\"<br>低语渗入脑海.<br>\
 			同僚从未存在，生命无声消逝。<br> 皆为虚妄."),
 	)
+
+	work_start_lines = list("丝带华丽地从%ABNO身上垂落，而先前被缠住的员工们如同果实般悬挂着.")
+	late_work_lines = list("让我们都垂下来吧.", "谨慎的头脑确实是件可怕的事.", "你真的以为只靠强大的精神力量就能让你免受所有异想体的侵害吗？")
+
 	var/list/delirious_people = list()
 	var/list/entangled_people = list()
 	//We want to make sure we don't cause someone to instantly panic after it "breaches"

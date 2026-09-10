@@ -1,6 +1,6 @@
 // Coded by endermage
 /mob/living/simple_animal/hostile/abnormality/shock_centipede
-	name = "电击蜈蚣"
+	name = "电击蜈蚣"//（出自巴士）
 	desc = "一只巨大的蓝色蜈蚣，周围有电火花."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "shock_centipede"
@@ -67,6 +67,12 @@
 			玻璃随即破裂并崩塌。<br>\
 			带电的水直直地淋在你头上。"),
 	)
+
+	work_start_lines = list("\"这种蜈蚣能够释放高压电\"，%ABNO收容单元内的一块牌子上如此写着.")
+	early_work_lines = list("\"通过刺激和施加痛苦来增强蜈蚣的放电强度\"，这是控制台上方警告上所写.")
+	middle_work_lines = list("%PERSON毫无感觉地看着%ABNO扭动.", "%ABNO的动作看起来几乎是在跳舞，但它似乎并不觉得疲倦.")
+	work_end_lines = list("为了及时完成能源指标，%ABNO必须为我们的利益承受痛苦.",
+	"%ABNO的待遇看似残酷，但它所受痛苦其实并不比其他异想体更多.")
 
 // Work vars
 	var/bonus_pe = 6

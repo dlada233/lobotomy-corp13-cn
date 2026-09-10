@@ -41,6 +41,12 @@
 		"调到2档" = list(FALSE, "几乎感觉不到风，只差一点..."),
 	)
 
+	work_start_lines = list("") // Doesn't currently spawn, will do these later.
+	early_work_lines = list("")
+	middle_work_lines = list("")
+	late_work_lines = list("")
+	work_end_lines = list("")
+
 	var/list/safe = list()
 	var/list/warning = list()
 	var/list/danger = list()

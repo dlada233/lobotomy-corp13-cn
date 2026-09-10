@@ -468,7 +468,7 @@
 /obj/item/ego_weapon/blooming
 	name = "盛开"
 	desc = "A rose is a rose, by any other name."
-	special = "在手中使用这把武器可以在红色、白色和青色伤害之间切换."	//like a different rabbit knife. No black though
+	special = "在手中使用这把武器可以在红色、白色和蓝色伤害之间切换."	//like a different rabbit knife. No black though
 	icon_state = "rosered"
 	force = 40 //Less damage, can swap damage type
 	damtype = RED_DAMAGE

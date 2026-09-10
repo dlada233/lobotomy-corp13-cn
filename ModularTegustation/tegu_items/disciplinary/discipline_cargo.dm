@@ -49,11 +49,11 @@
 		new /datum/data/extraction_cargo("T3 EGO碎片(红色) ",		/obj/item/egoshard/good,						400, CAT_RESOURCE) = 1,
 		new /datum/data/extraction_cargo("T3 EGO碎片(白色)) ",	/obj/item/egoshard/good/white,					400, CAT_RESOURCE) = 1,
 		new /datum/data/extraction_cargo("T3 EGO碎片(黑色) ",	/obj/item/egoshard/good/black,					400, CAT_RESOURCE) = 1,
-		new /datum/data/extraction_cargo("T3 EGO碎片(青色) ",		/obj/item/egoshard/good/pale,					400, CAT_RESOURCE) = 1,
+		new /datum/data/extraction_cargo("T3 EGO碎片(蓝色) ",		/obj/item/egoshard/good/pale,					400, CAT_RESOURCE) = 1,
 		new /datum/data/extraction_cargo("T4 EGO碎片(红色) ",		/obj/item/egoshard/great,						900, CAT_RESOURCE) = 1,
 		new /datum/data/extraction_cargo("T4 EGO碎片(白色)) ",	/obj/item/egoshard/great/white,					900, CAT_RESOURCE) = 1,
 		new /datum/data/extraction_cargo("T4 EGO碎片(黑色) ",	/obj/item/egoshard/great/black,					900, CAT_RESOURCE) = 1,
-		new /datum/data/extraction_cargo("T4 EGO碎片(青色) ",		/obj/item/egoshard/great/pale,					900, CAT_RESOURCE) = 1,
+		new /datum/data/extraction_cargo("T4 EGO碎片(蓝色) ",		/obj/item/egoshard/great/pale,					900, CAT_RESOURCE) = 1,
 
 		//Random stuff
 		new /datum/data/extraction_cargo("口香糖 ",		/obj/item/storage/box/gum/bubblegum,								15, CAT_OTHER) = 1,

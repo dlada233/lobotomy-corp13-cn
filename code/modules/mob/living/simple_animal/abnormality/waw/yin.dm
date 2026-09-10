@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/yin
-	name = "阴"
+	name = "阴"//（出自脑叶）
 	desc = "一条漂浮的黑鱼，似乎会伤害附近的每一个人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "yin"
@@ -56,6 +56,10 @@
 		"不要佩戴" = list(FALSE, "此乃黑暗本身的化身，为凝聚世间一切消极而生。<br>\
 			若无法接纳世界的黑暗，便无资格接纳自身的阴暗面。"),
 	)
+
+	work_start_lines = list("请确保这两个吊坠分别位于不同房间.")
+	early_work_lines = list("%ABNO为世界带来混乱，但却向往着秩序.")
+	late_work_lines = list("黑鲤与白鲤相遇的那一天，世界将被颠覆.")
 
 	faction = list("neutral", "hostile") // Not fought by anything, typically. But...
 	var/faction_override = list("hostile") // The effects hit non-hostiles.

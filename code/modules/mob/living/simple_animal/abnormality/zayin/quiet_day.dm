@@ -58,6 +58,11 @@
 			就在你准备离开时，你听到老人沙哑地问了一句. \"你又是谁来着?\""),
 	)
 
+	work_start_lines = list("在收容单元，可以听到远处的鸟鸣和雨声.")
+	early_work_lines = list("%PERSON发誓在童年某个地方看到过那张长椅.")
+	late_work_lines = list("%PERSON听到%ABNO的故事后，感到自己也想讲述经历.")
+	work_end_lines = list("%ABNO无法回忆起自己最近故事的结尾.", "%ABNO因长时间的啰嗦而向%PERSON道歉.")
+
 	var/performed_work
 	var/datum/looping_sound/quietday_ambience/soundloop
 

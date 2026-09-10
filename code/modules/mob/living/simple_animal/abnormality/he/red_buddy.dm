@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/red_buddy
-	name = "染红的巴迪"
+	name = "染红的巴迪"//（出自漫画）
 	desc = "像狗一样呜咽的小动物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "redbuddy"
@@ -62,6 +62,12 @@
 			无皮的犬形生物伫立面前，非狼非狗。<br>\"你阻止不了狼，你的触碰比主人温柔太多。<br>我是匹恶狼，凶残卑劣，只属主人所有。\"<br>\
 			伪狼将你一口吞下。"),
 	)
+
+	work_start_lines = list("%ABNO等待着它的主人，无论是那充满爱意的手，还是那只施加暴力的手——都绝不会被忽视.")
+	early_work_lines = list("%ABNO是一只牧羊犬，但%ABNO的主人想要一只红彤彤、凶猛的狼.", "%PERSON尝试图安慰%ABNO，因为后者正努力蜕下自己的皮肤.")
+	middle_work_lines = list("我在等我的主人，等啊，等啊...我正在等着他.")
+	late_work_lines = list("我为主人而活...只留下红色的伤痕.", "你无法用比主人更温柔的抚摸来阻止狼.")
+
 
 	///The 蓝袍牧羊人 linked to red buddy
 	var/datum/abnormality/master
@@ -149,7 +155,7 @@
 	if(lying_timer)
 		datum_reference.qliphoth_change(1)
 		deltimer(lying_timer)
-	return TRUE
+	return ..()
 
 //makes buddy scarred if his suffering is high enough
 /mob/living/simple_animal/hostile/abnormality/red_buddy/proc/UpdateScars()

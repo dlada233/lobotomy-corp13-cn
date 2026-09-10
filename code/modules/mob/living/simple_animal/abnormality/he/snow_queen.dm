@@ -9,7 +9,7 @@
 #define ICE_ARENA_TIMER 10 MINUTES
 
 /mob/living/simple_animal/hostile/abnormality/snow_queen
-	name = "冰雪女皇"
+	name = "冰雪女皇"//（来自脑叶）（安徒生童话 冰雪女王）
 	desc = "像宫殿一样的高大的冰女皇. \
 	她的长袍似乎在她的身后留下了一缕淡淡的雪花，她走起路来冷峻优雅."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
@@ -58,6 +58,11 @@
 		"遇见冰雪女皇" = list(TRUE, "冰雪女皇冷酷而美丽。<br>你听见冰在融化。"),
 		"拯救了凯" = list(FALSE, "格尔达拯救了凯，然后回了家。<br>他们从此过上了幸福的生活。"),
 	)
+
+	work_start_lines = list("%ABNO的收容单元里刮着寒冷的暴风雪.", "%ABNO的收容单元内的冰与雪霜闪闪发亮.",
+	"凯必须用冰片拼出\"永恒\". 如果不是这样的话，他本将是世界的宠儿.")
+	middle_work_lines = list("%ABNO的冰雪宫殿寒冷而孤寂. %PERSON希望快点离开这个地方.",
+	"通往%ABNO宫殿的道路漫长而寒冷，%PERSON渴望着温暖.")
 
 	ego_list = list(
 		/datum/ego_datum/weapon/frostsplinter,

@@ -1,6 +1,6 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/falada
-	name = "法拉达之魂"
+	name = "法拉达之魂"//（格林童话 牧鹅姑娘）
 	desc = "被砍下的马首."
 	pixel_y = 64
 	base_pixel_y = 64
@@ -37,11 +37,15 @@
 		你不禁对这生物心生怜悯。"
 	observation_choices = list(
 		"你怎么了?" = list(TRUE, "马头开始说话。<br>\
-			\"呜呼哀哉，但愿如此——当权者本应让我替她一死。\"<br>\
-			它的话语带着韵律，显然失去了重要之人。<br>\
+			\"哎呀呀！哎呀呀！但愿当初那掌权者能让我代替她去死. \"<br>\
+			它的话语带着韵律，但显然它失去了对它至关重要的人。<br>\
 			即便你无能为力，至少你在此倾听。"),
 		"为什么拉长着脸?" = list(FALSE, "尽管你开了个蹩脚玩笑，马头仍在啜泣。<br>也许这不是最好的方式。"),
 	)
+
+	work_start_lines = list("%ABNO用死气沉沉的眼神盯着%PERSON.")
+	middle_work_lines = list("%PERSON正逐渐习惯马头哭泣的声音.")
+	work_end_lines = list("%ABNO不停地为已逝之人自责.")
 
 	var/liked
 	var/happy = TRUE
@@ -54,7 +58,7 @@
 
 	var/list/insight = list("已故的公主极具洞察力，你若能如此，定有裨益。")
 
-	var/list/attachment = list("可怜的阿妮朵丽，她对那女人的依恋太深，未能察觉其心中妒火。")
+	var/list/attachment = list("可怜的阿妮朵丽，她对那女人的信赖太深，未能察觉其心中妒火。")
 
 	var/list/repression = list("他们对我所做的一切，对她所做的一切，都不过是为了世间正义。")
 
@@ -86,7 +90,7 @@
 		happy = TRUE
 	else
 		happy = FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/falada/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	liked = pick(

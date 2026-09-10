@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/doomsday_calendar
-	name = "终末日历"
+	name = "终末日历"//（出自巴士）
 	desc = "从刻在砖上的许多字母来看，很可能是预测某种日期的工具."
 	health = 1212
 	maxHealth = 1212
@@ -54,6 +54,9 @@
 		透过面具孔洞看见祭司，我乞求宽恕，却感到冰冷金属刺入胸腔。"),
 		"割断绳索" = list(FALSE, "我割断绳索释放男子，他连声道谢后冲下长阶。<br>他逃不掉的。<br>我闭目接受终局。"),
 	)
+
+	work_start_lines = list("%PERSON沉默地带着一种预感进入收容单元.", "%ABNO的石制面具让%PERSON感到不安.")
+	middle_work_lines = list("%ABNO的目的是引发末日浩劫.")
 
 	var/player_count
 	var/other_works_maximum

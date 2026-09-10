@@ -1,6 +1,6 @@
 // A vending machine that is a mob type. My descent into madness continues.
 /mob/living/simple_animal/hostile/abnormality/wellcheers
-	name = "韦尔奇乐牌汽水"
+	name = "韦尔奇乐牌汽水"//（出自脑叶）
 	desc = "自动贩卖机售卖 \"韦尔奇乐牌汽水\"."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "wellcheers_vendor"
@@ -64,6 +64,12 @@
 		"No" = list(TRUE, "未等你做出选择，其中一只虾已为你买下苏打水. <br>\
 			你喝下苏打水，随即陷入沉睡... <br>... <br>远处依稀传来海鸥的鸣叫.")
 	)
+
+	work_start_lines = list("自动贩卖机闪烁着霓虹灯光，五彩斑斓的灯光淹没了%PERSON.", "自动贩卖机内部发出了欢快的音乐.")
+	early_work_lines = list("无论烹饪方法如何，虾都很美味。煎炸，水煮，红烧，你开心就好！", "如果你不喜欢虾，那么你就会失去作为一个人类能享受到的大半乐趣.")
+	late_work_lines = list("有传闻说，那些喝了一罐葡萄味苏打饮料的人们将会被绑架到一艘渔船上.",
+	"有传闻说，在你喝了一罐葡萄味苏打饮料后你会发现你的一部分器官被取走了.",
+	"如果有人递给你一罐葡萄味苏打饮料，你必须得拒绝他.")
 
 //Not only is it funny, I want it to have the shit it does on Legacy
 /mob/living/simple_animal/hostile/abnormality/wellcheers/Initialize()

@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_FAIRYLURE /datum/status_effect/fairy_lure
 /mob/living/simple_animal/hostile/abnormality/faelantern
-	name = "精灵提灯"
+	name = "精灵提灯"//（出自巴士）（仲夏夜之梦）
 	desc = "一个绿油油的小仙女坐在一根精致的树枝上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "faelantern"
@@ -57,6 +57,11 @@
 		"原地休息" = list(FALSE, "你无视精灵的召唤，站在原地休息. <br>\
 			当准备继续前进时，发现树枝已经长满周围，把你困在里面了."),
 	)
+
+	work_start_lines = list("精灵向%PERSON挥舞着翅膀，邀请员工过来稍作休息.")
+	middle_work_lines = list("%PERSON感到自己被那片青绿色的光芒短暂吸引住了.", "在森林中行走时，请小心脚下.")
+	late_work_lines = list("在公爵的橡树下，他们将会相会...", "梦想始于仲夏，却在寒冬时化作一场噩梦.")
+	work_end_lines = list("世上没有免费的礼物.")
 
 	var/can_act = FALSE
 	var/break_threshold = 150

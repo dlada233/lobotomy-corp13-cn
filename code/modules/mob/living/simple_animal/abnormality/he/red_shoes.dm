@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_REDPOSSESS /datum/status_effect/red_possess
 /mob/living/simple_animal/hostile/abnormality/red_shoes
-	name = "红舞鞋"
+	name = "红舞鞋"//(出自脑叶)（安徒生童话 红舞鞋）
 	desc = "一双雅致的红色女鞋，像是古董款式，但没有说明它是在哪里和如何制造的."
 	health = 220
 	maxHealth = 220
@@ -50,6 +50,21 @@
 		"未穿着" = list(FALSE, "我并未穿上舞鞋。<br>\
 			鞋的猩红色正逐渐加深。"),
 	)
+
+	work_start_lines = list("%ABNO被安放在一块精美的天鹅绒垫上，就像是在展出一样.",
+	"如果你在%ABNO中看到类似牙齿的东西，那一定是某种障眼法.",
+	"无论是谁看到%ABNO，都会产生一种“想要穿上”的冲动.", "女孩泪流满面地哀求着. \"先生，求您把我的脚砍下来吧！\"")
+	early_work_lines = list("%PERSON将%ABNO放到垫子上后开始了工作.",
+	"%ABNO掉到了地上，就好像最近有人碰过它似的.", "%PERSON将%ABNO清理干净后继续进行工作.")
+	middle_work_lines = list("%ABNO那红色的珐琅皮革在灯光下闪闪发光.",
+	"尽管有些磨损，可%ABNO的踝带依然很有光彩.",
+	"红舞鞋”有着悠远的历史，那条磨损的踝带正无声地诉说这着一切.",
+	"%ABNO的皮革保养得非常好，这真是不可思议.")
+	late_work_lines = list("%PERSON在工作时偷偷瞥了%ABNO一眼.",
+	"%PERSON正盯着%ABNO看", "%PERSON无法集中注意力，停下了手头的工作，直勾勾地看着“红舞鞋.",
+	"为了避免再看到%ABNO，%PERSON把头转向另一边，并试图重新开始手头的工作.")
+	work_end_lines = list("%ABNO显然不是一个活着的有机体，可它能够营造出阴郁的氛围.",
+	"%ABNO不是一个活着的有机体，但它独特的氛围让周围的人想起了它血腥的过往.", "%ABNO那深红的颜色看起来很眼熟.", "%ABNO被静静地放置在那儿.")
 
 	var/mutable_appearance/breach_icon
 	var/mob/living/possessee

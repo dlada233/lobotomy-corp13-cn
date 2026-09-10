@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_PRANKED /datum/status_effect/pranked
 /mob/living/simple_animal/hostile/abnormality/laetitia
-	name = "蕾蒂希娅"
+	name = "蕾蒂希娅"//（出自脑叶）
 	desc = "小女巫."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "laetitia"
@@ -42,6 +42,13 @@
 		"撒谎说他们喜欢" = list(FALSE, "我很高兴！<br>真希望我能看到他们的表情，我敢说他们一定很惊讶！<br>\
 			你看起来也很孤单，希望我的礼物也能让你笑起来！"),
 	)
+
+	work_start_lines = list("%ABNO是个害羞的小女孩，她可能会送给%PERSON一个令人惊喜的礼物.",
+	"%ABNO来自非常遥远的地方，她喜欢令人愉悦的笑声.")
+	early_work_lines = list("%ABNO喜欢她的朋友们.", "她真的很希望%PERSON收到这个礼物后能感到开心.")
+	late_work_lines = list("一想到这个礼物将会带来的惊喜，%ABNO便开心地注视着员工.",
+	"如果人们愿意接受这份小巧而珍贵的礼物，那就太好啦.")
+	work_end_lines = list("%ABNO的\"朋友\"正在礼物里睡觉觉，等待着接收者的出现.", "%PERSON员工并不知道这个可爱的心形礼物里藏着什么.")
 
 	attack_action_types = list(/datum/action/cooldown/laetitia_gift, /datum/action/cooldown/laetitia_summon)
 	var/breaching = FALSE

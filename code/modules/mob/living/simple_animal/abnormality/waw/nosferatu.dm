@@ -1,7 +1,7 @@
 #define NOSFERATU_BANQUET_COOLDOWN (12 SECONDS)
 // Coded by Coxswain, initlaly sprited by crabby, sprites later improved on by Reddim
 /mob/living/simple_animal/hostile/abnormality/nosferatu
-	name = "诺斯费拉图"
+	name = "诺斯费拉图"//（出自脑叶废案）
 	desc = "吸血鬼啊，我好像在什么地方听说过."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "nosferatu"
@@ -56,6 +56,14 @@
 			\"那就干杯吧！为了这一夜，人们可以追逐各种欲望，一个永不终结的血色之夜！\"<br>\
 			鲜血...<br>鲜血带给我永恒的幸福，放弃虚假的希望，让我们抛开所有关于人性的伪装..."),
 	)
+
+	work_start_lines = list("欢迎，我非常乐意向那些饥渴的人问好.")
+	early_work_lines = list("%ABNO 并非真正的血魔，因此咬伤后不会被其奴役，无需恐惧.",
+	"禁止将水带入%ABNO的牢房.", "%ABNO长久地凝视着%PERSON的后颈.")
+	middle_work_lines = list("%PERSON无法掩饰地注意到%ABNO的眼睛比虹膜更像一池鲜血.",
+	"这种饥渴无法逃脱!", "%PERSON不禁觉得%ABNO在某种程度上与自己相似.")
+	late_work_lines = list("%ABNO突然显得迷茫了一瞬，似乎在寻找什么，却无法向%PERSON描述他想要找到的东西.")
+	work_end_lines = list("...那饥渴将永远不会真正得到满足.")
 
 	// Work Stuff
 	var/last_drawn = null

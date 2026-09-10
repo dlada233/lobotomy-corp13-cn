@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/red_queen
-	name = "红皇后"
+	name = "红皇后"//（出自漫画）（爱丽丝梦游仙境）
 	desc = "她椅子上坐着一个高贵的红色怪人."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "redqueen"
@@ -36,6 +36,10 @@
 		ABNORMALITY_WORK_REPRESSION = list(FALSE, "纸牌铡刀擦过你的脖颈，惊险躲过一劫，换种方式试试。"),
 	)
 	var/liked
+
+	work_start_lines = list("%PERSON在%ABNO面前强自镇定——它的怪念头一如既往地难以捉摸.")
+	middle_work_lines = list("都是别人的错，谁让他们不理解我.", "你会做除法吗？不过是用刀来除——你觉得答案是什么？")
+	late_work_lines = list("%PERSON试图猜测%ABNO想要什么，并惊险地躲开了瞄准自己脖颈的断头台.")
 
 /mob/living/simple_animal/hostile/abnormality/red_queen/Initialize(mapload)
 	. = ..()

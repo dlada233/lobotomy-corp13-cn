@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/shy_look
-	name = "今天也很害羞"
+	name = "今天也很害羞"//（出自脑叶）
 	desc = "一个人形异想体，躲在一张刻有五种不同表情的人皮后面.  \
 	你有种奇怪的冲动想看看人皮后面，但感到不祥预感，你决定放弃."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
@@ -40,6 +40,9 @@
 		"Yes" = list(TRUE, "\"那可不行，保持笑容很重要！我们要为这座都市感到高兴!\""),
 		"No" = list(FALSE, "\"太好了！露出你最灿烂的笑容，让郊区的人嫉妒吧!\""),
 	)
+
+	work_start_lines = list("收容单元内没有阳光，但%ABNO正以某种微妙的方式干燥着自己的脸皮.")
+	middle_work_lines = list("那座城市鼓励%ABNO一直露出笑容，可她过于害羞了，不敢表露自己的真实感受...")
 
 	var/chance_modifier = 1
 	var/previous_mood

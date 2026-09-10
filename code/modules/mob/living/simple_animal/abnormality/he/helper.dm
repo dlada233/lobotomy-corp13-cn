@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/helper
-	name = "小帮手"
+	name = "小帮手" //（出自脑叶）（修正/原版混用）
 	desc = "一个有帮助意图的小机器人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "helper"
@@ -63,6 +63,18 @@
 			创造者总对我说：<br>\"你必须被送到她那里。你是特别的。<br>你能给他们非常特别的礼物。\"<br>\
 			许多同伴没有的工具，都被装进我的身体。<br>当我被送到新家时，我献上了礼物。"),
 	)
+
+	work_start_lines = list("%ABNO正在%PERSON的面前不停地打着转转，但<员工名称>只专注于手头的工作.",
+	"%ABNO最出名的功能是它的清洁功能，这个机器人是专为家政服务而设计的.",
+	"当%ABNO的致命缺陷被发现时，它已经被送到了一户人家.",
+	"地板上满是鲜血，人们四散而逃，%ABNO渐渐明白了\"清洁\"意味着什么.")
+	early_work_lines = list("%ABNO有着洁白、光滑的外壳和短小精悍的机械腿，它为帮助人们而生.",
+	"XX股份有限公司，%ABNO的制造商，因其生产家用机器人而闻名.")
+	middle_work_lines = list("%ABNO内置了各式各样的功能. 从防盗警报，家庭监控，到泡制咖啡和灯光调节，一个家庭所需的一切它都能做到.",
+	"各种各样的必要工具都被紧凑地塞进了这个小小的机器人中. 如果把它拆开来看，你肯定会惊讶于它的创造者是怎么把这么多东西塞进去的.")
+	late_work_lines = list("如果%ABNO有感情的话，它也许会为自己能够帮助人们而感到自豪.",
+	"%ABNO时刻注意着这里，它想知道是否有什么事儿可以让它帮上忙.", "大多数人都不知道，%ABNO确实能泡制出上好的咖啡. 当然，肯定没人会一口答应让它去泡咖啡.")
+	work_end_lines = list("在看到了%ABNO以后，%PERSON打消了购置一台吸尘机器人的想法.", "%PERSON只希望%ABNO的\"清洁\"模式永远不要被激活.")
 
 	var/charging = FALSE
 	var/clogged_blades = FALSE

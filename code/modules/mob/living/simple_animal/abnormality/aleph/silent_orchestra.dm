@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/silentorchestra
-	name = "沉默乐团"
+	name = "沉默乐团"//（出自脑叶）
 	desc = "从破碎和毁灭开始，从最美丽的表演开始."
 	health = 2000
 	maxHealth = 2000
@@ -44,6 +44,14 @@
 		"没有鼓掌" = list(TRUE, "我还不配鼓掌。<br>音乐重新响起。<br>Angelos，我的乐章。"),
 		"鼓了掌" = list(FALSE, "演出永不结束。<br>然后从头再来。"),
 	)
+
+	work_start_lines = list("%ABNO的指挥家等待着属于它的演出.", "%ABNO的指挥家总是缄默不语，它的收容单元中没有半点声响.",
+	"指挥家是点燃生命的魔术师，是呼唤灵魂的萨满.", "来自废墟的最华丽的演出，即将拉开帷幕.")
+	early_work_lines = list("%ABNO正在为末日的乐章做最后的准备", "毫无疑问，%ABNO是全公司最棒的乐团.",
+	"所有人都会沉浸在%ABNO的绝美演奏中.")
+	middle_work_lines = list("雷鸣般的掌声即是%ABNO的存在意义.", "一个指挥家的生命，在听众的掌声中诞生，亦由听众的掌声所终结.",
+	"起身鼓掌是听众们能够给予指挥家的最为光荣的礼赞.")
+	work_end_lines = list("刚刚完成工作的%PERSON很快就会成为%ABNO的一名忠实听众.", "%PERSON不出差错地完成了对%ABNO的工作.")
 
 	/// Range of the damage
 	var/symphony_range = 20

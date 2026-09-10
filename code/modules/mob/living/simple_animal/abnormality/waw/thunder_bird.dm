@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/thunder_bird
-	name = "雷鸟"
+	name = "雷鸟"//（出自扭曲侦探？）
 	desc = "一个不祥的图腾，由不寻常的生物的尸体建造而成，用木头拼成与它同名的形象的图腾. "
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "thunderbird"
@@ -65,6 +65,10 @@
 		"说话" = list(FALSE, "未及吐字，收容单元内惊雷炸响。<br>\
 			雷鸟可被交谈，却永无理性可言。"),
 	)
+
+	work_start_lines = list("潮湿木炭的气味弥漫在收容单元中。", "%ABNO一动不动地坐着。", "%PERSON感觉到从头骨堆中投来的注视。")
+	middle_work_lines = list("可以跟%ABNO交谈，但无法与它讲道理。", "%PERSON感到羞愧，却不知为何。")
+	work_end_lines = list("内脏的恶臭令人作呕。", "%ABNO诞生于被遗忘者的愿望。")
 
 /*---Combat---*/
 	//Melee stats

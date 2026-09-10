@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(apostles)
 
 /mob/living/simple_animal/hostile/abnormality/white_night
-	name = "白夜"
+	name = "白夜"//（出自脑叶）
 	desc = "天堂之怒，祈祷吧，异教徒，那一天来了."
 	health = 12000
 	maxHealth = 12000
@@ -63,6 +63,14 @@ GLOBAL_LIST_EMPTY(apostles)
 		"你是谁？" = list(FALSE, "空洞无义的问题，我无法回答"),
 		"你为何而来？" = list(FALSE, "空洞无义的问题，我无法回答"),
 	)
+
+	work_start_lines = list("寻求救赎的员工在一片光芒中踏入了%ABNO的收容单元.", "\"你又为何而犹豫？我在此创造奇迹.\"")
+	early_work_lines = list("尽管%ABNO看上去像个婴儿，但这并不意味着它需要被人照料.",
+	"在钟声响彻12次后，炫目的光芒吞没了整个设施，那是对使徒们的救赎之光.")
+	middle_work_lines = list("%ABNO的身边只有寂静.", "%ABNO将身边的光芒和声音一并带走.")
+	late_work_lines = list("%ABNO来此救赎众生.", "%ABNO来自世界的终末，亦将走向一个全新的世界.")
+	work_end_lines = list("\"%PERSON，为什么要害怕？在达成使命之前，我不会抛弃你的.\"",
+	"\"%PERSON，不必害怕，我和你同在，我会给你救赎.\"", "\"我听见了你的哭喊，你的心声早已传到我的耳边. %PERSON，你正呼唤着我.\"")
 
 	var/holy_revival_cooldown
 	var/holy_revival_cooldown_base = 75 SECONDS

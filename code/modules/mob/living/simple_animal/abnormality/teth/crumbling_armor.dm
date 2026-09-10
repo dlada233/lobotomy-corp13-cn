@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_COWARDICE /datum/status_effect/cowardice
 /mob/living/simple_animal/hostile/abnormality/crumbling_armor
-	name = "破裂铠甲"
+	name = "破裂盔甲"//(出自脑叶)
 	desc = "一套完全老化的武士式盔甲，头盔上有一个V形的纹章，它看起来很破旧."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "crumbling"
@@ -37,6 +37,13 @@
 		"穿上" = list(TRUE, "看起来你不是和平主义者. <br>你感受到盔甲的温暖欢迎."),
 		"不要穿" = list(FALSE, "盔甲在等待另一个无畏的人."),
 	)
+
+	work_start_lines = list("胆小的员工在靠近%ABNO时感到非常害怕.", "将盔甲放在一旁时，%PERSON总感觉有人在盯着他看. 当然，盔甲里什么都没有.", "有传闻称深更半夜时盔甲周围会传出\"全军突击!\"此类热血激昂的喊杀声.")
+	early_work_lines = list("这件盔甲已有上百年的历史. 尽管有着些许破损，但整体竟被完好地保存至今.",
+	"曾有许多将领占有过这件盔甲. 没人知道他们究竟是战死沙场，还是被这件盔甲夺走了性命.")
+	middle_work_lines = list("盔甲右侧的臂板破裂了. 调查后发现，破裂的原因竟来自它内部，而不是外界的攻击.",
+	"%ABNO在数百年前被锻造出来. 制作者的身份和动机尚不明确，不过至少有一点是可以肯定的——这名制作者相当痛恨懦夫.")
+	work_end_lines = list("这件盔甲依旧在等待那些匹夫，时刻准备着了结他们的性命.")
 
 	var/buff_icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	var/user_armored

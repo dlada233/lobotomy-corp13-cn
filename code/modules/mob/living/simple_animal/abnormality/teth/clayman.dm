@@ -53,6 +53,11 @@
 		"它仍然需要一个灵魂" = list(TRUE, "需要付出的代价无法用时间和金钱来衡量。<br>结果会为自己说话。"),
 	)
 
+	work_start_lines = list("\"REDACTED-牌黏土! 让你的想象力尽情驰骋!\" - 来自一家已不复存在的公司的产品标语.")
+	middle_work_lines = list("很久很久以前，据说最初的男人和女人都是用泥土塑成，并被赋予了灵魂.",
+	"把你自己当作画布，你的创造力便无法被限制.")
+	late_work_lines = list("制作仿造人类的躯体的机器与义体乃是禁忌.")
+
 	var/dashready = TRUE
 
 /mob/living/simple_animal/hostile/abnormality/clayman/WorktickFailure(mob/living/carbon/human/user)

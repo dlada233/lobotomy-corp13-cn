@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/express_train
-	name = "黄泉列车"
+	name = "黄泉列车"//（出自脑叶）
 	desc = "一个长着发光眼睛的生物在一个奇怪的售票亭里."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "express_booth0"
@@ -40,6 +40,12 @@
 		"接过车票" = list(TRUE, "我从他手中接过车票，沉重如铅，询问列车何时抵达。<br>\
 			\"比您期望的更早，比您准备的更迟。<br>这趟列车会来接所有人，先生。\"<br>远处传来汽笛声。"),
 	)
+
+	work_start_lines = list("过度安静的售票员正售卖着没有标识终点站的车票.","售票厅里没有张贴时刻表，取而代之的是一些闪烁的灯光.")
+	early_work_lines = list("当一号和二号灯亮起时，员工会感到神清气爽.")
+	middle_work_lines = list(" 当三号灯亮起时，员工感到精神抖擞，身上的创口开始慢慢愈合.")
+	late_work_lines = list("当四号灯亮起时，员工们听见远方传来响亮的汽笛声. 所有员工的身体状态都有一定程度的好转.")
+	work_end_lines = list("时间一到，列车伴随着刺耳的汽笛声飞驰而过. 它会带走那些愿意了结自己性命的员工，穿过永无止境的隧道...")
 
 	var/meltdown_tick = 60 SECONDS
 	var/meltdown_timer

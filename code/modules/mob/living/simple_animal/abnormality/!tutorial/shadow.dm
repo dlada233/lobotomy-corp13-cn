@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/shadow
 	name = "Shadow Man"
-	desc = "A humanoid that reflects no light."
+	desc = "一个不反射光线的人形生物."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "shadow"
 	icon_living = "shadow"
@@ -26,6 +26,10 @@
 	can_breach = TRUE
 	start_qliphoth = 2
 	can_spawn = FALSE // Normally doesn't appear
+
+	// Tutorial abnormality - doesn't really need a final observation.
+	work_start_lines = list("%ABNO的收容单元永远让人感到阴郁.")
+	middle_work_lines = list("人类一直畏惧着黑暗，都市中的居民都清楚夜晚会带来什么.")
 
 /mob/living/simple_animal/hostile/abnormality/shadow/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(work_type == ABNORMALITY_WORK_ATTACHMENT)

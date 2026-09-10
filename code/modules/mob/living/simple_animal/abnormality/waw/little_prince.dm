@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/little_prince
-	name = "\proper 小王子"
+	name = "\proper 小王子"//（出自脑叶）（童话 小王子）
 	desc = "一种反常现象，呈高大的蘑菇状实体，呈深蓝色和紫色. \
 	深蓝色的手挂在树枝上的绳子上"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
@@ -39,6 +39,14 @@
 		"什么也不做" = list(FALSE, "无数试图接近我者皆已迷失。<br>\
 			或许我们立于平行线上。<br>或许我们凝望的注定遥不可及。"),
 	)
+
+	work_start_lines = list("%PERSON能感觉到%ABNO正传播着孢子.", "因为%ABNO的缘故，%PERSON发现视野变得很模糊.", "一开始%ABNO看起来很恶心，但观察一段时间后会发现它其实很迷人.")
+	early_work_lines = list("狐狸说: \"实际上，最重要的事物往往都是看不见的.\"")
+	middle_work_lines = list("%ABNO来自遥远的地方，具体来自哪里我们无从得知.", "也许%ABNO的真实长相和我们所看见的不一样.")
+	late_work_lines = list("被%ABNO驯服的员工只有一个悲惨的结局.",
+	"当员工被%ABNO转变成怪物后，它们会在%ABNO的收容单元里漫无目的地徘徊.",
+	"许多完成工作的员工都抱怨到他们再也不敢吃蘑菇了.")
+	work_end_lines = list("与我们所收容的许多异想体不同，只有一名员工负责为%ABNO命名.", "%PERSON还记得那颗星星.")
 
 	var/insight_count = 0
 	var/non_insight_count = 0

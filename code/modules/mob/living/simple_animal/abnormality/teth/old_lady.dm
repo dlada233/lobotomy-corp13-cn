@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/old_lady
-	name = "老妇人"
+	name = "老妇人"//（出自脑叶）
 	desc = "一位年老体弱的老太太坐在一把破旧的摇椅上."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "old_lady"
@@ -38,6 +38,19 @@
 		"出去" = list(FALSE, "我转身逃离这个地方，又一次，我在逃跑时咬着嘴唇自责."),
 	)
 
+	work_start_lines = list("令人窒息的沉默始于%ABNO的收容单元，让人寸步难行.")
+	early_work_lines = list("老旧的摇椅正发出嘎吱声，反而打破了蚕食着整个收容单元的无尽沉默，令人毛骨悚然.",
+	"摇椅在发霉的地板纸上不自然地晃动着，嘎吱作响.",
+	"地板和壁纸上布满了裂痕。或许，连它们都承受不住这位老人的故事.")
+	middle_work_lines = list("%ABNO那老旧的故事浸满了诅咒.", "%ABNO的灵魂在很久之前就已孤独地终结了.",
+	"曾经，人们为那数不清的故事而着迷。但很久很久以后，诅咒慢慢渗入了她的故事.",
+	"她的故事如同毒药，会慢慢浸染周围的人，将他们引入那个地方——那个他们无法承受的地方.")
+	late_work_lines = list("虽然%ABNO的耳朵已经听不见声音了，眼睛也几近失明，但她正直直地注视着%PERSON.",
+	"%ABNO并不一定要看向%PERSON所在的地方。如果她开始讲述故事，%PERSON就会看向她.", "对%ABNO来说，对话毫无意义。她需要的只是一个听众而已，那就是%PERSON.")
+	work_end_lines = list("工作完成后，%PERSON急忙离开了%ABNO的收容单元.",
+	"工作结束。在%PERSON离开收容单元后，她那余下的孤独将被故事填满.",
+	"在无穷尽的故事开始前，%PERSON安全地离开了收容单元.")
+
 	var/meltdown_cooldown_time = 120 SECONDS
 	var/meltdown_cooldown
 //for solitude effects
@@ -58,10 +71,10 @@
 
 /mob/living/simple_animal/hostile/abnormality/old_lady/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(work_type == "清理孤独" && datum_reference.qliphoth_meter == 0)
-		return TRUE
+		return ..()
 	else if(datum_reference.qliphoth_meter == 0 || work_type == "清理孤独")
 		return FALSE
-	return TRUE
+		return ..()
 
 /mob/living/simple_animal/hostile/abnormality/old_lady/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
 	if(work_type == "清理孤独")

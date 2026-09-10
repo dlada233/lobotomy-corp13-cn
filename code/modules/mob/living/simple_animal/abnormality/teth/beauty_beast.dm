@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/beauty
-	name = "美女与野兽"
+	name = "美女与野兽"//(出自脑叶)（童话 美女与野兽）
 	desc = "浑身是棕色皮毛的四足怪物，眼睛的数量无法计算."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "beauty"
@@ -43,6 +43,10 @@
 			\"孩子，能许下承诺吗?当你准备好时，会让我摆脱这轮回吗?\""),
 		"因为我根本没带刀" = list(FALSE, "你在说谎，你心知肚明随时能从口袋里抽出那把刀."),
 	)
+
+	work_start_lines = list("%ABNO正寻找着能够解除诅咒的人.", "%ABNO想着自己的面貌是如此的可憎，它绝望地试图杀死自己.")
+	middle_work_lines = list("然而诅咒仍将继续，永不解除.", "诅咒已然存在了好几个世纪，一刻不停地折磨着可怜的受害者.")
+	work_end_lines = list("死亡乃另一种令人喜悦的新生.")
 
 	var/injured = FALSE
 

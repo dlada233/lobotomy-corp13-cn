@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/fairy_longlegs
-	name = "长腿精灵"
+	name = "长腿精灵"//（出自巴士）（仲夏夜之梦）
 	desc = "它个子高大，像精灵一样，手臂像桨，不停地拿着三叶草，好像那是一把伞，树叶似乎潮湿了."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "fairy_longlegs"
@@ -65,6 +65,10 @@
 			你走开包扎流血的伤口。"),
 	)
 
+	work_start_lines = list("快点，躲在这把伞下吧.")
+	late_work_lines = list("怎么样，躲在伞下真舒服，对吧?", "伏击的掠食者会在猎物露出后背时发动攻击.", "%ABNO将它血淋淋的大刀藏在了背后.")
+	work_end_lines = list("%PERSON在都市内见过不少小人，%ABNO和他们一样阴险.")
+
 	var/finishing = FALSE //cant move/attack when it's TRUE
 	var/work_count = 0
 	var/raining = FALSE
@@ -106,7 +110,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/fairy_longlegs/AttemptWork(mob/living/carbon/human/user, work_type)
 	if((work_type != "避雨")&& !raining)
-		return TRUE
+		return ..()
 	if((work_type == "避雨") && !raining) //dumbass
 		to_chat(user, span_notice("没有理由这样做，天空晴朗."))
 		return FALSE
@@ -122,7 +126,7 @@
 		work_count = 0
 		ignored = TRUE
 		raining = FALSE
-		return TRUE
+		return ..()
 
 
 /mob/living/simple_animal/hostile/abnormality/fairy_longlegs/FailureEffect(mob/living/carbon/human/user, work_type, pe)

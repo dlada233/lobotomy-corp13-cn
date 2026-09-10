@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/bald
-	name = "你秃了..."
+	name = "你秃了..."//（出自脑叶）
 	desc = "A helpful sphere, you think."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "bald1"
@@ -48,6 +48,12 @@
 		"是" = list(TRUE, "脑叶公司欢迎您。"),
 		"否" = list(FALSE, "再把《速度与激情7》看五遍后再来吧。"),
 	)
+
+	work_start_lines = list("%PERSON开始感觉头发只是个负担.", "%PERSON开始觉得秃头上的纹身看起来超酷.",
+	"%PERSON摘下了自己的假发因为%PERSON为变秃而骄傲.")
+	middle_work_lines = list("变秃后的你会像布鲁斯·威利斯一样帅气!", "一个秃子干一件小事都能以一当十!",
+	"秃子不需要担心掉发阻塞下水道!")
+	work_end_lines = list("你还留着那头秀发干嘛?")
 
 	var/bald_users = list()
 	chem_type = /datum/reagent/abnormality/bald

@@ -1,6 +1,6 @@
 //Coded and sprited by Coxswain, E.G.O. sprites by Rotipik#8251
 /mob/living/simple_animal/hostile/abnormality/orange_tree
-	name = "我亲爱的甜橙树"
+	name = "我亲爱的甜橙树"//（出自脑叶废案）
 	desc = "黄色、浅蓝色和绿色的粒子状奇怪生物群落，它们懒洋洋地四处漂浮."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "orange_tree"
@@ -47,6 +47,19 @@
 		"离开" = list(TRUE, "第二个路口向右拐，然后一直飞到天亮，我找回了归途——还有未完成的工作等待着我。"),
 		"留下" = list(FALSE, "若无人来寻，我就永远呆在这里——浑然不觉时光流逝..."),
 	)
+
+	work_start_lines = list("即使它可能没有实体，它也会设法显露自身。", "每个人心中都有一棵属于自己的甜橙树。",
+	"如果你还残存一丝童年的纯真。", "\"“孩子们为什么要长大？”\"")
+	early_work_lines = list("收容单元中成千上万的粒子已渗入%PERSON大脑的神经中枢。",
+	"“我的甜橙树”的一部分正立刻进入%PERSON的记忆。", "“我的甜橙树”的次粒子极其微小，能够游荡进%PERSON的脑海。",
+	"“我的甜橙树”正在%PERSON的时间中游荡。")
+	middle_work_lines = list("“我的甜橙树”将我们梦见过的事物呈现出来。", "“我的甜橙树”找回我们遗忘之物。",
+	"许多员工找回了他们曾经失去的东西。", "%PERSON将在“我的甜橙树”中找到自己的甜橙树。")
+	late_work_lines = list("%PERSON看起来疲惫不堪。", "%PERSON如今的模样，与他们童年时想象自己会成为的人相去甚远。",
+	"%PERSON只想着下班。", "%PERSON童年时曾想成为宇航员。")
+	work_end_lines = list("当%PERSON在工作中看到难以置信的景象时，便停下了手中的工作。",
+	"%PERSON直面自己长久以来遗忘的事物。", "%PERSON能够踏入自己早年创造的世界。",
+	"%PERSON欣赏着眼前近在咫尺的风景，甚至不想走出收容单元。")
 
 	var/datum/looping_sound/orangetree_ambience/soundloop
 

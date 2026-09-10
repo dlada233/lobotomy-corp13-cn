@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_MORTIS /datum/status_effect/mortis
 // Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/pale_horse
-	name = "青马"
+	name = "青马"//（出自脑叶废案）
 	desc = "天启中没有骑手的苍白的马."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "palehorse"
@@ -50,6 +50,11 @@
 		"假装没收到命令" = list(FALSE, "你假装没收到命令并准备离开，你的PDA又闪了一下，你被分配给了\"一无所有\"，而且这次有人押送。"),
 	)
 
+	work_start_lines = list("%PERSON知道，如果%ABNO泪流不止，他们必定会死.")
+	early_work_lines = list("%PERSON感觉自己的坟墓已被走过.", "%ABNO擦去了%PERSON的泪水.")
+	middle_work_lines = list("我抬头一看，只见一匹苍白的马：骑在它身上的名字是 ■■■■■，地狱随之而来.")
+	work_end_lines = list("%ABNO为%PERSON泪流不止.")
+
 	//teleport
 	var/can_act = TRUE
 	var/teleport_cooldown
@@ -67,6 +72,7 @@
 	return
 
 /mob/living/simple_animal/hostile/abnormality/pale_horse/Worktick(mob/living/carbon/human/user)
+	..()
 	if(user.health < (user.maxHealth * 0.5))
 		return
 	else

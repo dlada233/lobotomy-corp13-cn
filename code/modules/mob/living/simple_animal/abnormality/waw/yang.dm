@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/yang
-	name = "阳"
+	name = "阳"//（出自脑叶）
 	desc = "一条漂浮的白鱼，似乎能帮助附近的每个人."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "yang"
@@ -72,6 +72,10 @@
 		"不要佩戴" = list(FALSE, "此乃光明本身的化身，为汇聚世间一切积极而生。<br>\
 			若无法接纳自身善念，便无资格接纳世界的良善。"),
 	)
+
+	work_start_lines = list("请确保这两个吊坠分别位于不同房间.")
+	middle_work_lines = list("%ABNO为世界带来秩序，但却走向着混乱.")
+	work_end_lines = list("当黑鲤与白鲤相遇的那一天，世界将被颠覆.")
 
 	var/explosion_damage = 100
 	var/explosion_timer = 7 SECONDS

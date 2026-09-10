@@ -27,7 +27,7 @@
 		if(BLACK_DAMAGE)
 			. += span_notice("这一块看起来是黑色.")
 		if(PALE_DAMAGE)
-			. += span_notice("这一块看起来是青色.")
+			. += span_notice("这一块看起来是蓝色.")
 
 
 /obj/item/egoshard/white
@@ -113,7 +113,7 @@
 	custom_price = 2000
 
 /obj/item/egoshard/good/pale
-	name = "青色EGO碎片"
+	name = "蓝色EGO碎片"
 	icon_state = "egoshard_p"
 	damage_type = PALE_DAMAGE
 	base_damage = 20
@@ -156,7 +156,7 @@
 	custom_price = 4000
 
 /obj/item/egoshard/great/pale
-	name = "无暇的青色EGO碎片"
+	name = "无暇的蓝色EGO碎片"
 	icon_state = "egoshard_p"
 	damage_type = PALE_DAMAGE
 	base_damage = 30
@@ -197,7 +197,7 @@
 	pale_bonus = 70
 
 /obj/item/egoshard/excellent/pale
-	name = "完美的青色EGO碎片"
+	name = "完美的蓝色EGO碎片"
 	icon_state = "egoshard_p"
 	damage_type = PALE_DAMAGE
 	base_damage = 40

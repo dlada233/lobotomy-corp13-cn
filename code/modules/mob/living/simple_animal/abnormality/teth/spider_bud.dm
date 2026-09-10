@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/spider
-	name = "蜘蛛巢"
+	name = "蜘蛛巢"//（出自脑叶）
 	desc = "一种类似巨型蜘蛛的畸形物，谨慎行事."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "spider_closed"
@@ -46,6 +46,18 @@
 		"吃掉猎物" = list(FALSE, "我吞噬了猎物. <br>\
 			身体行动快于思考. <br>... <br>我是一只蜘蛛. <br>我吃掉蛛网捕获的任何东西."),
 	)
+
+	work_start_lines = list("'%ABNO'想要为即将到来的冬天准备些食物，它的孩子们总是很饿.",
+	"整个收容单元已然成为一张巨大的蛛网，从%PERSON踏入此地的第一步起，它便在注视着猎物.")
+	early_work_lines = list("当%PERSON注意到地板不该是黑色的时候，一团巨大的阴影突然开始移动.",
+	"当%PERSON注意到地板不该是黑色的时候，一团巨大的阴影突然开始移动.")
+	middle_work_lines = list("'%ABNO'的眼睛死死盯着%PERSON的一举一动.",
+	"'%ABNO'不仅仅能看到%PERSON，还能听到、摸到、闻到、甚至尝到.",
+	"蜘蛛有着强烈的母性本能，它们会不择手段地保护孩子们.")
+	late_work_lines = list("%PERSON在工作期间从不看向天花板，确保不和'%ABNO'产生任何目光接触.",
+	"有时，一些小蜘蛛会从天花板上掉下来，如果你不去碰它们的话，什么事都不会发生.")
+	work_end_lines = list("%PERSON从没忘记在离开收容单元前轻轻拍几下衣服，确保没有小蜘蛛黏在上面.",
+	"%PERSON在没有踩到小蜘蛛的情况下成功离开了收容单元.")
 
 	/// Filled with ckeys of people who broke our cocoons, they need to pay if they dare mess with us
 	var/list/metagame_list = list()

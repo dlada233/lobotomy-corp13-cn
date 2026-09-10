@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/der_freischutz
-	name = "魔弹射手"
+	name = "魔弹射手"//（出自脑叶）（德国民间传说）
 	desc = "一个穿着灰色、金色和帝王蓝配色衣服的高个子男人，他的目标无可挑剔."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "derfreischutz"
@@ -46,6 +46,11 @@
 			它将永无止境地贯穿更多头颅。"),
 		"拒绝支付" = list(FALSE, "男人面露愠色。<br>\"信念如此摇摆就别浪费我时间。\""),
 	)
+
+	work_start_lines = list("%ABNO does not remember anything positive, such as the sparks of love or the joy of doing a good deed. He only reacts to dying things.")
+	middle_work_lines = list("Long ago, %ABNO's heart was pierced by the magic bullet, which always hits its mark.")
+	work_end_lines = list("As with all pacts made with the Devil, %ABNO's request will not end peacefully.")
+
 
 	var/can_act = TRUE
 	var/bullet_cooldown

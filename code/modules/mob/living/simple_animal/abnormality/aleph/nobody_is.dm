@@ -1,6 +1,6 @@
 //Like a pink, weird nothing there. - Coxswain
 /mob/living/simple_animal/hostile/abnormality/nobody_is
-	name = "面目全非"
+	name = "并非谁人"//（出自漫画）
 	desc = "嵌在粗大的粉红色肉体中的镜子"
 	health = 1500
 	maxHealth = 1500
@@ -54,6 +54,10 @@
 			你不会把你的名字给模仿者, 它越是模仿你，就越像是对你的嘲弄."),
 		"握手" = list(FALSE, "镜子里在微笑. <br>\"看好了, 我会让你知道我们到底有多出色.\""),
 	)
+
+	work_start_lines = list("片刻间，%PERSON在镜中看到了自己.", "这个异想体的欲望反射在其基本形态之中.")
+	middle_work_lines = list("%PERSON 在工作时会尽力避免触碰 %ABNO.", "%PERSON 惊慌失措，而 %ABNO 正试图与其的思想建立联系.")
+	work_end_lines = list("当%PERSON工作时，他们觉得%ABNO在某种奇怪的方式下显得有些熟悉.", "%PERSON 突然地转过身离开镜子.")
 
 	//Contained Variables
 	var/reflect_timer

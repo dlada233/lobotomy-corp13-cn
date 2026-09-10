@@ -224,8 +224,8 @@
 
 /obj/item/ego_weapon/twilight/EgoAttackInfo(mob/user)
 	if(force_multiplier != 1)
-		return span_notice("它造成[round((force * 4) * force_multiplier)] 红色, 白色, 黑色还有青色的综合伤害. (+ [(force_multiplier - 1) * 100]%)")
-	return span_notice("它造成 [force * 4] 红色, 白色, 黑色还有青色的综合伤害.")
+		return span_notice("它造成[round((force * 4) * force_multiplier)] 红色, 白色, 黑色还有蓝色的综合伤害. (+ [(force_multiplier - 1) * 100]%)")
+	return span_notice("它造成 [force * 4] 红色, 白色, 黑色还有蓝色的综合伤害.")
 
 /obj/item/ego_weapon/twilight/attack_self(mob/user) //spin attack with knockback
 	if(!CanUseEgo(user))
@@ -328,7 +328,7 @@
 	aggro_on_block *= 4
 
 /obj/item/ego_weapon/shield/distortion/EgoAttackInfo(mob/user)
-	return span_notice("它造成[force * 4] 红色、白色、黑色和青色的综合伤害.")
+	return span_notice("它造成[force * 4] 红色、白色、黑色和蓝色的综合伤害.")
 
 /obj/item/ego_weapon/shield/distortion/attack(mob/living/target, mob/living/user)
 	. = ..()

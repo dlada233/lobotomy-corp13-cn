@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_BLUERESIN /datum/status_effect/blue_resin
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/blubbering_toad
-	name = "悲泣蟾蜍"
+	name = "悲泣蟾蜍"//（出自巴士）
 	desc = "一只巨大的蟾蜍，眼里含着泪水在哭泣。眼泪很浓，像蓝色的树脂."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "blubbering"
@@ -74,6 +74,11 @@
 			如此悲鸣数次后，它跃离了栖身之地。 <br>\
 			唯余黏腻的蓝色眼泪。"),
 	)
+
+	work_start_lines = list("%ABNO正懒洋洋地坐着，发出奇怪的声音.")
+	early_work_lines = list("%ABNO突出的眼睛在四处移动，让%PERSON感到不安.")
+	middle_work_lines = list ("%ABNO静静地坐着，手中握着那些阴暗的树脂块，覆盖着其容器底部.")
+	work_end_lines = list("当%PERSON完成工作时，%ABNO沉默了一瞬，随后又恢复了洞穴般的悲鸣.")
 
 	//work
 	var/pulse_healing = 15

@@ -49,6 +49,9 @@
 		"置之不理" = list(FALSE, "你知道异想体的把戏，不会上当. <br>你直接离开了收容单元，不会再知道信中的内容了."),
 	)
 
+	work_start_lines = list("%ABNO来自往昔的时光.")
+	middle_work_lines = list("%PERSON曾经丢失过邮件吗？只有%ABNO才能知道.", "当我们的文字未能送达收件人时，真是令人悲哀.")
+
 	var/cooldown
 	var/cooldown_time = 10 SECONDS
 	var/spawned_effects = list()

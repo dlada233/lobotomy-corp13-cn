@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/bluestar
-	name = "碧蓝新星"
+	name = "碧蓝新星"//(出自脑叶)
 	desc = "漂浮的心形物体. 它是活的, 而你很快就会和它融为一体."
 	health = 2200
 	maxHealth = 2200
@@ -58,6 +58,9 @@
 		"抱紧自己" = list(FALSE, "你双臂紧抱自己并闭上眼睛，将感官向内收敛直到诱惑过去，声音重新变成遥远的嚎叫。<br>\
 			你睁开眼睛再次看向心脏。<br>它仍然悬在空中，向着新的开始漂浮。"),
 	)
+
+	work_start_lines = list("通常情况下，员工们会渴望把自己献给%ABNO.")
+	middle_work_lines = list("我们的%ABNO诞生自绝望的深渊，亦将飘向一个全新的开始.")
 
 	var/pulse_cooldown
 	var/pulse_cooldown_time = 8 SECONDS
@@ -123,7 +126,7 @@
 		animate(user, transform = user.transform*0.01, time = 5)
 		QDEL_IN(user, 5)
 		return FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/bluestar/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(get_attribute_level(user, PRUDENCE_ATTRIBUTE) < 100)

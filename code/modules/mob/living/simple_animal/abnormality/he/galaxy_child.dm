@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_FRIENDSHIP /datum/status_effect/display/friendship
 /mob/living/simple_animal/hostile/abnormality/galaxy_child
-	name = "银河之子"
+	name = "银河之子"//（出自脑叶）
 	desc = "年轻的，迷路的孩子."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "galaxy"
@@ -38,6 +38,10 @@
 			\"永别了。<br>愿你永不归来。\"<br>孩子道出冰冷告别，脸上却挂着微笑。"),
 		"留下" = list(FALSE, "\"你会在此陪伴我吗？\"<br>\"若你不愿，我也不再需要你。\""),
 	)
+
+	work_start_lines = list("在一个星星纷纷坠落的夜晚，那孩子悄悄走了过来.", "%ABNO知晓%PERSON的一切.")
+	middle_work_lines = list("漫长的等待化成了滴滴泪水，仿若繁星似的一颗一颗落下.", "哀伤的心头绽出朵朵思念之花.")
+	work_end_lines = list("%ABNO和%PERSON约定好明天会再来看它.", "%ABNO抽泣着，它似乎不想让%PERSON离开.", "即便看到%ABNO哭泣的模样，%PERSON也无可奈何.")
 
 	/// List of people who are our friends
 	var/list/galaxy_friends = list()

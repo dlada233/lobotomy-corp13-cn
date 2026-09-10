@@ -1,6 +1,6 @@
 //Coded by Coxswain sprites by mel and Sky_
 /mob/living/simple_animal/hostile/abnormality/ebony_queen
-	name = "黑檀女王的苹果"
+	name = "黑檀女王的苹果"//（出自巴士）
 	desc = "一个畸形人形，身材高大，头戴腐烂的苹果，身穿帝王长袍."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "ebonyqueen"
@@ -62,6 +62,16 @@
 			我要复仇。<br>把白雪公主带来..."),
 		"彻底腐烂" = list(FALSE, "苹果终将干瘪萎缩，吸引低等生物啃噬。<br>我不过是个苹果，无力改变任何事。"),
 	)
+
+	work_start_lines = list("\"魔镜啊魔镜，如今谁才是世上最美的人？\"，女巫再次问道，但魔镜的回答依旧如故.",
+	"她的计划失败了，女巫的嫉妒依然如故.")
+	early_work_lines = list("%ABNO从未有过眼睛，因为看见这个世界只会给它心中招来更多敌意.",
+	"%ABNO的收容单元里曾经生长着一些植物.",
+	"从%ABNO的收容单元里可以听到风吹过枯枝的沙沙声.")
+	middle_work_lines = list("%ABNO孤独了很长很长时间，就连最低等的生物也不会啃食%ABNO.",
+	"%ABNO想起了那位公主，以及诅咒她的女巫.")
+	late_work_lines = list("%ABNO被女巫无意中诅咒，而公主才是罪魁祸首.", "只剩无可奈何.", "把白雪公主带来.")
+	work_end_lines = list("%ABNO成长着，在满怀恶意的嫉妒与不信任中煎熬.")
 
 	var/barrier_cooldown
 	var/barrier_cooldown_time = 4 SECONDS

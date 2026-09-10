@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/judgement_bird
-	name = "审判鸟"
+	name = "审判鸟"//（出自脑叶）
 	desc = "一只曾经在黑暗的森林里判断生活的鸟，带着一个不平衡的天平."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "judgement_bird"
@@ -60,6 +60,13 @@
 			漫长的审判终于终结。<br>高鸟逐渐洞悉怪物背后的秘密，它静候着。<br>为了那片永远无法挽回的森林。"),
 		"置之不理" = list(FALSE, "高鸟虽盲，却将你看透。<br>他正在衡量你的罪孽。"),
 	)
+
+	work_start_lines = list("有句古话叫做\"永远不要忘记审判之鸟. 它迟早会找到你，无论这要花上多久的时间.\"")
+	early_work_lines = list("%ABNO从不会感到焦虑.", "也许%ABNO此刻就在你的身后.")
+	middle_work_lines = list("我们生活在一个没有宽恕的世界之中，我们的灵魂即是赎罪的祭品.",
+	"人类都是狡诈的存在，他们无法救赎自己。这就是为什么%ABNO必须来到我们的身边.", "很少有人能意识到自己的罪恶，不过%ABNO会帮你们理解的.")
+	work_end_lines = list("%ABNO曾是森林的守望者，可它守护森林的意愿过于强大了，以至于忽视了更加重要的东西.",
+	"如今，无边的黑暗和永远的寒冷正笼罩着整片森林...")
 
 	var/judgement_cooldown = 10 SECONDS
 	var/judgement_cooldown_base = 10 SECONDS

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/voiddream
-	name = "空虚之梦"
+	name = "空虚之梦"//（出自脑叶）
 	desc = "一只毛茸茸的漂浮着的羊.."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "void_dream"
@@ -46,6 +46,11 @@
 		"你是恶魔" = list(TRUE, "\"别说这么可怕又复杂的话. <br>我只是给了他们渴望的沉醉美梦. <br>他们注定会回到我身边.\""),
 		"请吃掉我的梦" = list(FALSE, "无妨，梦境虽无害却非必需. <br>那么，闭上双眼，向我展示你最可口的梦吧..."),
 	)
+
+	work_start_lines = list("%ABNO总是在收容单元中安静地打着盹儿.")
+	early_work_lines = list("%ABNO的梦境无比崇高，它包含了世间的一切.")
+	middle_work_lines = list("%ABNO给予人们快乐的梦境...但这所谓的快乐遥不可及，它只会动摇人们的希望.")
+	work_end_lines = list("\"我只是很想睡觉. 我想做个好梦.\"")
 
 	var/punched = FALSE
 	var/pulse_damage = 15

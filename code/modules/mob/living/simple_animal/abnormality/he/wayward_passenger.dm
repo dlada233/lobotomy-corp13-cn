@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/wayward
-	name = "迷失的乘客"
+	name = "迷失的乘客"//（出自巴士）
 	desc = "一个巨大的人形动物，躯干裂开，布满了牙齿，丝状的突起覆盖着它的伤口."
 	icon = 'ModularTegustation/Teguicons/48x96.dmi'
 	icon_state = "wayward"
@@ -74,6 +74,12 @@
 			这名被困的员工正在接近你，<br>\
 			准备执行它的例行公事。"),
 	)
+
+	work_start_lines = list("%PERSON认出了W-Corp的员工制服.")
+	early_work_lines = list("%PERSON回忆起今天上班前曾搭乘WARP列车，随后不禁疑惑为何想到这会让自己流泪.")
+	middle_work_lines = list("WARP列车可以用10秒带你到达都市里的任何地方.", "那个被困的员工只是在机械地应付着...")
+	late_work_lines = list("迷失在都市中，被抛弃，像垃圾一样被丢弃，再无容身之处....", "%ABNO将引导你找到正确的出口.")
+	work_end_lines = list("无论%ABNO多少次穿越这条路径，它永远无法找到回去的路.")
 
 	//teleport vars
 	var/teleport_cooldown

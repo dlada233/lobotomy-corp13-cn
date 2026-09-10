@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_MARKEDFORDEATH /datum/status_effect/markedfordeath
 /mob/living/simple_animal/hostile/abnormality/cherry_blossoms
-	name = "樱下墓"
+	name = "樱下墓"//（来自脑叶）
 	desc = "一棵美丽的樱花树."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	icon_state = "graveofcherryblossoms_3"
@@ -42,6 +42,11 @@
 			即便在可怖之物中，亦存在美感. <br>\
 			就连这树下的尸骸想必也会赞同你的想法."),
 	)
+
+	work_start_lines = list("%ABNO的收容单元非常明亮，就好像有阳光洒在里面一般.")
+	middle_work_lines = list("无辜的生命迎来终结，樱花瓣呼啸着尽数散落.")
+	late_work_lines = list("随着无与伦比的美丽绽放，牺牲仪式完美地落下帷幕.")
+	work_end_lines = list("这个冰冷的地方不会透进一丝阳光，然而看着它的人将会感受到纯粹的平和与温暖.")
 
 	var/number_of_marks = 5
 

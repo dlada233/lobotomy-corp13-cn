@@ -50,6 +50,10 @@
 			他们按着你强灌汽水，随后你陷入昏迷...<br>...<br>遥远某处传来海鸥声。"),
 	)
 
+	work_start_lines = list("你也该来了，你不觉得让一名翼的代表一直等待很不礼貌吗？")
+	middle_work_lines = list("%PERSON质疑虾公司是否真实存在，这样%ABNO感到恼火.", "都市里从未存在过一个被称为虾公司的翼.")
+	work_end_lines = list("你的主管知道我一直在等着和贵公司的会议吗？", "%PERSON非常非常高兴终于能够摆脱%ABNO.")
+
 	var/liked
 	var/happy = TRUE
 	var/happy_works = 0
@@ -131,7 +135,7 @@
 	else
 		happy_works = 0
 		happy = FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/shrimp_exec/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	liked = pick(ABNORMALITY_WORK_INSTINCT, ABNORMALITY_WORK_INSIGHT, ABNORMALITY_WORK_ATTACHMENT)

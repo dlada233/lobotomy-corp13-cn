@@ -41,6 +41,12 @@
 		"弃牌" = list(FALSE, "你选择弃牌，紧攥所剩无几的筹码. 纵使庄家没有五官，你仍能感受到那无声的失望..."),
 	)
 
+	work_start_lines = list("") // Disabled currently
+	early_work_lines = list("")
+	middle_work_lines = list("")
+	late_work_lines = list("")
+	work_end_lines = list("")
+
 //Coinflip V1; Expect Jank
 /mob/living/simple_animal/hostile/abnormality/dealerdamned/funpet(mob/petter)
 	..()
@@ -74,7 +80,7 @@
 		say("我知道这是我喜欢的刺激体验，但你已经冒过一次险了，我也有自己的原则.")
 		return FALSE
 	else
-		return TRUE
+		return ..()
 
 //TODO: Add the revolver open sprite, replace gibbing with "death" sprite
 /mob/living/simple_animal/hostile/abnormality/dealerdamned/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)

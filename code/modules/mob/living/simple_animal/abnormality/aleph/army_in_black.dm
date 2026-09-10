@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_PROTECTION /datum/status_effect/protection
 GLOBAL_LIST_EMPTY(army)
 /mob/living/simple_animal/hostile/abnormality/army
-	name = "深黯军团"
+	name = "深黯军团"//(出自脑叶)
 	desc = "人类有着粉色的心脏, 通过穿戴相同的颜色, 我们也可以融入人们的思想."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "armyinpink"
@@ -64,6 +64,10 @@ GLOBAL_LIST_EMPTY(army)
 	)
 	trigger_lights = FALSE
 	can_affect_emergency = FALSE
+
+	work_start_lines = list("%ABNO向%PERSON讲述关于爱的一切.")
+	middle_work_lines = list("%ABNO致力于守护拥有善良之心的人.")
+	work_end_lines = list("%ABNO的粉红迷彩让%PERSON感受到了希望.")
 
 	//Unique variables
 	var/death_counter = 0

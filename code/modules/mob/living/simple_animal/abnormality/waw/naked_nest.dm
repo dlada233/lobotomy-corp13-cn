@@ -2,7 +2,7 @@
 #define NAKED_NESTED getorgan(/obj/item/organ/naked_nest)
 
 /mob/living/simple_animal/hostile/abnormality/naked_nest
-	name = "裸巢"
+	name = "裸巢"//（出自脑叶）
 	desc = "一个跳动的圆形物体，上面覆盖着闪闪发光的鳞片。棕褐色的污泥从无数的洞里滴下来，表面下似乎有什么东西在移动."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "nakednest_inert"
@@ -53,6 +53,9 @@
 			很难责怪它们将你错认作长久以来栖身的果实。"),
 		"捂住嘴" = list(FALSE, "它们可能随时通过任何孔窍感染你，最好赶紧离开。"),
 	)
+
+	work_start_lines = list("%ABNO需要一个湿润，光滑的球体作为它们的巢穴，因此将%PERSON的脑袋作为新巢也是不错的选择.")
+	middle_work_lines = list("当%PERSON的肤色开始转变成可怕的绿色时，一切都为时已晚.")
 
 	var/serpentsnested = 4
 	var/origin_cooldown = 0

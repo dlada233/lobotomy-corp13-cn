@@ -1,6 +1,6 @@
 //She tells stories, and does sanity damage. What can I say?
 /mob/living/simple_animal/hostile/abnormality/drownedsisters
-	name = "溺毙姐妹"
+	name = "溺毙姐妹"//（出自漫画）（韩国民间故事）
 	desc = "一对女孩被遮住脸."
 	icon = 'ModularTegustation/Teguicons/96x64.dmi'
 	icon_state = "sisters"
@@ -37,6 +37,9 @@
 		"不要听故事" = list(TRUE, "你走出收容单元，她们的故事随风消散，只留下悲怆. <br>\
 			将来你还会再来，但永远也无法解开她们哀伤."),
 	)
+
+	work_start_lines = list("啊，我们真是可怜，我们已沦为罪人. 恳请听我们诉说，让我们坦白那些自己未曾意识到的罪过，求您宽恕我们的痛苦...")
+	work_end_lines = list("%PERSON试图回忆起%ABNO的话语，却无法做到. 看来她们将永远得不到宽恕.")
 
 	var/breaching = FALSE
 

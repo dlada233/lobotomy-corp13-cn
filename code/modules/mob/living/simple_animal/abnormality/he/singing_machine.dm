@@ -4,7 +4,7 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 */
 #define STATUS_EFFECT_MUSIC /datum/status_effect/display/singing_machine
 /mob/living/simple_animal/hostile/abnormality/singing_machine
-	name = "歌唱机"
+	name = "歌唱机"//(出自脑叶) （修正/原版混用）
 	desc = "有大铰链的闪亮的金属装置，你会对里面的东西感到恐惧..."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "singingmachine_closed_clean"
@@ -48,6 +48,21 @@ Finally, an abnormality that DOESN'T have to do any fancy movement shit. It's a 
 		"关闭机器" = list(TRUE, "你关闭了机器。四周陷入寂静。"),
 		"聆听音乐" = list(FALSE, "啊。这音乐带给你温暖舒适和放松的感觉。"),
 	)
+
+	work_start_lines = list("在你面前的可能只是一台普通的研磨机，但请小心，异想体不一定有存在的理由，但它们一定有存在的目的.",
+	"它会使人产生一种强烈的想要跳入其中的冲动.", "它奏出的旋律恐怖却又美妙.", "献上血与肉，谱写协奏曲.")
+	early_work_lines = list("附近没有生物的时候，%ABNO只是一台普通的机器.", "在%PERSON进入收容单元之前，%ABNO纹丝不动. ",
+	"在<员工名称>进入收容单元之前，%ABNO只不过是一台没有启动的普通机器.", "如果%ABNO有个开关的话，或许<员工名称>能更安心地工作吧.")
+	middle_work_lines = list("<员工名称>正在极其谨慎地进行对%ABNO的工作。.",
+	"%ABNO随时都有可能启动，<员工名称>将这警告铭记于心.",
+	"%ABNO没有对<员工名称>作出反应，就好像它正在消化内部的碎肉一样.", "<员工名称>趁着%ABNO没有启动开始进行工作.")
+	late_work_lines = list("检测%ABNO的运行状况有一个简单的方法：打开它的盖子，然后数数里面有多少碎肉.",
+	"<员工名称>不敢打开盖子检查%ABNO的运行情况.",
+	"据说打开过盖子的员工后来都“生病”了.",
+	"众所周知，%ABNO的内部构造相当复杂，但没有员工敢亲眼去观察它的结构.")
+	work_end_lines = list("<员工名称>今天运气不错，%ABNO没有启动.",
+	"谢天谢地%ABNO没有启动，天知道下一个进行工作的员工会不会这么走运.",
+	"看来%ABNO想让自己休息一会儿	.", "%ABNO没有做出任何反应，它似乎还未消化完全.")
 
 	var/cleanliness = "clean"
 	var/statChecked = 0

@@ -170,7 +170,7 @@
 			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌移除了友军火力!</span>")
 
 		if("spades")
-			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成青色伤害的能力!</span>")
+			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成蓝色伤害的能力!</span>")
 
 		if("diamonds")
 			to_chat(user,"<span class='nicegreen'>从[src]中抽出[current_suit]色Ace牌使其获得造成红色伤害的能力!</span>")

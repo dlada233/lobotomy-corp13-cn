@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/scaredy_cat
-	name = "胆小的猫"
+	name = "胆小的猫"//（出自漫画）（出自图书馆）（绿野仙踪）
 	desc = "一种不正常的东西，像一只没有防备的小猫."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "scaredy_cat"
@@ -52,11 +52,15 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "怯懦的小猫。<br>我将赐你直面万物的勇气。<br>巫师授予你..."
+	observation_prompt = "怯懦的小猫. <br>我会给你勇气，让你能直面任何事情。<br>大巫师授予你..."
 	observation_choices = list(
-		"一小瓶\"液体勇气\"" = list(TRUE, "当你连直面事物的勇气都没有时，你还能做什么呢？"),
+		"一小瓶\"激发勇气的药水\"" = list(TRUE, "当你连直面事物的勇气都没有时，你还能做什么呢？"),
 		"勇气" = list(FALSE, "饮下这瓶药水，它会赋予你勇气。<br>你将比任何人都勇敢。"),
 	)
+
+	work_start_lines = list("%ABNO对%PERSON的靠近感到害怕.", "%ABNO正在寻找那些曾与它一同走过黄砖路的朋友.")//yellow brick road(黄砖路，梦想之路)
+	middle_work_lines = list("\"激发勇气的药水\"起作用了. 任何事物都不再能吓到%ABNO，直到它意识到自己孤身一人.")
+	work_end_lines = list("%ABNO害怕一切它认为比自己强的事物，却从未意识到自己其实比任何人都强大.")
 
 	/// The list of abnormality scaredy cat will automatically join when they breach, add any "Oz" abno to this list if possible
 	var/list/prefered_abno_list = list(

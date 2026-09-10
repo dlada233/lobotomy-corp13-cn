@@ -1,6 +1,6 @@
 //Coded and sprited by Coxswain
 /mob/living/simple_animal/hostile/abnormality/fallen_amurdad
-	name = "倒在春天里"
+	name = "堕落的阿米雷戴"//（出自脑叶废案）
 	desc = "这个人没有反应，流血，浑身都是植物."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "amurdad"
@@ -32,6 +32,10 @@
 		"靠近倾听" = list(TRUE, "你俯身将耳畔贴近他的嘴唇...<br>听见了穷尽此生等待的话语。"),
 		"离开" = list(FALSE, "此人显然需要救助，你急忙去寻找医师。"),
 	)
+
+	work_start_lines = list("在%ABNO的收容单元中，植被的气息弥漫着浓烈的气味，%PERSON感到安心.")
+	middle_work_lines = list("尽管毫无生命迹象，但%ABNO的身体丝毫没有腐烂.", "完整与不朽皆为生存之需.")
+	work_end_lines = list("他将告诉你，你整生都在等待听到的话语.")
 
 	var/seed_list = list(
 		/obj/item/seeds/grass/fairy,

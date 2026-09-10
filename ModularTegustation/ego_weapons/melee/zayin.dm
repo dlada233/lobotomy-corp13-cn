@@ -194,7 +194,7 @@
 /obj/item/ego_weapon/support/evening
 	name = "暮光"
 	desc = "I accepted the offer and paid the price."
-	special = "当你穿着与之匹配的盔甲时，在你的手上使用这个武器，为附近的其他人产生微弱的青色护盾."
+	special = "当你穿着与之匹配的盔甲时，在你的手上使用这个武器，为附近的其他人产生微弱的蓝色护盾."
 	icon_state = "evening"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -205,7 +205,7 @@
 	attack_verb_continuous = list("slams", "strikes", "smashes")
 	attack_verb_simple = list("slam", "strike", "smash")
 	matching_armor = /obj/item/clothing/suit/armor/ego_gear/zayin/evening
-	use_message = "你使用暮光产生青色护盾!"
+	use_message = "你使用暮光产生蓝色护盾!"
 	use_sound = "sound/abnormalities/lighthammer/chain.ogg"
 
 /obj/item/ego_weapon/support/evening/Pulse(mob/living/carbon/human/user, count)
@@ -225,7 +225,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	to_chat(H, span_nicegreen("一道护盾增强了你对青色伤害的抗性!"))
+	to_chat(H, span_nicegreen("一道护盾增强了你对蓝色伤害的抗性!"))
 	H.physiology.pale_mod /= 1.1
 	return ..()
 

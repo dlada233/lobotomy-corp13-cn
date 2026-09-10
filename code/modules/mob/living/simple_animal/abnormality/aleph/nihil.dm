@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_VOID /datum/status_effect/stacking/void
 //Coded by Coxswain, sprites by nutterbutter
 /mob/living/simple_animal/hostile/abnormality/nihil
-	name = "虚无弄臣"
+	name = "虚无弄臣"//（出自漫画）（出自图书馆）
 	desc = "这他妈是什么... 一个小丑?"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "nihil"
@@ -46,6 +46,11 @@
 		"我变得像她们了" = list(TRUE, "这不重要。<br>我的选择无关紧要。<br>\
 			什么都不重要。<br>我们将重复这歌舞直至时间尽头。<br>我只能对这毫无意义的行为发笑。"),
 	)
+
+	work_start_lines = list("%ABNO 对 %PERSON 一言不发，只自顾自地哼唱着.", "仅仅靠近 %ABNO 就可能让人感到相当不安。")
+	middle_work_lines = list("%PERSON 避免直视 %ABNO 无光的眼睛.", "一种压抑而无形的物质从 %ABNO 中散发出来.")
+	work_end_lines = list("%ABNO 总是发现自己在路的尽头.", "%ABNO 看来正在等待着一些无法解释的事情.",
+	"其他员工似乎并不觉得%ABNO很可怕，但%PERSON知道，一个错误的举动就可能导致公司倒闭.")
 
 	var/can_act = TRUE
 	//Teleports

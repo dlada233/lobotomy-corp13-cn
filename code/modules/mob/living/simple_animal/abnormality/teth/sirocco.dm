@@ -65,6 +65,10 @@
 			算了，也许有一天它会自己玩累的. <br>现在最好别管它."),
 	)
 
+	work_start_lines = list("%ABNO很高兴终于有人决定来拜访它.", "%ABNO问，什么时候能被从收容单元里放出来.")
+	early_work_lines = list("孩童般的笑声在收容单元里回荡.")
+	late_work_lines = list("%PERSON剧烈地喘着气，沙子灌满了他们的嘴.", "%PERSON几乎来不及躲闪，%ABNO朝扔出一颗松动的螺丝.")
+
 	// Work Variables
 	var/work_timer
 	var/time_to_lower = 2 MINUTES // Time to lower qliphoth

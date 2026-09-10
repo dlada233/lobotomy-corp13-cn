@@ -2,7 +2,7 @@
 #define SEASONS_SLAM_COOLDOWN (20 SECONDS)
 
 /mob/living/simple_animal/hostile/abnormality/seasons
-	name = "四季之神"
+	name = "四季之神"//（原创内容）
 	desc = "天哪，这是什么?!?"
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "" //probably better to start off invisible than the wrong state for a decisecond or i'll get a stream of "bug reports"
@@ -64,6 +64,13 @@
 			... <br>\
 			最终，我永远没能找到离开森林的路."),
 	)
+
+	// TODO - modular work lines
+	work_start_lines = list("当人类仍蜷缩在洞穴中时，%ABNO 就已经出现了.")
+	middle_work_lines = list("%PERSON被大自然环绕，即使在这片黑暗而与世隔绝的地方也是如此.", "大自然在%ABNO的触碰下，重新夺回了冰冷的钢铁与塑料所筑成的世界.",
+	"%PERSON 听到鸟儿在歌唱，这在如此深的地下应该是不可能的.")
+	late_work_lines = list("%ABNO 本没有名字，只有古人给予它的名字.", "在需要之时，古老的存在呼唤了 %ABNO.")
+	work_end_lines = list("即便人类离去之后，%ABNO也将永存.", "大地的诗歌永不会枯竭.")
 
 	//Var Lists
 	var/list/season_stats = list(

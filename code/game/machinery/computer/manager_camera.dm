@@ -81,7 +81,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 		MANAGER_PALE_BULLET = list(
 			"name" = PALE_BULLET,
-			"desc" = "给予员工青色伤害护盾.",
+			"desc" = "给予员工蓝色伤害护盾.",
 			"icon_state" = "pale",
 		),
 

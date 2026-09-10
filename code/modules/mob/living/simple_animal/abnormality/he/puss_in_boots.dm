@@ -1,7 +1,7 @@
 //The real clerk lives matter abnormality -Coxswain
 #define STATUS_EFFECT_CHOSEN /datum/status_effect/chosen
 /mob/living/simple_animal/hostile/abnormality/puss_in_boots
-	name = "靴子里的猫"
+	name = "靴子里的猫"//（格林童话 穿靴子的猫）（电影 怪物史莱克）
 	desc = "一只看起来蓬头垢面的黑猫，靴子好像不见了."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "cat_contained"
@@ -51,6 +51,12 @@
 		"是" = list(TRUE, "妙极，凭我的爪子保证，你将成为令所有同僚艳羡的杰出主人！"),
 		"否" = list(FALSE, "啧！何时才会有配得上的人出现？"),
 	)
+
+	work_start_lines = list("我有没有告诉过你一个我让谦卑农民儿子成为国王的故事？", "我很少与人类交谈，你应该把它视为一种荣幸.")
+	early_work_lines = list("%ABNO不喜欢被抚摸，因为它认为这会显得有失体面。",
+	"%ABNO向%PERSON讲述它过往的功绩与成就.",
+	"%ABNO对“谁才值得”的判断，在%PERSON看来完全是颠倒的.", "%PERSON想要更多地了解那个乞丐成为国王的故事.")
+	late_work_lines = list("你准备好继承遗产了吗？", "%ABNO声称它能让%PERSON成为L-Corp的董事，这番话让%PERSON感到难以置信.")
 
 	//Work/misc Vars
 	var/list/stats = list(

@@ -2,7 +2,7 @@
 //Sorry Lads, not much I can do here - Kirie
 //I tried to improve it. - Coxswain
 /mob/living/simple_animal/hostile/abnormality/penitentgirl
-	name = "忏悔少女"
+	name = "忏悔少女"//(安徒生童话 红舞鞋)
 	desc = "一个头发垂在眼睛上的女孩."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "penitent"
@@ -41,12 +41,15 @@
 			女孩继续无忧无虑地移动着。"),
 	)
 
+	work_start_lines = list("%ABNO将自己的鞋子递给%PERSON，她切下的双脚仍穿在鞋里. 尽管如此，她看起来却无比安详.")
+	early_work_lines = list("%PERSON，请砍掉你的脚...", "%PERSON因自己拥有双脚而%ABNO却没有而感到羞耻，随即打消了这个念头.")
+
 //Work Mechanics
 /mob/living/simple_animal/hostile/abnormality/penitentgirl/AttemptWork(mob/living/carbon/human/user, work_type)
 	//Prudence too high, random damage type time.
 	if(get_attribute_level(user, PRUDENCE_ATTRIBUTE) >= 40)
 		work_damage_type = pick(WHITE_DAMAGE, RED_DAMAGE, BLACK_DAMAGE, PALE_DAMAGE)
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/penitentgirl/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	// you are going to cut your own leg off

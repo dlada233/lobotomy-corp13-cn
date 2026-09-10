@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/headless_ichthys
-	name = "断首鱼"
+	name = "断首鱼"//（出自巴士）
 	desc = "一种巨大的无头海洋生物."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "headless_ichthys"
@@ -56,6 +56,10 @@
 			生物发现了你并准备攻击。<br>\
 			无法躲避，你被撕成了碎片。"),
 	)
+
+	work_start_lines = list("%ABNO看起来像一条被斩首的鱼.", "%ABNO虽然没有头部，却能自主行动.")
+	middle_work_lines = list("断首的切面干净平整，似乎是用单面刃器造成的，比如刀或镰刀.")
+	work_end_lines = list("%ABNO胸部周围有着膨胀的囊状物，%PERSON在囊里看到了某种与人类神经系统极为相似的东西.")
 
 
 	var/can_act = TRUE

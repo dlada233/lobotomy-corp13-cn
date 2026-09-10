@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_MELTYLOVE /datum/status_effect/display/melting_love_blessing
 #define STATUS_EFFECT_SLIMED  /datum/status_effect/melty_slimed
 /mob/living/simple_animal/hostile/abnormality/melting_love
-	name = "溶解之爱"
+	name = "溶解之爱"//（出自脑叶）
 	desc = "粉色的黏液生物，维持着人类女性的形态."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "melting_love"
@@ -60,6 +60,11 @@
 		"靠近她" = list(FALSE, "你伸出手，她也向你伸出, 你的手指缠绕着黏糊糊的物质，而她咯咯地笑. <br>\"让我们永远在一起吧.\" <br>\
 			你把手抽离, 但出来的只有黏液. <br>你尝试逃离, 但你的脚早已埋入了她的陷阱. <br>\"不要背叛我, 好吗?\" <br>这就是你最后所听到的话..."),
 	)
+
+	work_start_lines = list("%ABNO 会使不经意间看到它的人感受到爱.")
+	early_work_lines = list("粉红色的黏液组成的 %ABNO 正在收容单元里肆意蠕动.")
+	middle_work_lines = list("如果%PERSON对安全规章和卫生清洁稍有怠慢，那么%PERSON将陷入黏液地狱.")
+	work_end_lines = list("不知不觉中， %ABNO的群体正在成长壮大.")
 
 	var/mob/living/carbon/human/gifted_human = null
 	/// Amount of BLACK damage done to all enemies around main target on melee attack. Also includes original target

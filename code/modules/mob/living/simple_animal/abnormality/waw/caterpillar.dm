@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/caterpillar
-	name = "水烟毛毛虫"
+	name = "水烟毛毛虫"//(出自漫画)（爱丽丝梦游仙境）
 	desc = "一只可怜的虫子坐在树叶上."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "caterpillar"
@@ -62,6 +62,14 @@
 			虫子会从投向它的绝望和疑虑中吸取养分而变得肥硕<br>\
 			要造出丝...蚕必须经受蒸煮。"),
 	)
+
+	work_start_lines = list("%PERSON看到%ABNO时，突然感觉看到了自己.")//以下译文参考了漫画剧情，而非原文直译
+	early_work_lines = list("%PERSON盯着%ABNO，感到一阵厌恶.", "%ABNO会产生一种烟雾，影响吸入者的心智.")
+	middle_work_lines = list("压迫，也就是拒绝面对自我的情感，它不会使%ABNO产出任何能源.",
+	"通过面对真实自我而产生怀疑，再由怀疑自我所带来的绝望，才是%ABNO的食粮.")
+	late_work_lines = list("然而...想要获得丝绸， \"煮茧\"是不可或缺的步骤.",
+	"随着羽化计数器逐渐填满，%ABNO也越来越接近蜕变成蝴蝶.", "人必须通过不断的洞察来面对自我.")
+	work_end_lines = list("它真的就是我自己.")
 
 	var/eclosion_counter = 0 //How many times you worked on it without doing repression work
 	var/work_success_damage_upper = 4

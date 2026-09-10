@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/mountain
-	name = "微笑的尸山"
+	name = "微笑的尸山"//（出自脑叶）
 	desc = "微笑的尸山正在寻觅尸体的气味，它承载着众多人的欢笑."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "mosb"
@@ -55,6 +55,9 @@
 		"我认出了这些面孔" = list(TRUE, "从堆积如山的尸体中；死去的人献出了自己生命，成就了更伟大的事业. <br>他们怎能不微笑? <br>你也应该微笑."),
 		"我不认识他们" = list(FALSE, "他们承载着早已消失了的人们的笑声. <br>尸山凭借手脚开始蹒跚而行，它现在拥有了你的气味，它永远不会满足."),
 	)
+
+	work_start_lines = list("%ABNO 正带着满身的笑脸寻找死尸的气味.")
+	middle_work_lines = list("%ABNO 的身体里保存着所有尸体的笑容，它正等待着鲜血溅出的味道.")
 
 	/// Is user performing work hurt at the beginning?
 	var/agent_hurt = FALSE
@@ -382,7 +385,7 @@
 /mob/living/simple_animal/hostile/abnormality/mountain/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(user.health != user.maxHealth)
 		agent_hurt = TRUE
-	return TRUE
+	return ..()
 
 /* Abnormality breach */
 

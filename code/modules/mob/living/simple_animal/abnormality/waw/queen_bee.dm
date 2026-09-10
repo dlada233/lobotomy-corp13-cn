@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/queen_bee
-	name = "女王蜂"
+	name = "蜂后"
 	desc = "形似蜂后的扭曲生物."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "queen_bee"
@@ -51,6 +51,14 @@
 			多年后我才发现，它们那不可动摇的忠诚源于只有女王才能分泌的特殊信息素。<br>\
 			一切始于我开始研究那种信息素时。"),
 	)
+
+	work_start_lines = list("蜂群绝不能容忍损坏的蜂巢.", "据说，工蜂们穷尽一生，只为它们的女皇筹集食粮.")
+	early_work_lines = list("蜂群的首要任务是确保蜂巢的安全.",
+	"如果有人不小心伤害了%ABNO，可能会导致无从挽回的灾难.")
+	late_work_lines = list("如果%PERSON感到腹部剧痛或是颈部发痒，那么他所能做的事只剩一类——仰望那再也无从得见的蓝天.",
+	"%PERSON尽力避免无意地吸入收容单元中的空气.")
+	work_end_lines = list("%ABNO想要更多、更多、更多、更多的工蜂来复兴它的王国.",
+	"%ABNO将在工蜂们的努力下日趋完善...就这样，它们将开始建造自己的王国.")
 
 	var/datum/looping_sound/queenbee/soundloop
 	var/breached_others = FALSE

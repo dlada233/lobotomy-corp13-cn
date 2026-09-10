@@ -42,7 +42,7 @@
 /obj/item/ego_weapon/city/shi_assassin
 	name = "し协会手杖"
 	desc = "四协二科使用的武器."
-	special = "在手中使用此武器使自己停滞1秒，扣除25%的HP，并造成2倍青色伤害."
+	special = "在手中使用此武器使自己停滞1秒，扣除25%的HP，并造成2倍蓝色伤害."
 	icon_state = "shiassassin"
 	force = 21
 	attack_speed = 1.2
@@ -140,7 +140,7 @@
 
 /obj/item/ego_weapon/city/shi_assassin/yokai
 	name = "し协会妖怪刀"
-	desc = "专为四协二科设计的特种刺客刀刃，用于刺杀高装甲目标，造成青色伤害."
+	desc = "专为四协二科设计的特种刺客刀刃，用于刺杀高装甲目标，造成蓝色伤害."
 	force = 9
 	icon_state = "shi_yokai"
 	damtype = PALE_DAMAGE

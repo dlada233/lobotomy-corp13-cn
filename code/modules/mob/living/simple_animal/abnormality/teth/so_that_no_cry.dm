@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_TALISMAN /datum/status_effect/stacking/talisman
 #define STATUS_EFFECT_CURSETALISMAN /datum/status_effect/stacking/curse_talisman
 /mob/living/simple_animal/hostile/abnormality/so_that_no_cry
-	name = "因而无人哭泣"
+	name = "因而无人哭泣"//（出自巴士）
 	desc = "一个畸形的木娃娃，各种奇怪的纸护身符附着在它的身体."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "so_that_no_cry"

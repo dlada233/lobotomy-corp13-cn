@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_KARMA /datum/status_effect/stacking/karma
 /mob/living/simple_animal/hostile/abnormality/my_form_empties
-	name = "无我入定"
+	name = "无我入定"//（出自巴士）
 	desc = "一尊作为崇拜偶像而造的雕像，它似乎始终悬浮于空中，除单手做手势外无其他动作。"
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "myform_empties"
@@ -51,6 +51,10 @@
 		"重复咒语" = list(FALSE, "无论周遭发生何事，雕像都纹丝不动。<br>\
 			尽管咒语的音调始终如一，你却知其中暗含诅咒。")
 	)
+
+	work_start_lines = list("%PERSON对进入隔离单元感到紧张.","%PERSON因%ABNO发出的声音而心神不宁.")
+	early_work_lines = list("虽然%ABNO面部雕刻得平静安详，但其下方的肉体却令人不安.")
+	late_work_lines = list("尽管%ABNO有时会用左手做出象征性的动作，但 %PERSON却无法理解其中的含义.")
 
 	var/anatman_state = FALSE
 	var/praying = FALSE

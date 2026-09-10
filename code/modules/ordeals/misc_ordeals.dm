@@ -1,6 +1,6 @@
 // A Party Everlasting
 /datum/ordeal/boss/pink_midnight
-	name = "粉色的午夜"
+	name = "粉色的午夜" //（出自漫画）
 	flavor_name = "永恒派对"
 	announce_text = "让我们来个持续到永远的派对."
 	end_announce_text = "因此，现在，我们相聚，奇妙而永恒."

@@ -8,7 +8,7 @@
 #define STATUS_EFFECT_SG_GUILTY /datum/status_effect/sg_guilty
 
 /mob/living/simple_animal/hostile/abnormality/silent_girl
-	name = "噤默处子"
+	name = "噤默处子"//(出自图书馆)
 	desc = "一个穿背心裙的紫发女孩，你看到她背后闪着金属的光..."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "silent_girl"
@@ -42,6 +42,13 @@
 			她睁眼与你对视。<br>你获得宽恕。"),
 		"辩称不知情" = list(FALSE, "白衣女孩将钉子锤进你心脏。"),
 	)
+
+	work_start_lines = list("%PERSON与%ABNO相视片刻，随即僵住.", "%ABNO在背后的手里藏着什么，但无论%PERSON多么努力地观察，都无法看清那是什么.")
+	early_work_lines = list("%PERSON回忆起每一次内疚涌上心头的时刻.",
+	"%ABNO斜眼看着%PERSON，但却没有要接近的举动.", "焦虑在%PERSON的心中翻涌.", "一阵可怕的寒意瞬间掠过%PERSON.")
+	middle_work_lines = list("...", "裂开的心，只要有人敲击，就会支离破碎.",
+	"仅仅感到内疚是不够的.", "罪恶感会渗入心灵中最微小的裂隙...")
+	work_end_lines = list("%ABNO从未向员工迈出过一步，%PERSON也是如此.", "人性使人犯错，神性使人宽恕.")//To err is human, to forgive is divine. 出自《论批评》（1711），这里没有采用‘犯错为人，宽恕为神’的直译
 
 /mob/living/simple_animal/hostile/abnormality/silent_girl/proc/GuiltEffect(mob/living/carbon/human/user, enable_qliphoth = TRUE, stack_count = 1)
 	if (user.stat == DEAD)

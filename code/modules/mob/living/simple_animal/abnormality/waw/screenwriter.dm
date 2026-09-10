@@ -6,7 +6,7 @@ it debuffs random players and then summons a murderer to kill them one at a time
 Defeating the murderer also surpresses the abnormality.
 */
 /mob/living/simple_animal/hostile/abnormality/screenwriter
-	name = "落魄编剧的笔记"
+	name = "落魄编剧的笔记"//（出自脑叶废案）
 	desc = "一本记有剧本的笔记本. 其标题为 \"原罪\"."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "screenwriter"
@@ -51,6 +51,13 @@ Defeating the murderer also surpresses the abnormality.
 		"等待然后观察" = list(TRUE, "不管你是否开枪，这出戏都会以悲剧收场."),
 		"射击其他人" = list(TRUE, "不管你是否开枪，这出戏都会以悲剧收场."),
 	)
+
+	work_start_lines = list("有一本用古老羊皮纸制成的书。", "它相当厚，但书的每一页都是空白的。",
+	"有一本书，如果粗暴对待，封面似乎就要被撕破。")
+	early_work_lines = list("尽管外表古旧，上面却没有一丝灰尘，仿佛一直被精心打理。", "它似乎至少有几十年的历史，却丝毫未发霉。")
+	middle_work_lines = list("%PERSON是个经常读书的人，但%PERSON觉得这不是那种应该读的书。",
+	"%PERSON并不常读书，但一种奇怪的冲动迫使%PERSON翻动书页。")
+	work_end_lines = list("%PERSON想知道%ABNO所描述的情景是否暗含某种深意。")
 
 	pet_bonus = "shuffles" //saves a few lines of code by allowing funpet() to be called by attack_hand()
 	var/mob/living/simple_animal/hostile/aminion/actor/A

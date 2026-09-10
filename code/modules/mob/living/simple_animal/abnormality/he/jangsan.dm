@@ -2,7 +2,7 @@
 
 //Code by Coxswain, EGO sprites by Sky_ and abnormality sprites by Mel
 /mob/living/simple_animal/hostile/abnormality/jangsan
-	name = "苌山虎"
+	name = "苌山虎"//（韩国民间传说 苌山虎）
 	desc = "一个吃孩子的怪物，改革自己的面貌，塑造友好的形象."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "jangsan_idle"
@@ -61,6 +61,9 @@
 			花朵是我的朋友，我将采尽所有。"),
 	)
 
+	work_start_lines = list("%ABNO看起来像儿童动画片里的角色.", "%ABNO以其无害、蓬松的外观诱骗弱者.")
+	middle_work_lines = list("让我们一起歌唱吧！—— 改编自周六早晨的动画片台词.", "%ABNO是小孩子的完美伙伴 - 务必不惜一切代价远离它们.")
+	work_end_lines = list("在完成%ABNO的工作后，%PERSON打消了购买毛绒玩具的念头.", "%PERSON希望%ABNO今天不会露出獠牙.")
 
 	var/bullet_threshold = 10
 //breach related

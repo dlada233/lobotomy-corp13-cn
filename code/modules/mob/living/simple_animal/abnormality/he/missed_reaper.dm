@@ -43,6 +43,14 @@
 			这毫无意义。<br>房间角落，死神垂首致歉。"),
 	)
 
+	work_start_lines = list("%ABNO伸出手，但%PERSON知道自己绝不能回应那毫无意义的动作.")
+	early_work_lines = list("%ABNO的收容单元黑暗压抑.", "已经没人会费心更换%ABNO收容单元里的灯了.", "她最后的脸色及其苍白...")
+	middle_work_lines = list("%PERSON回忆起某个自己未能陪伴在侧之人的离世.", "%ABNO看起来太过年轻，年轻到还没有好好地活过.")
+	late_work_lines = list("%PERSON发誓看到那道影子在朝自己的方向微微颤动.", "我握住了她的手，但这什么意义都没有...")
+	work_end_lines = list("实际上，死神和女孩是同一的存在.", "每个人自有命数，不多不少.",
+	"%ABNO向%PERSON挥手告别，她身后的影子轻轻低头致意.")
+
+
 	var/meltdown_cooldown //no spamming the meltdown effect
 	var/meltdown_cooldown_time = 15 SECONDS
 

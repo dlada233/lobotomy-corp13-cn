@@ -58,6 +58,12 @@
 			数小时后，厄里斯与新的陌生人共进晚餐。<br>我的头颅正置于同样的餐盘中。"),
 	)
 
+	work_start_lines = list("") // Doesn't currently spawn, will do these later.
+	early_work_lines = list("")
+	middle_work_lines = list("")
+	late_work_lines = list("")
+	work_end_lines = list("")
+
 	var/girlboss_level = 0
 
 /mob/living/simple_animal/hostile/abnormality/eris/Login()

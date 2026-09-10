@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/fairy_festival
-	name = "精灵盛宴"
+	name = "精灵盛宴"//（出自脑叶）（仲夏夜之梦）
 	desc = "The abnormality is similar to a fairy, having two pairs of wings and a small body. The small fairies around it act as a cluster."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fairy"
@@ -66,6 +66,9 @@
 		"接受照料" = list(TRUE, "妖精们将闪亮的粉末洒向你周身，粉末在你掌心汇聚成光. <br>你感受到被选中的殊荣. <br>\
 			当你退出收容单元时，瞥见妖精们饥渴的目光. <br>你终于明白妖精的照料意味着什么."),
 	)
+
+	work_start_lines = list("%PERSON可能会因为自己的独特之处而引起%ABNO的注意.")
+	middle_work_lines = list("大多数员工都不明白\"小精灵的祝福\"意味着什么.")
 
 /mob/living/simple_animal/hostile/abnormality/fairy_festival/proc/FairyHeal()
 	for(var/mob/living/carbon/human/P in protected_people)

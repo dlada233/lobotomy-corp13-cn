@@ -2,7 +2,7 @@
 /obj/item/ego_weapon/city/mirae
 	name = "未来拐杖"
 	desc = "一根优雅的拐杖，顶部印有未来人寿保险的标志."
-	special = "击杀敌人，然后治疗自己，并获得一笔收入. 该武器20%的伤害是青色伤害."
+	special = "击杀敌人，然后治疗自己，并获得一笔收入. 该武器20%的伤害是蓝色伤害."
 	icon_state = "miraecane"
 	force = 25
 	damtype = WHITE_DAMAGE	//Also does a small bit of pale, because lawyers hurt your mind and soul.

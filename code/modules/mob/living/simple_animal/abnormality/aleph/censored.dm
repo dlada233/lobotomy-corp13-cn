@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_OVERWHELMING_FEAR /datum/status_effect/overwhelming_fear
 /mob/living/simple_animal/hostile/abnormality/censored
-	name = "数据删除"
+	name = "数据删除"//（出自脑叶）
 	desc = "这是什么啊... 光是看着就够恶心的了..."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "censored"
@@ -57,6 +57,10 @@
 		"不要进入" = list(FALSE, "一想到要进入收容单元，一股恶心的情绪便涌上心头，你于是转身离去. <br>\
 			你还没有准备好创造未来."),
 	)
+
+	work_start_lines = list("%PERSON 在对 (CENSORED)  (CENSORED).")
+	early_work_lines = list("(CENSORED) 让 %PERSON 觉得 (CENSORED).")
+	late_work_lines = list("(CENSORED) ...正在 (CENSORED) ...天呐，实在是太恶心了.")
 
 	var/can_act = TRUE
 	var/ability_damage = 60
@@ -207,7 +211,6 @@
 			L.apply_status_effect(STATUS_EFFECT_OVERWHELMING_FEAR)
 	can_act = TRUE
 
-/* Work */
 /mob/living/simple_animal/hostile/abnormality/censored/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(work_type == "献祭")
 		to_chat(user, span_warning("你犹豫了一会..."))
@@ -238,7 +241,7 @@
 			user.AdjustStun(-999) //run for your life
 		datum_reference.working = FALSE
 		return null
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/censored/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(user.sanity_lost)

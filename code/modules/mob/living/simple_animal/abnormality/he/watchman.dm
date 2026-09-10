@@ -43,7 +43,7 @@
 	light_color = "FFFFFFF"
 	light_power = -10
 
-	observation_prompt = "\"无自然造物在黑夜游荡，你该寻找庇护所。\"<br>\
+	observation_prompt = "\"非自然的生物在黑夜游荡，你应该寻找庇护所。\"<br>\
 		守夜人向你招手示意。<br>你..."
 	observation_choices = list(
 		"靠近" = list(TRUE, "很好。<br>夜间在林中游荡不安全。<br>\
@@ -51,6 +51,12 @@
 		"逃跑" = list(FALSE, "没跑多远就听到嚎叫尖啸。<br>\
 			无数利爪尖牙同时撕咬你。<br>此刻你才明白为何要畏惧黑夜。"),
 	)
+
+	work_start_lines = list("非自然的生物在黑夜游荡，你应该寻找庇护所.", "%ABNO的收容单元永远是黑暗的.")
+	early_work_lines = list("尽管%ABNO的灯笼里燃着熊熊火焰，却丝毫没有发出光亮，也没有带来温暖.", "%PERSON拒绝了%ABNO指引员工回家的提议.",
+	"当夜幕降临在后巷...")
+	late_work_lines = list("人类一直畏惧着黑暗，都市的居民很清楚夜晚会带来什么.",
+	"我祈愿黑夜中的生灵能尽快返回它们的巢穴...", "%ABNO提醒%PERSON在凌晨3:13前回家.")
 
 	// Speech Lines
 	speak_chance = 4

@@ -1,6 +1,6 @@
 #define BLESS_COOLDOWN (5 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/despair_knight
-	name = "绝望骑士"
+	name = "绝望骑士"//（出自脑叶）
 	desc = "一个穿蓝色裙子的高个子人型异想体. \
 	她的头有一半是黑色的，有尖锐的角段突出来."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
@@ -57,6 +57,9 @@
 			不...<br>你是说我该继续前行。<br>不知能否做到，但或许情况会好转。<br>我们只需尝试。"),
 		"接受她的祝福" = list(FALSE, "谢谢你，尽管我只是个可悲的骑士，我仍渴望守护。若无法保护他人，我不如消失..."),
 	)
+
+	work_start_lines = list("%ABNO有时会无助地流泪，不愿和%PERSON说话.")
+	middle_work_lines = list("%ABNO沉浸在她的过去，就同她的姐妹一样.")
 
 	var/mob/living/carbon/human/blessed_human = null
 	var/teleport_cooldown

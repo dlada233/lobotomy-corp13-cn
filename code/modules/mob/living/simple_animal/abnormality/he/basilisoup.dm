@@ -1,6 +1,6 @@
 // Abnormality sprited by Mel Taculo
 /mob/living/simple_animal/hostile/abnormality/basilisoup
-	name = "一生炖菜"
+	name = "冠汤翼蜥"//（出自巴士）（中世纪欧洲特殊料理）
 	desc = "一种巨大的鸟或蜥蜴，以锅为头，从皮肤里渗出汤."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "basilisoup"
@@ -50,6 +50,10 @@
 		"尝一口汤" = list(TRUE, "我拿起木勺，喝了一口汤，味道难以形容地好。这确实是一种魔法."),
 		"把它打翻" = list(FALSE, "锅在地板上翻滚，水和一块石头覆盖了整个地面。从石头里煮汤？荒谬至极."),
 	)
+
+	work_start_lines = list("一只头部酷似锅的卷曲蜥蜴.")
+	middle_work_lines = list("古老的炖菜在锅中剧烈沸腾.")
+	work_end_lines = list("这锅炖菜已经煮了太久了，以至于无法分辨出最初的食材可能是什么.")
 
 	var/spit_cooldown
 	var/spit_cooldown_time = 12 SECONDS

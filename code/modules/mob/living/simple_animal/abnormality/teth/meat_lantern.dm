@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/meat_lantern
-	name = "陆生鮟鱇"
+	name = "陆生鮟鱇"//（出自脑叶）
 	desc = "你所能看到的只是一个白色的小丘，上面有两只眼睛和一朵发光的花."
 	icon = 'ModularTegustation/Teguicons/64x32.dmi'
 	icon_state = "lantern"
@@ -45,6 +45,10 @@
 		"触摸花瓣" = list(TRUE, "这是你见过最美的事物，你伸手轻抚花瓣，指尖传来轻痒触感，突然脚下开始震动..."),
 		"呼叫安保" = list(FALSE, "如此美丽之物不应存在于都市. 你呼叫安保后匆忙返回灰色工作岗位."),
 	)
+
+	work_start_lines = list("%ABNO正一动不动地盯着%PERSON，那像小花一样的物体闪着神秘的亮光.")
+	early_work_lines = list("还没有人看到过%ABNO的全貌.")
+	late_work_lines = list("如果%ABNO成功突破了收容，那我们的公司很可能会崩溃.")
 
 	var/can_act = TRUE
 	var/detect_range = 1

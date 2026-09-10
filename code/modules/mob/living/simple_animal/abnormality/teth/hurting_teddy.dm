@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_HEX /datum/status_effect/hex
 #define STATUS_EFFECT_NAILS /datum/status_effect/nails
 /mob/living/simple_animal/hostile/abnormality/hurting_teddy
-	name = "痛苦泰迪"
+	name = "痛苦泰迪"//（出自巴士）
 	desc = "被钉子刺穿的又大又旧的泰迪熊，它褪了色的灰色皮毛上沾满了污垢."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_living = "hurting_teddy"
@@ -66,6 +66,10 @@
 			拥抱很温暖，而那些钉子摸起来柔软而有弹性。<br>\
 			片刻之后，泰迪熊似乎满足了。"),
 	)
+
+	work_start_lines = list("血迹就是%ABNO的装饰，是它曾经历痛苦的有力证明.")
+	middle_work_lines = list("一个孩子的玩具存在的意义在于孩子本身——无论是被虐待还是被玩耍，对孩子而言都一样.", "刺穿%ABNO心脏的木桩，证明了它曾受到关爱——被忽视、被遗忘，是心爱玩具最悲惨的命运.")
+	work_end_lines = list("也许它无法感受疼痛.")
 
 	var/bearfriended //the one who can work on it safely
 	var/mob/living/carbon/human/hug_victim = null

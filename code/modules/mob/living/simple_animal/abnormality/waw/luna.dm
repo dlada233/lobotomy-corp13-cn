@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_LUNAR /datum/status_effect/lunar
 /mob/living/simple_animal/hostile/abnormality/luna
-	name = "\proper 月光女神"
+	name = "\proper 月光女神"//（出自脑叶）
 	desc = "一架钢琴，旁边的凳子上坐着一个女人."
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "dellaluna"
@@ -43,6 +43,11 @@
 			你陷入绝望。"),
 		"拒绝演奏" = list(FALSE, "她未显露失望之色。<br>或许若你弹奏，便能如她般洞悉自身背后的真相。"),
 	)
+
+	work_start_lines = list("热情之炎自%ABNO的深处燃起.")
+	early_work_lines = list("无需乐谱，%ABNO将指引人们完成此生最辉煌的演出.")
+	late_work_lines = list("月光依附的演奏者所弹出的奏鸣曲美妙至极，它能打破人与人之间的壁障.")
+	work_end_lines = list("悠扬的乐声会毫无偏见地解放每一个人.")
 
 	var/performance = FALSE
 	var/performance_length = 60 SECONDS
@@ -108,6 +113,7 @@
 /mob/living/simple_animal/hostile/abnormality/luna/Worktick(mob/living/carbon/human/user, work_type)
 	if(performance)
 		user.deal_damage(rand(work_damage_lower,work_damage_upper)*0.60, BLACK_DAMAGE)	//take work damage
+	..()
 
 
 /mob/living/simple_animal/hostile/abnormality/luna/AttemptWork(mob/living/carbon/human/user, work_type)
@@ -123,7 +129,7 @@
 
 		if(breached)	//You will have to start a new performance to delete the breached abno.
 			killspawn = TRUE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/luna/proc/BreachEnd(mob/living/carbon/human/user)
 	datum_reference.qliphoth_change(3)

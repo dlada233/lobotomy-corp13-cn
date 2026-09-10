@@ -1,6 +1,6 @@
 	//Designed to be a very forgiving and standard abnormality.
 /mob/living/simple_animal/hostile/abnormality/forsaken_murderer
-	name = "被遗弃的杀人魔"
+	name = "被遗弃的杀人魔"//（出自脑叶）
 	desc = "一个看起来很不健康的人，全身裹着紧身衣."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "forsakenmurdererinert"
@@ -89,6 +89,11 @@
 		"不要切断绳子" = list(TRUE, "他的脖子啪的一声扭断，让他安静下来，永远安息."),
 		"切断绳子" = list(FALSE, "\"你觉得我很可悲，是吗，但你们这些人才是真的很可悲，因为你们会被杀，被像我这样的人杀.\""),
 	)
+
+	work_start_lines = list("%ABNO如同雕塑一般静静地跪在收容单元的角落.", "%ABNO有时会一边发抖一边自言自语.", "%ABNO会时不时地发出尖叫，但既然它被绑得死死的，所以不必太过担心.")
+	early_work_lines = list("%PERSON感到绝望.", "%PERSON在绝望的氛围中呼吸着.")
+	middle_work_lines = list("这里为什么总是又黑又冷?", "%ABNO的大脑正在黑暗中糜烂.")
+	late_work_lines = list("连死亡都遗弃了它，%ABNO将被永远囚禁在这里.", "这已不仅仅是愤怒，而是一种更加深沉，更加扭曲，更加疯狂的憎恨.")
 
 	//Unique variable im defining for this abnormality. This is the timer for their during work emotes.
 	var/work_emote_cooldown = 0

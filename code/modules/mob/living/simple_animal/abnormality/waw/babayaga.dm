@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_BABAYAGA /datum/status_effect/babayaga
 /mob/living/simple_animal/hostile/abnormality/babayaga
-	name = "芭芭雅嘎"
+	name = "芭芭雅嘎"//（出自巴士）
 	desc = "看起来像一座宫殿，大门紧闭.."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "babayaga"
@@ -47,6 +47,10 @@
 		"继续在暴风雪中徘徊" = list(FALSE, "你继续在暴风雪中徘徊，寒冷持续消耗你的力气。<br>\
 			最终你倒在雪中，全身冻僵。<br>啊...<br>再也没有痛苦了..."),
 	)
+
+	work_start_lines = list("冰之宫殿寒冷刺骨，%PERSON无法在门口久留.")
+	early_work_lines = list("%PERSON犹豫着是否敲响%ABNO的门，唯恐里面那可怕的女巫应门.", "保持冰封...便不会有痛苦.")
+	middle_work_lines = list("%%PERSON摩擦双臂取暖，但严寒丝毫不肯消退.")
 
 	var/jump_cooldown = 0
 	var/jump_cooldown_time = 35 SECONDS

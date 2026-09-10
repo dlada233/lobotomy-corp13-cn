@@ -1,6 +1,6 @@
 //ho ho hoe -gail
 /mob/living/simple_animal/hostile/abnormality/rudolta
-	name = "雪橇鲁道夫"
+	name = "雪橇鲁道夫"//（出自脑叶）
 	desc = "由三个部分拼成的异想体: 无角、毁容的驼鹿, \"圣诞老人\" 以及雪橇. \
 	鲁道夫是公正的生物，无论你喜欢与否，她都会平等地给每个人送礼物."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
@@ -40,19 +40,28 @@
 	gift_type =  /datum/ego_gifts/christmas
 	abnormality_origin = ABNORMALITY_ORIGIN_LOBOTOMY
 	//Try not to make other observations this long - This is by PM though so, we have to use it. -Coxswain
-	observation_prompt = "传说有个每年实现愿望的男人。<br>好孩子更可能见到他。<br>\
+	observation_prompt = "传说有个每年都会实现他人愿望的男人。<br>好孩子才可能见到他。<br>\
 		背着巨大麻袋的男人。<br>乘驯鹿雪橇周游世界的男人。<br>\
-		Alex收到了礼物。<br>尽管他是个顽劣的孩子。<br>这不公平。<br>我无法接受。<br>次年圣诞我去了Alex家。<br>\
-		若那人此次仍只为Alex而来，我定要质问为何从不眷顾我。<br>\
-		那夜万籁俱寂。<br>我守在沉睡的Alex身旁等待。<br>\
-		有时荒诞童话恰是绝望中仅存的微光。<br>当我见到圣诞老人时，脑中浮现肢解他的画面。<br>...<br>\
-		此刻他就在眼前。<br>我理想中的存在。<br>人们不再称其为圣诞老人。<br>麻袋中有物蠕动。我......"
+		Alex收到了礼物。<br>但他是个顽劣的孩子。<br>这不公平。<br>我无法接受。<br>于是次年圣诞我去了Alex家。<br>\
+		如果那个男人仍然为Alex而来，我一定要质问他为何从不眷顾我。<br>\
+		那夜万籁俱寂。<br>我守在沉睡的Alex身旁等待着。<br>\
+		有时荒诞童话恰是绝望中仅存的微光。<br>当我见到圣诞老人时，脑中浮现出肢解他的画面。<br>...<br>\
+		此刻他就在眼前。<br>我梦想中的存在。<br>人们不再称其为圣诞老人。<br>麻袋中有物蠕动。我......"
 	observation_choices = list(
 		"未打开麻袋" = list(TRUE, "麻袋里承载着欲望。<br>\
 			那是我自幼期盼的希望。<br>我始终未曾开启。<br>你的愿望可曾实现？"),
 		"打开了麻袋" = list(FALSE, "里面盛着我毕生渴求之物。<br>\
-			如潘多拉魔盒，永无归袋之日。"),
+			如潘多拉魔盒，一旦打开便永无归袋之日。"),
 	)
+
+	work_start_lines = list("锈钟鸣响，悲惨的圣诞开始了.",
+	"错位的下巴，松软的舌头，诉说着断断续续的话语，没有人能理解它的意图.", "那位象征着不幸的老头，如今在哪里?")
+	early_work_lines = list("形形色色的彩灯如同圣诞一般明朗，亦如每个孩子的生命一般黯淡.",
+	"缝纫的手法很是糟糕，但你不难看出制作者那病态的痴迷.")
+	middle_work_lines = list("嚯，圣诞节，可怕的狂欢节。真想把每个人的舌头都给拔下来，看你们还拿什么唱颂歌.",
+	"我向你送出了礼物，充斥着无尽憎恨的礼物.")
+	late_work_lines = list("我们无法确定%ABNO是否具有生命，它的一切动作可能是由它本身就有的能源所驱使着的.",
+	"%ABNO漫无目的地游荡着，它想把自己的礼物送给大家.")
 
 	var/pulse_cooldown
 	var/pulse_cooldown_time = 1.8 SECONDS

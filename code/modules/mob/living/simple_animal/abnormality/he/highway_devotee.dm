@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/highway_devotee
-	name = "公路里程表"
+	name = "公路里程表"//（出自巴士）（巴士事件）
 	desc = "一个巨大的牌子上写着“道路封闭”."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "highway_devotee"
@@ -52,6 +52,10 @@
 			\"交通之神不会宽恕这种投机取巧的行为。\"<br>\
 			你走上小道，背后刺人的目光伴随了你许久。"),
 	)
+
+
+	work_start_lines = list("在十字路口，%ABNO做出了抉择.")
+	middle_work_lines = list("交通之神绝不会放过不听从%ABNO建议的人.")
 
 	var/talk = FALSE
 	var/list/structures = list()

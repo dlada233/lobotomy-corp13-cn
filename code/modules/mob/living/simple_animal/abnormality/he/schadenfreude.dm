@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/schadenfreude
-	name = "幸灾乐祸"
+	name = "幸灾乐祸"//（出自脑叶）
 	desc = "有锁眼的盒子，你不会想知道里面是什么."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "schadenfreude"
@@ -46,8 +46,11 @@
 		"摸索墙壁" = list(TRUE, "你转身沿墙摸索，最终寻路返回门口。<br>\
 			金属盒终究只是容器，唯有他人注视才能赋予其真实存在。<br>或许你们比想象中更为相似。"),
 		"摘下眼罩" = list(FALSE, "你扯下眼罩待视线适应光线，与锁孔中的瞳孔四目相对。<br>\
-			盒子骤然化作旋转的锯刃刀丛，而这一切——只为攫取你的注视。"),
+			盒子骤然化作旋转的锯刃刀丛，而这一切的一切只为攫取你的注视。"),
 	)
+
+	work_start_lines = list("“不要看它”的警告引起了许多员工的好奇，并最终导致了许多可怕的事故.")
+	middle_work_lines = list("当你独自一人时，如果你觉得有什么东西正在凝视着你，那就意味着一切都为时已晚.")
 
 	var/seen //Are you being looked at right now?
 	var/solo_punish	//Is an agent alone on the Z level, but not overall?

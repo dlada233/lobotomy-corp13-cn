@@ -45,6 +45,10 @@
 			<br>但随后她如泡影消散，原来这不过是你的一枕黄粱."),
 	)
 
+	work_start_lines = list("她当初被告知，时间会一眨眼就过去.")
+	early_work_lines = list("如今的静滞技术更加可靠，但事故依然会发生.")
+	work_end_lines = list("她是否仍在梦见那个她入睡时等待的世界，还是说，她现在梦见的是自己抛下的一切？")
+
 	var/list/sleeplines = list(
 		"你好...",
 		"我正穿越帷幕与你对话...",
@@ -127,7 +131,7 @@
 		user.drowsyness += 30
 		user.Sleeping(30 SECONDS) // Won't get any info, but you can listen for any breaches for 30 seconds
 		return FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/oracle/proc/OnAbnoBreach(datum/source, mob/living/simple_animal/hostile/abnormality/abno)
 	SIGNAL_HANDLER

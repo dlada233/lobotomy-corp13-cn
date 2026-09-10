@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/mhz
-	name = "1.76 MHz"
+	name = "1.76 MHz"//（出自脑叶）（原版/原创混用）
 	desc = "除了噪点你什么都看不到."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "mhz"
@@ -48,6 +48,11 @@
 			无法抑制的愤怒与对不公的悲伤充斥着你，你离开了收容室."),
 		"忘记" = list(FALSE, "但你无法忘记，赎罪完成前绝不忘记."),
 	)
+
+	work_start_lines = list("%PERSON感到一股不详的压迫感.")
+	early_work_lines = list("%PERSON能感受到笼罩着整个收容单元的悲伤与愤怒.")
+	middle_work_lines = list("%PERSON能闻到远处传来的腥味.")
+	work_end_lines = list("%PERSON总觉得有人在远处尖叫.")
 
 	var/reset_time = 4 MINUTES //Qliphoth resets after this time. To prevent bugs
 

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/alriune
-	name = "爱娜温"
-	desc = "高大的粉红色异想体，形似马匹。有六条尖腿，无臂的上半身覆盖亮青色叶片，眼窝空荡布满花朵，口中伸出粉色花朵。"
+	name = "爱娜温"//（出自脑叶）
+	desc = "高大的粉红色异想体，形似马匹。有六条尖腿，无臂的上半身覆盖亮蓝色叶片，眼窝空荡布满花朵，口中伸出粉色花朵。"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "alriune"
 	icon_living = "alriune"
@@ -41,6 +41,13 @@
 		"冬天将会到来" = list(TRUE, "冬天将至。<br>\
 			在忙乱中，我的消亡渐渐走向终点。"),
 	)
+
+	work_start_lines = list("赤身裸体地来到这方天地的人儿啊，也将一丝不挂地归于天地之中.", "%ABNO记得它内里的黑灰.")
+	early_work_lines = list("也许，我们是想创造一个没有心的人儿吧.", "那些花儿永不凋零，它们无可奈何地绽放着.")
+	middle_work_lines = list("%PERSON想来一场春眠，如同花儿般的春眠.", "成簇的薰衣草将要铺满整个收容单元，将其晕染，%PERSON正为此而激动.")
+	late_work_lines = list("复又盛放过，而复又凋零过的%ABNO理解了重生的意义. 无论行至何处，痕迹将存，而生命也将聚集至%ABNO.",
+	"以花入眠的%PERSON身上涌出了沁人的芳香，而非鲜血.")
+	work_end_lines = list("鲜花正在每个人的心头怒放.")
 
 	/// Currently displayed petals. When value is at 3 - reset to 0 and perform attack
 	var/petals_current = 0

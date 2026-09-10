@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/ardor_moth
-	name = "红焰蛾"
+	name = "红焰蛾"//（出自巴士）
 	desc = "似火的飞蛾."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	pixel_x = -8
@@ -64,6 +64,11 @@
 			瞬间有股寒意爬上脊背，但这或许是正确选择。<br>\
 			连小孩都知道不可以随便玩火。"),
 	)
+
+	work_start_lines = list("微小而深红的火焰颗粒如光环般环绕着%ABNO.")
+	early_work_lines = list("燃烧的翅膀瞬间熄灭，紧接着又猛烈地咆哮起来.")
+	middle_work_lines = list("%PERSON正看着%ABNO，想着篝火的事.", "%PERSON回忆起自己玩火时被烧伤的经历.")
+	work_end_lines = list("无数蝴蝶形状的花朵轻轻颤动，化作一片星海.")
 
 	light_color = COLOR_ORANGE
 	light_range = 3

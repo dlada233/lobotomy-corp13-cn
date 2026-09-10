@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/punishing_bird
-	name = "惩戒鸟"
+	name = "惩戒鸟"//（出自脑叶）
 	desc = "一只长着小喙的白色鸟，看起来人畜无害."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pbird_breach"
@@ -68,6 +68,12 @@
 		"小鸟" = list(TRUE, "不管你给它取什么名字，它都接受. 它的本质永远不会改变."),
 		"惩戒鸟" = list(TRUE, "不管你给它取什么名字，它都接受. 它的本质永远不会改变."),
 	)
+
+	work_start_lines = list("因为%ABNO看起来很无聊，所以员工们在%ABNO的收容单元里放了一棵用作栖息处的树.",
+	"“%ABNO站在树上，回想着那片它曾经居住过的森林以及它的过去.")
+	middle_work_lines = list("大多数时候，“%ABNO都像一只普通的鸟一样在收容单元内飞来飞去.",
+	"“%ABNO从不鸣叫，但它的腹部有时会隐隐的抽搐.")
+	work_end_lines = list("没有多少人知道“%ABNO那隐藏的獠牙.", "有多少人知道“%ABNO那分为几块的，令人作呕的肉？.")
 
 	do_not_possess = TRUE
 

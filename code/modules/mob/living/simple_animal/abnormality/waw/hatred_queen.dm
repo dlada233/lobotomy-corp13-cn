@@ -1,6 +1,6 @@
 #define HATRED_COOLDOWN (15 SECONDS)
 /mob/living/simple_animal/hostile/abnormality/hatred_queen
-	name = "憎恶女王"
+	name = "憎恶皇后"//（出自脑叶）
 	desc = "一个反常的异想体，穿着相当奇怪的衣服，像一个皮肤苍白的女孩. \
 	就在她身后，你看到一根魔杖."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
@@ -73,6 +73,20 @@
 			...<br>\
 			为何依然如此平静..？"),
 	)
+
+	// TODO - different lines when hysteric
+	work_start_lines = list("%ABNO是所有异想体中表现得最活跃，最欢快的. 但实际上她可能不止如此.",
+	"迄今为止，%ABNO看起来对我们很友善，但仍需谨慎对待她.",
+	"%ABNO的潜在威胁众所周知，因此请时刻对她保持警惕.", "事实上，\"和平\"并不是%ABNO所期待的结果.")
+	early_work_lines = list("%ABNO正哼着小调，凝望窗外，看起来心情很不错.", "%ABNO用一个灿烂的微笑迎接刚进收容单元工作的员工.",
+	"\"今天也是完美的一天!\"%ABNO向%PERSON问好.", "%ABNO显然很高兴看见%PERSON.")
+	middle_work_lines = list("%ABNO正得意地向%PERSON讲述她一个人放倒三个坏蛋的故事.",
+	"%PERSON静静听着%ABNO的故事. 尽管这些故事已经被她讲了好多好多遍了，但她完全讲不腻.",
+	"%ABNO讲到曾经有个坏人在她的引导下洗心革面. %PERSON赞赏了她，她笑得可开心了.")
+	late_work_lines = list("她的\"魔法战靴\"有时敲击在一起，发出欢快的声音.", "她脖子上的\"魔法首饰\"在灯光下闪闪发亮.",
+	"她那华丽的魔法蕾丝裙正充满活力地摆动着.")
+	work_end_lines = list("%ABNO对%PERSON谈起了\"职责\"，她低声说道自己的职责是十分重要而神秘的.",
+	"%ABNO对%PERSON谈起了\"正义\"，她低声说自己的工作本身即代表着正义.")
 
 	var/obj/effect/qoh_wand/wand
 	var/chance_modifier = 1

@@ -54,22 +54,22 @@
 			但众人见了我之后神色却显露颓丧. <br>其中一个人漠然道：“这里面，你将与我们永世同在.”"),
 	)
 
+	work_start_lines = list("%ABNO的许多眼睛注视着%PERSON，但尚未受到全景监视系统的特别关注")
+	early_work_lines = list("在这个收容单元中，%ABNO只是个普通的囚犯，这其中蕴含着一种讽刺意味.")
+	middle_work_lines = list("也许%PERSON和其他所关押的异想体一样，都是这个地方的囚徒.", "又或者，只是囚犯在掌控着精神病院？")
+	late_work_lines = list("在这里，你和我们在一起，永远.")
+
 	var/finishing = FALSE
-
 	var/captured_souls = 0
-
 	var/resistance_decrease = 0.2
-
 	var/base_red_resistance = 0.7
 	var/base_white_resistance = 1.2
 	var/base_black_resistance = 0.4
 	var/base_pale_resistance = 1.5
-
 	var/new_red_resistance = 0.7
 	var/new_white_resistance = 1.2
 	var/new_black_resistance = 0.4
 	var/new_pale_resistance = 1.5
-
 	var/damage_down = 2
 
 /mob/living/simple_animal/hostile/abnormality/warden/Login()

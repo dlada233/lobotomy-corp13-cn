@@ -4,7 +4,7 @@
 //He just uses Red buddy as a means to escape but in reality he loves the little guy for it.
 //-Kirie Saito
 /mob/living/simple_animal/hostile/abnormality/blue_shepherd
-	name = "蓝袍牧羊人"
+	name = "蓝袍牧羊人"//（出自漫画）（寓言 狼来了）
 	desc = "一个穿着蓝袍子的奇怪人形生物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "blueshep"
@@ -62,6 +62,13 @@
 			像我这般无生命的造物与那条野狗本不配被爱，但它仍会永远等我。<br>可有人等你？"),
 		"释放他" = list(FALSE, "明智之选，其他人无需担忧，我以尾指起誓绝不伤他们分毫."),
 	)
+
+	work_start_lines = list("%ABNO是一位值得信赖的牧羊人，也是人民的守护者. 至少，他希望人们这样认为.",
+	"%ABNO能够镇压异常体，却有个令人担忧的倾向：为了逃避而喊“狼来了”.")
+	early_work_lines = list("如果任由其自行发展，%ABNO将一整天都在散布谎言.",
+	"%ABNO总是在询问某只特定的牧羊犬.")
+	middle_work_lines = list("仅仅与%ABNO交谈就可能导致精神堕落.", "如果%PERSON能瞥见%ABNO兜帽下的身体，就能发现过往战斗留下的伤疤.")
+	late_work_lines = list("几乎没有比%ABNO更外显狡诈的异想体了.", "实际上，%ABNO正在带领羔羊前去被屠宰.")
 
 	var/death_counter //He won't go off a timer, he'll go off deaths. Takes 8 for him.
 	var/slash_current = 4

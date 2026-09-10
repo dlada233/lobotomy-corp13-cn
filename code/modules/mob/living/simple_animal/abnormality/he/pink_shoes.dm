@@ -2,7 +2,7 @@
 #define STATUS_EFFECT_PINKSHOES /datum/status_effect/display/pinkshoes
 GLOBAL_LIST_EMPTY(ribbon_list)
 /mob/living/simple_animal/hostile/abnormality/pink_shoes
-	name = "粉红鞋"
+	name = "粉红鞋"//（出自漫画）
 	desc = "一双可爱的粉色鞋子。"
 	health = 600
 	maxHealth = 600
@@ -51,6 +51,13 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		"戴上缎带" = list(FALSE, "哦，是的... 这感觉真好， <br>缎带神奇地变成闪亮的鞋子。  <br>现在你可以去任何你想去的地方。 <br>可能吧。"),
 		"拒绝" = list(TRUE, "\"从幻想中醒来！这都是谎言！\" <br>一个憔悴的员工设法在最后一刻阻止了你。 <br>多亏了那个警告，你避开了充满欲望的缎带。"),
 	)
+
+	work_start_lines = list("%PERSON纳闷自己的鞋子怎么会在这里，随后想起并提醒自己，自己根本没有这样的粉色鞋子.",
+	"我会带你去任何你想去的地方...")
+	middle_work_lines = list("%PERSON感到强烈的欲望想要穿上%ABNO.", "你的欲望是什么？..", "穿上我吧.")
+	late_work_lines = list("%PERSON感到一种强烈的欲望，想要实现自己曾经所有的冲动.",
+	"%PERSON想象自己被%ABNO的丝带缠住会是什么感觉，随即又打消了这个念头")
+	work_end_lines = list("%ABNO有一条丝带位置不对，但%PERSON拒绝去调整它.")
 
 	ranged = TRUE
 	environment_smash = FALSE//this stops it from smashing its own ribbons when breaching independently

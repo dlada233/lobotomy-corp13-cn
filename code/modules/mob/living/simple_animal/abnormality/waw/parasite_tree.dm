@@ -5,7 +5,7 @@
 //is better than using global values. Evidence is leaning towards yes.
 
 /mob/living/simple_animal/hostile/abnormality/parasite_tree
-	name = "寄生树"
+	name = "寄生树"//（出自脑叶）
 	desc = "一棵绿色的树皮树，树干中央嵌着一张平静的脸，它散发出一种宁静的气氛."
 	icon = 'ModularTegustation/Teguicons/128x128.dmi'
 	icon_state = "parasitetreeshine"
@@ -59,6 +59,12 @@
 			当你们痴迷地望着即将绽放的花苞时，它说：\"让我赐予你们一些礼物...\"<br>\
 			我感觉体内有什么东西正在萌发..."),
 	)
+
+	work_start_lines = list("收容单元的空气中弥漫着青草的清香.", "%PERSON感受到了一阵本不可能出现在收容单元中的微风.")
+	early_work_lines = list("树叶摇摆的沙沙声出乎意料地令人安心.", "缕缕花香萦绕在%PERSON四周.")
+	middle_work_lines = list("这里的职员大多都不快乐，因此哪怕是再小的祝福，也会让他们无比欣喜.")
+	late_work_lines = list("%PERSON得到了散发着温暖光芒的祝福.")
+	work_end_lines = list("当那给予%PERSON的祝福之花终于绽放时，将会...")
 
 	var/origin_cooldown = 0 //null when compared to numbers is a eldritch concept so world.time cannot be more or less.
 	var/static/list/blessed = list() //keeps track of status effected individuals

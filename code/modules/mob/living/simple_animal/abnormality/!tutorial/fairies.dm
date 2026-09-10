@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/fairy_swarm
-	name = "Fairy Swarm"
-	desc = "A swarm of chittering fairies."
+	name = "精灵群"
+	desc = "一群叽叽喳喳的精灵."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "fairies"
 	icon_living = "fairies"
@@ -27,6 +27,10 @@
 	can_breach = TRUE
 	start_qliphoth = 2
 	can_spawn = FALSE // Normally doesn't appear
+
+	// Tutorial abnormality - doesn't really need a final observation.
+	work_start_lines = list("%ABNO 不过是一小群精灵, 还不能称其为 \"盛宴\".")
+	middle_work_lines = list("初级员工无需了解 \"精灵的关怀\" 这一说法的真正含义.")
 
 /mob/living/simple_animal/hostile/abnormality/fairy_swarm/BreachEffect(mob/living/carbon/human/user, breach_type)
 	. = ..()

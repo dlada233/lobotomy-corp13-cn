@@ -2,7 +2,7 @@
 //Reworked by Crabby!!!!
 #define STATUS_EFFECT_FAIRY_LIGHTS /datum/status_effect/fairy_lights
 /mob/living/simple_animal/hostile/abnormality/titania
-	name = "提泰妮娅"
+	name = "提泰妮娅" //（出自漫画）（仲夏夜之梦）
 	desc = "巨大的精灵."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "titania"
@@ -46,6 +46,11 @@
 		"我不是他" = list(FALSE, "啊...<br>区区人类，人类，人类. <br>停止恐惧，我将解除你的痛苦. <br>作为花朵重生吧. "),
 		"保持沉默" = list(FALSE, "啊...<br>区区人类，人类，人类. <br>停止恐惧，我将解除你的痛苦. <br>作为花朵重生吧. "),
 	)
+
+	work_start_lines = list("%ABNO 正在寻找它的\"丈夫\", 奥伯龙.")
+	middle_work_lines = list("%ABNO 毫不厌倦地宣泄它对宿敌的仇恨.", "%ABNO宣称着对\"奥伯龙\"--其孩子的窃贼--怀有仇恨.")
+	work_end_lines = list("%PERSON被%ABNO的精灵环绕着.", "精灵们往返于%ABNO之间运送鲜花.")
+
 	patrol_cooldown_time = 5 SECONDS
 	var/fairy_spawn_number = 3
 	var/fairy_spawn_time = 5 SECONDS
@@ -270,7 +275,7 @@
 /mob/living/simple_animal/hostile/abnormality/titania/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(user.sanityhealth != user.maxSanity)
 		agent_notfullsp = TRUE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/titania/FailureEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()

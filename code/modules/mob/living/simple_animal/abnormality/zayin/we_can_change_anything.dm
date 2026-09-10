@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_CHANGE /datum/status_effect/we_can_change_anything
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything
-	name = "我们可以改变一切"
+	name = "我们可以改变一切"//（出自脑叶）
 	desc = "一个人体大小的容器，里面有尖刺，你不应该进去"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "wecanchange"
@@ -54,6 +54,13 @@
 			现在一切都会好起来的."),
 	)
 
+	work_start_lines = list("在家用清洁机器人\"小帮手\"走红之后，XX有限公司推出了第二款全新的家用机器人——\"我们可以改变一切\".")
+	early_work_lines = list("作为XX有限公司的产品，这款机器人同样内置了多种功能.")
+	middle_work_lines = list("孩子不乖老哭闹？我们能改变这一切！", "身材走样不喜欢？我们能改变这一切！",
+	"生活疲累又缺钱？我们能改变这一切！")
+	late_work_lines = list("超简单的使用方法！打开这台机器，然后走进去，按下按钮，哔哔哔哔~现在，一切都会好起来哒！")
+	work_end_lines = list("员工进入这台机器之后，它就会持续生产能源。进入其中的员工从没想过出来，所以我们推测机器内部一定相当舒适~")
+
 	var/grinding = FALSE
 	var/grind_duration = 5 SECONDS
 	var/grind_damage = 0.4 // Dealt 100 times
@@ -89,7 +96,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(work_type != "进入机器")
-		return TRUE
+		return ..()
 	if(total_energy >= 2000) // Cant just spam the work
 		say("[total_energy]PE-Box收集中，处理能量中，请保持等待状态!")
 		return FALSE
@@ -98,9 +105,10 @@
 	StoreWorker(user) //Yoink.
 	datum_reference.max_boxes = 100 //much longer than a normal work.
 	sacrifice = TRUE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/we_can_change_anything/Worktick(mob/living/carbon/human/user)
+	..()
 	if(!sacrifice)
 		user.deal_damage(1, RED_DAMAGE) // say goodbye to your kneecaps chucklenuts!
 	else

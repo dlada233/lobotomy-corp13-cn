@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/onesin
-	name = "一罪与百善"
+	name = "一罪与百善"//（出自脑叶）
 	desc = "它是一个巨大的头骨，挂在十字架上，戴着荆棘王冠."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "onesin_halo_normal"
@@ -52,8 +52,18 @@
 			你亦执掌伟力. <br>为至善之故，你甘愿高举裁决之斧."),
 	)
 
-	var/halo_status = "onesin_halo_normal" //used for changing the halo overlays
+	work_start_lines = list("进入%ABNO的收容单元时，出于对它的一无所知，%PERSON感受到了恐惧.", "通常情况下，%ABNO能够对员工们产生积极的影响.",
+	"指派一名\"诚实\"的员工进入%ABNO的收容单元是再好不过的.", "%ABNO能够看透你的灵魂.")
+	early_work_lines = list("%ABNO等待着人们的罪孽.", "%PERSON的罪孽很快就会被%ABNO吸收.",
+	"%ABNO有时会紧咬牙关，发出骇人的声响，但这其实没什么可担心的.","%ABNO正缓慢地飘浮在空中.")
+	middle_work_lines = list("%ABNO没有眼睛，但它能感知到%PERSON的存在.",
+	"%ABNO是人类的惩戒者.", "%PERSON见证了%ABNO的庄严肃穆.")
+	late_work_lines = list("%PERSON完成了工作，但%ABNO没有丝毫的回应.", "在%PERSON进行工作的时候，%ABNO没有任何反应.",
+	"%ABNO并没有回应%PERSON.")
+	work_end_lines = list("承受苦难，仅仅只是赎罪的开始.", "只有那些能够熟练地欺骗自己的人才能过上'幸福'的生活.",
+	"为了正义而犯下的罪孽，能够被赦免吗?")
 
+	var/halo_status = "onesin_halo_normal" //used for changing the halo overlays
 	var/wn_work = FALSE
 
 //Overlay stuff
@@ -84,7 +94,7 @@
 		else
 			to_chat(user, span_warning("异想体似乎忽略了你，也许试试忏悔"))
 			return FALSE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/onesin/SpeedWorktickOverride(mob/living/carbon/human/user, work_speed, init_work_speed, work_type) //THE RIDE NEVER ENDS
 	if(wn_work)

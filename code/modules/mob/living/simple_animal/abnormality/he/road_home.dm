@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/road_home
-	name = "回家的路"
+	name = "回家的路"//（出自漫画）（出自图书馆）（绿野仙踪）
 	desc = "像小女孩的异想体."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "road_home"
@@ -45,11 +45,15 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5
 	)
 
-	observation_prompt = "最后，这条路是错的. <br>我要送你回家. <br>于是巫师给予了你..."
+	observation_prompt = "最后，这条路是错的. <br>我要送你回家. <br>于是大巫师给予了你..."
 	observation_choices = list(
-		"无法被抵达的家" = list(TRUE, "当你无处可去的时候，还在如此辛苦地奋斗什么?"),
+		"永远回不去的家" = list(TRUE, "当你无处可去的时候，还在如此辛苦地奋斗什么?"),
 		"回家的路" = list(FALSE, "穿上这双鞋，走吧，回你思念的家."),
 	)
+
+	work_start_lines = list("由于恶人的行为，%ABNO回家的路被夺走了.")
+	early_work_lines = list("无论她走多少遍这条路，她渴望的家园始终无法抵达。")
+	late_work_lines = list("%ABNO正在寻找像她这样的人，再次踏上黄砖路.")//yellow brick road(黄砖路，梦想之路)
 
 	///Stuff related to the house and its path
 	var/obj/road_house/house

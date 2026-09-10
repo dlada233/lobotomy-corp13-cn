@@ -49,6 +49,10 @@
 			黑色的羽毛与悔恨..."),
 	)
 
+	work_start_lines = list("有一天, %ABNO从天而降.", "%ABNO在很久以前突然出现，仿佛从天而降.", "%PERSON对%ABNO几乎一无所知.")
+	middle_work_lines = list("%PERSON想知道星空之外藏着什么.", "%ABNO不理解人类，亦非人类所能理解.")
+	work_end_lines = list("总有一天, %ABNO将回到星空之上某处地方.", "%PERSON 无法直接观察 %ABNO，否则会感到怪异.")
+
 	var/explosion_timer = 2 SECONDS
 	var/explosion_state = 3
 	var/explosion_damage = 30
@@ -241,7 +245,7 @@
 		animate(user, transform = user.transform*0.01, time = 5)
 		user.death(TRUE)
 		QDEL_IN(user, 5)
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/space_lady/FailureEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()

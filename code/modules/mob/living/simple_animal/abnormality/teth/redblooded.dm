@@ -64,6 +64,11 @@
 			\"你和动物有什么区别？<br>滚出我的视线。\""),
 	)
 
+	work_start_lines = list("%PERSON感到自己不得不向%ABNO敬礼.")
+	early_work_lines = list("%ABNO表示你们这一代人完蛋了.", "%ABNO表示\"他那一代人.\"是多么坚强能干")
+	middle_work_lines = list("%ABNO在清理霰弹枪时哼唱着爱国歌曲.")
+	work_end_lines = list("%PERSON纳闷%ABNO怎么能负担起这么多子弹.")
+
 	var/ammo = 6
 	var/max_ammo = 6
 	var/reload_time = 2 SECONDS

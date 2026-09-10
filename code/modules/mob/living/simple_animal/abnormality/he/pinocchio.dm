@@ -1,6 +1,6 @@
 //Coded by Coxswain
 /mob/living/simple_animal/hostile/abnormality/pinocchio
-	name = "匹诺曹"
+	name = "匹诺曹"//（出自图书馆）（童话）
 	desc = "它是一个木制的人形木偶，带着孩子般的喜悦哼着歌."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "pinocchio"
@@ -41,6 +41,17 @@
 		"你是人类" = list(FALSE, "我看起来像人类吗？<br>希望我骗到你了，别人上当可是他们自己的错。"),
 	)
 
+	work_start_lines = list("%PERSON提醒%ABNO谁才是员工，谁又是异想体.",
+	"%ABNO已经准备好开始工作了.", "我一如既往的渴望学习. 你愿意看到我学习吗?")
+	early_work_lines = list("我梦想变成人类.", "%PERSON抓了抓痒，%ABNO也跟着模仿.",
+	"都市不能容忍任何非人但可以思考的东西.", "啦啦啦...我跟着唱起那首所有人都在唱的谎言之歌.")
+	middle_work_lines = list("人无时无刻不在说谎，为什么这会是件坏事？",
+	"%PERSON对%ABNO不断的模仿感到沮丧.", "我看起来像个人类吗? 我希望像...")
+	late_work_lines = list("别无选择，我只能撒谎才能变成人类...",
+	"%ABNO说了一些%PERSON知道是假的谎话，后者告诉%ABNO停止撒谎.", "%PERSON思考着，首脑没有动手，是否意味着%ABNO终究还是人类.")
+	work_end_lines = list("我可以...不变成人类吗？", "你为什么没被骗到...？那谎言几乎完美...",
+	"%ABNO试图与%PERSON一同离开，却被告知只有人类才被允许离开.")
+
 	var/lying = FALSE
 	var/caught_lie = FALSE
 	var/mob/living/carbon/human/species/pinocchio/realboy = null
@@ -49,7 +60,7 @@
 			"直觉" = 0,
 			ABNORMALITY_WORK_INSIGHT = 0,
 			ABNORMALITY_WORK_ATTACHMENT = 0,
-			"压害" = 0,
+			"压泊" = 0,
 			"说谎是不对的!" = 100,
 		),
 		"lie2" = list(
@@ -60,9 +71,9 @@
 			"说谎是不对的!" = 100,
 		),
 		"lie3" = list(
-			"术能" = 0,
+			"木能" = 0,
 			ABNORMALITY_WORK_INSIGHT = 0,
-			"沟解" = 0,
+			"勾通" = 0,
 			ABNORMALITY_WORK_REPRESSION = 0,
 			"说谎是不对的!" = 100,
 		),

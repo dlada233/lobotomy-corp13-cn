@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_GOLDENSHEEN /datum/status_effect/stacking/golden_sheen
 #define STATUS_EFFECT_MAGGOTS /datum/status_effect/stacking/maggots
 /mob/living/simple_animal/hostile/abnormality/golden_apple
-	name = "金苹果"
+	name = "金苹果"//（出自巴士）（希腊神话）
 	desc = "长着四肢的巨大的奇形怪状的苹果."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "gold_inert"
@@ -85,6 +85,10 @@
 			你被卷入虫潮。<br>\
 			蛆群缓慢啃噬，你的躯体遍布创口。"),
 	)
+
+	work_start_lines = list("%ABNO的隔离单元散发着腐烂的气味.", "%ABNO看起来一如既往地无暇华丽，但空气中却弥漫着一丝污浊的气息.")
+	middle_work_lines = list("%PERSON一度以为%ABNO的内部可能是空心的，但很快否定了这个想法.",
+	"%PERSON认为如果能把%ABNO带回家，就再也不用工作了.")
 
 	var/is_maggot = FALSE
 	var/can_act = TRUE

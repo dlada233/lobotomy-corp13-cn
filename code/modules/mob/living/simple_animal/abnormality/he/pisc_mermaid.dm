@@ -3,7 +3,7 @@
 //They are somehow more high maintenance than both melting love and rose, but is way easier to work with, assuming you remember to work on them.
 //You wouldn't forget about them would you Anon? - Caluan
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid
-	name = "池中人鱼"
+	name = "池中人鱼"  //（出自漫画）
 	desc = "像美人鱼的无肢畸形物她们心形的眼睛带着爱和嫉妒看着你."
 	icon = 'ModularTegustation/Teguicons/48x32.dmi'
 	icon_state = "pmermaid_standing"
@@ -49,7 +49,7 @@
 		/mob/living/simple_animal/hostile/abnormality/siltcurrent = 1.5//check siltcurrent.dm for my reasoning
 	)
 
-	observation_prompt = "\"你说过爱我，那是真心的吗？<br>我为你斩断四肢，<br>若你说不必看见，我连双眼也能挖出。\"<br>她拍打海蓝色鱼尾，泡沫、海水和别的东西溅向你。<br>\
+	observation_prompt = "\"你说过爱我，那是真心的吗？<br>我愿为你斩断四肢，<br>若你说不必看见，我连双眼也能挖出。\"<br>她拍打海蓝色鱼尾，泡沫、海水和别的东西溅向你。<br>\
 		\"我为你做了礼物，戴上它并说你爱我吧。\"<br>\
 		海水将梳子带到你脚边，你拾起它，而她期待地望着你。"
 	observation_choices = list(
@@ -60,6 +60,10 @@
 			\"真高兴你把心给了我...\"<br>她低语着吻住你，将你越拉越深，海水漫过胸膛又没过头顶，她却不肯松开怀抱。<br>\
 			盐水灌入你的肺，你失去了意识。"),
 	)
+
+	work_start_lines = list("装满海盐的袋子在水边依次排开.", "\"我爱你.\"", "%ABNO表面看似无辜，实则隐藏着真实本质.")
+	middle_work_lines = list("%PERSON从袋子中掏出一大把盐，狠狠朝%ABNO撒去.", "\"我会永远爱你...\"")
+	work_end_lines = list("只是个圆滚滚的红色小球，爬满着...爱.", "%ABNO潜入深海.")
 
 	response_help_continuous = "pets" //You sick fuck
 	response_help_simple = "pet"
@@ -98,7 +102,7 @@
 		icon_living = "pmermaid_laying"
 		icon_state = "pmermaid_laying"
 		workingflag = TRUE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/pisc_mermaid/PostWorkEffect(mob/living/carbon/human/user, work_type, pe, work_time)
 	if(status_flags & GODMODE)

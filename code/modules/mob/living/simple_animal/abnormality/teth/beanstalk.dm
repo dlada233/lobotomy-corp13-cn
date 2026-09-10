@@ -1,6 +1,6 @@
 //Coded by Coxswain, sprite by Mel
 /mob/living/simple_animal/hostile/abnormality/beanstalk
-	name = "没有杰克的豆茎"
+	name = "没有杰克的豆茎"//（出自脑叶废案）（英国童话 杰克与魔豆）
 	desc = "一根巨大的茎，高度远超目视极限."
 	icon = 'ModularTegustation/Teguicons/64x98.dmi'
 	icon_state = "beanstalk"
@@ -37,6 +37,11 @@
 		"爬上豆茎" = list(FALSE, "你开始攀爬豆茎，但无论爬了多久，上方总还有更多茎干. 你眯眼望向云层，却仍看不到任何人影..."),
 	)
 
+	work_start_lines = list("%PERSON看到一根高得难以置信的豆茎.")
+	early_work_lines = list("无论如何都没法将%ABNO完全封进收容单元里.",
+	"%PERSON回忆起一名员工痴迷于这个异想体，不断攀登豆茎至顶端，然后再未归来.")
+	late_work_lines = list("也许攀登上去的员工过得不错.", "他们说有一个可怕的食人巨人在%ABNO顶端.")
+
 	var/climbing = FALSE
 
 /mob/living/simple_animal/hostile/abnormality/beanstalk/Move()
@@ -51,7 +56,7 @@
 		work_damage_upper *= 2
 		work_damage_lower *= 1.5
 		climbing = TRUE
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/beanstalk/proc/ResetWorkDamage()
 	work_damage_upper = initial(work_damage_upper)

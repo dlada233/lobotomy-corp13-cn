@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/ppodae
-	name = "波迪"
+	name = "波迪"//（出自脑叶）
 	desc = "世界上最好的狗狗"
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "ppodae"
@@ -45,6 +45,11 @@
 		"怪物" = list(TRUE, "我不知道之前怎么没看出来，我冲出去警告其他人。第二天就被解雇了。"),
 		"小狗" = list(FALSE, "这是我见过最可爱的小狗。"),
 	)
+
+	work_start_lines = list("%ABNO的皮毛蓬松又柔软，当你情绪低落的时候，不妨来摸摸它吧.")
+	early_work_lines = list("迄今为止，员工们至少拍下了55张有关%ABNO的照片.")
+	late_work_lines = list("如果你觉得%ABNO不可爱，那么这足以成为你被降级的理由.")
+	work_end_lines = list("有时，%ABNO的身边会多出几根来源不明的骨头，可又有谁会在乎呢？")
 
 	var/smash_damage_low = 4
 	var/smash_damage_high = 8

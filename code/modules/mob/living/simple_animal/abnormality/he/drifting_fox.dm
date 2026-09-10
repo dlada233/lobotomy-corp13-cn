@@ -2,7 +2,7 @@
 // By yours truely, Mori.
 #define STATUS_EFFECT_FALSEKIND /datum/status_effect/false_kindness
 /mob/living/simple_animal/hostile/abnormality/drifting_fox
-	name = "流浪狐狸"
+	name = "流浪狐狸"//（出自巴士）
 	desc = "一只毛茸茸的大狐狸，黄色的眼睛闪闪发光；破伞卡在它的背上."
 	icon = 'ModularTegustation/Teguicons/96x96.dmi'
 	icon_state = "drifting_fox"
@@ -71,6 +71,9 @@
 			接着，它用嘴里的伞拍打你。<br.\
 			似乎是在谴责你这种不计后果的解决态度。"),
 	)
+
+	work_start_lines = list("当独自一人时，%ABNO有时会哭泣，仿佛望着天空嚎叫一般.")
+	middle_work_lines = list("%PERSON 想象着 %ABNO 在后街的小巷之间闷闷不乐地踱步.", "%ABNO 背上的雨伞或许曾经崭新如初，如今却已破旧不堪，布满污垢.")
 
 	var/list/pet = list()
 	pet_bonus = "yips"

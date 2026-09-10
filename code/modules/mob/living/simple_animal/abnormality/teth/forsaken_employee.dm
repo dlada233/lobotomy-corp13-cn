@@ -54,6 +54,10 @@
 			你持续观察倾听。仔细分辨发现声响带有节奏，或许其中自有乐趣。"),
 	)
 
+	work_start_lines = list("%PERSON认出了L-Crop的员工制服.", "%PERSON纳闷为什么有员工在收容单元里，认为可能哪里搞错了.")
+	early_work_lines = list("\"无节制地摄入内啡肽可能导致一系列未经证实的精神病理症状.\" - 员工手册.")
+	work_end_lines = list("谁想过那些坍塌的分部里员工们的命运呢？他们被困其中，惨遭活埋.")
+
 /mob/living/simple_animal/hostile/abnormality/forsaken_employee/FailureEffect(mob/living/carbon/human/user, work_type, pe, work_time, canceled)
 	. = ..()
 	datum_reference.qliphoth_change(-1)

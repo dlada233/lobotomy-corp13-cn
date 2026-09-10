@@ -1,6 +1,6 @@
 #define STATUS_EFFECT_ADDICTION /datum/status_effect/porccubus_addiction
 /mob/living/simple_animal/hostile/abnormality/porccubus
-	name = "棘刺公交"
+	name = "棘刺公交"//(出自脑叶)（修正/原版混用）
 	desc = "一种长而像花的长满荆棘的生物"
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "porrcubus_inert"
@@ -56,6 +56,11 @@
 		"触摸棘刺" = list(FALSE, "尖刺扎入手掌，难以言喻的快感席卷全身。<br>\
 		这朵罂粟花曾摧毁无数人生，如今轮到你了——但此刻，你很快乐。"),
 	)
+
+	work_start_lines = list("当与%ABNO的“信任游戏”达到高潮时，它会用尾巴上的刺抚弄你的小脑瓜.",
+	"据说%ABNO的刺会传递一种常人难以承受的快感，但是没有人能够清楚地描述这种感受.")
+	middle_work_lines = list("突破收容时，%ABNO上绑着一条类似镣铐的项链。是谁给它绑上的？又是为了什么？没人知道.")
+	work_end_lines = list("一些痴迷于快感的职员试图从%ABNO身上拔下几根刺，但它的刺并非外力所能拔下.")
 
 	//the agent that started work on porccubus
 	var/agent_ckey

@@ -51,6 +51,11 @@
 			喝下去应该没有什么问题."),
 	)
 
+	work_start_lines = list("%ABNO从哪里获得电力？%PERSON看不到任何电力输送设备.")
+	middle_work_lines = list("%PERSON能听到来自四面八方的波浪撞击声.")
+	late_work_lines = list("%ABNO的罐子上印有毫无意义的图案和形状，%PERSON无法理解含义.")
+	work_end_lines = list("%ABNO的饮品至少令人愉快.")
+
 	var/list/goodsoders = list(
 		/obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/unlabeled,
 		/obj/item/reagent_containers/food/drinks/soda_cans/oceanwave/cola,

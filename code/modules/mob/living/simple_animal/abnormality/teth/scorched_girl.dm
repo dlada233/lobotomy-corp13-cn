@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/scorched_girl
-	name = "焦化少女"
+	name = "焦化少女"//（出自脑叶）（安徒生童话 卖火柴的小女孩）
 	desc = "像被烧成灰烬的女孩的畸形物. \
 	即使没有任何东西可以燃烧，火仍然没有熄灭."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
@@ -49,6 +49,20 @@
 		"靠近她" = list(FALSE, "来到我身边吧. \
 			你很快也会像我一样化为灰烬."),
 	)
+
+	work_start_lines = list("请注意，%ABNO的观察记录目前尚不完整，所以任何事情都有可能发生.",
+	"%ABNO的观察记录已经基本完成，只要稍加注意，就能顺利完成工作.")
+	early_work_lines = list("%ABNO一看到员工就躲进了角落里.", "%ABNO一边退到墙边，一边观察着员工的动作.",
+	"%ABNO站在角落里注视着%PERSON的工作.", "%ABNO看起来很害怕，它把头转向墙角.")
+	middle_work_lines = list("%PERSON一动不动地站着，就仿佛身上燃烧的火焰一点儿也不痛.",
+	"贯穿%ABNO的火柴正在剧烈地燃烧.", "与火柴上疯狂燃烧的火焰不同，%ABNO一动不动地站在收容单元中.",
+	"火柴燃烧着，但女孩丝毫不为所动.")
+	late_work_lines = list("%PERSON正仔细检查着火柴仍未燃烧的部分.",
+	"如果火柴近乎烧光，那就会发生非常危险的事件. %PERSON正紧张地看着%ABNO.",
+	"幸运的是，火柴还能烧上一段时间.", "灰烬四散，一半的火柴似乎仍未燃烧.")
+	work_end_lines = list("%PERSON完成了工作，火柴上的火焰正在轻轻地摇曳着.",
+	"火焰中没有任何东西，但%ABNO的眼睛闪烁着光芒，就仿佛看到了某人.",
+	"火中，空无一物.", "只有火柴燃烧后的余烬散落在%ABNO周围.")
 
 	/// Restrict movement when this is set to TRUE
 	var/exploding = FALSE

@@ -1,6 +1,6 @@
 //Coded by me, Kirie Saito!
 /mob/living/simple_animal/hostile/abnormality/silence
-	name = "沉默的代价"
+	name = "沉默的代价"//（出自脑叶废案）
 	desc = "一把挂着时钟的镰刀，静静地滴答作响."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "silence"
@@ -35,6 +35,12 @@
 		"不使用钟表" = list(FALSE, "事实上你无权拒绝这份馈赠。<br>\
 			无论接受与否，你终将收下它。"),
 	)
+
+	work_start_lines = list("%ABNO能听见时间流动。", "%ABNO是亮绿色的。有时它看起来像凝视着某人的眼睛。",
+	"它看似很轻，但即使你用尽全力去搬动它，它也纹丝不动。")
+	middle_work_lines = list("员工%PERSON的明天也许会到来，也许不会。", "没人知道手册中那句话里提到的-P是谁。")
+	work_end_lines = list("传闻说，如果你听到第十三次钟声，诅咒就会降临到你身上。",
+	"%ABNO是唯一知晓绝对孤独的存在。", "如果你想停止时间，就必须付出代价。")
 
 	var/meltdown_cooldown_time = 13 MINUTES
 	var/meltdown_cooldown

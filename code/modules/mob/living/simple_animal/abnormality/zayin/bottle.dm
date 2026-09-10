@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_TEARS /datum/status_effect/stacking/tears
 #define STATUS_EFFECT_TEARS_LESS /datum/status_effect/stacking/tears/less
 /mob/living/simple_animal/hostile/abnormality/bottle
-	name = "瓶中泪"
+	name = "瓶中泪"//（出自漫画）
 	desc = "A bottle filled with water with a cake on top"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "bottle1"
@@ -68,6 +68,9 @@
 			咸涩液体黏着舌根久久不散. <br>怎会有人将这种标为饮品?"),
 	)
 
+	work_start_lines = list("\"任何类型的工作都可以，但是千万不要吃掉上面的蛋糕\"，手册如此写道.")
+	work_end_lines = list("放弃理性吧，只有这样你才能在这个仙境中活下去.")
+
 // Work Mechanics
 /mob/living/simple_animal/hostile/abnormality/bottle/AttemptWork(mob/living/carbon/human/user, work_type)
 	if(!cake)
@@ -76,7 +79,7 @@
 	if(work_type != "用餐" && work_type != "喝水")
 		if(datum_reference.console.meltdown)
 			cake_regen = TRUE
-		return TRUE
+		return ..()
 	if(work_type == "喝水")
 		//it's just work speed
 		var/consume_speed = 2 SECONDS / (1 + ((get_attribute_level(user, TEMPERANCE_ATTRIBUTE) + datum_reference.understanding) / 100))
@@ -91,7 +94,7 @@
 		datum_reference.working = FALSE
 		return null
 
-	return TRUE
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/bottle/update_icon_state()
 	if(cake == 3)

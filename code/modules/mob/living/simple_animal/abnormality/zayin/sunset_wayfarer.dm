@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/sunset_wayfarer
-	name = "日落旅者"
+	name = "日落旅者"//（出自巴士）
 	desc = "一个黄色的生物，周围漂浮着橙色的蝴蝶."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "sunset"
@@ -49,6 +49,10 @@
 			或许这动作自始至终都是告别. <br>\
 			\"下次再说吧！\""),
 	)
+
+	work_start_lines = list("来到这里可真累啊?")
+	early_work_lines = list("蛾子和蝴蝶有什么区别?")
+	work_end_lines = list("看起来它们都想跟着你!")
 
 	light_color = COLOR_ORANGE
 	light_range = 5

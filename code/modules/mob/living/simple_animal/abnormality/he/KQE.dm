@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/kqe
-	name = "KQE-1J-23"
+	name = "KQE-1J-23"//（出自巴士）
 	desc = "由金属板、灯和集成电路组成的机械木偶。裸露的电线随着它的每一个动作而突出."
 	health = 500
 	maxHealth = 500
@@ -72,6 +72,11 @@
 			机器人剧烈颤抖，仿佛痛苦不堪。<br>\
 			<永别。<br>永别，<br>永别永别永别永别永别永别永别永别永别>"),
 	)
+
+	work_start_lines = list("在后巷里，有时还能找到一些年代久远的玩具.")
+	early_work_lines = list("%ABNO显然尚未完成，其被制造出来的目的尚不明确.")
+	middle_work_lines = list("由于电力故障或其他问题，%ABNO胸前的一个终端变暗了.")
+	work_end_lines = list("%PERSON对%ABNO偶尔提到的\"纪念品\"感到好奇.", "%ABNO试图举手告别，但是没能做到.")
 
 	var/can_act = TRUE
 	var/grab_cooldown
@@ -155,7 +160,7 @@
 
 /mob/living/simple_animal/hostile/abnormality/kqe/AttemptWork(mob/living/carbon/human/user, work_type)
 	if((work_type != "写下 你好") && (work_type != "写下 再见") && (work_type != "写下 笨蛋") && !question)
-		return TRUE
+		return ..()
 	if(((work_type == "写下 你好") || (work_type == "写下 再见") || (work_type == "写下 笨蛋")) && !question)
 		to_chat(user, span_notice("The terminal is blank."))
 		return FALSE
@@ -326,7 +331,7 @@
 	pixel_y = 0
 
 /mob/living/simple_animal/hostile/aminion/kqe_heart
-	name = "乡亲之心"
+	name = "市民之心"
 	desc = "一个巨大的突出的电线，形状像人类的心脏，电弧在它的表面上脉冲.."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -16

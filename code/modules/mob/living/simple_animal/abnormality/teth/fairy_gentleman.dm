@@ -56,6 +56,10 @@
 			精灵摇摇晃晃地走开了。"),
 	)
 
+	work_start_lines = list("好久没见访客了！我该好好犒劳一下你了.", "想喝点什么吗？")
+	early_work_lines = list("%ABNO把一杯酒塞进%PERSON的手里，强迫他喝下去.", "%ABNO比较调皮地拍了拍%PERSON的背，然后续了一杯酒.")
+	late_work_lines = list("%ABNO喜欢把猎物腌制得又酸又咸.", "%ABNO看着%PERSON饮下美酒，它的第二张嘴流下了口水.")
+
 	var/can_act = TRUE
 	var/jump_cooldown = 0
 	var/jump_cooldown_time = 8 SECONDS

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/scarecrow
-	name = "寻找智慧的稻草人"
+	name = "索求智慧的稻草人"//（出自脑叶）（绿叶仙踪）
 	desc = "用金属耙子代替手的稻草人异想体."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "scarecrow"
@@ -51,11 +51,16 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "稻草填充地粗劣，<br>我将赐你参透万物的智慧。<br>巫师授予你..."
+	observation_prompt = "被粗劣填充的可怜稻草，<br>我会给你智慧，让你能思考任何事情. <br>大巫师授予你..."
 	observation_choices = list(
-		"一袋锯末丝囊" = list(TRUE, "你以为伶牙俐齿就是智慧的全部？"),
+		"装有锯末的布袋" = list(TRUE, "你以为伶牙俐齿就是智慧的全部？"),
 		"智慧" = list(FALSE, "靠近些。<br>我帮你忘却所有烦忧。"),
 	)
+
+	work_start_lines = list("我们仍在旅途当中，为了实现各自的梦想，我们会沿着黄砖路继续走下去.")//yellow brick road(黄砖路，梦想之路)
+	middle_work_lines = list("这种疗法迫使每个人沉默不语，包括那些不顾自身安危拒绝沉默的人.")
+	work_end_lines = list("%ABNO不再恐吓田中的鸟儿，而是向人索求充满智慧的大脑.")
+
 
 	/// Can't move/attack when it's TRUE
 	var/finishing = FALSE
@@ -71,7 +76,7 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<h1>你是寻找智慧的稻草人，担任坦克型异常实体。</h1><br>\
+	to_chat(src, "<h1>你是索求智慧的稻草人，担任坦克型异常实体。</h1><br>\
 		<b>|寻求智慧|: 攻击尸体可恢复生命值。<br>\
 		与其他消耗尸体的异常不同，你可无限重复利用吸食过的尸体。<br>\
 		|渴求智慧|: 拥有进入'饥渴'状态的能力。<br>\

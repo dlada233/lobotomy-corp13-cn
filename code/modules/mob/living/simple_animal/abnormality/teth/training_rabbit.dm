@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/training_rabbit
-	name = "教学兔兔Dummy"
+	name = "教学兔兔Dummy"//（c出自脑叶）
 	desc = "像兔子一样的训练假人，应该完全无害."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "training_rabbit"
@@ -49,6 +49,12 @@
 			难道脑叶公司的异想体都这么诡异？"),
 		"什么都没有" = list(FALSE, "肯定是工作压力让你产生了幻觉。<br>这种离谱的东西怎么可能存在!"),
 	)
+
+	work_start_lines = list("%ABNO似乎会把自己当成这家公司的员工.")
+	early_work_lines = list("%ABNO非常非常喜欢大家.")
+	middle_work_lines = list("%ABNO正在员工的面前摇来晃去，但员工只专注于手头的工作.")
+	late_work_lines = list("%ABNO正在思考世界有没有中心.")
+	work_end_lines = list("在知道%PERSON即将离开自己时，%ABNO难过极了，它真想和员工一起走呀.")
 
 /mob/living/simple_animal/hostile/abnormality/training_rabbit/BreachEffect(mob/living/carbon/human/user, breach_type)
 	. = ..()

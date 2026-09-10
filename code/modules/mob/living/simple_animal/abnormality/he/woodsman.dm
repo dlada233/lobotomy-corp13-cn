@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/abnormality/woodsman
-	name = "热心的樵夫"
+	name = "热心的樵夫"//(来自脑叶)（绿野仙踪）
 	desc = "一个长满苔藓的老机器人，浑身散发着钢铁的味道..."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "woodsman"
@@ -51,11 +51,15 @@
 		/mob/living/simple_animal/hostile/abnormality/pinocchio = 1.5,
 	)
 
-	observation_prompt = "锡一般冰冷的樵夫。<br>我将赐予你宽恕并关爱任何人的心。<br>巫师赠予你..."
+	observation_prompt = "锡一般冰冷的樵夫。<br>我将赐予你宽恕并关爱任何人的心。<br>大巫师赠予你..."
 	observation_choices = list(
-		"铅制的心" = list(TRUE, "你以为用那颗冰冷的心能理解谁？"),
-		"温暖的心" = list(FALSE, "你是机器吧？机器根本不需要心脏。"),
+		"铅制的心脏" = list(TRUE, "你以为用那颗冰冷的心能理解谁？"),
+		"温暖的心脏" = list(FALSE, "你是机器吧？机器根本不需要心脏。"),
 	)
+
+	work_start_lines = list("%PERSON，如果你不是一个热心的人，你就没有必要害怕%ABNO.")
+	early_work_lines = list("%ABNO收集着心脏。在它看来，只要自己能有一颗正常跳动的心脏，那么它就能够拥有爱.")
+	late_work_lines = list("那些曾经是其他人的心脏被不分青红皂白地塞进了%ABNO的胸膛中.")
 
 	// Flurry Vars
 	var/flurry_cooldown = 0

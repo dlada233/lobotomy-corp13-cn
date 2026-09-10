@@ -46,6 +46,10 @@
 		"躺下" = list(FALSE, "把头埋进柔软舒适的枕头里. 明天再试也不迟嘛."),
 	)
 
+	work_start_lines = list("一张舒适的床，一条温暖的毯子，远离一切喧嚣 - %PERSON真想要休息一下.")
+	middle_work_lines = list("%ABNO看起来如此的诱人，休息一下也不错吧？", "有些事情明天再做也不迟.")
+	work_end_lines = list("当%PERSON死了之后，有的是时间好好休息.")
+
 	var/grab_cooldown
 	var/grab_cooldown_time = 20 SECONDS
 
