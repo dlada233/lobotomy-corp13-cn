@@ -250,6 +250,8 @@
 		playsound(src, 'sound/abnormalities/goldenapple/Gold_Attack.ogg', 100, 1)
 		addtimer(CALLBACK(src, PROC_REF(EatEmployees)), 15 SECONDS)
 		return ..()
+	pixel_x = -16
+	icon = 'ModularTegustation/Teguicons/abno_cores/he.dmi'
 	density = FALSE
 	for(var/atom/movable/AM in src) //morph code
 		AM.forceMove(loc)
@@ -280,7 +282,7 @@
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "false_apple"
 	icon_living = "false_apple"
-	icon_dead = "false_dead"
+	icon_dead = "false_egg"
 	death_message = "变成了一个原始的卵."
 	name = "假苹果"
 	desc = "苹果破裂了，一群蛆爬了进去，变成了一张丑陋的脸."
@@ -372,6 +374,7 @@
 			NestedItems(src, myhead)
 		QDEL_IN(H, 1)
 	desc = "苹果破裂了，一群蛆爬了进去，等一下，那是[victim_name]的脸."
+	loot = list(/obj/item/ego_weapon/ranged/maggotgun)
 	med_hud_set_health()//took a page from smock to update medhuds
 	med_hud_set_status()
 	update_health_hud()
@@ -515,17 +518,8 @@
 	status_holder.deal_damage(stacks/2, BLACK_DAMAGE, attack_type = (ATTACK_TYPE_STATUS))
 	if(status_holder.stat < HARD_CRIT)
 		return
-	var/obj/structure/spider/cocoon/casing = new(status_holder.loc)
-	status_holder.forceMove(casing)
-	casing.name = "pile of maggots"
-	casing.desc = "They're wriggling and writhing over something."
-	casing.icon_state = pick(
-		"cocoon_large1",
-		"cocoon_large2",
-		"cocoon_large3",
-	)
-	casing.density = FALSE
-	casing.color = "#01F9C6"
+	new /obj/effect/decal/cleanable/maggot(get_turf(status_holder))
+	status_holder.gib()
 	qdel(src)
 
 /obj/item/food/grown/apple/gold/abnormality
@@ -555,6 +549,13 @@
 		G.add_stacks(1)
 		G.refresh()
 	return ..()
+
+/obj/effect/decal/cleanable/maggot
+	name = "蛆"
+	desc = "一堆蛆."
+	icon = 'icons/effects/blood.dmi'
+	icon_state = "remainslarva"
+	layer = LOW_SIGIL_LAYER//we want this to show above regular gib piles
 
 #undef STATUS_EFFECT_GOLDENSHEEN
 #undef STATUS_EFFECT_MAGGOTS
