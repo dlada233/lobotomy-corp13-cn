@@ -33,7 +33,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(90, 80, 70, 65, 60),
 		ABNORMALITY_WORK_ATTACHMENT = list(70, 60, 50, 45, 40),
 		ABNORMALITY_WORK_REPRESSION = 0,
-		"Sacrifice" = 999,
+		"献祭" = 999,
 	)
 	work_damage_upper = 10
 	work_damage_lower = 5

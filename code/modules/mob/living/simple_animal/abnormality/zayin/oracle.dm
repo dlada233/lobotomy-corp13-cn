@@ -212,97 +212,97 @@
 // Dreamlines not added, only descriptions. Therefore descriptions are used to notify players which dream was chosen.
 // Obviously, TODO: Dreamlines but dont hold your breath, I am no writer.
 /datum/oracle_dream/black_forest
-	name = "Dream of a Black Forest"
-	desc = "a dream of the forest covered by an eternal darkness and the Beast at the heart of it, wandering endlessly in search of itself."
+	name = "黑森林之梦"
+	desc = "一场关于被永恒黑暗笼罩的森林的梦，以及盘踞其中心的野兽——它用永无止境地游荡来寻找自己."
 	dreamt_abnos = list(ABNO_GET(judgement_bird) = 2, ABNO_GET(big_bird) = 2, ABNO_GET(punishing_bird) = 2)
 	weight = VERY_LOW_DREAM_WEIGHT
 
 /datum/oracle_dream/magical_girls
-	name = "Dream of the Magical Defenders"
-	desc = "a dream of the four protectors of realms now long dead, doomed from the very start by the same drives that pushed them into their roles."
+	name = "魔法守护者之梦"
+	desc = "一场关于四位守护者的梦，她们所守护的王国早已消亡；而造成这一切的原因正是她们心中最初想要成为守护者的心念."
 	dreamt_abnos = list(ABNO_GET(hatred_queen) = 1.5, ABNO_GET(despair_knight) = 1.5, ABNO_GET(greed_king) = 1.5, ABNO_GET(wrath_servant) = 1.5)
 	weight = LOW_DREAM_WEIGHT
 
 /datum/oracle_dream/fairy_feast
-	name = "Dream of a Fairy Feast"
-	desc = "a dream of deceiving beasts and a brutal feast, all orchestrated by their heartbroken queen."
+	name = "精灵盛宴之梦"
+	desc = "一场关于狡诈的野兽与残酷盛宴的梦，一切皆由它们心碎的女王策划."
 	dreamt_abnos = list(ABNO_GET(fairy_festival) = 3, ABNO_GET(fairy_gentleman) = 3, ABNO_GET(fairy_longlegs) = 3, ABNO_GET(titania) = 3, ABNO_GET(nobody_is) = 1.5)
 
 /datum/oracle_dream/emerald_path
-	name = "Dream of an Emerald Path"
-	desc = "a dream of a hopeful group of rejects and their journey to make their dreams come true, a girl sings a tune from distant lands as she walks through a verdant path made of lies."
+	name = "翡翠路之梦"
+	desc = "一场关于一群满怀希望的残缺者、以及他们那实现梦想的旅程的梦；一个女孩走过由谎言铺就的翠绿小径，唱着来自遥远国度的歌谣."
 	dreamt_abnos = list(ABNO_GET(woodsman) = 2, ABNO_GET(scarecrow) = 2, ABNO_GET(scaredy_cat) = 2, ABNO_GET(road_home) = 2)
 
 /datum/oracle_dream/endless_hunt
-	name = "Dream of the Endless Hunt"
-	desc = "a dream of endless hunts and cyclical hatred. A dog stands besides its master, and a wolf bares its fangs against the hunter."
+	name = "无尽狩猎之梦"
+	desc = "一场关于无尽猎杀与冤冤相报的梦。忠诚的狗站在主人身旁，而狼则向猎人龇露獠牙。"
 	dreamt_abnos = list(ABNO_GET(red_hood) = 1.5, ABNO_GET(big_wolf) = 1.5, ABNO_GET(blue_shepherd) = 1.5, ABNO_GET(red_buddy) = 1.5)
 	weight = VERY_LOW_DREAM_WEIGHT
 
 /datum/oracle_dream/human_form
-	name = "Dream of the Human Form"
-	desc = "a dream of human faces and human limbs, human skin and human bones, human organs and human blood, human laughter and human sadness. Everything that makes you human, and makes them not."
+	name = "人形之梦"
+	desc = "一场关于人类面孔、人类肢体、人类皮肤、人类骨骼、人类器官、人类血液、人类欢笑与人类悲伤的梦. 一切使你成为人、却使它们非人的东西. "
 	dreamt_abnos = list(ABNO_GET(nothing_there) = 1.5, ABNO_GET(nobody_is) = 1.5, ABNO_GET(kqe) = 1.5, ABNO_GET(pinocchio) = 1.5)
 
 /datum/oracle_dream/suffocating_obsession
-	name = "Dream of Suffocating Obsession"
-	desc = "a dream of the abyssal depths where countless eyes gaze upon you intently, following your every move." // Honestly out of ideas.
+	name = "窒息执念之梦"
+	desc = "一场关于深渊的梦，无数眼睛凝视着你，紧随你的一举一动." // Honestly out of ideas.
 	dreamt_abnos = list(ABNO_GET(dreaming_current) = 2, ABNO_GET(pisc_mermaid) = 2, ABNO_GET(siltcurrent) = 2)
 
 /datum/oracle_dream/forgotten_memorial
-	name = "Dream of a Forgotten Memorial"
-	desc = "a dream of all the wastelands left behind by the winds of war, and the lonely memorial that watches over those who, even now, cannot escape the battlefield."
+	name = "遗忘纪念碑之梦"
+	desc = "一场梦，梦中有战火席卷过后留下的遍地荒原，以及那座孤独的纪念碑——它守望着那些至今仍无法逃离战场的人."
 	dreamt_abnos = list(ABNO_GET(quiet_day) = 2, ABNO_GET(mhz) = 2, ABNO_GET(khz) = 2, ABNO_GET(army) = 2)
 
 /datum/oracle_dream/shrimp_boat
-	name = "Dream of the Shrimpiest Boat"
-	desc = "a dream of your shrimp friends in your shrimp boat, fishing shrimps in the shrimpy sea for the shrimp corporation. Life is shrimply awesome."
+	name = "最虾之梦"
+	desc = "一场关于你的虾朋友、你的虾船，以及为虾公司在虾气腾腾的大海里捕虾的梦，生活真是虾妙无比."
 	dreamt_abnos = list(ABNO_GET(shrimp_exec) = 10, ABNO_GET(wellcheers) = 10)
 
 /datum/oracle_dream/lost_orchard
-	name = "Dream of an Lost Orchard"
-	desc = "a dream of a forgotten apple orchard, littered with rotting fruit and buried tales. Nevertheless, the decaying apples and the maggots within refuse to decay into non-existence."
+	name = "失落果园之梦"
+	desc = "一场关于被遗忘的苹果园的梦，园中散落着腐烂的果实与被埋葬的故事. 其中那些腐坏的苹果与其中的蛆虫，拒绝彻底腐朽、化为虚无。"
 	dreamt_abnos = list(ABNO_GET(golden_apple) = 5, ABNO_GET(snow_whites_apple) = 5, ABNO_GET(ebony_queen) = 5)
 
 /datum/oracle_dream/bustling_hive
-	name = "Dream of a Bustling Hive"
-	desc = "a dream of labyrinthine passages inside a titanic beehive, where workers toil endlessly and soldiers stand in everlasting vigil. All for the Queen."
+	name = "熙攘蜂巢之梦"
+	desc = "一场关于巨型蜂巢内迷宫般通道的梦；工蜂无尽劳作，兵蜂永恒守望。一切皆为了女王。"
 	dreamt_abnos = list(ABNO_GET(queen_bee) = 5, ABNO_GET(general_b) = 5)
 
 /datum/oracle_dream/new_purpose
-	name = "Dream of a New Purpose"
-	desc = "a dream of a massive queue of purposeless people waiting in front of a colossal construct of machinery and flesh. On the other side, a conveyor belt transports a neverending procession of smiling automata."
+	name = "新目标之梦"
+	desc = "一场关于失去目的的人们排着长队，等候在一座由机械与血肉构成的庞然巨物前的梦。在巨物另一侧，传送带正运送着一列列永无止境、面带微笑的自动人偶。"
 	dreamt_abnos = list(ABNO_GET(we_can_change_anything) = 2, ABNO_GET(cleaner) = 2, ABNO_GET(helper) = 2, ABNO_GET(you_strong) = 2, ABNO_GET(steam) = 2, ABNO_GET(kqe) = 2, ABNO_GET(singing_machine) = 2)
 
 /datum/oracle_dream/fated_harmony
-	name = "Dream of Fated Harmony"
-	desc = "a dream of the festering proliferation of all that is and the desolate silence of all that isn't, lacking in the harmony that can only be restored when the angel and the demon reunite once more."
+	name = "命定和谐之梦"
+	desc = "一场梦，梦中“有”的一切在腐坏中滋蔓，“无”的一切只剩荒芜死寂；二者失去了和谐，唯有天使与恶魔再度重聚，这份和谐才能恢复。"
 	dreamt_abnos = list(ABNO_GET(yin) = 5, ABNO_GET(yang) = 5)
 
 /datum/oracle_dream/one_sin // yes, its just the name of the abno. One Sin is dapper like that.
-	name = "Dream of the One Sin"
-	desc = "a dream of yourself facing a floating skull, while overwhelming light surrounds you on all sides. A booming voice announces its presence, but it's just you and the skull, awaiting your sins. The voice demands your worship, but it's just you and the skull, listening to your confession. The voice declares you a heretic, but it's just you and the skull, judging yet forgiving. As the voice finally grows silent, the skull gently asks: \"Have you found the answers you were looking for?\""
+	name = "一罪之梦"
+	desc = "一场关于你自己的梦：你面对着一个漂浮的骷髅，压倒性的光芒从四面八方包围着你。一个洪亮的声音宣告它的存在，但这里只有你和那骷髅，等待着你的罪孽。那声音要求你崇拜，但这里只有你和那骷髅，聆听你的告解。那声音宣判你为异端，但这里只有你和那骷髅，审判着，却又宽恕着。当那声音终于沉寂，骷髅温和地问道: \"你找到一直在寻找的答案了吗?\""
 	dreamt_abnos = list(ABNO_GET(onesin) = 5, ABNO_GET(white_night) = 5)
 
 /datum/oracle_dream/soft_hugs
-	name = "Dream of Soft Hugs"
-	desc = "a dream of factories and production lines churning out soft hugs and shining smiles. The affection that powers these machines will run out someday but, for now, this place is where happiness is born."
+	name = "柔软抱抱之梦"
+	desc = "一场关于工厂与生产线的梦，它们源源不断地制造出柔软的拥抱与闪亮的笑容。虽然驱动这些机器的爱意终有一日会耗尽，但至少现在，这里是幸福诞生之地。"
 	dreamt_abnos = list(ABNO_GET(hurting_teddy) = 5, ABNO_GET(happyteddybear) = 5)
 
 /datum/oracle_dream/possesive_chains // Do you think agents will celebrate when getting this dream?
-	name = "Dream of Possesive Chains"
-	desc = "a dream of a treacherous swamp filled with wraiths of all forms and sizes. A hermit traverses the area, yet for each mile they cross more and more wraiths chain themselves to their body, starving for attention. The wraith's many boons protect the hermit from the dangers of predators and sickness, yet one forgotten ritual is all that it takes for all wraiths to turn on them. Nothing remained afterwards but a deafening silence."
+	name = "渴望占有之梦"
+	desc = "一场梦，梦中有一片险恶的沼泽，其中满是形形色色、大小不一的怨灵。有位隐士想要穿行其间，可他每走一步，就会有许多怨灵缠上身体，怨灵们如饥似渴地索求关注。怨灵带来的诸多恩惠保护着隐士免受掠食者与疾病之害，然而只要关于遗忘的仪式开始进行，怨灵们就会回头袭来，最终只剩一片死寂。"
 	dreamt_abnos = list(ABNO_GET(hurting_teddy) = 1.5, ABNO_GET(whitelake) = 1.5, ABNO_GET(pisc_mermaid) = 1.5, ABNO_GET(galaxy_child) = 1.5, ABNO_GET(despair_knight) = 1.5, ABNO_GET(wrath_servant) = 1.5, ABNO_GET(pygmalion) = 1.5, ABNO_GET(titania) = 1.5, ABNO_GET(melting_love) = 1.5, ABNO_GET(staining_rose) = 1.5)
 	weight = VERY_LOW_DREAM_WEIGHT
 
 /datum/oracle_dream/melting_clocks // Do you think agents will despair when getting this dream?
-	name = "Dream of Melting Clocks"
-	desc = "a dream of a field of clockwork pieces, melting under a searing sun. Time drips down slowly from the melting contraptions, like a drop of tar yearning to be one with the soil, yet it is always scooped up and put back into the clocks to begin the cycle anew."
+	name = "融化钟表之梦"
+	desc = "一场关于遍地钟表零件的梦，它们在灼热烈日下融化。时间从融化的机械装置中缓缓滴落，像一滴渴望与泥土融为一体的焦油，却总会被重新舀起、装回钟表，使得循环再度开始."
 	dreamt_abnos = list(ABNO_GET(sirocco) = 3, ABNO_GET(siren) = 3, ABNO_GET(express_train) = 3, ABNO_GET(silence) = 3, ABNO_GET(nosferatu) = 3, ABNO_GET(seasons) = 3, ABNO_GET(black_sun) = 3, ABNO_GET(staining_rose) = 3)
 
 /datum/oracle_dream/overgrown_forest
-	name = "Dream of an Overgrown Forest"
-	desc = "a dream of an endlessly growing forest, consuming anything in its path. The ground is wet and mushy with the remains of plants long dead, fertilizing the soil to let their brethren thrive."
+	name = "蔓生森林之梦"
+	desc = "一场关于无尽生长的森林的梦，它吞噬沿途的一切。地面因植物残骸而湿软泥泞，这些残骸肥沃了土壤，让它们的同类得以繁茂生长。"
 	dreamt_abnos = list(ABNO_GET(fallen_amurdad) = 2, ABNO_GET(cherry_blossoms) = 2, ABNO_GET(golden_apple) = 2, ABNO_GET(snow_whites_apple) = 2, ABNO_GET(ebony_queen) = 2, ABNO_GET(alriune) = 2, ABNO_GET(rose_sign) = 2, ABNO_GET(parasite_tree) = 2, ABNO_GET(orange_tree) = 2, ABNO_GET(staining_rose) = 2)
 
 #undef VERY_LOW_DREAM_WEIGHT

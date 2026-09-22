@@ -15,7 +15,7 @@
 		ABNORMALITY_WORK_INSIGHT = 40,
 		ABNORMALITY_WORK_ATTACHMENT = 50,
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Touch" = 100,
+		"触摸" = 100,
 	) //for some reason all its work rates are uniform through attribute levels in LC
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 1.5)
 	ranged = TRUE
@@ -115,7 +115,7 @@
 
 	if(PA)
 		PA.IncreaseTolerance()
-	else if(get_attribute_level(user, TEMPERANCE_ATTRIBUTE) < 60 || work_type == "Touch")
+	else if(get_attribute_level(user, TEMPERANCE_ATTRIBUTE) < 60 || work_type == "触摸")
 		if(LAZYFIND(datum_reference.transferable_var, agent_ckey )) //if they were already drugged before we basically drug them to death for trying to pull that shit again
 			DrugOverdose(user, agent_ckey)
 			return ..()

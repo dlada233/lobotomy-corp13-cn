@@ -26,7 +26,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 		ABNORMALITY_WORK_INSIGHT = list(45, 50, 50, 55, 55),
 		ABNORMALITY_WORK_ATTACHMENT = 0,
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Request" = 100
+		"委托" = 100
 		)
 	damage_coeff = list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 0.6, PALE_DAMAGE = 1.5) // Fuck you, blue shepherd.
 	ranged = TRUE
@@ -399,7 +399,7 @@ It has now been over four months. Now we get her for real. -Coxswain
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/red_hood/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type != "Request")
+	if(work_type != "委托")
 		return ..()
 	RequestTarget(user)
 	return

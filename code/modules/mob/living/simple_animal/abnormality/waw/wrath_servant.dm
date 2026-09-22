@@ -31,7 +31,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(40, 45, 50, 55, 60),
 		ABNORMALITY_WORK_ATTACHMENT = list(80, 70, 60, 50, 40),
 		ABNORMALITY_WORK_REPRESSION = list(30, 30, 40, 40, 50),
-		"要求" = 100,
+		"委托" = 100,
 	)
 	work_damage_upper = 6
 	work_damage_lower = 4
@@ -321,7 +321,7 @@
 	return
 
 /mob/living/simple_animal/hostile/abnormality/wrath_servant/AttemptWork(mob/living/carbon/human/user, work_type)
-	if(work_type != "要求")
+	if(work_type != "委托")
 		return ..()
 	if(datum_reference.console.meltdown)
 		say("啊-啊...")

@@ -61,6 +61,8 @@
 		. += span_info("当前逆卡巴拉计数器: [datum_reference.qliphoth_meter].")
 	if(datum_reference.overload_chance[user.ckey])
 		. += span_warning("当前个体逆卡巴拉过载: [datum_reference.overload_chance[user.ckey]]%.")
+	if(!isnull(datum_reference.stored_boxes))
+		. += span_info("当前PE-Box数量: <span style='color: #23FBAC'>[datum_reference.stored_boxes]</span>.")
 	if(meltdown)
 		var/melt_text = ""
 		switch(meltdown)
@@ -243,11 +245,13 @@
 	// Initial chance and speed values before work started, in case they get overriden by abnormality
 	var/init_work_chance = work_chance
 	var/init_work_speed = work_speed
+
+	var/obj/workbar/wobar = new(get_turf(user), user, work_time, work_type)
 	while(total_boxes < work_time)
 		if(!CheckStatus(user))
 			break
 		work_speed = datum_reference.current.SpeedWorktickOverride(user, work_speed, init_work_speed, work_type)
-		if(do_after(user, work_speed, src, IGNORE_HELD_ITEM))
+		if(do_after(user, work_speed, src, IGNORE_HELD_ITEM, progress = FALSE))
 			if(!CheckStatus(user))
 				break
 			for(var/shield_type in typesof(/datum/status_effect/interventionshield))
@@ -260,6 +264,8 @@
 				datum_reference.current.WorktickFailure(user)
 			total_boxes++
 			datum_reference.current.Worktick(user, total_boxes)
+			if(!QDELETED(wobar))
+				wobar.update(total_boxes)
 		else
 			if(!CheckStatus(user)) // No punishment if the thing is already breached or any other issue is prevelant.
 				break
@@ -270,6 +276,8 @@
 			success_boxes = 0
 			canceled = TRUE
 			break
+	if(!QDELETED(wobar))
+		wobar.end_progress()
 	REMOVE_TRAIT(user, TRAIT_STUNIMMUNE, src)
 	REMOVE_TRAIT(user, TRAIT_PUSHIMMUNE, src)
 	user.density = TRUE
@@ -311,6 +319,7 @@
 		else
 			audible_message(span_notice("工作结果: 差"),\
 				span_notice("工作结果: 差"))
+		OtherDamageEffect(pe, "pe")
 	if(istype(user))
 		datum_reference.work_complete(user, work_type, pe, work_speed*datum_reference.max_boxes, was_melting, canceled)
 		if(recorded) //neither rabbit nor tutorial calls this

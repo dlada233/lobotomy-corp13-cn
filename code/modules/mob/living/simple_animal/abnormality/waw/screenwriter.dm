@@ -20,14 +20,14 @@ Defeating the murderer also surpresses the abnormality.
 	blood_volume = 0
 	work_chances = list(
 		"营养" = 35,
-		"清洁" = 35,
+		"洁净" = 35,
 		"共识" = 35,
 		"娱乐" = 35,
 		"暴力" = 35,
 	)
 	work_attribute_types = list(
 		"营养" = FORTITUDE_ATTRIBUTE,
-		"清洁" = PRUDENCE_ATTRIBUTE,
+		"洁净" = PRUDENCE_ATTRIBUTE,
 		"共识" = PRUDENCE_ATTRIBUTE,
 		"娱乐" = TEMPERANCE_ATTRIBUTE,
 		"暴力" = JUSTICE_ATTRIBUTE,
@@ -119,7 +119,7 @@ Defeating the murderer also surpresses the abnormality.
 	switch(preferred_work_type)
 		if("营养")
 			to_chat(petter, span_nicegreen("这一页上有一幅画，画的是骨头上的肉."))
-		if("清洁")
+		if("洁净")
 			to_chat(petter, span_nicegreen("这一页上有一幅洗涤器的画像."))
 		if("共识")
 			to_chat(petter, span_nicegreen("这一页上有一幅手牵手的图画."))

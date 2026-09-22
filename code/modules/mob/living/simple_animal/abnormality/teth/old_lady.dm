@@ -74,7 +74,7 @@
 		return ..()
 	else if(datum_reference.qliphoth_meter == 0 || work_type == "清理孤独")
 		return FALSE
-		return ..()
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/old_lady/PostWorkEffect(mob/living/carbon/human/user, work_type, pe)
 	if(work_type == "清理孤独")

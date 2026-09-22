@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(army)
 		ABNORMALITY_WORK_INSIGHT = list(40, 40, 40, 50, 50),
 		ABNORMALITY_WORK_ATTACHMENT = list(50, 50, 50, 55, 55),
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Protection" = 0, //shouldn't attempt to generate any PE
+		"保护" = 0, //shouldn't attempt to generate any PE
 	)
 	work_damage_upper = 9
 	work_damage_lower = 7
@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(army)
 //protect work grants you a buff in exchange for reducing its counter
 /mob/living/simple_animal/hostile/abnormality/army/AttemptWork(mob/living/carbon/human/user, work_type)
 	..()
-	if(work_type == "Protection")
+	if(work_type == "保护")
 		if(datum_reference?.qliphoth_meter > 1)
 			if(user in protected_targets)
 				return FALSE
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(army)
 		L.remove_status_effect(STATUS_EFFECT_PROTECTION)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ABNORMALITY_BREACH, src)
 	if(istype(datum_reference))
-		deadchat_broadcast(" has breached containment.", "<b>[src.name]</b>", src, get_turf(src))
+		deadchat_broadcast("突破了收容.", "<b>[src.name]</b>", src, get_turf(src))
 	density = FALSE
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

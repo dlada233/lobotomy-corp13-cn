@@ -15,7 +15,7 @@
 		ABNORMALITY_WORK_INSIGHT = list(40, 45, 50, 55, 55),
 		ABNORMALITY_WORK_ATTACHMENT = list(30, 30, 50, 50, 55),
 		ABNORMALITY_WORK_REPRESSION = 30,
-		"Performance" = 100,
+		"演奏" = 100,
 	)
 	pixel_x = -32
 	base_pixel_x = -32

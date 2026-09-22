@@ -27,6 +27,7 @@
 	threat_level = HE_LEVEL
 	start_qliphoth = 1
 	work_chances = list(
+		ABNORMALITY_WORK_INSTINCT = list(50, 55, 55, 55, 60),
 		ABNORMALITY_WORK_INSIGHT = 20,
 		ABNORMALITY_WORK_ATTACHMENT = 20,
 		ABNORMALITY_WORK_REPRESSION = 20,
@@ -127,8 +128,8 @@
 
 /mob/living/simple_animal/hostile/abnormality/wayward/Life()
 	. = ..()
-		CheckView()
 	if(IsContained())
+		CheckView()
 		return
 	if(client || IsCombatMap())
 		return
