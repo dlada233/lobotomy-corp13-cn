@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/aminion/apocalypse_bird
-	name = "Apocalypse Bird"
+	name = "天启鸟"
 	desc = "A terrifying giant beast that lives in the black forest. It's constantly looking for a monster \
 	that terrorizes the forest, without realizing that it is looking for itself."
 	health = 330000
@@ -393,17 +393,8 @@
 		if(!PT || QDELETED(PT))
 			continue
 		var/turf/T = get_step(get_turf(src), pick(GLOB.alldirs))
-		var/obj/effect/projectile_delayed/projectile_handler = new(T) // We use a projectile handler here because fire() is called after a delay
-		var/obj/projectile/apocalypse/P = new(projectile_handler)
-		projectile_handler.projectile = P
-		P.starting = T
-		P.firer = src
-		P.fired_from = T
-		P.yo = PT.y - T.y
-		P.xo = PT.x - T.x
-		P.original = PT
-		P.preparePixelProjectile(PT, T)
-		projectile_handler.StartFiring(6.5 SECONDS)
+		new /obj/effect/projectile_delayed(T, PT, src, /obj/projectile/ego_twilight, 6.5 SECONDS)
+
 
 	SLEEP_CHECK_DEATH(6.5 SECONDS)
 	playsound(src, 'sound/abnormalities/apocalypse/fire.ogg', 75, FALSE, 12)
@@ -522,7 +513,7 @@
 // Portal
 
 /mob/living/simple_animal/hostile/aminion/forest_portal
-	name = "Entrance to the Black Forest"
+	name = "黑森林入口"
 	desc = "A portal leading to a dark place, far worse than the one you're in right now..."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	pixel_x = -8
