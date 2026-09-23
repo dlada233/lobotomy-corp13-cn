@@ -1142,16 +1142,16 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	feedback_details += "Type: [message]"
 	switch(message)
 		if("no alert")
-			to_chat(target, "<span class='minorannounce'><font color = red>Attention!</font color><BR>Emergency level has been reset. All dangerous abnormalities have been re-contained and situation is under control.</span><BR>")
+			to_chat(target, "<span class='minorannounce'><font color = red>注意!</font color><BR>警报等级已重置，所有危险异想体均已控制，局势处于可控状态.</span><BR>")
 			SEND_SOUND(target, sound('sound/misc/notice2.ogg'))
 		if("first")
-			to_chat(target, "<span class='minorannounce'><font color = red>Attention! First Trumpet!</font color><BR>Few dangerous abnormalities have breached the containment, or an agent might be dead or out of control.</span><BR>")
+			to_chat(target, "<span class='minorannounce'><font color = red>注意! 一级警报!</font color><BR>少数危险异想体突破收容，一名员工可能已死亡或失去理智.</span><BR>")
 			SEND_SOUND(target, sound('sound/misc/siren.ogg', volume = 10))
 		if("second")
-			to_chat(target, "<span class='minorannounce'><font color = red>Attention! Second Trumpet!</font color><BR>Most dangerous abnormalities have breached containment and several agents might be dead or out of control.</span><BR>")
+			to_chat(target, "<span class='minorannounce'><font color = red>注意! 二级警报!</font color><BR>大量危险异想体突破收容，多名员工可能已死亡或失去理智.</span><BR>")
 			SEND_SOUND(target, sound('sound/effects/alertbeep.ogg', volume = 10))
 		if("third")
-			to_chat(target, "<span class='minorannounce'><font color = red>Attention! Third Trumpet!</font color><BR>Facility's integrity is in danger. Most if not all of the dangerous abnormalities have breached containment and many agents have been lost.</span><BR>")
+			to_chat(target, "<span class='minorannounce'><font color = red>注意! 三级警报!</font color><BR>设施完整性正面临威胁，大多数甚至全部异想体均已突破收容，员工中大部分都已损失.</span><BR>")
 			SEND_SOUND(target, sound('sound/misc/notice1.ogg'))
 
 /datum/hallucination/hudscrew

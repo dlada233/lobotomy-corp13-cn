@@ -174,16 +174,16 @@
 /datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin	//Require the arrivals shuttle to be operational in order for latejoiners to join
 
 /datum/config_entry/string/alert_warning_reset
-	config_entry_value = "Emergency level has been reset. All dangerous abnormalities have been re-contained and situation is under control."
+	config_entry_value = "警报等级已重置，所有危险异想体均已控制，局势处于可控状态."
 
 /datum/config_entry/string/alert_first_trumpet
-	config_entry_value = "Few dangerous abnormalities have breached the containment, or an agent might be dead or out of control."
+	config_entry_value = "少数危险异想体突破收容，一名员工可能已死亡或失去理智."
 
 /datum/config_entry/string/alert_second_trumpet
-	config_entry_value = "Most dangerous abnormalities have breached containment and several agents might be dead or out of control."
+	config_entry_value = "大量危险异想体突破收容，多名员工可能已死亡或失去理智."
 
 /datum/config_entry/string/alert_third_trumpet
-	config_entry_value = "Facility's integrity is in danger. Most if not all of the dangerous abnormalities have breached containment and many agents have been lost."
+	config_entry_value = "设施完整性正面临威胁，大多数甚至全部异想体均已突破收容，员工中大部分都已损失."
 
 /datum/config_entry/flag/revival_pod_plants
 

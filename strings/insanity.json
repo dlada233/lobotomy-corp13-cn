@@ -1,34 +1,44 @@
 {
 	"murder": [
-		"I won't die alone...",
-		"You left me behind!",
-		"You are the problem, YOU!!",
-		"I'll destroy everything...",
-		"It will end quickly, so relax. I’ll free you from this prison we call flesh."
+		"我不想孤零零地死掉...",
+		"你们抛弃了我!",
+		"这都是你的错！你他妈搞砸了一切！！！",
+		"为什么人类这么容易就会死啊？我问你呢！！！",
+		"我也能做到！！！我也能像它们一样杀人！！！",
+		"我要毁了你们所有人...",
+		"就快结束了，别紧张，我来帮你从这地狱里逃出去."
 	],
 
 	"suicide": [
-		"It's all my fault. It’s my responsibility...",
-		"I can hear someone. It’s the sound of back home. I just can’t stop hearing it",
-		"There’s no hope left. My mind’s collapsing. Everything’s collapsing...",
-		"We will all sink and perish, devoured by madness...",
-		"There is no hope left...",
-		"It will all end, soon..."
+		"都是我的错. 全是我的责任...",
+		"对不起对不起对不起对不起对不起对不起对不起对不起对不起对不起",
+		"就算我侥幸活下来了...下半辈子也会活在痛苦中吧...",
+		"我听到了...家人的声音...他们在受苦...我听不下去了...",
+		"结束吧. 我的精神好像在崩溃. 一切都好像在崩溃...",
+		"我们都会沉沦、灭亡、被疯狂吞噬...",
+		"不可能了...",
+		"要结束了，很快的结束了..."
 	],
 
 	"wander": [
-		"Manager?! Manager! Open the emergency door! PLEASE LET ME OUT!!",
-		"HELP ME!!",
-		"DON'T SEND ME IN THERE! DON’T KILL ME!!",
-		"AHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA!!",
-		"I will never get out of here..."
+		"主管？！主管！主管！？打开该死的应急逃生门！求你放我出去吧！！",
+		"救命救命救命啊！！",
+		"别把我送进去！别让我去送死！！！",
+		"啊哈，哈哈，哈哈哈哈哈哈哈！！！啊哈哈哈哈哈哈哈哈哈哈哈哈哈！！！",
+		"失去理智是这里唯一的救赎！！！",
+		"主管！你有在看我吗！？快救命啊！！！",
+		"我们不想就这样死去，我们不该就这样死去啊啊啊！！！",
+		"我不想死啊啊啊！！！我不想像我同事那样！！！",
+		"我出不去了，永远..."
 	],
 
 	"release": [
-		"Let us find peace from them.",
-		"I’m so sorry dear friends, I’ll let you out now.",
-		"We will find our redemption through the Abnormalities.",
-		"Let us reach the paradise beyond death, together with the Abnormalities.",
-		"Let me introduce you to my imaginary friends! They asked me to! They’re screaming to be let out!"
+		"请下命令...嘿嘿嘿，请下命令！请下命令！请下命令！请下命令！",
+		"让我们在异想体那里寻找宁静.",
+		"对不起！对不起！我们是朋友，我现在就给你自由！！！",
+		"我们会通过异想体找到救赎...",
+		"让我们和异想体一同前往超脱死亡的天堂！！！",
+		"让我给你介绍介绍我的朋友，它们要我放它们出去。",
+		"大家快出来啊！救救我的朋友！救救这个地方！！！"
 	]
 }

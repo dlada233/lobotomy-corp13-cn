@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 	switch(level)
 		if(TRUMPET_0)
-			custom_minor_announce(CONFIG_GET(string/alert_warning_reset), "Attention!")
+			custom_minor_announce(CONFIG_GET(string/alert_warning_reset), "注意!")
 			if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 				if(GLOB.emergency_level >= TRUMPET_2)
 					SSshuttle.emergency.modTimer(4)
@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 				if(is_station_level(FA.z))
 					FA.update_icon()
 		if(TRUMPET_1)
-			custom_minor_announce(CONFIG_GET(string/alert_first_trumpet), "Attention! First Trumpet!",'sound/misc/siren.ogg', newvolume = 10)
+			custom_minor_announce(CONFIG_GET(string/alert_first_trumpet), "注意! 一级警报!",'sound/misc/siren.ogg', newvolume = 10)
 			if(GLOB.emergency_level < TRUMPET_1)
 				if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 					SSshuttle.emergency.modTimer(0.5)
@@ -206,7 +206,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 				if(is_station_level(FA.z))
 					FA.update_icon()
 		if(TRUMPET_2)
-			custom_minor_announce(CONFIG_GET(string/alert_second_trumpet), "Attention! Second Trumpet!",'sound/effects/alertbeep.ogg', newvolume = 10)
+			custom_minor_announce(CONFIG_GET(string/alert_second_trumpet), "注意! 二级警报!",'sound/effects/alertbeep.ogg', newvolume = 10)
 			if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 				if(GLOB.emergency_level == TRUMPET_1)
 					SSshuttle.emergency.modTimer(0.25)
@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 			for(var/obj/machinery/computer/shuttle/pod/pod in GLOB.machines)
 				pod.locked = FALSE
 		if(TRUMPET_3)
-			custom_minor_announce(CONFIG_GET(string/alert_third_trumpet), "Attention! Third Trumpet!",'sound/misc/notice1.ogg')
+			custom_minor_announce(CONFIG_GET(string/alert_third_trumpet), "注意! 三级警报!",'sound/misc/notice1.ogg')
 			if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
 				if(GLOB.emergency_level == TRUMPET_0)
 					SSshuttle.emergency.modTimer(0.25)
@@ -316,8 +316,8 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 /atom/movable/screen/alert/status_effect/trumpetlevel
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
-	name = "Security Alert"
-	desc = "Something's wrong; Justice is increased and Work speed is reduced."
+	name = "安全警报"
+	desc = "出事情了; 正义提升，工作速度降低."
 
 /datum/status_effect/trumpetlevel/on_apply()
 	. = ..()
@@ -346,7 +346,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 /atom/movable/screen/alert/status_effect/trumpetlevel/level1
 	icon_state = "level1"
-	name = "First Trumpet"
+	name = "一级警报"
 
 /datum/status_effect/trumpetlevel/level2
 	justice = 15
@@ -355,7 +355,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 /atom/movable/screen/alert/status_effect/trumpetlevel/level2
 	icon_state = "level2"
-	name = "Second Trumpet"
+	name = "二级警报"
 
 /datum/status_effect/trumpetlevel/level3
 	justice = 25
@@ -364,7 +364,7 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 /atom/movable/screen/alert/status_effect/trumpetlevel/level3
 	icon_state = "level3"
-	name = "Third Trumpet"
+	name = "三级警报"
 
 /datum/status_effect/trumpetlevel/level4
 	justice = 20
@@ -375,5 +375,5 @@ SUBSYSTEM_DEF(lobotomy_emergency)
 
 /atom/movable/screen/alert/status_effect/trumpetlevel/level4
 	icon_state = "level4"
-	name = "Fourth Trumpet"
-	desc = "Shit's fucked; Fortitude, Prudence and Justice are increased."
+	name = "四级警报"
+	desc = "完蛋了; 勇气，谨慎和正义均得到提升."
