@@ -133,7 +133,7 @@
 	for(var/attribute in user.attributes)
 		stat_total += get_raw_level(user, attribute)
 
-	if(stat_total < 500) // ~125 in all stats required
+	if(stat_total < 400) // 约等于四维均100
 		to_chat(user, span_warning("你还太弱，无法使用这台机器."))
 		return
 
