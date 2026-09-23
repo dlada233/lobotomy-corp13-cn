@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_tent
-	name = "chorus of saliva"
-	desc = "A circus tent stitched together with sinew. It has a giant, gaping maw."
+	name = "高高高潮~!!!"
+	desc = "一座用肌腱缝合而成的马戏团帐篷，它的入口好似巨大的嘴."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "crimson_midnight"
 	icon_dead = "crimson_midnight"
@@ -11,8 +11,8 @@
 	base_pixel_x = -16
 	melee_damage_lower = 12
 	melee_damage_upper = 16
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "啃咬"
+	attack_verb_simple = "啃咬"
 	attack_sound = 'sound/effects/ordeals/amber/dusk_attack.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.2, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1.5)
 	butcher_results = list(/obj/item/food/meat/slab/crimson = 3)
@@ -47,7 +47,7 @@
 	if((spawn_time > world.time))
 		return
 	spawn_time = world.time + spawn_time_cooldown
-	visible_message(span_danger("\The [src] opens wide and more clowns appear from inside!"))
+	visible_message(span_danger("[src]的大门里涌出了更多小丑!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/crimson/midnight_spawn.ogg', 75, FALSE)
 	var/spawnchance = pick(1,2)
 	for(var/i = 1 to spawnchance)
@@ -68,7 +68,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_tent/proc/DeathExplosion()
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸了!"))
 	for(var/turf/L in view(4, src))
 		if(prob(25) && !(L.density))
 			new /obj/item/food/meat/slab/crimson (get_turf(L))
@@ -190,8 +190,8 @@
 // Crimson Midnight
 // Clown
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_midnight //oh god why
-	name = "pinnacle of thew"
-	desc = "A gargantuan clown with gigantic muscles."
+	name = "绝顶肉体"
+	desc = "一只有着绝顶肉体的巨型小丑."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "crimson_midnight"
 	icon_living = "crimson_midnight"
@@ -218,7 +218,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_midnight/DeathExplosion(gibbed = FALSE)
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/crimson/dusk_dead.ogg', 50, 1)
 	var/valid_directions = list(0) // 0 is used by get_turf to find the turf a target, so it'll at the very least be able to spawn on itself.
 	for(var/d in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -243,7 +243,7 @@
 // Tent spawned variants
 // Dawn
 /mob/living/simple_animal/hostile/ordeal/crimson_clown/spawned //Weaker variant that dies in 60 seconds
-	name = "a cacophony of smiles"
+	name = "欢乐的喧嚣"
 	maxHealth = 10
 	health = 10
 	next_escape_health_mod = 0
@@ -265,7 +265,7 @@
 
 // Noon
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/spawned //weaker variant that explodes into clowns if ignored
-	name = "moment of indulgence"
+	name = "放纵的时刻"
 	maxHealth = 650
 	health = 650
 	mob_spawn_amount = 1
@@ -284,7 +284,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/spawned/DeathExplosion(gibbed = FALSE)
 	if(QDELETED(src) || gibbed)
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	var/valid_directions = list(0) // 0 is used by get_turf to find the turf a target, so it'll at the very least be able to spawn on itself.
 	for(var/d in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 		var/turf/TF = get_step(src, d)
@@ -306,7 +306,7 @@
 
 // Dusk
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_dusk/spawned //weaker variant that explodes into clowns if ignored
-	name = "summit of trepidation"
+	name = "恐惧的顶点"
 	maxHealth = 500
 	health = 500
 
@@ -324,7 +324,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_dusk/spawned/DeathExplosion(gibbed = FALSE)
 	if(QDELETED(src) || gibbed)
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/crimson/dusk_dead.ogg', 50, 1)
 	var/valid_directions = list(0) // 0 is used by get_turf to find the turf a target, so it'll at the very least be able to spawn on itself.
 	for(var/d in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))

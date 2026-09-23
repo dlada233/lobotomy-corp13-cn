@@ -14,17 +14,17 @@
 	silk_results = list(/obj/item/stack/sheet/silk/indigo_elegant = 1,
 						/obj/item/stack/sheet/silk/indigo_advanced = 2,
 						/obj/item/stack/sheet/silk/indigo_simple = 4)
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "刺"
+	attack_verb_simple = "刺"
 	attack_sound = 'sound/effects/ordeals/indigo/stab_1.ogg'
 	blood_volume = BLOOD_VOLUME_NORMAL
 	can_patrol = TRUE
 
 /mob/living/simple_animal/hostile/ordeal/indigo_dusk/white
-	name = "\proper Commander Adelheide"
+	name = "\proper 指挥官 阿黛尔海德" //Commander Adelheide
 	maxHealth = 700
 	health = 700
-	desc = "A tall humanoid with a white greatsword."
+	desc = "手持白色大剑的瘦高人形."
 	icon_state = "adelheide"
 	icon_living = "adelheide"
 	melee_damage_type = WHITE_DAMAGE
@@ -46,8 +46,8 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/ordeal/indigo_dusk/black
-	name = "\proper Commander Maria"
-	desc = "A tall humanoid with a large black hammer."
+	name = "\proper 指挥官 玛利亚" //Commander Maria
+	desc = "手持黑色大锤的瘦高人形."
 	icon_state = "maria"
 	icon_living = "maria"
 	melee_damage_type = BLACK_DAMAGE
@@ -62,8 +62,8 @@
 		guaranteed_butcher_results += list(/obj/item/head_trophy/indigo_head/black = 1)
 
 /mob/living/simple_animal/hostile/ordeal/indigo_dusk/red
-	name = "\proper Commander Jacques"
-	desc = "A tall humanoid with red claws."
+	name = "\proper 指挥官 雅克" //Commander Jacques
+	desc = "带着红色利爪的瘦高人形."
 	icon_state = "jacques"
 	icon_living = "jacques"
 	rapid_melee = 4
@@ -78,8 +78,8 @@
 
 
 /mob/living/simple_animal/hostile/ordeal/indigo_dusk/pale
-	name = "\proper Commander Silvina"
-	desc = "A tall humanoid with glowing pale fists."
+	name = "\proper 指挥官 西尔维那" //Commander Silvina
+	desc = "带着发光蓝色拳头的瘦高人形."
 	icon_state = "silvina"
 	icon_living = "silvina"
 	rapid_melee = 2
@@ -121,8 +121,8 @@
 	if(!L)
 		return FALSE
 	visible_message(
-		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_danger("[src]吞食了[L]!"),
+		span_userdanger("你吞食了[L]，恢复了自己!"))
 	if(istype(L, SWEEPER_TYPES))
 		adjustBruteLoss(-20)
 	else

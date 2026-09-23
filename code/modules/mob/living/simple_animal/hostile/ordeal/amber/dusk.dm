@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/amber_dusk
-	name = "food chain"
-	desc = "A big worm-like creature with jagged teeth at its front."
+	name = "食物链"
+	desc = "一只巨大的蠕虫生物，前端长着锯齿状的牙齿."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "amber_dusk"
 	icon_living = "amber_dusk"
@@ -19,8 +19,8 @@
 	butcher_results = list(/obj/item/food/meat/slab/worm = 3)
 	guaranteed_butcher_results = list(/obj/item/food/meat/slab/worm = 2)
 	silk_results = list(/obj/item/stack/sheet/silk/amber_simple = 2, /obj/item/stack/sheet/silk/amber_advanced = 1)
-	attack_verb_continuous = "eviscerates"
-	attack_verb_simple = "eviscerate"
+	attack_verb_continuous = "吸食"
+	attack_verb_simple = "吸食"
 	attack_sound = 'sound/effects/ordeals/amber/dusk_attack.ogg'
 	death_sound = 'sound/effects/ordeals/amber/dusk_dead.ogg'
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 0.8, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 2)
@@ -135,7 +135,7 @@
 	burrowing = TRUE
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dusk_create.ogg', 50, FALSE)
 	SLEEP_CHECK_DEATH(5)
-	visible_message(span_danger("Four smaller bugs emerge from [src]!"))
+	visible_message(span_danger("四只较小的虫子从[src]体内钻了出来!"))
 	for(var/i = 1 to 4)
 		var/turf/Turf = get_step(get_turf(src), pick(0, NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 		if(Turf.density) // Retry
@@ -157,7 +157,7 @@
 	var/turf/T = pick(GLOB.xeno_spawn)
 	if(!T)
 		T = get_turf(src)
-	visible_message(span_danger("[src] burrows into the ground!"))
+	visible_message(span_danger("[src]钻入地下!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dusk_dig_in.ogg', 50, 1)
 	animate(src, alpha = 0, time = 10)
 	SLEEP_CHECK_DEATH(5)
@@ -177,7 +177,7 @@
 
 	animate(src, alpha = 255, time = 5)
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dusk_dig_out.ogg', 50, 1)
-	visible_message(span_bolddanger("[src] burrows out from the ground!"))
+	visible_message(span_bolddanger("[src]从地下钻了出来!"))
 	SLEEP_CHECK_DEATH(5)
 	density = TRUE
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(T, src)

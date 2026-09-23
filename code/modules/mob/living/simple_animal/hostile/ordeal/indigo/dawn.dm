@@ -1,7 +1,7 @@
 //Indigo dawns.
 /mob/living/simple_animal/hostile/ordeal/indigo_dawn
-	name = "unknown scout"
-	desc = "A tall humanoid with a walking cane. It's wearing indigo armor."
+	name = "未知侦察兵"
+	desc = "拄着拐杖额高个子类人生物，穿着靛蓝色铠甲."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "indigo_dawn"
 	icon_living = "indigo_dawn"
@@ -16,8 +16,8 @@
 	melee_damage_upper = 4
 	butcher_results = list(/obj/item/food/meat/slab/sweeper = 1)
 	guaranteed_butcher_results = list(/obj/item/food/meat/slab/sweeper = 1)
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "刺"
+	attack_verb_simple = "刺"
 	attack_sound = 'sound/effects/ordeals/indigo/stab_1.ogg'
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.8)
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -39,8 +39,8 @@
 	if(SSmaptype.maptype in SSmaptype.citymaps)
 		return FALSE
 	visible_message(
-		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_danger("[src]吞食[L]!"),
+		span_userdanger("你吞食了[L], 恢复自身生命!"))
 	if(istype(L, SWEEPER_TYPES))
 		//Would have made it based on biotypes but that has its own issues.
 		adjustBruteLoss(-20)
@@ -60,5 +60,5 @@
 	minimum_distance = 1
 
 /mob/living/simple_animal/hostile/ordeal/indigo_dawn/OpenFire(atom/A)
-	visible_message(span_danger("<b>[src]</b> menacingly stares at [A]!"))
+	visible_message(span_danger("<b>[src]</b> 威胁地盯着 [A]!"))
 	ranged_cooldown = world.time + ranged_cooldown_time

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/salmon_midnight
-	name = "shrimp rambo"
-	desc = "A Shrimp Corp taboo hunter. Will a star of the city fall tonight?"
+	name = "兰博虾" //shrimp rambo
+	desc = "虾公司的禁忌猎人，今晚又有那个都市新星将要陨落？"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_rambo"
 	maxHealth = 1000
@@ -19,7 +19,7 @@
 	rapid = 25
 	rapid_fire_delay = 0.4
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bash"
+	attack_verb_continuous = "猛击"
+	attack_verb_simple = "猛击"
 	casingtype = /obj/item/ammo_casing/caseless/soda_mini
 	attack_sound = 'sound/abnormalities/distortedform/slam.ogg'

@@ -57,9 +57,9 @@
 
 /datum/ordeal/simplecommander/crimson_midnight
 	name = "血色的午夜"
-	flavor_name = "A Chorus of Saliva"
-	announce_text = "Let us make a performance about what has already come true, and march further on from whence we came."
-	end_announce_text = "Abandon all expectation and march on. Laugh no matter what you see!"
+	flavor_name = "高高高潮~!!!" // A Chorus of Saliva 原创考验，疑似来源于图书馆-奥斯瓦尔德之页，这里没有直译，选择了相关的技能名
+	announce_text = "丢开只是念叨着“总有一天”的空头支票，来一场已然成为现实的盛大演出吧!!!"
+	end_announce_text = "抛却所有的期待，无论看到什么都要乐观地露出笑容！"
 	level = 4
 	reward_percent = 0.25
 	announce_sound = 'sound/effects/ordeals/crimson_start.ogg'

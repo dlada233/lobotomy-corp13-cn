@@ -1,7 +1,7 @@
 // Green dusk
 /mob/living/simple_animal/hostile/ordeal/green_dusk
-	name = "where we must reach"
-	desc = "A factory-like structure, constantly producing ancient robots."
+	name = "前往何方"
+	desc = "类工厂结构，源源不断地生产出机械体."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "green_dusk_1"
 	icon_living = "green_dusk_1"
@@ -68,7 +68,7 @@
 	icon = 'ModularTegustation/Teguicons/96x48.dmi'
 	icon_state = "green_dusk_create"
 	SLEEP_CHECK_DEATH(6)
-	visible_message(span_danger("\The [src] produces a new set of robots!"))
+	visible_message(span_danger("[src]生产出了新的机器人!"))
 	for(var/i = 1 to 3)
 		var/turf/T = get_step(get_turf(src), pick(0, EAST))
 		var/picked_mob = /mob/living/simple_animal/hostile/ordeal/green_bot_big/factory

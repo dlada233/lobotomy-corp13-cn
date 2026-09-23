@@ -1,8 +1,8 @@
 
 // Green noon
 /mob/living/simple_animal/hostile/ordeal/green_bot_big
-	name = "process of understanding"
-	desc = "A big robot with a saw and a machine gun in place of its hands."
+	name = "理解的过程"
+	desc = "手中有机枪和电锯的大机器人."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "green_bot"
 	icon_living = "green_bot"
@@ -18,8 +18,8 @@
 	move_to_delay = 6
 	melee_damage_lower = 8 // Full damage is done on the entire turf of target
 	melee_damage_upper = 10
-	attack_verb_continuous = "saws"
-	attack_verb_simple = "saw"
+	attack_verb_continuous = "锯"
+	attack_verb_simple = "锯"
 	attack_sound = 'sound/effects/ordeals/green/saw.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	ranged = 1

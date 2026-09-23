@@ -1,8 +1,8 @@
 // White ordeal mobs, other than Claw
 // Black Fixer
 /mob/living/simple_animal/hostile/ordeal/black_fixer
-	name = "Black Fixer"
-	desc = "A humanoid creature wrapped in bandages."
+	name = "黑色收尾人"
+	desc = "缠着绷带的人形生物."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "fixer_b"
 	icon_living = "fixer_b"
@@ -15,8 +15,8 @@
 	melee_damage_upper = 14
 	move_to_delay = 2.6
 	ranged = TRUE
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bash"
+	attack_verb_continuous = "猛砸"
+	attack_verb_simple = "猛砸"
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 0.0, PALE_DAMAGE = 0.5)
 	move_resist = MOVE_FORCE_OVERPOWERING
 	projectiletype = /obj/projectile/black
@@ -104,7 +104,7 @@
 	hammer_cooldown = world.time + hammer_cooldown_time
 	busy = TRUE
 	been_hit = list()
-	visible_message(span_warning("[src] raises their hammer high above the ground!"))
+	visible_message(span_warning("[src]将锤子高高举起!"))
 	var/turf/target_turf = get_ranged_target_turf_direct(src, target, 14, rand(-15,15))
 	var/list/turfs_to_hit = getline(src, target_turf)
 	for(var/turf/T in turfs_to_hit)
@@ -126,7 +126,7 @@
 	busy = FALSE
 
 /obj/projectile/black
-	name = "kunai"
+	name = "苦无"
 	icon_state = "blackfixer"
 	hitsound = 'sound/effects/ordeals/white/black_kunai.ogg'
 	damage = 10
@@ -134,8 +134,8 @@
 
 // White Fixer
 /mob/living/simple_animal/hostile/ordeal/white_fixer
-	name = "White Fixer"
-	desc = "An angelic creature wearing white and golden armor with a cannon-like weapon."
+	name = "白色收尾人"
+	desc = "一位身穿白色与金色铠甲、手持火炮般武器的天使生物."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "fixer_w"
 	icon_living = "fixer_w"
@@ -217,7 +217,7 @@
 	beam_cooldown = world.time + beam_cooldown_time
 	can_act = FALSE
 	icon_state = "fixer_w_beam"
-	visible_message(span_warning("[src] takes their weapon in hands, aiming it at [target]!"))
+	visible_message(span_warning("[src]举起手臂，瞄准[target]!"))
 	playsound(src, 'sound/effects/ordeals/white/white_beam_start.ogg', 75, FALSE, 10)
 	var/turf/target_turf = get_ranged_target_turf_direct(src, target, 24, rand(-20,20))
 	var/list/turfs_to_hit = getline(src, target_turf)
@@ -291,7 +291,7 @@
 	can_act = FALSE
 	damage_taken = 0
 	playsound(src, 'sound/effects/ordeals/white/white_reflect.ogg', 50, TRUE, 7)
-	visible_message("<span class='warning>[src] starts praying!</span>")
+	visible_message("<span class='warning>[src]开始狩猎!</span>")
 	icon_state = "fixer_w_pray"
 	RegisterSignal(src, COMSIG_MOB_APPLY_DAMGE, PROC_REF(DenyDamage))
 	SLEEP_CHECK_DEATH(10 SECONDS)
@@ -335,8 +335,8 @@
 
 // Red Fixer
 /mob/living/simple_animal/hostile/ordeal/red_fixer
-	name = "Red Fixer"
-	desc = "A humanoid creature  resembling a robot or a cyborg."
+	name = "红色收尾人"
+	desc = "由身上组满了机械和义体的收尾人."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fixer_r"
 	icon_living = "fixer_r"
@@ -421,7 +421,7 @@
 	forceMove(slash_end)
 	for(var/turf/T in hitline)
 		for(var/mob/living/L in HurtInTurf(T, list(), multislash_damage, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE, hurt_structure = TRUE, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL)))
-			to_chat(L, span_userdanger("[src] slashes you at a high speed!"))
+			to_chat(L, span_userdanger("[src]以高速劈向你!"))
 	var/datum/beam/B1 = slash_start.Beam(slash_end, "volt_ray", time=3)
 	B1.visuals.color = COLOR_YELLOW
 	playsound(src, attack_sound, 50, FALSE, 4)
@@ -429,7 +429,7 @@
 	forceMove(slash_start)
 	for(var/turf/T in hitline)
 		for(var/mob/living/L in HurtInTurf(T, list(), multislash_damage, RED_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE, hurt_structure = TRUE, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL)))
-			to_chat(L, span_userdanger("[src] slashes you at a high speed!"))
+			to_chat(L, span_userdanger("[src]以高速劈向你!"))
 	var/datum/beam/B2 = slash_start.Beam(slash_end, "volt_ray", time=6)
 	B2.visuals.color = COLOR_RED
 	playsound(src, attack_sound, 75, FALSE, 8)
@@ -459,7 +459,7 @@
 				continue
 			if(faction_check_mob(L))
 				continue
-			to_chat(L, span_userdanger("A red laser passes right through you!"))
+			to_chat(L, span_userdanger("红色激光穿透了你的身体!"))
 			L.deal_damage(beam_damage, RED_DAMAGE, src, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL))
 			been_hit |= L
 			new /obj/effect/temp_visual/cult/sparks(get_turf(L))
@@ -471,9 +471,9 @@
 
 // Pale Fixer
 /mob/living/simple_animal/hostile/ordeal/pale_fixer
-	name = "Pale Fixer"
-	desc = "A humanoid creature in a business attire and a fedora. They have a sleek pistol in one hand \
-			and a suitcase in the other."
+	name = "蓝色收尾人"
+	desc = "一个身穿商务西服，戴着礼帽的人形生物，双手分别拿着左轮手枪\
+			与公文包."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "fixer_p"
 	icon_living = "fixer_p"
@@ -490,8 +490,8 @@
 	rapid = 3
 	rapid_fire_delay = 4
 	projectilesound = 'sound/effects/ordeals/white/pale_pistol.ogg'
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "捅刺"
+	attack_verb_simple = "捅刺"
 	damage_coeff = list(RED_DAMAGE = 0.5, WHITE_DAMAGE = 1.0, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.0)
 	move_resist = MOVE_FORCE_OVERPOWERING
 	projectiletype = /obj/projectile/pale
@@ -606,7 +606,7 @@
 		return
 	tentacle_cooldown = world.time + tentacle_cooldown_time
 	can_act = FALSE
-	visible_message(span_danger("[src] drops their suitcase on the ground!"))
+	visible_message(span_danger("[src]将它的公文包放置在地面!"))
 	face_atom(target)
 	var/turf/beam_start = get_step(src, dir)
 	var/turf/beam_end
@@ -643,7 +643,7 @@
 		var/list/new_hits = HurtInTurf(T, been_hit, tentacle_damage, PALE_DAMAGE, check_faction = TRUE, hurt_mechs = TRUE, hurt_structure = TRUE, attack_type = (ATTACK_TYPE_SPECIAL)) - been_hit
 		been_hit += new_hits
 		for(var/mob/living/L in new_hits)
-			to_chat(L, span_userdanger("A pale beam passes right through you!"))
+			to_chat(L, span_userdanger("蓝色激光贯穿了你!"))
 			new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(L), pick(GLOB.alldirs))
 	SLEEP_CHECK_DEATH(8)
 	created_objects -= case
@@ -713,7 +713,7 @@
 		break
 
 /obj/projectile/pale
-	name = "pale bullet"
+	name = "蓝色子弹"
 	icon_state = "palebullet"
 	damage = 16
 	damage_type = PALE_DAMAGE

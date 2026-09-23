@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_clown
-	name = "cheers for the start"
-	desc = "A tiny humanoid creature in jester's attire."
+	name = "开始欢呼吧！"
+	desc = "一个穿着小丑服装的人形小怪物。"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "crimson_clown"
 	icon_living = "crimson_clown"
@@ -41,12 +41,12 @@
 		var/obj/machinery/computer/abnormality/CA = attacked_target
 		if(console_attack_counter < 12)
 			console_attack_counter += 1
-			visible_message(span_warning("[src] hits [CA]'s buttons at random!"))
+			visible_message(span_warning("[src]随机地按下[CA]上的按钮!"))
 			playsound(get_turf(CA), "sound/machines/terminal_button0[rand(1,8)].ogg", 50, 1)
 			changeNext_move(CLICK_CD_MELEE * 2)
 		else
 			console_attack_counter = 0
-			visible_message(span_warning("[CA]'s screen produces an error!"))
+			visible_message(span_warning("[CA]的屏幕显示故障信息!"))
 			playsound(get_turf(CA), 'sound/machines/terminal_error.ogg', 50, 1)
 			CA.datum_reference.qliphoth_change(-1, src)
 			LoseTarget()
@@ -97,7 +97,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_clown/proc/DeathExplosion()
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸了!"))
 	for(var/mob/living/L in view(5, src))
 		if(!faction_check_mob(L))
 			L.deal_damage(10, RED_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL))

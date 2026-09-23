@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/shrimp_soldier
-	name = "wellcheers corp hired liquidation officer"
-	desc = "A shrimp that is there to guard an area."
+	name = "韦尔奇乐清算专员"
+	desc = "一只守卫着某片区域的虾."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
@@ -15,8 +15,8 @@
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
-	attack_verb_continuous = "punches"
-	attack_verb_simple = "punches"
+	attack_verb_continuous = "拳击"
+	attack_verb_simple = "拳击"
 	attack_sound = 'sound/weapons/punch3.ogg'
 	speak_emote = list("burbles")
 	ranged = 1

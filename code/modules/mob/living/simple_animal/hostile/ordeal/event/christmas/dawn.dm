@@ -1,8 +1,8 @@
 // Holidays - Christmas
 // Shameless copy of mimics. Later ordeals can have gnomes
 /mob/living/simple_animal/hostile/ordeal/present
-	name = "christmas gift"
-	desc = "It could be anything!"
+	name = "圣诞礼物"
+	desc = "可能是任何东西!"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "giftdeliverypackage3"
 	icon_living = "giftdeliverypackage3"
@@ -80,7 +80,7 @@
 		return
 	var/turf/target_c = get_turf(src)
 	var/list/turf_list = spiral_range_turfs(15, target_c)
-	visible_message("<span class='danger'>[src] releases a cloud of nauseating gas!</span>")
+	visible_message("<span class='danger'>[src]释放了一片令人作呕的气体!</span>")
 	playsound(target_c, 'sound/effects/ordeals/violet/fruit_suicide.ogg', 50, 1, 16)
 	adjustWhiteLoss(maxHealth) // Die
 	for(var/turf/open/T in turf_list)

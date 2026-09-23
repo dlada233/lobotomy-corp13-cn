@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/amber_bug
-	name = "complete food"
-	desc = "A tiny worm-like creature with tough chitin and a pair of sharp claws."
+	name = "新鲜的食物"
+	desc = "一种微小的蠕虫状生物，拥有坚韧的外骨骼和一对锋利的爪子."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "amber_bug"
 	icon_living = "amber_bug"
@@ -14,8 +14,8 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 4
 	turns_per_move = 2
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "啃咬"
+	attack_verb_simple = "啃咬"
 	attack_sound = 'sound/effects/ordeals/amber/dawn_attack.ogg'
 	attack_sound = 'sound/effects/ordeals/amber/dawn_dead.ogg'
 	damage_coeff = list(RED_DAMAGE = 2, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 2)
@@ -107,7 +107,7 @@
 					var/obj/item/organ/amber_bug/amber_parasite = new(H)
 					amber_parasite.ordeal_reference = ordeal_reference
 					playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_in.ogg', 25, 1)
-					to_chat(H, span_danger("The bug is eating its way inside your chest!"))
+					to_chat(H, span_danger("这个虫子正悄悄钻进你的胸口!"))
 					qdel(src)
 			forceMove(T)
 			SLEEP_CHECK_DEATH(2)
@@ -129,7 +129,7 @@
 			can_burrow_solo = FALSE
 			return
 	burrowing = TRUE
-	visible_message(span_danger("[src] burrows into the ground!"))
+	visible_message(span_danger("[src]钻入了地下!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_in.ogg', 25, 1)
 	animate(src, alpha = 0, time = 5)
 	SLEEP_CHECK_DEATH(5)
@@ -147,7 +147,7 @@
 	new /obj/effect/temp_visual/small_smoke/halfsecond(target_turf)
 	animate(src, alpha = 255, time = 5)
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_out.ogg', 25, 1)
-	visible_message(span_bolddanger("[src] burrows out from the ground!"))
+	visible_message(span_bolddanger("[src]从地下钻了出来!"))
 	SLEEP_CHECK_DEATH(5)
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(target_turf, src)
 	animate(D, alpha = 0, transform = matrix()*1.5, time = 5)
@@ -182,8 +182,8 @@
 
 //A variation of the amber dawn that will eat corpses to grow stronger.
 /mob/living/simple_animal/hostile/ordeal/amber_bug/hungriest_one
-	name = "incomplete food"
-	desc = "This one looks like it'll eat anything that moves."
+	name = "不完整的食物"
+	desc = "这家伙看起来会吃掉任何会动的东西."
 	maxHealth = 50
 	health = 50
 	melee_damage_lower = 3
@@ -229,7 +229,7 @@
 	var/mob/living/meal = attacked_target
 	if(istype(attacked_target, /mob/living/simple_animal/hostile/ordeal/amber_bug))
 		meal.adjustBruteLoss(200) //Should one shot every bug, but not other hugriest one.
-		visible_message(span_warning("[meal] is torn to shred by [src]!"))
+		visible_message(span_warning("[meal]被[src]撕成了碎片!"))
 
 	if(meal.stat != DEAD)
 		return
@@ -265,7 +265,7 @@
 
 /* DAWN AMBER ORGAN */
 /obj/item/organ/amber_bug
-	name = "hungry mass"
+	name = "饥饿团块"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_PARASITE_EGG
 	icon_state = "tonguetied"
@@ -289,11 +289,11 @@
 
 /obj/item/organ/amber_bug/on_find(mob/living/finder)
 	. = ..()
-	to_chat(finder, span_warning("You find something eating [owner]'s insides!"))
+	to_chat(finder, span_warning("你发现有东西正在[owner]的内部啃食!"))
 
 /obj/item/organ/amber_bug/Remove(mob/living/carbon/human/M, special = 0)
 	if(M && !cured)
-		visible_message(span_warning("A bug leaps out of [M]!"))
+		visible_message(span_warning("一条虫子从[M]里跳了出来!"))
 		SpawnBug(1)
 	. = ..()
 
@@ -339,7 +339,7 @@
 	var/turf/T = get_turf(H)
 
 	if(H?.reagents?.has_reagent(/datum/reagent/amber)) //The 'cure' is amber bug meat.
-		to_chat(H, span_warning("The bug, tricked into eating the meat of its own kind, finds its way out of your body!"))
+		to_chat(H, span_warning("这条虫子被引诱去吃同类的肉，从你的身体里跳了出去！!"))
 		var/mob/living/simple_animal/hostile/ordeal/amber_bug/hungriest_one/bug = new(T)
 		if(ordeal_reference)
 			bug.ordeal_reference = ordeal_reference
@@ -355,7 +355,7 @@
 	feeding_duration = world.time + (feeding_interval)
 	feeding_stage++
 	H.deal_damage(feeding_stage * 3, RED_DAMAGE)
-	visible_message(span_danger("[feeding_stage] bugs eat their way out of [H]'s body!"))
+	visible_message(span_danger("[feeding_stage]虫子从[H]的身体里钻了出来!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_out.ogg', 25, 1)
 	if(H.stat != DEAD)
 		H.emote("scream")

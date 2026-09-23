@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/sin_sloth/noon
-	name = "Peccatulum Acediae?"
-	desc = "Now the rock has more rocks."
+	name = "怠惰大罪?"
+	desc = "现在这些石头更石了."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -24
 	base_pixel_x = -24
@@ -24,8 +24,8 @@
 	do_attack_animation(get_step(src, dir), no_effect = TRUE)
 
 /mob/living/simple_animal/hostile/ordeal/sin_gluttony/noon
-	name = "Peccatulum Gulae?"
-	desc = "Giant, hungry looking flowers. Is that blood?"
+	name = "暴食大罪?"
+	desc = "巨大的，看起来很饥饿的花朵，那上面是血吗？"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -24
 	base_pixel_x = -24
@@ -76,7 +76,7 @@
 	grab_victim.forceMove(get_turf(src))
 	animate(grab_victim, alpha = 0, time = 2)
 	SLEEP_CHECK_DEATH(5)
-	to_chat(grab_victim, span_userdanger("[src] has grabbed you! Attack [src] to break free!"))
+	to_chat(grab_victim, span_userdanger("[src]已经抓住了你！攻击[src]来挣脱！"))
 	StrangleHit(1)
 
 /mob/living/simple_animal/hostile/ordeal/sin_gluttony/noon/proc/StrangleHit(count)
@@ -96,10 +96,10 @@
 	switch(count)
 		if(0 to 3)
 			playsound(get_turf(src), 'sound/effects/wounds/crack1.ogg', 200, 0, 7)
-			to_chat(grab_victim, span_userdanger("You are being devoured!"))
+			to_chat(grab_victim, span_userdanger("你被吞食了!"))
 		if(4)	//Apply double damage
 			playsound(get_turf(src), 'sound/effects/wounds/crackandbleed.ogg', 200, 0, 7)
-			to_chat(grab_victim, span_userdanger("It hurts so much!"))
+			to_chat(grab_victim, span_userdanger("那疼得厉害!"))
 			grab_victim.deal_damage(rupture_damage, BRUTE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		else	//Apply ramping damage
 			playsound(get_turf(src), 'sound/effects/wounds/crackandbleed.ogg', 200, 0, 7)
@@ -128,8 +128,8 @@
 			ReleaseGrab()
 
 /mob/living/simple_animal/hostile/ordeal/sin_gloom/noon
-	name = "Peccatulum Morositatis?"
-	desc = "A large, translucent monster full of organs. It that throws around its weight like a hammer."
+	name = "忧郁大罪?"
+	desc = "一只巨大的，半透明怪物，浑身布满器官，像锤子一样挥舞着自己."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -24
 	base_pixel_x = -24
@@ -186,8 +186,8 @@
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/ordeal/sin_pride/noon
-	name = "Peccatulum Superbiae?"
-	desc = "A spiky wheel with hands resembling claws."
+	name = "傲慢大罪?"
+	desc = "带爪状手的尖刺车轮."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -24
 	base_pixel_x = -24
@@ -208,8 +208,8 @@
 	dash_range = 2
 
 /mob/living/simple_animal/hostile/ordeal/sin_lust/noon
-	name = "Peccatulum Luxuriae?"
-	desc = "A creature that holds up its face like a shield. Its flesh is disgustingly soft, like rotten fruit."
+	name = "色欲大罪?"
+	desc = "一个脸像盾牌的生物。它的肉体可怕地柔软，像腐烂的水果。"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -24
 	base_pixel_x = -24
@@ -229,8 +229,8 @@
 	ability_delay = 0.3 SECONDS
 
 /mob/living/simple_animal/hostile/ordeal/sin_wrath/noon
-	name = "Peccatulum Irae?"
-	desc = "A much bigger version of that tentacle peccatula, now it has a tail."
+	name = "暴怒大罪?"
+	desc = "那个触手的巨化版本，现在还有了尾巴."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
@@ -256,8 +256,8 @@
 			continue
 		if(L.z != z)
 			continue
-		visible_message(span_boldwarning("[src] slams [L]!"))
-		to_chat(L, span_userdanger("[src] slams you!"))
+		visible_message(span_boldwarning("[src]猛击[L]!"))
+		to_chat(L, span_userdanger("[src]猛击了你!"))
 		var/turf/LT = get_turf(L)
 		new /obj/effect/temp_visual/kinetic_blast(LT)
 		if(ishuman(L))

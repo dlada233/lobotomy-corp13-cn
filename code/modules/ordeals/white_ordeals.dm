@@ -1,6 +1,6 @@
 /datum/ordeal/fixers
 	name = "收尾人"
-	announce_text = "This isn't supposed to happen, but they have come for you. Might want to report this to central command."
+	announce_text = "这不应该发生，但是他们要来抓你了！ 建议你向中央指挥汇报一下."
 	can_run = FALSE
 	delay = 1 // Goes back-to-back
 	random_delay = FALSE

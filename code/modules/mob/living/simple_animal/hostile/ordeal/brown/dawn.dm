@@ -1,7 +1,7 @@
 // 6 Peccatulum for dawn
 /mob/living/simple_animal/hostile/ordeal/sin_sloth
-	name = "Peccatulum Acediae"
-	desc = "It resembles a rock."
+	name = "怠惰大罪"
+	desc = "它像一块石头."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "slothsin"
 	icon_living = "slothsin"
@@ -12,8 +12,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 2
 	melee_damage_upper = 4
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "击打"
+	attack_verb_simple = "击打"
 	attack_sound = 'sound/effects/ordeals/brown/rock_attack.ogg'
 	death_sound = 'sound/effects/ordeals/brown/rock_dead.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -96,8 +96,8 @@
 	return TRUE
 
 /mob/living/simple_animal/hostile/ordeal/sin_gluttony
-	name = "Peccatulum Gulae"
-	desc = "These \"plants\" have gnashing and gnawing mouths, resembling a rabid beast."
+	name = "暴食大罪"
+	desc = "这些\"植物\"长着可以撕咬的嘴巴，看起来像一只狂暴的野兽."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "gluttonysin"
 	icon_living = "gluttonysin"
@@ -109,8 +109,8 @@
 	rapid_melee = 3
 	melee_damage_lower = 1
 	melee_damage_upper = 2
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "啃咬"
+	attack_verb_simple = "啃咬"
 	attack_sound = 'sound/effects/ordeals/brown/flower_attack.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -136,8 +136,8 @@
 	if(!L)
 		return
 	visible_message(
-		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_danger("[src]吞食[L]!"),
+		span_userdanger("你吞食了[L], 恢复了自己!"))
 	adjustBruteLoss(-(maxHealth/2))
 	playsound(get_turf(L), 'sound/effects/ordeals/brown/flower_kill.ogg', 50, 4)
 	if(!iscarbon(L))
@@ -155,8 +155,8 @@
 	return
 
 /mob/living/simple_animal/hostile/ordeal/sin_gloom
-	name = "Peccatulum Morositatis"
-	desc = "An insect-like entity with a transparant body."
+	name = "忧郁大罪"
+	desc = "拥有着透明身体的类昆虫生物."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	pixel_x = -8
 	base_pixel_x = -8
@@ -169,8 +169,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 7
 	melee_damage_upper = 8
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "击打"
+	attack_verb_simple = "击打"
 	attack_sound = 'sound/effects/ordeals/brown/flea_attack.ogg'
 	death_sound = 'sound/effects/ordeals/brown/flea_dead.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -209,7 +209,7 @@
 	SLEEP_CHECK_DEATH(16)
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(get_turf(src), src)
 	animate(D, alpha = 0, transform = matrix()*1.6, time = 5)
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	playsound(loc, 'sound/abnormalities/ichthys/hardslap.ogg', 60, TRUE)
 	var/damage_dealt = rand(melee_damage_lower, melee_damage_upper)
 	for(var/turf/T in view(2, src))
@@ -234,8 +234,8 @@
 	return TRUE
 
 /mob/living/simple_animal/hostile/ordeal/sin_pride
-	name = "Peccatulum Superbiae"
-	desc = "Those spikes look sharp!"
+	name = "傲慢大罪"
+	desc = "这些刺很锐利!"
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	pixel_x = -8
 	base_pixel_x = -8
@@ -249,8 +249,8 @@
 	rapid_melee = 2
 	melee_damage_lower = 4
 	melee_damage_upper = 6
-	attack_verb_continuous = "slashes"
-	attack_verb_simple = "slash"
+	attack_verb_continuous = "碾压"
+	attack_verb_simple = "碾压"
 	attack_sound = 'sound/weapons/ego/sword1.ogg'
 	death_sound = 'sound/effects/ordeals/brown/dead_generic.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -346,7 +346,7 @@
 			continue
 		if(L.z != z)
 			continue
-		L.visible_message(span_warning("[src] shreds [L] as it passes by!"), span_boldwarning("[src] shreds you!"))
+		L.visible_message(span_warning("[src]撕扯[L]而过!"), span_boldwarning("[src]撕扯而过!"))
 		var/turf/LT = get_turf(L)
 		new /obj/effect/temp_visual/kinetic_blast(LT)
 		L.deal_damage(dash_damage, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
@@ -361,8 +361,8 @@
 	addtimer(CALLBACK(src, PROC_REF(Charge), move_dir, (times_ran + 1)), 1)
 
 /mob/living/simple_animal/hostile/ordeal/sin_lust //Tank that is resistant to bullets
-	name = "Peccatulum Luxuriae"
-	desc = "A creature made of lumps of flesh. It looks eagar to devour human flesh."
+	name = "色欲大罪"
+	desc = "一个由肉块构成的生物，看起来渴望吞噬人类的肉体."
 	icon = 'ModularTegustation/Teguicons/64x32.dmi'
 	icon_state = "lustsin"
 	icon_living = "lustsin"
@@ -377,8 +377,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 3
 	melee_damage_upper = 5
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "抽打"
+	attack_verb_simple = "抽打"
 	attack_sound = 'sound/effects/ordeals/brown/cromer_slam.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -400,7 +400,7 @@
 
 /mob/living/simple_animal/hostile/ordeal/sin_lust/bullet_act(obj/projectile/P)
 	if(prob(25))
-		visible_message(span_userdanger("[P] is blocked by [src]!"))
+		visible_message(span_userdanger("[P]被[src]挡下了!"))
 		P.Destroy()
 	return
 
@@ -408,7 +408,7 @@
 	var/checkdir = check_target_facings(user, src)
 	if((get_dist(user, src) > 1) || checkdir == FACING_EACHOTHER)
 		if(prob(block_chance))
-			user.visible_message(span_danger("[user]'s attack is easily deflected by [src]!"), span_userdanger("Your attack is easily deflected by [src]!"))
+			user.visible_message(span_danger("[user]的攻击被[src]轻易地反弹了!"), span_userdanger("你的攻击被[src]轻易地反弹了!"))
 			return
 	return ..()
 
@@ -467,8 +467,8 @@
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/ordeal/sin_wrath
-	name = "Peccatulum Irae"
-	desc = "Looks like some sort of dried tentacle with glowing red liquid inside."
+	name = "暴怒大罪"
+	desc = "看起来像是某种风干的触手，里面流淌着发光的红色液体。"
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "wrathsin"
 	icon_living = "wrathsin"
@@ -482,8 +482,8 @@
 	melee_damage_lower = 1
 	melee_damage_upper = 3
 	melee_reach = 3 // Will try to attack from this distance
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "捅刺"
+	attack_verb_simple = "捅刺"
 	attack_sound = 'sound/effects/ordeals/brown/tentacle_attack.ogg'
 	death_sound = 'sound/effects/ordeals/brown/dead_generic.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.7, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1.5)
@@ -589,6 +589,6 @@
 			var/obj/vehicle/V = A
 			V.take_damage(charge_damage*1.5, melee_damage_type)
 			for(var/mob/living/occupant in V.occupants)
-				to_chat(occupant, span_userdanger("Your [V.name] is bit by [src]!"))
+				to_chat(occupant, span_userdanger("你的[V.name]被[src]咬了!"))
 			EndCharge(FALSE)
 	return ..()

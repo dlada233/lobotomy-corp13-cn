@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/violet_monolith
-	name = "grant us love"
-	desc = "A dark monolith structure with incomprehensible writing on it."
+	name = "请给我们爱！！！"
+	desc = "一座黑暗的石柱，上面刻着难以理解的文字."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "violet_noon"
 	icon_living = "violet_noon"
@@ -52,7 +52,7 @@
 	animate(src, pixel_z = 0, alpha = 255, time = 10)
 	SLEEP_CHECK_DEATH(10)
 	density = TRUE
-	visible_message(span_danger("[src] drops down from the ceiling!"))
+	visible_message(span_danger("[src]从天花板坠下!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/violet/monolith_down.ogg', 65, 1)
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(get_turf(src), src)
 	animate(D, alpha = 0, transform = matrix()*2, time = 5)

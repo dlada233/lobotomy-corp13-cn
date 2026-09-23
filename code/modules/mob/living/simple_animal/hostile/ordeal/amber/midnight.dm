@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/amber_midnight
-	name = "eternal meal"
-	desc = "A giant insect-like creature with a ton of sharp rocky teeth."
+	name = "永恒的盛宴"
+	desc = "一只巨大的蠕虫巨兽，长着许多锋利的岩石状牙齿."
 	health = 5000
 	maxHealth = 5000
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 0.6, BLACK_DAMAGE = 0.4, PALE_DAMAGE = 0.8)
@@ -77,7 +77,7 @@
 	burrowing = TRUE
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/midnight_create.ogg', 50, FALSE)
 	SLEEP_CHECK_DEATH(2 SECONDS)
-	visible_message(span_danger("Two large bugs emerge from [src]!"))
+	visible_message(span_danger("两条大虫子从[src]体内钻了出来!"))
 	for(var/i = 1 to 2)
 		var/turf/T = get_step(get_turf(src), pick(GLOB.alldirs))
 		var/mob/living/simple_animal/hostile/ordeal/amber_dusk/spawned/bug = new(T)
@@ -92,7 +92,7 @@
 
 /mob/living/simple_animal/hostile/ordeal/amber_midnight/proc/BurrowIn()
 	burrowing = TRUE
-	visible_message(span_danger("[src] burrows into the ground!"))
+	visible_message(span_danger("[src]钻入地下!"))
 	playsound(src, 'sound/effects/ordeals/amber/midnight_in.ogg', 50, FALSE, 7)
 	icon_state = "ambermidnight_leave"
 	new /obj/effect/temp_visual/ambermidnight_hole(get_turf(src))
@@ -123,7 +123,7 @@
 	new /obj/effect/temp_visual/ambersmoke(get_turf(src))
 	animate(src, pixel_z = 0, alpha = 255, time = 1)
 	icon_state = "ambermidnight_bite"
-	visible_message(span_danger("[src] burrows out from the ground!"))
+	visible_message(span_danger("[src]从地下钻了出来!"))
 	SLEEP_CHECK_DEATH(8)
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/midnight_out_far.ogg', 25, FALSE, 24, 2, falloff_distance = 9)
 	SLEEP_CHECK_DEATH(2)

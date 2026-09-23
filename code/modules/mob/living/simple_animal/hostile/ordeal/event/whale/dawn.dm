@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/mermaid_porous
-	name = "mermaid of the porous hand"
-	desc = "A creature from the depths of the Blue Whirling Lake of Murk and Fish-Reek."
+	name = "穴掌鲸人鱼" // 游戏内贴图为‘鲸人鱼’
+	desc = "来自浑浊而腥臭的旋转着的蓝色湖域深处的生物."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "merm"
 	icon_living = "merm"
@@ -16,8 +16,8 @@
 	melee_damage_upper = 4
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
-	attack_verb_continuous = "scratches"
-	attack_verb_simple = "scratch"
+	attack_verb_continuous = "抓挠"
+	attack_verb_simple = "抓挠"
 	attack_sound = 'sound/creatures/lc13/lake_entity/mermaid_slash.ogg'
 	speak_emote = list("burbles")
 	ranged = 1
@@ -42,8 +42,8 @@
 	sleep(5)
 
 /mob/living/simple_animal/hostile/ordeal/mermaid_porous/soldier
-	name = "whale of the porous hand soldier mermaid"
-	desc = "A creature from the depths of the Blue Whirling Lake of Murk and Fish-Reek. This one has four eyes!"
+	name = "穴掌鲸士兵人鱼"
+	desc = "来自浑浊而腥臭的旋转着的蓝色湖域深处的生物. 这个家伙有四只眼睛!"
 	health = 80
 	maxHealth = 80
 	melee_damage_lower = 5

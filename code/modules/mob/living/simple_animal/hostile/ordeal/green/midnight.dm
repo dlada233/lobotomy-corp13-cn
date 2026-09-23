@@ -1,7 +1,7 @@
 // Green midnight
 /mob/living/simple_animal/hostile/ordeal/green_midnight
-	name = "helix of the end"
-	desc = "A colossal metallic structure with a large amount of laser weaponry beneath its shell."
+	name = "终末螺旋"
+	desc = "一座巨大的金属结构，外壳下隐藏着大量激光武器."
 	icon = 'ModularTegustation/Teguicons/224x128.dmi'
 	icon_state = "greenmidnight"
 	icon_living = "greenmidnight"
@@ -271,7 +271,7 @@
 
 //They are mainly a nuisance that causes people stacking in tight spots to move and shuffle and get eachother killed. Encourages not dumping BLACK armour for the ordeal
 /obj/effect/temp_visual/helix_minilaser
-	name = "helix of the end mini-laser"
+	name = "终末螺旋迷你激光"
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "pillar_strike"
 	duration = 15
@@ -286,12 +286,12 @@
 	for(var/mob/living/H in src.loc)
 		if(!faction_check(H.faction, list("green_ordeal")))
 			H.deal_damage(25, BLACK_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL))
-			to_chat(H, span_userdanger("You're hit by [src.name]!"))
+			to_chat(H, span_userdanger("你被[src.name]击中了!"))
 
 /// This laser hits in a 3 tile radius (the epicenter and its adjacent tiles).
 /// First, a warning appears. 1.6s after the warning appears, the actual laser hits.
 /obj/effect/temp_visual/helix_macrolaser
-	name = "helix of the end macro-laser"
+	name = "终末螺旋微型激光"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "warning"
 	duration = 30
@@ -316,7 +316,7 @@
 		if(distance < 2)
 			if(!faction_check(H.faction, list("green_ordeal")))
 				H.deal_damage(50, BLACK_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL))
-				to_chat(H, span_userdanger("You're hit by [src.name]!"))
+				to_chat(H, span_userdanger("你被[src.name]击中了!"))
 			shake_camera(H, 3, 1.5)
 
 		else
@@ -458,8 +458,8 @@
 		microbarrage_target_turfs = microbarrage_threatened_turfs - danger_close_turfs
 
 /obj/structure/closet/supplypod/helixpod
-	name = "protocol of contemplation"
-	desc = "Things are about to get heated."
+	name = "沉思协议"
+	desc = "局势即将升级."
 	specialised = FALSE
 	style = STYLE_HELIX
 	bluespace = TRUE

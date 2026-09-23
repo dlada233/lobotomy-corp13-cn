@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon
-	name = "harmony of skin"
-	desc = "A large clown-like creature with 3 heads full of red tumors."
+	name = "汁水大合唱"
+	desc = "一个巨大的、像小丑一样的生物，有三个脑袋，上面长满了红色的肿瘤."
 	icon = 'ModularTegustation/Teguicons/48x48.dmi'
 	icon_state = "crimson_noon"
 	icon_living = "crimson_noon"
@@ -12,8 +12,8 @@
 	base_pixel_x = -8
 	melee_damage_lower = 6
 	melee_damage_upper = 8
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "啃咬"
+	attack_verb_simple = "啃咬"
 	attack_sound = 'sound/effects/ordeals/crimson/noon_bite.ogg'
 	death_sound = 'sound/effects/ordeals/crimson/noon_dead.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.6, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 1.5)
@@ -42,7 +42,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/proc/DeathExplosion(gibbed = FALSE)
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	var/valid_directions = list(0) // 0 is used by get_turf to find the turf a target, so it'll at the very least be able to spawn on itself.
 	for(var/d in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 		var/turf/TF = get_step(src, d)

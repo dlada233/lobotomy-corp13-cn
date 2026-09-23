@@ -1,16 +1,16 @@
 /mob/living/simple_animal/hostile/ordeal/steel_dawn/steel_noon
-	name = "gene corp corporal"
-	desc = "A heavily mutated employee with two sharp insectoid arms. Gene corp utilized those who have had a more volitile reaction to the treatment as shock troops during the smoke war."
+	name = "G公司军官"
+	desc = "一名重度虫化、拥有两根锋利的昆虫手臂的员工。在烟霾战争期间，G公司会将那些虫化更为剧烈的人作为突击部队。"
 	icon_state = "gcorp5"
 	icon_living = "gcorp5"
 	icon_dead = "gcorp_corpse2"
-	death_message = "salutes weakly before falling."
+	death_message = "虚弱地敬礼，然后倒下."
 	maxHealth = 330
 	health = 330
 	rapid_melee = 2
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 1, BLACK_DAMAGE = 0.8, PALE_DAMAGE = 0.8)
-	attack_verb_continuous = "slashes"
-	attack_verb_simple = "slash"
+	attack_verb_continuous = "切削"
+	attack_verb_simple = "切削"
 	death_sound = 'sound/voice/mook_death.ogg'
 	butcher_results = list(/obj/item/food/meat/slab/buggy = 2)
 	silk_results = list(/obj/item/stack/sheet/silk/steel_simple = 2, /obj/item/stack/sheet/silk/steel_advanced = 1)
@@ -28,7 +28,7 @@
 /mob/living/simple_animal/hostile/ordeal/steel_dawn/steel_noon/proc/DeathExplosion()
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸!"))
 	new /obj/effect/temp_visual/explosion(get_turf(src))
 	playsound(loc, 'sound/effects/ordeals/steel/gcorp_boom.ogg', 60, TRUE)
 	for(var/mob/living/L in ohearers(3, src))
@@ -51,15 +51,15 @@
 	for(var/mob/living/simple_animal/hostile/ordeal/steel_dusk/Z in ohearers(7, src))
 		if(Z.stat >= UNCONSCIOUS)
 			continue
-		Z.say("There will be full-on roll call tonight.")
+		Z.say("今夜全军点兵.")
 		Z.screech_windup = 3 SECONDS
 
 	gib()
 
 //flying varient trades movement and attack speed for a sweeping attack.
 /mob/living/simple_animal/hostile/ordeal/steel_dawn/steel_noon/flying
-	name = "gene corp arial scout"
-	desc = "A heavily mutated employee with wings and long insectoid arms. During the smoke war, rabbit teams would get ambushed by swarms that hid in the smoke choked sky."
+	name = "G公司 Arial侦察兵"
+	desc = "一只带有翅膀，长着昆虫手臂的重度虫化员工. 烟霾战争期间，兔子队常常被隐藏在烟雾弥漫的天空中的蜂群袭击."
 	icon_state = "gcorp6"
 	icon_living = "gcorp6"
 	environment_smash = FALSE
@@ -100,7 +100,7 @@
 	if(do_after(src, 2 SECONDS, target = src))
 		ArialSupport()
 	else
-		visible_message(span_notice("[src] crashes to the ground."))
+		visible_message(span_notice("[src]坠落到地面."))
 		deal_damage(30, RED_DAMAGE)
 	//return to the ground
 	density = TRUE
@@ -127,7 +127,7 @@
 	charging = FALSE
 
 /mob/living/simple_animal/hostile/ordeal/steel_dawn/steel_noon/flying/proc/SweepAttack(mob/living/sweeptarget)
-	sweeptarget.visible_message(span_danger("[src] slams into [sweeptarget]!"), span_userdanger("[src] slams into you!"))
+	sweeptarget.visible_message(span_danger("[src]直冲[sweeptarget]!"), span_userdanger("[src]直冲向你!"))
 	sweeptarget.deal_damage(10, RED_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 	playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 50, TRUE)
 	if(sweeptarget.mob_size <= MOB_SIZE_HUMAN)

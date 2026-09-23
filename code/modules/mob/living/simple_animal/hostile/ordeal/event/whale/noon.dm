@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/mermaid_strand
-	name = "mermaid of the thousand strands"
-	desc = "A creature from the depths of an unknown lake with grey waters"
+	name = "千缕鲸人鱼"
+	desc = "来自浮游摇曳的灰暗湖域里的生物"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "scarymerm"
 	icon_living = "scarymerm"
@@ -15,8 +15,8 @@
 	melee_damage_upper = 5
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
+	attack_verb_continuous = "撕咬"
+	attack_verb_simple = "撕咬"
 	attack_sound = 'sound/creatures/lc13/lake_entity/strand_attack_1.ogg'
 	speak_emote = list("burbles")
 	ranged = 1

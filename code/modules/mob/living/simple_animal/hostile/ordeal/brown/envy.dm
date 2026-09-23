@@ -5,8 +5,8 @@
 */
 
 /mob/living/simple_animal/hostile/ordeal/sin_envy
-	name = "Peccatulum Invidiae"
-	desc = "A strange, pulsating mass of flesh with an eye in the middle."
+	name = "嫉妒大罪"
+	desc = "一个奇怪但脉动着的肉块，中间有一只眼睛."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "envysin"
 	icon_living = "envysin"
@@ -17,8 +17,8 @@
 	melee_damage_type = RED_DAMAGE
 	melee_damage_lower = 4
 	melee_damage_upper = 6
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "击打"
+	attack_verb_simple = "击打"
 	attack_sound = 'sound/weapons/fixer/generic/club3.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
@@ -62,11 +62,11 @@
 		name = "[target_mob.name]?"
 	else
 		name = random_unique_name(gender, 1)
-	desc = "Is that really [name]?"
+	desc = "那真的是[name]吗?"
 
 /mob/living/simple_animal/hostile/ordeal/sin_envy/death(gibbed)
 	appearance = initial(appearance) // Remove our human overlay
-	desc = "A miserable pile of secrets."
+	desc = "一叠令人痛苦的秘密."
 	..()
 
 /datum/outfit/job/scavenger/envy // Just a normal rat but with a hammer

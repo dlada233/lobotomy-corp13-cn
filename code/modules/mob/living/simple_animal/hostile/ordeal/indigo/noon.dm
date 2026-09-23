@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_PERSISTENCE /datum/status_effect/stacking/sweeper_persistence
 /mob/living/simple_animal/hostile/ordeal/indigo_noon
-	name = "sweeper"
-	desc = "A humanoid creature wearing metallic armor. It has bloodied hooks in its hands."
+	name = "清道夫"
+	desc = "一个身穿金属盔甲的人形生物，手中握着沾满鲜血的钩子。."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "sweeper_1"
 	icon_living = "sweeper_1"
@@ -16,8 +16,8 @@
 	melee_damage_upper = 8
 	butcher_results = list(/obj/item/food/meat/slab/sweeper = 2)
 	guaranteed_butcher_results = list(/obj/item/food/meat/slab/sweeper = 1)
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "捅刺"
+	attack_verb_simple = "捅刺"
 	attack_sound = 'sound/effects/ordeals/indigo/stab_1.ogg'
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.8)
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -54,8 +54,8 @@
 	if(SSmaptype.maptype in SSmaptype.citymaps)
 		return FALSE
 	visible_message(
-		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_danger("[src]吞食了[L]!"),
+		span_userdanger("你吞食了[L]，恢复了自己！"))
 	if(faction_check_mob(L))
 		adjustBruteLoss(-40)
 	else
@@ -126,7 +126,7 @@
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "sweeper_limbus"
 	icon_living = "sweeper_limbus"
-	desc = "A humanoid creature wearing metallic armor. It has bloodied hooks in its hands.\nThis one seems to move with far more agility than its peers."
+	desc = "一个身穿金属盔甲的人形生物，手中握着沾满鲜血的钩子。.\n这只看起来比同类移动得更加灵活。"
 	move_to_delay = 2.7
 	rapid_melee = 2
 	melee_damage_lower = 4
@@ -279,7 +279,7 @@
 /mob/living/simple_animal/hostile/ordeal/indigo_noon/lanky/proc/SweepTheBackstreetsHit(list/turfs)
 	for(var/hit_turf in turfs)
 		for(var/mob/living/hit_mob in HurtInTurf(hit_turf, dash_hitlist, melee_damage_upper * 1.5, melee_damage_type, check_faction = TRUE, hurt_mechs = TRUE, hurt_structure = TRUE))
-			to_chat(hit_mob, span_userdanger("The [src.name] viciously slashes you as it dashes past!"))
+			to_chat(hit_mob, span_userdanger("[src.name]残忍地向你冲杀而过!"))
 			/// We spawn some gibs and heal if the target hit is human.
 			if(istype(hit_mob, /mob/living/carbon/human))
 				new /obj/effect/gibspawner/generic(get_turf(hit_mob))
@@ -355,7 +355,7 @@
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "sweeper_limbus"
 	icon_living = "sweeper_limbus"
-	desc = "A humanoid creature wearing metallic armor. It has bloodied hooks in its hands.\nThis one has more bulk than its peers - it won't go down easy."
+	desc = "一个身穿金属盔甲的人形生物，手中握着沾满鲜血的钩子。\n这只看起来比同类更厚实，难以使其倒下."
 	/// They're slow.
 	move_to_delay = 5
 	/// These sweepers have a slower, but slightly stronger melee. Easier to parry if anything.
@@ -424,7 +424,7 @@
 		new /obj/effect/gibspawner/generic(get_turf(attacked_target))
 		SweeperHealing(extract_fuel_healing)
 		GainPersistence(1)
-		visible_message(span_danger("The [src.name] tears into [attacked_target.name] and refuels itself with some of their viscera!"))
+		visible_message(span_danger("[src.name]从[attacked_target.name]中撕裂而出，并用部分内脏重新补充能量！"))
 
 /mob/living/simple_animal/hostile/ordeal/indigo_noon/chunky/proc/PrepareExtractFuel()
 	/// I have no idea what could cause this, but just in case
@@ -437,7 +437,7 @@
 	/// Warn the players so they can back off or get ready to parry.
 	say("+38725 619.+")
 	animate(src, 2 SECONDS, color = "#FE5343")
-	visible_message(span_danger("The [src.name] winds up for a devastating blow!"), span_info("You prepare to extract fuel from your victim."))
+	visible_message(span_danger("[src.name]最终遭受了毁灭性的打击！"), span_info("你正准备从你的受害者身上提取燃料."))
 	/// We're gonna sleep them because otherwise someone could hit the sweeper the DECISECOND before it's gonna attack and get slapped by a huge hit
 	/// This gives them enough margin to run away or parry
 	SLEEP_CHECK_DEATH(0.6 SECONDS)
@@ -459,7 +459,7 @@
 	extract_fuel_active = FALSE
 	animate(src, 0.5 SECONDS, color = initial(color))
 	if(!early)
-		visible_message(span_danger("The [src.name] lowers its aggressive stance."), span_info("You give up on the fuel extraction attempt."))
+		visible_message(span_danger("[src.name]放弃了进食."), span_info("你放弃了进食燃料."))
 
 /// This cleanup exists because if we land a hit with Extract Fuel, we want to turn it off, but there's still an ongoing timer it will call CancelExtractFuel
 /mob/living/simple_animal/hostile/ordeal/indigo_noon/chunky/proc/ExtractFuelTimerCleanup()
@@ -550,7 +550,7 @@
 		if(prob(final_chance))
 			playsound(neighbor, 'sound/effects/ordeals/indigo_start.ogg', 33)
 			INVOKE_ASYNC(neighbor, TYPE_PROC_REF(/mob/living/simple_animal/hostile/ordeal/indigo_noon, SweeperHealing), trigger_healing)
-			INVOKE_ASYNC(neighbor, TYPE_PROC_REF(/atom, visible_message), span_danger("The [neighbor.name] endures a fatal hit, some of the fuel being drained from its tank!"), span_userdanger("You suffer a lethal strike, losing some of your fuel!"))
+			INVOKE_ASYNC(neighbor, TYPE_PROC_REF(/atom, visible_message), span_danger("[neighbor.name]受到致命一击，流失了一些燃料罐中的燃料！"), span_userdanger("你受到致命一击，流失了一些燃料罐中的燃料！"))
 			src.add_stacks(-1)
 			return COMPONENT_MOB_DENY_DAMAGE
 		/// Tough luck neighbor. Persistence didn't go off so the sweeper dies here. Status should get cleaned up next time it ticks.

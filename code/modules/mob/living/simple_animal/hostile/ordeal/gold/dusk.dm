@@ -1,7 +1,7 @@
 // Gold Dusk - Commander that buffs its minion's attacks and wandering white damage
 /mob/living/simple_animal/hostile/ordeal/centipede_corrosion
-	name = "High-Voltage Centipede"
-	desc = "An agent of the information team, corrupted by an abnormality. But how?"
+	name = "电击蜈蚣"
+	desc = "情报部的一名员工，但被异想体侵蚀了. 究竟发生了什么?"
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	pixel_x = -16
 	base_pixel_x = -16
@@ -85,7 +85,7 @@
 			continue
 		TB.AdjustCharge(4)
 		playsound(get_turf(TB), 'sound/weapons/fixer/generic/energy3.ogg', 75, FALSE, 3)
-		TB.visible_message(span_warning("[TB] absorbs the arcing electricity!"))
+		TB.visible_message(span_warning("[TB]吸收弧光电流!"))
 
 /mob/living/simple_animal/hostile/ordeal/centipede_corrosion/proc/AdjustCharge(addition)
 	if(addition > 0 && charge_level < charge_level_cap)
@@ -132,7 +132,7 @@
 		break
 	if(foundbattery)
 		playsound(get_turf(src), 'sound/weapons/fixer/generic/energy3.ogg', 100, FALSE, 3)
-		visible_message(span_warning("[src] absorbs the arcing electricity!"))
+		visible_message(span_warning("[src]吸收弧光电流!"))
 	if(!broken && !foundbattery)
 		broken = TRUE
 		charge_level_cap = 10
@@ -146,8 +146,8 @@
 	update_icon()
 
 /mob/living/simple_animal/hostile/ordeal/thunderbird_corrosion
-	name = "Thunder Warrior"
-	desc = "An agent of the disciplinary team, corrupted by an abnormality. But how?"
+	name = "雷霆勇士"
+	desc = "惩戒部的一名员工，但被异想体侵蚀了. 究竟发生了什么?"
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "thunder_warrior"
 	icon_living = "thunder_warrior"
@@ -158,8 +158,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 5
 	melee_damage_upper = 7
-	attack_verb_continuous = "chops"
-	attack_verb_simple = "chop"
+	attack_verb_continuous = "抽打"
+	attack_verb_simple = "抽打"
 	attack_sound = 'sound/abnormalities/thunderbird/tbird_zombieattack.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 0.7)
@@ -252,7 +252,7 @@
 	if(!QDELETED(H))
 		C.can_affect_emergency = FALSE
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
-		C.desc = "看起来像[H.real_name], only charred and screaming incoherently..."
+		C.desc = "看起来像[H.real_name], 但只剩下焦黑的躯体，发出混乱无序的嘶吼..."
 		C.gender = H.gender
 		C.faction = src.faction
 		C.master = src
@@ -265,8 +265,8 @@
 	..()
 
 /mob/living/simple_animal/hostile/ordeal/KHz_corrosion
-	name = "680 Ham Actor"
-	desc = "An agent of the control team, corrupted by an abnormality. But how?"
+	name = "680频道呼号者"
+	desc = "控制部的一名员工，但被异想体侵蚀了. 究竟发生了什么?"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "680_ham_actor"
 	icon_living = "680_ham_actor"
@@ -277,8 +277,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 3 //they're support, so they deal low damage
 	melee_damage_upper = 4
-	attack_verb_continuous = "shocks"
-	attack_verb_simple = "shock"
+	attack_verb_continuous = "冲击"
+	attack_verb_simple = "冲击"
 	attack_sound = 'sound/abnormalities/thunderbird/tbird_peck.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
@@ -342,14 +342,14 @@
 			if(found_radio) //You can take off your radio to reduce the damage
 				L.deal_damage(4, WHITE_DAMAGE, src, attack_type = (ATTACK_TYPE_SPECIAL))
 				L.playsound_local(get_turf(L), "[radio_sound]",100)
-				to_chat(L,span_danger("You hear unsettling sounds come out of your radio!"))
+				to_chat(L,span_danger("你听到无线电里传来令人不安的声音!"))
 			L.deal_damage(2, WHITE_DAMAGE, src, attack_type = (ATTACK_TYPE_SPECIAL))
 
 /mob/living/simple_animal/hostile/ordeal/KHz_corrosion/proc/Screech()
 	if(screech_cooldown > world.time)
 		return
 	can_act = FALSE
-	visible_message(span_danger("[src] releases static!"))
+	visible_message(span_danger("[src]释放静电干扰!"))
 	playsound(src, 'sound/effects/ordeals/gold/radiostatic.ogg', 100, TRUE, 8)
 	var/icon/I = icon(icon, icon_state, dir)
 	I = getStaticIcon(I)
@@ -387,8 +387,8 @@
 		Screech()
 
 /mob/living/simple_animal/hostile/ordeal/thunderbird_corrosion_boss
-	name = "Thunder Chieftain"
-	desc = "A disciplinary officer, heavily corrupted by an abnormality."
+	name = "雷霆酋长"
+	desc = "一名惩戒部长，但是被严重侵蚀."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "thunder_warrior"
 	icon_living = "thunder_warrior"
@@ -435,7 +435,7 @@
 	return FALSE
 
 /mob/living/simple_animal/hostile/ordeal/thunderbird_corrosion_boss/bullet_act(obj/projectile/P)
-	visible_message(span_warning("The [P] sizzles away as it strikes an invisible barrier!"))
+	visible_message(span_warning("[P]击中无形屏障，瞬间迸发出炽热的光芒！"))
 	return FALSE
 
 /mob/living/simple_animal/hostile/ordeal/thunderbird_corrosion_boss/proc/ThunderWave(range_override = null)

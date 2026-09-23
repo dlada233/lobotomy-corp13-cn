@@ -1,7 +1,7 @@
 // An LC13 Original. Totally.
 /mob/living/simple_animal/hostile/shrimp_rifleman
-	name = "wellcheers corp Rifleman"
-	desc = "Best shot this side of the fishing net."
+	name = "韦尔奇乐步枪兵"
+	desc = "渔网里最好的射手."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
@@ -35,8 +35,8 @@
 
 //friendly spawned shrimp from soda E.G.O.'s passive
 /mob/living/simple_animal/hostile/aminion/shrimp/grieving
-	name = "wellcheers obituary serviceman"
-	desc = "A shrimp that appears to be grieving. A moment of silence, please."
+	name = "韦尔奇乐殡仪师"
+	desc = "一只看起来在哀悼的虾，请保持庄严肃穆。"
 	icon_state = "wellcheers_funeral"
 	icon_living = "wellcheers_funeral"
 	faction = list("neutral", "shrimp")
@@ -45,8 +45,8 @@
 
 // extra buff shrimp i guess
 /mob/living/simple_animal/hostile/senior_shrimp
-	name = "wellcheers corp senior officer"
-	desc = "An unnaturally jacked shrimp."
+	name = "韦尔奇乐高级管理"
+	desc = "一个异常强壮的虾。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_ripped"
 	icon_living = "wellcheers_ripped"
@@ -62,8 +62,8 @@
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "击打"
+	attack_verb_simple = "击打"
 	attack_sound = 'sound/effects/meteorimpact.ogg'
 	speak_emote = list("burbles")
 	butcher_results = list(/obj/item/stack/spacecash/c100 = 1, /obj/item/stack/spacecash/c50 = 1)
@@ -80,8 +80,8 @@
 
 //April Fools Ordeal
 /mob/living/simple_animal/hostile/ordeal/shrimp
-	name = "wellcheers corp liquidation intern"
-	desc = "A shrimp that is extremely hostile to you."
+	name = "韦尔奇乐清算实习生"
+	desc = "一只对您极度敌对的虾。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers"
 	icon_living = "wellcheers"
@@ -96,8 +96,8 @@
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
-	attack_verb_continuous = "punches"
-	attack_verb_simple = "punches"
+	attack_verb_continuous = "拳击"
+	attack_verb_simple = "拳击"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	speak_emote = list("burbles")
 	butcher_results = list(/obj/item/stack/spacecash/c50 = 1)
@@ -110,8 +110,8 @@
 		del_on_death = FALSE
 
 /mob/living/simple_animal/hostile/ordeal/shrimp_rifleman
-	name = "wellcheers corp Rifleman"
-	desc = "He is here on ofishal business."
+	name = "韦尔奇乐步枪兵"
+	desc = "他在这里是为了处理公务。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
@@ -126,8 +126,8 @@
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
-	attack_verb_continuous = "punches"
-	attack_verb_simple = "punches"
+	attack_verb_continuous = "拳击"
+	attack_verb_simple = "拳击"
 	attack_sound = 'sound/weapons/punch2.ogg'
 	speak_emote = list("burbles")
 	ranged = 1

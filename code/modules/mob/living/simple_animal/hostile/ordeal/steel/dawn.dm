@@ -1,8 +1,8 @@
 //G corp remenants, Survivors of the Smoke War
 //Their function is as common cannon fodder. Manager buffs make them much more effective in battle.
 /mob/living/simple_animal/hostile/ordeal/steel_dawn
-	name = "gene corp remnant"
-	desc = "A insect augmented employee of the fallen Gene corp. Word on the street says that they banded into common backstreet gangs after the Smoke War."
+	name = "G公司残兵"
+	desc = "一名来自前G公司的虫化员工，据说这些人在烟霾战争后组成了一个街头帮派。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "gcorp1"
 	icon_living = "gcorp1"
@@ -17,8 +17,8 @@
 	melee_damage_lower = 4
 	melee_damage_upper = 6
 	wander = FALSE
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "捅刺"
+	attack_verb_simple = "捅刺"
 	footstep_type = FOOTSTEP_MOB_SHOE
 	a_intent = INTENT_HELP
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)

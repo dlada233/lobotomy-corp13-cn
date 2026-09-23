@@ -1,11 +1,11 @@
 /mob/living/simple_animal/hostile/megafauna/claw
-	name = "Claw"
-	desc = "A strange humanoid creature with several gadgets attached to it."
+	name = "爪牙"// Claw
+	desc = "一个奇怪的人形生物，身上带着许多奇怪的装置."
 	health = 4000
 	maxHealth = 4000
 	damage_coeff = list(RED_DAMAGE = 0.4, WHITE_DAMAGE = 0.4, BLACK_DAMAGE = 0.4, PALE_DAMAGE = 0.4)
-	attack_verb_continuous = "slices"
-	attack_verb_simple = "slice"
+	attack_verb_continuous = "切削"
+	attack_verb_simple = "切削"
 	attack_sound = 'ModularTegustation/Tegusounds/claw/attack.ogg'
 	icon_state = "claw"
 	icon_living = "claw"
@@ -31,7 +31,7 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 	gps_name = "NTAF-V"
 	del_on_death = FALSE
-	death_message = "falls to the ground, decaying into glowing particles."
+	death_message = "倒在地上，化为发光的微粒."
 	death_sound = 'ModularTegustation/Tegusounds/claw/death.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	trigger_lights = TRUE
@@ -67,58 +67,58 @@
 	var/datum/ordeal/ordeal_reference
 
 /datum/action/innate/megafauna_attack/serum_w
-	name = "Serum 'W'"
+	name = "血清'W'"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "static"
-	chosen_message = span_colossus("You will now jump to random targets in the facility.")
+	chosen_message = span_colossus("你能传送至设施的随机位置.")
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/swift_dash
-	name = "Swift Dash"
+	name = "迅捷突袭"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "rift"
-	chosen_message = span_colossus("You will now dash forward for a short distance.")
+	chosen_message = span_colossus("你将向前进行短距离突袭.")
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/swift_dash_long
-	name = "Long Dash"
+	name = "致远突袭"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "plasmasoul"
-	chosen_message = span_colossus("You will now dash forward for a long distance.")
+	chosen_message = span_colossus("你将向前进行长距离突袭.")
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/serum_a
-	name = "Serum 'A'"
+	name = "血清'A'"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "impact_laser"
-	chosen_message = span_colossus("You will now continously dash towards your target.")
+	chosen_message = span_colossus("你将不断地向目标进行突袭.")
 	chosen_attack_num = 4
 
 /datum/action/innate/megafauna_attack/wide_slash
-	name = "Wide Slash"
+	name = "大片斩击"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "bluestream"
-	chosen_message = span_colossus("You will now slash in a wide area with white damage.")
+	chosen_message = span_colossus("你将向一个区域进行斩击，造成白色伤害.")
 	chosen_attack_num = 5
 
 /datum/action/innate/megafauna_attack/tri_serum
-	name = "Tri-Serum Attack"
+	name = "三重血清攻击"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "static"
-	chosen_message = span_colossus("You will now jump to random targets in the facility, dealing pale damage to anyone on your way.")
+	chosen_message = span_colossus("你将传送至设施内各个随机目标上，对途径的任何人造成蓝色伤害.")
 	chosen_attack_num = 6
 
 /obj/effect/temp_visual/target_field
-	name = "target field"
-	desc = "You have a bad feeling about this..."
+	name = "标记范围"
+	desc = "你对此有不好的预感..."
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'
 	icon_state = "target_field"
 	duration = 30 SECONDS // In case claw dies in the processs
 	randomdir = FALSE
 
 /obj/effect/temp_visual/target_field/blue
-	name = "tri-serum target field"
-	desc = "Well shit."
+	name = "三重血清标记范围"
+	desc = "真糟糕."
 	icon_state = "target_field_blue"
 
 /mob/living/simple_animal/hostile/megafauna/claw/Initialize()
@@ -219,7 +219,7 @@
 		if((maybe_victim.stat != DEAD) && maybe_victim.z == z)
 			death_candidates += maybe_victim
 	if(!LAZYLEN(death_candidates)) // If there is 0 candidates - stop the spell.
-		to_chat(src, span_notice("There is no more human survivors in the facility."))
+		to_chat(src, span_notice("设施内已无人类幸存者."))
 		return
 	if(length(death_candidates) == 1) // Exactly one? Do targeted thing for lulz
 		return TargetSerumW(death_candidates[1])
@@ -239,7 +239,7 @@
 	uhoh.orbit(target, 0)
 	playsound(target, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 100, 1)
 	playsound(src, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 1, 1)
-	to_chat(target, span_danger("The [src] is going to hunt you down!"))
+	to_chat(target, span_danger("[src]将会追杀你!"))
 	addtimer(CALLBACK(src, PROC_REF(eviscerate2), target, uhoh), 30)
 
 /mob/living/simple_animal/hostile/megafauna/claw/proc/eviscerate2(mob/living/carbon/human/target, obj/effect/eff)
@@ -247,8 +247,8 @@
 		qdel(eff)
 		return
 	if(prob(2) || target.z != z || !target.loc.AllowClick()) // Be happy, mortal. Did you just hide in a locker?
-		to_chat(src, span_notice("Your teleportation device malfunctions!"))
-		to_chat(target, span_notice("It seems you are safe. For now..."))
+		to_chat(src, span_notice("你的传送装置出现故障!"))
+		to_chat(target, span_notice("看起来你暂时安全了..."))
 		playsound(src.loc, 'ModularTegustation/Tegusounds/claw/error.ogg', 50, 1)
 		qdel(eff)
 		return
@@ -266,7 +266,7 @@
 	for(var/mob/living/L in range(1, get_turf(src))) // Attacks everyone around.
 		if(faction_check_mob(L))
 			continue
-		to_chat(target, span_userdanger("\The [src] eviscerates you!"))
+		to_chat(target, span_userdanger("[src]剖开了你!"))
 		L.deal_damage(40, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		new /obj/effect/temp_visual/cleave(get_turf(L))
 
@@ -279,7 +279,7 @@
 	playsound(L, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 100, 1)
 	playsound(src, 'ModularTegustation/Tegusounds/claw/prepare.ogg', 1, 1)
 	icon_state = "claw_prepare"
-	to_chat(L, span_danger("The [src] is going to hunt you down!"))
+	to_chat(L, span_danger("[src]将会追杀你!"))
 	addtimer(CALLBACK(src, PROC_REF(TargetEviscerate), L, uhoh), 15)
 
 /mob/living/simple_animal/hostile/megafauna/claw/proc/TargetEviscerate(mob/living/L, obj/effect/eff)
@@ -301,8 +301,8 @@
 		charging = FALSE
 		return FALSE
 	L.visible_message(
-		span_warning("[src] disappears, taking [L] with them!"),
-		span_userdanger("[src] teleports with you through the entire facility!")
+		span_warning("[src]消失了，连同[L]一起！"),
+		span_userdanger("[src]带你传送过了整个设施!")
 		)
 	var/list/teleport_turfs = list()
 	for(var/turf/T in shuffle(GLOB.department_centers))
@@ -328,7 +328,7 @@
 				continue
 			if(LL == L)
 				continue
-			to_chat(LL, span_userdanger("\The [src] slashes you!"))
+			to_chat(LL, span_userdanger("[src]砍向你!"))
 			LL.deal_damage(15, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 			new /obj/effect/temp_visual/cleave(get_turf(LL))
 		tp_loc = get_step(src, pick(1,2,4,5,6,8,9,10))
@@ -343,7 +343,7 @@
 		if(i < 5)
 			SLEEP_CHECK_DEATH(4)
 	if(istype(L) && !QDELETED(L))
-		to_chat(L, span_userdanger("\The [src] slashes you, finally releasing you from his grasp!"))
+		to_chat(L, span_userdanger("[src]一刀斩向你，同时也将你释放了出来!"))
 		L.deal_damage(25, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		GiveTarget(L)
 	charging = FALSE
@@ -360,7 +360,7 @@
 		if((maybe_victim.stat != DEAD) && maybe_victim.z == z)
 			death_candidates += maybe_victim
 	if(!death_candidates.len) // If there is 0 candidates - stop the spell.
-		to_chat(src, span_notice("There is no more human survivors in the facility."))
+		to_chat(src, span_notice("设施内已无人类幸存者."))
 		return
 	for(var/i in 1 to 5)
 		if(!death_candidates.len) // No more candidates left? Let's stop picking through the list.
@@ -378,15 +378,15 @@
 	uhoh.orbit(target, 0)
 	playsound(target, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 100, 1)
 	playsound(src, 'ModularTegustation/Tegusounds/claw/eviscerate1.ogg', 1, 1)
-	to_chat(target, span_danger("The [src] is going to hunt you down!"))
+	to_chat(target, span_danger("[src]将会追杀你!"))
 	addtimer(CALLBACK(src, PROC_REF(triserum_eviscerate2), target, uhoh), 40)
 
 /mob/living/simple_animal/hostile/megafauna/claw/proc/triserum_eviscerate2(mob/living/carbon/human/target, obj/effect/eff)
 	if(!istype(target) || QDELETED(target))
 		return
 	if(target.z != z || !target.loc.AllowClick()) // Be happy, mortal. Did you just hide in a locker?
-		to_chat(src, span_notice("Your teleportation device malfunctions!"))
-		to_chat(target, span_notice("It seems you are safe. For now..."))
+		to_chat(src, span_notice("你的传送装置出现故障!"))
+		to_chat(target, span_notice("看起来你暂时安全了..."))
 		playsound(src.loc, 'ModularTegustation/Tegusounds/claw/error.ogg', 50, 1)
 		qdel(eff)
 		return
@@ -410,7 +410,7 @@
 		if(faction_check_mob(L))
 			continue
 		been_hit |= L
-		to_chat(target, span_userdanger("\The [src] eviscerates you!"))
+		to_chat(target, span_userdanger("[src]剖开了你!"))
 		L.deal_damage(70, PALE_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		new /obj/effect/temp_visual/cleave(get_turf(L))
 	for(var/turf/B in getline(prev_loc, tp_loc))
@@ -420,7 +420,7 @@
 			if(faction_check_mob(L))
 				continue
 			been_hit |= L
-			to_chat(L, span_userdanger("\The [src] slashes you!"))
+			to_chat(L, span_userdanger("[src]砍向你!"))
 			L.deal_damage(50, PALE_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 			playsound(L, 'ModularTegustation/Tegusounds/claw/attack.ogg', 35, 1)
 			new /obj/effect/temp_visual/cleave(get_turf(L))
@@ -520,7 +520,7 @@
 					continue
 				if(victim == LT)
 					continue
-				to_chat(victim, span_userdanger("\The [src] slashes you!"))
+				to_chat(victim, span_userdanger("[src]砍向你!"))
 				victim.deal_damage(serumA_damage, RED_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 				new /obj/effect/temp_visual/cleave(victim.loc)
 				playsound(victim, 'ModularTegustation/Tegusounds/claw/attack.ogg', 35, 1)

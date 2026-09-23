@@ -1,7 +1,7 @@
 // Green dawn
 /mob/living/simple_animal/hostile/ordeal/green_bot
-	name = "doubt"
-	desc = "A slim robot with a spear in place of its hand."
+	name = "疑问"
+	desc = "一个瘦长机器人，手臂被替换成了长矛."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "green_bot"
 	icon_living = "green_bot"
@@ -15,8 +15,8 @@
 	move_to_delay = 3.5
 	melee_damage_lower = 6
 	melee_damage_upper = 8
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "刺击"
+	attack_verb_simple = "刺击"
 	attack_sound = 'sound/effects/ordeals/green/stab.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 1.3, BLACK_DAMAGE = 2, PALE_DAMAGE = 1)
 	death_sound = 'sound/effects/ordeals/green/dawn_dead.ogg'
@@ -98,8 +98,8 @@
 // Subtypes
 
 /mob/living/simple_animal/hostile/ordeal/green_bot/syringe
-	name = "doubt beta"
-	desc = "A slim robot with a syringe in place of its hand."
+	name = "疑问beta"
+	desc = "一个瘦长机器人，手臂被替换成了注射器."
 	icon_state = "green_bot_b"
 	icon_living = "green_bot_b"
 	move_to_delay = 3
@@ -124,8 +124,8 @@
 	..()
 
 /mob/living/simple_animal/hostile/ordeal/green_bot/fast
-	name = "doubt gamma"
-	desc = "A slim robot with two spears."
+	name = "疑问gamma"
+	desc = "一个瘦长机器人，两只手臂都被替换成了长矛."
 	icon_state = "green_bot_c"
 	icon_living = "green_bot_c"
 	rapid_melee = 3

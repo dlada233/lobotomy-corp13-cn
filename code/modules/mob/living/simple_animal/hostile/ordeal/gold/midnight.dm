@@ -1,7 +1,7 @@
 //Gold Midnight - Extreme area white and pale damage, breaching
 /mob/living/simple_animal/hostile/ordeal/tso_corrosion
 	name = "Da Capo Al Fine"
-	desc = "Improper use of E.G.O. can have serious consequences."
+	desc = "滥用E.G.O.可能导致的侵蚀后果."
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "al_fine"
 	icon_living = "al_fine"
@@ -100,7 +100,7 @@
 						head.dismember()
 						QDEL_NULL(head)
 						H.regenerate_icons()
-						H.visible_message(span_danger("[H]'s head explodes!"))
+						H.visible_message(span_danger("[H]的头爆炸了!"))
 						new /obj/effect/gibspawner/generic/silent(get_turf(H))
 						playsound(get_turf(H), 'sound/abnormalities/silentorchestra/headbomb.ogg', 50, 1)
 				ChangeResistances(list(RED_DAMAGE = 0.2, WHITE_DAMAGE = 0.2, BLACK_DAMAGE = 0.2, PALE_DAMAGE = 0.2))

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/pink_midnight
-	name = "A Party Everlasting"
-	desc = "An overturned teacup, a party everlasting."
+	name = "永恒派对"
+	desc = "一只翻倒的茶杯，一场永无止境的派对."
 	icon = 'ModularTegustation/Teguicons/64x96.dmi'
 	icon_state = "party"
 	icon_living = "party"
@@ -14,8 +14,8 @@
 	rapid_melee = 2
 	melee_damage_lower = 12
 	melee_damage_upper = 14
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bashes"
+	attack_verb_continuous = "猛砸"
+	attack_verb_simple = "猛砸"
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
 
 	var/list/blacklist = list(/mob/living/simple_animal/hostile/abnormality/melting_love,

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_dusk
-	name = "struggle of the peak"
-	desc = "A round clown amalgamation holding a hammer and an axe."
+	name = "绝顶之战"
+	desc = "一个圆润的小丑缝合体，手持锤子和斧头。"
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "crimson_dusk"
 	icon_living = "crimson_dusk"
@@ -14,8 +14,8 @@
 	melee_damage_upper = 14
 	move_to_delay = 5
 	ranged = TRUE
-	attack_verb_continuous = "slashes"
-	attack_verb_simple = "slash"
+	attack_verb_continuous = "胡乱攻击"
+	attack_verb_simple = "胡乱攻击"
 	attack_sound = 'sound/effects/ordeals/crimson/dusk_attack.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.4, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 1.5)
 	mob_spawn_amount = 2
@@ -39,7 +39,7 @@
 /mob/living/simple_animal/hostile/ordeal/crimson_noon/crimson_dusk/DeathExplosion(gibbed = FALSE)
 	if(QDELETED(src))
 		return
-	visible_message(span_danger("[src] suddenly explodes!"))
+	visible_message(span_danger("[src]突然爆炸了!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/crimson/dusk_dead.ogg', 50, 1)
 	var/valid_directions = list(0) // 0 is used by get_turf to find the turf a target, so it'll at the very least be able to spawn on itself.
 	for(var/d in list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -126,8 +126,8 @@
 		if(!faction_check_mob(L))
 			if(L in been_hit)
 				continue
-			visible_message(span_boldwarning("[src] rolls past [L]!"))
-			to_chat(L, span_userdanger("[src] rolls past you!"))
+			visible_message(span_boldwarning("[src]碾过[L]!"))
+			to_chat(L, span_userdanger("[src]碾过了你!"))
 			var/turf/LT = get_turf(L)
 			new /obj/effect/temp_visual/kinetic_blast(LT)
 			L.deal_damage(20, RED_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/indigo_midnight
-	name = "Matriarch"
-	desc = "A humanoid creature wearing metallic armor. The Queen of sweepers."
+	name = "嬷嬷"
+	desc = "附着金属装甲的人形生物，清道夫的首领."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "matriarch"
 	icon_living = "matriarch"
@@ -20,8 +20,8 @@
 	ranged = TRUE
 	butcher_results = list(/obj/item/food/meat/slab/sweeper = 4)
 	guaranteed_butcher_results = list(/obj/item/food/meat/slab/sweeper = 3)
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "穿刺"
+	attack_verb_simple = "穿刺"
 	attack_sound = 'sound/effects/ordeals/indigo/stab_1.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.3, WHITE_DAMAGE = 0.4, BLACK_DAMAGE = 0.2, PALE_DAMAGE = 0.5)
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -159,8 +159,8 @@
 	if(!L)
 		return FALSE
 	visible_message(
-		span_danger("[src] devours [L]!"),
-		span_userdanger("You feast on [L], restoring your health!"))
+		span_danger("[src]吞食了[L]!"),
+		span_userdanger("你吞食了[L]，恢复了自己！"))
 	if(istype(L, SWEEPER_TYPES))
 		adjustBruteLoss(-20)
 	else
@@ -293,8 +293,8 @@
 	qdel(src)
 
 /mob/living/simple_animal/hostile/ordeal/indigo_spawn
-	name = "sweeper scout"
-	desc = "A tall humanoid with a walking cane. It's wearing indigo armor."
+	name = "侦查清道夫"
+	desc = "拄着拐杖额高个子类人生物，穿着靛蓝色铠甲."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "indigo_dawn"
 	icon_living = "indigo_dawn"
@@ -307,8 +307,8 @@
 	melee_damage_type = BLACK_DAMAGE
 	melee_damage_lower = 5
 	melee_damage_upper = 7
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "捅刺"
+	attack_verb_simple = "捅刺"
 	attack_sound = 'sound/effects/ordeals/indigo/stab_1.ogg'
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1.5, BLACK_DAMAGE = 0.5, PALE_DAMAGE = 0.8)
 	blood_volume = BLOOD_VOLUME_NORMAL

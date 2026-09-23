@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/lcb_pallid
-	name = "pallid thing"
-	desc = "An enforcer of some company, covered in some organic material."
+	name = "苍白物体"
+	desc = "一名来自公司的行动人员，身上沾满了有机物质."
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "pallid_lcb"
 	icon_dead = "dead_generic"
@@ -17,8 +17,8 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 18
 	faction = list("whale")
-	attack_verb_continuous = "bashes"
-	attack_verb_simple = "bash"
+	attack_verb_continuous = "击打"
+	attack_verb_simple = "击打"
 	attack_sound = 'sound/weapons/fixer/generic/club1.ogg'
 	butcher_results = list(/obj/item/food/meat/slab/mermaid = 1)
 	guaranteed_butcher_results = list(/obj/item/food/meat/slab/pallid = 2)
@@ -39,7 +39,7 @@
 	..()
 
 /mob/living/simple_animal/hostile/ordeal/lcb_pallid/pistol
-	desc = "An enforcer of some company, covered in some organic material. This one has a gun!"
+	desc = "一名公司行动人员，浑身沾满有机物质，这家伙手里还有一把枪!"
 	icon_state = "pallid_gunner"
 	damage_coeff = list(RED_DAMAGE = 1.2, WHITE_DAMAGE = 1.2, BLACK_DAMAGE = 1.2, PALE_DAMAGE = 0.2)
 	melee_damage_lower = 3

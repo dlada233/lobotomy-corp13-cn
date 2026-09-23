@@ -9,8 +9,8 @@
 	robust_searching = TRUE
 	stat_attack = HARD_CRIT
 	del_on_death = TRUE
-	attack_verb_continuous = "punches"
-	attack_verb_simple = "punches"
+	attack_verb_continuous = "拳击"
+	attack_verb_simple = "拳击"
 	attack_sound = 'sound/weapons/punch4.ogg'
 	speak_emote = list("burbles")
 	can_patrol = TRUE
@@ -25,8 +25,8 @@
 	AddComponent(/datum/component/ai_leadership, units_to_add)
 
 /mob/living/simple_animal/hostile/ordeal/salmon_dusk/red
-	name = "shrimp minigunner"
-	desc = "A shrimp intern that watched too many rambo films."
+	name = "机枪虾"
+	desc = "一只看了太多《壮志凌云》的虾."
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
 	melee_damage_type = RED_DAMAGE
@@ -71,8 +71,8 @@
 		shooting = FALSE
 
 /mob/living/simple_animal/hostile/ordeal/salmon_dusk/white
-	name = "shrimp sniper"
-	desc = "Known by their fellow shrimps as \"The white buoys\"."
+	name = "狙击虾"
+	desc = "被同伴们称之为 \"白色捕虾神\"."
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
 	melee_damage_type = WHITE_DAMAGE
@@ -94,8 +94,8 @@
 	icon = white_icon
 
 /mob/living/simple_animal/hostile/ordeal/salmon_dusk/black
-	name = "shrimp shanker"
-	desc = "Do you like fish sticks?"
+	name = "虾捅者" //shrimp shanker 此处可能隐晦梗，shanker可以指自制刀捅人的人，但也可以是一种同性性行为，下方描述佐证了后者含义
+	desc = "请问你喜欢'鱼条'嘛?" //Do you like fish sticks 出自南方公园，谐音性笑话，fish sticks → fish dick
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
 	melee_damage_type = BLACK_DAMAGE
@@ -104,8 +104,8 @@
 	move_to_delay = 2.4
 	melee_damage_lower = 5
 	melee_damage_upper = 6
-	attack_verb_continuous = "slashes"
-	attack_verb_simple = "slashes"
+	attack_verb_continuous = "捅"
+	attack_verb_simple = "捅"
 	attack_sound = 'sound/weapons/purple_tear/stab2.ogg'
 	var/fast_mode = FALSE
 
@@ -145,8 +145,8 @@
 		move_to_delay = 2.4
 
 /mob/living/simple_animal/hostile/ordeal/salmon_dusk/pale
-	name = "shrimp soulshot"
-	desc = "One hot skillet and a side of grits and you get soul food."
+	name = "灵魂老虾" //shrimp soulshot 双关pale-灵魂伤害和soulfood
+	desc = "一口热煎锅，配上一份玉米糊，就是灵魂料理."
 	icon_state = "wellcheers_bad"
 	icon_living = "wellcheers_bad"
 	melee_damage_type = PALE_DAMAGE

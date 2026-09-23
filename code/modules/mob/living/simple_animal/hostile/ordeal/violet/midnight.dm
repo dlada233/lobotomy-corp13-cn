@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/violet_midnight
-	name = "god delusion"
-	desc = "A shrine dedicated to unknown god from another dimension."
+	name = "神明的迷思"
+	desc = "一座献给未知世界中未知神明的纪念碑."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "violet_midnightr"
 	icon_living = "violet_midnightr"
@@ -11,7 +11,7 @@
 	maxHealth = 5000
 	health = 5000
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
-	death_message = "falls apart."
+	death_message = "轰然倒塌."
 	death_sound = 'sound/effects/ordeals/violet/midnight_dead.ogg'
 	stat_attack = HARD_CRIT
 

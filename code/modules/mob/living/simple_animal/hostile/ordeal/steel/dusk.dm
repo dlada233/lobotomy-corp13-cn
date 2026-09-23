@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/ordeal/steel_dusk
-	name = "gene corp manager"
-	desc = "A bug headed manager of the fallen Gene corp. Gene corp hoped that the enhanced sonic abilities of their managers would embolden their own while shattering the minds of their enemies."
+	name = "G公司主管"
+	desc = "一位前G公司主管，G公司希望这位主管能通过强化的声波能力来鼓舞自身士气，同时瓦解敌人的意志。."
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "gcorp1"
 	icon_living = "gcorp1"
@@ -69,7 +69,7 @@
 
 /mob/living/simple_animal/hostile/ordeal/steel_dusk/patrol_select()
 	if(prob(25))
-		say("Nothin here. Lets move on.")
+		say("这里什么都没有，转移位置吧.")
 	..()
 
 /mob/living/simple_animal/hostile/ordeal/steel_dusk/Aggro()
@@ -100,7 +100,7 @@
 	switch(manager_order)
 		if(1)
 			if(prob(20))
-				say(pick("Lads we got a hostile!", "Shit, wake up troops hell just found us!", "I warn you, we dont die easy.", "Keep your cool and we can all get out of this alive!"))
+				say(pick("敌人出现!", "该死，敌方部队发现我们了!", "我警告你，我们绝不会轻易倒下.", "保持冷静，我们都能平安脱身！"))
 			for(var/mob/living/simple_animal/hostile/ordeal/G in oview(9, src))
 				if(istype(G, /mob/living/simple_animal/hostile/ordeal/steel_dawn) && G.stat != DEAD && (!has_status_effect(/datum/status_effect/all_armor_buff) || !has_status_effect(/datum/status_effect/minor_damage_buff)))
 					G.GiveTarget(target)

@@ -1,7 +1,7 @@
 // Violet dusk
 /mob/living/simple_animal/hostile/ordeal/violet_dusk
-	name = "Rushing arms of rest"
-	desc = "A monolith coming out of the ground with tentacle like growths covering it."
+	name = "奔涌的安息之臂"
+	desc = "一座独石碑从地下升起，表面覆满触手般的增生组织."
 	icon = 'ModularTegustation/Teguicons/64x64.dmi'
 	icon_state = "violet_dusk"
 	icon_living = "violet_dusk"
@@ -178,8 +178,8 @@
 
 
 /mob/living/simple_animal/hostile/ordeal/violet_spawn
-	name = "hand of redemption"
-	desc = "A portal with a hand coming out of it."
+	name = "救赎之手"
+	desc = "一道传送门，一只手从中探出."
 	icon = 'ModularTegustation/Teguicons/48x96.dmi'
 	faction = list("violet_ordeal")
 	maxHealth = 320
@@ -190,8 +190,8 @@
 	var/mob/living/simple_animal/hostile/ordeal/violet_dusk/pillar
 
 /mob/living/simple_animal/hostile/ordeal/violet_spawn/arm
-	name = "arm of rest"
-	desc = "A purple, plant-like tentacle emerging from the ground."
+	name = "安息之臂"
+	desc = "一条紫色的植物状触手自地下钻出."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "violet_dusk_tentacle"
 	icon_living = "violet_dusk_tentacle"
@@ -228,7 +228,7 @@
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	animate(src, alpha = 255, time = 5)
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_out.ogg', 25, 1)
-	visible_message(span_bolddanger("[src] burrows out from the ground!"))
+	visible_message(span_bolddanger("[src]从地面钻出!"))
 	thrash_cooldown = world.time + 2 SECONDS + rand(-5, 15)
 	ranged_cooldown = world.time + ranged_cooldown_time
 
@@ -240,7 +240,7 @@
 	if(attacked_target)
 		thrash_cooldown = world.time + thrash_cooldown_time
 		face_atom(attacked_target)
-		visible_message(span_danger("[src] is thrashing about!"))
+		visible_message(span_danger("[src]正在疯狂挥舞!"))
 		. = Thrash(attacked_target)
 		return
 	. = ..()
@@ -273,7 +273,7 @@
 	if(in_charging)
 		return
 	in_charging = TRUE
-	visible_message(span_danger("[src] burrows into the ground!"))
+	visible_message(span_danger("[src]钻出地面!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_in.ogg', 25, 1)
 	animate(src, alpha = 0, time = 5)
 	SLEEP_CHECK_DEATH(1 SECONDS)
@@ -292,7 +292,7 @@
 	new /obj/effect/temp_visual/small_smoke/halfsecond(T)
 	animate(src, alpha = 255, time = 5)
 	playsound(get_turf(src), 'sound/effects/ordeals/amber/dawn_dig_out.ogg', 25, 1)
-	visible_message(span_bolddanger("[src] burrows out from the ground!"))
+	visible_message(span_bolddanger("[src]从地面钻出!"))
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	ranged_cooldown = world.time + ranged_cooldown_time
 	in_charging = FALSE
@@ -405,7 +405,7 @@
 	SLEEP_CHECK_DEATH(5)
 	Vulnerable = TRUE
 	density = TRUE
-	visible_message(span_danger("[src] slams down!"))
+	visible_message(span_danger("[src]猛力砸下!"))
 	playsound(get_turf(src), 'sound/effects/ordeals/violet/midnight_red_attack.ogg', 100, FALSE, 20)
 	for(var/turf/open/T in view(2, src))
 		new /obj/effect/temp_visual/small_smoke/halfsecond(T)
@@ -415,7 +415,7 @@
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			if(H.is_working)//Is this nonsensical? Yes but it dealing damage was a bit bullshit
-				to_chat(H, span_notice("Somehow, you managed to narrowly avoid [src]'s slam."))
+				to_chat(H, span_notice("不知为何，你惊险地躲避了[src]的猛砸."))
 				continue
 		L.deal_damage(slam_damage, BLACK_DAMAGE, src, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
 		if(L.health < 0)

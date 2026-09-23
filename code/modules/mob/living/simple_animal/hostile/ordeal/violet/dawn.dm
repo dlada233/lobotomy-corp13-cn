@@ -1,7 +1,7 @@
 // Violet dawn
 /mob/living/simple_animal/hostile/ordeal/violet_fruit
-	name = "fruit of understanding"
-	desc = "A round purple creature. It is constantly leaking mind-damaging gas."
+	name = "理解的果实"
+	desc = "一个圆润的紫色生物，不断释放着破坏心智的气体。."
 	icon = 'ModularTegustation/Teguicons/48x32.dmi'
 	icon_state = "violet_fruit"
 	icon_living = "violet_fruit"
@@ -9,8 +9,8 @@
 	base_pixel_x = -8
 	pixel_x = -8
 	faction = list("violet_ordeal")
-	maxHealth = 80
-	health = 80
+	maxHealth = 190
+	health = 190
 	speed = 4
 	move_to_delay = 5
 	butcher_results = list(/obj/item/food/meat/slab/fruit = 1)
@@ -21,7 +21,7 @@
 
 /mob/living/simple_animal/hostile/ordeal/violet_fruit/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(ReleaseDeathGas)), rand(60 SECONDS, 65 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(ReleaseDeathGas)), rand(60 SECONDS, 70 SECONDS))
 
 /mob/living/simple_animal/hostile/ordeal/violet_fruit/Found(atom/A)
 	if(isliving(A))
@@ -82,7 +82,7 @@
 		return
 	var/turf/target_c = get_turf(src)
 	var/list/turf_list = spiral_range_turfs(15, target_c)
-	visible_message(span_danger("[src] releases a cloud of nauseating gas!"))
+	visible_message(span_danger("[src]释放出一团令人作呕的气体!"))
 	playsound(target_c, 'sound/effects/ordeals/violet/fruit_suicide.ogg', 50, 1, 16)
 	adjustWhiteLoss(maxHealth) // Die
 	for(var/turf/open/T in turf_list)

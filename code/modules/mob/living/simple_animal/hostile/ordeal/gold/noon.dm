@@ -1,7 +1,7 @@
 // Gold Noon - Boss with minions
 /mob/living/simple_animal/hostile/ordeal/white_lake_corrosion
-	name = "Lady of the Lake"
-	desc = "A captain of the central command team, corrupted by an abnormality. But how?"
+	name = "湖之仙女"
+	desc = "中央本部部的一名员工队长，但被异想体侵蚀了. 究竟发生了什么?"
 	icon = 'ModularTegustation/Teguicons/32x64.dmi'
 	icon_state = "lake_corrosion"
 	icon_living = "lake_corrosion"
@@ -13,8 +13,8 @@
 	melee_damage_lower = 14
 	melee_damage_upper = 18
 	ranged = TRUE
-	attack_verb_continuous = "bisects"
-	attack_verb_simple = "bisects"
+	attack_verb_continuous = "对切"
+	attack_verb_simple = "对切"
 	attack_sound = 'sound/weapons/fixer/generic/blade3.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
 	damage_coeff = list(RED_DAMAGE = 0.8, WHITE_DAMAGE = 0.5, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 1)
@@ -172,7 +172,7 @@
 	if(!can_act) //Too busy attacking to block
 		return ..()
 	HealingEffect("no_dam")
-	visible_message(span_userdanger("[P] is easily deflected by [src]!"))
+	visible_message(span_userdanger("[P]被[src]轻易地反弹了!"))
 	P.Destroy()
 	return
 
@@ -182,7 +182,7 @@
 	var/checkdir = check_target_facings(user, src)
 	if((get_dist(user, src) > 1) || checkdir == FACING_EACHOTHER)
 		HealingEffect("no_dam")
-		user.visible_message(span_danger("[user]'s attack is easily deflected by [src]!"), span_userdanger("Your attack is easily deflected by [src]!"))
+		user.visible_message(span_danger("[user]的攻击被[src]轻易地反弹了!"), span_userdanger("你的攻击被[src]轻易地反弹了!"))
 		return
 	CallForHelp(user)
 	if(adds_spawned)
@@ -225,7 +225,7 @@
 	if(QDELETED(src))
 		return
 	adds_spawned = TRUE
-	visible_message(span_danger("[src] screams!"))
+	visible_message(span_danger("[src]发出尖叫!"))
 	playsound(get_turf(src), 'sound/voice/human/femalescream_3.ogg', 75, 0, 4)
 	var/matrix/init_transform = transform
 	animate(src, transform = transform*1.5, time = 3, easing = BACK_EASING|EASE_OUT)
@@ -249,8 +249,8 @@
 	can_act = TRUE
 
 /mob/living/simple_animal/hostile/ordeal/silentgirl_corrosion
-	name = "Silent Handmaiden"
-	desc = "A level 2 agent of Lobotomy Corporation that has somehow been corrupted by an abnormality."
+	name = "沉默侍女"
+	desc = "一名脑叶公司二级员工，不知为何被异想体侵蚀了."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "silent_girl_corrosion"
 	icon_living = "silent_girl_corrosion"
@@ -263,8 +263,8 @@
 	melee_damage_upper = 12
 	attack_sound = 'sound/weapons/fixer/generic/nail1.ogg'
 	death_sound = 'sound/effects/limbus_death.ogg'
-	attack_verb_continuous = "stabs"
-	attack_verb_simple = "stab"
+	attack_verb_continuous = "切割"
+	attack_verb_simple = "切割"
 	damage_coeff = list(RED_DAMAGE = 1, WHITE_DAMAGE = 0.6, BLACK_DAMAGE = 1.5, PALE_DAMAGE = 2)
 	butcher_results = list( /obj/item/food/meat/slab/corroded = 1)
 	var/vengeful = FALSE
@@ -385,8 +385,8 @@
 	var/mutable_appearance/guilt_icon
 
 /atom/movable/screen/alert/status_effect/gold_guilty
-	name = "Guilty"
-	desc = "A heavy weight lays upon you. What have you done?\nAdditional white damage will be taken whenever damage is taken."
+	name = "负罪感"
+	desc = "沉重的负担压在你身上。你究竟做了什么?\n每次受到伤害时，会额外受到白色伤害."
 
 /datum/status_effect/gold_guilty/on_creation(mob/living/new_owner, ...)
 	guilt_icon = mutable_appearance('ModularTegustation/Teguicons/tegu_effects.dmi', "guilt", -MUTATIONS_LAYER)
@@ -398,7 +398,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_userdanger("You feel a heavy weight upon your shoulders."))
+	to_chat(status_holder, span_userdanger("你感到肩头压着沉重的负担."))
 	status_holder.add_overlay(guilt_icon)
 	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMGE, PROC_REF(DealWhite))
 
@@ -407,7 +407,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_nicegreen("You feel a weight lift from your shoulders."))
+	to_chat(status_holder, span_nicegreen("你感到肩头压着沉重的负担."))
 	playsound(get_turf(status_holder), 'sound/abnormalities/silentgirl/Guilt_Remove.ogg', 50, 0, 2)
 	status_holder.cut_overlay(guilt_icon)
 	UnregisterSignal(owner, COMSIG_MOB_APPLY_DAMGE)
