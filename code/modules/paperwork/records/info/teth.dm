@@ -411,8 +411,12 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/tangle
 	abno_code = "F-01-191"
 	abno_info = list(
-		"当「长发缠节」对随机员工进行工作时出现不优反应，其逆卡巴拉计数器将会降低。",
-		"对该异想体执行大量本能工作后，最终会导致其逆卡巴拉计数器降低。")
+		"当正义等级为1的员工完成工作时，F-01-191有较低概率突破收容.",
+		"建议在完成本能工作后，让另一名员工对该异常体进行本能工作.",
+		"当同一名员工连续进行本能工作后，逆卡巴拉计数器会降低，F-01-191会试图勒死该员工.",
+		"当工作结果为差时，逆卡巴拉计数器会降低，F-01-191会试勒死该员工.",
+		"当F-01-191突破收容时，它开始将头发蔓延到整个设施.",)
+	abno_breach_damage_count = "低"
 
 //Generic Brand Modelling Clay
 /obj/item/paper/fluff/info/teth/clayman
