@@ -13,6 +13,8 @@
 	drag_slowdown = 1
 	var/equip_slowdown = 6 SECONDS
 
+	var/special
+	var/speedboost = 0
 	var/obj/item/clothing/head/ego_hat/hat = null // Hat type, see clothing/head/_ego_head.dm
 	var/obj/item/clothing/neck/ego_neck/neck = null // Neckwear, see clothing/neck/_neck.dm
 	var/list/attribute_requirements = list()
@@ -49,6 +51,9 @@
 /obj/item/clothing/suit/armor/ego_gear/equipped(mob/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_OCLOTHING)
+		if(speedboost)
+			var/speed = 1/speedboost //We get the inverse to make our lives easier if we want increase it by 15%
+			user.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/ego_armor_speed, multiplicative_slowdown = speed)
 		return
 	if(hat)
 		var/obj/item/clothing/head/headgear = user.get_item_by_slot(ITEM_SLOT_HEAD)
@@ -63,6 +68,8 @@
 
 /obj/item/clothing/suit/armor/ego_gear/dropped(mob/user)
 	. = ..()
+	if(speedboost)
+		user.remove_movespeed_modifier(/datum/movespeed_modifier/ego_armor_speed)
 	if(hat)
 		var/obj/item/clothing/head/headgear = user.get_item_by_slot(ITEM_SLOT_HEAD)
 		if(!istype(headgear, hat))
@@ -98,13 +105,15 @@
 
 /obj/item/clothing/suit/armor/ego_gear/examine(mob/user)
 	. = ..()
+	if(special)
+		. += span_notice("[special]")
 	if(LAZYLEN(attribute_requirements))
 		if(!ishuman(user))	//You get a notice if you are a ghost or otherwise
-			. += span_notice("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
+			. += span_notice("它有 <a href='byond://?src=[REF(src)];list_attributes=1'>特定需求</a> 来穿戴.")
 		else if(CanUseEgo(user))	//It's green if you can use it
-			. += span_nicegreen("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
+			. += span_nicegreen("它有 <a href='byond://?src=[REF(src)];list_attributes=1'>特定需求</a> 来穿戴.")
 		else				//and red if you cannot use it
-			. += span_danger("It has <a href='byond://?src=[REF(src)];list_attributes=1'>certain requirements</a> for the wearer.")
+			. += span_danger("它有 <a href='byond://?src=[REF(src)];list_attributes=1'>特定需求</a> 来穿戴.")
 
 /obj/item/clothing/suit/armor/ego_gear/Topic(href, href_list)
 	. = ..()
@@ -115,3 +124,8 @@
 				display_text += "\n <span class='warning'>[atr]: [attribute_requirements[atr]].</span>"
 		display_text += SpecialGearRequirements()
 		to_chat(usr, display_text)
+
+/datum/movespeed_modifier/ego_armor_speed
+	multiplicative_slowdown = 1
+	variable = TRUE
+	flags = IS_ACTUALLY_MULTIPLICATIVE

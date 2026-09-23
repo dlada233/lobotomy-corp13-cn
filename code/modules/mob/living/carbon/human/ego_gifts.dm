@@ -671,12 +671,20 @@
 	slot = EYE
 
 /datum/ego_gifts/galaxy
-	name = "Galaxy"
+	name = "银河"
 	icon_state = "galaxy"
-	fortitude_bonus = 1
-	prudence_bonus = 1
 	temperance_bonus = 3
+	desc = "所有者获得的任何治疗效果都提升10%."
 	slot = NECKWEAR
+
+/datum/ego_gifts/galaxy/Initialize(mob/living/carbon/human/user)
+	. = ..()
+	user.physiology.healing_mod *= 1.1
+
+/datum/ego_gifts/galaxy/Remove(mob/living/carbon/human/user)
+	user.physiology.healing_mod /= 1.1
+	return ..()
+
 
 /datum/ego_gifts/gaze
 	name = "Gaze"
@@ -731,11 +739,20 @@
 	slot = EYE
 
 /datum/ego_gifts/harmony
-	name = "Harmony"
+	name = "相和"
 	icon_state = "harmony"
+	desc = "拥有者获得对白色伤害额外10%的抗性."
 	fortitude_bonus = 8
-	prudence_bonus = -4
+	prudence_bonus = -6
 	slot = CHEEK
+
+/datum/ego_gifts/harmony/Initialize(mob/living/carbon/human/user) // grants resistance
+	. = ..()
+	user.physiology.white_mod *= 0.9
+
+/datum/ego_gifts/harmony/Remove(mob/living/carbon/human/user)
+	user.physiology.white_mod /= 0.9
+	return ..()
 
 /datum/ego_gifts/harvest
 	name = "Harvest"
@@ -791,9 +808,10 @@
 	slot = BROOCH
 
 /datum/ego_gifts/magicbullet
-	name = "Magic Bullet"
+	name = "魔弹"
 	icon_state = "magicbullet"
 	fortitude_bonus = -5
+	desc = "使相应近战武器的伤害提升20%."
 	prudence_bonus = -5
 	justice_bonus = 10
 	slot = MOUTH_2
@@ -1122,12 +1140,32 @@
 	slot = FACE
 
 /datum/ego_gifts/discord
-	name = "Discord"
+	name = "不和"
 	icon_state = "discord"
+	desc = "受到攻击时有8%的几率使其无效化."
 	fortitude_bonus = -10
 	prudence_bonus = -10
 	justice_bonus = 20
 	slot = HELMET
+
+/datum/ego_gifts/discord/Initialize(mob/living/carbon/human/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(DeflectDamage))
+
+/datum/ego_gifts/discord/Remove(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(DeflectDamage))
+	return ..()
+
+/datum/ego_gifts/discord/proc/DeflectDamage(datum/source, damage, damagetype, def_zone)
+	if(source)
+		return
+	if(!damage)
+		return
+	if(damage < 0)
+		return
+	if(prob(8)) // 8% Chance
+		to_chat(owner, span_notice("[src]无效化了伤害!"))
+		return COMPONENT_MOB_DENY_DAMAGE
 
 /datum/ego_gifts/ebony_stem
 	name = "Ebony Stem"
@@ -1305,8 +1343,9 @@
 	slot = HAND_2
 
 /datum/ego_gifts/stem
-	name = "Green Stem"
+	name = "绿色枝干"
 	icon_state = "green_stem"
+	desc = "拥有者能无视对应异想体的藤蔓."
 	prudence_bonus = 6 // originally a SP bonus
 	slot = BROOCH
 
@@ -1402,12 +1441,44 @@
  */
 
 /datum/ego_gifts/adoration
-	name = "Adoration"
+	name = "爱慕"
 	icon_state = "adoration"
+	desc = "穿戴对应护甲时，若HP低于20%，此时受到的红色伤害将被阻挡，这个效果有10秒冷却时间。"
 	fortitude_bonus = 5
 	prudence_bonus = 10
 	temperance_bonus = -5
 	slot = HELMET
+	var/shield_cooldown
+	var/shield_cooldown_time = 10 SECONDS
+
+/datum/ego_gifts/adoration/Initialize(mob/living/carbon/human/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(AttemptShield))
+
+/datum/ego_gifts/adoration/Remove(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_MOB_APPLY_DAMGE, PROC_REF(AttemptShield))
+	return ..()
+
+/datum/ego_gifts/adoration/proc/AttemptShield(datum/source, damage, damagetype, def_zone)
+	if(!source && damagetype != RED_DAMAGE)
+		return
+	if(!damage)
+		return
+	var/obj/item/clothing/suit/armor/ego_gear/aleph/adoration/T = owner.get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	if(!istype(T))
+		return
+	if(damage < 0)
+		return
+	if(shield_cooldown >= world.time)
+		return
+	if(owner.is_working)
+		return
+	var/health_threshold = 0.2
+	if(owner.health > health_threshold * owner.maxHealth)
+		return
+	to_chat(owner, span_notice("黏液在你周围形成，阻挡了伤害!"))
+	shield_cooldown = shield_cooldown_time + world.time
+	return COMPONENT_MOB_DENY_DAMAGE
 
 /datum/ego_gifts/amogus
 	name = "Imposter"
@@ -1447,17 +1518,32 @@
 /datum/ego_gifts/dacapo
 	name = "Da Capo"
 	icon_state = "dacapo"
-	desc = "Provides the user with 20% resistance to WHITE damage."// man it really needed something
-	temperance_bonus = 4
+	desc = "穿戴相应护甲时，受到5点以下的白色伤害将反而回复其伤害量的双倍SP."
+	temperance_bonus = 6
 	slot = EYE
 
-/datum/ego_gifts/dacapo/Initialize(mob/living/carbon/human/user) // grants resistance
+/datum/ego_gifts/dacapo/Initialize(mob/living/carbon/human/user)
 	. = ..()
-	user.physiology.white_mod *= 0.8
+	RegisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMGE, PROC_REF(AttemptHeal))
 
 /datum/ego_gifts/dacapo/Remove(mob/living/carbon/human/user)
-	user.physiology.white_mod /= 0.8
+	UnregisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMGE, PROC_REF(AttemptHeal))
 	return ..()
+
+/datum/ego_gifts/dacapo/proc/AttemptHeal(datum/source, damage, damagetype, def_zone)
+	if(!owner && damagetype != WHITE_DAMAGE)
+		return
+	var/obj/item/clothing/suit/armor/ego_gear/aleph/da_capo/T = owner.get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	var/obj/item/clothing/suit/armor/ego_gear/realization/alcoda/U = owner.get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	if(!(istype(T) || istype(U)))
+		return
+	if(!damage)
+		return
+	if(damage < 0)
+		return
+	if(damage > 5) //If its more than 5 damage we don't heal from it
+		return
+	owner.adjustSanityLoss(-damage * 2)
 
 /datum/ego_gifts/distortion
 	name = "Distortion"
@@ -1477,10 +1563,19 @@
 	slot = EYE
 
 /datum/ego_gifts/mimicry
-	name = "Mimicry"
+	name = "拟态"
 	icon_state = "mimicry"
+	desc = "拥有者提升5%的治疗效果."
 	fortitude_bonus = 10
 	slot = CHEEK
+
+/datum/ego_gifts/mimicry/Initialize(mob/living/carbon/human/user) // As a boost, undoes the debuff it applies to you
+	. = ..()
+	user.physiology.healing_mod *= 1.05
+
+/datum/ego_gifts/mimicry/Remove(mob/living/carbon/human/user) // Niceness can be taken away, I suppose
+	user.physiology.healing_mod /= 1.05
+	return ..()
 
 /datum/ego_gifts/mockery
 	name = "Mockery"
@@ -1508,7 +1603,9 @@
 /datum/ego_gifts/pink
 	name = "Pink"
 	icon_state = "pink"
-	justice_bonus = 10
+	desc = "增加10%对应武器的伤害."
+	prudence_bonus = 5
+	justice_bonus = 5
 	slot = HELMET
 
 /datum/ego_gifts/spring

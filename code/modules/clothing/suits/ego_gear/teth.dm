@@ -47,8 +47,10 @@
 /obj/item/clothing/suit/armor/ego_gear/teth/eyes
 	name = "赤瞳"
 	desc = "Spiders have strong maternal instincts. They will defend their offspring at all costs."
+	special = "这件护甲提供5%的速度加成."
+	speedboost = 1.05
 	icon_state = "eyes"
-	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = -30, BLACK_DAMAGE = 20, PALE_DAMAGE = 0) // 20
+	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = -20, BLACK_DAMAGE = 20, PALE_DAMAGE = -10) // 10, has a speed boost
 
 /obj/item/clothing/suit/armor/ego_gear/teth/daredevil
 	name = "决死之心"
@@ -278,8 +280,10 @@
 	name = "沙漠热风"
 	desc = "Dirty rag armor, better than nothing."
 	icon_state = "desert"
+	special = "这件护甲提供5%的速度加成."
+	speedboost = 1.05
 	flags_inv = NONE
-	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = 0, BLACK_DAMAGE = -20, PALE_DAMAGE = -20, FIRE = 30) // 20
+	armor = list(RED_DAMAGE = 40, WHITE_DAMAGE = -10, BLACK_DAMAGE = -20, PALE_DAMAGE = -20, FIRE = 30) // 20
 
 /obj/item/clothing/suit/armor/ego_gear/teth/white_gossypium
 	name = "白色羽花"

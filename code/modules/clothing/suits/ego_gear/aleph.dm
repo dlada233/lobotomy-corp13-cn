@@ -36,26 +36,81 @@
 	desc = "At the heart of the armor is a shard that emits an arcane gleam. \
 	The gentle glow feels somehow more brilliant than a flashing light."
 	icon_state = "star"
-	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 70, BLACK_DAMAGE = 60, PALE_DAMAGE = 40) // 240
+	special = "该护甲能提供SP恢复光环."
+	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 60, BLACK_DAMAGE = 60, PALE_DAMAGE = 50) // 230, heals sanity in an area
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
 							PRUDENCE_ATTRIBUTE = 100,
 							TEMPERANCE_ATTRIBUTE = 100,
 							JUSTICE_ATTRIBUTE = 80
 							)
+	var/heal_timer
+	var/heal_amount = -2.5
+	var/heal_time = 2 SECONDS
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/star/equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	if(slot == ITEM_SLOT_OCLOTHING)
+		heal_timer = addtimer(CALLBACK(src, PROC_REF(heal), user), heal_time, TIMER_STOPPABLE)
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/star/dropped(mob/user)
+	deltimer(heal_timer)
+	heal_timer = null
+	return ..()
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/star/proc/heal(mob/living/carbon/human/user)
+	if(QDELETED(user))
+		deltimer(heal_timer)
+		heal_timer = null
+		return
+	if(user.stat != DEAD)
+		for(var/mob/living/carbon/human/H in view(user, 4))
+			if(H.stat == DEAD || H.is_working)
+				continue
+			H.adjustSanityLoss(heal_amount)
+	deltimer(heal_timer)
+	heal_timer = addtimer(CALLBACK(src, PROC_REF(heal), user), heal_time, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/armor/ego_gear/aleph/da_capo
 	name = "da capo"
 	desc = "A splendid tailcoat perfect for a symphony. \
 	Superb leadership is required to create a perfect ensemble."
 	icon_state = "da_capo"
-	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 80, BLACK_DAMAGE = 60, PALE_DAMAGE = 40) // 240
+	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 80, BLACK_DAMAGE = 60, PALE_DAMAGE = 30) // 230 / absorbs low amounts of white damage with the gift
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
 							PRUDENCE_ATTRIBUTE = 100,
 							TEMPERANCE_ATTRIBUTE = 80,
 							JUSTICE_ATTRIBUTE = 80
 							)
+	var/buffed = FALSE
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/da_capo/equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	if(buffed)
+		return
+	if(slot == ITEM_SLOT_OCLOTHING)
+		if(ishuman(user))
+			var/mob/living/carbon/human/L = user
+			if(istype(L.ego_gift_list["Eye Slot"], /datum/ego_gifts/dacapo))
+				BuffWhite()
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/da_capo/dropped(mob/user)
+	if(buffed)
+		DebuffWhite()
+	return ..()
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/da_capo/proc/BuffWhite()
+	if(buffed)
+		return
+	buffed = TRUE
+	armor = armor.modifyRating(white = 20) // White 10
+
+/obj/item/clothing/suit/armor/ego_gear/aleph/da_capo/proc/DebuffWhite()
+	if(!buffed)
+		return
+	buffed = FALSE
+	armor = armor.modifyRating(white = -20) // White 8
 
 /obj/item/clothing/suit/armor/ego_gear/aleph/mimicry
 	name = "拟态"
@@ -74,7 +129,7 @@
 	desc = "It is not as unpleasant to wear as it is to look at. \
 	In fact, it seems to give you an illusion of comfort and bravery."
 	icon_state = "adoration"
-	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 50, BLACK_DAMAGE = 70, PALE_DAMAGE = 50) // 240
+	armor = list(RED_DAMAGE = 70, WHITE_DAMAGE = 40, BLACK_DAMAGE = 70, PALE_DAMAGE = 50) // 230, can create a shield for the user
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 100,
 							PRUDENCE_ATTRIBUTE = 80,
@@ -174,6 +229,7 @@
 	name = "虚无"
 	desc = "The jester retraced the steps of a path everybody would’ve taken. The jester always found itself at the end of that road. \
 	There was no way to know if they had gathered to become the jester, or if the jester had come to resemble them."
+	special = "通过消耗四件特殊物品，能够强化这件护甲."
 	icon_state = "nihil"
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 70, BLACK_DAMAGE = 70, PALE_DAMAGE = 40) // 240 - 300, 15 per upgrade; caps out at 70,80,80,70
 	attribute_requirements = list(
@@ -250,6 +306,7 @@
 	name = "春夏秋冬"
 	desc = "This is a placeholder."
 	icon_state = "spring"
+	special = "这件E.G.O.能根据当前季节改变自己形态 \n该效果可以被手动关闭."
 	armor = list(RED_DAMAGE = 60, WHITE_DAMAGE = 60, BLACK_DAMAGE = 60, PALE_DAMAGE = 60, FIRE = 60) // Placeholder values, changed later.
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
@@ -290,59 +347,27 @@
 /obj/item/clothing/suit/armor/ego_gear/aleph/seasons/proc/Transform()
 	current_season = SSlobotomy_events.current_season
 	if(!transforming) //No need to do all of the icon updates and stuff if we aren't changing
-		desc = season_list[current_season][2]  + " \n E.G.O. 不会转变到对应季节."
+		desc = season_list[current_season][2]
 	else
 		icon_state = "[current_season]"
 		update_icon_state()
 		to_chat(current_holder, span_notice("[src]突然变形!"))
 		name = season_list[current_season][1]
-		desc = season_list[current_season][2]  + " \n E.G.O. 不会转变到对应季节."
+		desc = season_list[current_season][2]
+
 		stored_season = current_season
 		if(current_holder) //Notify the user we've changed
 			current_holder.update_inv_wear_suit()
 			playsound(current_holder, "sound/abnormalities/seasons/[current_season]_change.ogg", 50, FALSE)
-	var/weakened = FALSE
-	var/warning_message
 	switch(stored_season) //Hopefully someday someone finds a more efficient way to change armor values
 		if("spring")
 			src.armor = getArmor(red = 60, white = 80, black = 40, pale = 60, fire = 30)	//240
-			if(stored_season != current_season) //Our drip is out of season
-				src.armor = getArmor(red = 50, white = 80, black = 40, pale = 50, fire = 30)	//220
-				weakened = TRUE
-				if(current_season == "fall")
-					src.armor = getArmor(red = 50, white = 70, black = 30, pale = 50, fire = 30)	//200
-					warning_message = "秋天来了，你盔甲上的叶子枯萎了."
 		if("summer")
-			src.armor = getArmor(red = 80, white = 40, black = 60, pale = 60, fire = 70)
-			if(stored_season != current_season) //Our drip is out of season
-				src.armor = getArmor(red = 80, white = 40, black = 50, pale = 50, fire = 70)
-				weakened = TRUE
-				if(current_season == "winter")
-					src.armor = getArmor(red = 70, white = 30, black = 50, pale = 50, fire = 70)
-					warning_message = "冬天来了，你的盔甲会做出反应，变得又硬又脆."
+			src.armor = getArmor(red = 80, white = 60, black = 60, pale = 40, fire = 70)
 		if("fall")
-			src.armor = getArmor(red = 40, white = 60, black = 80, pale = 60, fire = 70)
-			if(stored_season != current_season) //Our drip is out of season
-				src.armor = getArmor(red = 40, white = 50, black = 80, pale = 50, fire = 70)
-				weakened = TRUE
-				if(current_season == "spring")
-					src.armor = getArmor(red = 30, white = 50, black = 70, pale = 50, fire = 70)
-					warning_message = "春天的到来进一步削弱了你的盔甲."
+			src.armor = getArmor(red = 60, white = 40, black = 80, pale = 60, fire = 70)
 		if("winter")
 			src.armor = getArmor(red = 40, white = 60, black = 60, pale = 80, fire = 10)
-			if(stored_season != current_season) //Our drip is out of season
-				src.armor = getArmor(red = 40, white = 50, black = 50, pale = 80, fire = 10)
-				weakened = TRUE
-				if(current_season == "summer")
-					src.armor = getArmor(red = 30, white = 50, black = 50, pale = 70, fire = 0)
-					warning_message = "夏日的炎热正在融化你的盔甲."
-
-	if(current_holder && (weakened == TRUE))
-		playsound(current_holder, "sound/abnormalities/seasons/[current_season]_change.ogg", 50, FALSE)
-		if(!warning_message)
-			to_chat(current_holder, span_notice("[src]被新的季节削弱了."))
-			return
-		to_chat(current_holder, span_notice("[warning_message]"))
 
 /obj/effect/proc_holder/ability/seasons_toggle
 	name = "转变"
@@ -357,7 +382,6 @@
 		to_chat(user, span_warning("你必须装备相应的护甲才能使用此技能!"))
 		return
 	if(T.transforming)
-		to_chat(user, span_warning("[T.name] 不会再转变成对应季节."))
 		T.transforming = FALSE
 		T.Transform()
 		return ..()
@@ -396,7 +420,8 @@
 	name = "粉红军备"
 	desc = "A pink military uniform. Its pockets allow the wearer to carry various types of ammunition. It soothes the wearer; they say pink provides psychological comfort to many people."
 	icon_state = "pink"
-	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 70, BLACK_DAMAGE = 70, PALE_DAMAGE = 50) // 240
+	special = "穿戴此护甲能提升10%对应武器的伤害."
+	armor = list(RED_DAMAGE = 50, WHITE_DAMAGE = 70, BLACK_DAMAGE = 60, PALE_DAMAGE = 50) // 230, buffs the main weapon damage
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
 							PRUDENCE_ATTRIBUTE = 80,

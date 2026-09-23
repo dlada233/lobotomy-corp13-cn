@@ -89,8 +89,7 @@
 	这把枪射出的子弹甚至能达到人们目不可及之处."
 	icon_state = "magic_bullet"
 	inhand_icon_state = "magic_bullet"
-	special = "这把武器能穿透所有目标. \
-		穿着对应护甲使用这把武器会获得30%的伤害加成."
+	special = "这把武器能穿透所有目标."
 	force = 24
 	damtype = BLACK_DAMAGE
 	projectile_path = /obj/projectile/ego_bullet/ego_magicbullet
@@ -125,6 +124,8 @@
 		force = 48
 	else
 		force = 24
+	if(istype(myman.ego_gift_list[MOUTH_2], /datum/ego_gifts/magicbullet))
+		force *= 1.2
 	. = ..()
 
 //Funeral guns have two different names;
@@ -544,6 +545,8 @@
 		force = 18
 	else
 		force = 9
+	if(istype(myman.ego_gift_list[MOUTH_2], /datum/ego_gifts/magicbullet))
+		force *= 1.2
 	. = ..()
 
 /obj/item/ego_weapon/ranged/pistol/laststop
