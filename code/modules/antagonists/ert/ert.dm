@@ -247,10 +247,10 @@
 	role = "魔法少女"
 	outfit = /datum/outfit/magical_girl
 	antag_attributes = list(
-		FORTITUDE_ATTRIBUTE = 90,
-		PRUDENCE_ATTRIBUTE = 90,
-		TEMPERANCE_ATTRIBUTE = 90,
-		JUSTICE_ATTRIBUTE = 90
+		FORTITUDE_ATTRIBUTE = 100,
+		PRUDENCE_ATTRIBUTE = 100,
+		TEMPERANCE_ATTRIBUTE = 100,
+		JUSTICE_ATTRIBUTE = 100
 		)
 
 /datum/antagonist/ert/magical_girl/hatred
