@@ -2,17 +2,17 @@
 
 // All TETH joke E.G.O
 /obj/item/ego_weapon/an_ego
-	name = "an ego"
-	desc = "A weapon that can be used to attack things. Unfortunately, it is missing textures because you failed to install Counter-Strike : Source."
-	special = "Use this weapon in hand to perform an ability."
+	name = "ego"
+	desc = "一种可用于攻击的武器，遗憾的是，由于你未安装《反恐精英：起源》，该武器缺少纹理."
+	special = "手中使用该武器能使用能力."
 	icon_state = "an_ego"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	lefthand_file = 'ModularTegustation/Teguicons/joke_abnos/joke_lefthand.dmi'
 	righthand_file = 'ModularTegustation/Teguicons/joke_abnos/joke_righthand.dmi'
 	force = 10
 	damtype = WHITE_DAMAGE
-	attack_verb_continuous = list("attacks", "attacks", "attacks")
-	attack_verb_simple = list("attack", "attack", "attack")
+	attack_verb_continuous = list("攻击", "攻击", "攻击")
+	attack_verb_simple = list("攻击", "攻击", "攻击")
 	var/random_sound_list = list( // Random goofy sounds
 		'sound/effects/yem.ogg',
 		'sound/effects/wow.ogg',
@@ -51,14 +51,14 @@
 // All ALEPH joke E.G.O
 //The Chaos Dunk
 /obj/item/ego_weapon/chaosdunk
-	name = "chaos dunk"
-	desc = "One billion b-balls dribbling simultaneously throughout the galaxy. \
-	One trillion b-balls being slam dunked through a hoop throughout the cosmos. \
-	I can feel every single b-ball that has ever existed at my fingertips, I can feel their collective knowledge channeling through my veins. \
-	Every jumpshot, every rebound and three-pointer, every layup, dunk, and free throw. I am there. I Am B-Ball. \
-	Though I have reforged the Ultimate B-Ball, there is something I must still do. There is... another basketball that cries out for an owner. \
-	No, not an owner. A companion. I must find this b-ball, save it from the depths of obscurity that it so fears."
-	special = "This weapon deals incredible damage when thrown."
+	name = "混沌灌篮"
+	desc = "十亿个篮球在银河系中同时滚动. \
+	一万亿个篮球在宇宙中被狠狠地砸进篮筐. \
+	我能感受到每一个存在的篮球，它们的全部知识正通过我的血管流淌. \
+	每一次跳投、篮板、三分球、上篮、扣篮和罚球，我都在场. 我即是篮球. \
+	虽然我已经重新打造了终极篮球，但我仍有一件事必须完成。还有一个篮球，它在呼唤着主人. \
+	不，不是主人，而是伙伴. 我必须找到这个篮球，把它从它所惧怕的深不可测的遗忘中拯救出来."
+	special = "这把武器在投掷时会造成惊人的伤害."
 	icon_state = "basketball"
 	inhand_icon_state = "basketball"
 	icon = 'icons/obj/items_and_weapons.dmi'
@@ -100,7 +100,7 @@
 	if(activated)
 		return
 	if(!CanUseEgo(user))
-		to_chat(user, span_warning("The [src] lies dormant in your hands..."))
+		to_chat(user, span_warning("[src]一直沉睡在你手中..."))
 		return
 	activated = TRUE
 
@@ -122,11 +122,11 @@
 		M.deal_damage(10, STAMINA, source = throwingdatum.thrower, attack_type = (ATTACK_TYPE_RANGED))
 		if(prob(75))
 			M.Paralyze(60)
-			visible_message(span_danger("[M] barely manages to contain the power of the [src]!"))
+			visible_message(span_danger("[M] 几乎只能勉强压制住[src]的力量！"))
 			return
 	else
 		new /obj/effect/temp_visual/explosion(get_turf(src))
-		visible_message(span_danger("[src] explodes violently!"))
+		visible_message(span_danger("[src]剧烈的爆炸!"))
 		playsound(src, 'sound/abnormalities/crying_children/sorrow_shot.ogg', 45, FALSE, 5)
 		for(var/mob/living/L in view(1, src))
 			var/aoe = 50
@@ -141,8 +141,8 @@
 	We reached for a shred of comprehension that they could give. \
 	We stared into the dark unending abyss wishing for love and compassion. \
 	In the end we recived nothing but madness, there was no hope for understanding."
-	special = "This weapon can be used to perform an indiscriminate heavy red damage jump attack with enough charge. \
-	This weapon will also gib on kill."
+	special = "这把武器在蓄力充能完成时能进行无差别的高额红色伤害传送攻击. \
+	在杀死敌人时能造成GIB."
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	icon_state = "violet_curse"
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
@@ -165,8 +165,8 @@
 	charge = TRUE
 	charge_cost = 10
 	charge_cap = 10
-	charge_effect = "Can be used to perform an indiscriminate heavy red damage jump attack."
-	successfull_activation = "You feel the power of the violet noon flow through you."
+	charge_effect = "能进行无差别的高额红色伤害传送攻击."
+	successfull_activation = "你感到紫罗兰正午的力量正在你体内流淌."
 
 	var/dash_range = 8
 	var/aoe_damage = 150
@@ -234,15 +234,15 @@
 		if(L == user) //This WILL friendly fire there is no escape
 			continue
 		L.deal_damage(aoe_damage, RED_DAMAGE, user, attack_type = (ATTACK_TYPE_MELEE | ATTACK_TYPE_SPECIAL))
-		to_chat(L, span_userdanger("You are crushed by a monolith!"))
+		to_chat(L, span_userdanger("你被一座巨石压得喘不过气!"))
 		if(L.health < 0)
 			L.gib()
 		aoe_damage = initial(aoe_damage)
 
 //Buff Rudolta
 /obj/item/ego_weapon/ultimate_christmas
-	name = "ultimate christmas"
-	desc = "The Santa's bag is very heavy, capable of carrying a gift for everyone in the world. This one is no exception."
+	name = "终极圣诞"
+	desc = "圣诞老人的袋子非常沉重，足以装下送给全世界每个人的礼物。这个也不例外."
 	icon_state = "ultimate_christmas"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
@@ -253,8 +253,8 @@
 	attack_speed = 1.6
 	damtype = RED_DAMAGE
 	knockback = KNOCKBACK_HEAVY
-	attack_verb_continuous = list("bashes", "clubs")
-	attack_verb_simple = list("bashes", "clubs")
+	attack_verb_continuous = list("击打", "叩打")
+	attack_verb_simple = list("击打", "叩打")
 	hitsound = 'sound/abnormalities/rudolta_buff/onrush1.ogg'
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 120,
@@ -265,8 +265,8 @@
 
 //The wild ride
 /obj/item/ego_weapon/lance/wild_ride
-	name = "wild ride"
-	desc = "I want off this wild ride!"
+	name = "狂野之旅"
+	desc = "我想离开狂野之旅!"
 	icon_state = "tattered_kingdom" //temporary until someone decides to sprite it
 	lefthand_file = 'icons/mob/inhands/96x96_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/96x96_righthand.dmi'
@@ -276,8 +276,8 @@
 	reach = 2		//Has 2 Square Reach.
 	attack_speed = 2.0 // really slow
 	damtype = BLACK_DAMAGE
-	attack_verb_continuous = list("pierces", "skews")
-	attack_verb_simple = list("pierce", "skew")
+	attack_verb_continuous = list("穿透", "歪斜")
+	attack_verb_simple = list("穿透", "歪斜")
 	hitsound = 'sound/weapons/fixer/generic/spear2.ogg'
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 80,
