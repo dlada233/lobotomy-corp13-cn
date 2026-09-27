@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/skub
-	name = "Skub"
-	desc = "It's skub."
+	name = "Skub"//漫画《The Perry Bible Fellowship》
+	desc = "这是skub."
 	health = 500
 	maxHealth = 500
 	icon = 'icons/obj/items_and_weapons.dmi'
@@ -33,18 +33,18 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_JOKE
 
 
-	observation_prompt = "Will you accept skub into your life?"
+	observation_prompt = "你会接受Skub进入你的生活吗?"
 
 	observation_choices = list(
-		"Accept Skub" = list(TRUE, "Skub really is the best thing ever! <br>\
-		Who in their right mind would reject it?"),
-		"Reject Skub" = list(TRUE, "Skub is truly an awful thing. <br>\
-		Who in their right mind would accept it?"),
+		"接受Skub" = list(TRUE, "Skub真的是有史以来最棒的东西! <br>\
+		脑子正常的人谁会拒绝它？"),
+		"拒绝Skub" = list(TRUE, "Skub真的是个糟糕透顶的东西。<br>\
+		脑子正常的人谁会接受它？"),
 	)
 
-	work_start_lines = list("Skub is known as the greatest thing in the world.", "Skub is generally considered to be the most overrated thing in the world.")
-	late_work_lines = list("Thousands of people have lost their lives fighting over Skub.")
-	work_end_lines = list("%PERSON can't stop thinking about Skub.")
+	work_start_lines = list("Skub被公认为世界上最伟大的东西。", "Skub被普遍认为是世界上最被高估的东西。")
+	late_work_lines = list("成千上万的人为了Skub而丧命。")
+	work_end_lines = list("%PERSON无法停止思考Skub。")
 
 	var/list/currently_insane = list()
 	var/insanity_counter
@@ -99,9 +99,9 @@
 		target_list += H
 		UpdateSkub(H)
 		if(IsProSkub(H))
-			to_chat(H, span_boldwarning("Your dedication to [skub_type] reaches a fever pitch!"))
+			to_chat(H, span_boldwarning("你对[skub_type]的忠诚达到了狂热的程度！"))
 		else
-			to_chat(H, span_boldwarning("You can't stop thinking about how much you hate [skub_type]!"))
+			to_chat(H, span_boldwarning("你无法停止思考自己有多么憎恨[skub_type]！"))
 	sleep(3 SECONDS)
 	for(var/mob/living/carbon/human/H in target_list)
 		H.adjustSanityLoss(500)
@@ -125,10 +125,10 @@
 		return
 	if(LAZYLEN(skub_list["PRO_SKUB"]) <= LAZYLEN(skub_list["ANTI_SKUB"]))
 		skub_list["PRO_SKUB"] |= skubber
-		to_chat(skubber, span_boldwarning("You've become pro-[skub_type]!"))
+		to_chat(skubber, span_boldwarning("你变成了[skub_type]派!"))
 	else
 		skub_list["ANTI_SKUB"] |= skubber
-		to_chat(skubber, span_boldwarning("You've become anti-[skub_type]!"))
+		to_chat(skubber, span_boldwarning("你变成了反[skub_type]派!"))
 		return
 
 /mob/living/simple_animal/hostile/abnormality/skub/proc/IsProSkub(mob/living/skubber)
@@ -153,10 +153,10 @@
 
 /datum/ai_behavior/say_line/skub
 	lines = list(
-		"I LOVE SKUB!",
-		"THAT'S MY SKUB!!!",
-		"I stand with skub!",
-		"Protect skub!",
+		"我爱SKUB！",
+		"那是我的SKUB！！！",
+		"我支持skub！",
+		"保护skub！",
 	)
 
 /datum/ai_controller/insane/murder/skub/CanTarget(atom/movable/thing)
@@ -183,10 +183,10 @@
 
 /datum/ai_behavior/say_line/anti_skub
 	lines = list(
-		"I HATE FUCKING SKUB!",
-		"GIVE ME THAT!",
-		"I'll destroy that skub myself!",
-		"Down with skub!",
+		"我恨死SKUB了！",
+		"把那东西给我！",
+		"我要亲手毁掉那个skub！",
+		"打倒skub！",
 	)
 
 /datum/ai_controller/insane/murder/anti_skub/CanTarget(atom/movable/thing)

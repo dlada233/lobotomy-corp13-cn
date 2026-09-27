@@ -1,15 +1,15 @@
 //Idea by ArcAngela, strangely enough.
 /mob/living/simple_animal/hostile/abnormality/rubber_duck
-	name = "Interdimensional Rubber Duck"
-	desc = "A small yellow duck."
+	name = "跨纬度橡皮鸭"
+	desc = "一只小黄鸭."
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "duckcontained"
 	icon_living = "duckcontained"
 	portrait = "rubber_duck"
 	maxHealth = 15
 	health = 15
-	attack_verb_continuous = "quacks"
-	attack_verb_simple = "quacks"
+	attack_verb_continuous = "嘎嘎叫"
+	attack_verb_simple = "嘎嘎叫"
 	damage_coeff = list(BRUTE = 1, RED_DAMAGE = 1, WHITE_DAMAGE = 1, BLACK_DAMAGE = 1, PALE_DAMAGE = 1)
 	speak_emote = list("quacks")
 	density = FALSE	//So you can't hit it with a stray bullet
@@ -41,15 +41,15 @@
 		/mob/living/simple_animal/hostile/abnormality/training_rabbit,
 	)
 
-	observation_prompt = "The %ABNO lies still. Is it finally in your grasp?"
+	observation_prompt = "%ABNO静静地躺着，它终于要在你手中了吗?"
 
 	observation_choices = list(
-		"Leave it alone" = list(FALSE, "You leave the ducky alone.<br>\
-		It lies still, as if mocking you."),
-		"Reach for it" = list(TRUE, "At last, you lay claim to the rubber ducky."),
+		"别管它" = list(FALSE, "你离开了这只小鸭子.<br>\
+		它静静地躺着，仿佛在嘲笑你."),
+		"伸手去拿" = list(TRUE, "终于，你拥有了这只橡皮鸭."),
 	)
 
-	work_start_lines = list("The interdimensional rubber duck waits in its cell. Or does it?")
+	work_start_lines = list("跨维度橡皮鸭在它的收容单元里等着，它真的在那吗？")
 
 
 /mob/living/simple_animal/hostile/abnormality/rubber_duck/Move()
@@ -64,7 +64,7 @@
 		if(get_dist(src, H) > 7)	//You're now out of range.
 			H.adjustSanityLoss(H.maxSanity * 0.3) // take 30% of your Sanity
 			looking_players-=H
-			to_chat(H, span_warning("Aren't you forgetting something?"))
+			to_chat(H, span_warning("你是不是忘了什么东西?"))
 
 	for(var/mob/living/carbon/human/H in view(6, src))
 		looking_players |=H

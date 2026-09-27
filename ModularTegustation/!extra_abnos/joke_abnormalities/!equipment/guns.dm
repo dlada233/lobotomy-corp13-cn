@@ -3,7 +3,7 @@
 /obj/item/ego_weapon/ranged/pistol/mcrib
 	name = "mcrib"
 	desc = "Try a mcrib at your nearest McDonalds!"
-	special = "Use this weapon in your hand when wearing matching armor to create food for people nearby."
+	special = "穿戴对应护甲时，手中使用这把武器可以为附近的人制造食物."
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	icon_state = "mcrib"
 	force = 3
@@ -19,13 +19,13 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(ability_cooldown > world.time)
-		to_chat(H, "<span class='warning'>You have used this ability too recently!</span>")
+		to_chat(H, "<span class='warning'>你最近使用过这个能力了!</span>")
 		return
 	var/obj/item/clothing/suit/armor/ego_gear/zayin/mcrib/T = H.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 	if(!istype(T))
-		to_chat(H, "<span class='warning'>You must have the corrosponding armor equipped to use this ability!</span>")
+		to_chat(H, "<span class='warning'>你必须穿戴对应护甲才能使用这个能力</span>")
 		return
-	to_chat(H, "<span class='warning'>You use mcrib to share snacks!</span>")
+	to_chat(H, "<span class='warning'>你使用MCrib分享美食!</span>")
 	H.playsound_local(get_turf(H), 'sound/abnormalities/mcrib/mcrib.ogg', 25, 0)
 	SpawnItem(user)
 	ability_cooldown = world.time + ability_cooldown_time
@@ -35,7 +35,7 @@
 	for(var/mob/living/carbon/human/L in livinginview(5, user))
 		if((!ishuman(L)) || L.stat == DEAD || L == user)
 			continue
-		to_chat(L, "<span class='warning'>Is that... authentic Kansas City Barbecue sauce I smell? [user] gives you a snack!</span>")
+		to_chat(L, "<span class='warning'>那不是...正宗堪萨斯城烧烤酱？ [user]给予了你一份美食!</span>")
 		new foodoption(get_turf(L))
 	new foodoption(get_turf(user))
 
@@ -48,7 +48,7 @@
 
 // HE
 /obj/item/ego_weapon/ranged/squeak
-	name = "squeaky toy"
+	name = "吱吱玩具"
 	desc = "Soft to the touch, as if it's made of rubber"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	icon_state = "squeak"
@@ -84,7 +84,7 @@
 							)
 
 /obj/projectile/ego_bullet/skub
-	name = "skub cocktail"
+	name = "skub鸡尾酒"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_weapons.dmi'
 	icon_state = "anti_skub2"
 	damage = 20

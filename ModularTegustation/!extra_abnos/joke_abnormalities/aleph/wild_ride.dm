@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/wild_ride
-	name = "ride that never ends"
-	desc = "A giant skeleton holding a top hat, it seems to be handing out tickets for a roller coaster called \"Mr. Bones Wild Ride\""
+	name = "旅程永不结束"// Mr. Bones' Wild Ride 2ch过山车大亨2meme 有人造了史上最折磨的过山车。
+	desc = "一个戴着高礼帽的巨大的骷髅，似乎正在分发名为 \"骷髅先生的狂野之旅\" 的过山车票."
 	health = 4000
 	maxHealth = 4000
 	pixel_x = -48
@@ -35,25 +35,25 @@
 	)
 	abnormality_origin = ABNORMALITY_ORIGIN_JOKE
 
-	observation_prompt = "38 Hand picked riders <br> Free Admission <br> Extensive design and scenery <br> Extensive safety testing <br>\
-	30,696 ft of track <br> ... <br> One month has passed, the ride is getting boring..."
+	observation_prompt = "38名精心挑选的旅客 <br> 免费入场游玩 <br> 丰富的设计与景观塑造 <br> 全面有效的安全测试 <br>\
+	30,696英尺长的轨道 <br> ... <br> 一个月过去了，旅程开始无聊了..."
 	observation_choices = list(
-		"Wait out the ride" = list(TRUE, "I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
-			I want to get off MR BONES WILD RIDE<br>\
+		"等过山车到站" = list(TRUE, "我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
+			我想离开骷髅先生的狂野之旅！<br>\
 			"),
 
 	)
-	work_start_lines = list("THE RIDE NEVER ENDS.")
-	middle_work_lines = list("I want to get off MR BONES WILD RIDE")
+	work_start_lines = list("旅程永不结束.")
+	middle_work_lines = list("我想离开骷髅先生的狂野之旅！")
 
 	var/works_in_a_row = 0
 	var/saved_work_type = null
@@ -113,14 +113,14 @@
 		if(HAS_TRAIT(L, TRAIT_WORK_FORBIDDEN))
 			continue
 		potentialmarked += L
-		to_chat(L, span_danger("Something horrible is about to happen to someone!"))
+		to_chat(L, span_danger("有人即将遭受可怕的事情!"))
 	SLEEP_CHECK_DEATH(5 SECONDS)
 	if(datum_reference.working) //5 seconds for someone to bravely sacrifice themselves
 		return
 	for(var/mob/living/carbon/human/H in potentialmarked)
 		if(faction_check_mob(H, FALSE) || H.z != z || H.stat == DEAD || H.is_working) //hostile, off-z, dead, or working
 			continue
-		to_chat(H, span_userdanger("WIIIIIILD RIIIDE!"))
+		to_chat(H, span_userdanger("狂狂狂狂野之旅!"))
 		marked = H
 		break
 	if(!marked)
@@ -132,7 +132,7 @@
 	SLEEP_CHECK_DEATH(5)
 	if(AttemptWork(user, saved_work_type, TRUE)) //THE RIDE NEVER ENDS
 		datum_reference.console.start_work(user, saved_work_type)
-		to_chat(user, span_userdanger("THE RIDE NEVER ENDS!"))
+		to_chat(user, span_userdanger("旅程永不结束!"))
 
 /mob/living/simple_animal/hostile/abnormality/wild_ride/proc/DropPlayerByConsole(mob/living/carbon/human/user)
 	var/turf/dispense_turf = get_step(datum_reference.console, pick(2,8,10)) //south, west, southwest

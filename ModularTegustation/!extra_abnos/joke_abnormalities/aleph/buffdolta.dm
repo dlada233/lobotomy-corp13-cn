@@ -1,7 +1,7 @@
 // Silly christmass/new year
 /mob/living/simple_animal/hostile/abnormality/rudolta_buff
-	name = "Rudolta of the Sleigh"
-	desc = "Rudolta has had enough, and now all bad kids are getting coal, directly from the sleigh."
+	name = "雪橇上的鲁道夫"
+	desc = "鲁道夫受够了，现在所有坏孩子都会直接收到从雪橇上送来的煤块."
 	icon = 'ModularTegustation/Teguicons/64x48.dmi'
 	icon_state = "rudolta_buff"
 	icon_living = "rudolta_buff"
@@ -48,28 +48,28 @@
 	)
 
 		// I just copied these over from rudolta. I don't know who made buffdolta, or if it is even funny anymore. - Coxswain
-	observation_prompt = "I heard about a man who could give you anything you want once a year. <br>Good kids have a better chance of seeing him. <br>\
-		A man who carries giant sack on his back. <br>A man who can go anywhere in the world with his reindeer-pulled sled. <br>\
-		Alex got a present. <br>Even though he was a naughty kid. <br>It was unfair. <br>I could not accept it. <br>The next Christmas, I went to Alex's. <br>\
-		If that man comes only for Alex this time again, I will ask him why had he not come to me. <br>\
-		That night, when everyone was sleeping. <br>I waited for the man, sitting next to sleeping Alex. <br>\
-		Sometimes, for someone, an absurd fairy tale is a silver lining of hope. <br>When I met Santa, I imagined dismembering him. <br>... <br>\
-		In front of me is Santa. <br>My ideal. <br>People don't call it Santa. <br>Something is twitching inside of that sack. I......"
+	observation_prompt = "传说有个每年都会实现他人愿望的男人。<br>好孩子才可能见到他。<br>\
+		背着巨大麻袋的男人。<br>乘驯鹿雪橇周游世界的男人。<br>\
+		Alex收到了礼物。<br>但他是个顽劣的孩子。<br>这不公平。<br>我无法接受。<br>于是次年圣诞我去了Alex家。<br>\
+		如果那个男人仍然为Alex而来，我一定要质问他为何从不眷顾我。<br>\
+		那夜万籁俱寂。<br>我守在沉睡的Alex身旁等待着。<br>\
+		有时荒诞童话恰是绝望中仅存的微光。<br>当我见到圣诞老人时，脑中浮现出肢解他的画面。<br>...<br>\
+		此刻他就在眼前。<br>我梦想中的存在。<br>人们不再称其为圣诞老人。<br>麻袋中有物蠕动。我......"
 	observation_choices = list(
-		"Did not open the sack" = list(TRUE, "Inside of the sack is a desire. <br>\
-			A hope that I've been waiting for since when I was very young. <br>I never opened the sack. <br>Did your wish come true?"),
-		"Opened the sack" = list(FALSE, "There was something that I have been longing for my entire life. <br>\
-			Like Pandora's Box, it will never go back into the sack."),
+		"未打开麻袋" = list(TRUE, "麻袋里承载着欲望。<br>\
+			那是我自幼期盼的希望。<br>我始终未曾开启。<br>你的愿望可曾实现？"),
+		"打开了麻袋" = list(FALSE, "里面盛着我毕生渴求之物。<br>\
+			如潘多拉魔盒，一旦打开便永无归袋之日。"),
 	)
 
-	work_start_lines = list("When the rusty sleigh bells are ajingle, Christmas begins.",
-	"With a displaced jaw and lifeless tongue, words are swallowed instead of sung.", "Where is Santa for those unhappy?")
-	early_work_lines = list("The colorful lights were as bright as Christmas, and as dark as every child's nightmare and grimace.",
-	"The sewing looks crude, but the effort put into making it was nothing but obsessively shrewd.")
-	middle_work_lines = list("Christmas, oh the hideous carnival. Every Christmas, I was filled with the urge to pluck out the tongues of those who sing carols.",
-	"With my infinite hatred, I give you this gift.")
-	late_work_lines = list("%ABNO shows no sign of life, yet it moves nonetheless. This may be due to the energy it produces.",
-	"%ABNO roams around without purpose. It wants to give away its pile of gifts.")
+	work_start_lines = list("锈钟鸣响，悲惨的圣诞开始了.",
+	"错位的下巴，松软的舌头，诉说着断断续续的话语，没有人能理解它的意图.", "那位象征着不幸的老头，如今在哪里?")
+	early_work_lines = list("形形色色的彩灯如同圣诞一般明朗，亦如每个孩子的生命一般黯淡.",
+	"缝纫的手法很是糟糕，但你不难看出制作者那病态的痴迷.")
+	middle_work_lines = list("嚯，圣诞节，可怕的狂欢节。真想把每个人的舌头都给拔下来，看你们还拿什么唱颂歌.",
+	"我向你送出了礼物，充斥着无尽憎恨的礼物.")
+	late_work_lines = list("我们无法确定%ABNO是否具有生命，它的一切动作可能是由它本身就有的能源所驱使着的.",
+	"%ABNO漫无目的地游荡着，它想把自己的礼物送给大家.")
 
 	var/can_act = TRUE
 	// Onrush vars
@@ -92,16 +92,16 @@
 	var/slam_damage = 50
 
 /datum/action/innate/abnormality_attack/rudolta_buff_onrush
-	name = "Onrush"
+	name = "冲锋"
 	button_icon_state = "generic_toggle0"
 	chosen_attack_num = 1
-	chosen_message = span_colossus("You will now perform onrush attack on living enemies.")
+	chosen_message = span_colossus("你现在将对活着的敌人发动冲锋攻击.")
 
 /datum/action/innate/abnormality_attack/rudolta_buff_slam
-	name = "Sleigh Slam"
+	name = "雪橇猛击"
 	button_icon_state = "generic_slam"
 	chosen_attack_num = 2
-	chosen_message = span_colossus("You will now slam the sleigh against the target area.")
+	chosen_message = span_colossus("你现在将用雪橇猛击目标区域.")
 
 /mob/living/simple_animal/hostile/abnormality/rudolta_buff/Move()
 	if(!can_act)
@@ -163,7 +163,7 @@
 	if(!iteration)
 		var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(get_turf(src), src)
 		animate(D, alpha = 0, transform = matrix()*1.5, time = 3)
-		visible_message(span_danger("[src] prepares to punish everyone!"))
+		visible_message(span_danger("[src]准备惩罚所有人!"))
 		onrush_hit = list()
 		SLEEP_CHECK_DEATH(5)
 
@@ -182,7 +182,7 @@
 	forceMove(target_turf)
 	// PUNCH!!!!
 	playsound(src, pick(onrush_sounds), rand(50, 100), TRUE, 7)
-	to_chat(target, span_userdanger("[src] punches you hard!"))
+	to_chat(target, span_userdanger("[src]狠狠揍了你一拳!"))
 	if(!onrush_double_hit)
 		onrush_hit |= target
 	var/turf/thrownat = get_ranged_target_turf_direct(src, target, 15, rand(-30, 30))

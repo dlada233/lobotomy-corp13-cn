@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/barkley
-	name = "Charles Barkley Shut Up And Jam Gaiden: Part 1 of the Hoopz Barkley Saga"
-	desc = "A large man wearing a basketball jersey."
+	name = "查尔斯·巴克利闭嘴灌篮外传: 胡普兹·巴克利传奇第一章"// 这是来源于一个同人游戏名称，它原名更长：Tales of Game's Studios Presents Chef Boyardee's Barkley, Shut Up and Jam: Gaiden, Chapter 1 of the Hoopz Barkley SaGa
+	desc = "身穿篮球球衣的高大男子."
 	health = 4000
 	maxHealth = 4000
 	pixel_x = -12
@@ -32,7 +32,7 @@
 	abnormality_origin = ABNORMALITY_ORIGIN_JOKE
 
 	// Lacks a final obs
-	work_start_lines = list("%ABNO is enveloped in B-Ball energy.")
+	work_start_lines = list("%ABNO蕴含着篮球能量.")
 
 	var/explosion_amt = 3
 
@@ -57,9 +57,9 @@
 		icon_state = icon_living
 
 /mob/living/simple_animal/hostile/abnormality/barkley/proc/ChaosDunk()
-	show_global_blurb(10 SECONDS, "CHAOS DUNK ADVISORY", text_align = "center", screen_location = "Center-6,Center+3")
-	priority_announce("FACILITY CHAOS DUNK ADVISORY WARNING! A MEASURED 19.7 MEGAJOULE OF NEGATIVE B-BALL PROTONS HAS BEEN DETECTED.\
-	A CHAOS DUNK IS IMMINENET. FIND SHELTER IMMEDIATELY. THIS IS NOT A DRILL.", "Chaos Dunk Advisory", sound='sound/effects/combat_suppression_start.ogg')
+	show_global_blurb(10 SECONDS, "混沌灌篮警告", text_align = "center", screen_location = "Center-6,Center+3")
+	priority_announce("混沌灌篮警告! 检测到19.7兆焦耳的负篮球质子涌现.\
+	混沌灌篮即将发生. 请立刻寻找庇护所. 这不是演习.", "混沌灌篮警告", sound='sound/effects/combat_suppression_start.ogg')
 	explosion(src, 20, 20)
 	sleep(10 SECONDS)
 	Explode()

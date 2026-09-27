@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/riblin
-	name = "Rise Of the Riblin"
-	desc = "A humanoid wearing an odd mask."
+	name = "肋布林崛起"//麦当劳McRib狂热者者meme
+	desc = "戴着奇怪面具的人形生物."
 	icon = 'ModularTegustation/Teguicons/48x64.dmi'
 	icon_state = "mcrib"
 	icon_living = "mcrib"
@@ -27,25 +27,25 @@
 	)
 	abnormality_origin = ABNORMALITY_ORIGIN_JOKE
 
-	observation_prompt = "The abnormality suddenly hands you a menu. <br>\
-	\"Next one's on me. Have a nice Mcrib!\" <br>\
-	What will you do?"
+	observation_prompt = "异想体突然递给你菜单. <br>\
+	\"下一份我请，好好享用McRib（麦肋堡）吧!\" <br>\
+	你会怎么做?"
 
 	observation_choices = list(
-		"Order the McRib" = list(TRUE, "You order the ultra-processed pork patty, and it is delicious."),
-		"Order something else" = list(FALSE, "You state that you would prefer to have the Big Mac instead. <br>\
-		The Riblin looks at you disapprovingly."),
+		"点McRib" = list(TRUE, "你点了那份超料理猪肉饼，它很美味."),
+		"点别的" = list(FALSE, "你说你更想要巨无霸. <br>\
+		肋布林不以为然的看了你一眼."),
 	)
 
-	work_start_lines = list("%PERSON can smell authentic Kansas City Barbecue Sauce.")
-	middle_work_lines = list("%ABNO hasn't eaten a vegetable in weeks.")
+	work_start_lines = list("%PERSON闻到了正宗堪萨斯城烧烤酱的味道。")
+	middle_work_lines = list("%ABNO已经好几周没吃过蔬菜了。")
 
 /mob/living/simple_animal/hostile/abnormality/riblin/SuccessEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
 	playsound(src, 'sound/abnormalities/mcrib/enjoy.ogg', 50, FALSE)
 	var/turf/dispense_turf = get_step(src, pick(NORTH, SOUTH, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 	var/obj/item/food/mcrib/R = new(dispense_turf)
-	visible_message(span_notice("[src] offers a [R]."))
+	visible_message(span_notice("[src]递上了一份[R]."))
 
 // Death!
 /mob/living/simple_animal/hostile/abnormality/riblin/FailureEffect(mob/living/carbon/human/user, work_type, pe)

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/an_abnormality
-	name = "\"An Abnormality\""
-	desc = "An entity lacking in description due to developer laziness."
+	name = "\"异想体\""
+	desc = "由于开发者的懒惰而缺乏描述的异想体."
 	icon = 'icons/mob/actions/actions_abnormality.dmi'
 	icon_state = "abnormality"
 	icon_living = "abnormality"
@@ -31,11 +31,11 @@
 	gift_type =  /datum/ego_gifts/standard // Way too lazy to make its own gift
 	abnormality_origin = ABNORMALITY_ORIGIN_JOKE
 
-	observation_prompt = "//TODO - Add Observation Prompt"
+	observation_prompt = "//TODO - 添加最终观察提示"
 
 	observation_choices = list(
-		"What?" = list(TRUE, "A gift materializes on you a few moments later.<br>\
-		Happy April fools!"),
+		"What?" = list(TRUE, "一件礼物出现在了你的身上.<br>\
+		愚人节快乐!"),
 	)
 
 	work_start_lines = list("如果这不能被称为\"异想\"，那它又会是什么呢?")

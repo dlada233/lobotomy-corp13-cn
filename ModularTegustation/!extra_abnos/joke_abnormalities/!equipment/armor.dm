@@ -11,7 +11,7 @@
 
 // All TETH joke E.G.O
 /obj/item/clothing/suit/armor/ego_gear/teth/an_ego
-	name = "an ego"
+	name = "ego"
 	desc = "An ambiguous error block that turns into armor when it makes prolonged contact with a human torso. Generally not useful and also kind of hard to look at."
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_armor.dmi'
 	worn_icon = 'ModularTegustation/Teguicons/joke_abnos/joke_worn.dmi'
@@ -19,7 +19,7 @@
 
 // All HE joke E.G.O
 /obj/item/clothing/suit/armor/ego_gear/he/squeak
-	name = "squeaky toy"
+	name = "吱吱玩具"
 	desc = "A set of armor that appears to be made of rubber; turning."
 	icon_state = "squeak"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_armor.dmi'
@@ -54,7 +54,7 @@
 
 // All ALEPH joke E.G.O
 /obj/item/clothing/suit/armor/ego_gear/aleph/chaosdunk
-	name = "chaos dunk"
+	name = "混沌灌篮"
 	desc = "You either slam with the best or jam with the rest."
 	icon_state = "chaosdunk"
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_armor.dmi'
@@ -68,7 +68,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/aleph/ultimate_christmas
-	name = "ultimate christmas"
+	name = "终极圣诞"
 	desc = "Christmas is the jolliest time of the year, and Rudolta is always ready for it."
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_armor.dmi'
 	worn_icon = 'ModularTegustation/Teguicons/joke_abnos/joke_worn.dmi'
@@ -82,7 +82,7 @@
 							)
 
 /obj/item/clothing/suit/armor/ego_gear/aleph/wild_ride
-	name = "wild ride"
+	name = "狂野之旅"
 	desc = "Looks like a T-shirt from a rock concert, with a flaming skeleton on it. In big, red text the shirt says \"I survived Mr. Bones' Wild ride\""
 	icon = 'ModularTegustation/Teguicons/joke_abnos/joke_armor.dmi'
 	worn_icon = 'ModularTegustation/Teguicons/joke_abnos/joke_worn.dmi'
