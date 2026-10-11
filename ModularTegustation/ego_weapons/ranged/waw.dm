@@ -765,6 +765,7 @@
 	attack_charge_gain = FALSE
 	charge_cost = 3
 	ability_type = ABILITY_UNIQUE
+	custom_charge_gain = "这把武器在命中时会获得一次蓄力充能."
 	charge_effect = "释放一道闪电，命中时会击晕人类单位并恢复他们的SP，效果随着蓄力充能时间而增加."
 	visible_activation = "你将释放闪电."
 	cancel_activation = "你将不再释放闪电."

@@ -263,9 +263,6 @@
 	hit_message = "格挡攻击!"
 	block_cooldown_message = "格挡架势准备就绪."
 
-/obj/item/ego_weapon/shield/hearth/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	return 0 //Prevents ranged  parry
-
 /obj/effect/temp_visual/smash1
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smash1"

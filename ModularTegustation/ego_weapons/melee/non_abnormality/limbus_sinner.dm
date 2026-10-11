@@ -93,9 +93,6 @@
 	hit_message = "格挡了攻击!"
 	block_cooldown_message = "你重整了武器."
 
-/obj/item/ego_weapon/shield/sangria/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	return 0 //Prevents ranged  parry
-
 /obj/item/ego_weapon/mini/soleil
 	name = "烈日" //原文:soleil
 	desc = "今天，我杀了母亲。不，也许是昨天?"
