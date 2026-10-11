@@ -4,11 +4,10 @@
 // Right now the only core suppression with a proper reward, which is higher spawning stats.
 /datum/suppression/welfare
 	name = WELFARE_CORE_SUPPRESSION
-	desc = "All employees will suffer from decreased resistance to randomly chosen damage types, which change on each meltdown."
-	reward_text = "All personnel will be able to avoid death/insanity by instantly healing to certain percentage \
-		of either health or sanity each time they reach that point. \
-		Amount of health/sanity restored decreases with each activation: 60% - 45% - 30% - 15%."
-	run_text = "The core suppression of Welfare department has begun. All personnel will be suffering from decreased damage resistances."
+	desc = "所有员工对随机伤害类型的抗性降低，每次熔毁时重新随机."
+	reward_text = "所有人员在生命值或精神值降到一定阈值时，会立即恢复至一定比例，从而避免死亡或发疯。 \
+		每次触发后恢复的生命值/精神值都会减少：60% - 45% - 30% - 15%。"
+	run_text = "福利部的核心抑制已经开始。所有人员的某项伤害抗性将被降低."
 	/// By how much a chosen damage type modifier will be multiplied exactly
 	var/damage_mod = 2
 	/// How many damage types will be changed
@@ -86,8 +85,8 @@
 /* Status Effects */
 // The damage resistance reduction
 /atom/movable/screen/alert/status_effect/welfare_damage_resist
-	name = "Qliphoth Deterrence Malfunction"
-	desc = "Damage resistances remotely modified."
+	name = "逆卡巴拉抑制故障"
+	desc = "伤害抗性被远程修改了."
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "welfare_suppression"
 
@@ -162,7 +161,7 @@
 
 /datum/status_effect/welfare_reward/on_apply()
 	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMGE, PROC_REF(OnDamage))
-	to_chat(owner, "<span class='notice'>Welfare Department modification has been applied to you!</span>")
+	to_chat(owner, "<span class='notice'>福利部的修改已应用于你!</span>")
 	return ..()
 
 /datum/status_effect/welfare_reward/on_remove()
@@ -221,10 +220,10 @@
 /datum/status_effect/welfare_reward/proc/PostActivation()
 	restore_percentage -= percentage_decrease
 	if(restore_percentage <= minimum_restore_percentage)
-		to_chat(owner, "<span class='danger'>The welfare effect has expired!</span>")
+		to_chat(owner, "<span class='danger'>福利部的效果已过期!</span>")
 		qdel(src)
 		return
-	to_chat(owner, "<span class='warning'>The welfare effect percentage decreased to [restore_percentage * 100]%!</span>")
+	to_chat(owner, "<span class='warning'>福利部的效果百分比已降低至 [restore_percentage * 100]%!</span>")
 
 // Created when welfare suppression ends; Used to track new spawns to apply the reward
 

@@ -1,10 +1,10 @@
 // It is effectively an ordeal in how it works
 /datum/suppression/extraction
 	name = EXTRACTION_CORE_SUPPRESSION
-	desc = "The illusion of the Arbiter will return to wreak havoc once more. <br>\
-			Special types of meltdowns have to be cleared to weaken the Arbiter; Otherwise you stand no chance."
-	goal_text = "Defeat the Arbiter."
-	run_text = "The core suppression of Extraction department has begun. The Arbiter has returned."
+	desc = "调律者的幻象再次归来，同时带来混乱. <br>\
+			必须处理特定类型的熔毁才能削弱调律者; 否则我们将毫无胜算."
+	goal_text = "击败调律者."
+	run_text = "研发部的核心抑制已经开始. 调律者即将到来."
 	annonce_sound = 'sound/effects/combat_suppression_start.ogg'
 	end_sound = 'sound/effects/combat_suppression_end.ogg'
 	after_midnight = TRUE
@@ -27,8 +27,8 @@
 
 // The Arbiter mob
 /mob/living/simple_animal/hostile/megafauna/arbiter
-	name = "Arbiter"
-	desc = "The elite agent of the head; Despite being a mere imitation, it is nonetheless an intimidating foe."
+	name = "调律者"
+	desc = "直属于首脑的精锐; 尽管这个只是幻象，但仍有令人畏惧的力量."
 	health = 4000
 	maxHealth = 4000
 	damage_coeff = list(RED_DAMAGE = 0.1, WHITE_DAMAGE = 0.1, BLACK_DAMAGE = 0.1, PALE_DAMAGE = 0.1)
@@ -96,24 +96,24 @@
 	var/pillar_storm_cooldown_time = 180 SECONDS
 
 /datum/action/innate/megafauna_attack/arbiter_fairy
-	name = "Fairy"
+	name = "妖灵"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "rift"
-	chosen_message = "<span class='colossus'>You will now fire fairy projectiles at your opponents.</span>"
+	chosen_message = "<span class='colossus'>你将向面前发射妖灵.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/arbiter_key
-	name = "Key"
+	name = "钥匙"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "rift"
-	chosen_message = "<span class='colossus'>You will now fire a pillar at your opponents.</span>"
+	chosen_message = "<span class='colossus'>你将向面前发射钥匙.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/arbiter_meltdown
-	name = "Special Meltdown"
+	name = "共鸣"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "rift"
-	chosen_message = "<span class='colossus'>You will now initiate meltdowns of special type.</span>"
+	chosen_message = "<span class='colossus'>你将向面前引发特殊熔毁.</span>"
 	chosen_attack_num = 3
 
 /mob/living/simple_animal/hostile/megafauna/arbiter/Initialize()
@@ -326,20 +326,20 @@
 	SLEEP_CHECK_DEATH(1 SECONDS)
 
 	var/meltdown_type = pick(possible_meltdown_types)
-	var/meltdown_text = "Qliphoth meltdown occured in containment zones of the following abnormalities:"
+	var/meltdown_text = "逆卡巴拉熔毁发生在以下异想体的收容单元:"
 	var/meltdown_min_time = 60
 	var/meltdown_max_time = 60
 	if(life_stage == 3 && world.time > pillar_storm_cooldown) // Always do pillars when off cooldown
 		meltdown_type = MELTDOWN_CYAN
 	switch(meltdown_type)
 		if(MELTDOWN_GRAY)
-			meltdown_text = "Meltdown of Dark Fog has occured in containment zones of the following abnormalities:"
+			meltdown_text = "黯胧熔毁发生在以下异想体的收容单元:"
 			meltdown_min_time = 45
 			meltdown_max_time = 45
 		if(MELTDOWN_GOLD)
-			meltdown_text = "Meltdown of Gold has occured in containment zones of the following abnormalities:"
+			meltdown_text = "闪金狂暴熔毁发生在以下异想体的收容单元:"
 		if(MELTDOWN_PURPLE)
-			meltdown_text = "Meltdown of Waves has occured in containment zones of the following abnormalities:"
+			meltdown_text = "怒涛熔毁发生在以下异想体的收容单元:"
 			var/list/spawn_turfs = GLOB.xeno_spawn.Copy()
 			for (var/i = 0 to wave_count)
 				if(!length(spawn_turfs)) //if list empty, recopy xeno spawns
@@ -354,7 +354,7 @@
 				waves += W
 				W.binah= src
 		if(MELTDOWN_CYAN)
-			meltdown_text = "Meltdown of Pillars has occured in containment zones of the following abnormalities:"
+			meltdown_text = "暴虐之碑熔毁发生在以下异想体的收容单元:"
 			meltdown_min_time = 45
 			meltdown_max_time = 45
 
@@ -392,15 +392,15 @@
 
 /mob/living/simple_animal/hostile/megafauna/arbiter/proc/FailedMeltdownEffect()
 	meltdown_cooldown = world.time + meltdown_cooldown_time
-	var/blurb_text = "You missed the opportunity."
+	var/blurb_text = "你的机会，就这样白白溜走了."
 	switch(current_meltdown_type)
 		if(MELTDOWN_GOLD)
-			blurb_text = "You failed to bend my back."
+			blurb_text = "你没能让我屈服."
 			remaining_healing_time = 20
 		if(MELTDOWN_PURPLE)
-			blurb_text = "You cannot stop the torrent of this world alone."
+			blurb_text = "你一个人，该如何拦住湍流."
 		if(MELTDOWN_CYAN)
-			blurb_text = "Your immaturity is to blame."
+			blurb_text = "幼稚."
 			INVOKE_ASYNC(src, PROC_REF(FirePillarStorm))
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(show_global_blurb), 5 SECONDS, blurb_text, 1 SECONDS, "black", "yellow", "center", "CENTER-6,BOTTOM+2")
 

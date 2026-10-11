@@ -436,8 +436,8 @@ const CoreSuppressionSelector = (props, context) => {
                   content={'选择核心抑制'}
                   color={'green'}
                   onClick={() =>
-                    act('Select Core Suppression', {
-                      所选核心: available_suppressions.ref,
+                    act('选择核心抑制', {
+                      selected_core: available_suppressions.ref,
                     })}
                 />
               }

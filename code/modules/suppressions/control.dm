@@ -1,8 +1,8 @@
 /datum/suppression/control
 	name = CONTROL_CORE_SUPPRESSION
-	desc = "Assignments on the abnormality work consoles will be scrambled each meltdown/ordeal."
-	reward_text = "The facility is rewarded with extra 10 LOB points."
-	run_text = "The core suppression of Control department has begun. The work assignments will be scrambled each meltdown."
+	desc = "每次熔毁或考验后，异想体工作终端的工作任务都会被打乱."
+	reward_text = "设施获得10点额外的LOB."
+	run_text = "控制部的核心抑制已经开始，每次熔毁或考验后，异想体工作任务都会被重新打乱."
 
 /datum/suppression/control/Run(run_white = FALSE, silent = FALSE)
 	. = ..()

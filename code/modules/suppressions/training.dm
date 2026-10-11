@@ -1,10 +1,10 @@
 // Right now the only core suppression with a proper reward, which is higher spawning stats.
 /datum/suppression/training
 	name = TRAINING_CORE_SUPPRESSION
-	desc = "All employees will be affected by a debuff to each attribute for the duration of suppression, which starts at -10 and increases in potency every ordeal."
-	reward_text = "Employees that survived through the suppression will be awarded with 20 increase and +5 buff to all attributes.\n\
-			All Agents that will join post-suppression will start with higher attributes."
-	run_text = "The core suppression of Training department has begun. All personnel will be suffering from symptoms of work fatigue."
+	desc = "在抑制期间，所有员工的所有属性都会受到减益影响，初始为-10，并在每次考验后效果增强."
+	reward_text = "在抑制中幸存下来的员工将获得所有属性+20提升和+5增益.\n\
+			镇压结束后加入的新员工将有更高的属性."
+	run_text = "培训部的核心抑制已经开始。所有人员都将出现工作疲劳的症状."
 	/// Mob ref = Current attribute debuff
 	var/list/affected_mobs = list()
 	// Starting attribute debuff
@@ -22,7 +22,7 @@
 		if(!H.ckey)
 			continue
 		H.adjust_all_attribute_buffs(attribute_debuff_count_starting)
-		to_chat(H, "<span class='danger'>You feel weaker...</span>")
+		to_chat(H, "<span class='danger'>你感到更弱了...</span>")
 		affected_mobs[H] = attribute_debuff_count
 		RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(RemoveFromAffectedMobs))
 	current_debuff_amount = attribute_debuff_count_starting
@@ -32,7 +32,7 @@
 	for(var/mob/living/carbon/human/H in affected_mobs)
 		H.adjust_all_attribute_buffs(-affected_mobs[H] + 5)
 		H.adjust_all_attribute_levels(20) // A tiny reward
-		to_chat(H, "<span class='notice'>You feel much better than ever before!</span>")
+		to_chat(H, "<span class='notice'>你感到比以往任何时候都更好!</span:notice>")
 		UnregisterSignal(H, COMSIG_PARENT_QDELETING)
 	affected_mobs = null
 	for(var/datum/job/agent/J in SSjob.occupations)
@@ -45,7 +45,7 @@
 		return FALSE
 	var/mob/living/carbon/human/H = L
 	H.adjust_all_attribute_buffs(current_debuff_amount) // Suffer
-	to_chat(H, "<span class='danger'>You feel weaker...</span>")
+	to_chat(H, "<span class='danger'>你感到更弱了...</span:danger>")
 	affected_mobs[H] = current_debuff_amount
 	RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(RemoveFromAffectedMobs))
 	return TRUE
@@ -65,5 +65,5 @@
 			continue
 		H.adjust_all_attribute_buffs(attribute_debuff_count)
 		affected_mobs[H] += attribute_debuff_count
-		to_chat(H, "<span class='danger'>You feel weaker...</span>")
+		to_chat(H, "<span class='danger'>你感到更弱了...</span:danger>")
 	current_debuff_amount += attribute_debuff_count

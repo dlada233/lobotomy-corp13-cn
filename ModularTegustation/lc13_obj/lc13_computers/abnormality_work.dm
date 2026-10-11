@@ -67,13 +67,13 @@
 		var/melt_text = ""
 		switch(meltdown)
 			if(MELTDOWN_GRAY)
-				melt_text = " 黑雾. 成功率降低 10%"
+				melt_text = " 黯胧. 成功率降低 10%"
 			if(MELTDOWN_GOLD)
-				melt_text = "：金色. 未能处理将治愈调律者"
+				melt_text = "：闪金狂暴. 未能处理将治愈调律者"
 			if(MELTDOWN_PURPLE)
-				melt_text = "：波浪. 处理后清除黑暗波浪"
+				melt_text = "：怒涛. 处理后清除黑暗波浪"
 			if(MELTDOWN_CYAN)
-				melt_text = "：支柱. 成功率降低 20%. 未能处理将导致调律者发动致命攻击"
+				melt_text = "：暴虐之碑. 成功率降低 20%. 未能处理将导致调律者发动致命攻击"
 			if(MELTDOWN_BLACK)
 				melt_text = "：疯狂. 未能处理将导致其他异想体突破收容"
 		. += span_warning("收容单元正处于逆卡巴拉熔毁状态[melt_text]. 时间剩余: [meltdown_time].")

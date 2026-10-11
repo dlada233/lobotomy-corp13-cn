@@ -1,10 +1,10 @@
 /datum/suppression/safety
 	name = SAFETY_CORE_SUPPRESSION
-	desc = "Regenerators will stop operating normally, all personnel will be healed after each meltdown instead.\n\
-			Sleepers and EMAIS will be non-functional.\n\
-			Medi-pens will have a chance to malfunction and require a delay on each activation."
-	reward_text = "All regenerators will receive a permanent +12 boost to healing power."
-	run_text = "The core suppression of Safety department has begun. The regenerators and sleepers will stop operating normally. All personnel will be automatically healed after each meltdown instead."
+	desc = "再生器将停止正常运行，取而代之的是每次熔毁后所有人员都会被治疗.\n\
+			休眠舱和EMAIS将无法使用.\n\
+			医疗笔每次激活时都有概率发生故障并需要延迟."
+	reward_text = "所有再生器将获得永久+12的治疗效果提升."
+	run_text = "安保部的核心抑制已经开始。再生器和休眠舱将停止正常运行。取而代之的是，每次熔毁后所有人员都会自动被治疗."
 
 /datum/suppression/safety/Run(run_white = FALSE, silent = FALSE)
 	. = ..()
@@ -33,5 +33,5 @@
 			continue
 		H.adjustBruteLoss(-250)
 		H.adjustSanityLoss(-250)
-		to_chat(H, "<span class='notice'>You suddenly feel better!</span>")
+		to_chat(H, "<span class='notice'>你突然感到恢复健康!</span>")
 	return

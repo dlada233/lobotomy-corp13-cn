@@ -1,20 +1,20 @@
-/* Names of core suppressions */
+/* Names of核心抑制s */
 // Normal ones
-#define CONTROL_CORE_SUPPRESSION "Control Core Suppression"
-#define INFORMATION_CORE_SUPPRESSION "Information Core Suppression"
-#define SAFETY_CORE_SUPPRESSION "Safety Core Suppression"
-#define TRAINING_CORE_SUPPRESSION "Training Core Suppression"
-#define COMMAND_CORE_SUPPRESSION "Central Command Core Suppression"
-#define WELFARE_CORE_SUPPRESSION "Welfare Core Suppression"
-#define DISCIPLINARY_CORE_SUPPRESSION "Disciplinary Core Suppression"
-#define RECORDS_CORE_SUPPRESSION "Records Core Suppression"
-#define EXTRACTION_CORE_SUPPRESSION "Extraction Core Suppression"
+#define CONTROL_CORE_SUPPRESSION "控制部核心抑制"
+#define INFORMATION_CORE_SUPPRESSION "情报部核心抑制"
+#define SAFETY_CORE_SUPPRESSION "安保部核心抑制"
+#define TRAINING_CORE_SUPPRESSION "培训部核心抑制"
+#define COMMAND_CORE_SUPPRESSION "中央本部核心抑制"
+#define WELFARE_CORE_SUPPRESSION "福利部核心抑制"
+#define DISCIPLINARY_CORE_SUPPRESSION "惩戒部核心抑制"
+#define RECORDS_CORE_SUPPRESSION "记录部核心抑制"
+#define EXTRACTION_CORE_SUPPRESSION "研发部核心抑制"
 // Keter
-#define DAY46_CORE_SUPPRESSION "Proving Oneself"
-#define DAY47_CORE_SUPPRESSION "Fatigue and Waiting"
-#define DAY48_CORE_SUPPRESSION "Regret and Atonement"
-#define DAY49_CORE_SUPPRESSION "Freedom and Redemption"
-#define DAY50_CORE_SUPPRESSION "Tree of Light"
+#define DAY46_CORE_SUPPRESSION "证明"
+#define DAY47_CORE_SUPPRESSION "厌倦＆守候"
+#define DAY48_CORE_SUPPRESSION "悔恨＆赎罪"
+#define DAY49_CORE_SUPPRESSION "自由＆拯救"
+#define DAY50_CORE_SUPPRESSION "光之树"
 
 
 //Sweeper things

@@ -409,7 +409,7 @@
 			usr.client.prefs.save_preferences()
 			ui_interact(usr)
 
-		if("Select Core Suppression") // selects a core suppression
+		if("选择核心抑制") // selects a core suppression
 			var/core_suppression = locate(params["selected_core"]) in SSlobotomy_corp.available_core_suppressions
 			if(!ispath(core_suppression) || !(core_suppression in SSlobotomy_corp.available_core_suppressions))
 				return
@@ -419,7 +419,7 @@
 			playsound(get_turf(src), 'sound/machines/terminal_prompt_confirm.ogg', 50, TRUE)
 			update_static_data_for_all_viewers()
 
-		if("Activate Core Suppression") // activates the currently selected core suppression
+		if("激活核心抑制") // activates the currently selected core suppression
 			if(!ispath(selected_core_type) || !(selected_core_type in SSlobotomy_corp.available_core_suppressions))
 				return
 			if(istype(SSlobotomy_corp.core_suppression))

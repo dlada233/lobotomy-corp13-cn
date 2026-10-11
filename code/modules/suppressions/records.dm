@@ -1,13 +1,13 @@
 /datum/suppression/records
 	name = RECORDS_CORE_SUPPRESSION
-	desc = "Each meltdown, a random ever-increasing amount of abnormalities within your containment will swap places. \
-			At even intervals, a random amount of all living creatures in the facility will be teleported a short distance, \
-			with abnormalities and ordeals seemingly teleporting in the direction of their opponent."
-	reward_text = "The manager console will be equipped with function to swap the positions of abnormalities. \
-			Attribute limits of all positions will be raised by 70."
-	run_text = "The core suppression of Records department has begun. \n\
-			The abnormalities will switch positions every meltdown. \n\
-			All living creatures will teleport slightly at even intervals."
+	desc = "每次熔毁时，会有越来越多的异想体随机交换位置. \
+			按固定间隔，设施内随机数量的所有生物将被短距离传送, \
+			而异想体和考验会朝敌对目标的方向传送."
+	reward_text = "主管控制台将配备交换异想体位置的功能. \
+			所有职位的属性上限将提升70."
+	run_text = "记录部的核心抑制已经开始. \n\
+			每次熔毁时，异想体将交换位置。 \n\
+			所有生物将按固定间隔进行短距离传送。"
 	/// How many of abnormality cells will swap places on meltdown, in percent
 	var/abno_swap_percentage = 10
 	/// How often teleportations happen
@@ -37,10 +37,10 @@
 		if(!H.ckey)
 			continue
 		H.adjust_attribute_limit(70)
-		to_chat(H, span_notice("You feel new potential unlock within you!"))
+		to_chat(H, span_notice("你感到自己的潜能上限被解开了！"))
 	for(var/obj/machinery/computer/camera_advanced/manager/C in GLOB.lobotomy_devices)
 		C.swap = new
-		C.visible_message(span_notice("[C] has received a new ability!"))
+		C.visible_message(span_notice("[C]得到了新能力!"))
 		playsound(get_turf(C), 'sound/machines/ping.ogg', 25, TRUE)
 	return ..()
 

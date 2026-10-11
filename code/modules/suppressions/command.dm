@@ -1,13 +1,11 @@
 /datum/suppression/command
 	name = COMMAND_CORE_SUPPRESSION
-	desc = "Meltdowns immunities of certain abnormality levels will be forfeit for the duration of the suppression \
-			and more meltdowns will occur with lower timer on each. Missed or failed meltdowns will trigger a \
-			meltdown on another abnormality within the facility."
-	reward_text = "Managerial bullets will activate in a small area around original target. \
-			Works performed on a melting cell will net more attributes."
-	run_text = "The core suppression of Central Command department has begun. \n\
-			Meltdown immunities are forfeit and qliphoth meltdowns will have lesser timer. \n\
-			Failed meltdowns will trigger a meltdown in another cell."
+	desc = "在抑制期间，某些异想体的熔毁免疫将被取消，熔毁发生的数量更多，熔毁的倒计时更短，如果未能处理熔毁会导致其他异想体也发生熔毁。"
+	reward_text = "主管的子弹将在目标周围小范围生效. \
+			在熔毁单元内的工作会提供更多属性成长."
+	run_text = "中央本部的核心抑制已经开始. \n\
+			熔毁免疫特性被取消，逆卡巴拉熔毁倒计时缩短. \n\
+			未能处理熔毁将导致其他异想体也发生熔毁."
 
 	/// Amount of additional abnormalities melting each qliphoth event
 	var/meltdown_count_increase = 2

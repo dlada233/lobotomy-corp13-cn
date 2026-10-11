@@ -4,7 +4,7 @@
 	/// This is displayed in auxiliary manager's console when selected
 	var/desc = "Normal effects of core suppression will apply. Yell at coders to fix description."
 	/// Same as above, but what facility has to do to win
-	var/goal_text = "Complete the Dusk ordeal."
+	var/goal_text = "完成黄昏的考验."
 	/// Ditto, but for reward
 	var/reward_text = "N/A"
 	/// Announcement text. Self-explanatory

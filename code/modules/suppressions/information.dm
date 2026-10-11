@@ -1,10 +1,10 @@
 // Most of its effects are applied elsewhere
 /datum/suppression/information
 	name = INFORMATION_CORE_SUPPRESSION
-	desc = "Assignments on the abnormality work consoles will be in random positions.\n\
-			Announcement systems and suit sensors will be negatively impacted."
-	reward_text = "Unique PE gained by working on abnormalities is increased by 25%."
-	run_text = "The core suppression of Information department has begun. The information and sensors will be distorted for its duration."
+	desc = "异想体工作终端上的任务将随机分布.\n\
+			公告系统和服装传感器将受到负面干扰."
+	reward_text = "异想体工作获得的对应PE将提升25%."
+	run_text = "情报部核心核心抑制已经开始，抑制期间情报和传感器将会收到干扰."
 	/// Used in Gibberish() proc as third argument in relevant places.
 	var/gibberish_value = 10
 	/// By how much the value is increased on each ordeal
