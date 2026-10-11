@@ -295,16 +295,17 @@
 	damage = 42
 	damage_type = BLACK_DAMAGE
 
-/obj/projectile/ego_bullet/ego_warring/on_hit(atom/target, blocked = FALSE)
-	. = ..()
+/obj/projectile/ego_bullet/ego_warring/process_hit(turf/T, atom/target, atom/bumped, hit_something = FALSE)
 	var/obj/item/ego_weapon/ranged/warring/bow = fired_from
-	var/mob/living/L = target
 	if(!isliving(target))
-		return
-	if((L.stat == DEAD) || L.status_flags & GODMODE)//if the target is dead or godmode
-		return FALSE
-	bow.HandleCharge(1, target)
-	return
+		return ..()
+	var/mob/living/L = target
+	var/old_stat = L.stat
+	. = ..()
+	if(.) // Hit passed and damage applied
+		if((old_stat == DEAD) || L.status_flags & GODMODE)//if the target was already dead or godmode
+			return
+		bow.HandleCharge(1)
 
 //feather of valor cont'd
 /obj/projectile/ego_bullet/ego_warring2
@@ -513,3 +514,21 @@
 	name = "9mm soda bullet"
 	damage = 4
 	damage_type = RED_DAMAGE
+
+/obj/projectile/ego_bullet/maggotgun
+	name = "unsightly glob"
+	icon_state = "mountain"
+	damage = 5
+	damage_type = BLACK_DAMAGE
+
+/obj/projectile/ego_bullet/maggotgun/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	if(!isliving(target))
+		return
+	var/mob/living/L = target
+	var/datum/status_effect/stacking/maggots/G = L.has_status_effect(/datum/status_effect/stacking/maggots)
+	if(!G)
+		L.apply_status_effect(/datum/status_effect/stacking/maggots)
+	else
+		G.add_stacks(1)
+		G.refresh()

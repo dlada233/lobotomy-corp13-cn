@@ -89,8 +89,7 @@
 	The weapon's bullets travel across the corridor, along the horizon."
 	icon_state = "magic_bullet"
 	inhand_icon_state = "magic_bullet"
-	special = "This weapon pierces all targets. \
-		This weapon gets a 30% damage bonus when wearing the matching armor."
+	special = "This weapon pierces all targets."
 	force = 24
 	damtype = BLACK_DAMAGE
 	projectile_path = /obj/projectile/ego_bullet/ego_magicbullet
@@ -125,6 +124,8 @@
 		force = 48
 	else
 		force = 24
+	if(istype(myman.ego_gift_list[MOUTH_2], /datum/ego_gifts/magicbullet))
+		force *= 1.2
 	. = ..()
 
 //Funeral guns have two different names;
@@ -544,6 +545,8 @@
 		force = 18
 	else
 		force = 9
+	if(istype(myman.ego_gift_list[MOUTH_2], /datum/ego_gifts/magicbullet))
+		force *= 1.2
 	. = ..()
 
 /obj/item/ego_weapon/ranged/pistol/laststop
@@ -763,6 +766,7 @@
 	attack_charge_gain = FALSE
 	charge_cost = 3
 	ability_type = ABILITY_UNIQUE
+	custom_charge_gain = "This weapon gains a charge upon every hit with its regular projectile."
 	charge_effect = "fire a bolt of lightning that stuns and heals some sanity of humans on hit while being drawn for longer."
 	visible_activation = "You will now fire a bolt of lightning."
 	cancel_activation = "You will no longer fire a bolt of lightning."
@@ -1410,3 +1414,29 @@
 		L.deal_damage(damage_done, BLACK_DAMAGE, source = caster, attack_type = (ATTACK_TYPE_RANGED | ATTACK_TYPE_SPECIAL))
 	if(count == barrage_range || count == broken)
 		qdel(src)
+
+/obj/item/ego_weapon/ranged/maggotgun//dropped by an empowered false apple
+	name = "legerdemain MK II"
+	desc = "Maggots writhe around the barrel of this disgusting shotgun. For some reason, holding it makes you feel guilty."
+	icon_state = "false_apple"
+	inhand_icon_state = "false_apple"
+	force = 20
+	damtype = BLACK_DAMAGE
+	projectile_path = /obj/projectile/ego_bullet/maggotgun
+	ammo_on_melee = 2
+	pellets = 5
+	variance = 32
+	randomspread = FALSE
+	recoil = 1
+	max_shots = 2
+	reloadtime = 0.3 SECONDS
+	ammo_on_reload = 2
+	weapon_weight = WEAPON_HEAVY
+	fire_delay = 10
+	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
+	round_text = "You load two shells."
+	reload_start_sound = 'sound/weapons/gun/shotgun/insert_shell.ogg'
+	reload_success_sound = 'sound/weapons/gun/shotgun/rack.ogg'
+	attribute_requirements = list(
+							PRUDENCE_ATTRIBUTE = 80,
+							)

@@ -58,6 +58,9 @@
 		"Accept her blessing" = list(FALSE, "Thank you, though I am but a pitiful knight, I still yearn to protect, if I can't protect others, I may as well disappear..."),
 	)
 
+	work_start_lines = list("%ABNO occasionally sheds helpless tears while the work goes on, not saying anything to %PERSON.")
+	middle_work_lines = list("%ABNO still dwells in her past glories, just like her sisters.")
+
 	var/mob/living/carbon/human/blessed_human = null
 	var/teleport_cooldown
 	var/teleport_cooldown_time = 20 SECONDS
@@ -95,26 +98,16 @@
 	if(ranged_cooldown > world.time)
 		return FALSE
 	ranged_cooldown = world.time + ranged_cooldown_time
+	var/P = /obj/projectile/despair_rapier
+	if(nihil_present)
+		P = /obj/projectile/despair_rapier/justice
 	for(var/i = 1 to 4)
 		var/turf/T = get_step(get_turf(src), pick(1,2,4,5,6,8,9,10))
 		if(T.density)
 			i -= 1
 			continue
-		var/obj/effect/projectile_delayed/projectile_handler = new(T) // We use a projectile handler here because fire() is called after a delay
-		var/obj/projectile/despair_rapier/P
-		if(nihil_present)
-			P = new /obj/projectile/despair_rapier/justice(projectile_handler)
-		else
-			P = new(projectile_handler)
-		projectile_handler.projectile = P
-		P.starting = T
-		P.firer = src
-		P.fired_from = T
-		P.yo = target.y - T.y
-		P.xo = target.x - T.x
-		P.original = target
-		P.preparePixelProjectile(target, T)
-		projectile_handler.StartFiring(3)
+		new /obj/effect/projectile_delayed(T, target, src, P, 3)
+
 	SLEEP_CHECK_DEATH(3)
 	playsound(get_turf(src), 'sound/abnormalities/despairknight/attack.ogg', 50, 0, 4)
 	return

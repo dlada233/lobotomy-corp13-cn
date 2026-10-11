@@ -72,6 +72,19 @@
 			I see light. <br>I hear people. <br>I will be free from this torment. <br>For I will meet my redemption"),
 	)
 
+	work_start_lines = list("\"Mirror, mirror on the wall, who's the fairest of them all?\" asked the witch in a room which was no longer visited by anyone.",
+	"The mirror lay silent, but the witch heard the answer.","The day a ripe apple fell off the tree in the garden where the princess and the king stood, the witch's heart shattered.",
+	"The witch cast the most powerful spell she knew on that apple, sacrificing herself.")
+	early_work_lines = list("%PERSON can see branches covering the Containment Unit.", "%ABNO's Containment Unit has some foliage growing inside of it.",
+	"When you approach %ABNO's Containment Unit, you will be able to see the branches that intertwine it.", "The faint sound of rustling leaves can be heard from %ABNO's Containment Unit.")
+	middle_work_lines = list("If you look closely, you can see that the branches are withered. ",
+	"Those things are dried to such a crisp that a single touch would render them dust; they look much too horrible to be called \"plants\".",
+	"Although withered, the branches and leaves are still growing.")
+	late_work_lines = list("%ABNO's eyes are long gone, feasted on by birds and bugs in the past. %ABNO later grew by feasting on their carcasses nearby.",
+	"%ABNO was alone for a very long time. Around %ABNO, the remains of bugs and birds that died from consuming parts of it were scattered about.")
+	work_end_lines = list("%ABNO thought of the princess and the prince who walked down a path of flowers amidst everyone's blessings.",
+	"%ABNO was cursed by the witch, and the princess who fell asleep because of it eventually lived happily ever after.", "%ABNO grew, stewed in jealousy, wrath, and loneliness.")
+
 	initial_language_holder = /datum/language_holder/plant //essentially flavor
 	var/togglemovement = FALSE
 	var/toggleplants = TRUE
@@ -85,7 +98,7 @@
 	//Spell automatically given to the abnormality.
 	var/obj/effect/proc_holder/spell/pointed/apple_barrier/barrier_spell
 	//All iterations share this list between eachother.
-	var/static/list/vine_list = list()
+	var/list/vine_list = list()
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/NeutralEffect(mob/living/carbon/human/user, work_type, pe)
 	. = ..()
@@ -123,20 +136,15 @@
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/Move()
 	if(!togglemovement)
 		return FALSE
-	..()
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/death(gibbed)
 	density = FALSE
 	animate(src, alpha = 0, time = 5 SECONDS)
 	QDEL_IN(src, 5 SECONDS)
-	..()
+	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/Destroy()
-	for(var/obj/structure/spreading/apple_vine/vine in vine_list)
-		vine.can_expand = FALSE
-		var/del_time = rand(4,10) //all the vines dissapear at different interval so it looks more organic.
-		animate(vine, alpha = 0, time = del_time SECONDS)
-		QDEL_IN(vine, del_time SECONDS)
 	vine_list.Cut()
 	return ..()
 
@@ -240,14 +248,14 @@
 	for(var/turf/T in GLOB.xeno_spawn)
 		. += T
 
-	return
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/proc/SpreadPlants()
 	if(!isturf(loc) || isspaceturf(loc))
 		return
 	if(locate(/obj/structure/spreading/apple_vine) in get_turf(src))
 		return
-	new /obj/structure/spreading/apple_vine(loc)
+	var/obj/structure/spreading/apple_vine/A = new(loc)
+	A.RegisterMob(src)
 
 /mob/living/simple_animal/hostile/abnormality/snow_whites_apple/proc/VineSpike()
 	playsound(get_turf(src), projectilesound, 30)
@@ -383,19 +391,13 @@
 	//Redundant and Ineffecient abnormality teamwork var.
 	var/allow_abnopass = FALSE
 	//Connected Abnormality.
-	var/static/mob/living/simple_animal/hostile/abnormality/snow_whites_apple/connected_abno
+	var/mob/living/simple_animal/hostile/abnormality/snow_whites_apple/princess
 	//strictly for crossed proc
-	var/list/static/ignore_typecache
-	var/list/static/atom_remove_condition
+	var/static/list/ignore_typecache
+	var/static/list/atom_remove_condition
 
 /obj/structure/spreading/apple_vine/Initialize()
 	. = ..()
-
-	//This is to register a abnormality if we dont have one
-	if(!connected_abno)
-		connected_abno = locate(/mob/living/simple_animal/hostile/abnormality/snow_whites_apple) in GLOB.abnormality_mob_list
-	if(connected_abno)
-		connected_abno.vine_list += src
 
 	if(!atom_remove_condition)
 		atom_remove_condition = typecacheof(list(
@@ -422,8 +424,7 @@
 		))
 
 /obj/structure/spreading/apple_vine/Destroy()
-	if(connected_abno)
-		connected_abno.vine_list -= src
+	UnregisterMob()
 	return ..()
 
 /* Only allows the user to pass if the proc returns TRUE.
@@ -445,11 +446,39 @@
 	if(isliving(mover))
 		if(isliving(mover.pulledby))
 			return TRUE
+		if(!can_expand)
+			return .
 		return VineEffect(mover)
 	return TRUE
 
 /obj/structure/spreading/apple_vine/play_attack_sound(damage_amount, damage_type = BRUTE)
 	playsound(loc, 'sound/creatures/venus_trap_hurt.ogg', 60, TRUE)
+
+/obj/structure/spreading/apple_vine/PlaceStructure(turf/T)
+	. = ..()
+	if(!. || !istype(. , type))
+		return
+	var/obj/structure/spreading/apple_vine/A = .
+	if(princess)
+		A.RegisterMob(princess)
+
+//Signal Stuff
+/obj/structure/spreading/apple_vine/proc/RegisterMob(mob/living/L)
+	if(!L)
+		return
+	if(!istype(L, /mob/living/simple_animal/hostile/abnormality/snow_whites_apple))
+		return
+	princess = L
+	RegisterSignal(princess, list(COMSIG_PARENT_QDELETING), PROC_REF(UnregisterMob))
+	princess.vine_list += src
+
+/obj/structure/spreading/apple_vine/proc/UnregisterMob()
+	if(!princess)
+		return
+	UnregisterSignal(princess, list(COMSIG_PARENT_QDELETING))
+	princess.vine_list -= src
+	princess = null
+	SelfDestruct()
 
 /obj/structure/spreading/apple_vine/proc/VineEffect(mob/living/L)
 	// They just flew over the vines. :/

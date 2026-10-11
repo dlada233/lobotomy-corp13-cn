@@ -336,7 +336,8 @@
 	righthand_file = 'icons/mob/inhands/96x96_righthand.dmi'
 	inhand_x_dimension = 96
 	inhand_y_dimension = 96
-	force = 20
+	force = 13
+	attack_speed = 0.8
 	swingstyle = WEAPONSWING_LARGESWEEP
 	damtype = PALE_DAMAGE
 	attack_verb_continuous = list("cuts", "attacks", "slashes")
@@ -345,24 +346,20 @@
 	attribute_requirements = list(
 							JUSTICE_ATTRIBUTE = 80
 							)
-	var/combo = 0
-	var/combo_time
-	var/combo_wait = 3 SECONDS
+	var/attack_count = 0
 
-//On the 13th hit, Deals user justice x 2
+//On the 13th hit, Deals user justice
 /obj/item/ego_weapon/thirteen/attack(mob/living/M, mob/living/user)
 	if(!CanUseEgo(user))
 		return
-	if(world.time > combo_time)
-		combo = 0
-	combo_time = world.time + combo_wait
-	if(combo >= 13)
-		combo = 0
+	if(!(M.status_flags & GODMODE) && M.stat != DEAD)
+		attack_count++
+	if(attack_count >= 13)
+		attack_count = 0
 		force = get_modified_attribute_level(user, JUSTICE_ATTRIBUTE)
 		new /obj/effect/temp_visual/thirteen(get_turf(M))
 		playsound(src, 'sound/weapons/ego/price_of_silence.ogg', 25, FALSE, 9)
 	..()
-	combo += 1
 	force = initial(force)
 
 
@@ -759,7 +756,7 @@
 	attack_verb_simple = list("bash", "whap", "beat", "prod", "poke")
 	hitsound = 'sound/weapons/fixer/generic/spear1.ogg'
 	reductions = list(40, 30, 50, 30) // 150
-	projectile_block_duration = 1 SECONDS
+	projectile_block_duration = 0.5 SECONDS
 	block_duration = 3 SECONDS // Exempt from normal reduction due to block restriction.
 	block_cooldown = 3 SECONDS
 	block_sound = 'sound/weapons/ego/clash1.ogg'
@@ -769,18 +766,13 @@
 							PRUDENCE_ATTRIBUTE = 80
 							)
 	var/close_cooldown
-	var/close_cooldown_time = 6 SECONDS
 	var/reflect_cooldown
 	var/reflect_cooldown_time = 1 //need to prevent simultaneous hits; bullets overlapping is very bad.
 
-/obj/item/ego_weapon/shield/swan/attack_self(mob/user)
-	if(close_cooldown > world.time) //prevents shield usage with no DPS loss
-		to_chat(user,span_warning("You cannot use this again so soon!"))
-		return
+/obj/item/ego_weapon/shield/swan/EnableBlock(mob/living/carbon/human/user)
 	if(do_after(user, 4, src))
 		icon_state = "swan"
-		close_cooldown = world.time + close_cooldown_time
-		..()
+		. = ..()
 	user.update_inv_hands()
 
 /obj/item/ego_weapon/shield/swan/DisableBlock(mob/living/carbon/human/user)
@@ -989,7 +981,7 @@
 	if(!siphoning)
 		return
 	var/datum/component/bloodfeast/bloodfeast = GetComponent(/datum/component/bloodfeast)
-	AdjustThirst(-10)
+	AdjustThirst(-30)
 	if(bloodfeast.blood_amount < 1)
 		siphoning = FALSE
 		filters = null
@@ -1021,7 +1013,7 @@
 	desc = "Look on my Works, ye Mighty, and despair!"
 	special = "This weapon can remove petrification."
 	icon_state = "pharaoh"
-	force = 12
+	force = 11
 	attack_speed = 0.5
 	swingstyle = WEAPONSWING_LARGESWEEP
 	damtype = WHITE_DAMAGE
@@ -1152,11 +1144,9 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	force = 20
-	swingstyle = WEAPONSWING_LARGESWEEP
 	damtype = WHITE_DAMAGE
-	attack_verb_continuous = list("slices", "cuts")
-	attack_verb_simple = list("slice", "cut")
-	hitsound = 'sound/weapons/blade1.ogg'
+	attack_verb_continuous = list("slams", "strikes", "smashes")
+	attack_verb_simple = list("slam", "strike", "smash")
 	attribute_requirements = list(FORTITUDE_ATTRIBUTE = 80)
 
 /obj/item/ego_weapon/diffraction/attack(mob/living/target, mob/living/user)
@@ -1349,7 +1339,7 @@
 	name = "innocence"
 	desc = "But why is it about ‘innocence’? After countless assumptions and careful research, we learned that it could be defined as \[REDACTED\]."
 	icon_state = "innocence"
-	force = 68
+	force = 60
 	damtype = WHITE_DAMAGE
 	attack_verb_continuous = list("shoves", "bashes")
 	attack_verb_simple = list("shove", "bash")

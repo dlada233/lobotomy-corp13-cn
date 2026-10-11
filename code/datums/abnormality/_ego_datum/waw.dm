@@ -159,7 +159,7 @@
 
 /datum/ego_datum/weapon/thirteen
 	item_path = /obj/item/ego_weapon/thirteen
-	cost = 50
+	cost = 65
 
 // Dreaming Current - Ecstacy
 /datum/ego_datum/armor/ecstasy
@@ -574,4 +574,9 @@
 
 /datum/ego_datum/weapon/ardor_star
 	item_path = /obj/item/ego_weapon/ardor_star
+	cost = 50
+
+//False Apple - Legerdemain MK II
+/datum/ego_datum/weapon/maggotgun//Cannot be extracted
+	item_path = /obj/item/ego_weapon/ranged/maggotgun
 	cost = 50

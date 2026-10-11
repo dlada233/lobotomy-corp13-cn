@@ -43,6 +43,11 @@
 			Even the bodies underneath this tree would agree with you."),
 	)
 
+	work_start_lines = list("%ABNO's Containment Unit is bright, as if there were an incandescent source of light.")
+	middle_work_lines = list("Petals shall fall like screams when everything is over.")
+	late_work_lines = list("When the beauty is at its peak, the ritual of the end will come.")
+	work_end_lines = list("All those who look at it in this sunless place feel pure peace.")
+
 	var/number_of_marks = 5
 
 /mob/living/simple_animal/hostile/abnormality/cherry_blossoms/Move()
@@ -78,6 +83,9 @@
 		to_chat(L, span_danger("It's cherry blossom season."))
 
 	SLEEP_CHECK_DEATH(10 SECONDS)
+	listclearnulls(potentialmarked)
+	if(!LAZYLEN(potentialmarked))
+		return
 	for(var/blossoming in 1 to number_of_marks)
 		var/mob/living/Y = pick(potentialmarked)
 		if(faction_check_mob(Y, FALSE) || Y.z != z || Y.stat == DEAD)

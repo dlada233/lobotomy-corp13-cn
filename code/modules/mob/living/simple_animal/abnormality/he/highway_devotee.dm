@@ -29,6 +29,7 @@
 	work_damage_type = RED_DAMAGE
 	chem_type = /datum/reagent/abnormality/sin/sloth
 
+	can_spawn = FALSE // Pending rework
 	ego_list = list(
 		/datum/ego_datum/weapon/uturn,
 		/datum/ego_datum/armor/uturn,
@@ -52,6 +53,9 @@
 			\"I assure you, the god of traffic won't forgive cheap shortcuts like that.\" <br>\
 			As you take the byway, you endured the piercing glare on your back for a good while."),
 	)
+
+	work_start_lines = list("At the crossroads, %ABNO makes a decision.")
+	middle_work_lines = list("The god of traffic will not forgive those who do not heed the advice of the %ABNO.")
 
 	var/talk = FALSE
 	var/list/structures = list()

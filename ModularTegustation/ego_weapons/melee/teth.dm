@@ -248,7 +248,7 @@
 	name = "hearth"
 	desc = "Home sweet home. Warmth and safety aplenty."
 	icon_state = "hearth"
-	force = 10
+	force = 9
 	attack_speed = 1
 	damtype = WHITE_DAMAGE
 	attack_verb_continuous = list("pokes", "jabs", "tears", "lacerates", "gores")
@@ -262,9 +262,6 @@
 	block_message = "You attempt to parry the attack!"
 	hit_message = "parries the attack!"
 	block_cooldown_message = "You rearm your blade."
-
-/obj/item/ego_weapon/shield/hearth/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	return 0 //Prevents ranged  parry
 
 /obj/effect/temp_visual/smash1
 	icon = 'icons/effects/effects.dmi'
@@ -433,7 +430,7 @@
 	icon_state = "capote"
 	worn_icon = 'icons/obj/clothing/belt_overlays.dmi'
 	worn_icon_state = "capote"
-	force = 10
+	force = 9
 	attack_speed = 1
 	damtype = RED_DAMAGE
 	attack_verb_continuous = list("pokes", "jabs", "tears", "lacerates", "gores")

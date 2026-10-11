@@ -1,6 +1,5 @@
 #define STATUS_EFFECT_URGE /datum/status_effect/stacking/urge
 #define STATUS_EFFECT_PINKSHOES /datum/status_effect/display/pinkshoes
-GLOBAL_LIST_EMPTY(ribbon_list)
 /mob/living/simple_animal/hostile/abnormality/pink_shoes
 	name = "Pink Shoes"
 	desc = "A pair of girly pink shoes."
@@ -52,6 +51,13 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		"Refuse" = list(TRUE, "\"Snap out of it! It's all a lie!\" <br>A haggard employee manages to stop you at the last second. <br>Thanks to that warning, you avoided the desire-laden ribbons."),
 	)
 
+	work_start_lines = list("%PERSON wonders what their shoes are doing here, before reminding themselves they don't own any shoes like these.",
+	"I'll carry you wherever you wish to go...")
+	middle_work_lines = list("%PERSON feels a strong urge to wear %ABNO.", "What is your desire?..", "Put me on.")
+	late_work_lines = list("%PERSON feels an enthralling desire to act out every urge they ever had.",
+	"%PERSON wonders what it would feel like to be tangled up in %ABNO's ribbons before dismissing the thought.")
+	work_end_lines = list("%ABNO has a ribbon out of place that %PERSON resists the urge to fix.")
+
 	ranged = TRUE
 	environment_smash = FALSE//this stops it from smashing its own ribbons when breaching independently
 	minimum_distance = 1
@@ -59,7 +65,6 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	var/mutable_appearance/breach_icon
 	var/mob/living/possessee
 	var/list/dense_ribbon_list = list()
-	var/static/list/ribbon_list = list()
 	var/mob/living/simple_animal/hostile/aminion/grown_strong/special_possessee
 
 //*** Simple Mob Procs ***//
@@ -74,7 +79,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 			R.expand()
 	if(locate(/obj/structure/spreading/pink_ribbon) in get_turf(src))
 		return
-	new /obj/structure/spreading/pink_ribbon(get_turf(src))
+	var/obj/structure/spreading/pink_ribbon/ribbon = new(get_turf(src))
+	ribbon.RegisterMob(src)
 
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/death()
 	density = FALSE
@@ -96,7 +102,6 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/Destroy()
 	CutDenseRibbons()
-	CutRibbons()
 	return ..()
 
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/Initialize()
@@ -118,7 +123,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	if(!isturf(loc) || isspaceturf(loc))
 		return
 	if(!locate(/obj/structure/spreading/pink_ribbon) in get_turf(src))
-		new /obj/structure/spreading/pink_ribbon(loc)
+		var/obj/structure/spreading/pink_ribbon/ribbon = new(loc)
+		ribbon.RegisterMob(src)
 	..()
 
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/CanAttack(atom/the_target)
@@ -184,15 +190,6 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	dense_ribbon_list.Cut()
 	return
 
-/mob/living/simple_animal/hostile/abnormality/pink_shoes/proc/CutRibbons()
-	for(var/obj/structure/spreading/pink_ribbon/R in ribbon_list)
-		R.can_expand = FALSE
-		var/del_time = rand(4,10)
-		animate(R, alpha = 0, time = del_time SECONDS)
-		QDEL_IN(R, del_time SECONDS)
-	ribbon_list.Cut()
-	return
-
 //***Breach Mechanics***//
 //normal BreachEffect stuff
 /mob/living/simple_animal/hostile/abnormality/pink_shoes/BreachEffect(mob/living/carbon/human/user)
@@ -215,7 +212,8 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 				continue
 			if(locate(/obj/structure/dense_ribbon) in T3)
 				continue
-			new /obj/structure/spreading/pink_ribbon(get_turf(T3))
+			var/obj/structure/spreading/pink_ribbon/ribbon = new(get_turf(T3))
+			ribbon.RegisterMob(src)
 	light_range = 2
 	update_light()
 
@@ -589,16 +587,12 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 	last_expand = 0 //last world.time this weed expanded
 	expand_cooldown = 1.5 SECONDS
 	can_expand = TRUE
-	var/static/mob/living/simple_animal/hostile/abnormality/pink_shoes/connected_abno
-	var/list/static/ignore_typecache
-	var/list/static/atom_remove_condition
+	var/mob/living/simple_animal/hostile/abnormality/pink_shoes/connected_abno
+	var/static/list/ignore_typecache
+	var/static/list/atom_remove_condition
 
 /obj/structure/spreading/pink_ribbon/Initialize()
 	. = ..()
-	if(!connected_abno)
-		connected_abno = locate(/mob/living/simple_animal/hostile/abnormality/pink_shoes) in GLOB.abnormality_mob_list
-	if(connected_abno)
-		connected_abno.ribbon_list += src
 
 	if(!atom_remove_condition)
 		atom_remove_condition = typecacheof(list(
@@ -650,8 +644,7 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		VineEffect(AM)
 
 /obj/structure/spreading/pink_ribbon/Destroy()
-	if(connected_abno)
-		connected_abno.ribbon_list -= src
+	UnregisterMob()
 	return ..()
 
 /obj/structure/spreading/pink_ribbon/proc/VineEffect(mob/living/L)
@@ -689,6 +682,30 @@ GLOBAL_LIST_EMPTY(ribbon_list)
 		to_chat(L, span_warning("The [name] around your body tighten."))
 		G.refresh()
 		G.add_stacks(1)
+
+/obj/structure/spreading/pink_ribbon/PlaceStructure(turf/T)
+	. = ..()
+	if(!. || !istype(. , type))
+		return
+	var/obj/structure/spreading/pink_ribbon/A = .
+	if(connected_abno)
+		A.RegisterMob(connected_abno)
+
+//Signal Stuff
+/obj/structure/spreading/pink_ribbon/proc/RegisterMob(mob/living/L)
+	if(!L)
+		return
+	if(!istype(L, /mob/living/simple_animal/hostile/abnormality/pink_shoes))
+		return
+	connected_abno = L
+	RegisterSignal(connected_abno, list(COMSIG_PARENT_QDELETING), PROC_REF(UnregisterMob))
+
+/obj/structure/spreading/pink_ribbon/proc/UnregisterMob()
+	if(!connected_abno)
+		return
+	UnregisterSignal(connected_abno, list(COMSIG_PARENT_QDELETING))
+	connected_abno = null
+	SelfDestruct()
 
 /obj/effect/temp_visual/ribbon_buckle
 	icon = 'ModularTegustation/Teguicons/tegu_effects.dmi'

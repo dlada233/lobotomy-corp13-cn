@@ -136,6 +136,7 @@
 		max_boxes = (threat_level * 4) + 6
 		if(threat_level >= 5)
 			max_boxes += 4
+		current.max_boxes = max_boxes // Prevents abnormalities from having 0 max_boxes at the mob level.
 	else
 		max_boxes = current.max_boxes
 	if(!current.success_boxes)
@@ -239,10 +240,19 @@
 		percent *= 1 + max(0.5, (3 / agent_count))
 
 	if(understanding != max_understanding) // This should render "full_understood" not required.
-		understanding = clamp((understanding + (max_understanding*percent/100)), 0, max_understanding)
+		understanding = clamp(round((understanding + (max_understanding*percent/100)), 0.01), 0, max_understanding)
 		if (understanding == max_understanding) // Checks for max understanding after the fact
 			current.gift_chance *= 1.5
 			SSlobotomy_corp.understood_abnos++
+
+			//Force all works to be revealed, some Abnos like bottle don't reveal all of its works due to having a wierd amount of works.
+			next_reveal = 999
+			for(var/worktype in available_work)
+				if(worktype in console.revealed_list)
+					continue
+				console.revealed_list += worktype
+
+			//Give some lob
 			var/mult = 1
 			if (GetFacilityUpgradeValue(UPGRADE_RECORDS_2))
 				mult = 1.5
@@ -250,6 +260,7 @@
 				SSlobotomy_corp.AddLobPoints(MAX_ABNO_LOB_POINTS / SSabnormality_queue.rooms_start * mult, "Abnormality Understanding")
 			else
 				SSlobotomy_corp.AddLobPoints(mult)
+
 			observation_ready = TRUE
 	else if(understanding == max_understanding && percent < 0) // If we're max and we reduce, undo the count.
 		understanding = clamp((understanding + (max_understanding*percent/100)), 0, max_understanding)

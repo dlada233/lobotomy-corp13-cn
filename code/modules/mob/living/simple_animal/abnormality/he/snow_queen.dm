@@ -59,6 +59,11 @@
 		"Saved Kai" = list(FALSE, "Gerda saved Kai and returned home. <br>They lived happily ever after."),
 	)
 
+	work_start_lines = list("%ABNO's Containment Unit is storming with a frosty blizzard.", "%ABNO's Containment Unit glims with ice and frost.",
+	"Kai would have been gifted with the world if he had failed to complete the sculpture of \"eternity\" with splinters of ice.")
+	middle_work_lines = list("%ABNO's palace is cold and lonesome. %PERSON wants to leave this place as soon as they can.",
+	"The road to %ABNO's palace is freezing cold and still so long. %PERSON longs for warmth.")
+
 	ego_list = list(
 		/datum/ego_datum/weapon/frostsplinter,
 		/datum/ego_datum/armor/frostsplinter,
@@ -334,17 +339,7 @@
 /mob/living/simple_animal/hostile/abnormality/snow_queen/proc/ProjectSplinter(mob/living/L, turf/T, projectile_telegraph_delay = 3)
 	if(!L || !T)
 		return
-	var/obj/effect/projectile_delayed/projectile_handler = new(T) // We use a projectile handler here because fire() is called after a delay
-	var/obj/projectile/frost_splinter/P = new (projectile_handler)
-	projectile_handler.projectile = P
-	P.starting = T
-	P.firer = src
-	P.fired_from = T
-	P.yo = L.y - T.y
-	P.xo = L.x - T.x
-	P.original = L
-	P.preparePixelProjectile(L, T)
-	projectile_handler.StartFiring(projectile_telegraph_delay)
+	new /obj/effect/projectile_delayed(T, L, src, /obj/projectile/frost_splinter, projectile_telegraph_delay)
 
 		/*--------\
 		|WORK KISS|

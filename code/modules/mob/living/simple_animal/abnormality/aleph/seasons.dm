@@ -65,6 +65,13 @@
 			In the end, I am never able to find a way out of the forest."),
 	)
 
+	// TODO - modular work lines
+	work_start_lines = list("When humanity still huddled in caves, %ABNO appeared.")
+	middle_work_lines = list("%PERSON is surrounded by nature, even in this dark and isolated place.", "The natural world reclaims the cold steel and plastic at %ABNO's touch.",
+	"%PERSON hears birds singing, which should be impossible this deep underground.")
+	late_work_lines = list("%ABNO has no name. That is the name that humans gave it in ancient times.", "In their time of need, the old ones called for %ABNO.")
+	work_end_lines = list("When humanity has gone and passed, %ABNO will remain.", "The poetry of the earth is never dead.")
+
 	//Var Lists
 	var/list/season_stats = list(
 		"spring" = list(/datum/weather/thunderstorm, WHITE_DAMAGE, "Spring God", "Spring Deity, \"Caprice\" Panz","A bashful spirit cloaked in flower pedals.","A mischievous deity."),
@@ -138,7 +145,7 @@
 	var/special_slam_attack = null
 	var/unique_special_attack = null
 	var/attack_orientation = 1 // Used to flip certain attacks in a consistant pattern
-	var/list/zombies = list()
+	var/list/minion_list = list()
 	var/list/plants = list()
 	// Turf Tracker
 	var/list/spawned_turfs = list()
@@ -356,8 +363,8 @@
 	EndWeather()
 	for(var/obj/effect/season_turf/newturf in spawned_turfs)
 		newturf.DoDelete()
-	for(var/mob/living/simple_animal/hostile/aminion/flora_zombie/thezombie in zombies)
-		thezombie.gib()
+	for(var/mob/living/simple_animal/hostile/aminion/theminion in minion_list)
+		theminion.gib()
 	for(var/obj/structure/thorn_bomb/thebomb in plants)
 		thebomb.Wilt()
 	return ..()
@@ -496,7 +503,7 @@
 			C.desc = "What appears to be [H.real_name], only mangled by vines and decayed..."
 			C.gender = H.gender
 			C.faction = src.faction
-			zombies += C
+			minion_list += C
 			H.gib()
 		return TRUE
 	if(H.stat >= HARD_CRIT || H.health < 0)
@@ -592,7 +599,8 @@
 		L.deal_damage(melee_damage_upper * 2, melee_damage_type, src, attack_type = (ATTACK_TYPE_MELEE))
 		been_hit = TRUE
 	if(been_hit)
-		new /mob/living/simple_animal/hostile/aminion/flytrap(T)
+		var/mob/living/simple_animal/hostile/aminion/flytrap/F = new(T)
+		minion_list += F
 
 /mob/living/simple_animal/hostile/abnormality/seasons/proc/SpringSlam()
 	slam_cooldown = world.time + slam_cooldown_time
@@ -923,17 +931,8 @@
 		if(T.density)
 			i -= 1
 			continue
-		var/obj/effect/projectile_delayed/projectile_handler = new(T)
-		var/obj/projectile/season_projectile/winter/weak/P = new(projectile_handler)
-		projectile_handler.projectile = P
-		P.starting = T
-		P.firer = src
-		P.fired_from = T
-		P.yo = target.y - T.y
-		P.xo = target.x - T.x
-		P.original = target
-		P.preparePixelProjectile(target, T)
-		projectile_handler.StartFiring(i + 6)
+		new /obj/effect/projectile_delayed(T, target, src, /obj/projectile/season_projectile/winter/weak, i + 6)
+
 	playsound(get_turf(src), 'sound/abnormalities/seasons/winter_change.ogg', 15, 0, 2)
 	SLEEP_CHECK_DEATH(7)
 	playsound(get_turf(src), 'sound/abnormalities/seasons/winter_attack.ogg', 50, 0, 4)
@@ -1169,7 +1168,7 @@
 	anchored = TRUE
 	var/list/season_list = list(
 		"spring" = list("porccubus poppy", "A bed of toxic flowers."),
-		"summer" = list("volcanic rock","Some incredibly hot igneus rock."),
+		"summer" = list("volcanic rock","Some incredibly hot igneous rock."),
 		"fall" = list("swampy grass","A thick marsh, deep enough that you need to wear boots."),
 		"winter" = list("snow","A patch of snow."),
 	)
@@ -1228,6 +1227,10 @@
 				desc = "A patch of slippery ice."
 				return
 			icon_state = "snow[rand(0,6)]"
+	if(!area_affected) // Start damaging/stunning valid mob on our turf if we spawn under them.
+		return
+	for(var/mob/living/carbon/human/H in get_turf(src))
+		BumpEffect(H)
 
 /obj/effect/season_turf/Crossed(atom/movable/AM)
 	. = ..()
@@ -1595,7 +1598,7 @@
 			return FALSE
 		var/mob/living/simple_animal/hostile/aminion/flora_zombie/C = new(get_turf(src))
 		if(master)
-			master.zombies += C
+			master.minion_list += C
 			C.master = master
 		C.name = "[H.real_name]"//applies the target's name and adds the name to its description
 		C.icon_state = "flora_zombie"
