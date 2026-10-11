@@ -83,6 +83,9 @@
 		to_chat(L, span_danger("现在樱花盛开的季节."))
 
 	SLEEP_CHECK_DEATH(10 SECONDS)
+	listclearnulls(potentialmarked)
+	if(!LAZYLEN(potentialmarked))
+		return
 	for(var/blossoming in 1 to number_of_marks)
 		var/mob/living/Y = pick(potentialmarked)
 		if(faction_check_mob(Y, FALSE) || Y.z != z || Y.stat == DEAD)
