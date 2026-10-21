@@ -22,19 +22,20 @@
 		if((old_stat < DEAD) && (H.stat >= DEAD))
 			H.add_overlay(icon('ModularTegustation/Teguicons/tegu_effects.dmi', "despair_kill"))
 
-/obj/projectile/despair_rapier/justice
-	desc = "A magic rapier, enchanted with the power of justice."
-	nodamage = TRUE	//Damage is calculated later
-	projectile_piercing = PASSMOB
+/obj/projectile/despair_rapier/nihil
+	icon_state = "despair_nihil"
+	damage = 0 // Deals less damage than normal despair swords, but pierces. Damage is dealt later.
+	projectile_piercing  = PASSMOB
 
-/obj/projectile/despair_rapier/justice/on_hit(atom/target, blocked = FALSE)
-	if(!ishuman(target))
-		nodamage = FALSE
-	else
-		return
-	..()
-	if(!ishuman(target))
-		qdel(src)
+/obj/projectile/despair_rapier/nihil/on_hit(atom/target, blocked = FALSE)
+	if(isliving(target) && isliving(firer))
+		var/mob/living/T = target
+		var/mob/living/F = firer
+		if(faction_check(F.faction, T.faction, FALSE))
+			return
+		T.apply_void(3)
+	damage = 25 // Using nodamage var does not work for this purpose
+	. = ..()
 
 /obj/projectile/apocalypse
 	name = "light"
@@ -390,7 +391,7 @@
 	hitsound = 'sound/abnormalities/redhood/attack_2.ogg'
 
 /obj/projectile/red_hollowpoint
-	name = "hollowpoint shell"
+	name = "空尖弹"
 	desc = "A bullet fired from a red-cloaked mercenary's ruthless weapon."
 	icon_state = "loyalty"
 	range = 15
@@ -399,30 +400,55 @@
 	pixel_y = 30
 
 /obj/item/ammo_casing/caseless/nihil_abnormality
-	name = "dark energy casing"
+	name = "黑暗能量弹"
 	desc = "A casing."
 	projectile_type = /obj/projectile/ego_bullet/abno_nihil
 	pellets = 4
-	variance = 16
+	variance = 40
 
 /obj/projectile/ego_bullet/abno_nihil
-	name = "dark energy"
+	name = "黑暗能量"
 	icon_state = "nihil"
-	desc = "Just looking at it seems to suck the life out of you..."
-	damage = 7 //Fires 4
-	damage_type = WHITE_DAMAGE //deals both white and red
+	desc = "虚无的球体."
+	damage = 5 //Fires 4
+	damage_type = WHITE_DAMAGE
 	projectile_piercing = PASSMOB
 	hitsound = 'sound/abnormalities/nihil/filter.ogg'
 
-/obj/projectile/ego_bullet/abno_nihil/on_hit(atom/target, blocked = FALSE, pierce_hit)
+/obj/item/ammo_casing/caseless/nihil_wrath
+	name = "侵蚀能量弹"
+	desc = "A casing."
+	projectile_type = /obj/projectile/ego_bullet/abno_nihil_wrath
+
+/obj/projectile/ego_bullet/abno_nihil_wrath
+	name = "侵蚀能量"
+	icon_state = "blind_rage"
+	desc = "A sphere of corrosive energy."
+	damage = 10
+	damage_type = BLACK_DAMAGE
+	projectile_piercing = PASSMOB
+	hitsound = 'sound/abnormalities/ichthys/hardslap.ogg'
+	spread = 10
+
+/obj/projectile/ego_bullet/abno_nihil_wrath/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
-	if(!isliving(target))
-		return
-	var/mob/living/L = target
-	L.apply_void(1)
+	new /obj/effect/gibspawner/generic/silent/wrath_acid/bad/nihil(get_turf(src))
+
+/obj/projectile/ego_bullet/abno_nihil_wrath/Moved(atom/OldLoc, Dir)
+	. = ..()
+	if(prob(25))
+		new /obj/effect/gibspawner/generic/silent/wrath_acid/bad/nihil(get_turf(src))
+
+/obj/item/ammo_casing/caseless/nihil_hatred
+	name = "魔法能量弹"
+	desc = "A casing."
+	projectile_type = /obj/projectile/ego_bullet/ego_hatred
+	damage_multiplier = 1.5
+	pellets = 3
+	variance = 40
 
 /obj/projectile/lifestew_spit
-	name = "soup projectile"
+	name = "热汤"
 	desc = "Hot soup."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"

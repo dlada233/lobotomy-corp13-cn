@@ -195,15 +195,15 @@
 		if(SSmaptype.maptype == "standard")
 			//Standard LC13 Gamemode Achivements.
 			var/list/valid_roles = list(
-				"Manager-主管",
-				"Clerk-文职人员",
-				"Agent Captain-员工队长",
-				"Agent-员工",
-				"Agent Intern-员工实习生",
-				"Disciplinary Officer-惩戒部长",
-				"Extraction Officer-研发部长",
-				"Records Officer-记录部长",
-				"Training Officer-培训部长",
+				"Manager",
+				"Clerk",
+				"Agent Captain",
+				"Agent",
+				"Agent Intern",
+				"Disciplinary Officer",
+				"Extraction Officer",
+				"Records Officer",
+				"Training Officer",
 				)
 			if(M.assigned_role in valid_roles)
 				player_client.give_award(/datum/award/achievement/lc13/lcorpworld, human_mob)
@@ -236,7 +236,7 @@
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
-	to_chat(world, "<BR><BR><BR><span class='big bold'>The round has ended.</span>")
+	to_chat(world, "<BR><BR><BR><span class='big bold'>本回合结束.</span>")
 	log_game("The round has ended.")
 
 	var/rounds_since_vote = trim(file2text("data/rounds_since_vote.txt"))
@@ -384,29 +384,29 @@
 		var/statspage = CONFIG_GET(string/roundstatsurl)
 		var/info = statspage ? "<a href='byond://?action=openLink&link=[url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
 		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
-	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
-	parts += "[FOURSPACES]Facility Integrity: <B>[mode.station_was_nuked ? "<span class='redtext'>Destroyed</span>" : "[popcount["station_integrity"]]%"]</B>"
+	parts += "[FOURSPACES]轮班时长: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
+	parts += "[FOURSPACES]设施完整度: <B>[mode.station_was_nuked ? "<span class='redtext'>Destroyed</span>" : "[popcount["station_integrity"]]%"]</B>"
 	var/total_players = GLOB.joined_player_list.len
 	if(total_players)
-		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
+		parts+= "[FOURSPACES]总人数: <B>[total_players]</B>"
 		if(station_evacuated)
-			parts += "<BR>[FOURSPACES]Evacuation Rate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
-			parts += "[FOURSPACES](on emergency shuttle): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
-		parts += "[FOURSPACES]Survival Rate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
+			parts += "<BR>[FOURSPACES]撤离率: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
+			parts += "[FOURSPACES](在应急撤离船中): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
+		parts += "[FOURSPACES]生还率: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
 		if(SSblackbox.first_death)
 			var/list/ded = SSblackbox.first_death
 			if(ded.len)
-				parts += "[FOURSPACES]First Death: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]</b>"
+				parts += "[FOURSPACES]最先死亡: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. 受到伤害: [ded["damage"]].[ded["last_words"] ? " 最后的话是: \"[ded["last_words"]]\"" : ""]</b>"
 			//ignore this comment, it fixes the broken sytax parsing caused by the " above
 			else
-				parts += "[FOURSPACES]<i>Nobody died this shift!</i>"
+				parts += "[FOURSPACES]<i>本次轮班无人死亡!</i>"
 	if(istype(SSticker.mode, /datum/game_mode/dynamic))
 		var/datum/game_mode/dynamic/mode = SSticker.mode
-		parts += "[FOURSPACES]Threat level: [mode.threat_level]"
-		parts += "[FOURSPACES]Threat left: [mode.threat]"
-		parts += "[FOURSPACES]Executed rules:"
+		parts += "[FOURSPACES]威胁登记: [mode.threat_level]"
+		parts += "[FOURSPACES]剩余威胁: [mode.threat]"
+		parts += "[FOURSPACES]执行规则:"
 		for(var/datum/dynamic_ruleset/rule in mode.executed_rules)
-			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost + rule.scaled_times * rule.scaling_cost] threat"
+			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost + rule.scaled_times * rule.scaling_cost]威胁"
 	return parts.Join("<br>")
 
 /client/proc/roundend_report_file()
@@ -496,7 +496,7 @@
 
 /datum/controller/subsystem/ticker/proc/facility_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Facility Records:</span>"
+	parts += "<span class='header'>设施记录:</span>"
 	parts += "<div class='panel stationborder'>"
 	parts += agent_report()
 	parts += abnormality_report()
@@ -513,7 +513,7 @@
 
 /datum/controller/subsystem/ticker/proc/agent_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Agent Statistics:</span>"
+	parts += "<span class='header'>员工统计:</span>"
 	parts += "<div class='panel stationborder'>"
 	var/highest_works = null
 	var/highest_earner = null
@@ -539,15 +539,15 @@
 			highest_gain_count = curr_gain_count
 
 	if(!highest_works && !highest_earner && !highest_gains) // How"
-		parts += "[FOURSPACES]...Everyone was miserable and did nothing..."
+		parts += "[FOURSPACES]...每个人都痛苦地一事无成..."
 		parts += "</div>"
 		return parts.Join("<br>")
 	if(highest_works)
-		parts += "[FOURSPACES][highest_works] worked the most, for a total of <b>[highest_work_count]</b> sessions!"
+		parts += "[FOURSPACES][highest_works]工作最多, 总计<b>[highest_work_count]</b>次!"
 	if(highest_earner)
-		parts += "[FOURSPACES][highest_earner] earned the most PE while working, for a total of <b>[highest_earn_count]</b> boxes!"
+		parts += "[FOURSPACES][highest_earner]在工作中产出最多PE, 总计<b>[highest_earn_count]</b>PE!"
 	if(highest_gains)
-		parts += "[FOURSPACES][highest_gains] gained the most attributes <u>while working</u>, for a total of <b>[highest_gain_count]</b> points!"
+		parts += "[FOURSPACES][highest_gains]<u>在工作中</u>获得最多属性, 总计<b>[highest_gain_count]</b>点!"
 	parts += "</div>"
 	return parts.Join("<br>")
 
@@ -557,7 +557,7 @@
 	var/highest_work_count = 0
 	var/full_abno_count = 0
 	var/list/abno_count = list(0, 0, 0, 0, 0)
-	parts += "<span class='header'>Abnormality Summary:</span>"
+	parts += "<span class='header'>异想体报告:</span>"
 	parts += "<div class='panel stationborder'>"
 	for(var/datum/abnormality/A in SSlobotomy_corp.all_abnormality_datums)
 		var/work_count = 0
@@ -568,13 +568,13 @@
 			highest_work_count = work_count
 		abno_count[A.threat_level] += 1
 		full_abno_count += 1
-	parts += "<b>The facility had [full_abno_count] abnormalities:</b>"
+	parts += "<b>设施共有 [full_abno_count] 个异想体:</b>"
 	for(var/i = 1 to 5)
 		if(abno_count[i] < 1)
 			continue
 		parts += "[FOURSPACES]<span style='color: [THREAT_TO_COLOR[i]]'>[abno_count[i]] [THREAT_TO_NAME[i]]s.</span>"
 	if(istype(highest_abno))
-		parts += "<br>[highest_abno.name] has been worked on the most, for a total of [highest_work_count] sessions.<br>"
+		parts += "<br>[highest_abno.name]被工作了最多次, 总计[highest_work_count]次.<br>"
 		if(LAZYLEN(highest_abno.work_stats))
 			var/highest_worker = null
 			var/highest_work_num = -1
@@ -587,47 +587,47 @@
 				var/total_attr_points = 0
 				for(var/attr in highest_abno.work_stats[highest_worker]["gain"])
 					total_attr_points += highest_abno.work_stats[highest_worker]["gain"][attr] // Nice lists we got there, huh?
-				parts += "[highest_worker] worked on it the most, for a total of [highest_abno.work_stats[highest_worker]["works"]] sessions, earning [highest_abno.work_stats[highest_worker]["pe"]] PE in the process, while gaining a total of [total_attr_points] attribute points."
+				parts += "[highest_worker]被工作了最多次, 总计[highest_abno.work_stats[highest_worker]["works"]]次, 产出[highest_abno.work_stats[highest_worker]["pe"]]PE , 并锻炼员工获得[total_attr_points]属性点."
 	if(LAZYLEN(SSticker.superbosses))
-		parts += "<br><b>High-risk abnormalities defeated:</b>"
+		parts += "<br><b>高威胁异想体击败记录:</b>"
 		for(var/name in SSticker.superbosses)
 			var/text = name
-			if(name == "Distorted Form")
+			if(name == "扭曲形体")
 				text = "<span style='color: yellow'>Disto</span><span style='color: red'>rted</span> <span style='color: purple'>Form</span>"
-			else if(name == "Nobody Is")
+			else if(name == "并非谁人")
 				text = "<span style='color: [COLOR_STRONG_MAGENTA]'>Oberon an</span><span style='color: [COLOR_VERY_PALE_LIME_GREEN]'>d Titania</span>"
-			else if(name == "Apocalypse Bird")
+			else if(name == "天启鸟")
 				text = "<span style='color: [COLOR_MAROON]'>[name]</span>"
-			else if(name == "WhiteNight")
+			else if(name == "白夜")
 				text = "<span style='color: red'>[name]</span>"
-			parts += "[FOURSPACES]<b>[text]</b> was defeated!"
+			parts += "[FOURSPACES]<b>[text]</b>被击败了 !"
 	parts += "</div>"
 	return parts.Join("<br>")
 
 /datum/controller/subsystem/ticker/proc/pe_report()
 	var/list/parts = list()
 	SSpersistence.pe_status[PE_GOAL_SPENT] = FALSE
-	parts += "<span class='header'>PE Quota:</span>"
+	parts += "<span class='header'>PE指标:</span>"
 	parts += "<div class='panel stationborder'>"
-	parts += "[SSlobotomy_corp.total_generated] total PE was generated.<br>"
+	parts += "总计[SSlobotomy_corp.total_generated]PE产出.<br>"
 	if(SSlobotomy_corp.goal_boxes)
-		parts += "[SSlobotomy_corp.goal_boxes] PE was refined or otherwise generated through alternative means.<br>"
+		parts += "[SSlobotomy_corp.goal_boxes]PE通过精炼或其他方式生成.<br>"
 	if(SSlobotomy_corp.total_spent)
-		parts += "[SSlobotomy_corp.total_spent] PE was spent on various things.<br>"
+		parts += "[SSlobotomy_corp.total_spent]PE被花费在各种事物上.<br>"
 	if(SSlobotomy_corp.goal_reached)
-		parts += "PE Quota was reached!<br>"
+		parts += "PE指标达成了!<br>"
 		SSpersistence.pe_status[PE_GOAL_REACHED] = TRUE
 		if(SSlobotomy_corp.available_box)
 			SSpersistence.pe_status[PE_LEFTOVER] = SSlobotomy_corp.available_box
 	else
 		SSpersistence.pe_status[PE_GOAL_REACHED] = FALSE
 		if(SSlobotomy_corp.box_goal == 0)
-			parts += "The day hasn't even started yet and you're leaving?"
+			parts += "工作还没开始，你们就下班了?"
 		else if(SSlobotomy_corp.total_spent >= SSlobotomy_corp.box_goal)
-			parts += "Enough PE to meet PE Quota was made, but you spent it all!? You'll be hearing from our lawyers."
+			parts += "已产出足额的PE, 但你们全部花光了!? 你会收到我们律师的联系的."
 			SSpersistence.pe_status[PE_GOAL_SPENT] = TRUE
 		else
-			parts += "PE Quota was not reached! Don't expect to have a job tomorrow..."
+			parts += "PE没有达成! 你们明天不用来上班了..."
 	parts += "</div>"
 	return parts.Join("<br>")
 
@@ -637,53 +637,53 @@
 	var/repaired_machines = (GLOB.lobotomy_repairs)
 	var/total_machines = (GLOB.lobotomy_damages)
 	var/facility_full_percentage = 100 * (repaired_machines / total_machines)
-	parts += "<span class='header'>Site Recovery Report:</span>"
+	parts += "<span class='header'>设施恢复报告:</span>"
 	parts += "<div class='panel stationborder'>"
-	parts += "[facility_full_percentage]% of the facility has been recovered!<br>"
+	parts += "[facility_full_percentage]%的设施被恢复!<br>"
 	if(facility_full_percentage >= 100)
-		parts += "The facility is fully functional!<br>"
+		parts += "设施完全正常运行!<br>"
 	if(GLOB.bough_collected)
-		parts += "The golden bough has been successfully retrieved!"
+		parts += "金枝已被成功取回!"
 	else
-		parts += "You have failed to collect the golden bough."
+		parts += "你们未能取回金枝."
 	parts += "</div>"
 	return parts.Join("<br>")
 
 //Generates a report of the ordeals that happened and the time it took
 /datum/controller/subsystem/ticker/proc/ordeal_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Ordeal Summary:</span>"
+	parts += "<span class='header'>考验报告:</span>"
 	parts += "<div class='panel stationborder'>"
 	if(!LAZYLEN(SSticker.ordeal_info))
-		parts += "<b>The facility had faced no ordeals!</b>"
+		parts += "<b>设施没有面临考验!</b>"
 	if(SSticker.ordeal_info.len %4 != 0)
 		WARNING("The list isnt a multiple of 4.")
 		return parts.Join("<br>")
 	else if(SSticker.ordeal_info.len == 4)
-		parts += "<b>The facility had faced 1 ordeal:</b>"
+		parts += "<b>设施面临了1个考验:</b>"
 	else
-		parts += "[FOURSPACES]<b>The facility had faced [SSticker.ordeal_info.len/4] ordeals:</b>"
+		parts += "[FOURSPACES]<b>设施面临了 [SSticker.ordeal_info.len/4] 个考验:</b>"
 	var/list/O = SSticker.ordeal_info
 	for(var/i in 0 to (SSticker.ordeal_info.len/4) - 1)
 		if(O[(i * 4) + 4] >= 0)
-			parts += "[FOURSPACES]<span style='color: [O[(i * 4) + 2]]'>[O[(i * 4) + 1]]</span>: Started at <b>[DisplayTimeText(O[(i * 4) + 3])]</b> and took <b>[DisplayTimeText(O[(i * 4) + 4] - O[(i * 4) + 3])]</b> to be dealt with."
+			parts += "[FOURSPACES]<span style='color: [O[(i * 4) + 2]]'>[O[(i * 4) + 1]]</span>: 以 <b>[DisplayTimeText(O[(i * 4) + 3])]</b> 开始，然后是 <b>[DisplayTimeText(O[(i * 4) + 4] - O[(i * 4) + 3])]</b>."
 		else
-			parts += "[FOURSPACES]<span style='color: [O[(i * 4) + 2]]'>[O[(i * 4) + 1]]</span>: Started at <b>[DisplayTimeText(O[(i * 4) + 3])]</b> and was <b>never beaten</b>!"
+			parts += "[FOURSPACES]<span style='color: [O[(i * 4) + 2]]'>[O[(i * 4) + 1]]</span>: 以 <b>[DisplayTimeText(O[(i * 4) + 3])]</b> 开始，但 <b>从未能通过</b>!"
 	parts += "</div>"
 	return parts.Join("<br>")
 
 //Generates a report of core suppressions that were
 /datum/controller/subsystem/ticker/proc/core_supression_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Core Supressions:</span>"
+	parts += "<span class='header'>核心抑制:</span>"
 	parts += "<div class='panel stationborder'>"
 	if(!SSticker.core_suppression && !SSticker.post_midnight_core)
-		parts += "No Core Supressions happened this shift!</div>"
+		parts += "本轮无核心抑制!</div>"
 		return parts.Join("<br>")
 	if(SSticker.core_suppression)
-		parts += "<span style='color: [core_color(SSticker.core_suppression)]'>[SSticker.core_suppression]</span> was completed!"
+		parts += "<span style='color: [core_color(SSticker.core_suppression)]'>[SSticker.core_suppression]</span>通过了!"
 	if(SSticker.post_midnight_core)
-		parts += "<span style='color: [core_color(SSticker.post_midnight_core)]'>[SSticker.post_midnight_core]</span> was completed!"
+		parts += "<span style='color: [core_color(SSticker.post_midnight_core)]'>[SSticker.post_midnight_core]</span>通过了!"
 	parts += "</div>"
 	return parts.Join("<br>")
 
@@ -780,7 +780,7 @@
 ///Generate a report for how much money is on station, as well as the richest crewmember on the station.
 /datum/controller/subsystem/ticker/proc/market_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Facility Economic Summary:</span>"
+	parts += "<span class='header'>设施经济状况:</span>"
 	parts += "<div class='panel stationborder'>"
 	///This is the richest account on station at roundend.
 	var/datum/bank_account/mr_moneybags
@@ -796,12 +796,12 @@
 		station_vault += current_acc.account_balance
 		if(!mr_moneybags || mr_moneybags.account_balance < current_acc.account_balance)
 			mr_moneybags = current_acc
-	parts += "<div class='panel stationborder'>There were [station_vault] ahn collected by employees this shift.</div><br>"
+	parts += "<div class='panel stationborder'>本轮共收集到 [station_vault] 眼.</div><br>"
 	if(total_players > 0)
-		parts += "An average of [station_vault/total_players] ahn were collected.<br>"
-		log_econ("Roundend ahn total: [station_vault] ahn. Average Ahn: [station_vault/total_players]")
+		parts += "平均每名员工收集到 [station_vault/total_players] 眼.<br>"
+		log_econ("Roundend 眼 total: [station_vault] 眼. Average 眼: [station_vault/total_players]")
 	if(mr_moneybags)
-		parts += "The most affluent employee at shift end was <b>[mr_moneybags.account_holder] with [mr_moneybags.account_balance]</b> cr!</div>"
+		parts += "本轮最富有的员工是 <b>[mr_moneybags.account_holder]，拥有 [mr_moneybags.account_balance]</b> cr!</div>"
 	else
 		parts += "Somehow, nobody made any money this shift! This'll result in some budget cuts...</div>"
 	return parts

@@ -179,18 +179,18 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	if(extra_core)
 		addtimer(CALLBACK(src, PROC_REF(WarnBeforeReset)), (4 MINUTES))
 	if(announce)
-		var/announce_text = "[extra_core ? "Extra" : "Sephirah"] Core Suppressions have been made available via auxiliary managerial consoles."
-		var/announce_title = "[extra_core ? "Extra" : "Sephirah"] Core Suppression"
+		var/announce_text = "[extra_core ? "额外" : "Sephirah"]核心抑制现已在辅助管理终端上解锁."
+		var/announce_title = "[extra_core ? "额外" : "Sephirah"]核心抑制"
 		priority_announce(announce_text, \
 						announce_title, sound = 'sound/machines/dun_don_alert.ogg')
 	for(var/obj/machinery/computer/abnormality_auxiliary/A in GLOB.lobotomy_devices)
-		A.audible_message("<span class='notice'>[extra_core ? "Extra " : ""]Core Suppressions are now available!</span>")
+		A.audible_message("<span class='notice'>[extra_core ? "Extra " : ""]核心抑制现已可用!</span>")
 		playsound(get_turf(A), 'sound/machines/dun_don_alert.ogg', 50, TRUE)
 		A.updateUsrDialog()
 
 /datum/controller/subsystem/lobotomy_corp/proc/WarnBeforeReset()
 	for(var/obj/machinery/computer/abnormality_auxiliary/A in GLOB.lobotomy_devices)
-		A.audible_message("<span class='userdanger'>Core Suppression options will be disabled if you don't pick one in a minute!</span>")
+		A.audible_message("<span class='userdanger'>若不选择核心抑制，核心抑制选项将在一分钟内关闭!</span>")
 		playsound(get_turf(A), 'sound/machines/dun_don_alert.ogg', 100, TRUE, 14)
 	addtimer(CALLBACK(src, PROC_REF(ResetPotentialSuppressions), TRUE), (1 MINUTES))
 
@@ -198,14 +198,14 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	if(istype(core_suppression) || !LAZYLEN(available_core_suppressions))
 		return
 	for(var/obj/machinery/computer/abnormality_auxiliary/A in GLOB.lobotomy_devices)
-		A.audible_message("<span class='userdanger'>Core Suppression options have been disabled for this shift!</span>")
+		A.audible_message("<span class='userdanger'>核心抑制在本次轮班已关闭!</span>")
 		playsound(get_turf(A), 'sound/machines/dun_don_alert.ogg', 100, TRUE, 14)
 		A.selected_core_type = null
 		A.updateUsrDialog()
 	available_core_suppressions = list()
 	if(announce)
-		priority_announce("Core Suppression hasn't been chosen in 5 minutes window and have been disabled for this shift.", \
-						"Core Suppression", sound = 'sound/machines/dun_don_alert.ogg')
+		priority_announce("核心抑制在5分钟内未被选择，因此在本次轮班中已关闭.", \
+						"核心抑制", sound = 'sound/machines/dun_don_alert.ogg')
 
 /datum/controller/subsystem/lobotomy_corp/proc/NewAbnormality(datum/abnormality/new_abno)
 	if(!istype(new_abno))
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 		AddLobPoints(4, "Quota Reward")
 		available_box -= box_goal - goal_boxes // Leftover is drained
 		goal_reached = TRUE
-		priority_announce("The energy production goal has been reached.", "Energy Production", sound='sound/misc/notice2.ogg')
+		priority_announce("能源生产指标已经达成.", "能源生产", sound='sound/misc/notice2.ogg')
 		var/pizzatype_list = subtypesof(/obj/item/food/pizza)
 		pizzatype_list -= /obj/item/food/pizza/arnold // No murder pizza
 		pizzatype_list -= /obj/item/food/pizza/margherita/robo // No robo pizza
@@ -300,7 +300,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	var/agent_mod = 0.4 + (player_count * 0.1)
 	qliphoth_meltdown_amount = clamp(round(abno_amount * CONFIG_GET(number/qliphoth_meltdown_percent) * agent_mod), 1, abno_amount * 0.5)
 
-/datum/controller/subsystem/lobotomy_corp/proc/InitiateMeltdown(meltdown_amount = 1, forced = TRUE, type = MELTDOWN_NORMAL, min_time = 60, max_time = 90, alert_text = "Qliphoth meltdown occured in containment zones of the following abnormalities:", alert_sound = 'sound/effects/meltdownAlert.ogg')
+/datum/controller/subsystem/lobotomy_corp/proc/InitiateMeltdown(meltdown_amount = 1, forced = TRUE, type = MELTDOWN_NORMAL, min_time = 60, max_time = 90, alert_text = "逆卡巴拉熔毁发生在以下异想体收容单元:", alert_sound = 'sound/effects/meltdownAlert.ogg')
 	// Honestly, I wish I could do it another way, but oh well
 	var/datum/suppression/command/C = GetCoreSuppression(/datum/suppression/command)
 	if(istype(C))
@@ -340,8 +340,8 @@ SUBSYSTEM_DEF(lobotomy_corp)
 		text_info += "."
 		// Announce next ordeal
 		if(next_ordeal && (qliphoth_state + 1 >= next_ordeal_time))
-			text_info += "\n\n[next_ordeal.name] will trigger on the next meltdown."
-		priority_announce("[alert_text] [text_info]", "Qliphoth Meltdown", sound=alert_sound)
+			text_info += "\n\n[next_ordeal.name]将在下一次熔毁时触发."
+		priority_announce("[alert_text] [text_info]", "逆卡巴拉熔毁", sound=alert_sound)
 		return meltdown_occured
 
 /datum/controller/subsystem/lobotomy_corp/proc/RollOrdeal()
@@ -359,7 +359,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 	next_ordeal_level += 1 // Increase difficulty!
 	for(var/obj/structure/sign/ordealmonitor/O in GLOB.lobotomy_devices)
 		O.update_icon()
-	message_admins("Next ordeal to occur will be [next_ordeal.name].")
+	message_admins("下次考验将会是 [next_ordeal.name].")
 	return TRUE
 
 /datum/controller/subsystem/lobotomy_corp/proc/OrdealEvent()
@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 /datum/controller/subsystem/lobotomy_corp/proc/AddLobPoints(amount = 1, message = "UNKNOWN")
 	lob_points += amount
 	for(var/obj/machinery/computer/abnormality_auxiliary/A in GLOB.lobotomy_devices)
-		A.audible_message("<span class='notice'>[round(amount, 0.001)] LOB point[amount > 1 ? "s" : ""] deposited! Reason: [message].</span>")
+		A.audible_message("<span class='notice'>[round(amount, 0.001)] LOB点已存入! 原因: [message].</span>")
 		playsound(get_turf(A), 'sound/machines/twobeep_high.ogg', 20, TRUE)
 		A.updateUsrDialog()
 
@@ -422,18 +422,18 @@ SUBSYSTEM_DEF(lobotomy_corp)
 		if(auto_restart_in_progress)
 			deltimer(restart_timer)
 			auto_restart_in_progress = FALSE
-			to_chat(world, span_nicegreen("<b>The shuttle has been called, the site burial sequence has been suspended!</b>"))
+			to_chat(world, span_nicegreen("<b>班车已呼叫，设施掩埋程序暂停!</b>"))
 		return FALSE
 	if(auto_restart_in_progress)
 		if(!DeathCheck())
 			deltimer(restart_timer)
 			auto_restart_in_progress = FALSE
-			to_chat(world, span_nicegreen("<b>An agent has either joined or had came back to their senses, the site burial sequence has been suspended!</b>"))
+			to_chat(world, span_nicegreen("<b>有员工加入或恢复了意识，设施掩埋程序已暂停!</b>"))
 			return FALSE
 		if(!MinCheck() && !LAZYLEN(current_ordeals))
 			deltimer(restart_timer)
 			auto_restart_in_progress = FALSE
-			to_chat(world, span_nicegreen("<b>Most of the breaching abnormalities have been suppressed, the site burial sequence has been suspended!</b>"))
+			to_chat(world, span_nicegreen("<b>大部分出逃异想体已被压制，设施掩埋程序已暂停!</b>"))
 			return FALSE
 		return FALSE
 	if((OrdealDeathCheck() || MinDeathCheck()) && !auto_restart_in_progress)
@@ -448,7 +448,7 @@ SUBSYSTEM_DEF(lobotomy_corp)
 		if(!OrdealDeathCheck())
 			deltimer(restart_timer)
 			auto_restart_in_progress = FALSE
-			to_chat(world, span_nicegreen("<b>The current ordeal has ended, the site burial sequence has been suspended</b>"))
+			to_chat(world, span_nicegreen("<b>当前考验已结束, 设施掩埋程序暂停</b>"))
 		return FALSE
 	if((OrdealDeathCheck()) && !auto_restart_in_progress)
 		DeathAutoRestart()
@@ -458,14 +458,14 @@ SUBSYSTEM_DEF(lobotomy_corp)
 /datum/controller/subsystem/lobotomy_corp/proc/DeathAutoRestart(time = 120 SECONDS)
 	auto_restart_in_progress = TRUE
 	if(time <= 0)
-		message_admins("The round is ending because all agents are dead while one or more threats are unresolved!")
-		to_chat(world, span_danger("<b>The site burial sequence has been initiated due to one or more threats being unresolved while most if not all agents are dead!</b>"))
+		message_admins("回合结束，因为所有的员工都已死亡或恐慌，而威胁未解决!")
+		to_chat(world, span_danger("<b>由于威胁未解决，但所有员工都已死亡或恐慌，因此设施掩埋程序已启动</b>"))
 		SSticker.force_ending = TRUE
 		return TRUE
-	var/dialog = "All agents are dead or in a panic! If the ordeal is left unresolved"
+	var/dialog = "所有的员工都已死亡或恐慌! 如果当前情况无法解决"
 	if(MinCheck())
-		dialog = "All agents are dead or in a panic! If the current situation is left unresolved"
-	to_chat(world, span_danger("<b>[dialog], the site burial sequence will begin in <u>[round(time/10)] seconds!</u></b>"))
+		dialog = "所有的员工都已死亡或恐慌! 如果当前情况无法解决"
+	to_chat(world, span_danger("<b>[dialog], 设施掩埋程序将在 <u>[round(time/10)] 秒后启动!</u></b>"))
 	restart_timer = addtimer(CALLBACK(src, PROC_REF(DeathAutoRestart), max(0, time - 30 SECONDS)), 30 SECONDS, TIMER_STOPPABLE)
 	return TRUE
 
