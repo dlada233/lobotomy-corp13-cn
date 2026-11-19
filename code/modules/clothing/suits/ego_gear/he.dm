@@ -336,8 +336,6 @@
 	name = "障眼把戏"
 	desc = "The fruit's cracked shell would rattle as if it could jump at any moment."
 	icon_state = "legerdemain"
-	flags_inv = NONE
-	//Forbidden fruit of knowledge allegory = wisdom; decent white resistance. Regeneration and healing-focused so weak to pale.
 	armor = list(RED_DAMAGE = 30, WHITE_DAMAGE = 40, BLACK_DAMAGE = 20, PALE_DAMAGE = -20) // 70
 	attribute_requirements = list(
 							FORTITUDE_ATTRIBUTE = 40
@@ -360,7 +358,6 @@
 	name = "迫近之日"
 	desc = "Even still, I witnessed man and sky and earth tear into thousands of pieces."
 	icon_state = "impending_day"
-	flags_inv = NONE
 	armor = list(RED_DAMAGE = 20, WHITE_DAMAGE = -20, BLACK_DAMAGE = 50, PALE_DAMAGE = 20, FIRE = 40) // 70
 	attribute_requirements = list(
 							TEMPERANCE_ATTRIBUTE = 40
@@ -434,7 +431,6 @@
 	name = "玫瑰与欲望"
 	desc = "I'll carry you wherever you wish to go."
 	icon_state = "roseate_desire"
-	flags_inv = NONE
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 40, BLACK_DAMAGE = 30, PALE_DAMAGE = 0) // 70
 	attribute_requirements = list(
 							PRUDENCE_ATTRIBUTE = 40

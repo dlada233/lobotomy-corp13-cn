@@ -676,6 +676,10 @@
 	desc = "我们在一起，然后走向腐烂."
 	special = "这把武器在格挡成功时恢复HP."
 	icon_state = "legerdemain"
+	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	force = 27
 	attack_speed = 1.8
 	damtype = RED_DAMAGE
