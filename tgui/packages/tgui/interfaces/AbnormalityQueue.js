@@ -66,16 +66,16 @@ export const AbnormalityQueue = (props, context) => {
                 bold
                 content={"随机"}
                 color="green"
-                onClick={() => act("lets_roll")} />
+                onClick={() => act("random_roll")} />
             </Flex.Item>
             <Flex.Item grow={1} mb={0.3}>
               <Button
                 icon="bomb"
                 fluid
                 bold
-                content={"不可更改的随机"}
+                content={"从库存中随机"}
                 color="yellow"
-                onClick={() => act("fuck_it_lets_roll")} />
+                onClick={() => act("truly_random_roll")} />
             </Flex.Item>
             {!!data.enablehardcore && (
               <Flex.Item grow={1} mb={0.3}>
@@ -85,7 +85,7 @@ export const AbnormalityQueue = (props, context) => {
                   bold
                   content={"超级随机"}
                   color="red"
-                  onClick={() => act("hardcore_fuck_it_lets_roll")} />
+                  onClick={() => act("danger_roll")} />
               </Flex.Item>
             )}
           </Flex>
