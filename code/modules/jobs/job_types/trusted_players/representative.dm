@@ -1,6 +1,6 @@
 //Representative
 /datum/job/representative
-	title = "Main Office Representative"
+	title = "公司代表"
 	outfit = /datum/outfit/job/representative
 	department_head = list("your corporation")
 	faction = "Station"
@@ -19,7 +19,7 @@
 
 /datum/job/representative/after_spawn(mob/living/carbon/human/outfit_owner, mob/M)
 	outfit_owner.set_attribute_limit(0)
-	to_chat(M, span_userdanger("This is a roleplay role. You are expected to roleplay as the representative for the corporation you chose. Feel free to ask any online admins to further any deals you make."))
+	to_chat(M, span_userdanger("这是一个RP向角色，你扮演你所选公司的代表. 欢迎随时向管理员咨询，以推进你希望的剧情塑造."))
 	return ..()
 
 /datum/outfit/job/representative
@@ -38,12 +38,12 @@
 /// Alternate corps you can pick
 /datum/job/representative
 	alt_titles = list(
-		"R Corp Representative",
-		"W Corp Representative",
-		"K Corp Representative",
-		"N Corp Representative",
-		"P Corp Representative",
-		"J Corp Representative",
+		"R-公司代表",
+		"W-公司代表",
+		"K-公司代表",
+		"N-公司代表",
+		"P-公司代表",
+		"J-公司代表",
 	)
 
 /datum/outfit/job/representative/rcorprepresentative

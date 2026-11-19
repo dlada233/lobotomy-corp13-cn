@@ -11,12 +11,12 @@
 	departments = DEPARTMENT_COMMAND
 	mapexclude = list("wonderlabs", "mini", "lcorp_city", "enkephalin_rush")
 	mind_traits = list(TRAIT_SANITYIMMUNE)
-	job_important = "You are a roleplay role, and may not partake in combat. Assist the manager and roleplay with the agents and clerks"
+	job_important = "你是一名RP向角色，不得参与战斗. 协助主管，与员工和文职们进行RP."
 	job_notice = "\
-		In the gamemaster tab, you may adjust game perimeters. \
-		This is an OOC tool. Do not bring alert to the fact that you can do this IC. \
-		Alert any administrators if any IC action is taken against you. \
-		Abusing this will result in a loss of whitelist.\
+		在Gamemaster标签页中，你可以调整游戏参数. \
+		这是一个OOC工具. 所以不要在IC里表示你能做到这一点. \
+		如果任何IC行动针对你，要提醒管理员. \
+		滥用此功能将导致白名单被取消.\
 	"
 
 	job_abbreviation = "SEPH"
@@ -95,34 +95,34 @@ GLOBAL_LIST_INIT(sephirah_names, list(
 //Sephirah Gamemaster commands.
 
 /mob/living/carbon/human/proc/QuestComplete()
-	set name = "Reward Custom Quest"
+	set name = "奖励点数"
 	set category = "Sephirah.Events"
 	SSlobotomy_corp.lob_points += 1
-	minor_announce("The local sephirah have decided that the facility's, and by extention, the manager's, performance have been exemplary. \
-				1 LOB point has been deposited into the account of your manager", "Central Command Alert:", TRUE)
+	minor_announce("本设施内的sephirah已决定进行奖励，因该设施及其主管的表现堪称典范. \
+				1 LOB点数已经分发至主管账户中", "Central Command Alert:", TRUE)
 	return
 
 /mob/living/carbon/human/proc/RandomAbno()
-	set name = "Randomize Current Abnormality"
+	set name = "随机异想体"
 	set category = "Sephirah.Events"
 	for(var/obj/machinery/computer/abnormality_queue/Q in GLOB.lobotomy_devices)
 		var/mob/living/simple_animal/hostile/abnormality/target_type = SSabnormality_queue.GetRandomPossibleAbnormality()
 		if(Q.locked)
-			to_chat(src, span_danger("The abnormality was already randomized."))
+			to_chat(src, span_danger("异想体已被随机."))
 			return
 
-		Q.UpdateAnomaly(target_type, "fucked it lets rolled", TRUE)
+		Q.UpdateAnomaly(target_type, "danger rolled", TRUE)
 		SSabnormality_queue.AnnounceLock()
 		SSabnormality_queue.ClearChoices()
 
 		//Literally being griefed.
 		SSlobotomy_corp.lob_points += 1
-		minor_announce("Due to a lack of resources; a random abnormality has been chosen and LOB point has been deposited in your account. \
-				Extraction Headquarters apologizes for the inconvenience", "Extraction Alert:", TRUE)
+		minor_announce("由于资源不足，已随机选择一个异想体，并发放LOB点数到您的账户. \
+				提取部门对造成的不便感到抱歉", "提取警报:", TRUE)
 		return
 
 /mob/living/carbon/human/proc/RandomSelection()
-	set name = "Randomize Abnormality Selection"
+	set name = "随机异想体选择"
 	set category = "Sephirah.Events"
 
 	SSabnormality_queue.next_abno_spawn = world.time + SSabnormality_queue.next_abno_spawn_time + ((min(16, SSabnormality_queue.spawned_abnos) - 6) * 6) SECONDS
@@ -130,79 +130,79 @@ GLOBAL_LIST_INIT(sephirah_names, list(
 
 	//Literally being griefed.
 	SSlobotomy_corp.lob_points += 0.25
-	minor_announce("Extraction has made an error in which abnormalities your manager was to select. Extraction apologizes profusely, \
-			and the actual set of [GetFacilityUpgradeValue(UPGRADE_ABNO_QUEUE_COUNT)] abnormalities has been sent to your manager's console.", "Extraction Alert:", TRUE)
+	minor_announce("提取部门在选择异想体时出现了错误. 提取部门对此表示歉意， \
+			并已将实际的 [GetFacilityUpgradeValue(UPGRADE_ABNO_QUEUE_COUNT)] 异想体发送到您的管理终端.", "提取警报:", TRUE)
 	return
 
 //See next abnormality
 /mob/living/carbon/human/proc/NextAbno()
-	set name = "Next Abnormality Check"
+	set name = "检查下个异想体"
 	set category = "Sephirah"
 	//Abno stuff, so you can grief more effectively.
 	var/mob/living/simple_animal/hostile/abnormality/queued_abno = SSabnormality_queue.queued_abnormality
-	to_chat(src, span_notice("Current Status:"))
-	to_chat(src, span_notice("Number of Abnormalities: [SSabnormality_queue.spawned_abnos]."))
-	to_chat(src, span_notice("Next Abnormality: [initial(queued_abno.name)]."))
+	to_chat(src, span_notice("当前状态:"))
+	to_chat(src, span_notice("异想体数量: [SSabnormality_queue.spawned_abnos]."))
+	to_chat(src, span_notice("下个异想体: [initial(queued_abno.name)]."))
 
 //Speed stuff
 GLOBAL_VAR_INIT(Sephirahspeed, 0)
 
 /mob/living/carbon/human/proc/SlowGame()
-	set name = "Abnormality Time Slow"
+	set name = "异想体到达时间减缓"
 	set category = "Sephirah.Game Changes"
 	if(GLOB.Sephirahspeed > -3)
 		SSabnormality_queue.next_abno_spawn_time *= 1.2
 		GLOB.Sephirahspeed --
-		to_chat(src, span_notice("You have now slowed down when abnormalities arrive."))
-		message_admins("<span class='notice'>A sephirah ([src.ckey]) has slowed down the abnormality rate.</span>")
+		to_chat(src, span_notice("你减缓了异想体的到达."))
+		message_admins("<span class='notice'>一个sephirah ([src.ckey]) 减缓了异想体的到达.</span>")
 	else
-		to_chat(src, span_notice("Abnormality extraction cannot be slower."))
+		to_chat(src, span_notice("异想体提取无法更慢了."))
 
 /mob/living/carbon/human/proc/QuickenGame()
-	set name = "Abnormality Time Quicken"
+	set name = "异想体到达时间加快"
 	set category = "Sephirah.Game Changes"
 
 	if(GLOB.Sephirahspeed < 3)
 		SSabnormality_queue.next_abno_spawn_time /= 1.2
 		GLOB.Sephirahspeed ++
-		to_chat(src, span_notice("You have now sped up when abnormalities arrive."))
-		message_admins("<span class='notice'>A sephirah ([src.ckey]) has sped up the abnormality rate.</span>")
+		to_chat(src, span_notice("你加速了异想体的到达."))
+		message_admins("<span class='notice'>A sephirah ([src.ckey]) 加快了异想体的到达.</span>")
 	else
-		to_chat(src, span_notice("Abnormality extraction cannot be faster."))
+		to_chat(src, span_notice("异想体提取无法更快了."))
 
 //Ordeal Stuff
 GLOBAL_VAR_INIT(Sephirahordealspeed, 0)
 
 /mob/living/carbon/human/proc/WorkMeltIncrease()
-	set name = "Works Per Melt Increase"
+	set name = "熔毁时间增加"
 	set category = "Sephirah.Game Changes"
 
 	if(GLOB.Sephirahordealspeed > 5)
-		to_chat(src, span_notice("Meltdowns are already taking too long!"))
+		to_chat(src, span_notice("熔毁时间增加了!"))
 		return
 
 	GLOB.Sephirahordealspeed ++
-	to_chat(src, span_notice("All meltdowns will take one more work."))
+	to_chat(src, span_notice("熔毁时间增加了!"))
 	message_admins("<span class='notice'>A sephirah ([src.ckey]) has made works per melt longer.</span>")
 
 
 /mob/living/carbon/human/proc/WorkMeltDecrease()
-	set name = "Works Per Melt Decrease"
+	set name = "熔毁时间减少"
 	set category = "Sephirah.Game Changes"
 
 	if(GLOB.Sephirahordealspeed < -3 )
-		to_chat(src, span_notice("Meltdowns are already too fast!"))
+		to_chat(src, span_notice("熔毁时间减少了!"))
 		return
 
 	GLOB.Sephirahordealspeed --
-	to_chat(src, span_notice("All meltdowns will take one less work."))
+	to_chat(src, span_notice("熔毁时间减少了!"))
 	message_admins("<span class='notice'>A sephirah ([src.ckey]) has made works per melt shorter.</span>")
 
 
 GLOBAL_VAR_INIT(Sephirahmeltmodifier, 0)
 
 /mob/living/carbon/human/proc/MeltIncrease()
-	set name = "Abno Melts Per Event Increase"
+	set name = "异想体熔毁数量增加"
 	set category = "Sephirah.Game Changes"
 
 	if(GLOB.Sephirahmeltmodifier > 5)
@@ -215,7 +215,7 @@ GLOBAL_VAR_INIT(Sephirahmeltmodifier, 0)
 
 
 /mob/living/carbon/human/proc/MeltDecrease()
-	set name = "Abno Melts Per Event Decrease"
+	set name = "异想体熔毁数量减少"
 	set category = "Sephirah.Game Changes"
 
 	if(GLOB.Sephirahmeltmodifier < -1*SSlobotomy_corp.qliphoth_meltdown_amount+2)
@@ -230,43 +230,43 @@ GLOBAL_VAR_INIT(Sephirahmeltmodifier, 0)
 GLOBAL_LIST_EMPTY(SephirahBullet)
 
 /mob/living/carbon/human/proc/BulletAuth()
-	set name = "Authorize Execution Bullets"
+	set name = "授权处决弹"
 	set category = "Sephirah"
 	GLOB.SephirahBullet |= src.ckey
 	if(length(GLOB.SephirahBullet) == 2)
 		if(SSmaptype.maptype == "skeld")
-			minor_announce("There has been an error in the authorizing of our new Execution Bullet pilot program. \
-				Execution Bullets won't be able to be delivered to this facility.", "Control Alert:", TRUE)
+			minor_announce("处决弹授权项目出现错误. \
+				处决弹将不再向本设施供给.", "控制部警告:", TRUE)
 		else
-			minor_announce("The facility's manager has been deemed trustworthy of our new Execution Bullet pilot program. \
-				Execution bullets will be delivered immediately.", "Disciplinary Alert:", TRUE)
+			minor_announce("本设施主管已被认为值得信任，将授权处决弹使用. \
+				处决弹将立刻送达.", "惩戒部警告:", TRUE)
 			GLOB.execution_enabled = TRUE
 
 	else
-		to_chat(src, span_notice("Your superiors have been notified of your authorization. Reminder that execution bullets require authorization of 2 sephirah."))
-		message_admins(span_notice("A sephirah ([src.ckey]) has given an authorization for execution bullets."))
+		to_chat(src, span_notice("你的上级已通知你获得授权。提醒：处决弹需要两位Sephirah的授权."))
+		message_admins(span_notice("一位sephirah ([src.ckey])给予了处决弹的授权."))
 
 /mob/living/carbon/human/proc/Announcement()
-	set name = "Make Announcement"
+	set name = "发表公告"
 	set category = "Sephirah"
-	var/input = stripped_input(src,"What do you want announce?", ,"Test Announcement")
-	minor_announce("[input]" , "Official Sephirah announcement from: [src.name]")
+	var/input = stripped_input(src,"公告内容?", ,"测试公告")
+	minor_announce("[input]" , "来自Sephirah的官方公告: [src.name]")
 
 //See next abnormality
 /mob/living/carbon/human/proc/GameInfo()
-	set name = "Check Game Info"
+	set name = "检查游戏信息"
 	set category = "Sephirah"
 	//So you can see what the others have done
-	to_chat(src, span_notice("Current Status:"))
-	to_chat(src, span_notice("Sephirah Meltdown Modifier: [GLOB.Sephirahmeltmodifier]."))
-	to_chat(src, span_notice("Sephirah Workmelt Modifier: [GLOB.Sephirahordealspeed]."))
-	to_chat(src, span_notice("Abnormality Extraction Speed Modifier: [GLOB.Sephirahordealspeed]."))
+	to_chat(src, span_notice("当前情况:"))
+	to_chat(src, span_notice("Sephirah熔毁修改: [GLOB.Sephirahmeltmodifier]."))
+	to_chat(src, span_notice("Sephirah熔毁时间修改: [GLOB.Sephirahordealspeed]."))
+	to_chat(src, span_notice("异想体到达时间修改: [GLOB.Sephirahordealspeed]."))
 
 // TGUI stuff below
 
 /datum/action/sephirah_game_panel
-	name = "Open the sephirah game control panel"
-	desc = "This lets you manipulate the game in various ways, abuse may lead to a trusted player ban"
+	name = "打开Sephirah游戏控制面板"
+	desc = "这让你能够以各种方式操作游戏，滥用可能导致被封禁"
 	button_icon_state = "round_end"
 
 /datum/action/sephirah_game_panel/ui_state(mob/user)
