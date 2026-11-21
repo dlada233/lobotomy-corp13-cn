@@ -350,21 +350,69 @@
 	-Yesod"}
 
 /obj/item/paper/guides/jobs/abnochem_effects_generic
-	name = "Enkephalin-Derived Substance Documentation, supplementary - Yesod"
-	info = {"The basic information of each "generic" EDS is documented below. <br>
+	name = "脑啡肽衍生物质文档，补充说明 - Yesod"
+	info = {"<h1><center>每种 “糖浆” EDS 的基本信息记录如下.</center></h1> <br>
 	<br>
-	- Type NT: Orange in color. Heals the user physically, at the cost of increasing their metabolism.<br>
+	- 丰盛糖浆：使用者的勇气暂时提升。<br>
+	消耗：1u 液体懒惰、1u 液体嫉妒、1u 水 <br>
 	<br>
-	- Type CN: Jade green in color. Harms the user physically, but cleans them of all physical filth.<br>
+	- 苦味糖浆：使用者的谨慎暂时提升。<br>
+	消耗：1u 液体嫉妒、1u 液体色欲、1u 水 <br>
 	<br>
-	- Type CS: Dusty teal in color. Restores the user's mental stability, but renders them weaker to white damage.<br>
+	- 无味糖浆：使用者的自律暂时提升。<br>
+	消耗：1u 液体傲慢、1u 液体愤怒、1u 水 <br>
 	<br>
-	- Type AM: Pink in color. The user's Justice is temporarily reduced, while their fortitude and prudence are improved.<br>
+	- 专注糖浆：使用者的正义暂时提升。<br>
+	消耗：1u 液体忧郁、1u 液体暴食、1u 水 <br>
 	<br>
-	- Type VL: Red in color. The user's Justice is temporarily improved, but they suffer repeated physical damage.<br>
+	<h1><center>每种“通用型”EDS的基本信息记录如下。</center></h1> <br>
+	- Type NT：物理治疗使用者，但代价是提高其代谢。<br>
+	消耗：1u 液体愤怒、1u 液体色欲、1u 液体傲慢 <br>
 	<br>
-	These effects may not be the most useful, but they still can have an impact in an emergency situation. Please learn them well.<br>
+	- Type CN：对使用者造成物理伤害，但清除其所有物理污秽。<br>
+	消耗：1u 液体懒惰、1u 液体暴食、1u 液体愤怒 <br>
 	<br>
+	- Type CS：恢复使用者的精神稳定度，但使其更容易受到白色伤害。<br>
+	消耗：1u 液体忧郁、1u 液体傲慢、u 液体色欲 <br>
+	<br>
+	- Type AM：使用者的正义暂时降低，而其勇气和谨慎提升。<br>
+	消耗：1u 液体嫉妒、1u 液体暴食、1u 液体傲慢 <br>
+	<br>
+	- Type VL：使用者的正义暂时提升，但会反复受到物理伤害。<br>
+	消耗：1u 液体色欲、1u 液体忧郁、1u 液体懒惰  <br>
+	<br>
+	- Type RO：使用者的红色和白色护甲暂时提升，但代价是黑色护甲 <br>
+	消耗：1u 液体暴食、1u 液体嫉妒、1u 液体愤怒  <br>
+	<br>
+	- Type WP：恢复使用者的精神稳定度，但其身体健康下降。 <br>
+	消耗：1u 液体忧郁、1u 液体嫉妒、1u 液体懒惰 <br>
+	<br>
+	<h1><center>每种“高级”EDS的基本信息记录如下。</center></h1> <br>
+	<br>
+	- Odisone：使用者的勇气和正义暂时提升，但代价是谨慎和自律降低。<br>
+	消耗：1u 专注糖浆、1u Type VL <br>
+	<br>
+	- Dycrasone：使用者的属性暂时提升，但摄入过多会引发戒断症状。<br>
+	消耗：1u 苦味糖浆、1u 无味糖浆 <br>
+	<br>
+	- Serelam：使用者的谨慎和自律暂时提升，但其勇气和正义降低。<br>
+	消耗：1u 丰盛糖浆、1u Type RO <br>
+	- Culpus Umidus：使用者的谨慎暂时提升并恢复其精神稳定度，但在离开使用者体内时降低精神稳定度。<br>
+	消耗：1u 无味糖浆、1u Type WP、1u 水（催化剂）   <br>
+	<br>
+	- Lesser Nepenthe：若使用者处于精神失常状态，会使其自行恢复精神稳定；若未精神失常，则以较慢速度恢复其精神稳定度。<br>
+	消耗：1u 苦味糖浆、1u Type CS <br>
+	<br>
+	- Piedrabital：使用者的身体健康暂时大幅提升，但在其处于体内期间可能被眩晕。<br>
+	消耗：1u 丰盛糖浆、1u Type CN <br>
+	<br>
+	- Gaspilleur：大幅恢复使用者的精神稳定度和身体健康，但代价是属性暂时大幅下降。<br>
+	消耗：1u 专注糖浆、1u Type NT <br>
+	<br>
+	- Lesser Sange Raul：大幅恢复使用者的生命值，但代价是其血液。<br>
+	消耗：1u 无味糖浆、1u Type AM <br>
+	<br>
+	这些效果未必最有用，但在紧急情况下仍能产生影响。请好好学习它们。<br>
 	- Yesod"}
 
 /obj/item/paper/guides/jobs/abnochem_effects_zayin
