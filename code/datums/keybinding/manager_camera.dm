@@ -32,7 +32,7 @@
 /datum/keybinding/manager/quick_activate/camera
 	hotkey_keys = list("Alt1")
 	name = "manager_camera"
-	full_name = "快捷镜头锁定"
+	full_name = "快捷镜头跳点"
 	description = "Quick Jump To Camera"
 	command_type = /datum/action/innate/camera_jump
 	keybind_signal = COMSIG_KB_MANAGER_CAMERA
@@ -48,7 +48,7 @@
 /datum/keybinding/manager/quick_activate/cycle
 	hotkey_keys = list("Alt3")
 	name = "manager_cycle"
-	full_name = "快捷循环指令"
+	full_name = "快捷切换命令"
 	description = "Quick Cycle Command"
 	command_type = /datum/action/innate/cyclecommand
 	keybind_signal = COMSIG_KB_MANAGER_CYCLE
@@ -137,7 +137,7 @@
 /datum/keybinding/manager/bullet/dual
 	hotkey_keys = list("CtrlShift1")
 	name = "manager_dual_switch"
-	full_name = "切换双恢复弹"
+	full_name = "切换全恢复弹"
 	description = "Dual Bullet Quick Swap"
 	bullet_type = MANAGER_DUAL_BULLET
 	keybind_signal = COMSIG_KB_MANAGER_DUAL
@@ -145,7 +145,7 @@
 /datum/keybinding/manager/bullet/quad
 	hotkey_keys = list("CtrlShift2")
 	name = "manager_quad_switch"
-	full_name = "切换四护盾弹"
+	full_name = "切换全护盾弹"
 	description = "Quad Shield Bullet Quick Swap"
 	bullet_type = MANAGER_QUAD_BULLET
 	keybind_signal = COMSIG_KB_MANAGER_QUAD

@@ -1,6 +1,6 @@
 /obj/structure/sign/ordealmonitor
-	name = "ordeal monitor"
-	desc = "A screen with information regarding Qliphoth Meltdowns and Ordeals that will happen soon."
+	name = "考验指示屏"
+	desc = "一块显示距离逆卡巴拉熔毁和考验发生还有多久的显示屏."
 	icon = 'icons/obj/ordeal_monitor.dmi'
 	icon_state = "ordeal_monitor"
 	buildable_sign = FALSE
@@ -16,9 +16,9 @@
 
 /obj/structure/sign/ordealmonitor/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Current Qliphoth Meter: [SSlobotomy_corp.qliphoth_meter] / [SSlobotomy_corp.qliphoth_max].</span>"
+	. += "<span class='notice'>当前逆卡巴拉熔毁进度: [SSlobotomy_corp.qliphoth_meter] / [SSlobotomy_corp.qliphoth_max].</span>"
 	if(SSlobotomy_corp.next_ordeal && (SSlobotomy_corp.qliphoth_state + 1 >= SSlobotomy_corp.next_ordeal_time))
-		. += "<span class='warning'>[SSlobotomy_corp.next_ordeal.name] will be summoned for the next Qliphoth Meltdown.</span>"
+		. += "<span class='warning'>[SSlobotomy_corp.next_ordeal.name] 将在下一次逆卡巴拉熔毁时被发生.</span>"
 
 /obj/structure/sign/ordealmonitor/update_overlays()
 	. = ..()

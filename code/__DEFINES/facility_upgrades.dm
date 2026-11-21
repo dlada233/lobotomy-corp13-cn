@@ -9,7 +9,7 @@
 #define WHITE_BULLET "WHITE护盾弹"
 #define BLACK_BULLET "BLACK护盾弹"
 #define PALE_BULLET "PALE护盾弹"
-#define QUAD_BULLET "QUAD护盾弹"
+#define QUAD_BULLET "全护盾弹"
 #define YELLOW_BULLET "逆卡巴拉抑制弹"
 #define KILL_BULLET "处决弹"
 
