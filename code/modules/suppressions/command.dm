@@ -1,7 +1,7 @@
 /datum/suppression/command
 	name = COMMAND_CORE_SUPPRESSION
 	desc = "在抑制期间，某些异想体的熔毁免疫将被取消，熔毁发生的数量更多，熔毁的倒计时更短，如果未能处理熔毁会导致其他异想体也发生熔毁。"
-	reward_text = "主管的子弹将在目标周围小范围生效. \
+	reward_text = "主管的子弹数量将增加50%. \
 			在熔毁单元内的工作会提供更多属性成长."
 	run_text = "中央本部的核心抑制已经开始. \n\
 			熔毁免疫特性被取消，逆卡巴拉熔毁倒计时缩短. \n\
@@ -22,8 +22,10 @@
 /datum/suppression/command/End(silent = FALSE)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MELTDOWN_START)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MELTDOWN_FINISHED)
+	SSlobotomy_corp.bullet_multiplier *= 1.5
+	for(var/obj/machinery/computer/camera_advanced/manager/C in GLOB.lobotomy_devices)
+		C.RechargeMeltdown()
 	SSlobotomy_corp.melt_work_multiplier += 1
-	SSlobotomy_corp.manager_bullet_area = 1 // Bullets will activate in a 3x3 AOE
 	return ..()
 
 /datum/suppression/command/proc/OnQlipMeltdown(datum/source, ordeal = FALSE)

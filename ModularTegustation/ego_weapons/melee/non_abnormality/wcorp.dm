@@ -231,6 +231,7 @@
 	charge_cost = 16
 	charge_effect = "在攻击中向周围盟友投射护盾."
 	successfull_activation = "你释放了你的充能，向你的盟友投射护盾!"
+	var/shield_health = 50
 	var/shield_time = 15 SECONDS
 
 /obj/item/ego_weapon/city/wcorp/shield/ChargeAttack(mob/living/target, mob/living/user)
@@ -239,7 +240,7 @@
 	for(var/mob/living/carbon/human/L in range(7, user))
 		if(!ishuman(L))
 			continue
-		L.apply_shield(/datum/status_effect/interventionshield/wcorp, shield_duration = shield_time)
+		L.apply_status_effect(/datum/status_effect/interventionshield/wcorp, shield_health, shield_time)
 		new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(L))
 
 //Type C Spear

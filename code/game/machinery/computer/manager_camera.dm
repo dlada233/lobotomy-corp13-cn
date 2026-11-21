@@ -110,10 +110,19 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 		),
 
 	)
-
+	var/list/bullet_types_to_status = alist(
+		MANAGER_RED_BULLET = /datum/status_effect/interventionshield,
+		MANAGER_WHITE_BULLET = /datum/status_effect/interventionshield/white,
+		MANAGER_BLACK_BULLET = /datum/status_effect/interventionshield/black,
+		MANAGER_PALE_BULLET = /datum/status_effect/interventionshield/pale,
+		MANAGER_QUAD_BULLET = /datum/status_effect/interventionshield/quad,
+		MANAGER_YELLOW_BULLET = /datum/status_effect/qliphothoverload,
+	)
 	/* Locked actions */
 	// Unlocked by completing records core suppression
 	var/datum/action/innate/swap_cells/swap
+	var/bullet_buffer
+	var/bullet_buffer_time = 0.3 SECONDS // Just to prevent accidental multiclicking
 
 /obj/machinery/computer/camera_advanced/manager/Initialize(mapload)
 	. = ..()
@@ -178,7 +187,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	RegisterSignal(user, COMSIG_MOB_CTRLSHIFTCLICKON, PROC_REF(OnCtrlShiftClick))
 
 /obj/machinery/computer/camera_advanced/manager/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/managerbullet) && ammo <= GetFacilityUpgradeValue(UPGRADE_BULLET_COUNT))
+	if(istype(O, /obj/item/managerbullet) && ammo <= floor(GetFacilityUpgradeValue(UPGRADE_BULLET_COUNT) * SSlobotomy_corp.bullet_multiplier))
 		ammo++
 		to_chat(user, span_notice("你装载[O]到[src]. 现在有[ammo]发子弹储存."))
 		playsound(get_turf(src), 'sound/weapons/kenetic_reload.ogg', 10, 0, 3)
@@ -193,8 +202,9 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 /obj/machinery/computer/camera_advanced/manager/proc/OnHotkeyClick(datum/source, atom/clicked_atom) //system control for hotkeys
 	SIGNAL_HANDLER
 
-	// No target :(
-	if(!isliving(clicked_atom))
+
+	// Fired too quickly :(
+	if(bullet_buffer >= world.time)
 		return
 
 	// No bullets :(
@@ -203,34 +213,38 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 		to_chat(source, span_warning("子弹用光."))
 		return
 
-	// AOE bullets
-	if(SSlobotomy_corp.manager_bullet_area > -1)
+	if(bullet_type == MANAGER_KILL_BULLET)
+		if(ishuman(clicked_atom) && ClickedEmployee(source, clicked_atom))
+			bullet_buffer = world.time + bullet_buffer_time
+			ammo -= bullet_cost[bullet_type]
+			to_chat(source, span_warning("<b>[ammo]</b> bullets remaining."))
+			return
+		playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
+		to_chat(source, span_warning("NO VALID TARGET."))
+		return
+	else
+		var/turf/T = get_turf(clicked_atom)
 		var/success = FALSE
-		for(var/mob/living/L in range(SSlobotomy_corp.manager_bullet_area, clicked_atom))
+		for(var/mob/living/L in view(1, T))
 			if(ishuman(L))
-				ClickedEmployee(source, L)
-				success = TRUE
+				if(ClickedEmployee(source, L))
+					success = TRUE
 			if(ishostile(L))
-				ClickedAbno(source, L)
-				success = TRUE
+				if(ClickedAbno(source, L))
+					success = TRUE
 		if(success)
+			bullet_buffer = world.time + bullet_buffer_time
 			ammo -= bullet_cost[bullet_type]
 			to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
-		return
-
-	// Non-AOE
-	if(ishuman(clicked_atom) && ClickedEmployee(source, clicked_atom))
-		ammo -= bullet_cost[bullet_type]
-		to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
-		return
-	if(ishostile(clicked_atom) && ClickedAbno(source, clicked_atom))
-		ammo -= bullet_cost[bullet_type]
-		to_chat(source, span_warning("<b>[ammo]</b> 发子弹剩余."))
+			playsound(get_turf(src), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
+			playsound(T, 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
+			return
+		playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
+		to_chat(source, span_warning("无效目标."))
 		return
 
 /obj/machinery/computer/camera_advanced/manager/proc/ClickedEmployee(mob/living/owner, mob/living/carbon/human/H) //contains carbon copy code of fire action
-	if(!istype(H))
-		to_chat(owner, span_warning("无效目标."))
+	if(!ishuman(H))
 		return FALSE
 
 	var/healing_mult = 1
@@ -240,72 +254,34 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	switch(bullet_type)
 		if(MANAGER_HP_BULLET)
 			if(H.health >= H.maxHealth)
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标身体无需恢复."))
 				return FALSE
 			H.adjustBruteLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*healing_mult)
 		if(MANAGER_SP_BULLET)
 			if(H.sanity_lost)
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标精神太过不稳定."))
 				return FALSE
 			if(H.sanityhealth >= H.maxSanity)
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标精神无需稳定."))
 				return FALSE
 			H.adjustSanityLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*healing_mult)
 		if(MANAGER_DUAL_BULLET)
 			if(H.sanity_lost)
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标精神太过不稳定."))
 				return FALSE
 			if((H.health >= H.maxHealth) && (H.sanityhealth >= H.maxSanity))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标身体无需治愈."))
 				return FALSE
 			H.adjustBruteLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*healing_mult)
 			H.adjustSanityLoss(-GetFacilityUpgradeValue(UPGRADE_BULLET_HEAL)*healing_mult)
-		if(MANAGER_RED_BULLET)
-			if (H.has_status_effect(/datum/status_effect/interventionshield))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
+		if(MANAGER_RED_BULLET, MANAGER_WHITE_BULLET, MANAGER_BLACK_BULLET, MANAGER_PALE_BULLET, MANAGER_QUAD_BULLET)
+			if(H.is_working)
 				return FALSE
-			H.apply_shield(/datum/status_effect/interventionshield, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
-		if(MANAGER_WHITE_BULLET)
-			if (H.has_status_effect(/datum/status_effect/interventionshield/white))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
-				return FALSE
-			H.apply_shield(/datum/status_effect/interventionshield/white, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
-		if(MANAGER_BLACK_BULLET)
-			if (H.has_status_effect(/datum/status_effect/interventionshield/black))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
-				return FALSE
-			H.apply_shield(/datum/status_effect/interventionshield/black, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
-		if(MANAGER_PALE_BULLET)
-			if (H.has_status_effect(/datum/status_effect/interventionshield/pale))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
-				return FALSE
-			H.apply_shield(/datum/status_effect/interventionshield/pale, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH))
-		if(MANAGER_QUAD_BULLET)
-			if (H.has_status_effect(/datum/status_effect/interventionshield/quad))
-				playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-				to_chat(owner, span_warning("ERROR: 目标已拥有相同类型护盾."))
-				return FALSE
-			H.apply_shield(/datum/status_effect/interventionshield/quad, shield_health = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH) * 2)
+			var/shield_hp = GetFacilityUpgradeValue(UPGRADE_BULLET_SHIELD_HEALTH)
+			if(bullet_type == MANAGER_QUAD_BULLET)
+				shield_hp *= 2
+			H.apply_status_effect(bullet_types_to_status[bullet_type], shield_hp)
 		if(MANAGER_YELLOW_BULLET)
 			if(!owner.faction_check_mob(H))
-				if (H.has_status_effect(/datum/status_effect/qliphothoverload))
-					playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-					to_chat(owner, span_warning("ERROR: 目标当前正受影响."))
-					return FALSE
 				H.apply_status_effect(/datum/status_effect/qliphothoverload)
-				if (GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
+				if(GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
 					H.apply_status_effect(/datum/status_effect/qliphothshred)
 			else
-				to_chat(owner, span_warning("WELFARE SAFETY SYSTEM ERROR: TARGET SHARES CORPORATE FACTION."))
 				return FALSE
 		if(MANAGER_KILL_BULLET)
 			if(Execute(owner, H))
@@ -314,8 +290,6 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 		else
 			to_chat(owner, span_warning("ERROR: 子弹初始化失败."))
 			return FALSE
-	playsound(get_turf(src), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
-	playsound(get_turf(H), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/manager/proc/Execute(mob/living/owner, mob/living/carbon/human/H)
@@ -350,22 +324,14 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 /obj/machinery/computer/camera_advanced/manager/proc/ClickedAbno(mob/living/owner, mob/living/simple_animal/hostile/H)
 	if(!istype(H))
-		to_chat(owner, span_warning("无效目标."))
 		return FALSE
 
 	if(bullet_type == MANAGER_YELLOW_BULLET)
-		if (H.has_status_effect(/datum/status_effect/qliphothoverload))
-			playsound(get_turf(src), 'sound/weapons/empty.ogg', 10, 0, 3)
-			to_chat(owner, span_warning("ERROR: 目标当前正受影响."))
-			return FALSE
 		H.apply_status_effect(/datum/status_effect/qliphothoverload)
-		if (GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
+		if(GetFacilityUpgradeValue(UPGRADE_YELLOW_BULLET))
 			H.apply_status_effect(/datum/status_effect/qliphothshred)
-		playsound(get_turf(src), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
-		playsound(get_turf(H), 'ModularTegustation/Tegusounds/weapons/guns/manager_bullet_fire.ogg', 10, 0, 3)
 		return TRUE
 
-	to_chat(owner, span_warning("ERROR: 子弹初始化失败."))
 	return FALSE
 
 /obj/machinery/computer/camera_advanced/manager/proc/ManagerExaminate(mob/living/user, atom/clicked_atom)
@@ -452,7 +418,7 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 
 /obj/machinery/computer/camera_advanced/manager/proc/RechargeMeltdown()
 	playsound(get_turf(src), 'sound/weapons/kenetic_reload.ogg', 10, 0, 3)
-	ammo = GetFacilityUpgradeValue(UPGRADE_BULLET_COUNT)
+	ammo = max(ammo, floor(GetFacilityUpgradeValue(UPGRADE_BULLET_COUNT) * SSlobotomy_corp.bullet_multiplier))
 
 //Employee Tracking Code: Butchered AI Tracking
 
@@ -532,11 +498,30 @@ GLOBAL_VAR_INIT(execution_enabled, FALSE)
 	if(QDELETED(src) || QDELETED(target) || QDELETED(owner) || !chosen_bullet)
 		return FALSE
 
-	to_chat(owner, span_notice("[console.bullet_types[chosen_bullet]["name"]] bullet selected."))
+	to_chat(owner, span_notice("[console.bullet_types[chosen_bullet]["name"]]已选择."))
 	name = "[console.bullet_types[chosen_bullet]["name"]] bullet"
 	desc = console.bullet_types[chosen_bullet]["desc"]
 	button_icon_state = console.bullet_types[chosen_bullet]["icon_state"]
 	console.bullet_type = chosen_bullet
+	UpdateButtonIcon()
+	playsound(get_turf(target), 'sound/weapons/kenetic_reload.ogg', 15, TRUE)
+
+/datum/action/innate/cyclemanagerbullet/proc/Quick_Swap(bullet_type)
+	var/obj/machinery/computer/camera_advanced/manager/console = target
+	if(!bullet_type)
+		return
+	// Don't swap until we have the upgrade unlocked.
+	if(!GetFacilityUpgradeValue(console.bullet_types[bullet_type]["name"]))
+		return FALSE
+	if(console.bullet_type == bullet_type)
+		return FALSE
+	if(QDELETED(src) || QDELETED(target) || QDELETED(owner))
+		return FALSE
+	to_chat(owner, span_notice("[console.bullet_types[bullet_type]["name"]]已选择."))
+	name = "[console.bullet_types[bullet_type]["name"]] bullet"
+	desc = console.bullet_types[bullet_type]["desc"]
+	button_icon_state = console.bullet_types[bullet_type]["icon_state"]
+	console.bullet_type = bullet_type
 	UpdateButtonIcon()
 	playsound(get_turf(target), 'sound/weapons/kenetic_reload.ogg', 15, TRUE)
 
