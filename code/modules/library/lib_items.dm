@@ -15,10 +15,10 @@
  */
 
 /obj/structure/bookcase
-	name = "bookcase"
+	name = "书架"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bookempty"
-	desc = "A great place for storing knowledge."
+	desc = "存放知识的好地方。"
 	anchored = FALSE
 	density = TRUE
 	opacity = FALSE
@@ -119,7 +119,7 @@
 				if(!newname)
 					return
 				else
-					name = "bookcase ([sanitize(newname)])"
+					name = "书架（[sanitize(newname)]）"
 			else if(I.tool_behaviour == TOOL_CROWBAR)
 				if(contents.len)
 					to_chat(user, "<span class='warning'>You need to remove the books first!</span>")

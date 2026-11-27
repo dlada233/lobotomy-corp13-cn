@@ -3,7 +3,7 @@
  */
 /obj/item/storage/photo_album
 	name = "photo album"
-	desc = "A big book used to store photos and mementos."
+	desc = "一本用来存放照片和纪念品的大相册。"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "album"
 	inhand_icon_state = "album"
@@ -102,7 +102,7 @@
 	persistence_id = "syndicate"
 
 /obj/item/storage/photo_album/library
-	name = "photo album (Library)"
+	name = "图书馆相册"
 	icon_state = "album_blue"
 	persistence_id = "library"
 

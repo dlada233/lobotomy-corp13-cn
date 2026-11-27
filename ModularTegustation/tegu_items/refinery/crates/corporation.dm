@@ -1,7 +1,7 @@
 //Lobotomy Corporation
 /obj/structure/lootcrate/l_corp
-	name = "Lobotomy Corporation Gear Crate"
-	desc = "A crate recieved from headquarters. Contains standard gear for lobotomy corporation employees. Open with a Crowbar."
+	name = "脑叶公司装备箱"
+	desc = "总部送来的箱子，装着脑叶公司员工的制式装备。用撬棍开启。"
 	icon_state = "crate_lc"
 	rarechance = 25
 	veryrarechance = 10

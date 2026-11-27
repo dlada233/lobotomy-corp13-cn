@@ -1,7 +1,7 @@
 #define DOOR_CLOSE_WAIT 60 ///Default wait until doors autoclose
 /obj/machinery/door
 	name = "door"
-	desc = "It opens and closes."
+	desc = "能开，也能关。"
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door1"
 	opacity = TRUE

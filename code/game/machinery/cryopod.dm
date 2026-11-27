@@ -12,8 +12,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 //Main cryopod console.
 
 /obj/machinery/computer/cryopod
-	name = "cryogenic oversight console"
-	desc = "An interface between crew and the cryogenic storage oversight systems."
+	name = "冷冻舱监管终端"
+	desc = "供人员操作冷冻休眠监管系统的终端。"
 	icon = 'icons/obj/machines/cryopod.dmi'
 	icon_state = "cellconsole_1"
 	// circuit = /obj/item/circuitboard/cryopodcontrol
@@ -72,8 +72,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 // Cryopods themselves.
 /obj/machinery/cryopod
-	name = "employee storage"
-	desc = "Suited for human employees of the corporation, the pod is a safe place for personnel who have dozed to get some rest."
+	name = "员工冷冻休眠舱"
+	desc = "为公司的人类员工设计的休眠舱，困倦的人员可以安心在里面休息。"
 	icon = 'icons/obj/machines/cryopod.dmi'
 	icon_state = "cryopod-open"
 	density = TRUE

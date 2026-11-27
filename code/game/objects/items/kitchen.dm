@@ -72,11 +72,11 @@
 		qdel(src)
 
 /obj/item/kitchen/knife
-	name = "kitchen knife"
+	name = "菜刀"
 	icon_state = "knife"
 	inhand_icon_state = "knife"
 	worn_icon_state = "knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	desc = "太空厨具公司生产的多用途厨刀，保证多年后依然锋利。"
 	flags_1 = CONDUCT_1
 	force = 3
 	w_class = WEIGHT_CLASS_SMALL
@@ -254,8 +254,8 @@
 	return BRUTELOSS
 
 /obj/item/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "擀面杖"
+	desc = "用来敲晕酒保。"
 	icon_state = "rolling_pin"
 	worn_icon_state = "rolling_pin"
 	force = 2

@@ -211,9 +211,9 @@
 
 //Deepscanner
 /obj/item/deepscanner //intended for ordeals
-	name = "deep scan kit"
-	desc = "A contraption of various tools capable of scanning the interior form of an entity.\n\
-			Scanning nonhuman entities will make it 10% weaker to all damage types."
+	name = "深度扫描套件"
+	desc = "由多种工具组成的装置，可以扫描目标的内部构造。\n\
+			扫描非人类目标会使其对所有伤害类型的抗性降低 10%。"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "maint_kit"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
@@ -345,8 +345,8 @@
 #define RAK_CRIT_MODE "Crit mode"
 #define RAK_RAPID_MODE "Rapid mode"
 /obj/item/safety_kit
-	name = "\improper Safety Department Regenerator Augmentation Kit"
-	desc = "This gadget is necessary for making temporary modifications on regenerators."
+	name = "\improper 安保部再生器改装套件"
+	desc = "临时改装再生器所需的工具。"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "HP mode_rak"
 	inhand_icon_state = "sdrak"
@@ -684,7 +684,7 @@
 	qdel(src)
 
 /obj/item/reagent_containers/spray/chemsprayer/janitor/clerk
-	name = "clerk chem sprayer"
+	name = "文职化学喷雾器"
 	list_reagents = list(/datum/reagent/space_cleaner/lc13 = 1000)
 	volume = 1000
 	generate_type = /datum/reagent/space_cleaner/lc13
@@ -694,7 +694,7 @@
 	spray_range = 5
 
 /obj/item/mop/advanced/lc13
-	desc = "A self-wetting mop, filled with powerful acid. Can be used to quickly dissolve corpses."
+	desc = "能够自行润湿的拖把，内部装有强酸，可快速溶解尸体。"
 	mopspeed = 3
 	refill_reagent = /datum/reagent/space_cleaner/lc13
 	refill_rate = 5

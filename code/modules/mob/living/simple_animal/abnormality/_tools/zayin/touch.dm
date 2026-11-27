@@ -1,6 +1,6 @@
 /obj/structure/toolabnormality/touch
-	name = "don't touch me"
-	desc = "You feel like you shouldn't touch this."
+	name = "别碰我"
+	desc = "你觉得还是别碰它为好。"
 	icon_state = "touch"
 	var/cooldown
 	var/list/bastards = list()

@@ -1,6 +1,6 @@
 /obj/machinery/vending/lobotomyheadset
-	name = "\improper Communications Vendor"
-	desc = "A vending machine for facility headsets and encryption keys."
+	name = "\improper 通信耳机售货机"
+	desc = "供应设施通信耳机和加密密钥的售货机。"
 	icon_state = "generic" //Placeholder
 	icon_deny = null
 	req_access = null //Shouldn't need access on lc13, can be changed

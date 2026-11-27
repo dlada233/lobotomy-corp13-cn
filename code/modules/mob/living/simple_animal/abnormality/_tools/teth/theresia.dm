@@ -3,8 +3,8 @@
 
 //Coded by InsightfulParasite
 /obj/structure/toolabnormality/theresia
-	name = "windup music box"
-	desc = "An old ornate music box with a ballerina ontop. Carved onto the side of the music box is the phrase 'Do you remember this melody? The professor used to play this song when the students were sleepy. Happy birthday.'"
+	name = "发条音乐盒"
+	desc = "一只装饰华丽的老音乐盒，盒顶立着一位芭蕾舞者。盒侧刻着一行字：“还记得这段旋律吗？从前学生们犯困的时候，教授就会弹起这首曲子。生日快乐。”"
 	icon_state = "theresia"
 	anchored = FALSE
 	drag_slowdown = 1.5
@@ -25,7 +25,7 @@
 
 /obj/structure/toolabnormality/theresia/attack_hand(mob/user) //defines activator as user.
 	if(activation_cooldown > world.time)
-		to_chat(user, span_warning("You cannot [activated ? "stop" : "start"] \the [src] just yet!"))
+		to_chat(user, span_warning("现在还不能[activated ? "关掉" : "启动"][src]！"))
 		return
 
 	if(activated)
@@ -62,13 +62,13 @@
 			continue
 		L.adjustSanityLoss(-pulse_damage)
 		if(prob(10))
-			to_chat(L, span_notice("Despite the challenge, something reassures you that things will be okay."))
+			to_chat(L, span_notice("尽管眼前困难重重，你心里却踏实了些：一切都会好起来的。"))
 
 /obj/structure/toolabnormality/theresia/proc/Activate(mob/user)
 	activation_cooldown = world.time + 2 SECONDS // Just there to prevent spam
 	icon_state = icon_active
-	to_chat(user, span_notice("You begin to wind up [src]."))
-	visible_message(span_hear("[src] starts to wind up."))
+	to_chat(user, span_notice("你开始给[src]上发条。"))
+	visible_message(span_hear("[src]传来拧发条的声音。"))
 	playsound(get_turf(src), 'sound/effects/ordeals/pink_start.ogg', 50, 0, 4)
 	current_winds = 0
 	activated = ACTIVE_NORMAL
@@ -77,8 +77,8 @@
 /obj/structure/toolabnormality/theresia/proc/Deactivate(mob/user)
 	activation_cooldown = world.time + activation_cooldown_time
 	icon_state = initial(icon_state)
-	to_chat(user, span_notice("You deactivate the [src]."))
-	visible_message(span_hear("The [activated == ACTIVE_NORMAL ? "calming" : "disturbing"] music stops."))
+	to_chat(user, span_notice("你关掉了[src]。"))
+	visible_message(span_hear("[activated == ACTIVE_NORMAL ? "令人安心" : "令人不安"]的乐声停了。"))
 	playsound(get_turf(src), 'sound/effects/clock_tick.ogg', 50, 0, 4)
 	activated = FALSE
 	STOP_PROCESSING(SSobj,src)

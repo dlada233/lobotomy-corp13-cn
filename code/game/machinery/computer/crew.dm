@@ -4,8 +4,8 @@
 #define UNKNOWN_JOB_ID			81
 
 /obj/machinery/computer/crew
-	name = "crew monitoring console"
-	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
+	name = "人员监测终端"
+	desc = "用于监测多数船员制服上已启用的生命体征传感器。"
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
 	use_power = IDLE_POWER_USE

@@ -1,6 +1,6 @@
 /obj/item/hand_labeler
-	name = "hand labeler"
-	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
+	name = "手持标签机"
+	desc = "将标签打印、粘贴和移除集于一身的便携设备，操作简便。"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
 	inhand_icon_state = "flight"
@@ -112,9 +112,9 @@
 			borgy.cell.use(cost)
 
 /obj/item/hand_labeler_refill
-	name = "hand labeler paper roll"
+	name = "标签机纸卷"
 	icon = 'icons/obj/bureaucracy.dmi'
-	desc = "A roll of paper. Use it on a hand labeler to refill it."
+	desc = "一卷标签纸。对手持标签机使用即可补充纸张。"
 	icon_state = "labeler_refill"
 	inhand_icon_state = "electropack"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'

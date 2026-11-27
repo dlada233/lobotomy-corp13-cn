@@ -10,8 +10,8 @@
 	)
 
 /obj/machinery/hatchery
-	name = "prototype hatchery"
-	desc = "A high-tech machine that can bring dead agents back to life."
+	name = "原型孵化舱"
+	desc = "一台能让死亡员工复生的高科技机器。"
 	icon = 'icons/obj/machines/body_preservation.dmi'
 	icon_state = "bpu"
 	var/icon_state_animation = "bpu_animation"

@@ -3,8 +3,8 @@
 #define CAMERA_UPGRADE_MOTION 4
 
 /obj/machinery/camera
-	name = "security camera"
-	desc = "It's used to monitor rooms."
+	name = "监控摄像头"
+	desc = "用于监控房间。"
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "camera" //mapping icon to represent upgrade states. if you want a different base icon, update default_camera_icon as well as this.
 	use_power = ACTIVE_POWER_USE

@@ -584,8 +584,8 @@
  */
 
 /obj/item/storage/crayons
-	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	name = "盒装蜡笔"
+	desc = "一盒蜡笔，画符文时想用什么颜色都有。"
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
@@ -643,7 +643,7 @@
 //Spraycan stuff
 
 /obj/item/toy/crayon/spraycan
-	name = "spray can"
+	name = "喷漆罐"
 	icon_state = "spraycan"
 
 	icon_capped = "spraycan_cap"
@@ -654,7 +654,7 @@
 	inhand_icon_state = "spraycan"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
-	desc = "A metallic container containing tasty paint."
+	desc = "装着美味颜料的金属罐。"
 
 	instant = TRUE
 	edible = FALSE
@@ -850,9 +850,9 @@
 	reagent_contents = list(/datum/reagent/consumable/nothing = 1, /datum/reagent/toxin/mutetoxin = 1)
 
 /obj/item/toy/crayon/spraycan/infinite
-	name = "infinite spraycan"
+	name = "无限喷漆罐"
 	charges = -1
-	desc = "Now with 30% more bluespace technology."
+	desc = "现在多用了 30% 的蓝空间技术。"
 
 #undef DARK_COLOR_LIGHTNESS_THRESHOLD
 #undef RANDOM_GRAFFITI

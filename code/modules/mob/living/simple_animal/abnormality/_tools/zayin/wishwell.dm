@@ -1,6 +1,6 @@
 /obj/structure/toolabnormality/wishwell
-	name = "wishing well"
-	desc = "A well constructed of stone and wood. From where does it draw water?"
+	name = "许愿井"
+	desc = "一口用石头和木头砌成的井。井水是从哪里来的？"
 	icon_state = "wishwell"
 	can_buckle = TRUE
 	max_buckled_mobs = 1

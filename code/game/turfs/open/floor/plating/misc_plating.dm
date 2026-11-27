@@ -290,8 +290,8 @@
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/open/floor/plating/grass
-	name = "grass"
-	desc = "A patch of grass."
+	name = "草地"
+	desc = "一小片草地。"
 	icon_state = "grass0"
 	base_icon_state = "grass"
 	baseturfs = /turf/open/floor/plating/sandy_dirt

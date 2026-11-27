@@ -1,6 +1,6 @@
 /obj/structure/grille
-	desc = "A flimsy framework of metal rods."
-	name = "grille"
+	desc = "用金属杆搭成的单薄框架。"
+	name = "金属格栅"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
 	density = TRUE

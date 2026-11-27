@@ -4,8 +4,8 @@
 
 
 /obj/item/reagent_containers/glass/rag
-	name = "damp rag"
-	desc = "For cleaning up messes, you suppose."
+	name = "湿抹布"
+	desc = "大概是用来擦干净脏东西的。"
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"

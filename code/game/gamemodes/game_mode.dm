@@ -37,7 +37,7 @@
 	var/reroll_friendly 	//During mode conversion only these are in the running
 	var/continuous_sanity_checked	//Catches some cases where config options could be used to suggest that modes without antagonists should end when all antagonists die
 	var/enemy_minimum_age = 7 //How many days must players have been playing before they can play this antagonist
-
+	var/announce_name
 	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
 
@@ -56,7 +56,7 @@
 
 
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
-	to_chat(world, "<b>The gamemode is: <span class='[announce_span]'>[name]</span>!</b>")
+	to_chat(world, "<b>本轮游戏模式：<span class='[announce_span]'>[announce_name || name]</span>！</b>")
 	to_chat(world, "<b>[announce_text]</b>")
 
 
@@ -243,7 +243,7 @@
 			replacementmode.make_antag_chance(H)
 	replacementmode.gamemode_ready = TRUE //Awful but we're not doing standard setup here.
 	round_converted = 2
-	message_admins("-- IMPORTANT: The roundtype has been converted to [replacementmode.name], antagonists may have been created! --")
+	message_admins("注意：本轮模式已切换为[replacementmode.announce_name || replacementmode.name]，可能已有玩家被分配了对抗角色！")
 
 
 ///Called by the gameSSticker

@@ -444,8 +444,8 @@
 	foodtypes = MEAT
 
 /obj/item/food/meatclown
-	name = "meat clown"
-	desc = "A delicious, round piece of meat clown. How horrifying."
+	name = "小丑肉"
+	desc = "一片又圆又好吃的小丑肉。真吓人。"
 	icon_state = "meatclown"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/banana = 2)
 	tastes = list("meat" = 5, "clowns" = 3, "sixteen teslas" = 1)
@@ -547,8 +547,8 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/meat/slab
-	name = "meat"
-	desc = "A slab of meat."
+	name = "肉排"
+	desc = "一块肉排。"
 	icon_state = "meat"
 	bite_consumption = 3
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/cooking_oil = 2) //Meat has fats that a food processor can process into cooking oil

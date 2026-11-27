@@ -13,8 +13,8 @@
 	undyeable = TRUE
 
 /obj/item/clothing/gloves/botanic_leather
-	name = "botanist's leather gloves"
-	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin.  They're also quite warm."
+	name = "园艺皮手套"
+	desc = "皮手套能挡住植物的荆棘、倒刺、尖刺和其他伤人的部位。还挺暖和。"
 	icon_state = "leather"
 	inhand_icon_state = "ggloves"
 	permeability_coefficient = 0.9

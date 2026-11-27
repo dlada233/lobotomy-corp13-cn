@@ -1,8 +1,8 @@
 #define MILK_TO_BUTTER_COEFF 15
 
 /obj/machinery/reagentgrinder
-	name = "\improper All-In-One Grinder"
-	desc = "From BlenderTech. Will It Blend? Let's test it out!"
+	name = "\improper 多功能研磨机"
+	desc = "BlenderTech 出品。这东西打得碎吗？试试看！"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = BELOW_OBJ_LAYER

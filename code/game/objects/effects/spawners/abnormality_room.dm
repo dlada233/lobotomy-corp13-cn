@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(abnormality_room_spawners)
 
 // Room spawner for abnormalities
 /obj/effect/spawner/abnormality_room
-	name = "abnormality room spawner"
+	name = "异想体收容单元生成点"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "abno_room"
 	dir = NORTH

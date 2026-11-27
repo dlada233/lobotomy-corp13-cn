@@ -1,6 +1,6 @@
 /obj/item/paper_bin
-	name = "paper bin"
-	desc = "Contains all the paper you'll never need."
+	name = "取纸盒"
+	desc = "里面装着你这辈子都用不上的纸。"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	inhand_icon_state = "sheet-metal"
@@ -142,8 +142,8 @@
 	papertype = /obj/item/paper/construction
 
 /obj/item/paper_bin/bundlenatural
-	name = "natural paper bundle"
-	desc = "A bundle of paper created using traditional methods."
+	name = "原色纸束"
+	desc = "用传统工艺制成的一束纸。"
 	icon_state = "paper_bundle"
 	papertype = /obj/item/paper/natural
 	resistance_flags = FLAMMABLE
@@ -175,7 +175,7 @@
 		..()
 
 /obj/item/paper_bin/carbon
-	name = "carbon paper bin"
-	desc = "Contains all the paper you'll ever need, in duplicate!"
+	name = "复写纸盒"
+	desc = "这里有你要用的全部纸张，一式两份！"
 	icon_state = "paper_bin_carbon"
 	papertype = /obj/item/paper/carbon

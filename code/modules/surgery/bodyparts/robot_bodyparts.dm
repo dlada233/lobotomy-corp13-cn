@@ -31,8 +31,8 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
 /obj/item/bodypart/r_arm/robot
-	name = "cyborg right arm"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	name = "机械右臂"
+	desc = "骨架上包覆着人造肌肉，外壳导电性较低。"
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
 	inhand_icon_state = "buildpipe"

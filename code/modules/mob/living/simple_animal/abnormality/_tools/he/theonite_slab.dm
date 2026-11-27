@@ -1,15 +1,15 @@
 #define STATUS_EFFECT_SLAB /datum/status_effect/stacking/slab
 /obj/structure/toolabnormality/attribute_giver/theonite_slab
-	name = "theonite slab"
-	desc = "A slab, made out of a seamless mixture of stone and metal. It's covered in runes, and bloody spikes erupt from the centerpiece."
+	name = "忒那石方碑"
+	desc = "一块石头与金属浑然一体的方碑。碑面刻满符文，中央刺出几根带血的尖刺。"
 	icon_state = "slab"
 	var/list/users = list()
 
 	max_boost = 50
 	given_attribute = JUSTICE_ATTRIBUTE
 	given_status_effect = STATUS_EFFECT_SLAB
-	feedback_message = "You caress the slab, and blood painlessly flows from your fingers. The runes begin to glow."
-	full_boost_message = "That's enough."
+	feedback_message = "你轻抚方碑，鲜血从指尖流出，却感觉不到疼痛。碑上的符文亮了起来。"
+	full_boost_message = "够了。"
 
 	ego_list = list(
 		/datum/ego_datum/weapon/divinity,
@@ -85,7 +85,7 @@
 //Clone object
 /obj/effect/temp_visual/theonite_clone
 	name = "???"
-	desc = "A shadowy figure"
+	desc = "一个模糊的黑影。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "alriune_unused"
 	duration = 40

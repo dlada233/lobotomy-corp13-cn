@@ -14,7 +14,7 @@
 
 /// Status display which can show images and scrolling text.
 /obj/machinery/status_display
-	name = "status display"
+	name = "状态显示屏"
 	desc = null
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"

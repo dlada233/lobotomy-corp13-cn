@@ -268,8 +268,8 @@
 	reagents.add_reagent(syrups, 25)
 
 /obj/item/reagent_containers/glass/beaker/large
-	name = "large beaker"
-	desc = "A large beaker. Can hold up to 100 units."
+	name = "大烧杯"
+	desc = "一只大烧杯，最多可盛 100 单位。"
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass=2500)
 	volume = 100
@@ -346,8 +346,8 @@
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
 
 /obj/item/reagent_containers/glass/bucket
-	name = "bucket"
-	desc = "It's a bucket."
+	name = "水桶"
+	desc = "一个水桶。"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"

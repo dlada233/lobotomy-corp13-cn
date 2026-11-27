@@ -1,6 +1,6 @@
 /obj/item/encryptionkey
 	name = "standard encryption key"
-	desc = "An encryption key for a radio headset."
+	desc = "无线电耳机使用的加密密钥。"
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "cypherkey"
 	w_class = WEIGHT_CLASS_TINY
@@ -35,27 +35,27 @@
 	translate_binary = TRUE
 
 /obj/item/encryptionkey/headset_control
-	name = "control radio encryption key"
+	name = "控制部无线电密钥"
 	icon_state = "cargo_cypherkey"
 	channels = list(RADIO_CHANNEL_CONTROL = 1)
 
 /obj/item/encryptionkey/headset_information
-	name = "information radio encryption key"
+	name = "情报部无线电密钥"
 	icon_state = "sci_cypherkey"
 	channels = list(RADIO_CHANNEL_INFORMATION = 1)
 
 /obj/item/encryptionkey/headset_safety
-	name = "safety radio encryption key"
+	name = "安保部无线电密钥"
 	icon_state = "bin_cypherkey"
 	channels = list(RADIO_CHANNEL_SAFETY = 1)
 
 /obj/item/encryptionkey/headset_training
-	name = "training radio encryption key"
+	name = "培训部无线电密钥"
 	icon_state = "rob_cypherkey"
 	channels = list(RADIO_CHANNEL_TRAINING = 1)
 
 /obj/item/encryptionkey/headset_command
-	name = "command radio encryption key"
+	name = "中央本部无线电密钥"
 	icon_state = "ce_cypherkey"
 	channels = list(RADIO_CHANNEL_COMMAND = 1)
 

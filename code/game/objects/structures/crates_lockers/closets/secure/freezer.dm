@@ -76,7 +76,7 @@
 		new /obj/item/reagent_containers/food/drinks/beer/light(src)
 
 /obj/structure/closet/secure_closet/freezer/fridge
-	name = "refrigerator"
+	name = "冰箱"
 	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/fridge/PopulateContents()

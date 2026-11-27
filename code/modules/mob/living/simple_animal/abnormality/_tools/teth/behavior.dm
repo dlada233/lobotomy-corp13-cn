@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_BEHAVIOR /datum/status_effect/display/behavior
 /obj/structure/toolabnormality/behavior
-	name = "behavior adjustment"
-	desc = "A floating disk."
+	name = "行为矫正仪"
+	desc = "一个悬浮在空中的圆盘。"
 	icon_state = "behavior"
 	var/list/active_users = list()
 
@@ -17,11 +17,11 @@
 	if(user in active_users)
 		active_users -= user
 		user.remove_status_effect(STATUS_EFFECT_BEHAVIOR)
-		to_chat(user, span_userdanger("You feel your intellect returning."))
+		to_chat(user, span_userdanger("你感觉自己的头脑又清醒了。"))
 	else
 		active_users += user
 		user.apply_status_effect(STATUS_EFFECT_BEHAVIOR)
-		to_chat(user, span_userdanger("You feel as though you've been adjusted to become righteous."))
+		to_chat(user, span_userdanger("你感觉自己像是被矫正过，心中充满了正义感。"))
 
 // Status Effect
 /datum/status_effect/display/behavior
@@ -56,7 +56,7 @@
 	H.emote("laugh")
 	var/obj/item/organ/eyes/O = H.getorgan(/obj/item/organ/eyes)
 	if(istype(O))
-		H.visible_message(span_danger("[H] tears [H.p_their(FALSE)] eyes out!"))
+		H.visible_message(span_danger("[H]挖出了自己的双眼！"))
 		playsound(get_turf(H), 'sound/abnormalities/behavior/eyes_out.ogg', 35, TRUE)
 		O.Remove(H)
 		O.forceMove(get_turf(H))

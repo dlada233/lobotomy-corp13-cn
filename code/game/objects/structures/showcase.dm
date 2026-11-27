@@ -3,10 +3,10 @@
 
 /*Completely generic structures for use by mappers to create fake objects, i.e. display rooms*/
 /obj/structure/showcase
-	name = "showcase"
+	name = "展示台"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "showcase_1"
-	desc = "A stand with the empty body of a cyborg bolted to it."
+	desc = "支架上用螺栓固定着一具空的改造人机体。"
 	density = TRUE
 	anchored = TRUE
 	var/deconstruction_state = SHOWCASE_CONSTRUCTED

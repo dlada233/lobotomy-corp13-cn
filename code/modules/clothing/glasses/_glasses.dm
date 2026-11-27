@@ -135,8 +135,8 @@
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/science
-	name = "science goggles"
-	desc = "A pair of snazzy goggles used to protect against chemical spills. Fitted with an analyzer for scanning items and reagents."
+	name = "科研护目镜"
+	desc = "一副时髦的护目镜，可以防止化学品溅入眼睛。内置分析仪，可扫描物品和试剂。"
 	icon_state = "purple"
 	inhand_icon_state = "glasses"
 	clothing_flags = SCAN_REAGENTS //You can see reagents while wearing science goggles

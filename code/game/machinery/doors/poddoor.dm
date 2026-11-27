@@ -1,6 +1,6 @@
 /obj/machinery/door/poddoor
-	name = "blast door"
-	desc = "A heavy duty blast door that opens mechanically."
+	name = "防爆门"
+	desc = "一扇由机械驱动的重型防爆门。"
 	icon = 'icons/obj/doors/blastdoor.dmi'
 	icon_state = "closed"
 	var/id = 1

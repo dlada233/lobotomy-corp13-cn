@@ -44,7 +44,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
  */
 /obj/machinery/vending
 	name = "\improper Vendomat"
-	desc = "A generic vending machine."
+	desc = "一台普通的自动售货机。"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
 	layer = BELOW_OBJ_LAYER
@@ -1180,7 +1180,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return ..()
 
 /obj/machinery/vending/custom/unbreakable
-	name = "Indestructible Vendor"
+	name = "不可破坏的自助售货机"
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/item/vending_refill/custom

@@ -1,6 +1,6 @@
 /obj/machinery/computer/secure_data//TODO:SANITY
-	name = "security records console"
-	desc = "Used to view and edit personnel's security records."
+	name = "安保档案终端"
+	desc = "用于查阅和编辑人员的安保档案。"
 	icon_screen = "security"
 	icon_keyboard = "security_key"
 	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)

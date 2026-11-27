@@ -62,7 +62,7 @@
 
 
 /obj/machinery/hydroponics/constructable
-	name = "hydroponics tray"
+	name = "可组装水培槽"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "hydrotray3"
 

@@ -157,8 +157,8 @@
 
 
 /obj/structure/reagent_dispensers/water_cooler
-	name = "liquid cooler"
-	desc = "A machine that dispenses liquid to drink."
+	name = "饮水机"
+	desc = "一台供应饮用液体的机器。"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	anchored = TRUE

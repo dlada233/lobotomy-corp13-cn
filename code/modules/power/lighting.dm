@@ -210,12 +210,12 @@
 
 // the standard tube light fixture
 /obj/machinery/light
-	name = "light fixture"
+	name = "灯具"
 	icon = 'icons/obj/lighting.dmi'
 	var/overlayicon = 'icons/obj/lighting_overlay.dmi'
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube"
-	desc = "A lighting fixture."
+	desc = "一盏灯。"
 	layer = WALL_OBJ_LAYER
 	max_integrity = 100
 	use_power = ACTIVE_POWER_USE
@@ -312,7 +312,7 @@
 	brightness = 4
 	nightshift_brightness = 4
 	bulb_colour = "#FFD6AA"
-	desc = "A small lighting fixture."
+	desc = "一盏小灯。"
 	light_type = /obj/item/light/bulb
 
 /obj/machinery/light/small/broken

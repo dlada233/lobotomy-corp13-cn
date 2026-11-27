@@ -51,7 +51,7 @@
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/circuit/telecomms/mainframe
-	name = "mainframe base"
+	name = "通信主机基座地板"
 
 /turf/open/floor/circuit/telecomms/server
 	name = "server base"
@@ -116,7 +116,7 @@
 
 
 /turf/open/floor/noslip
-	name = "high-traction floor"
+	name = "防滑地板"
 	icon_state = "noslip"
 	floor_tile = /obj/item/stack/tile/noslip
 	slowdown = -0.3

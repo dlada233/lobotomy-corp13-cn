@@ -13,8 +13,8 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list( //Blacklisted for s
 	/obj/item/his_grace)))
 
 /obj/machinery/deepfryer
-	name = "deep fryer"
-	desc = "Deep fried <i>everything</i>."
+	name = "油炸锅"
+	desc = "<i>万物</i>皆可油炸。"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "fryer_off"
 	density = TRUE

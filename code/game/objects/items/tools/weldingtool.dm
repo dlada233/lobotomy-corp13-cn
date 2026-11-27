@@ -350,8 +350,8 @@
 	custom_materials = list(/datum/material/iron=70, /datum/material/glass=120)
 
 /obj/item/weldingtool/experimental
-	name = "experimental welding tool"
-	desc = "An experimental welder capable of self-fuel generation and less harmful to the eyes."
+	name = "实验型焊接器"
+	desc = "能自行生成燃料的实验型焊接器，对眼睛的伤害也较小。"
 	icon_state = "exwelder"
 	inhand_icon_state = "exwelder"
 	max_fuel = 40

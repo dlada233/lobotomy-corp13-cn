@@ -28,7 +28,7 @@
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/cleanbot
-	name = "Cleanbot"
+	name = "清洁机器人"
 	result = /mob/living/simple_animal/bot/cleanbot
 	reqs = list(/obj/item/reagent_containers/glass/bucket = 1,
 				/obj/item/assembly/prox_sensor = 1,

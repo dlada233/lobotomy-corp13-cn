@@ -6,8 +6,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_map"
-	name = "conveyor belt"
-	desc = "A conveyor belt."
+	name = "传送带"
+	desc = "一条传送带。"
 	layer = BELOW_OPEN_DOOR_LAYER
 	processing_flags = START_PROCESSING_MANUALLY
 	subsystem_type = /datum/controller/subsystem/processing/fastprocess
@@ -242,7 +242,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 //
 
 /obj/machinery/conveyor_switch
-	name = "conveyor switch"
+	name = "传送带开关"
 	desc = "A conveyor control switch."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "switch-off"
@@ -372,7 +372,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/machinery/conveyor_switch/oneway
 	icon_state = "conveyor_switch_oneway"
-	desc = "A conveyor control switch. It appears to only go in one direction."
+	desc = "传送带的控制开关，看起来只能朝一个方向运行。"
 	oneway = TRUE
 
 /obj/machinery/conveyor_switch/oneway/Initialize()

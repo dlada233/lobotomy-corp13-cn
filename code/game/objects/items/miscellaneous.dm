@@ -65,8 +65,8 @@
 	new /obj/effect/pod_landingzone(get_turf(src), pod)
 
 /obj/item/choice_beacon/ingredient
-	name = "ingredient delivery beacon"
-	desc = "Summon a box of ingredients to help you get started cooking."
+	name = "食材配送信标"
+	desc = "呼叫一箱食材，好让你动手下厨。"
 	icon_state = "gangtool-white"
 	beacon_msg = "<span class='hear'>You hear something crackle from the beacon for a moment before a voice speaks. \"Please stand by for a message from Sophronia Broadcasting. Message as follows: <b>Please enjoy your Sophronia Broadcasting's 'Plasteel Chef' Ingredients Box, exactly as shown in the hit show!</b> Message ends.\"</span>"
 

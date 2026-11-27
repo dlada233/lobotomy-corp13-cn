@@ -1,6 +1,6 @@
 /obj/machinery/computer/ego_purchase
-	name = "abnormality EGO purchase console"
-	desc = "Used to purchase EGO equipment."
+	name = "E.G.O 购买终端"
+	desc = "用于购买 E.G.O 装备。"
 	icon_screen = "extraction_ego"
 	resistance_flags = INDESTRUCTIBLE
 	/// Currently selected(shown) level of abnormalities whose EGO will be on the interface
@@ -126,8 +126,8 @@
 
 //This exists for flavor. It was asked of me.
 /obj/structure/extraction_belt
-	name = "Agent EGO extraction arrival"
-	desc = "If an agent or non-extraction officer orders EGO, it will arrive via this output."
+	name = "员工 E.G.O 提取交付口"
+	desc = "员工或研发部以外的职员订购的 E.G.O 会从这里送出。"
 	resistance_flags = INDESTRUCTIBLE
 	icon = 'ModularTegustation/Teguicons/refiner.dmi'
 	icon_state = "extraction_belt"

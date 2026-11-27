@@ -38,8 +38,8 @@
 
 // Original icon ported from Eris(?) and updated to work here.
 /obj/structure/chair/sofa/corp
-	name = "sofa"
-	desc = "Soft and cushy."
+	name = "沙发"
+	desc = "柔软，富有弹性。"
 	icon_state = "corp_sofamiddle"
 
 /obj/structure/chair/sofa/corp/left

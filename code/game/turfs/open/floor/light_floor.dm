@@ -28,7 +28,7 @@
 
 /turf/open/floor/light/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
+	. += "<span class='notice'>边缘有一道<b>细缝</b>。</span>"
 	. += "<span class='notice'>Use a multitool on it to change colors.</span>"
 	. += "<span class='notice'>Use a screwdriver to turn it off or on.</span>"
 	if(state) ///check if broken

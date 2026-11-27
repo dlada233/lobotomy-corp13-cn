@@ -317,7 +317,7 @@
 
 /obj/item/card/id/get_examine_string(mob/user, thats = FALSE)
 	if(uses_overlays)
-		return "[icon2html(get_cached_flat_icon(), user)] [thats? "That's ":""][get_examine_name(user)]" //displays all overlays in chat
+		return "[icon2html(get_cached_flat_icon(), user)] [thats ? "这是" : ""][get_examine_name(user)]" //displays all overlays in chat
 	return ..()
 
 /*

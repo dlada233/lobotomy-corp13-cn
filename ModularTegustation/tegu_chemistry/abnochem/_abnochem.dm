@@ -119,8 +119,8 @@
 			to_chat(usr, reportLine)
 
 /obj/structure/closet/crate/science/abnochem_startercrate
-	name = "Abnormality chemistry crate"
-	desc = "A crate containing abnormality chemistry materials."
+	name = "异想体化学用品起始箱"
+	desc = "装有异想体化学材料的箱子。"
 
 /obj/structure/closet/crate/science/abnochem_startercrate/PopulateContents()
 	new /obj/item/enkephalin_scanner(src)

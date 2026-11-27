@@ -1,6 +1,6 @@
 /obj/machinery/text_adventure_console
-	name = "adventure console"
-	desc = "This computer has a program on it that can decrypt abnormality data."
+	name = "文字冒险终端"
+	desc = "这台电脑装有能解密异想体数据的程序。"
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "nanite_program_hub"
 	//Feels weird to make it indestructable but it is a unique machine. Also if the machine is destroyed the adventure datum would continue to exist. -IP

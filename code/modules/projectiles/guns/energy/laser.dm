@@ -10,8 +10,8 @@
 	shaded_charge = 1
 
 /obj/item/gun/energy/laser/practice
-	name = "practice laser gun"
-	desc = "A modified version of the basic laser gun, this one fires less concentrated energy bolts designed for target practice."
+	name = "训练用激光枪"
+	desc = "在基础激光枪上改装而来，发射能量较为分散的光束，供打靶练习。"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/practice)
 	clumsy_check = FALSE
 	item_flags = NONE

@@ -1,6 +1,6 @@
 /obj/item/target
-	name = "shooting target"
-	desc = "A shooting target."
+	name = "射击靶"
+	desc = "一张射击靶。"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_h"
 	density = FALSE
@@ -27,7 +27,7 @@
 
 /obj/item/target/alien
 	icon_state = "target_q"
-	desc = "A shooting target that looks like a xenomorphic alien."
+	desc = "一张画着异形的射击靶。"
 	hp = 2350
 
 /obj/item/target/alien/anchored
@@ -35,7 +35,7 @@
 
 /obj/item/target/clown
 	icon_state = "target_c"
-	desc = "A shooting target that looks like a useless clown."
+	desc = "一张画着没用的小丑的射击靶。"
 	hp = 2000
 
 #define DECALTYPE_SCORCH 1

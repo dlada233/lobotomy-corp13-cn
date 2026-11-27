@@ -76,8 +76,8 @@
 // The message server itself.
 /obj/machinery/telecomms/message_server
 	icon_state = "message_server"
-	name = "Messaging Server"
-	desc = "A machine that processes and routes PDA and request console messages."
+	name = "消息服务器"
+	desc = "用于处理和转发 PDA 消息及请求终端通信的机器。"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10

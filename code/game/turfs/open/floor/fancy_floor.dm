@@ -8,7 +8,7 @@
  */
 
 /turf/open/floor/wood
-	desc = "Stylish dark wood."
+	desc = "时髦的深色木地板。"
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	footstep = FOOTSTEP_WOOD
@@ -22,7 +22,7 @@
 
 /turf/open/floor/wood/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a few <b>screws</b> and a <b>small crack</b> visible.")
+	. += span_notice("可以看到几颗<b>螺丝</b>和一道<b>细缝</b>。")
 
 /turf/open/floor/wood/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
@@ -182,8 +182,8 @@
 		set_basalt_light(src)
 
 /turf/open/floor/carpet
-	name = "carpet"
-	desc = "Soft velvet carpeting. Feels good between your toes."
+	name = "地毯"
+	desc = "柔软的天鹅绒地毯，光脚踩上去，脚趾间很舒服。"
 	icon = 'icons/turf/floors/carpet.dmi'
 	icon_state = "carpet-255"
 	base_icon_state = "carpet"
@@ -204,7 +204,7 @@
 
 /turf/open/floor/carpet/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("边缘有一道<b>细缝</b>。")
 
 /turf/open/floor/carpet/Initialize()
 	. = ..()

@@ -1,6 +1,6 @@
 /obj/structure/refinery
-	name = "PE Refinery"
-	desc = "A machine used to refine PE."
+	name = "PE 精炼机"
+	desc = "用于精炼 PE 的机器。"
 	icon = 'ModularTegustation/Teguicons/refiner.dmi'
 	icon_state = "machine"
 	anchored = TRUE

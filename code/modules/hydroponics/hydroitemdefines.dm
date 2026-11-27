@@ -1,8 +1,8 @@
 
 // Plant analyzer
 /obj/item/plant_analyzer
-	name = "plant analyzer"
-	desc = "A scanner used to evaluate a plant's various areas of growth, and genetic traits."
+	name = "植物分析仪"
+	desc = "用于评估植物各方面生长情况及遗传性状的扫描仪。"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hydro"
 	inhand_icon_state = "analyzer"
@@ -69,8 +69,8 @@
 	return (TOXLOSS)
 
 /obj/item/cultivator
-	name = "cultivator"
-	desc = "It's used for removing weeds or scratching your back."
+	name = "松土耙"
+	desc = "可以用来除草，也可以拿来挠背。"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "cultivator"
 	inhand_icon_state = "cultivator"
@@ -113,8 +113,8 @@
 						  "<span class='userdanger'>You step on [src] causing the handle to hit you right in the face!</span>")
 
 /obj/item/hatchet
-	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	name = "手斧"
+	desc = "锋利的斧刃配上一截短短的纤维金属柄。这种斧头砍过不少东西，如今用来劈柴。"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "hatchet"
 	inhand_icon_state = "hatchet"

@@ -1,6 +1,6 @@
 /obj/structure/toilet
-	name = "toilet"
-	desc = "If it could flush away all your mistakes, you wouldn't be here."
+	name = "马桶"
+	desc = "要是它能把你犯过的错全冲走，你也不会在这里了。"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet00"
 	density = FALSE
@@ -246,10 +246,10 @@
 	worn_icon_state = "duck"
 
 /obj/structure/sink
-	name = "sink"
+	name = "洗手池"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face. Passively reclaims water over time."
+	desc = "可以洗手洗脸的水池，会逐渐回收用水。"
 	anchored = TRUE
 	///Something's being washed at the moment
 	var/busy = FALSE
@@ -435,7 +435,7 @@
 		START_PROCESSING(SSfluids, src)
 
 /obj/structure/sink/kitchen
-	name = "kitchen sink"
+	name = "厨房水槽"
 	icon_state = "sink_alt"
 
 /obj/structure/sink/greyscale
@@ -620,8 +620,8 @@
 //Defines used are pre-existing in layers.dm//
 
 /obj/structure/curtain
-	name = "curtain"
-	desc = "Contains less than 1% mercury."
+	name = "帘子"
+	desc = "汞含量低于 1%。"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "bathroom-open"
 	var/icon_type = "bathroom"//used in making the icon state

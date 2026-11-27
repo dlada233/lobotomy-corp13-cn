@@ -7,8 +7,8 @@
 #define CONE_CHOC 7
 
 /obj/machinery/icecream_vat
-	name = "ice cream vat"
-	desc = "Ding-aling ding dong. Get your Nanotrasen-approved ice cream!"
+	name = "冰淇淋机"
+	desc = "叮叮当当！快来买纳诺特拉森认证的冰淇淋！"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "icecream_vat"
 	density = TRUE

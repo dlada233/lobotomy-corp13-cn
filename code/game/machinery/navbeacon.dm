@@ -5,8 +5,8 @@
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "navbeacon0-f"
-	name = "navigation beacon"
-	desc = "A radio beacon used for bot navigation and crew wayfinding."
+	name = "导航信标"
+	desc = "为机器人导航，也为人员指路的无线电信标。"
 	layer = LOW_OBJ_LAYER
 	max_integrity = 500
 	armor = list(MELEE = 70, BULLET = 70, LASER = 70, ENERGY = 70, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 80)

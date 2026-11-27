@@ -4,8 +4,8 @@
 ///////////
 
 /obj/structure/easel
-	name = "easel"
-	desc = "Only for the finest of art!"
+	name = "画架"
+	desc = "只配得上最好的艺术品！"
 	icon = 'icons/obj/artstuff.dmi'
 	icon_state = "easel"
 	density = TRUE
@@ -36,8 +36,8 @@
 		painting = null
 
 /obj/item/canvas
-	name = "canvas"
-	desc = "Draw out your soul on this canvas!"
+	name = "画布"
+	desc = "把你的灵魂画在这块画布上！"
 	icon = 'icons/obj/artstuff.dmi'
 	icon_state = "11x11"
 	flags_1 = UNPAINTABLE_1
@@ -399,8 +399,8 @@
 
 //Presets for art gallery mapping, for paintings to be shared across stations
 /obj/structure/sign/painting/library
-	name = "\improper Public Painting Exhibit mounting"
-	desc = "For art pieces hung by the public."
+	name = "\improper 图书馆画作展架"
+	desc = "供公众悬挂作品的展架。"
 	desc_with_canvas = "A piece of art (or \"art\"). Anyone could've hung it."
 	persistence_id = "library"
 

@@ -11,8 +11,8 @@
  * Pens
  */
 /obj/item/pen
-	desc = "It's a normal black ink pen."
-	name = "pen"
+	desc = "一支普通的黑色墨水笔。"
+	name = "钢笔"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	inhand_icon_state = "pen"

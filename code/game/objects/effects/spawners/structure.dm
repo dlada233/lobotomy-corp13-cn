@@ -82,7 +82,7 @@ again.
 //reinforced
 
 /obj/effect/spawner/structure/window/reinforced
-	name = "reinforced window spawner"
+	name = "强化窗生成点"
 	icon_state = "rwindow_spawner"
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
 
@@ -159,7 +159,7 @@ again.
 //plastitanium window
 
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium
-	name = "plastitanium window spawner"
+	name = "塑钛合金窗生成点"
 	icon_state = "plastitaniumwindow_spawner"
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/plasma/reinforced/plastitanium)
 

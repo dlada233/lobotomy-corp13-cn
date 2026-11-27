@@ -2,8 +2,8 @@
 #define BROOM_PUSH_LIMIT 20
 
 /obj/item/pushbroom
-	name = "push broom"
-	desc = "This is my BROOMSTICK! It can be used manually or braced with two hands to sweep items as you move. It has a telescopic handle for compact storage."
+	name = "长柄推帚"
+	desc = "这才是我的扫帚！可以手动扫，也可以双手握紧，一边走一边把东西扫开。手柄可伸缩，便于收纳。"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "broom0"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'

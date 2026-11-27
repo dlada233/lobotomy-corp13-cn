@@ -3,7 +3,7 @@
 // consoles and laptops use "procssor" item that is held inside machinery piece
 /obj/item/modular_computer
 	name = "modular microcomputer"
-	desc = "A small portable microcomputer."
+	desc = "一台小型便携式微型电脑。"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "laptop-open"
 	light_on = FALSE

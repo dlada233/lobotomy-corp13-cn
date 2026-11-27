@@ -41,8 +41,8 @@
 
 
 /obj/item/crowbar/large
-	name = "crowbar"
-	desc = "It's a big crowbar. It doesn't fit in your pockets, because it's big."
+	name = "大撬棍"
+	desc = "这根撬棍很大。就是因为太大了，你的口袋才装不下。"
 	force = 2
 	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 3

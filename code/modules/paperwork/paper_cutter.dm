@@ -1,6 +1,6 @@
 /obj/item/papercutter
-	name = "paper cutter"
-	desc = "Standard office equipment. Precisely cuts paper using a large blade."
+	name = "裁纸刀"
+	desc = "标准办公用品，配有大刀片，可精确裁纸。"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "papercutter"
 	force = 2

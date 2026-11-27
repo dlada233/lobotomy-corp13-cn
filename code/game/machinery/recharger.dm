@@ -1,8 +1,8 @@
 /obj/machinery/recharger
-	name = "recharger"
+	name = "充电器"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger"
-	desc = "A charging dock for energy based weaponry."
+	desc = "为能量武器充电的底座。"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
 	active_power_usage = 250

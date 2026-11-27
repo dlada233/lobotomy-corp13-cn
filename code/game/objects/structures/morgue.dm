@@ -210,8 +210,8 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
  */
 GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/bodycontainer/crematorium
-	name = "crematorium"
-	desc = "A human incinerator. Works well on barbecue nights."
+	name = "火化炉"
+	desc = "一座人体焚化炉。办烧烤之夜也挺好用。"
 	icon_state = "crema1"
 	dir = SOUTH
 	var/id = 1
@@ -305,8 +305,8 @@ GLOBAL_LIST_EMPTY(crematoriums)
  */
 
 /obj/structure/bodycontainer/extraction
-	name = "extraction slab"
-	desc = "A container for corpses provided by the Extraction Department."
+	name = "提取台"
+	desc = "研发部提供的遗体存放容器。"
 	icon_state = "extra1"
 	dir = EAST
 

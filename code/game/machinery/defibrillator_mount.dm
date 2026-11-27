@@ -2,8 +2,8 @@
 //You can activate the mount with an empty hand to grab the paddles
 //Not being adjacent will cause the paddles to snap back
 /obj/machinery/defibrillator_mount
-	name = "defibrillator mount"
-	desc = "Holds defibrillators. You can grab the paddles if one is mounted."
+	name = "除颤器壁挂架"
+	desc = "用于悬挂除颤器。装有除颤器时，可以直接拿起电极板。"
 	icon = 'icons/obj/machines/defib_mount.dmi'
 	icon_state = "defibrillator_mount"
 	density = FALSE

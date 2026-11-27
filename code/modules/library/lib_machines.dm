@@ -15,12 +15,12 @@
  * Library Public Computer
  */
 /obj/machinery/computer/libraryconsole
-	name = "library visitor console"
+	name = "图书馆访客终端"
 	icon_state = "oldcomp"
 	icon_screen = "library"
 	icon_keyboard = "no_keyboard"
 	circuit = /obj/item/circuitboard/computer/libraryconsole
-	desc = "Checked out books MUST be returned on time."
+	desc = "借出的图书务必按时归还。"
 	var/screenstate = 0
 	var/title
 	var/category = "Any"
@@ -512,10 +512,10 @@
  * Library Scanner
  */
 /obj/machinery/libraryscanner
-	name = "scanner control interface"
+	name = "图书馆扫描台"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
-	desc = "It servers the purpose of scanning stuff."
+	desc = "用来扫东西的扫描台。"
 	density = TRUE
 	var/obj/item/book/cache		// Last scanned book
 
@@ -569,10 +569,10 @@
  * Book binder
  */
 /obj/machinery/bookbinder
-	name = "book binder"
+	name = "装订机"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "binder"
-	desc = "Only intended for binding paper products."
+	desc = "仅用于装订纸制品。"
 	density = TRUE
 	var/busy = FALSE
 

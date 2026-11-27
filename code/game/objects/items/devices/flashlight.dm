@@ -213,8 +213,8 @@
 
 
 /obj/item/flashlight/seclite
-	name = "seclite"
-	desc = "A robust flashlight used by security."
+	name = "安保手电筒"
+	desc = "安保人员使用的结实手电筒。"
 	icon_state = "seclite"
 	inhand_icon_state = "seclite"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -225,7 +225,7 @@
 
 // the desk lamps are a bit special
 /obj/item/flashlight/lamp
-	name = "desk lamp"
+	name = "台灯"
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
 	inhand_icon_state = "lamp"
@@ -242,7 +242,7 @@
 
 // green-shaded desk lamp
 /obj/item/flashlight/lamp/green
-	desc = "A classic green-shaded desk lamp."
+	desc = "一盏经典的绿罩台灯。"
 	icon_state = "lampgreen"
 	inhand_icon_state = "lampgreen"
 

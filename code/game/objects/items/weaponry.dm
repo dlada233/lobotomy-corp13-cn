@@ -535,8 +535,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		part.drop_limb()
 
 /obj/item/statuebust
-	name = "bust"
-	desc = "A priceless ancient marble bust, the kind that belongs in a museum." //or you can hit people with it
+	name = "大理石半身像"
+	desc = "一尊无价的古代大理石半身像，理应陈列在博物馆里。" //or you can hit people with it
 	icon = 'icons/obj/statue.dmi'
 	icon_state = "bust"
 	force = 4

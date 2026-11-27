@@ -3,15 +3,15 @@
 /obj/item/reagent_containers/hypospray/medipen/safety/kcorp
 	name = "治疗安瓿"
 	icon_state = "ampoule_kcorp"
-	desc = "由K公司研发的一种药物，快速回复HP."
-	special = "可治愈全身，包括器官在内的大量物理伤害，同时能修复少量烧伤伤害，过量使用将导致轻微毒素损伤."
+	desc = "K 公司研发的药物，可快速恢复生命值。"
+	special = "可治疗全身及器官受到的大量物理伤害，也能治疗少量烧伤。过量使用会造成轻微毒素伤害。"
 	list_reagents = list(/datum/reagent/medicine/helapoeisis = 5)
 
 /obj/item/reagent_containers/hypospray/medipen/safety/lcorp
 	name = "脑啡肽注射器"
 	icon_state = "ampoule_lcorp"
-	desc = "L公司生产的一种神奇物质，可作为清洁能源使用，尽管有些人已经发现了它的致幻特性."
-	special = "恢复SP理智，过量使用会导致幻觉."
+	desc = "L 公司生产的一种神奇物质，可用作清洁能源。有人发现它还有致幻作用。"
+	special = "恢复理智值，过量使用会导致幻觉。"
 	list_reagents = list(/datum/reagent/medicine/enkephalin = 5)
 
 /obj/item/reagent_containers/hypospray/medipen/safety/rcorp

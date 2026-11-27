@@ -221,12 +221,12 @@
 /obj/structure/statue/bananium
 	max_integrity = 300
 	impressiveness = 50
-	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
+	desc = "一座香蕉矿雕像，底下刻着一行小字：“叭————！”"
 	custom_materials = list(/datum/material/bananium=MINERAL_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/bananium
 
 /obj/structure/statue/bananium/clown
-	name = "statue of a clown"
+	name = "小丑雕像"
 	icon_state = "clown"
 
 /////////////////////sandstone/////////////////////////////////////////

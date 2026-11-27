@@ -1,6 +1,6 @@
 /obj/structure/window
-	name = "window"
-	desc = "A window."
+	name = "窗户"
+	desc = "一扇窗。"
 	icon_state = "window"
 	density = TRUE
 	layer = ABOVE_OBJ_LAYER //Just above doors
@@ -368,8 +368,8 @@
 	anchored = FALSE
 
 /obj/structure/window/reinforced
-	name = "reinforced window"
-	desc = "A window that is reinforced with metal rods."
+	name = "强化窗"
+	desc = "用金属杆加固的窗户。"
 	icon_state = "rwindow"
 	reinf = TRUE
 	heat_resistance = 1600
@@ -709,8 +709,8 @@
 	anchored = FALSE
 
 /obj/structure/window/plasma/reinforced/plastitanium
-	name = "plastitanium window"
-	desc = "A durable looking window made of an alloy of of plasma and titanium."
+	name = "塑钛合金窗"
+	desc = "一扇看起来很结实的窗，由等离子矿与钛的合金制成。"
 	icon = 'icons/obj/smooth_structures/plastitanium_window.dmi'
 	icon_state = "plastitanium_window-0"
 	base_icon_state = "plastitanium_window"

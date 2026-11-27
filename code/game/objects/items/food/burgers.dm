@@ -276,8 +276,8 @@
 	foodtypes = GRAIN | FRUIT
 
 /obj/item/food/burger/superbite
-	name = "super bite burger"
-	desc = "This is a mountain of a burger. FOOD!"
+	name = "超级汉堡"
+	desc = "一个堆得像山一样高的汉堡。开饭啦！"
 	icon_state = "superbiteburger"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 25, /datum/reagent/consumable/nutriment/protein = 40, /datum/reagent/consumable/nutriment/vitamin = 12)
 	w_class = WEIGHT_CLASS_NORMAL

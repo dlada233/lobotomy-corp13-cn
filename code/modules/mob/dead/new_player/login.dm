@@ -40,4 +40,4 @@
 	new_player_panel()
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
+		to_chat(src, "请设置好角色，然后选择“[TeguTranslate("Ready", src)]”。[tl > 0 ? "本轮将在约 [DisplayTimeText(tl, chinese = TRUE)]后开始" : "本轮即将开始"]。")

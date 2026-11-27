@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/abnormality/training_rabbit
-	name = "教学兔兔Dummy"//（c出自脑叶）
-	desc = "像兔子一样的训练假人，应该完全无害."
+	name = "教学兔兔假人"//（c出自脑叶）
+	desc = "兔子模样的训练假人，应该完全无害。"
 	icon = 'ModularTegustation/Teguicons/tegumobs.dmi'
 	icon_state = "training_rabbit"
 	icon_living = "training_rabbit"

@@ -1,7 +1,7 @@
 //Cleanbot
 /mob/living/simple_animal/bot/cleanbot
-	name = "\improper Cleanbot"
-	desc = "A little cleaning robot, he looks so excited!"
+	name = "\improper 清洁机器人"
+	desc = "一台小小的清洁机器人，看起来干劲十足！"
 	icon = 'icons/mob/aibots.dmi'
 	icon_state = "cleanbot0"
 	density = FALSE
@@ -112,7 +112,7 @@
 /mob/living/simple_animal/bot/cleanbot/examine(mob/user)
 	. = ..()
 	if(weapon)
-		. += " <span class='warning'>Is that \a [weapon] taped to it...?</span>"
+		. += " <span class='warning'>它身上用胶带绑着的，是[weapon]吗……？</span>"
 
 		if(ascended && user.stat == CONSCIOUS && user.client)
 			user.client.give_award(/datum/award/achievement/misc/cleanboss, user)

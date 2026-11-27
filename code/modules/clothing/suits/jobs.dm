@@ -4,8 +4,8 @@
 
 //Botanist
 /obj/item/clothing/suit/apron
-	name = "apron"
-	desc = "A basic blue apron."
+	name = "围裙"
+	desc = "一条普通的蓝色围裙。"
 	icon_state = "apron"
 	inhand_icon_state = "apron"
 	blood_overlay_type = "armor"
@@ -46,8 +46,8 @@
 
 //Cook
 /obj/item/clothing/suit/apron/chef
-	name = "cook's apron"
-	desc = "A basic, dull, white chef's apron."
+	name = "厨师围裙"
+	desc = "一条朴素得有些单调的白色厨师围裙。"
 	icon_state = "apronchef"
 	inhand_icon_state = "apronchef"
 	blood_overlay_type = "armor"
@@ -152,8 +152,8 @@
 
 //Surgeon
 /obj/item/clothing/suit/apron/surgical
-	name = "surgical apron"
-	desc = "A sterile blue surgical apron."
+	name = "手术围裙"
+	desc = "一条无菌的蓝色手术围裙。"
 	icon_state = "surgical"
 	allowed = list(/obj/item/scalpel, /obj/item/surgical_drapes, /obj/item/cautery, /obj/item/hemostat, /obj/item/retractor)
 

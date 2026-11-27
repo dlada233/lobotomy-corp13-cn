@@ -35,7 +35,7 @@
 		. = ..()
 
 /obj/item/clothing/suit/armor/vest
-	name = "armor vest"
+	name = "护甲背心"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
 	icon_state = "armoralt"
 	inhand_icon_state = "armoralt"

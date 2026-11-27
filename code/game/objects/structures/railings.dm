@@ -1,6 +1,6 @@
 /obj/structure/railing
-	name = "railing"
-	desc = "Basic railing meant to protect idiots like you from falling."
+	name = "栏杆"
+	desc = "普通栏杆，专门防止像你这样的傻瓜跌下去。"
 	icon = 'icons/obj/fluff.dmi'
 	icon_state = "railing"
 	density = FALSE

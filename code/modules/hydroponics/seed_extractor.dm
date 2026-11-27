@@ -55,8 +55,8 @@
 
 
 /obj/machinery/seed_extractor
-	name = "seed extractor"
-	desc = "Extracts and bags seeds from produce."
+	name = "种子提取器"
+	desc = "从农作物中提取种子并装袋。"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "sextractor"
 	density = TRUE

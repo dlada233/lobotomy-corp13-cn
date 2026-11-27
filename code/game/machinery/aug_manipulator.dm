@@ -1,6 +1,6 @@
 /obj/machinery/aug_manipulator
-	name = "\improper augment manipulator"
-	desc = "A machine for custom fitting augmentations, with in-built spraypainter."
+	name = "\improper 义体改装机"
+	desc = "用于调整义体以适配使用者的机器，内置喷漆装置。"
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdapainter"
 	density = TRUE

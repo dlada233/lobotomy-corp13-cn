@@ -130,13 +130,13 @@
 	density = TRUE
 
 /obj/structure/fluff/divine/nexus
-	name = "nexus"
-	desc = "It anchors a deity to this world. It radiates an unusual aura. It looks well protected from explosive shock."
+	name = "神力枢纽"
+	desc = "它将一位神祇锚定在这个世界上，散发着异样的气息，看起来足以承受爆炸冲击。"
 	icon_state = "nexus"
 
 /obj/structure/fluff/divine/conduit
-	name = "conduit"
-	desc = "It allows a deity to extend their reach.  Their powers are just as potent near a conduit as a nexus."
+	name = "神力导管"
+	desc = "神祇借此扩大影响范围。在导管附近，神力与在枢纽附近同样强大。"
 	icon_state = "conduit"
 
 /obj/structure/fluff/divine/convertaltar
@@ -234,23 +234,23 @@
 	icon_state = "shard_large1"
 
 /obj/structure/fluff/clockwork/blind_eye
-	name = "blind eye"
-	desc = "A heavy brass eye, its red iris fallen dark."
+	name = "盲眼"
+	desc = "一只沉重的黄铜眼睛，红色虹膜已经黯淡。"
 	icon_state = "blind_eye"
 
 /obj/structure/fluff/clockwork/fallen_armor
-	name = "fallen armor"
-	desc = "Lifeless chunks of armor. They're designed in a strange way and won't fit on you."
+	name = "倒下的铠甲"
+	desc = "几块死气沉沉的铠甲碎片，构造奇特，你穿不上。"
 	icon_state = "fallen_armor"
 
 /obj/structure/fluff/clockwork/clockgolem_remains
-	name = "clockwork golem scrap"
-	desc = "A pile of scrap metal. It seems damaged beyond repair."
+	name = "发条魔像残骸"
+	desc = "一堆废金属，看起来已经没法修了。"
 	icon_state = "clockgolem_dead"
 
 /obj/structure/fluff/hedge
-	name = "hedge"
-	desc = "A large bushy hedge."
+	name = "树篱"
+	desc = "一道枝叶茂密的大树篱。"
 	icon = 'icons/obj/smooth_structures/hedge.dmi'
 	icon_state = "hedge-0"
 	base_icon_state = "hedge"

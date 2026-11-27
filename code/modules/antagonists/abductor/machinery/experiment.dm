@@ -1,6 +1,6 @@
 /obj/machinery/abductor/experiment
-	name = "experimentation machine"
-	desc = "A large man-sized tube sporting a complex array of surgical machinery."
+	name = "实验机"
+	desc = "一根足以容纳人体的大管子，上面装着一套复杂的手术器械。"
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "experiment-open"
 	density = FALSE

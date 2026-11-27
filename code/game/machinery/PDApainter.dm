@@ -1,6 +1,6 @@
 /obj/machinery/pdapainter
-	name = "\improper PDA painter"
-	desc = "A PDA painting machine. To use, simply insert your PDA and choose the desired preset paint scheme."
+	name = "\improper PDA 喷漆机"
+	desc = "给 PDA 喷漆的机器。插入 PDA，再选一种预设配色即可。"
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdapainter"
 	density = TRUE

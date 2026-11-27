@@ -190,7 +190,7 @@
 	return TRUE
 
 /obj/docking_port/stationary
-	name = "dock"
+	name = "固定停靠点"
 
 	var/last_dock_time
 

@@ -6,10 +6,10 @@
 
 //Chef
 /obj/item/clothing/head/chefhat
-	name = "chef's hat"
+	name = "厨师帽"
 	inhand_icon_state = "chef"
 	icon_state = "chef"
-	desc = "The commander in chef's head wear."
+	desc = "主厨发号施令时戴的帽子。"
 	strip_delay = 10
 	equip_delay_other = 10
 	dynamic_hair_suffix = ""

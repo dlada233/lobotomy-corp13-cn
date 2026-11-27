@@ -1,6 +1,6 @@
 /obj/machinery/jukebox
-	name = "jukebox"
-	desc = "A classic music player."
+	name = "点唱机"
+	desc = "一台经典的音乐播放器。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "jukebox"
 	verb_say = "states"

@@ -196,11 +196,11 @@
 	- Netzach"}
 
 /obj/item/paper/guides/jobs/zayin/guide/wellcheers
-	name = "F-05-52 Safety Guide"
-	info = {"Instinct work will produce a can of cherry soda that mends physical injury, simply press any button on the machine to dispense it.<br>
-	Insight work will produce a regular can of soda that calms mental distress, you just need wipe down the machine and its front buttons to dispense a can.<br>
+	name = "F-05-52 韦尔奇乐牌汽水安全指南"
+	info = {"本能工作会产出樱桃味汽水，可治疗身体损伤。按下机器上的任意按钮即可出罐。<br>
+	洞察工作会产出原味汽水，可缓解精神创伤。擦净机器和正面的按钮，就能取出一罐。<br>
 	<br>
-	Attachment and repression work both have a chance of dispensing grape that heals both to a lesser degree, so either hug the machine or start kicking the side of it and the can should rattle out. But grape's a dangerous flavor to go for, it'll likely come out open and you'll feel compelled to drink it. You'll be abducted by a third party and be considered dead by the company."}
+	沟通和压迫工作都有机会产出葡萄味汽水，能同时缓解两种损伤，但效果较弱。拥抱机器或踢它的侧面，汽水就会滚出来。不过，想喝葡萄味是件危险的事。出来的很可能是开过的罐子，你会忍不住喝下它。随后你将被第三方劫走，公司会将你视为死亡。"}
 
 ///Zayin Lore Documentation - Written by Guymallory
 
@@ -217,14 +217,14 @@
 	-Hod"}
 
 /obj/item/paper/guides/jobs/zayin/lore/wellcheers
-	name = "F-05-52 Information Attachment"
-	info = {"The Wèllcheers Ocean Soda brand is, to be blunt, nonexistent outside this one vending machine in containment. It dispenses three flavors of ocean soda, coming in regular, cherry and grape free of charge from the drink dock, dispensed as soon as work is done with it.<br>
+	name = "F-05-52 韦尔奇乐牌汽水资料附件"
+	info = {"说白了，除了收容室里的这台售货机，根本找不到“韦尔奇乐牌海洋汽水”这个牌子。每次完成工作，取货口就会免费送出一罐汽水，口味有原味、樱桃味和葡萄味。<br>
 	<br>
-	As long as the work is good or acceptable, the drink will be closed, and safe for consumption, providing benefits to physical or mental health dependent on which flavor was dispensed.<br>
+	只要工作结果为良好或一般，出罐时拉环就会保持完好，可以放心饮用。它能恢复身体或精神状态，具体取决于口味。<br>
 	<br>
-	If the work was bad, an open can will be dispensed and the employee will feel compelled to drink it, as the containment cell fills with ocean water and sounds of the beach. Under observation, humanoid figures dressed in rubber overalls and boots with the heads of prawn can be seen pulling them deeper into the waters before disappearing completely.<br>
+	工作结果差时，机器会送出一罐已经打开的汽水。员工会情不自禁地喝下它，此时海水涌入收容室，耳边传来海滩的声音。观察人员看见，身穿橡胶工装和长靴的虾头人形生物将他们拽入更深的水中，直至彻底消失。<br>
 	<br>
-	Agents in District 24 have witnessed these abductees working on fishing vessels dockside some months after the tests were performed."}
+	测试结束几个月后，24 区的员工曾在码头停泊的渔船上目睹这些失踪人员作业。"}
 
 /////Teth Documentation - Written by Guymallory
 
@@ -247,14 +247,14 @@
 	- Netzach"}
 
 /obj/item/paper/guides/jobs/teth/guide/spiderbud
-	name = "T-02-43 Safety Guide"
-	info = {"Instinct work is the most effective and safe handling of the spider bud possible, toss it some food without stepping on a bug underfoot.<br>
+	name = "T-02-43 蜘蛛巢安全指南"
+	info = {"对蜘蛛巢进行本能工作最安全，也最有效。给它投些食物，小心别踩到脚下的幼蛛。<br>
 	<br>
-	Attachment work is the next most effective routine, just talk kindly to the subject and gently pet the gross little spiders.<br>
+	沟通工作的效果次之。对它温和地说说话，再轻轻摸一摸那些令人起鸡皮疙瘩的小蜘蛛。<br>
 	<br>
-	The least effective work is repression, saying nasty things to the subject and glaring coldly at it. This anomaly does not take well to repression.<br>
+	压迫工作效果最差。你可以恶语相向，冷冷地瞪着它，但这只异想体可受不了压迫。<br>
 	<br>
-	Never attempt insight work with this one. Trying to improve its containment cell will hurt the brood, which will kill you."}
+	绝不要对它进行洞察工作。试图改善收容环境会伤到幼蛛，你会因此丧命。"}
 
 ///Teth Lore Documentation - Written by Guymallory
 
@@ -277,14 +277,14 @@
 	-Hod"}
 
 /obj/item/paper/guides/jobs/teth/lore/spiderbud
-	name = "T-02-43 Information Attachment"
-	info = {"The brood mother was a hard capture, from those dark woods in the outskirts beyond the city.<br>
+	name = "T-02-43 蜘蛛巢资料附件"
+	info = {"我们费了很大力气，才从都市以外郊区的黑暗树林里捕获这只蛛母。<br>
 	<br>
-	She's terrifying to junior agents, those with prudence ratings below forty will panic, and squish one of the offspring in their rush to escape.<br>
+	她让初级员工胆寒。谨慎低于 40 的员工会陷入恐慌，在仓皇逃跑时踩死一只幼蛛。<br>
 	<br>
-	At once, they will be captured and consumed, made into cocooned meals for the remaining spiderlings of the brood.<br>
+	他们会立刻被捕获、裹进蛛茧，成为其余幼蛛的食物。<br>
 	<br>
-	Trying to clean or improve the cell will only infuriate it. Do not attempt insight work on the spider bud."}
+	打扫或改善收容室只会激怒蛛母。切勿对蜘蛛巢进行洞察工作。"}
 
 /////He Documentation - Written by Guymallory
 

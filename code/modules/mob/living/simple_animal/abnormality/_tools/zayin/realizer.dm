@@ -1,6 +1,6 @@
 /obj/structure/toolabnormality/realization
-	name = "realization engine"
-	desc = "An artifact used to find true potential within certains items."
+	name = "实现引擎"
+	desc = "一件能发掘某些物品真正潜能的遗物。"
 	icon = 'ModularTegustation/Teguicons/32x48.dmi'
 	icon_state = "bough_pedestal"
 	var/static/realized_users = list()

@@ -33,7 +33,7 @@
 	SIGNAL_HANDLER
 
 	if(can_climb(source, user))
-		examine_texts += "<span class='notice'>[source] looks climbable</span>"
+		examine_texts += "<span class='notice'>看起来可以爬上[source]。</span>"
 
 /datum/element/climbable/proc/can_climb(atom/source, mob/user)
 	return TRUE

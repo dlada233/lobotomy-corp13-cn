@@ -1,7 +1,7 @@
 #define STATUS_EFFECT_RESEARCHER /datum/status_effect/display/researcher
 /obj/structure/toolabnormality/researcher
-	name = "notes from a crazed researcher"
-	desc = "A simple notepad with incomprehensible writing on its pages."
+	name = "疯狂研究员笔记"
+	desc = "一本普通的记事本，里面的字迹让人读不明白。"
 	icon_state = "notes"
 
 /obj/structure/toolabnormality/researcher/attack_hand(mob/living/carbon/human/user)
@@ -11,14 +11,14 @@
 	var/datum/status_effect/display/researcher/R = user.has_status_effect(/datum/status_effect/display/researcher)
 	if(R)
 		if(R.worked == FALSE)
-			to_chat(user, span_userdanger("Uh Oh."))
+			to_chat(user, span_userdanger("糟了。"))
 			R.Explode(user)
 			return
 		else
 			user.remove_status_effect(STATUS_EFFECT_RESEARCHER)
 	else
 		user.apply_status_effect(STATUS_EFFECT_RESEARCHER)
-		to_chat(user, span_nicegreen("It's time to work on the abnormalities."))
+		to_chat(user, span_nicegreen("该去对异想体开展工作了。"))
 
 // Status Effect
 /datum/status_effect/display/researcher
@@ -51,11 +51,11 @@
 	status_holder.adjust_attribute_buff(TEMPERANCE_ATTRIBUTE, (-20 - stat_bonus))
 	UnregisterSignal(status_holder, COMSIG_MOB_APPLY_DAMGE)
 	UnregisterSignal(status_holder, COMSIG_WORK_COMPLETED)
-	to_chat(status_holder, span_nicegreen("The research notes vanish."))
+	to_chat(status_holder, span_nicegreen("研究笔记消失了。"))
 
 /datum/status_effect/display/researcher/proc/OnWorkComplete(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
-	to_chat(user, span_nicegreen("The research notes have been filled out, it should be safe to return them now."))
+	to_chat(user, span_nicegreen("研究笔记已经写满，现在应该可以放心归还了。"))
 	worked = TRUE
 
 /datum/status_effect/display/researcher/proc/TakeDamage(mob/living/carbon/human/user, damage, damagetype, def_zone)
@@ -67,10 +67,10 @@
 		addtimer(CALLBACK(src, PROC_REF(Explode), owner), 1) //Gives damage procs time to process
 		return
 	if(damage_counter >= (damage_max * 0.8))
-		to_chat(owner, span_hypnophrase("You need to return the research notes immediately!"))
+		to_chat(owner, span_hypnophrase("你必须立刻归还研究笔记！"))
 		return
 	if(damage_counter >= (damage_max * 0.6))
-		to_chat(owner, span_userdanger("You feel like you should avoid taking any more damage!"))
+		to_chat(owner, span_userdanger("你觉得自己不能再受伤了！"))
 
 /datum/status_effect/display/researcher/proc/Explode(mob/living/carbon/human/owner)
 	playsound(get_turf(owner), 'sound/abnormalities/scorchedgirl/explosion.ogg', 125, 0, 8)

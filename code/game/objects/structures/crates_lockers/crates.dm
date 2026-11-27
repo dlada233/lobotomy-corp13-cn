@@ -1,6 +1,6 @@
 /obj/structure/closet/crate
-	name = "crate"
-	desc = "A rectangular steel crate."
+	name = "储物箱"
+	desc = "一个长方形钢箱。"
 	icon = 'icons/obj/crates.dmi'
 	icon_state = "crate"
 	req_access = null
@@ -122,8 +122,8 @@
 	icon_state = "o2crate"
 
 /obj/structure/closet/crate/trashcart //please make this a generic cart path later after things calm down a little
-	desc = "A heavy, metal trashcart with wheels."
-	name = "trash cart"
+	desc = "一辆带轮子的沉重金属垃圾车。"
+	name = "垃圾推车"
 	icon_state = "trashcart"
 
 /obj/structure/closet/crate/trashcart/Moved()
@@ -168,8 +168,8 @@
 
 
 /obj/structure/closet/crate/freezer/blood
-	name = "blood freezer"
-	desc = "A freezer containing packs of blood."
+	name = "血液冷冻箱"
+	desc = "装有血袋的冷冻箱。"
 
 /obj/structure/closet/crate/freezer/blood/PopulateContents()
 	. = ..()
@@ -186,8 +186,8 @@
 		new /obj/item/reagent_containers/blood/random(src)
 
 /obj/structure/closet/crate/freezer/surplus_limbs
-	name = "surplus prosthetic limbs"
-	desc = "A crate containing an assortment of cheap prosthetic limbs."
+	name = "备用义肢箱"
+	desc = "箱里装着各式各样的廉价义肢。"
 
 /obj/structure/closet/crate/freezer/surplus_limbs/PopulateContents()
 	. = ..()

@@ -3,7 +3,7 @@
 	abno_type = /mob/living/simple_animal/hostile/abnormality/training_rabbit
 	abno_code = "O-00-00"
 	abno_info = list(
-		"当队教学兔兔Dummy压迫工作时, 逆卡巴拉计数器降低.")
+		"对教学兔兔假人进行压迫工作时，逆卡巴拉计数器会降低。")
 	abno_breach_damage_type = "None"
 	abno_breach_damage_count = "None"
 

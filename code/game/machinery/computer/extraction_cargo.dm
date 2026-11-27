@@ -7,7 +7,7 @@
 
 /obj/machinery/computer/extraction_cargo
 	name = "公司交易终端"
-	desc = "Used to purchase supplies at the expense of energy."
+	desc = "消耗能源购买物资。"
 	icon_screen = "extraction_cargo"
 	resistance_flags = INDESTRUCTIBLE
 	var/selected_level = CAT_GADGET

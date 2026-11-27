@@ -444,8 +444,8 @@
 	new /obj/item/blood_filter(src)
 
 /obj/item/storage/backpack/duffelbag/med/upgradedsurgery
-	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies - this one seems to hold upgraded surgical tools."
+	name = "手术器械旅行包"
+	desc = "装备用医疗物资的大旅行包，这个包里似乎装着升级过的手术器械。"
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 

@@ -7,7 +7,7 @@
 
 
 /obj/machinery/computer/extraction_cargo/chemistry
-	name = "safety equipment console"
+	name = "安保装备终端"
 	icon_screen = "safety_cargo"
 	order_list = list(
 		//Gadgets - Technical Equipment, active, that helps the chemist do their job

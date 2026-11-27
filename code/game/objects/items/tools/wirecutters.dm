@@ -1,6 +1,6 @@
 /obj/item/wirecutters
-	name = "wirecutters"
-	desc = "This cuts wires."
+	name = "剪线钳"
+	desc = "用来剪断电线。"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters_map"
 	inhand_icon_state = "cutters"

@@ -4,7 +4,7 @@
 	pacifist = FALSE
 
 /obj/structure/window/reinforced/fulltile/indestructable
-	name = "robust window"
+	name = "不可破坏的整格强化窗"
 	flags_1 = PREVENT_CLICK_UNDER_1 | NODECONSTRUCT_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 

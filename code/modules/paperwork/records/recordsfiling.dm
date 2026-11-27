@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(records_cabinets)
 		GLOB.records_cabinets += cabinet // Cabinets in this list are populated at round-start automatically
 
 		cabinet.desired_type = desired_papers[i]
-		cabinet.name = (cabinet_names[i] + " Information")
+		cabinet.name = "[cabinet_names[i] == "Tool" ? "工具型异想体" : cabinet_names[i]] 档案柜"
 		cabinet.myoverlay = (cabinet_names[i] + "_overlay")
 		cabinet.pixel_x = current_location
 		cabinet.update_icon()

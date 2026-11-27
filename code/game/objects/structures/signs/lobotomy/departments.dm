@@ -1,44 +1,44 @@
 /obj/structure/sign/departments/control
-	name = "\improper Control sign"
+	name = "\improper 控制部标牌"
 	sign_change_name = "Department - Control"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Control department. Dull red tones, the smell of blood."
+	desc = "控制部。暗红色调，空气里有股血腥味。"
 	icon_state = "control"
 	is_editable = FALSE
 
 
 /obj/structure/sign/departments/training
-	name = "\improper Training sign"
+	name = "\improper 培训部标牌"
 	sign_change_name = "Department - Training"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Training department. Bright orange, the smell of cooking coming from inside."
+	desc = "培训部。亮橙色，里面飘来饭菜的香味。"
 	icon_state = "training"
 	is_editable = FALSE
 
 
 /obj/structure/sign/departments/info
-	name = "\improper Information sign"
+	name = "\improper 情报部标牌"
 	sign_change_name = "Department - Information"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Information department. Deep Purple, the smell of printed paper inside."
+	desc = "情报部。深紫色，里面飘出刚印好的纸张的气味。"
 	icon_state = "information"
 	is_editable = FALSE
 
 
 /obj/structure/sign/departments/safety
-	name = "\improper Safety sign"
+	name = "\improper 安保部标牌"
 	sign_change_name = "Department - Safety"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Safety department. Green, the smell of rubbing alcohol inside."
+	desc = "安保部。绿色，里面飘出消毒酒精的气味。"
 	icon_state = "safety"
 	is_editable = FALSE
 
 
 /obj/structure/sign/departments/command
-	name = "\improper Command sign"
+	name = "\improper 中央本部标牌"
 	sign_change_name = "Department - Command"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Command department. Gold and blue, a musty smell is coming from inside."
+	desc = "中央本部。金蓝相间，里面飘出一股霉味。"
 	icon_state = "central"
 	is_editable = FALSE
 
@@ -62,19 +62,19 @@
 
 
 /obj/structure/sign/departments/extraction
-	name = "\improper Extraction sign"
+	name = "\improper 研发部标牌"
 	sign_change_name = "Department - Extraction"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Extraction department. A darkened black, you can smell something sweet inside."
+	desc = "研发部。一片漆黑，里面飘出一股甜味。"
 	icon_state = "extraction"
 	is_editable = FALSE
 
 
 /obj/structure/sign/departments/records
-	name = "\improper Records sign"
+	name = "\improper 记录部标牌"
 	sign_change_name = "Department - Records"
 	icon = 'ModularTegustation/Teguicons/lcsigns.dmi'
-	desc = "The Records department. A light grey, you can smell an old library inside."
+	desc = "记录部。浅灰色，里面有老图书馆的气味。"
 	icon_state = "records"
 	is_editable = FALSE
 

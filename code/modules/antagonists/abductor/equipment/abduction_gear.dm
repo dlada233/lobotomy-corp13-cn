@@ -809,8 +809,8 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			qdel(src)
 
 /obj/structure/table/abductor
-	name = "alien table"
-	desc = "Advanced flat surface technology at work!"
+	name = "外星桌"
+	desc = "先进的平面科技正在发挥作用！"
 	icon = 'icons/obj/smooth_structures/alien_table.dmi'
 	icon_state = "alien_table-0"
 	base_icon_state = "alien_table"

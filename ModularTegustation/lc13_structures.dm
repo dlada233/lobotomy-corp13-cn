@@ -130,9 +130,9 @@
  */
 GLOBAL_LIST_EMPTY(map_button_counters)
 /obj/structure/sign/button_counter
-	name = "button counter"
+	name = "按钮事故计日牌"
 	sign_change_name = "Flip Sign- Days since buttoned"
-	desc = "A pair of flip signs describe how long it's been since the last button incident."
+	desc = "两块翻页牌记录着上次按钮事故至今过了多久。"
 	icon_state = "days_since_button"
 	icon = 'ModularTegustation/Teguicons/button_counter.dmi'
 	is_editable = TRUE

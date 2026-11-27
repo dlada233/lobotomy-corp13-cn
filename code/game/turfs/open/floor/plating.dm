@@ -8,7 +8,7 @@
  */
 
 /turf/open/floor/plating
-	name = "plating"
+	name = "裸露底板"
 	icon_state = "plating"
 	base_icon_state = "plating"
 	intact = FALSE

@@ -1,6 +1,6 @@
 /obj/item/folder
-	name = "folder"
-	desc = "A folder."
+	name = "文件夹"
+	desc = "一个文件夹。"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
@@ -12,15 +12,15 @@
 	return OXYLOSS
 
 /obj/item/folder/blue
-	desc = "A blue folder."
+	desc = "一个蓝色文件夹。"
 	icon_state = "folder_blue"
 
 /obj/item/folder/red
-	desc = "A red folder."
+	desc = "一个红色文件夹。"
 	icon_state = "folder_red"
 
 /obj/item/folder/yellow
-	desc = "A yellow folder."
+	desc = "一个黄色文件夹。"
 	icon_state = "folder_yellow"
 
 /obj/item/folder/white

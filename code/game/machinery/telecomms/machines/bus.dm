@@ -9,9 +9,9 @@
 */
 
 /obj/machinery/telecomms/bus
-	name = "bus mainframe"
+	name = "总线主机"
 	icon_state = "bus"
-	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
+	desc = "能快速发送海量数据的高性能设备。"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 50

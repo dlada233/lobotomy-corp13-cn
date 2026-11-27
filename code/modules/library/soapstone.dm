@@ -1,6 +1,6 @@
 /obj/item/soapstone
-	name = "soapstone"
-	desc = "Leave informative messages for the crew, including the crew of future shifts!\nEven if out of uses, it can still be used to remove messages.\n(Not suitable for engraving on warp trains, outside the facility, or on bunnies. Side effects may include prompt beatings, psychotic clown incursions, and/or instant distortion.)"
+	name = "留言皂石"
+	desc = "可以给同事留言，连下一班的人也能看到！\n即使用尽了次数，仍然能擦除留言。\n（不适合在 WARP 列车上、设施外或兔子身上刻字。副作用可能包括当场挨打、疯狂小丑入侵，或者立即扭曲。）"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "soapstone"
 	throw_speed = 3

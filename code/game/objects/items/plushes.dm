@@ -328,8 +328,8 @@
 /* LC plushes */
 // The good guys
 /obj/item/toy/plush/ayin
-	name = "ayin plushie"
-	desc = "A plushie depicting a researcher that did <b>nothing wrong</b>." // Fight me
+	name = "Ayin 毛绒玩偶"
+	desc = "一只研究员玩偶。他<b>什么都没做错</b>。" // Fight me
 	icon_state = "ayin"
 	gender = MALE
 	unique_pet = "You pet the ayin plushie, ayin did nothing wrong."
@@ -348,38 +348,38 @@
 
 // Sephirots
 /obj/item/toy/plush/malkuth
-	name = "malkuth plushie"
-	desc = "A plushie depicting a diligent worker."
+	name = "Malkuth 毛绒玩偶"
+	desc = "一只勤恳员工的毛绒玩偶。"
 	icon_state = "malkuth"
 	gender = FEMALE
 
 /obj/item/toy/plush/yesod
-	name = "yesod plushie"
-	desc = "A plushie depicting a researcher in a turtleneck."
+	name = "Yesod 毛绒玩偶"
+	desc = "一只身穿高领衫的研究员玩偶。"
 	icon_state = "yesod"
 	gender = MALE
 
 /obj/item/toy/plush/netzach
-	name = "netzach plushie"
-	desc = "A plushie depicting a person that likes alcohol a bit too much."
+	name = "Netzach 毛绒玩偶"
+	desc = "一只毛绒玩偶，原型是个有点嗜酒过头的人。"
 	icon_state = "netzach"
 	gender = MALE
 
 /obj/item/toy/plush/hod
-	name = "hod plushie"
-	desc = "A plushie depicting a person who hopes to make everything right."
+	name = "Hod 毛绒玩偶"
+	desc = "一只毛绒玩偶，原型是个希望弥补一切过错的人。"
 	icon_state = "hod"
 	gender = FEMALE
 
 /obj/item/toy/plush/lisa
-	name = "tiphereth-A plushie"
-	desc = "A plushie depicting a person with high expectations."
+	name = "Tiphereth-A 毛绒玩偶"
+	desc = "一只毛绒玩偶，原型是个对一切都抱有很高期望的人。"
 	icon_state = "lisa"
 	gender = FEMALE
 
 /obj/item/toy/plush/enoch
-	name = "tiphereth-B plushie"
-	desc = "A plushie depicting an optimistic person with kind heart."
+	name = "Tiphereth-B 毛绒玩偶"
+	desc = "一只毛绒玩偶，原型是个心地善良的乐天派。"
 	icon_state = "enoch"
 	gender = MALE
 
@@ -396,14 +396,14 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/hokma
-	name = "hokma plushie"
-	desc = "A plushie depicting a wise person with a fancy monocle. He knows much more than you."
+	name = "Hokma 毛绒玩偶"
+	desc = "一只戴着精致单片眼镜的智者玩偶。他知道的比你多得多。"
 	icon_state = "hokma"
 	gender = MALE
 
 /obj/item/toy/plush/binah
-	name = "binah plushie"
-	desc = "A plushie depicting a sadistic person who lacks any emotions."
+	name = "Binah 毛绒玩偶"
+	desc = "一只毛绒玩偶，原型是个没有感情、以折磨他人为乐的人。"
 	icon_state = "binah"
 	gender = FEMALE
 
@@ -527,8 +527,8 @@
 
 // Misc LC stuff
 /obj/item/toy/plush/pierre
-	name = "pierre plushie"
-	desc = "A plushie depicting a friendly cook."
+	name = "Pierre 毛绒玩偶"
+	desc = "一只友善厨师的毛绒玩偶。"
 	icon_state = "pierre"
 	gender = FEMALE
 	squeak_override = list('sound/effects/wow.ogg'=1)
@@ -632,8 +632,8 @@
 	attack_verb_simple = list("judge")
 
 /obj/item/toy/plush/mosb
-	name = "mountain of smiling bodies plushie"
-	desc = "A plushie depicting a mountain of corpses merged into one. Yuck!"
+	name = "微笑的尸山毛绒玩偶"
+	desc = "一只毛绒玩偶，模样是无数尸体融成的一座山。呕！"
 	icon_state = "mosb"
 
 /obj/item/toy/plush/big_bad_wolf
@@ -642,8 +642,8 @@
 	icon_state = "big_bad_wolf"
 
 /obj/item/toy/plush/melt
-	name = "melting love plushie"
-	desc = "A plushie depicting a slime girl, you think."
+	name = "溶解之爱毛绒玩偶"
+	desc = "一只史莱姆少女的毛绒玩偶。你猜是吧。"
 	icon_state = "melt"
 	attack_verb_continuous = list("blorbles", "slimes", "absorbs")
 	attack_verb_simple = list("blorble", "slime", "absorb")

@@ -5,8 +5,8 @@
  * Contains logic for both ChemMaster and CondiMaster, switched by "condi".
  */
 /obj/machinery/chem_master
-	name = "ChemMaster 3000"
-	desc = "Used to separate chemicals and distribute them in a variety of forms."
+	name = "ChemMaster 3000 配药机"
+	desc = "用于分离化学品，并将其制成不同剂型分装。"
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	icon = 'icons/obj/chemical.dmi'
@@ -576,6 +576,6 @@
  * All logic related to this is in [/obj/machinery/chem_master] and condimaster specific UI enabled by "condi = TRUE"
  */
 /obj/machinery/chem_master/condimaster
-	name = "CondiMaster 3000"
-	desc = "Used to create condiments and other cooking supplies."
+	name = "CondiMaster 3000 调味料分装机"
+	desc = "用于制作调味料和其他烹饪用品。"
 	condi = TRUE

@@ -255,8 +255,8 @@
 // Can hold items and human size things, no other draggables
 
 /obj/machinery/disposal/bin
-	name = "disposal unit"
-	desc = "A pneumatic waste disposal unit."
+	name = "废物投放口"
+	desc = "一台气动废物处理装置。"
 	icon_state = "disposal"
 
 // attack by item places it in to disposal

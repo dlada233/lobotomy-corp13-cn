@@ -1,6 +1,6 @@
 /obj/item/screwdriver
-	name = "screwdriver"
-	desc = "You can be totally screwy with this."
+	name = "螺丝刀"
+	desc = "有了它，什么螺丝都能拧一拧。"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver_map"
 	inhand_icon_state = "screwdriver"

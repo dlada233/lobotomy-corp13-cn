@@ -1,6 +1,6 @@
 /obj/item/wrench
-	name = "wrench"
-	desc = "A wrench with common uses. Can be found in your hand."
+	name = "扳手"
+	desc = "一把用途广泛的扳手。低头看看，它就在你手里。"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
 	worn_icon_state = "wrench"

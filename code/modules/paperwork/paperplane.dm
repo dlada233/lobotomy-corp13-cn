@@ -110,7 +110,7 @@
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click [src] to fold it into a paper plane.</span>"
+	. += "<span class='notice'>按住 Alt 单击[src]，可将其折成纸飞机。</span>"
 
 /obj/item/paper/AltClick(mob/living/user, obj/item/I)
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))

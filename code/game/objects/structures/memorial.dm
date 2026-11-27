@@ -45,6 +45,6 @@ That’s how he would have wanted it.
 	custom_materials = list(/datum/material/gold=1000)
 
 /obj/structure/fluff/arc/angela
-	name = "\proper the cerebrum"
-	desc = "Welcome to Lobotomy Corp. Face the fear, build the future."
+	name = "\proper 大脑纪念雕塑"
+	desc = "欢迎来到脑叶公司。直面恐惧，创造未来。"
 	icon_state = "commandstatue"

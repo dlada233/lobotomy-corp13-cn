@@ -64,18 +64,18 @@
 	icon_state = "poster45_legit"
 
 /obj/structure/sign/poster/official/smile
-	name = "Smile"
-	desc = "Turn that frown upside down!"
+	name = "微笑"
+	desc = "别愁眉苦脸了，笑一个！"
 	icon_state = "poster46_legit"
 
 /obj/structure/sign/poster/official/we_watch
-	name = "We Watch"
-	desc = "Big Brother is always watching."
+	name = "“我们在看着”"
+	desc = "老大哥一直在看着你。"
 	icon_state = "poster47_legit"
 
 /obj/structure/sign/poster/official/hang_in_there
-	name = "Hang In There"
-	desc = "A poster advising you to stay sane. Stay on that branch, little kitty!"
+	name = "“坚持住”"
+	desc = "海报劝你稳住心神。小猫，抓紧那根树枝！"
 	icon_state = "poster48_legit"
 
 /obj/structure/sign/poster/official/terragov

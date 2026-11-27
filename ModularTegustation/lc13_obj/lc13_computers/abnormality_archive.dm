@@ -1,6 +1,6 @@
 /obj/machinery/computer/abnormality_archive
-	name = "abnormality archive"
-	desc = "A secure terminal connected to the Lobotomy Corp archive."
+	name = "异想体档案终端"
+	desc = "连接脑叶公司档案库的安全终端。"
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
 	icon_keyboard = "tech_key"

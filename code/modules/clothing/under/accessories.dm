@@ -80,9 +80,9 @@
 
 /obj/item/clothing/accessory/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] can be attached to a uniform. Alt-click to remove it once attached.</span>"
+	. += "<span class='notice'>可以把[src]别在制服上，别好后按住 Alt 单击可取下。</span>"
 	if(initial(above_suit))
-		. += "<span class='notice'>\The [src] can be worn above or below your suit. Alt-click to toggle.</span>"
+		. += "<span class='notice'>[src]可戴在外套里面或外面。按住 Alt 单击可切换位置。</span>"
 
 /obj/item/clothing/accessory/waistcoat
 	name = "waistcoat"

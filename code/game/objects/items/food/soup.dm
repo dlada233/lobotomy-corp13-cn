@@ -58,8 +58,8 @@
 	foodtypes = MEAT
 
 /obj/item/food/soup/clownstears
-	name = "clown's tears"
-	desc = "Not very funny."
+	name = "小丑之泪汤"
+	desc = "一点也不好笑。"
 	icon_state = "clownstears"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/banana = 10, /datum/reagent/water = 5, /datum/reagent/consumable/nutriment/vitamin = 16, /datum/reagent/consumable/clownstears = 10)
 	tastes = list("a bad joke" = 1)

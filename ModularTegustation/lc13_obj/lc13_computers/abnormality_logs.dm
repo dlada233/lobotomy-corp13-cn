@@ -1,6 +1,6 @@
 /obj/machinery/computer/abnormality_logs
-	name = "abnormality work logging console"
-	desc = "Used to view logs of work performed on abnormalities."
+	name = "异想体工作记录终端"
+	desc = "用于查阅异想体工作记录。"
 	icon_screen = "work_logging"
 	resistance_flags = INDESTRUCTIBLE
 

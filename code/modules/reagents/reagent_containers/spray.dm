@@ -174,8 +174,8 @@
 
 //space cleaner
 /obj/item/reagent_containers/spray/cleaner
-	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	name = "清洁喷雾"
+	desc = "砰！牌无泡太空清洁剂！"
 	icon_state = "cleaner"
 	volume = 100
 	list_reagents = list(/datum/reagent/space_cleaner = 100)
@@ -336,7 +336,7 @@
 
 /obj/item/reagent_containers/spray/chemsprayer/janitor
 	name = "janitor chem sprayer"
-	desc = "A utility used to spray large amounts of cleaning reagents in a given area. It regenerates space cleaner by itself but it's unable to be fueled by normal means."
+	desc = "在指定区域大面积喷洒清洁剂的工具。会自行补充太空清洁剂，无法用常规方式灌装。"
 	icon_state = "chemsprayer_janitor"
 	inhand_icon_state = "chemsprayer_janitor"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'

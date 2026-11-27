@@ -1,6 +1,6 @@
 /obj/machinery/regenerator
-	name = "regenerator"
-	desc = "A machine responsible for slowly restoring the health and sanity of employees in the area."
+	name = "再生器"
+	desc = "能缓慢恢复周围员工生命值和精神值的机器。"
 	icon = 'ModularTegustation/Teguicons/32x32.dmi'
 	icon_state = "regen"
 	density = TRUE

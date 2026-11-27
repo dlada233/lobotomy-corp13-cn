@@ -5,8 +5,8 @@
 	density = FALSE
 
 /obj/machinery/sleeper
-	name = "sleeper"
-	desc = "An enclosed machine used to stabilize and heal patients."
+	name = "医疗休眠舱"
+	desc = "用于稳定病情并治疗患者的封闭式设备。"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE

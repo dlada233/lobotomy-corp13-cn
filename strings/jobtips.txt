@@ -21,6 +21,6 @@ As a Clerk, you can cook at Training. Cooking is an art form.
 As a Clerk, you can clean using a Janitor's Chemsprayer. By setting it to spray 5 units instead of 10, it will clean anything it passes over.
 As a Clerk, you can butcher and destroy bodies with a Hunting or Kitchen Knife. You can do this to prevent enemies from benefitting from that corpse, as well as gathering tasty meats for cooking.
 There are two kinds of clerks, Facility clerks have tools to help the facility as a whole, Agent clerks have tools to help agents more directly.
-Agents are constantly in an arms race against tougher abnormalities and ordeals. If you can't keep up, try to help those who can.
+异想体和考验会越来越棘手，员工也得不断提升实力。如果你暂时跟不上，就去支援那些能应付它们的同事。
 Sephirah are extra eyes in the sky. Keep an ear out for their uniquely robotic voice.
 Various Representatives from other companies may also show up on this facility offering upgrades in return for refined PE. Make sure that you use them to their fullest potential!

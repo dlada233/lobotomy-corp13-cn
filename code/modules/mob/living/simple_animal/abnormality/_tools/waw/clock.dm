@@ -1,8 +1,8 @@
 //Coded by Coxswain, Sprited by Mel
 /obj/structure/toolabnormality/clock
-	name = "backwards clock"
-	desc = "An abnormality resembling a clockwork machination, similar to an open container with 4 Nixie tubes attached to it, \
-	display multiple gears at the front and a wind-up key to the right side."
+	name = "逆行时钟"
+	desc = "形似发条机械的异想体。敞开的盒体上装着四个辉光数码管，\
+	正面露出数个齿轮，右侧有一把上弦钥匙。"
 	icon_state = "clock"
 	light_color = COLOR_ORANGE
 	light_range = 3

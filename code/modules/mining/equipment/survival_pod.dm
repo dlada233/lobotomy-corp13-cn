@@ -249,8 +249,8 @@
 	return TRUE
 
 /obj/structure/fans/tiny
-	name = "tiny fan"
-	desc = "A tiny fan, releasing a thin gust of air."
+	name = "小风扇"
+	desc = "一台小风扇，吹出一缕微风。"
 	layer = ABOVE_NORMAL_TURF_LAYER
 	density = FALSE
 	icon_state = "fan_tiny"

@@ -133,8 +133,8 @@
 
 
 /obj/item/reagent_containers/glass/bowl
-	name = "bowl"
-	desc = "A simple bowl, used for soups and salads."
+	name = "碗"
+	desc = "一个用来装汤或沙拉的普通碗。"
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "bowl"
 	reagent_flags = OPENCONTAINER

@@ -1,7 +1,7 @@
 //wip wip wup
 /obj/structure/mirror
-	name = "mirror"
-	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+	name = "镜子"
+	desc = "魔镜魔镜告诉我，谁是这里最能打的？"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE

@@ -1,6 +1,6 @@
 /obj/machinery/computer/abnormality
 	name = "异想体工作终端"
-	desc = "Used to perform various tasks with the abnormalities."
+	desc = "用于对异想体执行各类工作。"
 	icon_screen = "abnormality_work"
 	resistance_flags = INDESTRUCTIBLE
 
@@ -54,15 +54,15 @@
 	. = ..()
 	if(!datum_reference)
 		return
-	. += span_info("这台终端连接到 [datum_reference.GetName()]的收容单元.")
+	. += span_info("这台终端连接到[datum_reference.GetName()]的收容单元。")
 	var/threat_level = "<span style='color: [THREAT_TO_COLOR[datum_reference.GetRiskLevel()]]'>[THREAT_TO_NAME[datum_reference.GetRiskLevel()]]</span>"
-	. += span_info("风险等级: ") + "[threat_level]" // Professionals have standards
+	. += span_info("风险等级：") + "[threat_level]" // Professionals have standards
 	if(datum_reference.qliphoth_meter_max > 0)
-		. += span_info("当前逆卡巴拉计数器: [datum_reference.qliphoth_meter].")
+		. += span_info("当前逆卡巴拉计数器：[datum_reference.qliphoth_meter]。")
 	if(datum_reference.overload_chance[user.ckey])
 		. += span_warning("当前个体逆卡巴拉过载: [datum_reference.overload_chance[user.ckey]]%.")
 	if(!isnull(datum_reference.stored_boxes))
-		. += span_info("当前PE-Box数量: <span style='color: #23FBAC'>[datum_reference.stored_boxes]</span>.")
+		. += span_info("当前 PE 盒数量：<span style='color: #23FBAC'>[datum_reference.stored_boxes]</span>。")
 	if(meltdown)
 		var/melt_text = ""
 		switch(meltdown)
@@ -78,13 +78,13 @@
 				melt_text = "：疯狂. 未能处理将导致其他异想体突破收容"
 		. += span_warning("收容单元正处于逆卡巴拉熔毁状态[melt_text]. 时间剩余: [meltdown_time].")
 	//Show what upgrades you have. I dont have visuals for the upgrades yet so for now just exsamine tell them.
-	. += span_info("终端已配备以下升级:")
-	var/upgrade_list = ""
+	var/static/list/upgrade_names = list("abnochem" = "化学提取", "workrate" = "工作成功率显示")
+	var/list/installed_upgrades = list()
 	for(var/i in mechanical_upgrades)
 		if(mechanical_upgrades[i] == 0)
 			continue
-		upgrade_list += "[i]|"
-	. += upgrade_list
+		installed_upgrades += upgrade_names[i] || i
+	. += span_info(length(installed_upgrades) ? "已安装的升级：[installed_upgrades.Join("、")]。" : "终端尚未安装升级。")
 
 /obj/machinery/computer/abnormality/ui_interact(mob/user)
 	. = ..()

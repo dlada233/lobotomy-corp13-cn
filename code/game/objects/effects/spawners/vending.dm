@@ -1,8 +1,8 @@
 /obj/effect/spawner/randomsnackvend
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "random_snack"
-	name = "spawn random snack vending machine"
-	desc = "Automagically transforms into a random snack vendor. If you see this while in a shift, please create a bug report."
+	name = "随机零食售货机生成点"
+	desc = "会自动变成一台随机款式的零食售货机。如果上班时还看得到这个生成点，请提交错误报告。"
 	///whether it hacks the vendor on spawn currently used only by stinky mapedits
 	var/hacked = FALSE
 
@@ -19,8 +19,8 @@
 /obj/effect/spawner/randomcolavend
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "random_cola"
-	name = "spawn random cola vending machine"
-	desc = "Automagically transforms into a random cola vendor. If you see this while in a shift, please create a bug report."
+	name = "随机可乐售货机生成点"
+	desc = "会自动变成一台随机款式的可乐售货机。如果上班时还看得到这个生成点，请提交错误报告。"
 	///whether it hacks the vendor on spawn currently used only by stinky mapedits
 	var/hacked = FALSE
 

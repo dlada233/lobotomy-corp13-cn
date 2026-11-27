@@ -158,8 +158,8 @@
 	return SHAME
 
 /obj/item/shovel/spade
-	name = "spade"
-	desc = "A small tool for digging and moving dirt."
+	name = "园艺铲"
+	desc = "用来挖土、移土的小工具。"
 	icon_state = "spade"
 	inhand_icon_state = "spade"
 	worn_icon_state = "spade"

@@ -1,6 +1,6 @@
 /obj/structure/toolabnormality/shelter
-	name = "shelter from the 27th of March"
-	desc = "The safest place on earth."
+	name = "3 月 27 日的防空洞"
+	desc = "世上最安全的地方。"
 	can_buckle = TRUE
 	max_buckled_mobs = 1
 	var/obj/structure/toolabnormality/shelter/linked_structure

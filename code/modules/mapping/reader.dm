@@ -223,13 +223,13 @@
 	if(modelCache && !bad_paths)
 		return modelCache
 	. = modelCache = list()
+	var/is_alpha = original_path && replacetext(original_path, "\\", "/") == "_maps/map_files/Alpha/alphacorp.dmm" // 自定义修改：仅处理 Alpha 主图的实例译文。
 	var/list/grid_models = src.grid_models
 	for(var/model_key in grid_models)
 		var/model = grid_models[model_key]
 		var/list/members = list() //will contain all members (paths) in model (in our example : /turf/unsimulated/wall and /area/mine/explored)
 		var/list/members_attributes = list() //will contain lists filled with corresponding variables, if any (in our example : list(icon_state = "rock") and list())
 
-		/////////////////////////////////////////////////////////
 		//Constructing members and corresponding variables lists
 		////////////////////////////////////////////////////////
 
@@ -268,10 +268,10 @@
 						if(istext(value))
 							fields[I] = apply_text_macros(value)
 
-			//then fill the members_attributes list with the corresponding variables
+				if(is_alpha)
+					TranslateAlphaMapFields(atom_def, fields) // 自定义修改：仅翻译名称和描述，保留 ID 与链接字段。
 			members_attributes.len++
 			members_attributes[index++] = fields
-
 			CHECK_TICK
 
 		//check and see if we can just skip this turf

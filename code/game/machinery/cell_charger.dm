@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger
-	name = "cell charger"
-	desc = "It charges power cells."
+	name = "电池充电器"
+	desc = "为电池充电。"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger"
 	use_power = IDLE_POWER_USE

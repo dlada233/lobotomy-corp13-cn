@@ -1,6 +1,6 @@
 /obj/structure/chair
-	name = "chair"
-	desc = "You sit in this. Either by will or force."
+	name = "椅子"
+	desc = "供人坐下。自愿也好，被迫也罢。"
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "chair"
 	anchored = TRUE
@@ -18,16 +18,16 @@
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
+	. += "<span class='notice'>椅子由几颗<b>螺栓</b>固定。</span>"
 	if(!has_buckled_mobs() && can_buckle)
-		. += "<span class='notice'>While standing on [src], drag and drop your sprite onto [src] to buckle to it.</span>"
+		. += "<span class='notice'>站在[src]所在的格子里，将自己的角色拖到[src]上即可坐下。</span>"
 
 /obj/structure/chair/Initialize()
 	. = ..()
 	if(!anchored)	//why would you put these on the shuttle?
 		addtimer(CALLBACK(src, PROC_REF(RemoveFromLatejoin)), 0)
 	if(prob(0.2))
-		name = "tactical [name]"
+		name = "战术[name]"
 
 /obj/structure/chair/ComponentInitialize()
 	. = ..()
@@ -152,8 +152,8 @@
 	item_chair = /obj/item/chair/wood/wings
 
 /obj/structure/chair/comfy
-	name = "comfy chair"
-	desc = "It looks comfy."
+	name = "软椅"
+	desc = "看起来很舒服。"
 	icon_state = "comfychair"
 	color = rgb(255,255,255)
 	resistance_flags = FLAMMABLE
@@ -230,8 +230,8 @@
 //Stool
 
 /obj/structure/chair/stool
-	name = "stool"
-	desc = "Apply butt."
+	name = "凳子"
+	desc = "请把屁股放上来。"
 	icon_state = "stool"
 	can_buckle = FALSE
 	buildstackamount = 1
@@ -258,8 +258,8 @@
 	return ..()
 
 /obj/structure/chair/stool/bar
-	name = "bar stool"
-	desc = "It has some unsavory stains on it..."
+	name = "吧台凳"
+	desc = "上面有几块令人起疑的污渍……"
 	icon_state = "bar"
 	item_chair = /obj/item/chair/stool/bar
 
@@ -450,8 +450,8 @@
 
 /obj/structure/chair/plastic
 	icon_state = "plastic_chair"
-	name = "folding plastic chair"
-	desc = "No matter how much you squirm, it'll still be uncomfortable."
+	name = "塑料折叠椅"
+	desc = "怎么扭来扭去都坐不舒服。"
 	resistance_flags = FLAMMABLE
 	max_integrity = 50
 	custom_materials = list(/datum/material/plastic = 2000)

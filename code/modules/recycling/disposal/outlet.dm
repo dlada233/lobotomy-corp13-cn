@@ -1,7 +1,7 @@
 // the disposal outlet machine
 /obj/structure/disposaloutlet
-	name = "disposal outlet"
-	desc = "An outlet for the pneumatic disposal system."
+	name = "废物管道出口"
+	desc = "气动废物输送系统的出口。"
 	icon = 'icons/obj/atmospherics/pipes/disposal.dmi'
 	icon_state = "outlet"
 	density = TRUE

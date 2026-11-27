@@ -1,6 +1,6 @@
 /obj/machinery/door/window
-	name = "interior door"
-	desc = "A strong door."
+	name = "室内门"
+	desc = "一扇结实的门。"
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	layer = ABOVE_WINDOW_LAYER
@@ -354,7 +354,7 @@
 
 
 /obj/machinery/door/window/brigdoor
-	name = "secure door"
+	name = "安全门"
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	var/id = null

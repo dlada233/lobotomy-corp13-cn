@@ -28,8 +28,8 @@ Possible to do for anyone motivated enough:
 #define HOLOGRAM_POWER_USAGE 2
 
 /obj/machinery/holopad
-	name = "holopad"
-	desc = "It's a floor-mounted device for projecting holographic images."
+	name = "全息投影台"
+	desc = "安装在地板上的全息影像投影装置。"
 	icon_state = "holopad0"
 	layer = LOW_OBJ_LAYER
 	plane = FLOOR_PLANE

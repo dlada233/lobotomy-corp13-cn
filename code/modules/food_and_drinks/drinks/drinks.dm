@@ -561,8 +561,8 @@
 //	icon states.
 
 /obj/item/reagent_containers/food/drinks/shaker
-	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	name = "调酒器"
+	desc = "用来调制饮料的金属摇壶。"
 	icon_state = "shaker"
 	custom_materials = list(/datum/material/iron=1500)
 	amount_per_transfer_from_this = 10

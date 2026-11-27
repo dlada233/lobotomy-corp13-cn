@@ -8,8 +8,8 @@
 	resistance_flags = NONE
 
 /obj/item/clothing/ears/earmuffs
-	name = "earmuffs"
-	desc = "Protects your hearing from loud noises, and quiet ones as well."
+	name = "隔音耳罩"
+	desc = "既能挡住吵闹的声音，也能挡住安静的声音。"
 	icon_state = "earmuffs"
 	inhand_icon_state = "earmuffs"
 	clothing_traits = list(TRAIT_DEAF)

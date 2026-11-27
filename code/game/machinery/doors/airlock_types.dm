@@ -272,7 +272,7 @@
 	glass = TRUE
 
 /obj/machinery/door/airlock/wood
-	name = "wooden airlock"
+	name = "木质气闸门"
 	icon = 'icons/obj/doors/airlocks/station/wood.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_wood
 
@@ -336,7 +336,7 @@
 */
 
 /obj/machinery/door/airlock/external
-	name = "external airlock"
+	name = "外部气闸门"
 	icon = 'icons/obj/doors/airlocks/external/external.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
@@ -371,7 +371,7 @@
 //Edited to LC13
 
 /obj/machinery/door/airlock/vault
-	name = "vault door"
+	name = "金库门"
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/vault/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/vault/overlays.dmi'
@@ -386,7 +386,7 @@
 */
 
 /obj/machinery/door/airlock/hatch
-	name = "airtight hatch"
+	name = "密封舱门"
 	icon = 'icons/obj/doors/airlocks/hatch/centcom.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
@@ -405,7 +405,7 @@
 */
 
 /obj/machinery/door/airlock/highsecurity
-	name = "high tech security airlock"
+	name = "高安全等级气闸门"
 	icon = 'icons/obj/doors/airlocks/highsec/highsec.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/highsec/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_highsecurity

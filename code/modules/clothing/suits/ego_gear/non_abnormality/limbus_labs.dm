@@ -70,8 +70,8 @@
 	equip_slowdown = 0
 
 /obj/item/clothing/suit/armor/ego_gear/limbus_labs/chem
-	name = "limbus company pharmacist labcoat"
-	desc = "It says Limbus Company on the tag. Used by the Limbus Company Pharmacist."
+	name = "边狱公司药剂师白大褂"
+	desc = "标签上写着“边狱公司”。这是公司药剂师穿的白大褂。"
 	icon_state = "pharmacist"
 	flags_inv = NONE
 	armor = list(RED_DAMAGE = 0, WHITE_DAMAGE = 0, BLACK_DAMAGE = 0, PALE_DAMAGE = 0)

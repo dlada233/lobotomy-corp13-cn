@@ -32,9 +32,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/departments/chemistry/pharmacy
-	name = "\improper Pharmacy sign"
+	name = "\improper 药房标牌"
 	sign_change_name = "Department - Medbay: Pharmacy"
-	desc = "A sign labelling an area containing pharmacy equipment."
+	desc = "标示药剂设备所在区域的牌子。"
 	icon_state = "pharmacy"
 	is_editable = TRUE
 
@@ -94,9 +94,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/departments/custodian
-	name = "\improper Janitor sign"
+	name = "\improper 保洁标牌"
 	sign_change_name = "Department - Janitor"
-	desc = "A sign labelling an area where the janitor works."
+	desc = "标示保洁员工作区域的牌子。"
 	icon_state = "custodian"
 	is_editable = TRUE
 
@@ -135,9 +135,9 @@
 ////MISC LOCATIONS
 
 /obj/structure/sign/departments/restroom
-	name = "\improper Restroom sign"
+	name = "\improper 洗手间标牌"
 	sign_change_name = "Location - Restroom"
-	desc = "A sign labelling a restroom."
+	desc = "标示洗手间的牌子。"
 	icon_state = "restroom"
 	is_editable = TRUE
 
@@ -156,9 +156,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/departments/evac
-	name = "\improper Evacuation sign"
+	name = "\improper 疏散标牌"
 	sign_change_name = "Location - Evacuation"
-	desc = "A sign labelling an area where evacuation procedures take place."
+	desc = "标示疏散区域的牌子。"
 	icon_state = "evac"
 	is_editable = TRUE
 

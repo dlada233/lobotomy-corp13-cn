@@ -244,8 +244,8 @@
 
 //Pinpointer itself
 /obj/item/pinpointer/wayfinding //Help players new to a station find their way around
-	name = "wayfinding pinpointer"
-	desc = "A handheld tracking device that points to useful places."
+	name = "寻路定位器"
+	desc = "指向实用地点的手持定位装置。"
 	icon_state = "pinpointer_way"
 	var/owner = null
 	var/list/beacons = list()

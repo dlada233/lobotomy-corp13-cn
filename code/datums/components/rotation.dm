@@ -102,7 +102,7 @@
 	SIGNAL_HANDLER
 
 	if(rotation_flags & ROTATION_ALTCLICK)
-		examine_list += span_notice("Alt-click to rotate it clockwise.")
+		examine_list += span_notice("按住 Alt 单击可顺时针旋转。")
 
 /datum/component/simple_rotation/proc/HandRot(datum/source, mob/user, rotation = default_rotation_direction)
 	SIGNAL_HANDLER

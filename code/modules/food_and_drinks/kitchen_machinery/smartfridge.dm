@@ -2,7 +2,7 @@
 //  SmartFridge.  Much todo
 // -------------------------
 /obj/machinery/smartfridge
-	name = "smartfridge"
+	name = "智能冷藏柜"
 	desc = "Keeps cold things cold and hot things cold."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "smartfridge"
@@ -379,7 +379,7 @@
 //  Food smartfridge
 // ----------------------------
 /obj/machinery/smartfridge/food
-	desc = "A refrigerated storage unit for food."
+	desc = "用于保存食物的冷藏柜。"
 	base_build_path = /obj/machinery/smartfridge/food
 
 /obj/machinery/smartfridge/food/accept_check(obj/item/O)
@@ -425,8 +425,8 @@
 // Organ Surgery Smartfridge
 // -------------------------
 /obj/machinery/smartfridge/organ
-	name = "smart organ storage"
-	desc = "A refrigerated storage unit for organ storage."
+	name = "器官智能冷藏柜"
+	desc = "用于保存器官的冷藏柜。"
 	max_n_of_items = 20 //vastly lower to prevent processing too long
 	base_build_path = /obj/machinery/smartfridge/organ
 	var/repair_rate = 0
@@ -556,8 +556,8 @@
 // LC13 STABILIZED EGO ARMORY
 // ----------------------------
 /obj/machinery/smartfridge/extraction_storage/ego_weapon
-	name = "weapon fridge"
-	desc = "A machine capable of storing a variety of weapons and EGO."
+	name = "E.G.O 武器储藏柜"
+	desc = "能存放多种武器及 E.G.O 的储藏柜。"
 	icon_state = "egoweapon"
 	base_build_path = /obj/machinery/smartfridge/extraction_storage/ego_weapon
 
@@ -571,8 +571,8 @@
 // LC13 STABILIZED EGO ARMOR CLOSET
 // ---------------------------------
 /obj/machinery/smartfridge/extraction_storage/ego_armor
-	name = "armor fridge"
-	desc = "A machine capable of storing a variety of armor and EGO."
+	name = "E.G.O 护甲储藏柜"
+	desc = "能存放多种护甲及 E.G.O 的储藏柜。"
 	icon_state = "egoarmor"
 	base_build_path = /obj/machinery/smartfridge/extraction_storage/ego_armor
 

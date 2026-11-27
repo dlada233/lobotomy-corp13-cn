@@ -745,8 +745,8 @@
 		))
 
 /obj/item/storage/belt/ego
-	name = "ego small arms belt"
-	desc = "Holds various small ego weapons, such as pistols and daggers."
+	name = "E.G.O 小型武器腰带"
+	desc = "能收纳手枪、匕首等各类小型 E.G.O 武器。"
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"

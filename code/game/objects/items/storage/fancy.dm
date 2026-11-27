@@ -126,8 +126,8 @@
 	icon_type = "egg"
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	name = "egg box"
-	desc = "A carton for containing eggs."
+	name = "鸡蛋盒"
+	desc = "用来装鸡蛋的纸盒。"
 	spawn_type = /obj/item/food/egg
 
 /obj/item/storage/fancy/egg_box/ComponentInitialize()
@@ -431,8 +431,8 @@
  */
 
 /obj/item/storage/fancy/heart_box
-	name = "heart-shaped box"
-	desc = "A heart-shaped box for holding tiny chocolates."
+	name = "心形盒"
+	desc = "装小巧克力的心形盒子。"
 	icon = 'icons/obj/food/containers.dmi'
 	inhand_icon_state = "chocolatebox"
 	icon_state = "chocolatebox"

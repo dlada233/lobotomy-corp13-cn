@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system
 	density = TRUE
 	name = "自动公告系统"
-	desc = "An automated announcement system that handles minor announcements over the radio."
+	desc = "通过无线电自动播报日常通知的系统。"
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 

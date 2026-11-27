@@ -52,15 +52,15 @@
 		icon_state = pick(icon_states)
 
 /obj/structure/flora/tree/pine/xmas
-	name = "xmas tree"
-	desc = "A wondrous decorated Christmas tree."
+	name = "圣诞树"
+	desc = "一棵装饰得十分漂亮的圣诞树。"
 	icon_state = "pine_c"
 	icon_states = null
 	flags_1 = NODECONSTRUCT_1 //protected by the christmas spirit
 
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents!"
+	desc = "一棵装饰得十分漂亮的圣诞树。树上还有礼物！"
 	var/gift_type = /obj/item/a_gift/anything
 	var/unlimited = FALSE
 	var/static/list/took_presents //shared between all xmas trees
@@ -124,9 +124,9 @@
 	. = ..()
 
 /obj/structure/flora/tree/jungle
-	name = "tree"
+	name = "树"
 	icon_state = "tree"
-	desc = "It's seriously hampering your view of the jungle."
+	desc = "它把你望向丛林的视线挡得严严实实。"
 	icon = 'icons/obj/flora/jungletrees.dmi'
 	pixel_x = -48
 	pixel_y = -20
@@ -185,8 +185,8 @@
 //newbushes
 
 /obj/structure/flora/ausbushes
-	name = "bush"
-	desc = "Some kind of plant."
+	name = "灌木"
+	desc = "某种植物。"
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 
@@ -301,10 +301,10 @@
 	. = ..()
 
 /obj/item/kirbyplants
-	name = "potted plant"
+	name = "盆栽"
 	icon = 'icons/obj/flora/plants.dmi'
 	icon_state = "plant-01"
-	desc = "A little bit of nature contained in a pot."
+	desc = "一小片装在花盆里的自然风光。"
 	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_HUGE
 	force = 2
@@ -369,8 +369,8 @@
 	trimmable = FALSE
 
 /obj/item/kirbyplants/photosynthetic
-	name = "photosynthetic potted plant"
-	desc = "A bioluminescent plant."
+	name = "光合盆栽"
+	desc = "一株会发光的植物。"
 	icon_state = "plant-09"
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
@@ -430,8 +430,8 @@
 //Jungle grass
 
 /obj/structure/flora/grass/jungle
-	name = "jungle grass"
-	desc = "Thick alien flora."
+	name = "丛林草"
+	desc = "茂密的外星植物。"
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_state = "grassa"
 

@@ -58,7 +58,7 @@
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 /obj/machinery/door/airlock
-	name = "airlock"
+	name = "气闸门"
 	icon = 'icons/obj/doors/airlocks/station/public.dmi'
 	icon_state = "closed"
 	max_integrity = 300

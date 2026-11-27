@@ -1,6 +1,6 @@
 /obj/machinery/vending/medical
-	name = "\improper NanoMed Plus"
-	desc = "Medical drug dispenser."
+	name = "\improper 医疗用品售货机"
+	desc = "供应药品的机器。"
 	icon_state = "med"
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"

@@ -1,6 +1,6 @@
 //Armor vest
 /obj/item/clothing/suit/armor/vest/alt
-	desc = "A cheap plastic vest that provides practically no protection against abnormalities."
+	desc = "一件廉价的塑料背心，面对异想体时几乎起不到防护作用。"
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 

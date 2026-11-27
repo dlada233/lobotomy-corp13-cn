@@ -25,7 +25,7 @@
 		icon_state = icon_state_powered = icon_state_unpowered = "tablet-[finish_color]"
 
 /obj/item/modular_computer/tablet/syndicate_contract_uplink
-	name = "contractor tablet"
+	name = "承包商平板电脑"
 	icon = 'icons/obj/contractor_tablet.dmi'
 	icon_state = "tablet"
 	icon_state_unpowered = "tablet"

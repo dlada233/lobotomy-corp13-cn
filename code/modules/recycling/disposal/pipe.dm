@@ -1,8 +1,8 @@
 // Disposal pipes
 
 /obj/structure/disposalpipe
-	name = "disposal pipe"
-	desc = "An underfloor disposal pipe."
+	name = "废物输送管"
+	desc = "铺设在地板下方的废物输送管。"
 	icon = 'icons/obj/atmospherics/pipes/disposal.dmi'
 	anchored = TRUE
 	density = FALSE

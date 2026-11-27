@@ -46,8 +46,8 @@
 	name = "L Corp - All Abnormalities"
 	config_tag = "classic"
 	votable = 0 //Automatically goes after a gamemode is voted
-
-	announce_text = "Manage a wide cast of abnormalities from all normal sources!"
+	announce_name = "脑叶公司 - 全部异想体"
+	announce_text = "你将管理来自各个常规来源的异想体！"
 	abno_types = list(
 		ABNORMALITY_ORIGIN_LOBOTOMY,
 		ABNORMALITY_ORIGIN_ALTERED,

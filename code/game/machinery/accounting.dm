@@ -1,6 +1,6 @@
 /obj/machinery/accounting
-	name = "account registration device"
-	desc = "A machine that allows heads of staff to create a new bank account after inserting an ID."
+	name = "账户注册器"
+	desc = "部门主管插入身份卡后，可以用这台机器开立新的银行账户。"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger"
 	circuit = /obj/item/circuitboard/machine/accounting

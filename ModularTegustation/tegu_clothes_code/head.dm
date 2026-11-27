@@ -147,8 +147,8 @@
 	strip_delay = 60
 
 /obj/item/clothing/head/beret/tegu/chem
-	name = "chemistry beret"
-	desc = "A white beret with an orange insignia finely threaded into it. It smells of acid and ash."
+	name = "化学部贝雷帽"
+	desc = "一顶白色贝雷帽，精细地绣着橙色徽记。闻起来有股酸液和灰烬的味道。"
 	icon_state = "beret_chem"
 	armor = list(ACID = 20)
 	strip_delay = 60

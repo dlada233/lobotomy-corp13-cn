@@ -9,9 +9,9 @@ GLOBAL_LIST_EMPTY(recentmessages) // global list of recent messages broadcasted 
 GLOBAL_VAR_INIT(message_delay, 0) // To make sure restarting the recentmessages list is kept in sync
 
 /obj/machinery/telecomms/broadcaster
-	name = "subspace broadcaster"
+	name = "亚空间广播机"
 	icon_state = "broadcaster"
-	desc = "A dish-shaped machine used to broadcast processed subspace signals."
+	desc = "用于广播已处理的亚空间信号的碟形设备。"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 25

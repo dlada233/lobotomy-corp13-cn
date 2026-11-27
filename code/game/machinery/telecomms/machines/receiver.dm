@@ -7,9 +7,9 @@
 */
 
 /obj/machinery/telecomms/receiver
-	name = "subspace receiver"
+	name = "亚空间接收器"
 	icon_state = "broadcast receiver"
-	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
+	desc = "一台带绿灯的碟形设备，专门用于侦测和处理亚空间无线电信号。"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 30

@@ -98,8 +98,8 @@
 	custom_price = PAYCHECK_MEDIUM * 5
 
 /obj/item/reagent_containers/medigel/sterilizine
-	name = "sterilizer gel"
-	desc = "gel bottle loaded with non-toxic sterilizer. Useful in preparation for surgery."
+	name = "灭菌凝胶"
+	desc = "一瓶无毒的灭菌凝胶，适合用来做术前准备。"
 	icon_state = "medigel_blue"
 	current_skin = "medigel_blue"
 	list_reagents = list(/datum/reagent/space_cleaner/sterilizine = 60)

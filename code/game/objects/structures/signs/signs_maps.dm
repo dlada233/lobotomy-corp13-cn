@@ -32,8 +32,8 @@
 	icon_state = "direction_med"
 
 /obj/structure/sign/directions/evac
-	name = "evacuation sign"
-	desc = "A direction sign, pointing out which way the escape shuttle dock is."
+	name = "疏散方向指示牌"
+	desc = "指向逃生穿梭机停靠点的路牌。"
 	icon_state = "direction_evac"
 
 /obj/structure/sign/directions/supply

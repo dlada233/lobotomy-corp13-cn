@@ -7,9 +7,9 @@
 */
 
 /obj/machinery/telecomms/processor
-	name = "processor unit"
+	name = "通信处理器"
 	icon_state = "processor"
-	desc = "This machine is used to process large quantities of information."
+	desc = "用于处理大量信息的机器。"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 30

@@ -568,17 +568,17 @@
  * [COMSIG_ATOM_GET_EXAMINE_NAME] signal
  */
 /atom/proc/get_examine_name(mob/user)
-	. = "\a [src]"
-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
-	if(article)
+	. = "[src]"
+	var/list/override = list("", "", "[name]")
+	if(article && !(article in list("a", "an", "the", "some")))
 		. = "[article] [src]"
-		override[EXAMINE_POSITION_ARTICLE] = article
+		override[EXAMINE_POSITION_ARTICLE] = "[article] "
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		. = override.Join("")
 
 ///Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
+	return "[icon2html(src, user)] [thats ? "这是" : ""][get_examine_name(user)]"
 
 ///Used to insert text after the name but before the description in examine()
 /atom/proc/get_name_chaser(mob/user, list/name_chaser = list())
@@ -593,8 +593,8 @@
  * Produces a signal [COMSIG_PARENT_EXAMINE]
  */
 /atom/proc/examine(mob/user)
-	. = list("[get_examine_string(user, TRUE)].")
-
+	. = list("[get_examine_string(user, TRUE)]。")
+	var/static/list/material_names = list("iron" = "铁", "wood" = "木材", "plastic" = "塑料")
 	. += get_name_chaser(user)
 	if(desc)
 		. += desc
@@ -603,27 +603,27 @@
 		var/list/materials_list = list()
 		for(var/i in custom_materials)
 			var/datum/material/M = i
-			materials_list += "[M.name]"
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
+			materials_list += material_names[M.name] || M.name
+		. += "<u>材质：[materials_list.Join("、")]</u>。"
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
-			. += "It contains:"
+			. += "容器内装有："
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[R.volume] units of [R.name]"
+						. += "[R.volume] 单位[R.type == /datum/reagent/consumable/enzyme && R.name == initial(R.name) ? "通用酶" : R.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
-					. += "[total_volume] units of various reagents"
+					. += "共 [total_volume] 单位的混合试剂"
 			else
-				. += "Nothing."
+				. += "无。"
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>"
+				. += "<span class='notice'>还剩 [reagents.total_volume] 单位。</span>"
 			else
-				. += "<span class='danger'>It's empty.</span>"
+				. += "<span class='danger'>容器是空的。</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 /**
@@ -638,7 +638,7 @@
 	. = list()
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
 	if(!LAZYLEN(.)) // lol ..length
-		return list("<span class='notice'><i>You examine [src] closer, but find nothing of interest...</i></span>")
+		return list("<span class='notice'><i>你仔细端详了[src]，没发现什么特别之处。</i></span>")
 
 /// Updates the icon of the atom
 /atom/proc/update_icon()

@@ -16,7 +16,7 @@
 
 /turf/closed/indestructible
 	name = "wall"
-	desc = "Effectively impervious to conventional methods of destruction."
+	desc = "常规手段几乎无法将其破坏。"
 	icon = 'icons/turf/walls.dmi'
 	explosion_block = 50
 
@@ -96,8 +96,8 @@
 	type where it has no procs and is entirely
 	for show. -IP */
 /turf/closed/indestructible/reinforced
-	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to separate rooms. Effectively impervious to conventional methods of destruction."
+	name = "不可破坏的强化墙"
+	desc = "用于分隔房间的巨大强化金属墙体，常规手段几乎无法将其破坏。"
 	icon = 'icons/turf/walls/facility.dmi'
 	icon_state = "facility-0"
 	base_icon_state = "facility"
@@ -252,7 +252,7 @@
 
 
 /turf/closed/indestructible/fakeglass
-	name = "window"
+	name = "窗户"
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
 	icon_state = "fake_window"
 	base_icon_state = "reinforced_window"
@@ -288,8 +288,8 @@
 	icon_state = "fake_door"
 
 /turf/closed/indestructible/rock
-	name = "dense rock"
-	desc = "An extremely densely-packed rock, most mining tools or explosives would never get through this."
+	name = "致密岩壁"
+	desc = "一块密度极高的岩石，大多数采矿工具或炸药都无法将其穿透。"
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "rock"
 

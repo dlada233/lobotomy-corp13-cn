@@ -46,7 +46,7 @@
 	name = "incomplete cleanbot assembly"
 	icon_state = "bucket_proxy"
 	throwforce = 2
-	created_name = "Cleanbot"
+	created_name = "清洁机器人"
 
 /obj/item/bot_assembly/cleanbot/attackby(obj/item/W, mob/user, params)
 	..()

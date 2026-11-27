@@ -43,8 +43,8 @@
 // ===== RESEARCH CONSOLE =====
 /obj/machinery/modular_computer/console/preset/research
 	console_department = "Research"
-	name = "information department console"
-	desc = "A stationary computer. This one comes preloaded with research programs."
+	name = "情报部终端"
+	desc = "一台预装了科研程序的台式电脑。"
 	_has_ai = TRUE
 
 /obj/machinery/modular_computer/console/preset/research/install_programs()
@@ -87,8 +87,8 @@
 // ===== CIVILIAN CONSOLE =====
 /obj/machinery/modular_computer/console/preset/civilian
 	console_department = "Civilian"
-	name = "civilian console"
-	desc = "A stationary computer. This one comes preloaded with generic programs."
+	name = "民用终端"
+	desc = "一台预装了通用程序的台式电脑。"
 
 /obj/machinery/modular_computer/console/preset/civilian/install_programs()
 	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]

@@ -103,11 +103,11 @@
 /obj/machinery/chem_dispenser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += "<span class='notice'>[src]'s maintenance hatch is open!</span>"
+		. += "<span class='notice'>[src]的检修盖开着！</span>"
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads:\n\
-		Recharging <b>[recharge_amount]</b> power units per interval.\n\
-		Power efficiency increased by <b>[round((powerefficiency*1000)-100, 1)]%</b>.</span>"
+		. += "<span class='notice'>状态屏显示：\n\
+		每个充电周期恢复 <b>[recharge_amount]</b> 单位电量。\n\
+		能源效率提升了 <b>[round((powerefficiency*1000)-100, 1)]%</b>。</span>"
 
 
 /obj/machinery/chem_dispenser/on_set_is_operational(old_value)
@@ -439,8 +439,8 @@
 	return b_o
 
 /obj/machinery/chem_dispenser/drinks
-	name = "soda dispenser"
-	desc = "Contains a large reservoir of soft drinks."
+	name = "汽水机"
+	desc = "里面储存着大量软饮料。"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "soda_dispenser"
 	has_panel_overlay = FALSE
@@ -510,8 +510,8 @@
 	RefreshParts()
 
 /obj/machinery/chem_dispenser/drinks/beer
-	name = "booze dispenser"
-	desc = "Contains a large reservoir of the good stuff."
+	name = "酒水机"
+	desc = "里面储存着大量好酒。"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "booze_dispenser"
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/beer

@@ -4,9 +4,9 @@
 ///////DANGEROUS THINGS
 
 /obj/structure/sign/warning
-	name = "\improper WARNING sign"
+	name = "\improper 警告标牌"
 	sign_change_name = "Warning"
-	desc = "A warning sign."
+	desc = "一块警告标牌。"
 	icon_state = "securearea"
 	is_editable = TRUE
 
@@ -58,9 +58,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/warning/bodysposal
-	name = "\improper DISPOSAL: LEADS TO MORGUE sign"
+	name = "\improper 通往停尸房的废物管道警示牌"
 	sign_change_name = "Warning - Disposals: Leads to Morgue"
-	desc = "A warning sign which reads 'DISPOSAL: LEADS TO MORGUE'."
+	desc = "警示牌上写着“废物管道通往停尸房”。"
 	icon_state = "bodysposal"
 	is_editable = TRUE
 
@@ -81,9 +81,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/warning/nosmoking/circle
-	name = "\improper NO SMOKING sign"
+	name = "\improper 圆形禁烟标牌"
 	sign_change_name = "Warning - No Smoking Alt"
-	desc = "A warning sign which reads 'NO SMOKING'."
+	desc = "警示牌上写着“禁止吸烟”。"
 	icon_state = "nosmoking"
 	is_editable = TRUE
 
@@ -137,9 +137,9 @@
 	is_editable = TRUE
 
 /obj/structure/sign/warning/firingrange
-	name = "\improper FIRING RANGE sign"
+	name = "\improper 射击场警示牌"
 	sign_change_name = "Warning - Firing Range"
-	desc = "A sign reminding you to remain behind the firing line, and to wear ear protection."
+	desc = "标牌提醒你留在射击线后方，并佩戴听力防护用具。"
 	icon_state = "firingrange"
 	is_editable = TRUE
 

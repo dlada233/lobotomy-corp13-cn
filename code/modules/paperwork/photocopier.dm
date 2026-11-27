@@ -16,8 +16,8 @@
 #define MAX_COPIES_AT_ONCE	10
 
 /obj/machinery/photocopier
-	name = "photocopier"
-	desc = "Used to copy important documents and anatomy studies."
+	name = "复印机"
+	desc = "用于复印重要文件和人体解剖研究资料。"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "photocopier"
 	density = TRUE
@@ -524,8 +524,8 @@
 	max_charges = 25
 
 /obj/item/toner/extreme
-	name = "extremely large toner cartridge"
-	desc = "Why would ANYONE need THIS MUCH TONER?"
+	name = "超大碳粉盒"
+	desc = "谁会需要这么多碳粉？！"
 	charges = 200
 	max_charges = 200
 

@@ -653,8 +653,8 @@
 		return
 
 /obj/item/toy/cards/deck
-	name = "deck of cards"
-	desc = "A deck of space-grade playing cards."
+	name = "扑克牌"
+	desc = "一副太空级扑克牌。"
 	icon = 'icons/obj/toy.dmi'
 	deckstyle = "nanotrasen"
 	icon_state = "deck_nanotrasen_full"

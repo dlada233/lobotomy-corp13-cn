@@ -83,7 +83,7 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
-	desc = "Some kind of machine."
+	desc = "某种机器。"
 	verb_say = "beeps"
 	verb_yell = "blares"
 	pressure_resistance = 15

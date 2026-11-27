@@ -11,8 +11,8 @@
 
 
 /obj/machinery/shower
-	name = "shower"
-	desc = "The HS-452. Installed in the 2550s by the Nanotrasen Hygiene Division, now with 2560 lead compliance! Passively replenishes itself with water when not in use."
+	name = "淋浴器"
+	desc = "HS-452 型淋浴器。纳诺特拉森卫生部于 2550 年代安装，如今已符合 2560 年的铅含量标准！闲置时会自动补水。"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower"
 	density = FALSE

@@ -198,8 +198,8 @@
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
 
 /obj/item/reagent_containers/syringe/multiver
-	name = "syringe (multiver)"
-	desc = "Contains multiver. Diluted with granibitaluri."
+	name = "Multiver 注射器"
+	desc = "内含以 Granibitaluri 稀释的 Multiver。"
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/convermol
@@ -208,8 +208,8 @@
 	list_reagents = list(/datum/reagent/medicine/c2/convermol = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/antiviral
-	name = "syringe (spaceacillin)"
-	desc = "Contains antiviral agents."
+	name = "Spaceacillin 注射器"
+	desc = "内含抗病毒药剂。"
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 15)
 
 /obj/item/reagent_containers/syringe/bioterror
@@ -281,8 +281,8 @@
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 15)
 
 /obj/item/reagent_containers/syringe/penacid
-	name = "syringe (pentetic acid)"
-	desc = "Contains pentetic acid, used to reduce high levels of radiation and heal severe toxins."
+	name = "喷替酸注射器"
+	desc = "内含喷替酸，可降低过高的辐射水平，治疗严重的毒素损伤。"
 	list_reagents = list(/datum/reagent/medicine/pen_acid = 15)
 
 /obj/item/reagent_containers/syringe/syriniver

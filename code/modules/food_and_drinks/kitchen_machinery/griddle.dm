@@ -1,6 +1,6 @@
 /obj/machinery/griddle
-	name = "griddle"
-	desc = "Because using pans is for pansies."
+	name = "煎板"
+	desc = "够胆就直接上铁板，谁还用煎锅。"
 	icon = 'icons/obj/machines/griddle.dmi'
 	icon_state = "griddle1_off"
 	density = TRUE

@@ -19,8 +19,8 @@
 #define SCANGATE_ZOMBIE			"zombie"
 
 /obj/machinery/scanner_gate
-	name = "scanner gate"
-	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
+	name = "扫描门"
+	desc = "能对通过的生物进行中等深度扫描的检测门。"
 	icon = 'icons/obj/machines/scangate.dmi'
 	icon_state = "scangate"
 	use_power = IDLE_POWER_USE

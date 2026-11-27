@@ -70,13 +70,13 @@ GLOBAL_LIST_INIT(tegu_translation_list, list(
 	"Setup Character" = list(
 		"Russian" = "Настройка Персонажа",
 		),
-	"Ready" = list(
+	"Ready" = list(CLIENT_LANGUAGE_ENGLISH = "准备就绪",
 		"Russian" = "Готов",
 		),
-	"Not Ready" = list(
+	"Not Ready" = list(CLIENT_LANGUAGE_ENGLISH = "未准备",
 		"Russian" = "Не Готов",
 		),
-	"Observe" = list(
+	"Observe" = list(CLIENT_LANGUAGE_ENGLISH = "旁观",
 		"Russian" = "Наблюдать",
 		),
 	"View the Crew Manifest" = list(
@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(tegu_translation_list, list(
 	"Sorry, the tutorial is not available at this time! Try again later." = list(
 		"Russian" = "Извините, в данный момент обучение недоступно. Попробуйте позже.",
 	),
-	"Now teleporting." = list(
+	"Now teleporting." = list(CLIENT_LANGUAGE_ENGLISH = "正在传送。",
 		"Russian" = "Телепортируемся.",
 		),
 	"Teleporting failed. Ahelp an admin please." = list(

@@ -2,8 +2,8 @@
 #define IV_INJECTING 1
 
 /obj/machinery/iv_drip
-	name = "\improper IV drip"
-	desc = "An IV drip with an advanced infusion pump that can both drain blood into and inject liquids from attached containers. Blood packs are processed at an accelerated rate. Alt-Click to change the transfer rate."
+	name = "\improper 输液架"
+	desc = "配有先进输液泵的输液架，既可将血液抽入连接的容器，也可从中注入液体。使用血袋时流速更快。按住 Alt 单击可调整流速。"
 	icon = 'icons/obj/iv_drip.dmi'
 	icon_state = "iv_drip"
 	anchored = FALSE

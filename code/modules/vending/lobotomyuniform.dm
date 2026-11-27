@@ -1,6 +1,6 @@
 /obj/machinery/vending/lobotomyuniform
-	name = "\improper Uniform Vendor"
-	desc = "A vending machine for facility uniforms."
+	name = "\improper 制服售货机"
+	desc = "供应设施制服的售货机。"
 	icon_state = "generic" //Placeholder
 	icon_deny = null
 	req_access = null //Shouldn't need access on lc13, can be changed

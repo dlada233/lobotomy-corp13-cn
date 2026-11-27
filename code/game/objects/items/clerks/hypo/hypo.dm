@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/hypospray/emais
-	name = "\improper E.M.A.I.S"
-	desc = "The Emergency Medical Aid Injector and Synthesiser is a medical device used by L Corp to quickly administer drugs during emergencies."
+	name = "\improper E.M.A.I.S 紧急医疗注射合成器"
+	desc = "紧急医疗注射合成器是 L 公司用于紧急给药的医疗设备。"
 	icon_state = "clerkhypo"
 	reagent_flags = NONE
 	var/list/reagent_ids = list(/datum/reagent/medicine/enkephalin,/datum/reagent/medicine/helapoeisis,/datum/reagent/medicine/epinephrine)

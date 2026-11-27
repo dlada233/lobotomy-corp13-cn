@@ -196,8 +196,8 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 
 /obj/machinery/newscaster
-	name = "newscaster"
-	desc = "A standard N-Corporation-licensed newsfeed handler for use in commercial developments. All the news you absolutely have no use for, in one place!"
+	name = "新闻终端"
+	desc = "经 N 公司授权、供商业设施使用的标准新闻终端。你根本用不着的新闻，全都在这儿！"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_normal"
 	verb_say = "beeps"
@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/allow_comments = 1
 
 /obj/machinery/newscaster/security_unit
-	name = "security newscaster"
+	name = "安保新闻终端"
 	securityCaster = 1
 
 /obj/machinery/newscaster/Initialize(mapload, ndir, building)

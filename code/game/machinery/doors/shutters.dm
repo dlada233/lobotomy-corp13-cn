@@ -41,8 +41,8 @@
 	rad_insulation = RAD_EXTREME_INSULATION
 
 /obj/machinery/door/poddoor/shutters/window
-	name = "windowed shutters"
-	desc = "A shutter with a thick see-through polycarbonate window."
+	name = "带窗卷帘门"
+	desc = "带有厚实透明聚碳酸酯窗的卷帘门。"
 	icon = 'icons/obj/doors/shutters_window.dmi'
 	icon_state = "closed"
 	opacity = FALSE

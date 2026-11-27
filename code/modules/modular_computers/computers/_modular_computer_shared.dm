@@ -36,12 +36,12 @@
 	if(ai_slot)
 		if(ai_slot.stored_card)
 			if(user_is_adjacent)
-				. += "It has a slot installed for an intelliCard which contains: [ai_slot.stored_card.name]"
+				. += "智能卡插槽中插着[ai_slot.stored_card.name]。"
 			else
-				. += "It has a slot installed for an intelliCard, which appears to be occupied."
-			. += span_info("Alt-click to eject the intelliCard.")
+				. += "智能卡插槽里似乎插着一张卡。"
+			. += span_info("按住 Alt 单击可弹出智能卡。")
 		else
-			. += "It has a slot installed for an intelliCard."
+			. += "终端配有一个智能卡插槽。"
 
 	var/obj/item/computer_hardware/card_slot/card_slot = get_modular_computer_part(MC_CARD)
 	var/obj/item/computer_hardware/card_slot/card_slot2 = get_modular_computer_part(MC_CARD2)
@@ -52,15 +52,15 @@
 			var/obj/item/card/id/second_ID = card_slot2?.stored_card
 			var/multiple_cards = istype(first_ID) && istype(second_ID)
 			if(user_is_adjacent)
-				. += "It has [multiple_slots ? "two slots" : "a slot"] for identification cards installed[multiple_cards ? " which contain [first_ID] and [second_ID]" : ", one of which contains [first_ID ? first_ID : second_ID]"]."
+				. += "终端配有[multiple_slots ? "两个" : "一个"]身份卡插槽，已插入[multiple_cards ? "[first_ID]和[second_ID]" : "[first_ID ? first_ID : second_ID]"]。"
 			else
-				. += "It has [multiple_slots ? "two slots" : "a slot"] for identification cards installed, [multiple_cards ? "both of which appear" : "and one of them appears"] to be occupied."
-			. += span_info("Alt-click [src] to eject the identification card[multiple_cards ? "s":""].")
+				. += "终端配有[multiple_slots ? "两个" : "一个"]身份卡插槽，看起来插着[multiple_cards ? "两张" : "一张"]卡。"
+			. += span_info("按住 Alt 单击[src]可弹出身份卡。")
 		else
-			. += "It has [multiple_slots ? "two slots" : "a slot"] installed for identification cards."
+			. += "终端配有[multiple_slots ? "两个" : "一个"]身份卡插槽。"
 
 	var/obj/item/computer_hardware/printer/printer_slot = get_modular_computer_part(MC_PRINT)
 	if(printer_slot)
-		. += "It has a printer installed."
+		. += "终端装有打印机。"
 		if(user_is_adjacent)
-			. += "The printer's paper levels are at: [printer_slot.stored_paper]/[printer_slot.max_paper].</span>]"
+			. += "打印机剩余纸张：[printer_slot.stored_paper]/[printer_slot.max_paper]。"

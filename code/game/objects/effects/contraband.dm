@@ -47,7 +47,7 @@
 /obj/structure/sign/poster
 	name = "poster"
 	var/original_name
-	desc = "A large piece of space-resistant printed paper."
+	desc = "一大张能耐受太空环境的印刷品。"
 	icon = 'ModularTegustation/Teguicons/tegucontraband.dmi' // take from tegustation posters file
 	anchored = TRUE
 	buildable_sign = FALSE //Cannot be unwrenched from a wall.
@@ -66,8 +66,8 @@
 		randomise(random_basetype)
 	if(!ruined)
 		original_name = name // can't use initial because of random posters
-		name = "poster - [name]"
-		desc = "A large piece of printed paper. [desc]"
+		name = "“[name]”海报"
+		desc = "一大张印刷海报。[desc]"
 
 	AddComponent(/datum/component/beauty, 300)
 
@@ -181,8 +181,8 @@
 	random_basetype = /obj/structure/sign/poster
 
 /obj/structure/sign/poster/contraband
-	poster_item_name = "contraband poster"
-	poster_item_desc = "This poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface. Its vulgar themes have marked it as contraband aboard Nanotrasen space facilities."
+	poster_item_name = "违禁海报"
+	poster_item_desc = "这张海报自带黏合装置，可以轻松贴在任何竖直表面上。由于题材粗俗，纳诺特拉森的太空设施将它列为违禁品。"
 	poster_item_icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/contraband/random
@@ -378,8 +378,8 @@
 	icon_state = "poster37"
 
 /obj/structure/sign/poster/contraband/shamblers_juice
-	name = "Shambler's Juice"
-	desc = "~Shake me up some of that Shambler's Juice!~"
+	name = "Shambler 果汁"
+	desc = "～给我摇一杯 Shambler 果汁！～"
 	icon_state = "poster38"
 
 /obj/structure/sign/poster/contraband/pwr_game
@@ -393,8 +393,8 @@
 	icon_state = "poster40"
 
 /obj/structure/sign/poster/contraband/city_cola
-	name = "City Cola"
-	desc = "Your favorite cola, in the city. I mean, where else would it be?"
+	name = "都市可乐"
+	desc = "你在都市里最喜欢的可乐。不然它还能在哪儿？"
 	icon_state = "poster41"
 
 /obj/structure/sign/poster/contraband/space_up
@@ -425,8 +425,8 @@
 	icon_state = "poster47"
 
 /obj/structure/sign/poster/official
-	poster_item_name = "motivational poster"
-	poster_item_desc = "An official Nanotrasen-issued poster to foster a compliant and obedient workforce. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
+	poster_item_name = "励志海报"
+	poster_item_desc = "纳诺特拉森官方发行的海报，旨在培养听话、服从命令的员工。背面带有先进的黏合层，方便贴在任何竖直表面上。"
 	poster_item_icon_state = "rolled_legit"
 
 /obj/structure/sign/poster/official/random
@@ -446,13 +446,13 @@
 	icon_state = "poster2_legit"
 
 /obj/structure/sign/poster/official/cleanliness
-	name = "Cleanliness"
-	desc = "A poster warning of the dangers of poor hygiene."
+	name = "清洁宣传"
+	desc = "一张提醒人们注意卫生、警惕卫生隐患的海报。"
 	icon_state = "poster3_legit"
 
 /obj/structure/sign/poster/official/help_others
-	name = "Help Others"
-	desc = "A poster encouraging you to help fellow crewmembers."
+	name = "互助宣传"
+	desc = "海报鼓励你帮助同事。"
 	icon_state = "poster4_legit"
 
 /obj/structure/sign/poster/official/build
@@ -466,8 +466,8 @@
 	icon_state = "poster6_legit"
 
 /obj/structure/sign/poster/official/science
-	name = "Science"
-	desc = "A poster depicting an atom."
+	name = "科学宣传"
+	desc = "海报上画着一个原子。"
 	icon_state = "poster7_legit"
 
 /obj/structure/sign/poster/official/ian
@@ -481,8 +481,8 @@
 	icon_state = "poster9_legit"
 
 /obj/structure/sign/poster/official/walk
-	name = "Walk"
-	desc = "A poster instructing the viewer to walk instead of running."
+	name = "步行宣传"
+	desc = "海报提醒你慢步通行。"
 	icon_state = "poster10_legit"
 
 /obj/structure/sign/poster/official/state_laws
@@ -511,13 +511,13 @@
 	icon_state = "poster15_legit"
 
 /obj/structure/sign/poster/official/do_not_question
-	name = "Do Not Question"
-	desc = "A poster instructing the viewer not to ask about things they aren't meant to know."
+	name = "“不要质疑”"
+	desc = "海报告诫你，别打听不该知道的事。"
 	icon_state = "poster16_legit"
 
 /obj/structure/sign/poster/official/work_for_a_future
-	name = "Work For A Future"
-	desc = " A poster encouraging you to work for your future."
+	name = "“为未来工作”"
+	desc = "海报鼓励你为自己的未来工作。"
 	icon_state = "poster17_legit"
 
 /obj/structure/sign/poster/official/soft_cap_pop_art
@@ -531,13 +531,13 @@
 	icon_state = "poster19_legit"
 
 /obj/structure/sign/poster/official/safety_eye_protection
-	name = "Safety: Eye Protection"
-	desc = "A poster instructing the viewer to wear eye protection when dealing with chemicals, smoke, or bright lights."
+	name = "护眼安全"
+	desc = "海报提醒你，接触化学品、烟雾或强光时应佩戴护目用具。"
 	icon_state = "poster20_legit"
 
 /obj/structure/sign/poster/official/safety_report
-	name = "Safety: Report"
-	desc = "A poster instructing the viewer to report suspicious activity to the security force."
+	name = "安全报告"
+	desc = "海报提醒你向安保人员报告可疑活动。"
 	icon_state = "poster21_legit"
 
 /obj/structure/sign/poster/official/report_crimes
@@ -566,8 +566,8 @@
 	icon_state = "poster26_legit"
 
 /obj/structure/sign/poster/official/fruit_bowl
-	name = "Fruit Bowl"
-	desc = " Simple, yet awe-inspiring."
+	name = "果盘"
+	desc = "简简单单，却让人心生敬畏。"
 	icon_state = "poster27_legit"
 
 /obj/structure/sign/poster/official/pda_ad
@@ -586,8 +586,8 @@
 	icon_state = "poster30_legit"
 
 /obj/structure/sign/poster/official/twelve_gauge
-	name = "12 Gauge"
-	desc = "A poster boasting about the superiority of 12 gauge shotgun shells."
+	name = "十二号口径"
+	desc = "海报大肆吹捧十二号口径霰弹的优越性。"
 	icon_state = "poster31_legit"
 
 /obj/structure/sign/poster/official/high_class_martini
@@ -618,79 +618,79 @@
 //lobotomy corp posters
 
 /obj/structure/sign/poster/lobotomycorp
-	poster_item_name = "motivational lobotomy corp poster"
-	poster_item_desc = "An official Lobotomy-Corp-issued poster to foster a compliant and obedient workforce. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
+	poster_item_name = "脑叶公司励志海报"
+	poster_item_desc = "脑叶公司官方发行的海报，旨在培养听话、服从命令的员工。背面带有先进的黏合层，方便贴在任何竖直表面上。"
 	poster_item_icon_state = "rolled_legit"
 
 /obj/structure/sign/poster/lobotomycorp/random
-	name = "random official lobotomy corp poster"
+	name = "随机脑叶公司海报"
 	random_basetype = /obj/structure/sign/poster/lobotomycorp
 	icon_state = "random_official"
 	never_random = TRUE
 
 /obj/structure/sign/poster/lobotomycorp/attributes
-	name = "Attributes"
-	desc = "A poster depicting the four attributes important for employees."
+	name = "员工属性"
+	desc = "介绍员工四项重要属性的海报。"
 	icon_state = "lc_attributes"
 
 /obj/structure/sign/poster/lobotomycorp/qliphoth
-	name = "Qliphoth"
-	desc = "A poster instructing the viewer to regularly check the abnormalities' qliphoth deterrence counter."
+	name = "逆卡巴拉"
+	desc = "海报提醒员工定期检查异想体的逆卡巴拉计数器。"
 	icon_state = "lc_qliphoth"
 
 /obj/structure/sign/poster/lobotomycorp/cleancorpses
-	name = "Clean Corpses"
-	desc = "A poster instructing the viewer to ask their local clerk to dispose of dead bodies."
+	name = "清理遗体"
+	desc = "海报提醒员工，发现遗体可以请附近的文职处理。"
 	icon_state = "lc_cleancorpses"
 
 /obj/structure/sign/poster/lobotomycorp/clerk_lives_matter
-	name = "Clerk Lives Matter"
-	desc = "This poster reminds employees to thank clerks for their contributions to the corporation."
+	name = "文职的命也是命"
+	desc = "海报提醒员工感谢文职为公司作出的贡献。"
 	icon_state = "lc_CLM"
 
 /obj/structure/sign/poster/lobotomycorp/wellcheers
-	name = "Wellcheers"
-	desc = "Otherworldly soda! I will send you to the new world!"
+	name = "韦尔奇乐牌汽水"
+	desc = "异世界的汽水！我来送你去新世界！"
 	icon_state = "lc_wellcheers"
 
 /obj/structure/sign/poster/lobotomycorp/suckmyenegy
-	name = "Suck My Enegy"
-	desc = "A poster advertising an energy drink brand."
+	name = "吸一口能量"
+	desc = "一张能量饮料广告海报。"
 	icon_state = "lc_suckmyenegy"
 
 /obj/structure/sign/poster/lobotomycorp/joinforces
-	name = "Join Forces"
-	desc = "A poster instructing the viewer to work with others when suppressing threats to the facility."
+	name = "并肩作战"
+	desc = "海报提醒员工，镇压设施内的威胁时要相互配合。"
 	icon_state = "lc_joinforces"
 
 /obj/structure/sign/poster/lobotomycorp/egoinfo
-	name = "EGO Info"
-	desc = "A poster educating the viewer about EGOs, shorthand for Extermination of Geometrical Organ."
+	name = "E.G.O 介绍"
+	desc = "海报介绍了 E.G.O，并说明这个缩写源自 Extermination of Geometrical Organ。"
 	icon_state = "lc_EGOinfo"
 
 /obj/structure/sign/poster/lobotomycorp/rabbit_team
-	name = "Rabbit Team"
-	desc = "A poster depicting R-Corp's Rabbit Team logo."
+	name = "兔子小队"
+	desc = "印着 R 公司兔子小队标志的海报。"
 	icon_state = "lc_rabbit-team"
 
 /obj/structure/sign/poster/lobotomycorp/gobald
-	name = "Go Bald"
-	desc = "Keep calm and go bald."
+	name = "你也要变秃"
+	desc = "保持冷静，一起变秃。"
 	icon_state = "lc_gobald"
 
 /obj/structure/sign/poster/lobotomycorp/welfare_ad
-	name = "Welfare Ad"
-	desc = "A poster advertising the facilities designed to improve the well-being of employees."
+	name = "员工福利"
+	desc = "宣传员工福利设施的海报。"
 	icon_state = "lc_welfare-ad"
 
 /obj/structure/sign/poster/lobotomycorp/hhpp
 	name = "HamHamPangPang"
-	desc = "HamHamPangPang, a sandwich franchise originating in District 13, is a favorite of many in the City. Come check it out!"
+	desc = "HamHamPangPang 是一家发源于 13 区的三明治连锁店，在都市里深受喜爱。快来尝尝！"
 	icon_state = "lc_hhpp"
 
 /obj/structure/sign/poster/lobotomycorp/bearbeer
-	name = "Bear Beer"
-	desc = "A poster depicting a beer brand endorsed by a certain employee."
+	name = "熊牌啤酒"
+	desc = "海报上印着某位员工代言的啤酒品牌。"
 	icon_state = "lc_bearbeer"
 
 #undef PLACE_SPEED

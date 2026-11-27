@@ -1,6 +1,6 @@
 /obj/machinery/facility_holomap
-	name = "facility holomap"
-	desc = "A virtual map of the surrounding facility."
+	name = "设施全息地图"
+	desc = "显示周边设施布局的虚拟地图。"
 	icon = 'icons/obj/machines/facilitymap.dmi'
 	icon_state = "station_map"
 	anchored = TRUE

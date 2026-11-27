@@ -1,6 +1,6 @@
 /obj/machinery/vending/cigarette
-	name = "\improper ShadyCigs Deluxe"
-	desc = "If you want to get cancer, might as well do it in style."
+	name = "\improper 香烟售货机"
+	desc = "既然想得癌症，不如也讲究点格调。"
 	product_slogans = "Shady cigs taste good like a cigarette should.;I'd rather toolbox than switch.;Smoke!;Don't believe the reports - smoke today!"
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
 	icon_state = "cigs"

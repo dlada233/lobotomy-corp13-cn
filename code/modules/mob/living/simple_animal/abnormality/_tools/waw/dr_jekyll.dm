@@ -1,8 +1,8 @@
 #define STATUS_EFFECT_HYDE /datum/status_effect/display/hyde
 #define STATUS_EFFECT_DR_JEKYLL /datum/status_effect/display/dr_jekyll
 /obj/structure/toolabnormality/dr_jekyll
-	name = "dr jekyll's formula"
-	desc = "An innocent-looking bottle."
+	name = "杰基尔博士药剂"
+	desc = "一瓶看起来人畜无害的药剂。"
 	icon_state = "dr_jekyll"
 
 	ego_list = list(
@@ -13,24 +13,24 @@
 /obj/structure/toolabnormality/dr_jekyll/attack_hand(mob/living/carbon/human/user)
 	..()
 	if(get_user_level(user) <= 2)
-		to_chat(user, span_notice("You can't quite figure out the instructions for how to prepare this yet."))
+		to_chat(user, span_notice("你还看不懂药剂的配制说明。"))
 		return
 	if(!do_after(user, 10, user))
 		return
 
 	var/datum/status_effect/display/dr_jekyll/J = user.has_status_effect(STATUS_EFFECT_DR_JEKYLL)
 	if(!J)
-		to_chat(user, span_userdanger("You follow the instructions and create some sort of liquid."))
+		to_chat(user, span_userdanger("你按说明配出了一种液体。"))
 		user.apply_status_effect(STATUS_EFFECT_DR_JEKYLL)
 		playsound(user.loc, 'sound/effects/bubbles.ogg', rand(10,50), TRUE)
 		return
 	var/datum/status_effect/display/hyde/H = user.has_status_effect(STATUS_EFFECT_HYDE)
 	if(!H)
-		to_chat(user, span_notice("You return the serum."))
+		to_chat(user, span_notice("你归还了药剂。"))
 		user.remove_status_effect(STATUS_EFFECT_DR_JEKYLL)
 		return //You don't need any more.
 	else //They messed up
-		to_chat(user, span_userdanger("HA! You won't get rid of me that easily!"))
+		to_chat(user, span_userdanger("哈！想甩掉我可没那么容易！"))
 		playsound(get_turf(user), 'sound/abnormalities/someonesportrait/panic.ogg', 40, FALSE, -5)
 		user.deal_damage(999, WHITE_DAMAGE, attack_type = (ATTACK_TYPE_SPECIAL | ATTACK_TYPE_ENVIRONMENT))//DIE!
 		return
@@ -69,29 +69,29 @@
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1
 	alert_type = /atom/movable/screen/alert/status_effect/hyde
-	examine_text = span_warning("They do not appear to be themselves.")
+	examine_text = span_warning("此人看起来像是变了个人。")
 	var/message_cooldown
 	var/message_cooldown_time = 30 SECONDS
 	var/current_boost = 0
 	var/list/message_list = list(
-		"Are you ready?",
-		"Mankind is not truly one, but truly two.",
-		"The blood quickens, the soul sickens.",
-		"I am a part of you now. Just as you are a part of me.",
-		"Don't concern yourself with good and evil.",
-		"I'll show you terrible, beautiful things.",
-		"You could be so much more than those panting hypocrites.",
-		"Take back what they took from you. Trample on their dead bodies.",
+		"准备好了吗？",
+		"人的本性一分为二。",
+		"血在沸腾，灵魂在腐朽。",
+		"如今我是你的一部分，正如你是我的一部分。",
+		"何必在意善恶。",
+		"我会让你见识一些可怕又美丽的东西。",
+		"你大可以凌驾于那群苟延残喘的伪君子之上。",
+		"夺回他们从你手里抢走的一切。从他们的尸体上踏过去。",
 	)
 
 /atom/movable/screen/alert/status_effect/hyde
-	name = "Mr.Hyde"
-	desc = "A mysterious force is guiding your actions."
+	name = "海德先生"
+	desc = "一股神秘的力量正支配着你的行动。"
 	icon = 'ModularTegustation/Teguicons/status_sprites.dmi'
 	icon_state = "hyde"
 
 /datum/status_effect/display/hyde/on_apply()
-	to_chat(owner, span_notice("You feel freed of all inhibitions."))
+	to_chat(owner, span_notice("你感觉再也没有什么能约束自己了。"))
 	var/mob/living/carbon/human/status_holder = owner
 	ADD_TRAIT(status_holder, TRAIT_COMBATFEAR_IMMUNE, "Jekyll")
 	return ..()
@@ -124,14 +124,14 @@
 
 /datum/status_effect/display/hyde/proc/ReturnToNormal()
 	var/mob/living/carbon/human/status_holder = owner
-	to_chat(status_holder, span_nicegreen("The strange feeling goes away."))
+	to_chat(status_holder, span_nicegreen("那股异样的感觉消退了。"))
 	status_holder.adjust_attribute_buff(JUSTICE_ATTRIBUTE, -current_boost)
 
 //Action
 /datum/action/cooldown/dr_jekyll
 	icon_icon = 'ModularTegustation/Teguicons/toolabnormalities.dmi'
 	button_icon_state = "dr_jekyll"
-	name = "Switch"
+	name = "切换人格"
 	cooldown_time = 300
 
 /datum/action/cooldown/dr_jekyll/Trigger()
@@ -144,14 +144,14 @@
 	var/mob/living/carbon/human/H = owner
 	var/datum/status_effect/display/hyde/effect = H.has_status_effect(STATUS_EFFECT_HYDE)
 	if(!effect)
-		to_chat(H, span_userdanger("You drink some of your serum."))
+		to_chat(H, span_userdanger("你喝下了一些药剂。"))
 		H.playsound_local(get_turf(H), 'sound/abnormalities/someonesportrait/panic.ogg', 40, FALSE)
 		H.adjustSanityLoss(H.maxSanity * 0.25) // lose a quarter your sanity insantly
 		H.OtherDamageEffect(H.maxSanity * 0.25, "sinking")
 		H.apply_status_effect(STATUS_EFFECT_HYDE)
 		StartCooldown()
 		return
-	to_chat(H, span_notice("You are already under the effects of this ability. It will wear off when your sanity is reduced to 1."))
+	to_chat(H, span_notice("能力已经生效，等你的理智值降到 1 点，效果才会消退。"))
 
 //AI
 /datum/ai_controller/insane/murder/hyde
@@ -159,13 +159,13 @@
 
 /datum/ai_behavior/say_line/insanity_hyde
 	lines = list(
-		"You insolent, pitiful, insignificant ant!",
-		"Must I do everything myself?",
-		"Finally, you've given in! This body is mine!",
-		"Now, let's see what this body is good for.",
-		"I'll put an end to your pitiful squealing!",
-		"Hark! The devil is here!",
-		"You're not worth my time!",
+		"你这只胆敢放肆的可怜蝼蚁！",
+		"什么事都得我亲自动手吗？",
+		"你终于屈服了！这具身体归我了！",
+		"来，看看这具身体有多少能耐。",
+		"我这就让你闭上那张哀嚎的嘴！",
+		"听啊！魔鬼来了！",
+		"你不值得我浪费时间！"
 	)
 
 // The panic loses regained sanity over time, and is tougher to deal with by other players.

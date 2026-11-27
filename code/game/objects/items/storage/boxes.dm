@@ -23,7 +23,7 @@
 
 /obj/item/storage/box
 	name = "box"
-	desc = "It's just an ordinary box."
+	desc = "只是个普通盒子。"
 	icon_state = "box"
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -191,8 +191,8 @@
 		new /obj/item/clothing/gloves/color/latex(src)
 
 /obj/item/storage/box/masks
-	name = "box of sterile masks"
-	desc = "This box contains sterile medical masks."
+	name = "盒装无菌口罩"
+	desc = "盒内装有无菌医用口罩。"
 	illustration = "sterile"
 
 /obj/item/storage/box/masks/PopulateContents()
@@ -200,8 +200,8 @@
 		new /obj/item/clothing/mask/surgical(src)
 
 /obj/item/storage/box/syringes
-	name = "box of syringes"
-	desc = "A box full of syringes."
+	name = "盒装注射器"
+	desc = "一盒注射器。"
 	illustration = "syringe"
 
 /obj/item/storage/box/syringes/PopulateContents()
@@ -237,7 +237,7 @@
 		new /obj/item/reagent_containers/hypospray/medipen/stimpack(src)
 
 /obj/item/storage/box/beakers
-	name = "box of beakers"
+	name = "盒装烧杯"
 	illustration = "beaker"
 
 /obj/item/storage/box/beakers/PopulateContents()
@@ -403,8 +403,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/box/bodybags
-	name = "body bags"
-	desc = "The label indicates that it contains body bags."
+	name = "盒装尸袋"
+	desc = "标签上写着里面装有尸袋。"
 	illustration = "bodybags"
 
 /obj/item/storage/box/bodybags/PopulateContents()
@@ -422,8 +422,8 @@
 		new /obj/item/clothing/glasses/regular(src)
 
 /obj/item/storage/box/drinkingglasses
-	name = "box of drinking glasses"
-	desc = "It has a picture of drinking glasses on it."
+	name = "盒装饮水杯"
+	desc = "上面画着饮水杯。"
 	illustration = "drinkglass"
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
@@ -624,8 +624,8 @@
 		new /obj/item/firing_pin/tag/blue(src)
 
 /obj/item/storage/box/handcuffs
-	name = "box of spare handcuffs"
-	desc = "A box full of handcuffs."
+	name = "盒装备用手铐"
+	desc = "一盒手铐。"
 	icon_state = "secbox"
 	illustration = "handcuff"
 
@@ -673,8 +673,8 @@
 		new /obj/item/assembly/mousetrap(src)
 
 /obj/item/storage/box/pillbottles
-	name = "box of pill bottles"
-	desc = "It has pictures of pill bottles on its front."
+	name = "盒装药瓶"
+	desc = "盒子正面印着药瓶的图案。"
 	illustration = "pillbox"
 
 /obj/item/storage/box/pillbottles/PopulateContents()
@@ -890,8 +890,8 @@
 		new randomFigure(src)
 
 /obj/item/storage/box/papersack
-	name = "paper sack"
-	desc = "A sack neatly crafted out of paper."
+	name = "纸袋"
+	desc = "用纸整齐折成的袋子。"
 	icon_state = "paperbag_None"
 	inhand_icon_state = "paperbag_None"
 	illustration = null

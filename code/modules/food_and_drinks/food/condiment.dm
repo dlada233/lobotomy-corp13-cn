@@ -93,8 +93,8 @@
 		to_chat(user, "<span class='notice'>You transfer [trans] units of the condiment to [target].</span>")
 
 /obj/item/reagent_containers/food/condiment/enzyme
-	name = "universal enzyme"
-	desc = "Used in cooking various dishes."
+	name = "通用酶"
+	desc = "烹制多种菜肴时都会用到。"
 	icon_state = "enzyme"
 	list_reagents = list(/datum/reagent/consumable/enzyme = 50)
 	fill_icon_thresholds = null
@@ -110,8 +110,8 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
-	name = "salt shaker"											//	a large one.
-	desc = "Salt. From space oceans, presumably."
+	name = "盐罐"											//	a large one.
+	desc = "盐。大概是从太空海洋里来的。"
 	icon_state = "saltshakersmall"
 	icon_empty = "emptyshaker"
 	inhand_icon_state = ""
@@ -144,8 +144,8 @@
 		return
 
 /obj/item/reagent_containers/food/condiment/peppermill
-	name = "pepper mill"
-	desc = "Often used to flavor food or make people sneeze."
+	name = "胡椒研磨器"
+	desc = "通常用来给食物调味，或者让人打喷嚏。"
 	icon_state = "peppermillsmall"
 	icon_empty = "emptyshaker"
 	inhand_icon_state = ""
@@ -166,8 +166,8 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/food/condiment/flour
-	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
+	name = "面粉袋"
+	desc = "一大袋面粉。烘焙的好材料！"
 	icon_state = "flour"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
@@ -186,8 +186,8 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/food/condiment/rice
-	name = "rice sack"
-	desc = "A big bag of rice. Good for cooking!"
+	name = "大米袋"
+	desc = "一大袋米。正好可以做饭！"
 	icon_state = "rice"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'

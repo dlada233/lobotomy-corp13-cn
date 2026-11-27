@@ -86,8 +86,8 @@
 	update_icon_state()
 
 /obj/item/storage/bag/trash/bluespace
-	name = "trash bag of holding"
-	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
+	name = "蓝空间垃圾袋"
+	desc = "保洁用品的最新力作，能装下海量垃圾的垃圾袋。"
 	icon_state = "bluetrashbag"
 	inhand_icon_state = "bluetrashbag"
 	item_flags = NO_MAT_REDEMPTION
@@ -194,7 +194,7 @@
 // -----------------------------
 
 /obj/item/storage/bag/plants
-	name = "plant bag"
+	name = "植物收集袋"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "plantbag"
 	worn_icon_state = "plantbag"
@@ -391,11 +391,11 @@
  */
 
 /obj/item/storage/bag/chemistry
-	name = "chemistry bag"
+	name = "化学品收纳袋"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bag"
 	worn_icon_state = "chembag"
-	desc = "A bag for storing pills, patches, and bottles."
+	desc = "用于收纳药片、药贴和药瓶的袋子。"
 	resistance_flags = FLAMMABLE
 
 /obj/item/storage/bag/chemistry/ComponentInitialize()

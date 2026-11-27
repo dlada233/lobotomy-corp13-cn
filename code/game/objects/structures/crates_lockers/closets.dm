@@ -1,6 +1,6 @@
 /obj/structure/closet
-	name = "closet"
-	desc = "It's a basic storage unit."
+	name = "储物柜"
+	desc = "一个普通的储物柜。"
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "generic"
 	density = TRUE

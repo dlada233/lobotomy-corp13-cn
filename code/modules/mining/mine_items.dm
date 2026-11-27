@@ -66,8 +66,8 @@
 /**********************Shuttle Computer**************************/
 
 /obj/machinery/computer/shuttle/mining
-	name = "mining shuttle console"
-	desc = "Used to call and send the mining shuttle."
+	name = "采矿穿梭机控制台"
+	desc = "用于呼叫和派出采矿穿梭机。"
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"

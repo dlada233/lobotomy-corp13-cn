@@ -230,22 +230,22 @@
 	. = ..()
 	if(health < maxHealth)
 		if(health > maxHealth/3)
-			. += "[src]'s parts look loose."
+			. += "[src]的零件有些松动。"
 		else
-			. += "[src]'s parts look very loose!"
+			. += "[src]的零件都快散架了！"
 	else
-		. += "[src] is in pristine condition."
-	. += "<span class='notice'>Its maintenance panel is [open ? "open" : "closed"].</span>"
-	. += "<span class='info'>You can use a <b>screwdriver</b> to [open ? "close" : "open"] it.</span>"
+		. += "[src]完好如新。"
+	. += "<span class='notice'>检修面板[open ? "开着" : "关着"]。</span>"
+	. += "<span class='info'>可以用<b>螺丝刀</b>[open ? "关上" : "打开"]面板。</span>"
 	if(open)
-		. += "<span class='notice'>Its control panel is [locked ? "locked" : "unlocked"].</span>"
+		. += "<span class='notice'>控制面板[locked ? "已上锁" : "已解锁"]。</span>"
 		var/is_sillycone = issilicon(user)
 		if(!emagged && (is_sillycone || user.Adjacent(src)))
-			. += "<span class='info'>Alt-click [is_sillycone ? "" : "or use your ID on "]it to [locked ? "un" : ""]lock its control panel.</span>"
+			. += "<span class='info'>按住 Alt 单击[is_sillycone ? "" : "或刷身份卡"]，即可[locked ? "解锁" : "锁上"]控制面板。</span>"
 	if(paicard)
-		. += "<span class='notice'>It has a pAI device installed.</span>"
+		. += "<span class='notice'>里面装有一台个人 AI 设备。</span>"
 		if(!open)
-			. += "<span class='info'>You can use a <b>hemostat</b> to remove it.</span>"
+			. += "<span class='info'>可以用<b>止血钳</b>将其取出。</span>"
 
 /mob/living/simple_animal/bot/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	if(amount>0 && prob(10))

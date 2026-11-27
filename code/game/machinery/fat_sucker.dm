@@ -1,6 +1,6 @@
 /obj/machinery/fat_sucker
-	name = "XX-Corp Human Extractor"
-	desc = "Safely and efficiently extracts excess fat from a subject."
+	name = "XX 公司人体脂肪提取机"
+	desc = "可以安全高效地提取受试者体内的多余脂肪。"
 	icon = 'icons/obj/machines/fat_sucker.dmi'
 	icon_state = "fat"
 	circuit = /obj/item/circuitboard/machine/fat_sucker

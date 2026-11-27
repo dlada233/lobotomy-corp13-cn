@@ -2,9 +2,9 @@
 #define CAMERA_PICTURE_SIZE_HARD_LIMIT 21
 
 /obj/item/camera
-	name = "camera"
+	name = "照相机"
 	icon = 'icons/obj/items_and_weapons.dmi'
-	desc = "A polaroid camera."
+	desc = "一部拍立得相机。"
 	icon_state = "camera"
 	inhand_icon_state = "camera"
 	worn_icon_state = "camera"

@@ -277,8 +277,8 @@
 	alert = FALSE
 
 /obj/structure/displaycase/trophy
-	name = "trophy display case"
-	desc = "Store your trophies of accomplishment in here, and they will stay forever."
+	name = "奖杯展示柜"
+	desc = "把见证你成就的奖杯放在这里，便能永久珍藏。"
 	var/placer_key = ""
 	var/added_roundstart = TRUE
 	var/is_locked = TRUE
@@ -366,8 +366,8 @@
 			return ..()
 
 /obj/item/key/displaycase
-	name = "display case key"
-	desc = "The key to the curator's display cases."
+	name = "展示柜钥匙"
+	desc = "馆长用来打开展示柜的钥匙。"
 
 /obj/item/showpiece_dummy
 	name = "Cheap replica"

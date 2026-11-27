@@ -41,7 +41,7 @@
 	dog_fashion = /datum/dog_fashion/head/festive
 
 /obj/effect/spawner/xmastree
-	name = "christmas tree spawner"
+	name = "圣诞树生成点"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "x2"
 	layer = FLY_LAYER
