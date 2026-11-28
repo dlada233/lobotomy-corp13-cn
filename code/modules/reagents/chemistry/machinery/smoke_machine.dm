@@ -1,8 +1,8 @@
 #define REAGENTS_BASE_VOLUME 100 // actual volume is REAGENTS_BASE_VOLUME plus REAGENTS_BASE_VOLUME * rating for each matterbin
 
 /obj/machinery/smoke_machine
-	name = "smoke machine"
-	desc = "A machine with a centrifuge installed into it. It produces smoke with any reagents you put into the machine."
+	name = "烟雾机"
+	desc = "内置离心机，能把倒入的试剂化作烟雾。"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "smoke0"
 	density = TRUE
@@ -95,7 +95,7 @@
 		var/obj/item/reagent_containers/RC = I
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transfered_by = user)
 		if(units)
-			to_chat(user, span_notice("You transfer [units] units of the solution to [src]."))
+			to_chat(user, span_notice("你向[src]转移了 [units] 单位溶液。"))
 			return
 	if(default_unfasten_wrench(user, I, 40))
 		on = FALSE
@@ -122,7 +122,7 @@
 	var/TankContents[0]
 	var/TankCurrentVolume = 0
 	for(var/datum/reagent/R in reagents.reagent_list)
-		TankContents.Add(list(list("name" = R.name, "volume" = R.volume))) // list in a list because Byond merges the first list...
+		TankContents.Add(list(list("name" = R.DisplayName(), "volume" = R.volume))) // list in a list because Byond merges the first list...
 		TankCurrentVolume += R.volume
 	data["TankContents"] = TankContents
 	data["isTankLoaded"] = reagents.total_volume ? TRUE : FALSE
@@ -153,9 +153,9 @@
 			on = !on
 			update_icon()
 			if(on)
-				message_admins("[ADMIN_LOOKUPFLW(usr)] activated a smoke machine that contains [english_list(reagents.reagent_list)] at [ADMIN_VERBOSEJMP(src)].")
-				log_game("[key_name(usr)] activated a smoke machine that contains [english_list(reagents.reagent_list)] at [AREACOORD(src)].")
-				log_combat(usr, src, "has activated [src] which contains [english_list(reagents.reagent_list)] at [AREACOORD(src)].")
+				message_admins("[ADMIN_LOOKUPFLW(usr)] 在 [ADMIN_VERBOSEJMP(src)] 启动了烟雾机，内含[reagents.DisplayNames()]。")
+				log_game("[key_name(usr)] 在 [AREACOORD(src)] 启动了烟雾机，内含[reagents.DisplayNames()]。")
+				log_combat(usr, src, "在 [AREACOORD(src)] 启动了[src]，内含[reagents.DisplayNames()]。")
 		if("goScreen")
 			screen = params["screen"]
 			. = TRUE

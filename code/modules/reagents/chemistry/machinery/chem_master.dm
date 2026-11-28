@@ -122,24 +122,24 @@
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
-			to_chat(user, span_warning("You can't use the [src.name] while its panel is opened!"))
+			to_chat(user, span_warning("[src.name]的检修盖还开着，无法使用！"))
 			return
 		var/obj/item/reagent_containers/B = I
 		. = TRUE // no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, span_notice("You add [B] to [src]."))
+		to_chat(user, span_notice("你把[B]放入[src]。"))
 		updateUsrDialog()
 		update_icon()
 	else if(!condi && istype(I, /obj/item/storage/pill_bottle))
 		if(bottle)
-			to_chat(user, span_warning("A pill bottle is already loaded into [src]!"))
+			to_chat(user, span_warning("[src]里已经装了一个药瓶！"))
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		bottle = I
-		to_chat(user, span_notice("You add [I] into the dispenser slot."))
+		to_chat(user, span_notice("你把[I]放进了分装口。"))
 		updateUsrDialog()
 	else
 		return ..()
@@ -213,13 +213,13 @@
 	var/beaker_contents[0]
 	if(beaker)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beaker_contents.Add(list(list("name" = R.name, "id" = ckey(R.name), "volume" = R.volume))) // list in a list because Byond merges the first list...
+			beaker_contents.Add(list(list("name" = R.DisplayName(), "id" = ckey(R.name), "volume" = R.volume))) // list in a list because Byond merges the first list...
 	data["beakerContents"] = beaker_contents
 
 	var/buffer_contents[0]
 	if(reagents.total_volume)
 		for(var/datum/reagent/N in reagents.reagent_list)
-			buffer_contents.Add(list(list("name" = N.name, "id" = ckey(N.name), "volume" = N.volume))) // ^
+			buffer_contents.Add(list(list("name" = N.DisplayName(), "id" = ckey(N.name), "volume" = N.volume))) // ^
 	data["bufferContents"] = buffer_contents
 
 	//Calculated at init time as it never changes
@@ -251,7 +251,7 @@
 		// Custom amount
 		if (amount == -1)
 			amount = text2num(input(
-				"Enter the amount you want to transfer:",
+				"请输入要转移的量：",
 				name, ""))
 		if (amount == null || amount <= 0)
 			return FALSE
@@ -289,8 +289,8 @@
 		var/amount = text2num(params["amount"])
 		if(amount == null)
 			amount = text2num(input(usr,
-				"Max 10. Buffer content will be split evenly.",
-				"How many to make?", 1))
+				"最多 10 份，缓冲区内的试剂将均分。",
+				"制作几份？", 1))
 		amount = clamp(round(amount), 0, 10)
 		if (amount <= 0)
 			return FALSE
@@ -321,8 +321,8 @@
 			vol_each = vol_each_max
 		if(vol_each == null)
 			vol_each = text2num(input(usr,
-				"Maximum [vol_each_max] units per item.",
-				"How many units to fill?",
+				"每份最多 [vol_each_max] 单位。",
+				"每份灌装多少单位？",
 				vol_each_max))
 		vol_each = clamp(vol_each, 0, vol_each_max)
 		if(vol_each <= 0)
@@ -331,16 +331,16 @@
 		var/name = params["name"]
 		var/name_has_units = item_type == "pill" || item_type == "patch"
 		if(!name)
-			var/name_default
+			var/datum/reagent/main_reagent = reagents.get_master_reagent()
+			var/name_default = main_reagent?.DisplayName()
 			if (style && style["name"] && !style["generate_name"])
 				name_default = style["name"]
-			else
-				name_default = reagents.get_master_reagent_name()
+
 			if (name_has_units)
-				name_default += " ([vol_each]u)"
+				name_default += "（[vol_each] 单位）"
 			name = stripped_input(usr,
-				"Name:",
-				"Give it a name!",
+				"请输入名称：",
+				"命名",
 				name_default,
 				MAX_NAME_LEN)
 		if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, !issilicon(usr)))
@@ -361,13 +361,13 @@
 					P = new/obj/item/reagent_containers/pill(target_loc)
 				else
 					P = new/obj/item/reagent_containers/pill(drop_location())
-				P.name = trim("[name] pill")
+				P.name = trim("[name]药片")
 				if(chosen_pill_style == RANDOM_PILL_STYLE)
 					P.icon_state ="pill[rand(1,21)]"
 				else
 					P.icon_state = "pill[chosen_pill_style]"
 				if(P.icon_state == "pill4")
-					P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
+					P.desc = "一颗红色药丸，留给那些敢于面对知识、自由、未知和残酷真相的人。"
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 			return TRUE
@@ -375,7 +375,7 @@
 			var/obj/item/reagent_containers/pill/patch/P
 			for(var/i = 0; i < amount; i++)
 				P = new/obj/item/reagent_containers/pill/patch(drop_location())
-				P.name = trim("[name] patch")
+				P.name = trim("[name]贴片")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 			return TRUE
@@ -383,7 +383,7 @@
 			var/obj/item/reagent_containers/glass/bottle/P
 			for(var/i = 0; i < amount; i++)
 				P = new/obj/item/reagent_containers/glass/bottle(drop_location())
-				P.name = trim("[name] bottle")
+				P.name = trim("[name]瓶")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 			return TRUE
@@ -392,8 +392,8 @@
 			for(var/i = 0; i < amount; i++)
 				P = new/obj/item/reagent_containers/food/condiment/pack(drop_location())
 				P.originalname = name
-				P.name = trim("[name] pack")
-				P.desc = "A small condiment pack. The label says it contains [name]."
+				P.name = trim("[name]小包")
+				P.desc = "一小包调味料。标签上写着里面装的是[name]。"
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 			return TRUE
 		if(item_type == "condimentBottle")
@@ -411,16 +411,16 @@
 	if(action == "analyze")
 		var/datum/reagent/R = GLOB.name2reagent[params["id"]]
 		if(R)
-			var/state = "Unknown"
+			var/state = "未知"
 			if(initial(R.reagent_state) == 1)
-				state = "Solid"
+				state = "固态"
 			else if(initial(R.reagent_state) == 2)
-				state = "Liquid"
+				state = "液态"
 			else if(initial(R.reagent_state) == 3)
-				state = "Gas"
+				state = "气态"
 			var/const/P = 3 //The number of seconds between life ticks
 			var/T = initial(R.metabolization_rate) * (60 / P)
-			analyze_vars = list("name" = initial(R.name), "state" = state, "color" = initial(R.color), "description" = initial(R.description), "metaRate" = T, "overD" = initial(R.overdose_threshold))
+			analyze_vars = list("name" = ReagentNameForDisplay(initial(R.name)), "state" = state, "color" = initial(R.color), "description" = initial(R.description), "metaRate" = T, "overD" = initial(R.overdose_threshold))
 			screen = "analyze"
 			return TRUE
 
@@ -498,22 +498,22 @@
 	if (!styles.len)
 		//Possible_states has the reagent type as key and a list of, in order, the icon_state, the name and the desc as values. Was used in the condiment/on_reagent_change(changetype) to change names, descs and sprites.
 		styles += list(
-			CONDIMASTER_STYLE_FALLBACK = list("icon_state" = "emptycondiment", "icon_empty" = "", "name" = "condiment bottle", "desc" = "Just your average condiment bottle.", "fill_icon_thresholds" = list(0, 10, 25, 50, 75, 100), "generate_name" = TRUE),
-			"enzyme" = list("icon_state" = "enzyme", "icon_empty" = "", "name" = "universal enzyme bottle", "desc" = "Used in cooking various dishes."),
-			"flour" = list("icon_state" = "flour", "icon_empty" = "", "name" = "flour sack", "desc" = "A big bag of flour. Good for baking!"),
-			"mayonnaise" = list("icon_state" = "mayonnaise", "icon_empty" = "", "name" = "mayonnaise jar", "desc" = "An oily condiment made from egg yolks."),
-			"milk" = list("icon_state" = "milk", "icon_empty" = "", "name" = "milk", "desc" = "It's milk. White and nutritious goodness!"),
-			"blackpepper" = list("icon_state" = "peppermillsmall", "inhand_icon_state" = "", "icon_empty" = "emptyshaker", "name" = "pepper mill", "desc" = "Often used to flavor food or make people sneeze."),
-			"rice" = list("icon_state" = "rice", "icon_empty" = "", "name" = "rice sack", "desc" = "A big bag of rice. Good for cooking!"),
-			"sodiumchloride" = list("icon_state" = "saltshakersmall", "inhand_icon_state" = "", "icon_empty" = "emptyshaker", "name" = "salt shaker", "desc" = "Salt. From dead crew, presumably."),
-			"soymilk" = list("icon_state" = "soymilk", "icon_empty" = "", "name" = "soy milk", "desc" = "It's soy milk. White and nutritious goodness!"),
-			"soysauce" = list("icon_state" = "soysauce", "inhand_icon_state" = "", "icon_empty" = "", "name" = "soy sauce bottle", "desc" = "A salty soy-based flavoring."),
-			"sugar" = list("icon_state" = "sugar", "icon_empty" = "", "name" = "sugar sack", "desc" = "Tasty spacey sugar!"),
-			"ketchup" = list("icon_state" = "ketchup", "icon_empty" = "", "name" = "ketchup bottle", "desc" = "You feel more American already."),
-			"capsaicin" = list("icon_state" = "hotsauce", "icon_empty" = "", "name" = "hotsauce bottle", "desc" = "You can almost TASTE the stomach ulcers!"),
-			"frostoil" = list("icon_state" = "coldsauce", "icon_empty" = "", "name" = "coldsauce bottle", "desc" = "Leaves the tongue numb from its passage."),
-			"cornoil" = list("icon_state" = "oliveoil", "icon_empty" = "", "name" = "corn oil bottle", "desc" = "A delicious oil used in cooking. Made from corn."),
-			"bbqsauce" = list("icon_state" = "bbqsauce", "icon_empty" = "", "name" = "bbq sauce bottle", "desc" = "Hand wipes not included.")
+			CONDIMASTER_STYLE_FALLBACK = list("icon_state" = "emptycondiment", "icon_empty" = "", "name" = "调味瓶", "desc" = "普通的调味瓶。", "fill_icon_thresholds" = list(0, 10, 25, 50, 75, 100), "generate_name" = TRUE),
+			"enzyme" = list("icon_state" = "enzyme", "icon_empty" = "", "name" = "通用酶瓶", "desc" = "烹饪多种菜肴时都能用到。"),
+			"flour" = list("icon_state" = "flour", "icon_empty" = "", "name" = "面粉袋", "desc" = "一大袋面粉，烘焙的好材料！"),
+			"mayonnaise" = list("icon_state" = "mayonnaise", "icon_empty" = "", "name" = "蛋黄酱罐", "desc" = "用蛋黄制成的油润调味酱。"),
+			"milk" = list("icon_state" = "milk", "icon_empty" = "", "name" = "牛奶", "desc" = "洁白又有营养的牛奶！"),
+			"blackpepper" = list("icon_state" = "peppermillsmall", "inhand_icon_state" = "", "icon_empty" = "emptyshaker", "name" = "胡椒研磨器", "desc" = "既能给食物调味，也能让人打喷嚏。"),
+			"rice" = list("icon_state" = "rice", "icon_empty" = "", "name" = "米袋", "desc" = "一大袋大米，正好下锅！"),
+			"sodiumchloride" = list("icon_state" = "saltshakersmall", "icon_empty" = "emptyshaker", "name" = "盐罐", "desc" = "食盐。大概是从死去的船员身上弄来的。"),
+			"soymilk" = list("icon_state" = "soymilk", "icon_empty" = "", "name" = "豆奶", "desc" = "洁白又有营养的豆奶！"),
+			"soysauce" = list("icon_state" = "soysauce", "icon_empty" = "", "name" = "酱油瓶", "desc" = "用大豆制成的咸味调料。"),
+			"sugar" = list("icon_state" = "sugar", "icon_empty" = "", "name" = "糖袋", "desc" = "好吃的太空砂糖！"),
+			"ketchup" = list("icon_state" = "ketchup", "icon_empty" = "", "name" = "番茄酱瓶", "desc" = "顿时觉得更有美式风味了。"),
+			"capsaicin" = list("icon_state" = "hotsauce", "icon_empty" = "", "name" = "辣酱瓶", "desc" = "辣得仿佛已经尝到了胃溃疡的滋味！"),
+			"frostoil" = list("icon_state" = "coldsauce", "icon_empty" = "", "name" = "冷酱瓶", "desc" = "入口便冻得舌头发麻。"),
+			"cornoil" = list("icon_state" = "oliveoil", "icon_empty" = "", "name" = "玉米油瓶", "desc" = "用玉米制成的食用油。"),
+			"bbqsauce" = list("icon_state" = "bbqsauce", "icon_empty" = "", "name" = "烧烤酱瓶", "desc" = "不附擦手巾。")
 		)
 		var/list/carton_in_hand = list(
 			"inhand_icon_state" = "carton",

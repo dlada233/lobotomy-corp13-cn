@@ -50,7 +50,7 @@ const VendingRow = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell bold>
-        {product.name}
+        {product.display_name || product.name}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         <Box
@@ -60,15 +60,15 @@ const VendingRow = (props, context) => {
             || productStock <= (product.max_amount / 2) && 'average'
             || 'good'
           )}>
-          {custom ? product.amount : productStock.amount}
-          {productStock <= 0 ? 'sold out' : 'in stock'}
+          {custom && product.amount}
+          {productStock <= 0 ? '售罄' : '有货'}
         </Box>
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {custom && (
           <Button
             fluid
-            content={data.access ? 'FREE' : product.price + ' cr'}
+            content={data.access ? '免费' : product.price + ' 眼'}
             onClick={() => act('dispense', {
               'item': product.name,
             })} />
@@ -76,14 +76,14 @@ const VendingRow = (props, context) => {
           <Button
             fluid
             disabled={(
-              productStock.amount === 0
+              productStock === 0 // 自定义修改：售罄判断使用服务端返回的库存数。
               || !free && (
                 !data.user
                 || product.price > data.user.cash
               )
             )}
             content={(free && discount)
-              ? `${redPrice} cr` : `${product.price} cr`}
+              ? `${redPrice} 眼` : `${product.price} 眼`}
             onClick={() => act('vend', {
               'ref': product.ref,
             })} />
@@ -125,36 +125,36 @@ export const Vending = (props, context) => {
   inventory = inventory.filter(item => !!item);
   return (
     <Window
-      title="Vending Machine"
+      title="自动售货机"
       width={450}
       height={600}>
       <Window.Content scrollable>
         {!!onstation && (
-          <Section title="User">
+          <Section title="用户">
             {user && (
               <Box>
-                Welcome, <b>{user.name}</b>,
+                欢迎，<b>{user.name}</b>
                 {' '}
-                <b>{user.job || 'Unemployed'}</b>!
+                （<b>{user.job || '无职务'}</b>）！
                 <br />
-                Your balance is <b>{user.cash} ahn</b>.
+                账户余额为 <b>{user.cash} 眼</b>。
               </Box>
             ) || (
               <Box color="light-grey">
-                No registered ID card!<br />
-                Please contact your local HoP!
+                未检测到已登记的身份卡！<br />
+                请联系人事主管。
               </Box>
             )}
           </Section>
         )}
-        <Section title="Products">
+        <Section title="商品">
           <Table>
             {inventory.map(product => (
               <VendingRow
-                key={product.name}
+                key={product.ref || product.name}
                 custom={custom}
                 product={product}
-                productStock={stock[product.name]} />
+                productStock={custom ? product.amount : stock[product.ref]} />
             ))}
           </Table>
         </Section>

@@ -76,7 +76,7 @@
 /obj/machinery/seed_extractor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Extracting <b>[seed_multiplier]</b> seed(s) per piece of produce.<br>Machine can store up to <b>[max_seeds]%</b> seeds.</span>"
+		. += "<span class='notice'>状态屏显示：每份农产品可提取 <b>[seed_multiplier]</b> 包种子。<br>最多可存放 <b>[max_seeds]</b> 包种子。</span>"
 
 /obj/machinery/seed_extractor/attackby(obj/item/O, mob/user, params)
 
@@ -101,21 +101,21 @@
 			++loaded
 			add_seed(G)
 		if (loaded)
-			to_chat(user, "<span class='notice'>You put as many seeds from \the [O.name] into [src] as you can.</span>")
+			to_chat(user, "<span class='notice'>你尽可能多地把[O.name]里的种子装入[src]。</span>")
 		else
-			to_chat(user, "<span class='notice'>There are no seeds in \the [O.name].</span>")
+			to_chat(user, "<span class='notice'>[O.name]里没有种子。</span>")
 		return
 
 	else if(seedify(O,-1, src, user))
-		to_chat(user, "<span class='notice'>You extract some seeds.</span>")
+		to_chat(user, "<span class='notice'>你提取出了一些种子。</span>")
 		return
 	else if (istype(O, /obj/item/seeds))
 		if(add_seed(O))
-			to_chat(user, "<span class='notice'>You add [O] to [src.name].</span>")
+			to_chat(user, "<span class='notice'>你把[O]放入[src.name]。</span>")
 			updateUsrDialog()
 		return
 	else if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='warning'>You can't extract any seeds from \the [O.name]!</span>")
+		to_chat(user, "<span class='warning'>无法从[O.name]中提取种子！</span>")
 	else
 		return ..()
 
@@ -141,7 +141,7 @@
  **/
 /obj/machinery/seed_extractor/proc/add_seed(obj/item/seeds/O)
 	if(contents.len >= 999)
-		to_chat(usr, "<span class='notice'>\The [src] is full.</span>")
+		to_chat(usr, "<span class='notice'>[src]已满。</span>")
 		return FALSE
 
 	var/datum/component/storage/STR = O.loc.GetComponent(/datum/component/storage)
@@ -171,15 +171,15 @@
 		ui.open()
 
 /obj/machinery/seed_extractor/ui_data()
-	var/list/V = list()
+	var/list/V = list(), list/names = list()
 	for(var/key in piles)
-		if(piles[key])
-			var/len = length(piles[key])
-			if(len)
-				V[key] = len
-
-	. = list()
-	.["seeds"] = V
+		var/list/packets = piles[key]
+		if(length(packets))
+			var/datum/weakref/first_packet = packets[1]
+			var/obj/item/seeds/packet = first_packet.resolve()
+			names[key] = packet?.PacketDisplayName()
+			V[key] = length(packets)
+	return list("seeds" = V, "seedNames" = names)
 
 /obj/machinery/seed_extractor/ui_act(action, params)
 	. = ..()
@@ -199,11 +199,11 @@
 				if(usr)
 					var/mob/user = usr
 					if(user.put_in_hands(found_seed))
-						to_chat(user, "<span class='notice'>You take [found_seed] out of the slot.</span>")
+						to_chat(user, "<span class='notice'>你从出口取出了[found_seed.PacketDisplayName()]。</span>")
 					else
-						to_chat(user, "<span class='notice'>[found_seed] falls onto the floor.</span>")
+						to_chat(user, "<span class='notice'>[found_seed.PacketDisplayName()]掉到了地上。</span>")
 				else
 					found_seed.forceMove(drop_location())
-					visible_message("<span class='notice'>[found_seed] falls onto the floor.</span>", null, "<span class='hear'>You hear a soft clatter.</span>", COMBAT_MESSAGE_RANGE)
+					visible_message("<span class='notice'>[found_seed.PacketDisplayName()]掉到了地上。</span>", null, "<span class='hear'>你听到一声轻响。</span>", COMBAT_MESSAGE_RANGE)
 				. = TRUE
 

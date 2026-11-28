@@ -7,9 +7,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 
-	verb_say = "coldly states"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_say = "冷冷地宣告"
+	verb_ask = "询问"
+	verb_exclaim = "发出警报"
 
 	idle_power_usage = 20
 	active_power_usage = 50
@@ -19,9 +19,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	var/obj/item/radio/headset/radio
 	var/arrival = "%PERSON 已经注册为 %RANK"
 	var/arrivalToggle = 1
-	var/newhead = "%PERSON, %RANK, 是部门领导."
+	var/newhead = "%RANK %PERSON 现任部门主管。"
 	var/newheadToggle = 1
-	var/newabno = "异想体 '%PERSON' 已被送至 %RANK 部门."
+	var/newabno = "异想体“%PERSON”已被送至%RANK。"
 	var/newabnoToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -60,12 +60,12 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(P.tool_behaviour == TOOL_SCREWDRIVER)
 		P.play_tool_sound(src)
 		panel_open = !panel_open
-		to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
+		to_chat(user, "<span class='notice'>你[panel_open ? "打开" : "关上"]了[src]的检修盖。</span>")
 		update_icon()
 	else if(default_deconstruction_crowbar(P))
 		return
 	else if(P.tool_behaviour == TOOL_MULTITOOL && panel_open && (machine_stat & BROKEN))
-		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
+		to_chat(user, "<span class='notice'>你重置了[src]的固件。</span>")
 		set_machine_stat(machine_stat & ~BROKEN)
 		update_icon()
 	else
@@ -83,15 +83,15 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	var/message
 
 	if(message_type == "ARRIVAL" && arrivalToggle)
-		message = CompileText(arrival, user, rank)
+		message = CompileText(arrival, user, FacilityJobName(rank))
 	else if(message_type == "NEWHEAD" && newheadToggle)
-		message = CompileText(newhead, user, rank)
+		message = CompileText(newhead, user, FacilityJobName(rank))
 	else if(message_type == "NEWABNO" && newabnoToggle)
-		message = CompileText(newabno, user, rank)
+		message = CompileText(newabno, user, FacilityChannelName(rank))
 	else if(message_type == "CRYOSTORAGE")
-		message = "[user][rank ? ", [rank]" : ""] has been moved to cryo storage."
+		message = "[user][rank ? "（[FacilityJobName(rank)]）" : ""]已被转入低温休眠舱。"
 	else if(message_type == "ARRIVALS_BROKEN")
-		message = "The arrivals shuttle has been damaged. Docking for repairs..."
+		message = "抵达穿梭机受损，正在靠泊维修……"
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)
@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.canUseTopic(src, !issilicon(usr)))
 		return
 	if(machine_stat & BROKEN)
-		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>You hear a faint buzz.</span>")
+		visible_message("<span class='warning'>[src]发出蜂鸣声。</span>", "<span class='hear'>你听到一声微弱的蜂鸣。</span>")
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, TRUE)
 		return
 	switch(action)
@@ -130,21 +130,21 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 				return
 			if(NewMessage)
 				arrival = NewMessage
-				log_game("The arrivals announcement was updated: [NewMessage] by:[key_name(usr)]")
+				log_game("[key_name(usr)] 将抵达公告更新为：[NewMessage]")
 		if("NewheadText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
 			if(!usr.canUseTopic(src, !issilicon(usr)))
 				return
 			if(NewMessage)
 				newhead = NewMessage
-				log_game("The head announcement was updated: [NewMessage] by:[key_name(usr)]")
+				log_game("[key_name(usr)] 将主管公告更新为：[NewMessage]")
 		if("NewAbnoText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
 			if(!usr.canUseTopic(src, !issilicon(usr)))
 				return
 			if(NewMessage)
 				newabno = NewMessage
-				log_game("The abno delivery announcement was updated: [NewMessage] by:[key_name(usr)]")
+				log_game("[key_name(usr)] 将异想体送达公告更新为：[NewMessage]")
 		if("NewheadToggle")
 			newheadToggle = !newheadToggle
 			update_icon()
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
+		to_chat(user, "<span class='warning'>[src]的固件似乎出了故障！</span>")
 		return
 	interact(user)
 
@@ -171,8 +171,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!obj_break()) // if badmins flag this unbreakable or its already broken
 		return
 
-	arrival = pick("#!@%ERR-34%2 CANNOT LOCAT@# JO# F*LE!", "CRITICAL ERROR 99.", "ERR)#: DA#AB@#E NOT F(*ND!")
-	newhead = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!", "ER)#R - B*@ TEXT F*O(ND!", "AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
+	arrival = pick("#!@%错误-34%2 无法定@#位职务文*件！", "严重错误 99。", "错)#: 找不@#到数(*据库！")
+	newhead = pick("过#载()：检*#测到\[未知??\]！", "错)#误：发现损*@坏文*本！", "AAS.exe 未响应。NanoOS 正在查找解决方案。")
 
 /obj/machinery/announcement_system/emp_act(severity)
 	. = ..()

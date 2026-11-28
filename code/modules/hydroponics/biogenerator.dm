@@ -59,7 +59,7 @@
 /obj/machinery/biogenerator/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Productivity at <b>[productivity*100]%</b>.<br>Matter consumption reduced by <b>[(efficiency*25)-25]</b>%.<br>Machine can hold up to <b>[max_items]</b> pieces of produce.</span>"
+		. += "<span class='notice'>状态屏显示：生物质产率为 <b>[productivity*100]%</b>。<br>制造时的生物质消耗降低 <b>[(efficiency*25)-25]</b>%。<br>最多可放入 <b>[max_items]</b> 份农产品。</span>"
 
 /obj/machinery/biogenerator/update_icon_state()
 	if(panel_open)
@@ -76,7 +76,7 @@
 		return ..()
 
 	if(processing)
-		to_chat(user, "<span class='warning'>The biogenerator is currently processing.</span>")
+		to_chat(user, "<span class='warning'>生物质生成器正在加工。</span>")
 		return
 
 	if(default_deconstruction_screwdriver(user, "biogen-empty-o", "biogen-empty", O))
@@ -94,15 +94,15 @@
 		. = 1 //no afterattack
 		if(!panel_open)
 			if(beaker)
-				to_chat(user, "<span class='warning'>A container is already loaded into the machine.</span>")
+				to_chat(user, "<span class='warning'>机器里已经放了一个容器。</span>")
 			else
 				if(!user.transferItemToLoc(O, src))
 					return
 				beaker = O
-				to_chat(user, "<span class='notice'>You add the container to the machine.</span>")
+				to_chat(user, "<span class='notice'>你把容器装入机器。</span>")
 				update_icon()
 		else
-			to_chat(user, "<span class='warning'>Close the maintenance panel first.</span>")
+			to_chat(user, "<span class='warning'>请先关上检修盖。</span>")
 		return
 
 	else if(istype(O, /obj/item/storage/bag/plants))
@@ -111,7 +111,7 @@
 		for(var/obj/item/food/grown/G in contents)
 			i++
 		if(i >= max_items)
-			to_chat(user, "<span class='warning'>The biogenerator is already full! Activate it.</span>")
+			to_chat(user, "<span class='warning'>生物质生成器已满，请启动加工！</span>")
 		else
 			for(var/obj/item/food/grown/G in PB.contents)
 				if(i >= max_items)
@@ -119,11 +119,11 @@
 				if(SEND_SIGNAL(PB, COMSIG_TRY_STORAGE_TAKE, G, src))
 					i++
 			if(i<max_items)
-				to_chat(user, "<span class='info'>You empty the plant bag into the biogenerator.</span>")
+				to_chat(user, "<span class='info'>你把植物收集袋里的东西倒进了生物质生成器。</span>")
 			else if(PB.contents.len == 0)
-				to_chat(user, "<span class='info'>You empty the plant bag into the biogenerator, filling it to its capacity.</span>")
+				to_chat(user, "<span class='info'>你倒空了植物收集袋，正好装满生物质生成器。</span>")
 			else
-				to_chat(user, "<span class='info'>You fill the biogenerator to its capacity.</span>")
+				to_chat(user, "<span class='info'>生物质生成器已经装满了。</span>")
 		return TRUE //no afterattack
 
 	else if(istype(O, /obj/item/food/grown))
@@ -131,15 +131,15 @@
 		for(var/obj/item/food/grown/G in contents)
 			i++
 		if(i >= max_items)
-			to_chat(user, "<span class='warning'>The biogenerator is full! Activate it.</span>")
+			to_chat(user, "<span class='warning'>生物质生成器已满，请启动加工！</span>")
 		else
 			if(user.transferItemToLoc(O, src))
-				to_chat(user, "<span class='info'>You put [O.name] in [src.name]</span>")
+				to_chat(user, "<span class='info'>你把[O.name]放入[src.name]。</span>")
 		return TRUE //no afterattack
 	else if (istype(O, /obj/item/disk/design_disk))
-		user.visible_message("<span class='notice'>[user] begins to load \the [O] in \the [src]...</span>",
-			"<span class='notice'>You begin to load a design from \the [O]...</span>",
-			"<span class='hear'>You hear the chatter of a floppy drive.</span>")
+		user.visible_message("<span class='notice'>[user]开始将[O]中的设计载入[src]……</span>",
+			"<span class='notice'>你开始从[O]载入设计……</span>",
+			"<span class='hear'>你听到了软盘驱动器的咔嗒声。</span>")
 		processing = TRUE
 		var/obj/item/disk/design_disk/D = O
 		if(do_after(user, 10, target = src))
@@ -149,7 +149,7 @@
 		processing = FALSE
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>You cannot put this in [src.name]!</span>")
+		to_chat(user, "<span class='warning'>这东西装不进[src.name]！</span>")
 
 /obj/machinery/biogenerator/AltClick(mob/living/user)
 	. = ..()
@@ -168,7 +168,7 @@
 	if(machine_stat != NONE)
 		return
 	if(processing)
-		to_chat(user, "<span class='warning'>The biogenerator is in the process of working.</span>")
+		to_chat(user, "<span class='warning'>生物质生成器正在运转。</span>")
 		return
 	var/S = 0
 	for(var/obj/item/food/grown/I in contents)
@@ -226,7 +226,7 @@
 		var/i = amount
 		while(i > 0)
 			if(!check_container_volume(D.make_reagents))
-				say("Warning: Attached container does not have enough free capacity!")
+				say("警告：已连接的容器剩余容量不足！")
 				return .
 			if(!check_cost(D.materials))
 				return .

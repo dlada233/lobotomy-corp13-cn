@@ -10,8 +10,8 @@
  */
 
 /obj/item/storage/backpack
-	name = "backpack"
-	desc = "You wear this on your back and put items into it."
+	name = "背包"
+	desc = "背在身上，用来装东西。"
 	icon_state = "backpack"
 	inhand_icon_state = "backpack"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
@@ -38,8 +38,8 @@
 	STR.max_combined_w_class = 12
 
 /obj/item/bag_of_holding_inert
-	name = "inert bag of holding"
-	desc = "What is currently a just an unwieldly block of metal with a slot ready to accept a bluespace anomaly core."
+	name = "未激活的次元背包"
+	desc = "目前只是一块笨重的金属，上面留了一个可装入蓝空间异常核心的插槽。"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "brokenpack"
 	inhand_icon_state = "brokenpack"
@@ -50,8 +50,8 @@
 	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/storage/backpack/holding
-	name = "bag of holding"
-	desc = "A backpack that opens into a localized pocket of bluespace."
+	name = "次元背包"
+	desc = "开口通往一小片独立的蓝空间。"
 	icon_state = "holdingpack"
 	inhand_icon_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
@@ -67,7 +67,7 @@
 	STR.max_combined_w_class = 35
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide."))
+	user.visible_message(span_suicide("[user]正往[src]里跳！看起来是想自杀。"))
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
@@ -75,8 +75,8 @@
 	qdel(user)
 
 /obj/item/storage/backpack/santabag
-	name = "Santa's Gift Bag"
-	desc = "Space Santa uses this to deliver presents to all the nice children in space in Christmas! Wow, it's pretty big!"
+	name = "圣诞老人的礼物袋"
+	desc = "太空圣诞老人每逢圣诞就用它给太空里的乖孩子送礼物。好大的口袋！"
 	icon_state = "giftbag0"
 	inhand_icon_state = "giftbag"
 	w_class = WEIGHT_CLASS_BULKY
@@ -92,7 +92,7 @@
 	STR.max_combined_w_class = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit..."))
+	user.visible_message(span_suicide("[user]把[src]套在头上，拉紧袋口。看来今年没什么过节的心情……"))
 	return (OXYLOSS)
 
 /obj/item/storage/backpack/santabag/proc/regenerate_presents()
@@ -112,128 +112,128 @@
 
 
 /obj/item/storage/backpack/cultpack
-	name = "trophy rack"
-	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
+	name = "战利品架"
+	desc = "既能多带点装备，又能让所有人见识一下你疯到了什么地步。"
 	icon_state = "cultpack"
 	inhand_icon_state = "backpack"
 
 /obj/item/storage/backpack/clown
-	name = "Giggles von Honkerton"
-	desc = "It's a backpack made by Honk! Co."
+	name = "咯咯笑伯爵"
+	desc = "叭叭公司出品的背包。"
 	icon_state = "clownpack"
 	inhand_icon_state = "clownpack"
 
 /obj/item/storage/backpack/explorer
-	name = "explorer bag"
-	desc = "A robust backpack for stashing your loot."
+	name = "探险背包"
+	desc = "结实耐用，适合收存战利品。"
 	icon_state = "explorerpack"
 	inhand_icon_state = "explorerpack"
 
 /obj/item/storage/backpack/mime
-	name = "Parcel Parceaux"
-	desc = "A silent backpack made for those silent workers. Silence Co."
+	name = "默索包裹"
+	desc = "无声公司为沉默的工作人员制作的无声背包。"
 	icon_state = "mimepack"
 	inhand_icon_state = "mimepack"
 
 /obj/item/storage/backpack/medic
-	name = "medical backpack"
-	desc = "It's a backpack especially designed for use in a sterile environment."
+	name = "医疗背包"
+	desc = "专为无菌环境设计的背包。"
 	icon_state = "medicalpack"
 	inhand_icon_state = "medicalpack"
 
 /obj/item/storage/backpack/security
-	name = "security backpack"
-	desc = "It's a very robust backpack."
+	name = "安保背包"
+	desc = "十分结实的背包。"
 	icon_state = "securitypack"
 	inhand_icon_state = "securitypack"
 
 /obj/item/storage/backpack/captain
-	name = "captain's backpack"
-	desc = "It's a special backpack made exclusively for Nanotrasen officers."
+	name = "站长背包"
+	desc = "纳米传讯为高级职员特制的背包。"
 	icon_state = "captainpack"
 	inhand_icon_state = "captainpack"
 
 /obj/item/storage/backpack/industrial
-	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	name = "工业背包"
+	desc = "耐磨结实，经得住空间站的日常工作。"
 	icon_state = "engiepack"
 	inhand_icon_state = "engiepack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/botany
-	name = "botany backpack"
-	desc = "It's a backpack made of all-natural fibers."
+	name = "园艺背包"
+	desc = "由纯天然纤维制成的背包。"
 	icon_state = "botpack"
 	inhand_icon_state = "botpack"
 
 /obj/item/storage/backpack/chemistry
-	name = "chemistry backpack"
-	desc = "A backpack specially designed to repel stains and hazardous liquids."
+	name = "化学背包"
+	desc = "经过特殊处理，能防污并阻隔危险液体。"
 	icon_state = "chempack"
 	inhand_icon_state = "chempack"
 
 /obj/item/storage/backpack/genetics
-	name = "genetics backpack"
-	desc = "A bag designed to be super tough, just in case someone hulks out on you."
+	name = "遗传学背包"
+	desc = "格外结实，以防有人突然变身大力士。"
 	icon_state = "genepack"
 	inhand_icon_state = "genepack"
 
 /obj/item/storage/backpack/science
-	name = "science backpack"
-	desc = "A specially designed backpack. It's fire resistant and smells vaguely of plasma."
+	name = "科研背包"
+	desc = "特制的防火背包，隐约有股等离子体的味道。"
 	icon_state = "toxpack"
 	inhand_icon_state = "toxpack"
 
 /obj/item/storage/backpack/virology
-	name = "virology backpack"
-	desc = "A backpack made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey."
+	name = "病毒学背包"
+	desc = "用低致敏性纤维制成，有助于防止疾病传播。闻起来有股猴味。"
 	icon_state = "viropack"
 	inhand_icon_state = "viropack"
 
 /obj/item/storage/backpack/ert
-	name = "emergency response team commander backpack"
-	desc = "A spacious backpack with lots of pockets, worn by the Commander of an Emergency Response Team."
+	name = "应急响应小队指挥官背包"
+	desc = "应急响应小队指挥官使用的大背包，有许多口袋。"
 	icon_state = "ert_commander"
 	inhand_icon_state = "securitypack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/ert/security
-	name = "emergency response team security backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Security Officers of an Emergency Response Team."
+	name = "应急响应小队安保背包"
+	desc = "应急响应小队安保员使用的大背包，有许多口袋。"
 	icon_state = "ert_security"
 
 /obj/item/storage/backpack/ert/medical
-	name = "emergency response team medical backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Medical Officers of an Emergency Response Team."
+	name = "应急响应小队医疗背包"
+	desc = "应急响应小队医护人员使用的大背包，有许多口袋。"
 	icon_state = "ert_medical"
 
 /obj/item/storage/backpack/ert/engineer
-	name = "emergency response team engineer backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Engineers of an Emergency Response Team."
+	name = "应急响应小队工程背包"
+	desc = "应急响应小队工程师使用的大背包，有许多口袋。"
 	icon_state = "ert_engineering"
 
 /obj/item/storage/backpack/ert/janitor
-	name = "emergency response team janitor backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Janitors of an Emergency Response Team."
+	name = "应急响应小队保洁背包"
+	desc = "应急响应小队保洁员使用的大背包，有许多口袋。"
 	icon_state = "ert_janitor"
 
 /obj/item/storage/backpack/ert/clown
-	name = "emergency response team clown backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Clowns of an Emergency Response Team."
+	name = "应急响应小队小丑背包"
+	desc = "应急响应小队小丑使用的大背包，有许多口袋。"
 	icon_state = "ert_clown"
 /*
  * Satchel Types
  */
 
 /obj/item/storage/backpack/satchel
-	name = "satchel"
-	desc = "A trendy looking satchel."
+	name = "挎包"
+	desc = "款式时髦的挎包。"
 	icon_state = "satchel-norm"
 	inhand_icon_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/leather
-	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	name = "皮挎包"
+	desc = "以优质皮革制成的精美挎包。"
 	icon_state = "satchel"
 	inhand_icon_state = "satchel"
 
@@ -244,69 +244,69 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel/eng
-	name = "industrial satchel"
-	desc = "A tough satchel with extra pockets."
+	name = "工业挎包"
+	desc = "结实的挎包，多配了几个口袋。"
 	icon_state = "satchel-eng"
 	inhand_icon_state = "satchel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel/med
-	name = "medical satchel"
-	desc = "A sterile satchel used in medical departments."
+	name = "医疗挎包"
+	desc = "医疗部门使用的无菌挎包。"
 	icon_state = "satchel-med"
 	inhand_icon_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/vir
-	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	name = "病毒学挎包"
+	desc = "采用病毒学部门配色的无菌挎包。"
 	icon_state = "satchel-vir"
 	inhand_icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
-	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	name = "化学师挎包"
+	desc = "采用化学师配色的无菌挎包。"
 	icon_state = "satchel-chem"
 	inhand_icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
-	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	name = "遗传学家挎包"
+	desc = "采用遗传学家配色的无菌挎包。"
 	icon_state = "satchel-gen"
 	inhand_icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/tox
-	name = "scientist satchel"
-	desc = "Useful for holding research materials."
+	name = "科学家挎包"
+	desc = "适合装研究材料。"
 	icon_state = "satchel-tox"
 	inhand_icon_state = "satchel-tox"
 
 /obj/item/storage/backpack/satchel/hyd
-	name = "botanist satchel"
-	desc = "A satchel made of all natural fibers."
+	name = "园艺师挎包"
+	desc = "由纯天然纤维制成的挎包。"
 	icon_state = "satchel-hyd"
 	inhand_icon_state = "satchel-hyd"
 
 /obj/item/storage/backpack/satchel/sec
-	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	name = "安保挎包"
+	desc = "为安保工作准备的结实挎包。"
 	icon_state = "satchel-sec"
 	inhand_icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/explorer
-	name = "explorer satchel"
-	desc = "A robust satchel for stashing your loot."
+	name = "探险挎包"
+	desc = "结实耐用，适合收存战利品。"
 	icon_state = "satchel-explorer"
 	inhand_icon_state = "satchel-explorer"
 
 /obj/item/storage/backpack/satchel/cap
-	name = "captain's satchel"
-	desc = "An exclusive satchel for Nanotrasen officers."
+	name = "站长挎包"
+	desc = "纳米传讯高级职员专用的挎包。"
 	icon_state = "satchel-cap"
 	inhand_icon_state = "satchel-cap"
 
 /obj/item/storage/backpack/satchel/flat
-	name = "smuggler's satchel"
-	desc = "A very slim satchel that can easily fit into tight spaces."
+	name = "走私者挎包"
+	desc = "这个挎包很薄，能轻松塞进狭窄的缝隙。"
 	icon_state = "satchel-flat"
 	inhand_icon_state = "satchel-flat"
 	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
@@ -339,14 +339,14 @@
 	return
 
 /obj/item/storage/backpack/duffelbag
-	name = "duffel bag"
-	desc = "A large duffel bag for holding extra things."
+	name = "旅行包"
+	desc = "可以多装些东西的大旅行包。"
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
 
 /obj/item/storage/backpack/duffelbag/cursed
-	name = "living duffel bag"
-	desc = "A cursed clown duffel bag that hungers for food of any kind.\n A warning label suggests that it eats food inside. If that food happens to be a horribly ruined, burned mess the chef scrapped out of the microwave, then it might have negative effects on the bag..."
+	name = "活体旅行包"
+	desc = "一个受诅咒的小丑旅行包，什么食物都想吃。\n警告标签上说它会吃掉放进去的食物。要是给它吃厨师从微波炉里刮下来的焦糊残渣，恐怕会有不良反应……"
 	icon_state = "duffel-curse"
 	inhand_icon_state = "duffel-curse"
 	slowdown = 2
@@ -399,10 +399,10 @@
 				playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 				///poisoned food damages it
 				if(istype(F, /obj/item/food/badrecipe))
-					to_chat(user, "<span class='warning'>The [name] grumbles!</span>")
+					to_chat(user, "<span class='warning'>[name]的肚子咕咕叫了起来！</span>")
 					obj_integrity -= 50
 				else
-					to_chat(user, "<span class='notice'>The [name] eats your [F]!</span>")
+					to_chat(user, "<span class='notice'>[name]吃掉了你的[F]！</span>")
 				qdel(F)
 				hunger = 0
 				return
@@ -411,24 +411,24 @@
 		user.deal_damage(60, BRUTE, def_zone = affecting)
 		hunger = initial(hunger)
 		playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
-		to_chat(user, "<span class='warning'>The [name] eats your back!</span>")
+		to_chat(user, "<span class='warning'>[name]啃起了你的后背！</span>")
 		obj_integrity -= 25
 
 /obj/item/storage/backpack/duffelbag/captain
-	name = "captain's duffel bag"
-	desc = "A large duffel bag for holding extra captainly goods."
+	name = "站长旅行包"
+	desc = "盛放站长用品的大旅行包。"
 	icon_state = "duffel-captain"
 	inhand_icon_state = "duffel-captain"
 
 /obj/item/storage/backpack/duffelbag/med
-	name = "medical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies."
+	name = "医疗旅行包"
+	desc = "盛放备用医疗物资的大旅行包。"
 	icon_state = "duffel-med"
 	inhand_icon_state = "duffel-med"
 
 /obj/item/storage/backpack/duffelbag/med/surgery
-	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
+	name = "手术器械旅行包"
+	desc = "盛放备用医疗物资的大旅行包，这个包似乎专为手术器械设计。"
 
 /obj/item/storage/backpack/duffelbag/med/surgery/PopulateContents()
 	new /obj/item/scalpel(src)
@@ -461,50 +461,50 @@
 	new /obj/item/reagent_containers/medigel/sterilizine(src)
 
 /obj/item/storage/backpack/duffelbag/explorer
-	name = "explorator's duffel bag"
-	desc = "A large duffel bag for holding extra exotic treasures."
+	name = "探险旅行包"
+	desc = "盛放奇珍异宝的大旅行包。"
 	icon_state = "duffel-explorer"
 	inhand_icon_state = "duffel-explorer"
 
 /obj/item/storage/backpack/duffelbag/hydroponics
-	name = "hydroponic's duffel bag"
-	desc = "A large duffel bag for holding extra gardening tools."
+	name = "园艺旅行包"
+	desc = "盛放备用园艺工具的大旅行包。"
 	icon_state = "duffel-hydroponics"
 	inhand_icon_state = "duffel-hydroponics"
 
 /obj/item/storage/backpack/duffelbag/chemistry
-	name = "chemistry duffel bag"
-	desc = "A large duffel bag for holding extra chemical substances."
+	name = "化学旅行包"
+	desc = "盛放化学品的大旅行包。"
 	icon_state = "duffel-chemistry"
 	inhand_icon_state = "duffel-chemistry"
 
 /obj/item/storage/backpack/duffelbag/genetics
-	name = "geneticist's duffel bag"
-	desc = "A large duffel bag for holding extra genetic mutations."
+	name = "遗传学家旅行包"
+	desc = "盛放各种基因突变样本的大旅行包。"
 	icon_state = "duffel-genetics"
 	inhand_icon_state = "duffel-genetics"
 
 /obj/item/storage/backpack/duffelbag/toxins
-	name = "scientist's duffel bag"
-	desc = "A large duffel bag for holding extra scientific components."
+	name = "科学家旅行包"
+	desc = "盛放备用科研组件的大旅行包。"
 	icon_state = "duffel-toxins"
 	inhand_icon_state = "duffel-toxins"
 
 /obj/item/storage/backpack/duffelbag/virology
-	name = "virologist's duffel bag"
-	desc = "A large duffel bag for holding extra viral bottles."
+	name = "病毒学家旅行包"
+	desc = "盛放病毒样本瓶的大旅行包。"
 	icon_state = "duffel-virology"
 	inhand_icon_state = "duffel-virology"
 
 /obj/item/storage/backpack/duffelbag/sec
-	name = "security duffel bag"
-	desc = "A large duffel bag for holding extra security supplies and ammunition."
+	name = "安保旅行包"
+	desc = "盛放备用安保物资和弹药的大旅行包。"
 	icon_state = "duffel-sec"
 	inhand_icon_state = "duffel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
-	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools."
+	name = "手术器械旅行包"
+	desc = "盛放备用物资的大旅行包，内衬为各种锋利器械预留了位置。"
 
 /obj/item/storage/backpack/duffelbag/sec/surgery/PopulateContents()
 	new /obj/item/scalpel(src)
@@ -519,15 +519,15 @@
 	new /obj/item/blood_filter(src)
 
 /obj/item/storage/backpack/duffelbag/engineering
-	name = "industrial duffel bag"
-	desc = "A large duffel bag for holding extra tools and supplies."
+	name = "工业旅行包"
+	desc = "盛放备用工具和物资的大旅行包。"
 	icon_state = "duffel-eng"
 	inhand_icon_state = "duffel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/drone
-	name = "drone duffel bag"
-	desc = "A large duffel bag for holding tools and hats."
+	name = "无人机旅行包"
+	desc = "盛放工具和帽子的大旅行包。"
 	icon_state = "duffel-drone"
 	inhand_icon_state = "duffel-drone"
 	resistance_flags = FIRE_PROOF
@@ -542,8 +542,8 @@
 	new /obj/item/multitool(src)
 
 /obj/item/storage/backpack/duffelbag/clown
-	name = "clown's duffel bag"
-	desc = "A large duffel bag for holding lots of funny gags!"
+	name = "小丑旅行包"
+	desc = "能装下许多搞笑道具的大旅行包！"
 	icon_state = "duffel-clown"
 	inhand_icon_state = "duffel-clown"
 
@@ -555,8 +555,8 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "suspicious looking duffel bag"
-	desc = "A large duffel bag for holding extra tactical supplies."
+	name = "可疑的旅行包"
+	desc = "盛放备用战术物资的大旅行包。"
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
@@ -568,7 +568,7 @@
 	STR.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
-	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
+	desc = "可以多装些东西的大旅行包，背面印着纳米传讯的标志。"
 	icon_state = "duffel-syndieammo"
 	inhand_icon_state = "duffel-syndieammo"
 
@@ -582,14 +582,14 @@
 	new /obj/item/clothing/head/fedora(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med
-	name = "medical duffel bag"
-	desc = "A large duffel bag for holding extra tactical medical supplies."
+	name = "医疗旅行包"
+	desc = "盛放备用战术医疗物资的大旅行包。"
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
-	name = "surgery duffel bag"
-	desc = "A suspicious looking duffel bag for holding surgery tools."
+	name = "手术旅行包"
+	desc = "一个看起来可疑的手术器械旅行包。"
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 
@@ -609,13 +609,13 @@
 	new /obj/item/stack/medical/bone_gel(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo
-	name = "ammunition duffel bag"
-	desc = "A large duffel bag for holding extra weapons ammunition and supplies."
+	name = "弹药旅行包"
+	desc = "盛放备用弹药的大旅行包。"
 	icon_state = "duffel-syndieammo"
 	inhand_icon_state = "duffel-syndieammo"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun
-	desc = "A large duffel bag, packed to the brim with Bulldog shotgun magazines."
+	desc = "塞满斗牛犬霰弹枪弹匣的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun/PopulateContents()
 	for(var/i in 1 to 6)
@@ -625,14 +625,14 @@
 	new /obj/item/ammo_box/magazine/m12g/dragon(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/smg
-	desc = "A large duffel bag, packed to the brim with C-20r magazines."
+	desc = "塞满 C-20r 冲锋枪弹匣的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/smg/PopulateContents()
 	for(var/i in 1 to 9)
 		new /obj/item/ammo_box/magazine/smgm45(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mech
-	desc = "A large duffel bag, packed to the brim with various exosuit ammo."
+	desc = "塞满各种机甲弹药的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mech/PopulateContents()
 	new /obj/item/mecha_ammo/scattershot(src)
@@ -642,7 +642,7 @@
 	new /obj/item/storage/belt/utility/syndicate(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler
-	desc = "A large duffel bag, packed to the brim with various exosuit ammo."
+	desc = "塞满各种机甲弹药的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler/PopulateContents()
 	new /obj/item/mecha_ammo/lmg(src)
@@ -656,7 +656,7 @@
 	new /obj/item/mecha_ammo/missiles_he(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/c20rbundle
-	desc = "A large duffel bag containing a C-20r, some magazines, and a cheap looking suppressor."
+	desc = "装有一支 C-20r、几只弹匣和一个廉价消音器的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/c20rbundle/PopulateContents()
 	new /obj/item/ammo_box/magazine/smgm45(src)
@@ -665,7 +665,7 @@
 	new /obj/item/suppressor/specialoffer(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/bulldogbundle
-	desc = "A large duffel bag containing a Bulldog, some drums, and a pair of thermal imaging glasses."
+	desc = "装有一支斗牛犬霰弹枪、几个弹鼓和一副热成像眼镜的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/bulldogbundle/PopulateContents()
 	new /obj/item/gun/ballistic/shotgun/bulldog(src)
@@ -674,7 +674,7 @@
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle
-	desc = "A large duffel bag containing a medical equipment, a Donksoft LMG, a big jumbo box of riot darts, and a knock-off pair of magboots."
+	desc = "装有医疗器材、一挺 Donksoft 轻机枪、一大盒防暴飞镖和一双仿制磁力靴的旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle/PopulateContents()
 	new /obj/item/clothing/shoes/magboots/syndie(src)
@@ -683,7 +683,7 @@
 	new /obj/item/ammo_box/foambox/riot(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/bioterrorbundle
-	desc = "A large duffel bag containing deadly chemicals, a handheld chem sprayer, Bioterror foam grenade, a Donksoft assault rifle, box of riot grade darts, a dart pistol, and a box of syringes."
+	desc = "装有危险化学品、手持试剂喷雾器、生化泡沫手雷、Donksoft 突击步枪、防暴飞镖、飞镖手枪和一盒注射器的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/med/bioterrorbundle/PopulateContents()
 	new /obj/item/reagent_containers/spray/chemsprayer/bioterror(src)
@@ -705,7 +705,7 @@
 		new /obj/item/grenade/c4/x4(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter
-	desc = "A large duffel bag containing a New Russian pyro backpack sprayer, Elite hardsuit, a Stechkin APS pistol, minibomb, ammo, and other equipment."
+	desc = "装有新俄罗斯背负式火焰喷射器、精英太空服、斯捷奇金 APS 手枪、微型炸弹、弹药及其他装备的大旅行包。"
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/mercenary/soviet(src)
@@ -734,12 +734,12 @@
 	new /obj/item/implanter/sad_trombone(src)
 
 /obj/item/storage/backpack/henchmen
-	name = "wings"
-	desc = "Granted to the henchmen who deserve it. This probably doesn't include you."
+	name = "翅膀"
+	desc = "赏给立功手下的。多半轮不到你。"
 	icon_state = "henchmen"
 	inhand_icon_state = "henchmen"
 
 /obj/item/storage/backpack/duffelbag/cops
-	name = "police bag"
-	desc = "A large duffel bag for holding extra police gear."
+	name = "警用旅行包"
+	desc = "盛放备用警用装备的大旅行包。"
 	slowdown = 0

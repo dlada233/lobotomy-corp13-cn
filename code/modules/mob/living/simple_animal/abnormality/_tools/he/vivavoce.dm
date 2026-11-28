@@ -1,14 +1,14 @@
 #define STATUS_EFFECT_ROLECALL /datum/status_effect/stacking/rolecall
 /obj/structure/toolabnormality/attribute_giver/vivavoce
-	name = "viva voce"
-	desc = "A very old-fashioned communication device."
+	name = "心声回响"
+	desc = "一部相当老式的电话。"
 	icon_state = "vivavoce"
 
 	max_boost = 50
 	given_attribute = TEMPERANCE_ATTRIBUTE
 	given_status_effect = STATUS_EFFECT_ROLECALL
-	feedback_message = "You pick up the phone and hear nothing, but you feel as if someone is behind you."
-	full_boost_message = "It's silent."
+	feedback_message = "你拿起听筒，里面没有声音。你却觉得背后站着个人。"
+	full_boost_message = "听筒里一片寂静。"
 
 	ego_list = list(
 		/datum/ego_datum/weapon/ringing,
@@ -57,10 +57,10 @@
 	var/mob/living/carbon/human/H = owner
 	if(!istype(H))
 		return
-	to_chat(H, span_userdanger("What if I'm attacked? I can't focus!"))
+	to_chat(H, span_userdanger("要是有人袭击我怎么办？我没法集中精神！"))
 	if(prob(5))
 		playsound(H, 'sound/abnormalities/vivavoce/doorknock.ogg', 100, FALSE, -5)
-		to_chat(H, span_userdanger("What was that?"))
+		to_chat(H, span_userdanger("刚才那是什么声音？"))
 	H.physiology.red_mod *= damage_mod
 	H.physiology.white_mod *= damage_mod
 	H.physiology.black_mod *= damage_mod

@@ -1,7 +1,7 @@
 ///A single machine that produces a single chem. Can be placed in unison with others through plumbing to create chemical factories
 /obj/machinery/plumbing/synthesizer
-	name = "chemical synthesizer"
-	desc = "Produces a single chemical at a given volume. Must be plumbed. Most effective when working in unison with other chemical synthesizers, heaters and filters."
+	name = "化学试剂合成器"
+	desc = "接入管道后，按指定量生产一种试剂。与其他合成器、加热器和过滤器配合使用时效率最高。"
 
 	icon_state = "synthesizer"
 	icon = 'icons/obj/plumbing/plumbers.dmi'
@@ -66,7 +66,7 @@
 	for(var/A in dispensable_reagents)
 		var/datum/reagent/R = GLOB.chemical_reagents_list[A]
 		if(R)
-			chemicals.Add(list(list("title" = R.name, "id" = ckey(R.name))))
+			chemicals.Add(list(list("title" = R.DisplayName(), "id" = ckey(R.name))))
 	data["chemicals"] = chemicals
 	data["amount"] = amount
 	data["possible_amounts"] = possible_amounts

@@ -1,5 +1,5 @@
 import { toFixed } from 'common/math';
-import { toTitleCase } from 'common/string';
+
 import { useBackend } from '../backend';
 import { AnimatedNumber, Box, Button, Icon, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
@@ -19,7 +19,7 @@ export const ChemDispenser = (props, context) => {
     && Object.keys(data.recordingRecipe)
       .map(id => ({
         id,
-        name: toTitleCase(id.replace(/_/, ' ')),
+        name: data.recordingNames[id] || id,
         volume: data.recordingRecipe[id],
       }))
     || data.beakerContents
@@ -30,31 +30,31 @@ export const ChemDispenser = (props, context) => {
       height={620}>
       <Window.Content scrollable>
         <Section
-          title="Status"
+          title="状态"
           buttons={recording && (
             <Box inline mx={1} color="red">
               <Icon name="circle" mr={1} />
-              Recording
+              正在记录
             </Box>
           )}>
           <LabeledList>
-            <LabeledList.Item label="Energy">
+            <LabeledList.Item label="电量">
               <ProgressBar
                 value={data.energy / data.maxEnergy}>
-                {toFixed(data.energy) + ' units'}
+                {toFixed(data.energy) + ' 单位'}
               </ProgressBar>
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Section
-          title="Recipes"
+          title="配方"
           buttons={(
             <>
               {!recording && (
                 <Box inline mx={1}>
                   <Button
                     color="transparent"
-                    content="Clear recipes"
+                    content="清空配方"
                     onClick={() => act('clear_recipes')} />
                 </Box>
               )}
@@ -62,21 +62,21 @@ export const ChemDispenser = (props, context) => {
                 <Button
                   icon="circle"
                   disabled={!data.isBeakerLoaded}
-                  content="Record"
+                  content="记录配方"
                   onClick={() => act('record_recipe')} />
               )}
               {recording && (
                 <Button
                   icon="ban"
                   color="transparent"
-                  content="Discard"
+                  content="放弃记录"
                   onClick={() => act('cancel_recording')} />
               )}
               {recording && (
                 <Button
                   icon="save"
                   color="green"
-                  content="Save"
+                  content="保存"
                   onClick={() => act('save_recording')} />
               )}
             </>
@@ -95,13 +95,13 @@ export const ChemDispenser = (props, context) => {
             ))}
             {recipes.length === 0 && (
               <Box color="light-gray">
-                No recipes.
+                暂无配方。
               </Box>
             )}
           </Box>
         </Section>
         <Section
-          title="Dispense"
+          title="分配试剂"
           buttons={(
             beakerTransferAmounts.map(amount => (
               <Button
@@ -129,7 +129,7 @@ export const ChemDispenser = (props, context) => {
           </Box>
         </Section>
         <Section
-          title="Beaker"
+          title="烧杯"
           buttons={(
             beakerTransferAmounts.map(amount => (
               <Button
@@ -142,42 +142,42 @@ export const ChemDispenser = (props, context) => {
           )}>
           <LabeledList>
             <LabeledList.Item
-              label="Beaker"
+              label="烧杯"
               buttons={!!data.isBeakerLoaded && (
                 <Button
                   icon="eject"
-                  content="Eject"
+                  content="取出"
                   disabled={!data.isBeakerLoaded}
                   onClick={() => act('eject')} />
               )}>
               {recording
-                && 'Virtual beaker'
+                && '虚拟烧杯'
                 || data.isBeakerLoaded
                   && (
                     <>
                       <AnimatedNumber
                         initial={0}
                         value={data.beakerCurrentVolume} />
-                      /{data.beakerMaxVolume} units
+                      /{data.beakerMaxVolume} 单位
                     </>
                   )
-                || 'No beaker'}
+                || '未放入烧杯'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Contents">
+              label="内容物">
               <Box color="label">
-                {(!data.isBeakerLoaded && !recording) && 'N/A'
-                  || beakerContents.length === 0 && 'Nothing'}
+                {(!data.isBeakerLoaded && !recording) && '不适用'
+                  || beakerContents.length === 0 && '空'}
               </Box>
               {beakerContents.map(chemical => (
                 <Box
-                  key={chemical.name}
+                  key={chemical.id}
                   color="label">
                   <AnimatedNumber
                     initial={0}
                     value={chemical.volume} />
                   {' '}
-                  units of {chemical.name}
+                  单位{chemical.name}
                 </Box>
               ))}
             </LabeledList.Item>

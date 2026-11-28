@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//Start name span.
 	var/spanpart2 = "<span class='name'>"
 	//Radio freq/name display
-	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq)]\] " : ""
+	var/freqpart = radio_freq ? "\[[FacilityChannelName(get_radio_name(radio_freq))]\] " : ""
 	//Speaker name
 	var/namepart = "[speaker.GetVoice()][speaker.get_alt_name()]"
 	if(face_name && ishuman(speaker))

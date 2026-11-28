@@ -1,5 +1,5 @@
 
-#define TRAY_NAME_UPDATE name = myseed ? "[initial(name)] ([myseed.plantname])" : initial(name)
+#define TRAY_NAME_UPDATE name = myseed ? "[initial(name)]（[myseed.PlantDisplayName()]）" : initial(name)
 #define YIELD_WEED_MINIMUM 3
 #define YIELD_WEED_MAXIMUM 10
 #define STATIC_NUTRIENT_CAPACITY 10

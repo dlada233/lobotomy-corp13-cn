@@ -55,20 +55,20 @@
 /obj/machinery/microwave/examine(mob/user)
 	. = ..()
 	if(!operating)
-		. += "<span class='notice'>Alt-click [src] to turn it on.</span>"
+		. += "<span class='notice'>按住 Alt 单击即可启动[src]。</span>"
 
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
+		. += "<span class='warning'>离得太远，看不清[src]的内容物和状态屏！</span>"
 		return
 	if(operating)
-		. += "<span class='notice'>\The [src] is operating.</span>"
+		. += "<span class='notice'>[src]正在加热。</span>"
 		return
 
 	if(length(ingredients))
 		if(issilicon(user))
-			. += "<span class='notice'>\The [src] camera shows:</span>"
+			. += "<span class='notice'>[src]的摄像头拍到：</span>"
 		else
-			. += "<span class='notice'>\The [src] contains:</span>"
+			. += "<span class='notice'>[src]内装有：</span>"
 		var/list/items_counts = new
 		for(var/i in ingredients)
 			if(istype(i, /obj/item/stack))
@@ -78,14 +78,14 @@
 				var/atom/movable/AM = i
 				items_counts[AM.name]++
 		for(var/O in items_counts)
-			. += "<span class='notice'>- [items_counts[O]]x [O].</span>"
+			. += "<span class='notice'>- [O] × [items_counts[O]]</span>"
 	else
-		. += "<span class='notice'>\The [src] is empty.</span>"
+		. += "<span class='notice'>[src]里是空的。</span>"
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "<span class='notice'>The status display reads:</span>\n"+\
-		"<span class='notice'>- Capacity: <b>[max_n_of_items]</b> items.</span>\n"+\
-		"<span class='notice'>- Cook time reduced by <b>[(efficiency - 1) * 25]%</b>.</span>"
+		. += "<span class='notice'>状态屏显示：</span>\n"+\
+		"<span class='notice'>- 容量：<b>[max_n_of_items]</b> 件物品。</span>\n"+\
+		"<span class='notice'>- 烹饪时间缩短 <b>[(efficiency - 1) * 25]%</b>。</span>"
 
 /obj/machinery/microwave/update_icon_state()
 	if(broken)
@@ -118,19 +118,19 @@
 
 	if(broken > 0)
 		if(broken == 2 && O.tool_behaviour == TOOL_WIRECUTTER) // If it's broken and they're using a screwdriver
-			user.visible_message("<span class='notice'>[user] starts to fix part of \the [src].</span>", "<span class='notice'>You start to fix part of \the [src]...</span>")
+			user.visible_message("<span class='notice'>[user]开始修理[src]的零件。</span>", "<span class='notice'>你开始修理[src]的零件……</span>")
 			if(O.use_tool(src, user, 20))
-				user.visible_message("<span class='notice'>[user] fixes part of \the [src].</span>", "<span class='notice'>You fix part of \the [src].</span>")
+				user.visible_message("<span class='notice'>[user]修好了[src]的一部分。</span>", "<span class='notice'>你修好了[src]的一部分。</span>")
 				broken = 1 // Fix it a bit
 		else if(broken == 1 && O.tool_behaviour == TOOL_WELDER) // If it's broken and they're doing the wrench
-			user.visible_message("<span class='notice'>[user] starts to fix part of \the [src].</span>", "<span class='notice'>You start to fix part of \the [src]...</span>")
+			user.visible_message("<span class='notice'>[user]开始修理[src]剩余的零件。</span>", "<span class='notice'>你开始修理[src]剩余的零件……</span>")
 			if(O.use_tool(src, user, 20))
-				user.visible_message("<span class='notice'>[user] fixes \the [src].</span>", "<span class='notice'>You fix \the [src].</span>")
+				user.visible_message("<span class='notice'>[user]修好了[src]。</span>", "<span class='notice'>你修好了[src]。</span>")
 				broken = 0
 				update_icon()
 				return FALSE //to use some fuel
 		else
-			to_chat(user, "<span class='warning'>It's broken!</span>")
+			to_chat(user, "<span class='warning'>微波炉坏了！</span>")
 			return TRUE
 		return
 
@@ -139,11 +139,11 @@
 		if(clean_spray.reagents.has_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this))
 			clean_spray.reagents.remove_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this,1)
 			playsound(loc, 'sound/effects/spray3.ogg', 50, TRUE, -6)
-			user.visible_message("<span class='notice'>[user] cleans \the [src].</span>", "<span class='notice'>You clean \the [src].</span>")
+			user.visible_message("<span class='notice'>[user]把[src]擦干净了。</span>", "<span class='notice'>你把[src]擦干净了。</span>")
 			dirty = 0
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need more space cleaner!</span>")
+			to_chat(user, "<span class='warning'>太空清洁剂不够！</span>")
 		return TRUE
 
 	if(istype(O, /obj/item/soap) || istype(O, /obj/item/reagent_containers/glass/rag))
@@ -151,15 +151,15 @@
 		if(istype(O, /obj/item/soap))
 			var/obj/item/soap/used_soap = O
 			cleanspeed = used_soap.cleanspeed
-		user.visible_message("<span class='notice'>[user] starts to clean \the [src].</span>", "<span class='notice'>You start to clean \the [src]...</span>")
+		user.visible_message("<span class='notice'>[user]开始清洗[src]。</span>", "<span class='notice'>你开始清洗[src]……</span>")
 		if(do_after(user, cleanspeed, target = src))
-			user.visible_message("<span class='notice'>[user] cleans \the [src].</span>", "<span class='notice'>You clean \the [src].</span>")
+			user.visible_message("<span class='notice'>[user]洗净了[src]。</span>", "<span class='notice'>你洗净了[src]。</span>")
 			dirty = 0
 			update_icon()
 		return TRUE
 
 	if(dirty == 100) // The microwave is all dirty so can't be used!
-		to_chat(user, "<span class='warning'>\The [src] is dirty!</span>")
+		to_chat(user, "<span class='warning'>[src]太脏了！</span>")
 		return TRUE
 
 	if(istype(O, /obj/item/storage/bag/tray))
@@ -169,25 +169,25 @@
 			if(!IS_EDIBLE(S))
 				continue
 			if(ingredients.len >= max_n_of_items)
-				to_chat(user, "<span class='warning'>\The [src] is full, you can't put anything in!</span>")
+				to_chat(user, "<span class='warning'>[src]已满，放不进更多东西了！</span>")
 				return TRUE
 			if(SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, S, src))
 				loaded++
 				ingredients += S
 		if(loaded)
-			to_chat(user, "<span class='notice'>You insert [loaded] items into \the [src].</span>")
+			to_chat(user, "<span class='notice'>你向[src]放入了 [loaded] 件物品。</span>")
 		return
 
 	if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O, /obj/item/storage) && user.a_intent == INTENT_HELP)
 		if(ingredients.len >= max_n_of_items)
-			to_chat(user, "<span class='warning'>\The [src] is full, you can't put anything in!</span>")
+			to_chat(user, "<span class='warning'>[src]已满，放不进更多东西了！</span>")
 			return TRUE
 		if(!user.transferItemToLoc(O, src))
-			to_chat(user, "<span class='warning'>\The [O] is stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>[O]黏在了你手上！</span>")
 			return FALSE
 
 		ingredients += O
-		user.visible_message("<span class='notice'>[user] adds \a [O] to \the [src].</span>", "<span class='notice'>You add [O] to \the [src].</span>")
+		user.visible_message("<span class='notice'>[user]把[O]放进了[src]。</span>", "<span class='notice'>你把[O]放进了[src]。</span>")
 		return
 
 	..()
@@ -208,7 +208,7 @@
 		if(isAI(user))
 			examine(user)
 		else
-			to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
+			to_chat(user, "<span class='warning'>[src]里是空的。</span>")
 		return
 
 	var/choice = show_radial_menu(user, src, isAI(user) ? ai_radial_options : radial_options, require_near = !issilicon(user))
@@ -241,7 +241,7 @@
 		return
 
 	if(wire_disabled)
-		audible_message("[src] buzzes.")
+		audible_message("[src]发出一声蜂鸣。")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 		return
 
@@ -258,7 +258,7 @@
 	start()
 
 /obj/machinery/microwave/proc/wzhzhzh()
-	visible_message("<span class='notice'>\The [src] turns on.</span>", null, "<span class='hear'>You hear a microwave humming.</span>")
+	visible_message("<span class='notice'>[src]启动了。</span>", null, "<span class='hear'>你听到微波炉低沉的嗡嗡声。</span>")
 	operating = TRUE
 
 	set_light(1.5)
@@ -266,7 +266,7 @@
 	update_icon()
 
 /obj/machinery/microwave/proc/spark()
-	visible_message("<span class='warning'>Sparks fly around [src]!</span>")
+	visible_message("<span class='warning'>[src]四周火花飞溅！</span>")
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(2, 1, src)
 	s.start()
@@ -347,7 +347,7 @@
 	loop(MICROWAVE_NORMAL, 10)
 
 /obj/machinery/microwave/proc/muck_finish()
-	visible_message("<span class='warning'>\The [src] gets covered in muck!</span>")
+	visible_message("<span class='warning'>[src]上溅满了污物！</span>")
 
 	dirty = 100
 	dirty_anim_playing = FALSE

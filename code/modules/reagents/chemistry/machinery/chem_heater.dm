@@ -1,5 +1,5 @@
 /obj/machinery/chem_heater
-	name = "chemical heater"
+	name = "试剂加热器"
 	density = TRUE
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0b"
@@ -54,7 +54,7 @@
 /obj/machinery/chem_heater/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient*1000]%</b> speed.")
+		. += span_notice("状态屏显示：试剂加热速度为 <b>[heater_coefficient*1000]%</b>。")
 
 /obj/machinery/chem_heater/process(delta_time)
 	..()
@@ -79,7 +79,7 @@
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, span_notice("You add [B] to [src]."))
+		to_chat(user, span_notice("你把[B]装入[src]。"))
 		updateUsrDialog()
 		update_icon()
 		return
@@ -108,7 +108,7 @@
 	var/beakerContents[0]
 	if(beaker)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume))) // list in a list because Byond merges the first list...
+			beakerContents.Add(list(list("name" = R.DisplayName(), "volume" = R.volume))) // list in a list because Byond merges the first list...
 	data["beakerContents"] = beakerContents
 	return data
 

@@ -43,7 +43,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
  * Captalism in the year 2525, everything in a vending machine, even love
  */
 /obj/machinery/vending
-	name = "\improper Vendomat"
+	name = "自动售货机"
 	desc = "一台普通的自动售货机。"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
@@ -155,7 +155,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 
 	var/list/vending_machine_input = list()
 	///Display header on the input view
-	var/input_display_header = "Custom Vendor"
+	var/input_display_header = "自助售货机"
 
 	//The type of refill canisters used by this machine.
 	var/obj/item/vending_refill/refill_canister = null
@@ -432,7 +432,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			add_overlay("[initial(icon_state)]-panel")
 		updateUsrDialog()
 	else
-		to_chat(user, "<span class='warning'>You must first secure [src].</span>")
+		to_chat(user, "<span class='warning'>请先固定[src]。</span>")
 	return TRUE
 
 /obj/machinery/vending/attackby(obj/item/I, mob/user, params)
@@ -442,21 +442,21 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	if(refill_canister && istype(I, refill_canister))
 		if (!panel_open)
-			to_chat(user, "<span class='warning'>You should probably unscrew the service panel first!</span>")
+			to_chat(user, "<span class='warning'>请先拧开检修盖！</span>")
 		else if (machine_stat & (BROKEN|NOPOWER))
-			to_chat(user, "<span class='notice'>[src] does not respond.</span>")
+			to_chat(user, "<span class='notice'>[src]没有反应。</span>")
 		else
 			//if the panel is open we attempt to refill the machine
 			var/obj/item/vending_refill/canister = I
 			if(canister.get_part_rating() == 0)
-				to_chat(user, "<span class='warning'>[canister] is empty!</span>")
+				to_chat(user, "<span class='warning'>[canister]是空的！</span>")
 			else
 				// instantiate canister if needed
 				var/transferred = restock(canister)
 				if(transferred)
-					to_chat(user, "<span class='notice'>You loaded [transferred] items in [src].</span>")
+					to_chat(user, "<span class='notice'>你向[src]补充了 [transferred] 件商品。</span>")
 				else
-					to_chat(user, "<span class='warning'>There's nothing to restock!</span>")
+					to_chat(user, "<span class='warning'>没有需要补充的商品！</span>")
 			return
 	if(compartmentLoadAccessCheck(user) && user.a_intent != INTENT_HARM)
 		if(canLoadItem(I))
@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/denied_items = 0
 			for(var/obj/item/the_item in T.contents)
 				if(contents.len >= MAX_VENDING_INPUT_AMOUNT) // no more than 30 item can fit inside, legacy from snack vending although not sure why it exists
-					to_chat(user, "<span class='warning'>[src]'s compartment is full.</span>")
+					to_chat(user, "<span class='warning'>[src]的储物仓已满。</span>")
 					break
 				if(canLoadItem(the_item) && loadingAttempt(the_item,user))
 					SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, the_item, src, TRUE)
@@ -477,9 +477,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 				else
 					denied_items++
 			if(denied_items)
-				to_chat(user, "<span class='warning'>[src] refuses some items!</span>")
+				to_chat(user, "<span class='warning'>[src]拒收了部分物品！</span>")
 			if(loaded)
-				to_chat(user, "<span class='notice'>You insert [loaded] dishes into [src]'s compartment.</span>")
+				to_chat(user, "<span class='notice'>你向[src]的储物仓放入了 [loaded] 份菜品。</span>")
 				updateUsrDialog()
 	else
 		. = ..()
@@ -501,7 +501,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/machinery/vending/proc/freebie(mob/fatty, freebies)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
-	visible_message("<span class='notice'>[src] yields [freebies > 1 ? "several free goodies" : "a free goody"]!</span>")
+	visible_message("<span class='notice'>[src]掉出了[freebies > 1 ? "好几件" : "一件"]免费商品！</span>")
 
 	for(var/i in 1 to freebies)
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
@@ -521,7 +521,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/machinery/vending/proc/tilt(atom/fatty, crit=FALSE)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
-	visible_message("<span class='danger'>[src] tips over!</span>")
+	visible_message("<span class='danger'>[src]翻倒了！</span>")
 	tilted = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -545,8 +545,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 				var/crit_rebate = 0 // lessen the normal damage we deal for some of the crits
 
 				if(crit_case < 5) // the body/head asplode case has its own description
-					C.visible_message("<span class='danger'>[C] is crushed by [src]!</span>", \
-						"<span class='userdanger'>You are crushed by [src]!</span>")
+					C.visible_message("<span class='danger'>[C]被[src]压住了！</span>", \
+						"<span class='userdanger'>你被[src]压住了！</span>")
 
 				switch(crit_case) // only carbons can have the fun crits
 					if(1) // shatter their legs and bleed 'em
@@ -559,13 +559,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 						if(r)
 							r.receive_damage(brute=200)
 						if(l || r)
-							C.visible_message("<span class='danger'>[C]'s legs shatter with a sickening crunch!</span>", \
-								"<span class='userdanger'>Your legs shatter with a sickening crunch!</span>")
+							C.visible_message("<span class='danger'>伴随一声令人牙酸的脆响，[C]的双腿被压碎了！</span>", \
+								"<span class='userdanger'>你听到一声令人牙酸的脆响，双腿被压碎了！</span>")
 					if(2) // pin them beneath the machine until someone untilts it
 						forceMove(get_turf(C))
 						buckle_mob(C, force=TRUE)
-						C.visible_message("<span class='danger'>[C] is pinned underneath [src]!</span>", \
-							"<span class='userdanger'>You are pinned down by [src]!</span>")
+						C.visible_message("<span class='danger'>[C]被困在[src]下面了！</span>", \
+							"<span class='userdanger'>你被[src]压得动弹不得！</span>")
 					if(3) // glass candy
 						crit_rebate = 50
 						for(var/i = 0, i < num_shards, i++)
@@ -577,7 +577,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 							shard.updateEmbedding()
 					if(4) // paralyze this binch
 						// the new paraplegic gets like 4 lines of losing their legs so skip them
-						visible_message("<span class='danger'>[C]'s spinal cord is obliterated with a sickening crunch!</span>", ignored_mobs = list(C))
+						visible_message("<span class='danger'>伴随一声令人牙酸的脆响，[C]的脊椎被压碎了！</span>", ignored_mobs = list(C))
 						C.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic)
 					if(5) // limb squish!
 						for(var/i in C.bodyparts)
@@ -587,13 +587,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 								squish_part.force_wound_upwards(type_wound)
 							else
 								squish_part.receive_damage(brute=30)
-						C.visible_message("<span class='danger'>[C]'s body is maimed underneath the mass of [src]!</span>", \
-							"<span class='userdanger'>Your body is maimed underneath the mass of [src]!</span>")
+						C.visible_message("<span class='danger'>沉重的[src]把[C]压得血肉模糊！</span>", \
+							"<span class='userdanger'>沉重的[src]把你压得血肉模糊！</span>")
 					if(6) // skull squish!
 						var/obj/item/bodypart/head/O = C.get_bodypart(BODY_ZONE_HEAD)
 						if(O)
-							C.visible_message("<span class='danger'>[O] explodes in a shower of gore beneath [src]!</span>", \
-								"<span class='userdanger'>Oh f-</span>")
+							C.visible_message("<span class='danger'>[O]在[src]下爆开，血肉四溅！</span>", \
+								"<span class='userdanger'>我操——</span>")
 							O.dismember()
 							O.drop_organs()
 							qdel(O)
@@ -606,8 +606,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 					C.take_bodypart_damage((squish_damage - crit_rebate)*0.5, wound_bonus = 5)
 				C.AddElement(/datum/element/squish, 80 SECONDS)
 			else
-				L.visible_message("<span class='danger'>[L] is crushed by [src]!</span>", \
-				"<span class='userdanger'>You are crushed by [src]!</span>")
+				L.visible_message("<span class='danger'>[L]被[src]压住了！</span>", \
+				"<span class='userdanger'>你被[src]压住了！</span>")
 				L.deal_damage(squish_damage, flags = (DAMAGE_FORCED))
 				if(crit_case)
 					L.deal_damage(squish_damage, flags = (DAMAGE_FORCED))
@@ -629,8 +629,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/machinery/vending/proc/untilt(mob/user)
 	if(user)
-		user.visible_message("<span class='notice'>[user] rights [src].</span>", \
-			"<span class='notice'>You right [src].</span>")
+		user.visible_message("<span class='notice'>[user]扶正了[src]。</span>", \
+			"<span class='notice'>你扶正了[src]。</span>")
 
 	unbuckle_all_mobs(TRUE)
 
@@ -649,7 +649,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		vending_machine_input[format_text(I.name)]++
 	else
 		vending_machine_input[format_text(I.name)] = 1
-	to_chat(user, "<span class='notice'>You insert [I] into [src]'s input compartment.</span>")
+	to_chat(user, "<span class='notice'>你把[I]放进了[src]的进货仓。</span>")
 	loaded_items++
 
 /obj/machinery/vending/unbuckle_mob(mob/living/buckled_mob, force=FALSE)
@@ -680,7 +680,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(do_you_have_access)
 			return TRUE
 		else
-			to_chat(user, "<span class='warning'>[src]'s input compartment blinks red: Access denied.</span>")
+			to_chat(user, "<span class='warning'>[src]的进货仓亮起红灯：权限不足。</span>")
 			return FALSE
 
 /obj/machinery/vending/exchange_parts(mob/user, obj/item/storage/part_replacer/W)
@@ -701,7 +701,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else
 		display_parts(user)
 	if(moved)
-		to_chat(user, "<span class='notice'>[moved] items restocked.</span>")
+		to_chat(user, "<span class='notice'>已补充 [moved] 件商品。</span>")
 		W.play_rped_sound()
 	return TRUE
 
@@ -713,7 +713,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You short out the product lock on [src].</span>")
+	to_chat(user, "<span class='notice'>你短接了[src]的商品锁。</span>")
 
 /obj/machinery/vending/_try_interact(mob/user)
 	if(seconds_electrified && !(machine_stat & NOPOWER))
@@ -721,7 +721,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			return
 
 	if(tilted && !user.buckled && !isAI(user))
-		to_chat(user, "<span class='notice'>You begin righting [src].</span>")
+		to_chat(user, "<span class='notice'>你开始扶正[src]。</span>")
 		if(do_after(user, 50, target=src))
 			untilt(user)
 		return
@@ -748,7 +748,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for (var/datum/data/vending_product/R in product_records)
 		var/list/data = list(
 			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
+			name = R.name, display_name = FacilityProductName(R.product_path, R.name),
 			price = R.custom_price || default_price,
 			max_amount = R.max_amount,
 			ref = REF(R)
@@ -758,7 +758,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for (var/datum/data/vending_product/R in coin_records)
 		var/list/data = list(
 			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
+			name = R.name, display_name = FacilityProductName(R.product_path, R.name),
 			price = R.custom_premium_price || extra_price,
 			max_amount = R.max_amount,
 			ref = REF(R),
@@ -769,7 +769,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for (var/datum/data/vending_product/R in hidden_records)
 		var/list/data = list(
 			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
+			name = R.name, display_name = FacilityProductName(R.product_path, R.name),
 			price = R.custom_premium_price || extra_price,
 			max_amount = R.max_amount,
 			ref = REF(R),
@@ -788,14 +788,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 		.["user"]["name"] = C.registered_account.account_holder
 		.["user"]["cash"] = C.registered_account.account_balance
 		if(C.registered_account.account_job)
-			.["user"]["job"] = C.registered_account.account_job.title
+			.["user"]["job"] = FacilityJobName(C.registered_account.account_job.title)
 			.["user"]["department"] = C.registered_account.account_job.paycheck_department
 		else
-			.["user"]["job"] = "No Job"
+			.["user"]["job"] = "无职务"
 			.["user"]["department"] = "No Department"
 	.["stock"] = list()
 	for (var/datum/data/vending_product/R in product_records + coin_records + hidden_records)
-		.["stock"][R.name] = R.amount
+		.["stock"][REF(R)] = .["stock"][R.name] = R.amount // 自定义修改：为同名制服分别提供库存，同时兼容按原名查询。
 	.["extended_inventory"] = extended_inventory
 
 /obj/machinery/vending/ui_act(action, params)
@@ -808,7 +808,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(!vend_ready)
 				return
 			if(panel_open)
-				to_chat(usr, "<span class='warning'>The vending machine cannot dispense products while its service panel is open!</span>")
+				to_chat(usr, "<span class='warning'>请先关上检修盖，售货机才能出货！</span>")
 				return
 			vend_ready = FALSE //One thing at a time!!
 			var/datum/data/vending_product/R = locate(params["ref"])
@@ -827,10 +827,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return
 			else if (!(R in record_to_check))
 				vend_ready = TRUE
-				message_admins("Vending machine exploit attempted by [ADMIN_LOOKUPFLW(usr)]!")
+				message_admins("[ADMIN_LOOKUPFLW(usr)] 尝试从售货机领取无效的商品记录！")
 				return
 			if (R.amount <= 0)
-				say("Sold out of [R.name].")
+				say("[FacilityProductName(R.product_path, R.name)]已售罄。")
 				flick(icon_deny,src)
 				vend_ready = TRUE
 				return
@@ -840,20 +840,20 @@ GLOBAL_LIST_EMPTY(vending_products)
 					var/mob/living/L = usr
 					C = L.get_idcard(TRUE)
 				if(!C)
-					say("No card found.")
+					say("未检测到身份卡。")
 					flick(icon_deny,src)
 					vend_ready = TRUE
 					return
 				else if (!C.registered_account)
-					say("No account found.")
+					say("找不到关联账户。")
 					flick(icon_deny,src)
 					vend_ready = TRUE
 					return
 				else if(age_restrictions && R.age_restricted && (!C.registered_age || C.registered_age < AGE_MINOR))
-					say("You are not of legal age to purchase [R.name].")
+					say("您的年龄未达到购买[FacilityProductName(R.product_path, R.name)]的要求。")
 					if(!(usr in GLOB.narcd_underages))
 						Radio.set_frequency(FREQ_DISCIPLINE)
-						Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_DISCIPLINE)
+						Radio.talk_into(src, "安保警报：[usr]未达法定年龄，刚在[get_area(src)]尝试购买[FacilityProductName(R.product_path, R.name)]。请留意药物滥用情况。", FREQ_DISCIPLINE)
 						GLOB.narcd_underages += usr
 					flick(icon_deny,src)
 					vend_ready = TRUE
@@ -864,7 +864,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				if(coin_records.Find(R) || hidden_records.Find(R))
 					price_to_use = R.custom_premium_price ? R.custom_premium_price : extra_price
 				if(price_to_use && !account.adjust_money(-price_to_use))
-					say("You do not possess the funds to purchase [R.name].")
+					say("余额不足，无法购买[FacilityProductName(R.product_path, R.name)]。")
 					flick(icon_deny,src)
 					vend_ready = TRUE
 					return
@@ -872,9 +872,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 				if(D)
 					D.adjust_money(price_to_use)
 					SSblackbox.record_feedback("amount", "vending_spent", price_to_use)
-					log_econ("[price_to_use] ahn were inserted into [src] by [D.account_holder] to buy [R].")
+					log_econ("[D.account_holder] 向[src]支付 [price_to_use] 眼购买了[FacilityProductName(R.product_path, R.name)]。")
 			if(last_shopper != usr || purchase_message_cooldown < world.time)
-				say("Thank you for shopping with [src]!")
+				say("感谢光顾[src]！")
 				purchase_message_cooldown = world.time + 5 SECONDS
 				last_shopper = usr
 			use_power(5)
@@ -884,9 +884,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/obj/item/vended_item = new R.product_path(get_turf(src))
 			R.amount--
 			if(usr.CanReach(src) && usr.put_in_hands(vended_item))
-				to_chat(usr, "<span class='notice'>You take [R.name] out of the slot.</span>")
+				to_chat(usr, "<span class='notice'>你从出货口取出了[FacilityProductName(R.product_path, R.name)]。</span>")
 			else
-				to_chat(usr, "<span class='warning'>[capitalize(R.name)] falls onto the floor!</span>")
+				to_chat(usr, "<span class='warning'>[FacilityProductName(R.product_path, R.name)]掉在了地上！</span>")
 			SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[R.product_path]"))
 			vend_ready = TRUE
 
@@ -957,7 +957,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	pre_throw(throw_item)
 
 	throw_item.throw_at(target, 16, 3)
-	visible_message("<span class='danger'>[src] launches [throw_item] at [target]!</span>")
+	visible_message("<span class='danger'>[src]朝[target]射出了[throw_item]！</span>")
 	return TRUE
 /**
  * A callback called before an item is tossed out
@@ -1018,7 +1018,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return ..()
 
 /obj/machinery/vending/custom
-	name = "Custom Vendor"
+	name = "自助售货机"
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	max_integrity = 400
@@ -1043,10 +1043,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/machinery/vending/custom/canLoadItem(obj/item/I, mob/user)
 	. = FALSE
 	if(loaded_items >= max_loaded_items)
-		say("There are too many items in stock.")
+		say("库存已满。")
 		return
 	if(istype(I, /obj/item/stack))
-		say("Loose items may cause problems, try use it inside wrapping paper.")
+		say("散装物品可能出问题，请先用包装纸包好。")
 		return
 	if(I.custom_price)
 		return TRUE
@@ -1095,12 +1095,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 				var/mob/living/L = usr
 				C = L.get_idcard(TRUE)
 			if(!C)
-				say("No card found.")
+				say("未检测到身份卡。")
 				flick(icon_deny,src)
 				vend_ready = TRUE
 				return
 			else if (!C.registered_account)
-				say("No account found.")
+				say("找不到关联账户。")
 				flick(icon_deny,src)
 				vend_ready = TRUE
 				return
@@ -1124,20 +1124,20 @@ GLOBAL_LIST_EMPTY(vending_products)
 					if(owner)
 						owner.adjust_money(S.custom_price)
 						SSblackbox.record_feedback("amount", "vending_spent", S.custom_price)
-						log_econ("[S.custom_price] ahn were spent on [src] buying a [S] by [owner.account_holder], owned by [private_a.account_holder].")
+						log_econ("[owner.account_holder] 在[private_a.account_holder]经营的[src]上花费 [S.custom_price] 眼购买了[S]。")
 					vending_machine_input[N] = max(vending_machine_input[N] - 1, 0)
 					S.forceMove(drop_location())
 					loaded_items--
 					use_power(5)
 					if(last_shopper != usr || purchase_message_cooldown < world.time)
-						say("Thank you for buying local and purchasing [S]!")
+						say("感谢您购买本地商品[S]！")
 						purchase_message_cooldown = world.time + 5 SECONDS
 						last_shopper = usr
 					vend_ready = TRUE
 					updateUsrDialog()
 					return
 				else
-					say("You do not possess the funds to purchase this.")
+					say("余额不足，无法购买这件商品。")
 			vend_ready = TRUE
 
 /obj/machinery/vending/custom/attackby(obj/item/I, mob/user, params)
@@ -1146,13 +1146,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/card/id/C = L.get_idcard(TRUE)
 		if(C?.registered_account)
 			private_a = C.registered_account
-			say("\The [src] has been linked to [C].")
+			say("[src]已与[C]关联。")
 
 	if(compartmentLoadAccessCheck(user))
 		if(istype(I, /obj/item/pen))
-			name = stripped_input(user,"Set name","Name", name, 20)
-			desc = stripped_input(user,"Set description","Description", desc, 60)
-			slogan_list += stripped_input(user,"Set slogan","Slogan","Epic", 60)
+			name = stripped_input(user,"请输入售货机名称。","名称", name, 20)
+			desc = stripped_input(user,"请输入售货机描述。","描述", desc, 60)
+			slogan_list += stripped_input(user,"请输入广告语。","广告语","好货上架！", 60)
 			last_slogan = world.time + rand(0, slogan_delay)
 			return
 
@@ -1184,13 +1184,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/item/vending_refill/custom
-	machine_name = "Custom Vendor"
+	machine_name = "自助售货机"
 	icon_state = "refill_custom"
 	custom_premium_price = PAYCHECK_ASSISTANT
 
 /obj/item/price_tagger
-	name = "price tagger"
-	desc = "This tool is used to set a price for items used in custom vendors."
+	name = "标价器"
+	desc = "用于给自助售货机里的商品定价。"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pricetagger"
 	custom_premium_price = PAYCHECK_ASSISTANT * 0.5
@@ -1198,8 +1198,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/price = 1
 
 /obj/item/price_tagger/attack_self(mob/user)
-	price = max(1, round(input(user,"set price","price") as num|null, 1))
-	to_chat(user, "<span class='notice'> The [src] will now give things a [price] cr tag.</span>")
+	price = max(1, round(input(user,"请输入价格。","标价") as num|null, 1))
+	to_chat(user, "<span class='notice'>[src]现在会给物品标价 [price] 眼。</span>")
 
 /obj/item/price_tagger/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -1208,7 +1208,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(isitem(target))
 		var/obj/item/I = target
 		I.custom_price = price
-		to_chat(user, "<span class='notice'>You set the price of [I] to [price] cr.</span>")
+		to_chat(user, "<span class='notice'>你给[I]标价 [price] 眼。</span>")
 
 /obj/machinery/vending/custom/greed //name and like decided by the spawn
 	custom_materials = list(/datum/material/gold = MINERAL_MATERIAL_AMOUNT * 5)
@@ -1221,8 +1221,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	anchored = FALSE
 	add_overlay("[initial(icon_state)]-panel")
 	//and references the deity
-	name = "[GLOB.deity]'s Consecrated Vendor"
-	desc = "A vending machine created by [GLOB.deity]."
-	slogan_list = list("[GLOB.deity] says: It's your divine right to buy!")
+	name = "[GLOB.deity]的圣赐售货机"
+	desc = "[GLOB.deity]创造的售货机。"
+	slogan_list = list("[GLOB.deity]说：购物是你与生俱来的神圣权利！")
 	add_filter("vending_outline", 9, list("type" = "outline", "color" = "#FFFFFF"))
 	add_filter("vending_rays", 10, list("type" = "rays", "size" = 35))

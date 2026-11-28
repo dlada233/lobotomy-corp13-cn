@@ -1,7 +1,7 @@
 #define MILK_TO_BUTTER_COEFF 15
 
 /obj/machinery/reagentgrinder
-	name = "\improper 多功能研磨机"
+	name = "多功能研磨机"
 	desc = "BlenderTech 出品。这东西打得碎吗？试试看！"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
@@ -28,7 +28,7 @@
 	. = ..()
 	holdingitems = list()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	beaker.desc += " May contain blended dust. Don't breathe this in!"
+	beaker.desc += "里面可能有研磨产生的粉尘，小心别吸进去！"
 
 /obj/machinery/reagentgrinder/constructed/Initialize()
 	. = ..()
@@ -60,27 +60,27 @@
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
+		. += "<span class='warning'>离得太远，看不清[src]的内容物和状态屏！</span>"
 		return
 
 	if(operating)
-		. += "<span class='warning'>\The [src] is operating.</span>"
+		. += "<span class='warning'>[src]正在运转。</span>"
 		return
 
 	if(beaker || length(holdingitems))
-		. += "<span class='notice'>\The [src] contains:</span>"
+		. += "<span class='notice'>[src]内装有：</span>"
 		if(beaker)
-			. += "<span class='notice'>- \A [beaker].</span>"
+			. += "<span class='notice'>- [beaker.name]</span>"
 		for(var/i in holdingitems)
 			var/obj/item/O = i
-			. += "<span class='notice'>- \A [O.name].</span>"
+			. += "<span class='notice'>- [O.name]</span>"
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "<span class='notice'>The status display reads:</span>\n"+\
-		"<span class='notice'>- Grinding reagents at <b>[speed*100]%</b>.</span>"
+		. += "<span class='notice'>状态屏显示：</span>\n"+\
+		"<span class='notice'>- 研磨速度：<b>[speed*100]%</b>。</span>"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				. += "<span class='notice'>- [R.volume] units of [R.name].</span>"
+				. += "<span class='notice'>- [R.DisplayName()]：[R.volume] 单位。</span>"
 
 /obj/machinery/reagentgrinder/AltClick(mob/user)
 	. = ..()
@@ -141,12 +141,12 @@
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
+		to_chat(user, "<span class='notice'>你把[B]装入[src]。</span>")
 		update_icon()
 		return TRUE //no afterattack
 
 	if(holdingitems.len >= limit)
-		to_chat(user, "<span class='warning'>[src] is filled to capacity!</span>")
+		to_chat(user, "<span class='warning'>[src]已经装满了！</span>")
 		return TRUE
 
 	//Fill machine with a bag!
@@ -156,23 +156,23 @@
 			for(var/i in inserted)
 				holdingitems[i] = TRUE
 			if(!I.contents.len)
-				to_chat(user, "<span class='notice'>You empty [I] into [src].</span>")
+				to_chat(user, "<span class='notice'>你把[I]里的东西倒进了[src]。</span>")
 			else
-				to_chat(user, "<span class='notice'>You fill [src] to the brim.</span>")
+				to_chat(user, "<span class='notice'>你装满了[src]。</span>")
 		return TRUE
 
 	if(!I.grind_results && !I.juice_results)
 		if(user.a_intent == INTENT_HARM)
 			return ..()
 		else
-			to_chat(user, "<span class='warning'>You cannot grind [I] into reagents!</span>")
+			to_chat(user, "<span class='warning'>[I]无法研磨成试剂！</span>")
 			return TRUE
 
 	if(!I.grind_requirements(src)) //Error messages should be in the objects' definitions
 		return
 
 	if(user.transferItemToLoc(I, src))
-		to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
+		to_chat(user, "<span class='notice'>你把[I]放入[src]。</span>")
 		holdingitems[I] = TRUE
 		return FALSE
 
@@ -274,7 +274,7 @@
 
 /obj/machinery/reagentgrinder/proc/juice_item(obj/item/I) //Juicing results can be found in respective object definitions
 	if(I.on_juice(src) == -1)
-		to_chat(usr, "<span class='danger'>[src] shorts out as it tries to juice up [I], and transfers it back to storage.</span>")
+		to_chat(usr, "<span class='danger'>[src]在给[I]榨汁时短路，已将其送回储料仓。</span>")
 		return
 	beaker.reagents.add_reagent_list(I.juice_results)
 	remove_object(I)
@@ -293,7 +293,7 @@
 
 /obj/machinery/reagentgrinder/proc/grind_item(obj/item/I, mob/user) //Grind results can be found in respective object definitions
 	if(I.on_grind(src) == -1) //Call on_grind() to change amount as needed, and stop grinding the item if it returns -1
-		to_chat(usr, "<span class='danger'>[src] shorts out as it tries to grind up [I], and transfers it back to storage.</span>")
+		to_chat(usr, "<span class='danger'>[src]在研磨[I]时短路，已将其送回储料仓。</span>")
 		return
 	beaker.reagents.add_reagent_list(I.grind_results)
 	if(I.reagents)

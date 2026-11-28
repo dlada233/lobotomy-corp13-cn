@@ -568,7 +568,7 @@
  * [COMSIG_ATOM_GET_EXAMINE_NAME] signal
  */
 /atom/proc/get_examine_name(mob/user)
-	. = "[src]"
+	. = isitem(src) && name == initial(name) ? FacilityProductName(type, "[src]") : "[src]"
 	var/list/override = list("", "", "[name]")
 	if(article && !(article in list("a", "an", "the", "some")))
 		. = "[article] [src]"
@@ -594,7 +594,7 @@
  */
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)]。")
-	var/static/list/material_names = list("iron" = "铁", "wood" = "木材", "plastic" = "塑料")
+	var/static/list/material_names = list("iron" = "铁", "wood" = "木材", "plastic" = "塑料", "glass" = "玻璃")
 	. += get_name_chaser(user)
 	if(desc)
 		. += desc
@@ -611,7 +611,7 @@
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[R.volume] 单位[R.type == /datum/reagent/consumable/enzyme && R.name == initial(R.name) ? "通用酶" : R.name]"
+						. += "[R.volume] 单位[R.DisplayName()]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/R in reagents.reagent_list)

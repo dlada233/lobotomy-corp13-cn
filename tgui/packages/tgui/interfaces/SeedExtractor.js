@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { toTitleCase } from 'common/string';
+
 import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -29,12 +29,12 @@ const splitSeedString = text => {
  *
  * @returns {any[]}
  */
-const createSeeds = seedStrings => {
+const createSeeds = (seedStrings, seedNames) => {
   const objs = Object.keys(seedStrings).map(key => {
     const obj = splitSeedString(key);
     obj.amount = seedStrings[key];
     obj.key = key;
-    obj.name = toTitleCase(obj.name.replace('pack of ', ''));
+    obj.name = seedNames[key] || obj.name;
     return obj;
   });
   return flow([
@@ -44,24 +44,24 @@ const createSeeds = seedStrings => {
 
 export const SeedExtractor = (props, context) => {
   const { act, data } = useBackend(context);
-  const seeds = createSeeds(data.seeds);
+  const seeds = createSeeds(data.seeds, data.seedNames || {});
   return (
     <Window
       width={1000}
       height={400}>
       <Window.Content scrollable>
-        <Section title="Stored seeds:">
+        <Section title="已储存的种子">
           <Table cellpadding="3" textAlign="center">
             <Table.Row header>
-              <Table.Cell>Name</Table.Cell>
-              <Table.Cell>Lifespan</Table.Cell>
-              <Table.Cell>Endurance</Table.Cell>
-              <Table.Cell>Maturation</Table.Cell>
-              <Table.Cell>Production</Table.Cell>
-              <Table.Cell>Yield</Table.Cell>
-              <Table.Cell>Potency</Table.Cell>
-              <Table.Cell>Instability</Table.Cell>
-              <Table.Cell>Stock</Table.Cell>
+              <Table.Cell>名称</Table.Cell>
+              <Table.Cell>寿命</Table.Cell>
+              <Table.Cell>耐力</Table.Cell>
+              <Table.Cell>成熟时间</Table.Cell>
+              <Table.Cell>收获间隔</Table.Cell>
+              <Table.Cell>产量</Table.Cell>
+              <Table.Cell>效力</Table.Cell>
+              <Table.Cell>不稳定性</Table.Cell>
+              <Table.Cell>库存</Table.Cell>
             </Table.Row>
             {seeds.map(item => (
               <Table.Row key={item.key}>
@@ -75,11 +75,11 @@ export const SeedExtractor = (props, context) => {
                 <Table.Cell>{item.instability}</Table.Cell>
                 <Table.Cell>
                   <Button
-                    content="Vend"
+                    content="取出"
                     onClick={() => act('select', {
                       item: item.key,
                     })} />
-                  ({item.amount} left)
+                  （剩余 {item.amount} 包）
                 </Table.Cell>
               </Table.Row>
             ))}
